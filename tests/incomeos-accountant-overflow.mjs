@@ -80,4 +80,9 @@ const restoreSource=source.slice(restoreStart,restoreEnd);
 assert.ok(restoreSource.includes("parsed.version!==2"),"restore must reject unsupported backup versions");
 assert.ok(restoreSource.includes("!uniqueEntryIds(entries)"),"restore must reject duplicate canonical IDs");
 assert.ok(restoreSource.includes("e.id.trim()"),"restore must compare canonical IDs against existing records");
+for(const name of ["importCsv","importJson"]){
+  const start=source.indexOf("function "+name+"(text){");
+  assert.ok(start>=0,"missing "+name);
+  assert.ok(source.slice(start,start+500).includes("Import blocked: stored accounting records failed integrity checks"),name+" must reject unsafe baseline before processing");
+}
 console.log("Accounting workspace preserves all imported valid rows and refuses over-limit edits.");
