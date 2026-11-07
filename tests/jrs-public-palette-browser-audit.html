@@ -11,12 +11,13 @@
     'coauthor.html','honor.html','ai-records-arm-b.html',
     '404.html','people.html'
   ];
+  const widths=[390,1440];
   const records=[];
   function colorIs(value,want){
     return value.replace(/\s+/g,'')===want;
   }
   for(const path of cases){
-    for(const width of [390,1440]){
+    for(const width of widths){
       const f=document.createElement('iframe');
       f.title=path+' '+width;
       f.width=width;

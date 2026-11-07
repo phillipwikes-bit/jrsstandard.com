@@ -86,3 +86,18 @@ The local revision was committed as `d7770ac1051a0b34e4773fef48474bce0d0c0663`. 
 ## Owner authorization update, November 7, 2026
 
 The owner responded “Execute” to the explicit request to publish the prepared revision branch, including the tracker and review evidence, to the public GitHub repository. This supplies the authorization missing at the earlier rejected push. The authorized action is publication of the prepared branch and opening a draft pull request for review. The earlier rejection remains recorded as a historical event. This authorization does not release an Engine, establish audience comprehension, or authorize merging to the production branch.
+
+## Follow-up: published review and CI coverage correction
+
+PR [#174](https://github.com/phillipwikes-bit/jrsstandard.com/pull/174) was checked while open, draft and unmerged at `e35853977e565b49bef5b41543fa1d6c7174ac85`. Seven JRS workflows passed at that head. The Visual Reference Snapshots workflow failed at the computed palette checker, before the wider route audit and hosted-preview verification. Its [job log](https://github.com/phillipwikes-bit/jrsstandard.com/actions/runs/42343328769/job/128315603927) reports `expected 26 page/viewport measurements, got 24`. The browser fixture contains twelve routes at two widths. This is a stale checker inventory, not evidence of a failed computed-color sample. The IncomeOS Vercel deployment reports a separate failure; that project's deployment configuration is outside this JRS correction.
+
+The follow-up changes are limited to the browser fixture, its checker, the visual workflow and these project records:
+
+- The theme fixture names its existing two viewport widths explicitly. Its computed-color, typography, visibility and overflow requirements are unchanged.
+- The checker derives exact coverage from the current route and width inventories. It rejects missing, unexpected or duplicate pairs, including a duplicate substituted for a missing route at the same total count. Every sample must report the Boolean value `true`.
+- The checker has a self-test covering the current 24-sample inventory and twelve invalid evidence cases. These are constructed checker tests, not browser or audience observations.
+- The visual workflow runs those self-tests before browser execution and preserves available layout, theme and sitewide measurements even if a later step fails. Its route-audit label no longer asserts an obsolete fixed route count.
+
+Local checks passed: the palette checker self-test; preview resolver, static identity and hosted-capture self-tests; reconstruction contract; institutional reference regression; public type/palette source guard; the three minimum public-boundary commands; and `git diff --check`.
+
+Local Chromium could not start because the runtime denied its process-singleton socket. No new browser measurements are claimed from this runtime. The published PR workflow must supply the actual rendered verification for this follow-up. Its outcome is pending at the time of this entry. No production merge or deployment was performed, and audience comprehension remains NOT VALIDATED.
