@@ -262,6 +262,11 @@ for(const width of [320,375,430]){
 await page.locator("#receipt-label").fill("Stale draft must clear");
 await page.evaluate(()=>document.dispatchEvent(new CustomEvent("incomeos:workspace-restored",{detail:{ledger:null}})));
 assert.equal(await page.locator("#receipt-label").inputValue(),"","Workspace replacement clears drafts from the prior ledger");
+
+assert.ok(await page.locator("#receipt-editing").isHidden(),"Workspace replacement clears stale edit status");
+assert.ok(await page.locator("#receipt-cancel").isHidden(),"Workspace replacement clears stale edit cancel action");
+assert.equal(await page.locator("#receipt-save").textContent(),"Save income entry","Workspace replacement returns form to new-entry mode");
+
 assert.ok(await page.locator("#financial-staging-interlock").isVisible(),"Quarantine warning is visible");
 assert.match(await page.locator("#financial-staging-interlock strong").textContent(),/QUARANTINED/);
 assert.equal(await page.locator("#ledger-ws-new").count(),1,"New-workspace action survives warning updates");
