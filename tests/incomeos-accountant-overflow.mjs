@@ -122,6 +122,8 @@ assert.equal(exerciseWorkspaceEvent(null).unsafe,true,"Null workspace event must
 assert.equal(exerciseWorkspaceEvent(undefined).unsafe,true,"Undefined workspace event must enter quarantine");
 
 assert.equal(exerciseWorkspaceEvent([]).unsafe,false,"Valid empty ledger event must remain usable");
+assert.ok(source.includes('if(go)go.hidden=!wsDirty||workspaceLoadUnsafe'),"Quarantined workspace must not offer a save action");
+
 
 const staleContext={Set,Array,document:{},modeNote(){},render(){},$(){return null}};
 runInNewContext(`
