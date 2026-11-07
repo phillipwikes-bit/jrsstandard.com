@@ -98,7 +98,8 @@
     }
     function encryptedBackup(){
       ensureIdle();
-      if(!opened||dirty||needsReview||needsRecovery)throw Error("Save or resolve accounting draft before encrypted backup");
+      if(!opened||!working||dirty||needsReview||needsRecovery)
+        throw Error("Save or resolve accounting draft before encrypted backup");
       return bridge.encryptedBackup();
     }
     function close(){
