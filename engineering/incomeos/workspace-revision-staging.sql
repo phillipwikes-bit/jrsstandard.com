@@ -2,6 +2,8 @@
 -- STAGING ONLY. Review owner provisioning and apply through an authorized migration.
 -- Never place an owner UUID or service-role secret in client code.
 create schema if not exists incomeos_private;
+-- pgcrypto must be installed in the extensions schema by the database administrator.
+-- This migration is deliberately not executable until that prerequisite is verified.
 
 create table if not exists incomeos_private.allowed_owners (
   user_id uuid primary key references auth.users(id) on delete cascade
@@ -45,6 +47,18 @@ begin
      or payload_sha256 is null or payload_sha256 !~ '^[0-9a-f]{64}$'
      or encode(extensions.digest(convert_to(encrypted_payload,'UTF8'),'sha256'),'hex') <> payload_sha256 then
     raise exception 'Invalid encrypted payload or checksum';
+  end if;
+  if not (pg_catalog.jsonb_typeof(encrypted_payload::jsonb) = 'object'
+    and (encrypted_payload::jsonb)->>'format' = 'incomeos-workspace'
+    and (encrypted_payload::jsonb)->>'version' = '1'
+    and (encrypted_payload::jsonb)->>'kdf' = 'PBKDF2-SHA256'
+    and (encrypted_payload::jsonb)->>'iterations' = '600000'
+    and (encrypted_payload::jsonb)->>'cipher' = 'AES-256-GCM'
+    and (encrypted_payload::jsonb) ? 'data'
+    and (encrypted_payload::jsonb) ? 'salt'
+    and (encrypted_payload::jsonb) ? 'iv'
+    and (select count(*) from pg_catalog.jsonb_object_keys(encrypted_payload::jsonb)) = 8) then
+    raise exception 'Unsupported encrypted workspace envelope';
   end if;
   perform pg_catalog.pg_advisory_xact_lock(pg_catalog.hashtextextended(actor::text, 0));
   select coalesce(max(revision),0) into current_revision
