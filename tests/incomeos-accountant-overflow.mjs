@@ -98,4 +98,25 @@ const onWorkspaceBody=source.slice(source.indexOf("function onWorkspace(ev){"),s
 assert.ok(onWorkspaceBody.includes("wsMode=true;fromWorkspace(ws)"),"Workspace event must reach integrity loader");
 assert.ok(!onWorkspaceBody.includes("!Array.isArray(ws.ledger)"),"Malformed workspace ledger must not be ignored before quarantine");
 assert.match(source,/workspaceLoadUnsafe = !ws\\|\\|!Array\\.isArray\\(ws\\.ledger\\)/,"Missing workspace ledger must be quarantined");
+// Execute the event handler itself, not only the underlying loader.
+const eventStart=source.indexOf("function onWorkspace(ev){");
+const eventEnd=source.indexOf("\n  if(typeof document",eventStart);
+assert.ok(eventStart>=0&&eventEnd>eventStart,"Workspace event handler must exist");
+function exerciseWorkspaceEvent(ledger,includeLedger=true){
+  const context={input:includeLedger?{ledger}: {},Set,Array,
+    document:{},modeNote(){},render(){},$(){return null}};
+  runInNewContext(`
+    var localLoadUnsafe=true,workspaceLoadUnsafe=false,wsMode=false,wsDirty=false,db={version:2,entries:[]},wsForeign=[];
+    function validate(e){return !!e&&e.kind==="income"&&e.valid===true;}
+    ${source.slice(idStart,idEnd)}
+    ${loader}
+    ${source.slice(eventStart,eventEnd)}
+    onWorkspace({type:"incomeos:workspace-loaded",detail:input});
+    result={unsafe:workspaceLoadUnsafe,mode:wsMode,entries:db.entries.length};
+  `,context);
+  return context.result;
+}
+assert.deepEqual(JSON.parse(JSON.stringify(exerciseWorkspaceEvent(undefined,false))),{unsafe:true,mode:true,entries:0},"Missing ledger event must enter quarantine");
+assert.equal(exerciseWorkspaceEvent("bad").unsafe,true,"Malformed ledger event must enter quarantine");
+assert.equal(exerciseWorkspaceEvent([]).unsafe,false,"Valid empty ledger event must remain usable");
 console.log("Accounting workspace preserves all imported valid rows and refuses over-limit edits.");
