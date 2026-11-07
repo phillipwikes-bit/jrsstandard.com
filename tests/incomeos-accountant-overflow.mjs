@@ -37,6 +37,11 @@ function exerciseWorkspace(rows){
   `,context);
   return context.result;
 }
+assert.equal(exerciseWorkspace(undefined).unsafe,true,"Missing workspace ledger must fail closed");
+assert.equal(exerciseWorkspace(null).unsafe,true,"Null workspace ledger must fail closed");
+assert.equal(exerciseWorkspace({entries:[]}).unsafe,true,"Object workspace ledger must fail closed");
+assert.equal(exerciseWorkspace("invalid").unsafe,true,"String workspace ledger must fail closed");
+assert.equal(exerciseWorkspace([]).unsafe,false,"Explicit empty workspace ledger is valid");
 assert.equal(exerciseWorkspace([{id:"ok",kind:"income",valid:true}]).unsafe,false);
 assert.equal(exerciseWorkspace([{id:"ok",kind:"income",valid:true}]).entries,1);
 assert.equal(exerciseWorkspace([{id:"dup",kind:"income",valid:true},{id:"dup",kind:"income",valid:true}]).unsafe,true);
