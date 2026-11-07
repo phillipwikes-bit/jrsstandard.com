@@ -220,7 +220,7 @@
       status.textContent="New empty workspace. Add accounts and entries below, then save it encrypted."+(state.lastAct?" "+state.lastAct+".":"");});
     if(undoBtn)undoBtn.addEventListener("click",function(){
       if(!state.history.length)return;
-      state.ws=state.history.pop();state.dirty=true;clearTyped();try{document.dispatchEvent(new CustomEvent("incomeos:workspace-restored",{detail:state.ws}));}catch(e){}try{document.dispatchEvent(new CustomEvent("incomeos:workspace-changed"));}catch(e){}render();status.textContent="Last change undone. Save to keep the workspace as it is now.";
+      state.ws=state.history.pop();state.dirty=true;clearTyped();try{document.dispatchEvent(new CustomEvent("incomeos:workspace-restored",{detail:state.ws}));}catch(e){}render();status.textContent="Last change undone. Save to keep the workspace as it is now.";
     });
     if(saveBtn)saveBtn.addEventListener("click",async function(){
       if(!state.ws)return;
