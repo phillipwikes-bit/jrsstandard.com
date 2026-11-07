@@ -72,5 +72,24 @@ const integrity={sha256};
   await untrusted.refresh();
   await assert.rejects(untrusted.append(envelope,"b".repeat(64)),/checksum mismatch/);
   assert.equal(untrusted.currentRevision(),null);
-  console.log("PASS: revision adapter conflict, integrity, uncertain write, recovery rollback");
+  // A server must not substitute a different encrypted payload at a revision
+  // already observed as trusted, even when the replacement checksum is valid.
+  let equivocated={revision:5,ciphertext:envelope,ciphertext_sha256:digest};
+  const sameRevision=createRevisionStore({
+    latest:async()=>equivocated,append:async()=>{throw Error("No writes expected");}
+  },protocol,integrity);
+  assert.equal((await sameRevision.refresh()).revision,5);
+  assert.equal((await sameRevision.refresh()).revision,5,"Unchanged revision is safe to reread");
+  const alternateEnvelope=JSON.stringify({...JSON.parse(envelope),data:"AQEBAQEBAQEBAQEBAQEBAQ=="});
+  equivocated={revision:5,ciphertext:alternateEnvelope,
+    ciphertext_sha256:createHash("sha256").update(alternateEnvelope,"utf8").digest("hex")};
+  await assert.rejects(sameRevision.refresh(),/different ciphertext/);
+  assert.equal(sameRevision.currentRevision(),null,"Substitution must quarantine trusted revision");
+  await assert.rejects(sameRevision.refresh(),/different ciphertext/,
+    "Retrying must not bypass same-revision substitution detection");
+  // Empty workspaces also have a stable, normalized digest representation.
+  const neverWritten=createRevisionStore({latest:async()=>null,append:transport.append},protocol,integrity);
+  assert.equal((await neverWritten.refresh()).revision,0);
+  assert.equal((await neverWritten.refresh()).revision,0);
+  console.log("PASS: revision adapter conflict, integrity, equivocation, uncertain write, recovery rollback");
 })().catch(e=>{console.error(e);process.exitCode=1;});
