@@ -2,18 +2,27 @@
 /* IncomeOS revision transport adapter. Staging only; never activates legacy vault writes.
    Requires an authenticated, owner-scoped transport supplied by the hosting application. */
 (function(root){
-  function createRevisionStore(transport,protocol){
+  function createRevisionStore(transport,protocol,integrity){
     if(!transport||typeof transport.append!=="function"||typeof transport.latest!=="function")
       throw Error("Authenticated revision transport required");
     if(!protocol||typeof protocol.appendRequest!=="function"||typeof protocol.applyResult!=="function"||typeof protocol.recover!=="function")
       throw Error("Revision protocol required");
+    // Fail closed if no SHA-256 digest provider is available. A stored checksum
+    // is not independently verified merely because it has the correct format.
+    var sha256=integrity&&integrity.sha256;
+    if(typeof sha256!=="function")throw Error("Independent SHA-256 verifier required");
+    async function verifyDigest(text,expected){
+      var actual=await sha256(text);
+      if(typeof actual!=="string"||!/^[0-9a-f]{64}$/.test(actual)||actual!==expected)
+        throw Error("Encrypted workspace checksum mismatch");
+    }
     var busy=false;
     var revision=null;
     // In-memory high-water mark survives failed reads/writes to detect server rollback.
     var highWaterRevision=null;
     var confirmationRequired=false;
     function integer(n){return Number.isSafeInteger(n)&&n>=0&&n<Number.MAX_SAFE_INTEGER;}
-    function parseLatest(row){
+    async function parseLatest(row){
       if(row===null)return {revision:0,text:null};
       if(!row||!integer(row.revision)||row.revision===0||typeof row.ciphertext!=="string"||
          typeof row.ciphertext_sha256!=="string"||!/^[0-9a-f]{64}$/.test(row.ciphertext_sha256))
@@ -21,13 +30,14 @@
       // Validate the returned encrypted envelope as strictly as an outgoing append.
       // A syntactically valid checksum alone does not establish a valid vault payload.
       protocol.appendRequest(row.revision-1,row.ciphertext,row.ciphertext_sha256);
+      await verifyDigest(row.ciphertext,row.ciphertext_sha256);
       return {revision:row.revision,text:row.ciphertext,sha256:row.ciphertext_sha256};
     }
     async function refresh(){
       if(busy)throw Error("Revision operation already in progress");
       busy=true;
       try{
-        var result=parseLatest(await transport.latest());
+        var result=await parseLatest(await transport.latest());
         var baseline=revision!==null?revision:highWaterRevision;
         var recovery=baseline!==null?protocol.recover(baseline,result.revision):null;
         // Re-reading the same server value cannot silently clear an owner-review hold.
@@ -50,6 +60,7 @@
       try{
         var expected=revision;
         var request=protocol.appendRequest(expected,ciphertext,sha256);
+        await verifyDigest(request.encrypted_payload,request.payload_sha256);
         var next=await transport.append(request);
         revision=protocol.applyResult(expected,next);
         highWaterRevision=revision;
