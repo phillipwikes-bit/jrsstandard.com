@@ -73,7 +73,9 @@
     var boundEpoch=sessionEpoch,boundUser=session.userId;
     var transport=factory({
       url:CONFIG.url,key:CONFIG.key,
-      getToken:async function(){return session&&session.access_token;},
+      getToken:async function(){
+        return session&&sessionEpoch===boundEpoch&&session.userId===boundUser?session.access_token:null;
+      },
       fetch:function(url,options){return root.fetch(url,options);}
     });
     async function guarded(method,request){
