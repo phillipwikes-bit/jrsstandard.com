@@ -18,6 +18,9 @@
       if(!row||!integer(row.revision)||row.revision===0||typeof row.ciphertext!=="string"||
          typeof row.ciphertext_sha256!=="string"||!/^[0-9a-f]{64}$/.test(row.ciphertext_sha256))
         throw Error("Invalid server revision response");
+      // Validate the returned encrypted envelope as strictly as an outgoing append.
+      // A syntactically valid checksum alone does not establish a valid vault payload.
+      protocol.appendRequest(row.revision-1,row.ciphertext,row.ciphertext_sha256);
       return {revision:row.revision,text:row.ciphertext,sha256:row.ciphertext_sha256};
     }
     async function refresh(){
