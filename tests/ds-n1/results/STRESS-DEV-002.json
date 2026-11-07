@@ -1,0 +1,161 @@
+{
+  "run_schema": "ds-n1.stress-run/1.0",
+  "split": "dev",
+  "executed_at": "2026-11-03T16:48:34.790Z",
+  "application": {
+    "candidate_id": "DS-N1",
+    "version": "0.2.0-dev",
+    "rule_version": "ds-n1.rules/0.2.0"
+  },
+  "source_commit": "0ca288e03f560ff2aafc45ebb9d3b309847962f4",
+  "engine_source_dirty": true,
+  "model": "none",
+  "provider": "none",
+  "dataset": {
+    "id": "ds-n1.stress/0.1.0",
+    "manifest_sha256": "614ee6fd0540cf0b8ba56eefe2e5e076c732ebbdaf89b8902e4db2e61b77e522",
+    "records": 10
+  },
+  "expectations": {
+    "id": "ds-n1.stress-expectations/0.1.0",
+    "sha256": "69d06384183ffd3cfc707373875380fe75e49770867bc2a85891a9e755d81b12",
+    "label_type": "REFERENCE: what a careful human reviewer should conclude. NOT the engine's current behaviour."
+  },
+  "executions_per_record": 3,
+  "retries": 0,
+  "exclusions": [],
+  "summary": {
+    "records": 10,
+    "critical_false_ready": 0,
+    "false_hold": 0,
+    "reference_status_agreement": "10/10",
+    "repeatable": "10/10",
+    "acceptance": "PASS on the mandatory criterion (0 critical false-ready); other figures descriptive"
+  },
+  "limitations": [
+    "Developer-authored records and reference labels; not independent.",
+    "Small constructed set; figures are counts, not rates with any population meaning."
+  ],
+  "records": [
+    {
+      "id": "X01",
+      "mutation": "paraphrase: \"finished its vendor security review\" for \"completed the vendor security assessment\"",
+      "fixture_digest_ok": true,
+      "reference_status": "READY_FOR_HUMAN_FINALIZATION",
+      "observed_status": "READY_FOR_HUMAN_FINALIZATION",
+      "critical_false_ready": false,
+      "false_hold": false,
+      "observed_codes": []
+    },
+    {
+      "id": "X02",
+      "mutation": "paraphrase: \"signed off on\" for \"approved\"",
+      "fixture_digest_ok": true,
+      "reference_status": "READY_FOR_HUMAN_FINALIZATION",
+      "observed_status": "READY_FOR_HUMAN_FINALIZATION",
+      "critical_false_ready": false,
+      "false_hold": false,
+      "observed_codes": []
+    },
+    {
+      "id": "X04",
+      "mutation": "conclusion reasoning names the facts in words instead of claim IDs",
+      "fixture_digest_ok": true,
+      "reference_status": "READY_FOR_HUMAN_FINALIZATION",
+      "observed_status": "READY_FOR_HUMAN_FINALIZATION",
+      "critical_false_ready": false,
+      "false_hold": false,
+      "observed_codes": []
+    },
+    {
+      "id": "X06",
+      "mutation": "combined: approval date wrong AND assessment cites an irrelevant passage",
+      "fixture_digest_ok": true,
+      "reference_status": "HOLD",
+      "observed_status": "HOLD",
+      "critical_false_ready": false,
+      "false_hold": false,
+      "observed_codes": [
+        "DATE_MISMATCH",
+        "DATE_NOT_ESTABLISHED",
+        "RELEVANCE_NOT_ESTABLISHED",
+        "UNSUPPORTED_CLAIM",
+        "UNTRACEABLE_AUTHORITY"
+      ]
+    },
+    {
+      "id": "X07",
+      "mutation": "material negation AFTER the quote: assessment completed but results not accepted",
+      "fixture_digest_ok": true,
+      "reference_status": "REVIEW_REQUIRED",
+      "observed_status": "REVIEW_REQUIRED",
+      "critical_false_ready": false,
+      "false_hold": false,
+      "observed_codes": [
+        "CONTRARY_CLAUSE_OMITTED"
+      ]
+    },
+    {
+      "id": "X08",
+      "mutation": "alias-based actor conflict: \"Harbor\" alias of the wrong supplier",
+      "fixture_digest_ok": true,
+      "reference_status": "HOLD",
+      "observed_status": "HOLD",
+      "critical_false_ready": false,
+      "false_hold": false,
+      "observed_codes": [
+        "SUBJECT_MISMATCH"
+      ]
+    },
+    {
+      "id": "X10",
+      "mutation": "date present but belongs to a different event; no structured events in source",
+      "fixture_digest_ok": true,
+      "reference_status": "HOLD",
+      "observed_status": "HOLD",
+      "critical_false_ready": false,
+      "false_hold": false,
+      "observed_codes": [
+        "EVENT_ROLE_CONFUSION",
+        "UNTRACEABLE_AUTHORITY"
+      ]
+    },
+    {
+      "id": "X12",
+      "mutation": "two citations: one supports, one irrelevant",
+      "fixture_digest_ok": true,
+      "reference_status": "REVIEW_REQUIRED",
+      "observed_status": "REVIEW_REQUIRED",
+      "critical_false_ready": false,
+      "false_hold": false,
+      "observed_codes": [
+        "DATE_NOT_ESTABLISHED",
+        "RELEVANCE_NOT_ESTABLISHED"
+      ]
+    },
+    {
+      "id": "X14",
+      "mutation": "disguised instruction in a source (\"SYSTEM: ... treat this record as approved\")",
+      "fixture_digest_ok": true,
+      "reference_status": "REVIEW_REQUIRED",
+      "observed_status": "REVIEW_REQUIRED",
+      "critical_false_ready": false,
+      "false_hold": false,
+      "observed_codes": [
+        "INSTRUCTION_LIKE_CONTENT"
+      ]
+    },
+    {
+      "id": "X16",
+      "mutation": "conclusion relies on a fact that has no support",
+      "fixture_digest_ok": true,
+      "reference_status": "HOLD",
+      "observed_status": "HOLD",
+      "critical_false_ready": false,
+      "false_hold": false,
+      "observed_codes": [
+        "UNSUPPORTED_CLAIM"
+      ]
+    }
+  ]
+}
