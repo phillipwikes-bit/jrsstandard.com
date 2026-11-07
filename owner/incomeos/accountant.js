@@ -886,7 +886,7 @@
     });
   }
   function onWorkspace(ev){
-    var ws=ev&&ev.detail;if(!ws||typeof ws!=="object"||!Array.isArray(ws.ledger))return;
+    var ws=ev&&ev.detail;if(!ws||typeof ws!=="object")return;
     wsMode=true;fromWorkspace(ws);
     if(ev.type==="incomeos:workspace-loaded")wsDirty=false;else wsDirty=true;
     var go=$("ledger-save-now");if(go)go.hidden=!wsDirty;
