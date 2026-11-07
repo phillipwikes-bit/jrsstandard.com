@@ -75,6 +75,8 @@
     // Rows other panels wrote in a different shape are preserved untouched on every save.
     wsForeign=rows.filter(function(x){return !validate(x);});
     if(!uniqueEntryIds(rows))workspaceLoadUnsafe=true;
+    // Accounting-shaped rows with invalid evidence or amounts are not foreign panel records.
+    if(rows.some(function(e){return e&&typeof e==="object"&&(e.kind==="income"||e.kind==="outflow")&&!validate(e);}))workspaceLoadUnsafe=true;
   }
   function write(){
     if(window.IncomeOSFinancialReadOnly===true)return false;
