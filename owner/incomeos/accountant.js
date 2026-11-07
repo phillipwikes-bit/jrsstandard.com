@@ -765,6 +765,7 @@
     return h;
   }
   function importCsv(text){
+    if((wsMode&&workspaceLoadUnsafe)||(!wsMode&&localLoadUnsafe))throw new Error("Import blocked: stored accounting records failed integrity checks. Preserve the original ledger for recovery.");
     if(locked())throw new Error("Financial import is disabled in unapproved staging. Open or create a workspace first.");
     var rows=splitCsv(text);if(rows.length<2)throw new Error("No data rows found");
     if(rows.length>5001)throw new Error("Import limit is 5,000 rows per file");
@@ -807,6 +808,7 @@
     return {accepted:accepted.length,skipped:skipped,rejected:rejected};
   }
   function importJson(text){
+    if((wsMode&&workspaceLoadUnsafe)||(!wsMode&&localLoadUnsafe))throw new Error("Import blocked: stored accounting records failed integrity checks. Preserve the original ledger for recovery.");
     if(locked())throw new Error("Financial restoration is disabled in unapproved staging. Open or create a workspace first.");
     var parsed=JSON.parse(text);
     if(!parsed||parsed.format!=="incomeos-accountant"||parsed.version!==2||!Array.isArray(parsed.entries)||parsed.entries.length>15000)throw new Error("Not a supported IncomeOS accountant backup");
