@@ -66,7 +66,7 @@
   // optionally encrypted, by the owner) instead of browser storage. The staging lock still blocks
   // every browser-storage write; it does not apply to the in-memory workspace.
   var wsMode=false,wsForeign=[];
-  function locked(){return window.IncomeOSFinancialReadOnly===true&&!wsMode;}
+  function locked(){return workspaceLoadUnsafe||(!wsMode&&(localLoadUnsafe||window.IncomeOSFinancialReadOnly===true));}
   function fromWorkspace(ws){
     localLoadUnsafe = false;
     workspaceLoadUnsafe = !ws||!Array.isArray(ws.ledger);
