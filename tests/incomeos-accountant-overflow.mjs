@@ -140,4 +140,27 @@ runInNewContext(`
 assert.deepEqual(JSON.parse(JSON.stringify(staleContext.before)),{unsafe:false,count:1},"Precondition: valid workspace is loaded");
 assert.deepEqual(JSON.parse(JSON.stringify(staleContext.after)),{unsafe:true,count:0,foreign:0},"Malformed restoration must remove stale ledger from analysis without retaining foreign rows");
 
+
+// Verify actual save-control visibility across valid and quarantined workspace events.
+const saveControl={hidden:true};
+const visibilityContext={Set,Array,document:{},modeNote(){},render(){},$(id){return id==="ledger-save-now"?saveControl:null}};
+runInNewContext(`
+  var localLoadUnsafe=false,workspaceLoadUnsafe=false,wsMode=false,wsDirty=false,db={version:2,entries:[]},wsForeign=[];
+  function validate(e){return !!e&&e.kind==="income"&&e.valid===true;}
+  ${source.slice(idStart,idEnd)}
+  ${loader}
+  ${source.slice(eventStart,eventEnd)}
+  onWorkspace({type:"incomeos:workspace-changed",detail:{ledger:[]}});
+`,visibilityContext);
+assert.equal(saveControl.hidden,false,"Valid changed workspace must expose save action");
+runInNewContext(`
+  var localLoadUnsafe=false,workspaceLoadUnsafe=false,wsMode=false,wsDirty=false,db={version:2,entries:[]},wsForeign=[];
+  function validate(e){return !!e&&e.kind==="income"&&e.valid===true;}
+  ${source.slice(idStart,idEnd)}
+  ${loader}
+  ${source.slice(eventStart,eventEnd)}
+  onWorkspace({type:"incomeos:workspace-changed",detail:{ledger:null}});
+`,visibilityContext);
+assert.equal(saveControl.hidden,true,"Quarantined changed workspace must hide save action");
+
 console.log("Accounting workspace preserves all imported valid rows and refuses over-limit edits.");
