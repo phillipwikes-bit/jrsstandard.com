@@ -10,7 +10,8 @@ try {({chromium}=require("playwright-core"));}
 catch {if(process.env.CI)throw Error("playwright-core must be installed for browser CI"); console.log("SKIPPED: playwright-core unavailable"); process.exit(0);}
 const scripts=new Set([
   "workspace-store.js","workspace-revision-protocol.js",
-  "revision-store.js","revision-workspace-bridge.js"
+  "revision-store.js","revision-workspace-bridge.js",
+  "revision-runtime-staging.js"
 ]);
 const base=new URL("../owner/incomeos/",import.meta.url);
 const server=createServer((req,res)=>{
@@ -90,6 +91,26 @@ try {
     latest=untampered;
     await rejects(()=>a.open("wrong synthetic passphrase"),"Wrong passphrase");
     assert(a.status().openedRevision===null,"Wrong passphrase cannot authorize a write");
+    // The final composition remains inactive until an explicitly authenticated
+    // staging host supplies the vault session and makes an explicit call.
+    const runtime=window.IncomeOSRevisionRuntime;
+    assert(!!runtime,"Missing staging runtime factory");
+    let absent=false;
+    try{runtime.createRuntime({stagingOnly:true});}catch(e){absent=String(e).includes("Authenticated owner vault session");}
+    assert(absent,"Missing vault session must block runtime construction");
+    window.IncomeOSVaultCloud={
+      signedIn:()=>true,
+      createRevisionTransport:()=>transport
+    };
+    absent=false;
+    try{runtime.createRuntime({});}catch(e){absent=String(e).includes("Explicit staging-only");}
+    assert(absent,"Explicit staging-only authorization is required");
+    const composed=runtime.createRuntime({stagingOnly:true});
+    const opened=await composed.open(password);
+    assert(opened.revision===3&&opened.workspace.note===updated.note,
+      "Composed authenticated runtime must decrypt the latest owner workspace");
+    assert(writes===3,"Runtime construction/open must not silently save");
+    composed.close();
     return {writes,reads,finalRevision:untampered.revision,viewport:innerWidth};
   });
   assert.deepEqual(errors,[],"No page errors or external requests");
