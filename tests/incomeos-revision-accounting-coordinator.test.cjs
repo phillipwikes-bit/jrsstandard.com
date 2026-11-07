@@ -33,6 +33,12 @@ const expense=(id,amount)=>({id,kind:"outflow",date,label:"Synthetic vendor "+id
     payer:"Synthetic Study",source:"synthetic"};
   assert.equal(accountant.validateEntry(pendingIncome),true);
   assert.equal(accountant.validateEntry({...pendingIncome,status:"paid"}),true);
+  const empty=workspace.newWorkspace(date);
+  assert.throws(()=>workspace.setLedger(empty,[first,{...first,id:" exp-1 "}],date),/unique id/,
+    "Authoritative workspace must normalize duplicate ledger IDs");
+  assert.equal(workspace.setLedger(empty,[{...first,id:"constructor"}],date).ledger[0].id,"constructor",
+    "Inherited Object keys must not falsely collide with ledger IDs");
+  assert.equal(workspace.setLedger(empty,[{...first,id:"toString"}],date).ledger[0].id,"toString");
   let remote=null,writes=0;
   const transport={
     latest:async()=>remote,
