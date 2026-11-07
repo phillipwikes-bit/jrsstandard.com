@@ -1,0 +1,50 @@
+"use strict";
+/* IncomeOS revision transport adapter. Staging only; never activates legacy vault writes.
+   Requires an authenticated, owner-scoped transport supplied by the hosting application. */
+(function(root){
+  function createRevisionStore(transport,protocol){
+    if(!transport||typeof transport.append!=="function"||typeof transport.latest!=="function")
+      throw Error("Authenticated revision transport required");
+    if(!protocol||typeof protocol.appendRequest!=="function"||typeof protocol.applyResult!=="function"||typeof protocol.recover!=="function")
+      throw Error("Revision protocol required");
+    var busy=false;
+    var revision=null;
+    function integer(n){return Number.isSafeInteger(n)&&n>=0&&n<Number.MAX_SAFE_INTEGER;}
+    function parseLatest(row){
+      if(row===null)return {revision:0,text:null};
+      if(!row||!integer(row.revision)||row.revision===0||typeof row.ciphertext!=="string")
+        throw Error("Invalid server revision response");
+      return {revision:row.revision,text:row.ciphertext,sha256:row.ciphertext_sha256};
+    }
+    async function refresh(){
+      if(busy)throw Error("Revision operation already in progress");
+      busy=true;
+      try{
+        var result=parseLatest(await transport.latest());
+        if(revision!==null)protocol.recover(revision,result.revision);
+        revision=result.revision;
+        return Object.freeze(result);
+      }finally{busy=false;}
+    }
+    async function append(ciphertext,sha256){
+      if(busy)throw Error("Revision operation already in progress");
+      if(revision===null)throw Error("Read server revision before saving");
+      busy=true;
+      try{
+        var expected=revision;
+        var request=protocol.appendRequest(expected,ciphertext,sha256);
+        var next=await transport.append(request);
+        revision=protocol.applyResult(expected,next);
+        return Object.freeze({revision:revision});
+      }catch(e){
+        // Any uncertain write outcome, including timeout, forces a fresh read.
+        revision=null;
+        throw e;
+      }finally{busy=false;}
+    }
+    function reset(){if(busy)throw Error("Cannot reset an in-flight revision operation");revision=null;}
+    return Object.freeze({refresh:refresh,append:append,reset:reset,currentRevision:function(){return revision;}});
+  }
+  if(root)root.IncomeOSRevisionStore=Object.freeze({createRevisionStore:createRevisionStore});
+  if(typeof module!=="undefined"&&module.exports)module.exports={createRevisionStore:createRevisionStore};
+}(typeof window!=="undefined"?window:globalThis));
