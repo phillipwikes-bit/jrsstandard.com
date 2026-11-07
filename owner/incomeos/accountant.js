@@ -660,6 +660,16 @@
     cats=cats.concat([[],["Unclassified: date","Description","Kind","USD","Reason"]],un.items.map(function(x){return [x.date,x.label,x.kind,x.usd,x.reasons.join("; ")];}),[["Unclassified total","",un.count,un.usd]]);
     download(csv([["IncomeOS personal tax-year summary",currentYear()]].concat([["Category","Amount or count"]],pairs,[[],["By category: group","Category","Records","USD"]],cats)),"IncomeOS-accountant-summary-"+currentYear()+".csv","text/csv;charset=utf-8");
   }
+  function recoverRawLocal(){
+    if(wsMode){alert("Raw local recovery is unavailable while a workspace is active. Preserve the original workspace file.");return false;}
+    if(!localLoadUnsafe){alert("Raw recovery is only available for a quarantined local accounting ledger. Use the normal JSON backup for valid records.");return false;}
+    var raw;
+    try{raw=localStorage.getItem(KEY);}catch(_e){alert("Unable to read the original local ledger.");return false;}
+    if(raw===null){alert("No original local ledger is available.");return false;}
+    if(!confirm("Download the original quarantined ledger exactly as stored? This is UNVERIFIED recovery evidence, not an accounting backup. Keep it private and do not import it as verified records."))return false;
+    download(raw,"IncomeOS-UNVERIFIED-raw-ledger-recovery-"+today()+".txt","text/plain");
+    return true;
+  }
   function backup(){
     if((wsMode&&workspaceLoadUnsafe)||(!wsMode&&localLoadUnsafe)){
       alert("Backup blocked: the accounting ledger failed integrity checks. An export from the current editor could omit original records. Preserve the original workspace or browser storage for recovery.");return;
@@ -846,6 +856,7 @@
     $("export-review").addEventListener("click",exportReview);
     $("download-summary").addEventListener("click",exportSummary);
     $("backup-ledger").addEventListener("click",backup);
+    $("recover-raw-ledger").addEventListener("click",recoverRawLocal);
     $("print-accountant").addEventListener("click",printReport);
     $("download-template").addEventListener("click",function(){
       download(csv([["kind","date","description","vendor","category","amount_usd","status","business_use_pct","evidence_ref","notes","evidence_status","payment_status","accountant_questions","payment_account"],["expense","2026-01-01","Claude extra API usage","Anthropic","software","0.00","paid","","example only","Replace or delete example","missing","paid","","Card ending 0000"]]),"IncomeOS-import-template.csv","text/csv;charset=utf-8");
