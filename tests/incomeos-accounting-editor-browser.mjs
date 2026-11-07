@@ -258,7 +258,10 @@ for(const width of [320,375,430]){
     return out;},width);
   assert.deepEqual(bad,[],"ledger view overflows at "+width+"px");
 }
-// A malformed restoration must show quarantine without destroying workspace recovery actions.
+// A malformed restoration must clear an active edit, not merely a new-entry draft.
+await page.locator("#ledger-filter").selectOption("all");
+await row("Synthetic study payout").getByRole("button",{name:"Edit"}).click();
+assert.ok(await page.locator("#receipt-editing").isVisible(),"Existing entry is in edit mode before restoration");
 await page.locator("#receipt-label").fill("Stale draft must clear");
 await page.evaluate(()=>document.dispatchEvent(new CustomEvent("incomeos:workspace-restored",{detail:{ledger:null}})));
 assert.equal(await page.locator("#receipt-label").inputValue(),"","Workspace replacement clears drafts from the prior ledger");
