@@ -24,6 +24,28 @@ assert.ok(source.includes("!uniqueEntryIds(entries)"),"commit gate must enforce 
 assert.ok(source.includes("!uniqueEntryIds(entries.concat(wsForeign))"),"workspace commit must reject collisions with foreign rows");
 assert.equal(uniqueEntryIds([{id:"accounting-1"},{id:"foreign-1"}]),true);
 assert.equal(uniqueEntryIds([{id:"shared-1"},{id:"shared-1"}]),false);
+
+function exerciseWorkspace(rows){
+  const context={input:{ledger:rows},Set,Array};
+  runInNewContext(`
+    var localLoadUnsafe=true,workspaceLoadUnsafe=false,db={version:2,entries:[]},wsForeign=[];
+    function validate(e){return !!e&&e.kind==="income"&&e.valid===true;}
+    ${source.slice(idStart,idEnd)}
+    ${loader}
+    fromWorkspace(input);
+    result={unsafe:workspaceLoadUnsafe,entries:db.entries.length,foreign:wsForeign.length};
+  `,context);
+  return context.result;
+}
+assert.equal(exerciseWorkspace([{id:"ok",kind:"income",valid:true}]).unsafe,false);
+assert.equal(exerciseWorkspace([{id:"ok",kind:"income",valid:true}]).entries,1);
+assert.equal(exerciseWorkspace([{id:"dup",kind:"income",valid:true},{id:"dup",kind:"income",valid:true}]).unsafe,true);
+assert.equal(exerciseWorkspace([{id:"dup",kind:"income",valid:true},{id:"dup",kind:"income",valid:true}]).entries,0);
+assert.equal(exerciseWorkspace([{id:"invalid",kind:"income",valid:false}]).unsafe,true);
+assert.equal(exerciseWorkspace([{id:"invalid",kind:"income",valid:false}]).entries,0);
+assert.equal(exerciseWorkspace([{id:"foreign",kind:"other"}]).unsafe,false);
+assert.equal(exerciseWorkspace([{id:"foreign",kind:"other"}]).foreign,1);
+
 assert.ok(source.includes("if(!wsMode&&localLoadUnsafe)throw new Error"),"unsafe local ledger must block writes");
 assert.ok(source.includes("!uniqueEntryIds(saved.entries)"),"local load must detect duplicate IDs");
 assert.ok(source.includes("saved.entries.some(function(e){return !validate(e);})"),"local load must detect invalid rows");
