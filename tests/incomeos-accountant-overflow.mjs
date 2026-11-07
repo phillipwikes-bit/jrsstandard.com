@@ -169,4 +169,7 @@ assert.match(source,/var n=\$\("ledger-mode"\);\s*if\(n\)\{/,"Missing mode banne
 assert.doesNotMatch(source,/banner\.textContent\s*=/,"Staging warning must not replace nested workspace action buttons");
 assert.match(source,/banner\.querySelector\("strong"\)/,"Quarantine warning must update only the heading");
 assert.match(source,/function locked\(\)\{return workspaceLoadUnsafe\|\|\(!wsMode&&\(localLoadUnsafe\|\|window\.IncomeOSFinancialReadOnly===true\)\);\}/,"Shared interaction guard must block quarantined ledgers independently of staging lock");
+for(const form of ["receipt-form","cost-form"]){
+  assert.ok(source.includes('$("'+form+'").addEventListener("submit",function(ev){ev.preventDefault();if(locked()){alert('),"Both accounting forms must reject locked submissions before parsing or committing");
+}
 console.log("Accounting workspace preserves all imported valid rows and refuses over-limit edits.");
