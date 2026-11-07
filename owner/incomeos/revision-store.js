@@ -9,6 +9,8 @@
       throw Error("Revision protocol required");
     var busy=false;
     var revision=null;
+    // In-memory high-water mark survives failed reads/writes to detect server rollback.
+    var highWaterRevision=null;
     var confirmationRequired=false;
     function integer(n){return Number.isSafeInteger(n)&&n>=0&&n<Number.MAX_SAFE_INTEGER;}
     function parseLatest(row){
@@ -23,14 +25,17 @@
       busy=true;
       try{
         var result=parseLatest(await transport.latest());
-        var recovery=revision!==null?protocol.recover(revision,result.revision):null;
-        confirmationRequired=!!(recovery&&recovery.requiresOwnerConfirmation);
+        var baseline=revision!==null?revision:highWaterRevision;
+        var recovery=baseline!==null?protocol.recover(baseline,result.revision):null;
+        // Re-reading the same server value cannot silently clear an owner-review hold.
+        confirmationRequired=confirmationRequired||!!(recovery&&recovery.requiresOwnerConfirmation);
         revision=result.revision;
+        if(highWaterRevision===null||revision>highWaterRevision)highWaterRevision=revision;
         return Object.freeze(Object.assign({},result,{requiresOwnerConfirmation:confirmationRequired}));
       }catch(e){
         // A failed read must never leave a previously trusted revision usable.
         revision=null;
-        confirmationRequired=false;
+        // Do not forget the last trusted revision when a read fails.
         throw e;
       }finally{busy=false;}
     }
@@ -44,6 +49,7 @@
         var request=protocol.appendRequest(expected,ciphertext,sha256);
         var next=await transport.append(request);
         revision=protocol.applyResult(expected,next);
+        highWaterRevision=revision;
         return Object.freeze({revision:revision});
       }catch(e){
         // Any uncertain write outcome, including timeout, forces a fresh read.
@@ -51,13 +57,13 @@
         throw e;
       }finally{busy=false;}
     }
-    function reset(){if(busy)throw Error("Cannot reset an in-flight revision operation");revision=null;confirmationRequired=false;}
+    function reset(){if(busy)throw Error("Cannot reset an in-flight revision operation");revision=null;highWaterRevision=null;confirmationRequired=false;}
     function confirmRevision(value){
       if(busy)throw Error("Cannot confirm an in-flight revision operation");
       if(revision===null||!integer(value)||value!==revision)throw Error("Revision confirmation mismatch");
       confirmationRequired=false;
     }
-    return Object.freeze({refresh:refresh,append:append,reset:reset,confirmRevision:confirmRevision,requiresOwnerConfirmation:function(){return confirmationRequired;},currentRevision:function(){return revision;}});
+    return Object.freeze({refresh:refresh,append:append,reset:reset,confirmRevision:confirmRevision,requiresOwnerConfirmation:function(){return confirmationRequired;},currentRevision:function(){return revision;},highestObservedRevision:function(){return highWaterRevision;}});
   }
   if(root)root.IncomeOSRevisionStore=Object.freeze({createRevisionStore:createRevisionStore});
   if(typeof module!=="undefined"&&module.exports)module.exports={createRevisionStore:createRevisionStore};
