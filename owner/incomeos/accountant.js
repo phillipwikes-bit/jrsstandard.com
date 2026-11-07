@@ -809,14 +809,13 @@
   function importJson(text){
     if(locked())throw new Error("Financial restoration is disabled in unapproved staging. Open or create a workspace first.");
     var parsed=JSON.parse(text);
-    if(!parsed||parsed.format!=="incomeos-accountant"||!Array.isArray(parsed.entries)||parsed.entries.length>15000)throw new Error("Not a supported IncomeOS accountant backup");
+    if(!parsed||parsed.format!=="incomeos-accountant"||parsed.version!==2||!Array.isArray(parsed.entries)||parsed.entries.length>15000)throw new Error("Not a supported IncomeOS accountant backup");
     var entries=parsed.entries.filter(validate);
     if(entries.length!==parsed.entries.length)throw new Error("Backup contains invalid or incomplete financial records");
-    // Edit and Remove match records by id, so every restored record needs its own.
-    var seen=new Set();
-    entries.forEach(function(e){if(typeof e.id!=="string"||!e.id.trim()||seen.has(e.id))throw new Error("Backup contains records without a unique identifier");seen.add(e.id);});
-    var ids=new Set(db.entries.map(function(e){return e.id;})),accepted=[];
-    entries.forEach(function(e){if(!ids.has(e.id)){accepted.push(e);ids.add(e.id);}});
+    // Apply the same canonical identifier integrity rule to backup and live ledger.
+    if(!uniqueEntryIds(entries))throw new Error("Backup contains missing or duplicate record identifiers");
+    var ids=new Set(db.entries.map(function(e){return e.id.trim();})),accepted=[];
+    entries.forEach(function(e){if(!ids.has(e.id.trim())){accepted.push(e);ids.add(e.id.trim());}});
     if(!accepted.length)return {accepted:0,skipped:entries.length};
     if(!confirm("Restore "+accepted.length+" entries from local backup (existing IDs will not be overwritten)?"))return {cancelled:true};
     commitEntries(db.entries.concat(accepted));render();return {accepted:accepted.length,skipped:entries.length-accepted.length};
