@@ -563,6 +563,7 @@
   function reviewApi(){var api=window.IncomeOSAccountantReview;return api&&typeof api.inspect==="function"?api:null;}
   // A half-typed or invalid report year must not stop rendering or the ledger-updated event.
   function annualReview(){
+    if((wsMode&&workspaceLoadUnsafe)||(!wsMode&&localLoadUnsafe))return null;
     var api=reviewApi();if(!api)return null;
     if(!/^\d{4}$/.test(currentYear()))return {invalidYear:true};
     try{return api.inspect(yearEntries(),currentYear());}catch(_e){return null;}
@@ -599,6 +600,7 @@
     place(root,"p","muted","Flags are for review only. A record with several flags appears more than once in the detailed exception CSV.");
   }
   function exportReview(){
+    if((wsMode&&workspaceLoadUnsafe)||(!wsMode&&localLoadUnsafe)){alert("Export blocked: accounting ledger integrity review is required. Preserve the original records.");return;}
     var review=annualReview();
     if(!review){alert("Documentation review module is unavailable; cannot export exceptions.");return;}
     if(review.invalidYear){alert("Enter a four-digit report year first.");return;}
@@ -617,6 +619,7 @@
     setTimeout(function(){URL.revokeObjectURL(url);},2000);
   }
   function exportDetail(){
+    if((wsMode&&workspaceLoadUnsafe)||(!wsMode&&localLoadUnsafe)){alert("Export blocked: accounting ledger integrity review is required. Preserve the original records.");return;}
     var rows=[["Date","Kind","Type / scope","Category","Description","Payer / payee","Original amount","Currency","USD per unit","Gross USD","Platform fees USD","Other paid outflows USD","Unallocated refund credit USD","Business-use %","Status","Tax form","Form status","Evidence status","Evidence reference","Reconciled","Notes","Entry ID","Expense payment status","Questions for accountant","Payment account (label)","Source","Corrections (earlier values)"]];
     yearEntries().sort(function(a,b){return a.date.localeCompare(b.date);}).forEach(function(e){
       rows.push([e.date,e.kind,e.kind==="income"?e.scope:e.type,e.category,e.label,e.payer||"",e.amountOriginal??"",e.currency??"USD",e.fx??1,e.kind==="income"?e.grossUsd:"",e.feesUsd??0,e.kind==="outflow"&&e.type!=="refund"?e.amountUsd:"",e.kind==="outflow"&&e.type==="refund"?e.amountUsd:"",e.kind==="outflow"&&e.type!=="refund"?(e.businessUse==null?"":e.businessUse):"",e.status??"paid",e.taxForm??"",e.docStatus??"",e.evidenceStatus??"",e.reference??"",e.reconciled?"yes":"no",e.notes??"",e.id,e.kind==="outflow"?payStatus(e):"",e.accountantQuestions??"",e.paymentAccount??"",e.importedFrom??"",correctionText(e)]);
@@ -624,6 +627,7 @@
     download(csv(rows),"IncomeOS-accountant-detail-"+currentYear()+".csv","text/csv;charset=utf-8");
   }
   function exportSummary(){
+    if((wsMode&&workspaceLoadUnsafe)||(!wsMode&&localLoadUnsafe)){alert("Export blocked: accounting ledger integrity review is required. Preserve the original records.");return;}
     var t=totals(yearEntries());var pairs=[
       ["Gross received, potential income",t.gross],["Platform fees withheld",t.fees],
       ["Other expenses recorded",t.expenses],["Estimated business use portion, not approved deduction",t.possibleBusinessUse],
