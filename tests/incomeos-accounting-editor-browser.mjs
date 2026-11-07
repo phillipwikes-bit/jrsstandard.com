@@ -301,6 +301,13 @@ await page.locator("#cost-label").fill("Unsubmitted expense draft");
 await page.evaluate(()=>document.dispatchEvent(new CustomEvent("incomeos:workspace-changed",{detail:{ledger:[],metadata:{synthetic:true}}})));
 assert.equal(await page.locator("#receipt-label").inputValue(),"Unsubmitted income draft","Unchanged accounting ledger preserves income draft");
 assert.equal(await page.locator("#cost-label").inputValue(),"Unsubmitted expense draft","Unchanged accounting ledger preserves expense draft");
+await page.evaluate(()=>document.dispatchEvent(new CustomEvent("incomeos:workspace-changed",{detail:{ledger:[{kind:"income",id:"synthetic-malformed-ledger-row"}]}})));
+assert.equal(await page.locator("#receipt-label").inputValue(),"","Changed invalid ledger clears the previous income draft");
+assert.equal(await page.locator("#cost-label").inputValue(),"","Changed invalid ledger clears the previous expense draft");
+assert.ok(await page.locator("#receipt-save").isDisabled(),"Invalid changed ledger blocks income editing");
+assert.ok(await page.locator("#cost-save").isDisabled(),"Invalid changed ledger blocks expense editing");
+await page.evaluate(()=>document.dispatchEvent(new CustomEvent("incomeos:workspace-loaded",{detail:{ledger:[]}})));
+assert.ok(await page.locator("#receipt-save").isEnabled(),"Valid workspace restores income editing after changed-ledger quarantine");
 
 assert.equal(await page.evaluate(()=>localStorage.length+sessionStorage.length),0);
 assert.deepEqual(errors,[]);
