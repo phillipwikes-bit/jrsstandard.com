@@ -886,9 +886,9 @@
     });
   }
   function onWorkspace(ev){
-    var ws=ev&&ev.detail;if(!ws||typeof ws!=="object")return;
+    var ws=ev&&ev.detail;
     wsMode=true;fromWorkspace(ws);
-    if(ev.type==="incomeos:workspace-loaded")wsDirty=false;else wsDirty=true;
+    if(ev&&ev.type==="incomeos:workspace-loaded")wsDirty=false;else wsDirty=true;
     var go=$("ledger-save-now");if(go)go.hidden=!wsDirty;
     if(typeof document!=="undefined"&&$("ledger-list"))render();
     modeNote();
