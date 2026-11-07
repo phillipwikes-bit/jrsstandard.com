@@ -9,6 +9,7 @@
        typeof bridge.encryptedBackup!=="function"||typeof bridge.close!=="function"||
        !workspace||typeof workspace.validate!=="function"||
        typeof workspace.newWorkspace!=="function"||typeof workspace.setLedger!=="function"||
+       typeof workspace.encrypt!=="function"||typeof workspace.decrypt!=="function"||
        !accountant||typeof accountant.validateEntry!=="function")
       throw Error("Verified workspace, accounting and revision dependencies required");
     var working=null,opened=false,dirty=false,needsReview=false,needsRecovery=false,busy=false;
@@ -89,6 +90,22 @@
       if(!dirty||!working)throw Error("No pending accounting draft");
       return clone(working);
     }
+    async function exportPendingDraftEncrypted(passphrase){
+      ensureIdle();
+      if(!dirty||!working)throw Error("No pending accounting draft to preserve");
+      busy=true;
+      try{
+        // Do not send the draft to the server or clear its dirty flag.
+        // A failed/conflicted save may be rescued as an owner-held encrypted file.
+        var snapshot=clone(workspace.validate(working));
+        validateLedger(snapshot.ledger);
+        var ciphertext=await workspace.encrypt(passphrase,snapshot);
+        var restored=await workspace.decrypt(passphrase,ciphertext);
+        if(JSON.stringify(restored)!==JSON.stringify(snapshot))
+          throw Error("Encrypted accounting draft verification failed");
+        return Object.freeze({encrypted:true,ciphertext:ciphertext,serverSaved:false});
+      }finally{busy=false;}
+    }
     function discardDraft(){
       ensureIdle();
       if(!dirty)throw Error("No pending accounting draft");
@@ -109,6 +126,7 @@
     }
     return Object.freeze({open:open,initializeNew:initializeNew,replaceLedger:replaceLedger,
       save:save,confirmOpenedRevision:confirmOpenedRevision,pendingDraft:pendingDraft,
+      exportPendingDraftEncrypted:exportPendingDraftEncrypted,
       discardDraft:discardDraft,encryptedBackup:encryptedBackup,close:close,
       status:function(){return Object.freeze({opened:opened,dirty:dirty,
         requiresOwnerConfirmation:needsReview,needsRecovery:needsRecovery,
