@@ -898,6 +898,11 @@
   function onWorkspace(ev){
     var ws=ev&&ev.detail;
     wsMode=true;fromWorkspace(ws);
+    // A workspace replacement invalidates any form edit tied to the previous ledger.
+    editingIncome=null;editingCost=null;
+    if(typeof document!=="undefined"&&$("receipt-form")&&$("cost-form")){
+      resetForm("receipt-form","income");resetForm("cost-form","outflow");
+    }
     if(ev&&ev.type==="incomeos:workspace-loaded")wsDirty=false;else wsDirty=true;
     var go=$("ledger-save-now");if(go)go.hidden=!wsDirty||workspaceLoadUnsafe;
     if(typeof document!=="undefined"&&$("ledger-list"))render();
