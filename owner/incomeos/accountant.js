@@ -900,10 +900,9 @@
     // Other panels may update workspace metadata without changing the accounting ledger.
     // Preserve unsaved accounting drafts unless the ledger itself is replaced or changed.
     var priorLedger=wsMode&&!workspaceLoadUnsafe?JSON.stringify(db.entries):null;
-    var priorForeign=wsMode&&!workspaceLoadUnsafe?JSON.stringify(wsForeign):null;
     var priorUnsafe=workspaceLoadUnsafe;
     wsMode=true;fromWorkspace(ws);
-    var ledgerChanged=ev&&ev.type!=="incomeos:workspace-changed"||priorUnsafe!==workspaceLoadUnsafe||priorLedger!==JSON.stringify(db.entries)||priorForeign!==JSON.stringify(wsForeign);
+    var ledgerChanged=ev&&ev.type!=="incomeos:workspace-changed"||priorUnsafe!==workspaceLoadUnsafe||priorLedger!==JSON.stringify(db.entries);
     if(ledgerChanged){
       editingIncome=null;editingCost=null;
       if(typeof document!=="undefined"&&$("receipt-form")&&$("cost-form")){
