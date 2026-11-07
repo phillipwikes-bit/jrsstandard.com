@@ -21,4 +21,7 @@ assert.equal(uniqueEntryIds([{id:"a"},{id:" a "}]),false);
 assert.equal(uniqueEntryIds([{id:""}]),false);
 assert.equal(uniqueEntryIds([{id:42}]),false);
 assert.ok(source.includes("!uniqueEntryIds(entries)"),"commit gate must enforce unique IDs");
+assert.ok(source.includes("!uniqueEntryIds(entries.concat(wsForeign))"),"workspace commit must reject collisions with foreign rows");
+assert.equal(uniqueEntryIds([{id:"accounting-1"},{id:"foreign-1"}]),true);
+assert.equal(uniqueEntryIds([{id:"shared-1"},{id:"shared-1"}]),false);
 console.log("Accounting workspace preserves all imported valid rows and refuses over-limit edits.");
