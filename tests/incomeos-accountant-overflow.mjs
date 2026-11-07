@@ -53,7 +53,7 @@ assert.ok(source.includes("catch(_e){localLoadUnsafe=true;db.entries=[];}"),"unr
 assert.ok(source.includes("if(raw===null)return;"),"missing local ledger may initialize empty");
 assert.ok(source.includes("saved.version!==2||!Array.isArray(saved.entries)"),"malformed or unsupported local ledger envelope must be quarantined");
 assert.ok(source.includes("localLoadUnsafe=true;\n        db.entries=[];"),"invalid envelope must block edits without overwriting original");
-assert.ok(source.includes("ws.ledger!==undefined&&!Array.isArray(ws.ledger)"),"malformed workspace ledger shape must be quarantined");
+assert.ok(source.includes("workspaceLoadUnsafe = !ws||!Array.isArray(ws.ledger)"),"malformed workspace ledger shape must be quarantined");
 assert.ok(source.includes("if(!uniqueEntryIds(rows))workspaceLoadUnsafe=true"),"duplicate IDs in imported workspace must block edits");
 assert.ok(source.includes("if(wsMode&&workspaceLoadUnsafe)throw new Error"),"unsafe workspace must not be overwritten");
 assert.ok(source.includes('(e.kind==="income"||e.kind==="outflow")&&!validate(e)'),"invalid accounting-shaped workspace records must block edits");
