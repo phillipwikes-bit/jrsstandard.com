@@ -18,7 +18,7 @@
   function assertEncrypted(text){
     var o;try{o=JSON.parse(text);}catch(e){throw Error("Not an encrypted workspace");}
     var keys=o&&typeof o==="object"?Object.keys(o).sort().join(","):"";
-    if(keys!=="cipher,data,format,iterations,iv,kdf,salt,version"||o.format!=="incomeos-workspace"||o.cipher!=="AES-256-GCM"||typeof o.data!=="string"||!/^[A-Za-z0-9+/=]+$/.test(o.data))
+    if(keys!=="cipher,data,format,iterations,iv,kdf,salt,version"||o.format!=="incomeos-workspace"||o.version!==1||o.kdf!=="PBKDF2-SHA256"||o.iterations!==600000||o.cipher!=="AES-256-GCM"||typeof o.data!=="string"||!/^[A-Za-z0-9+/=]+$/.test(o.data)||!o.data.length||typeof o.salt!=="string"||!/^[A-Za-z0-9+/]{22}==$/.test(o.salt)||typeof o.iv!=="string"||!/^[A-Za-z0-9+/]{16}$/.test(o.iv))
       throw Error("Refused: only an encrypted workspace can be sent to the vault");
     return o;
   }
