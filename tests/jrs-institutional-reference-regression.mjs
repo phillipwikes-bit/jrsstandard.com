@@ -20,7 +20,8 @@ for(const c of css){if(c==='{')braces++;if(c==='}')braces--;assert.ok(braces>=0,
 assert.equal(braces,0,'unbalanced CSS blocks');
 
 // Core positioning is a human-applied review instrument within existing workflows,
-// not a platform acquisition. Preserve the approved long-form proposition as well.
+// not a platform acquisition. The homepage has a more concise introduction;
+// preserve both its current identity and the longer resource-page proposition.
 const practicalPositioning='JRS is a practical review instrument that practitioners can use within existing workflows, not a software platform they must acquire.';
 
 const freeEntry='Free resources you can use today:';
@@ -36,7 +37,7 @@ for(const path of ['index.html','resources.html','about.html','organization.html
  assert.doesNotMatch(html,/for later independent review\.<\/strong>/,
   path+' contains unmatched emphasis after long-form non-purchase statement');
 }
-for(const path of ['index.html','resources.html','about.html','organization.html']){
+for(const path of ['resources.html','about.html','organization.html']){
  const html=read(path);
  assert.equal(html.split(practicalPositioning).length-1,1,
   path+' must prominently state the approved practitioner-first proposition once');
@@ -52,8 +53,10 @@ for(const path of ['index.html','resources.html','organization.html']){
 // available, but not compete in the prominent introductory bold statement.
 const homeTypography=read('index.html');
 const homeDesign=read('assets/jrs-a-pathways.css');
-assert.ok(homeTypography.includes('<p class="jr-platform-promise"><strong>'+practicalPositioning+'</strong></p>'),
- 'the homepage hero must feature only the concise core instrument proposition');
+assert.ok(homeTypography.includes('<strong>JRS is a human-applied documentation-review instrument.</strong>'),
+ 'homepage must identify the human-applied instrument before examples');
+assert.ok(homeTypography.includes('<p class="jr-platform-promise"><strong>Apply JRS within an existing authorized review workflow. No new software platform or case-record upload is required.</strong></p>'),
+ 'homepage must preserve authorized human use, no platform requirement and no upload');
 assert.ok(homeTypography.includes('<p class="jrs-task-context">Organizations do not need to purchase or replace a software platform'),
  'the full no-purchase explanation must survive as normal-weight first-use guidance');
 assert.ok(homeDesign.includes('HOME EDITORIAL TYPOGRAPHY REVIEW 2026-11-03'),
@@ -210,7 +213,7 @@ for(const page of [...pages,...additionalPages]){
 const main=read('index.html');
 for(const token of [
  '01 · Start here','02 · Use the method','03 · Examine the evidence','04 · Learn and practice',
- 'Can the record explain the decision after its author is gone?',
+ 'Can the record explain the decision?',
  'Evidence must remain distinguishable from assurance.',
  'href="jrsstandard.html"','href="resources.html"','href="training.html"','href="research.html"',
  'href="investigator-guides.html"','href="manifest.html"'

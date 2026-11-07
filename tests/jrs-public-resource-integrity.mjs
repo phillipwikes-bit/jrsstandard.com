@@ -3,9 +3,11 @@ import assert from 'node:assert/strict';
 import {readFileSync,existsSync,statSync} from 'node:fs';
 import {resolve,join} from 'node:path';
 import {fileURLToPath} from 'node:url';
+import {sitemapPages} from './helpers/public-pages.mjs';
+import {assertConceptualManifest} from './helpers/public-boundary.mjs';
 const root=resolve(fileURLToPath(new URL('../',import.meta.url)));
 const read=p=>readFileSync(join(root,p),'utf8');
-const pages=['index.html','resources.html','research.html','investigator-guides.html',
+const retainedPages=['index.html','resources.html','research.html','investigator-guides.html',
 'manifest.html','about.html','contact.html','jrsstandard.html','training.html',
 'check.html','simulations.html','decision-reconstruction-risk.html',
 'research-summary.html','methodology.html','evidence-ledger.html','questions.html',
@@ -22,6 +24,7 @@ const pages=['index.html','resources.html','research.html','investigator-guides.
 'reference/traveler-test/index.html','reference/unsupported-generalization/index.html',
 'reviewer/index.html','ai-governance-record.html','compliance.html','datasets.html',
 'finding.html','results.html','why-good-decisions-fail.html','privacy-notice.html'];
+const pages=[...new Set([...retainedPages,...sitemapPages])];
 const redirs=new Map(JSON.parse(read('vercel.json')).redirects.map(x=>[x.source,x.destination]));
 const docs={employment:'JRS_Investigator_Field_Guide_Employment.pdf',
 fairhousing:'JRS_Investigator_Field_Guide_FairHousing.pdf',
@@ -90,12 +93,7 @@ for(const pdf of new Set([...Object.values(docs),...kits])){
  if(buf.length<1000||buf.subarray(0,5).toString('ascii')!=='%PDF-')
   fail('download-inventory','invalid PDF '+pdf);
 }
-for(const f of ['jrs-decision-reconstruction-manifest-v1.0.1.schema.json',
-'jrs-decision-reconstruction-manifest-v1.0.schema.json',
-'jrs-decision-reconstruction-manifest-example-v1.0.json']){
- if(!fileAt('/'+f))fail('Manifest','missing '+f);
- else try{JSON.parse(read(f))}catch{fail('Manifest','invalid JSON '+f)}
-}
+// Public schema artifacts were retired; their 404 rewrites are checked below.
 assert.ok(read('index.html').includes('Version 2.0'),'homepage must identify actual PDF version');
 assert.ok(read('jrsstandard.html').includes('online methodology identifies v1.0'),
  'HTML methodology and PDF are separately versioned');
@@ -105,8 +103,7 @@ assert.ok(read('research.html').includes('<strong>36 reviewers</strong>'),
  'completion sample label must be reviewers rather than experts');
 assert.ok(read('investigator-guides.html').includes('36</span> reviewers completed'),
  'guide population must match source evidence ledger');
-assert.ok(read('manifest.html').includes('not established as compatible with that edition'),
- 'Manifest must disclose incompatible-version uncertainty');
+assertConceptualManifest();
 assert.ok(read('training.html').includes('id="en-transfer"') &&
  read('training.html').includes('privacy-notice.html#training-enrollment'),
  'training must have optional separate transfer consent and working privacy route');

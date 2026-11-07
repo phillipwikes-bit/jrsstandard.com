@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Check sitewide source-rendered mobile presentation evidence.
 
-This validates only 58 institutional route sources at 320px, 390px, 768px and 1440px.
+This validates the current sitemap and retained public route sources at four widths.
 It is NOT WCAG certification, PDF accessibility, VoiceOver testing or a live
 submission/consent acceptance test. Preserve small-control observations
 for manual investigation without implying all targets have been certified.
@@ -10,6 +10,8 @@ import html
 import json
 import re
 import sys
+import xml.etree.ElementTree as ET
+from urllib.parse import urlsplit
 from collections import Counter
 from pathlib import Path
 
@@ -21,14 +23,23 @@ try:
     rows=json.loads(html.unescape(match.group(1)))
 except (ValueError,TypeError) as exc:
     raise SystemExit(f"FAIL: invalid sitewide browser JSON ({exc})")
-if len(rows)!=232:
-    raise SystemExit(f"FAIL: expected 232 route-viewport samples; received {len(rows)}")
-pairs={(r.get("path"),r.get("width")) for r in rows}
-pages={r.get("path") for r in rows}
-if len(pairs)!=232 or len(pages)!=58:
-    raise SystemExit("FAIL: missing or duplicate page/viewport samples")
-if Counter(r.get("width") for r in rows)!={320:58,390:58,768:58,1440:58}:
-    raise SystemExit("FAIL: unexpected viewport coverage")
+root=Path(__file__).resolve().parent.parent
+sitemap=ET.parse(root/'sitemap.xml')
+expected=set()
+for loc in sitemap.findall('.//{*}loc'):
+    path=urlsplit(loc.text).path.lstrip('/')
+    expected.add('index.html' if not path else path+'index.html' if path.endswith('/') else path)
+fixture=(root/'tests/jrs-sitewide-mobile-browser-audit.html').read_text()
+extra=re.search(r'const additionalPaths=(\[[^\n;]*\]);',fixture)
+if not extra:
+    raise SystemExit('FAIL: retained public browser inventory is missing')
+expected.update(json.loads(extra.group(1)))
+widths={320,390,768,1440}
+pairs={(r.get('path'),r.get('width')) for r in rows}
+expected_pairs={(path,width) for path in expected for width in widths}
+if pairs!=expected_pairs or len(rows)!=len(expected_pairs):
+    raise SystemExit(f'FAIL: expected {len(expected_pairs)} unique current route/viewport samples; received {len(rows)}')
+pages={r.get('path') for r in rows}
 failed=[r for r in rows if not r.get("pass")]
 small=[r for r in rows if r.get("undersizedControls")]
 for r in failed:

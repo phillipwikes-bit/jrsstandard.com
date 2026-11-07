@@ -2,12 +2,14 @@
 // Does not assert screen-reader certification, rendered PDF styling, or form outcomes.
 import assert from 'node:assert/strict';
 import {readFileSync} from 'node:fs';
+import {sitemapPages} from './helpers/public-pages.mjs';
+import {assertRetiredReviewPage} from './helpers/public-boundary.mjs';
 const load=path=>readFileSync(new URL('../'+path,import.meta.url),'utf8');
 const bridge=load('assets/jrs-legacy-public-alignment.css');
 const shared=load('assets/jrs-institutional-reference.css');
 const legacy=[
  'access.html','reviewer/evaluation.html','reviewer/completion.html',
- 'recheck.html','security.html','review-engine.html',
+ 'recheck.html','security.html',
  'coauthor.html','honor.html','ai-records-arm-b.html','404.html','people.html'
 ];
 const requiredMobileNav=[
@@ -33,15 +35,15 @@ for(const path of requiredMobileNav){
 // public/retained HTML route when the source inventory changes.
 const mobileAudit=load('tests/jrs-sitewide-mobile-browser-audit.html');
 const sourceInventory=load('tests/jrs-public-resource-integrity.mjs');
-const inventoryMatch=sourceInventory.match(/const pages=\[([\s\S]*?)\];/);
-const auditMatch=mobileAudit.match(/const paths=(\[[^\n;]*\]);/);
-assert.ok(inventoryMatch&&auditMatch,'sitewide browser inventory missing');
-const activeInventory=[...inventoryMatch[1].matchAll(/'([^']+)'/g)].map(x=>x[1]);
-const browserInventory=JSON.parse(auditMatch[1]);
-assert.equal(new Set(browserInventory).size,browserInventory.length,
- 'sitewide browser audit must not duplicate routes');
-assert.deepEqual([...browserInventory].sort(),[...new Set([...activeInventory,...legacy])].sort(),
- 'sitewide browser audit does not cover the current public and legacy route inventories');
+assert.ok(mobileAudit.includes("fetch('/sitemap.xml')"),'browser audit must load the current sitemap');
+const retainedMatch=sourceInventory.match(/const retainedPages=\[([\s\S]*?)\];/);
+assert.ok(retainedMatch,'retained source inventory missing');
+const retained=[...retainedMatch[1].matchAll(/'([^']+)'/g)].map(x=>x[1]);
+const extras=mobileAudit.match(/const additionalPaths=(\[[^\n;]*\]);/);
+assert.ok(extras,'retained browser inventory missing');
+const actual=[...new Set([...sitemapPages,...JSON.parse(extras[1])])].sort();
+assert.deepEqual(actual,[...new Set([...sitemapPages,...retained,...legacy])].sort(),
+ 'browser audit must cover current sitemap and retained public routes');
 
 for(const path of legacy){
  const html=load(path);
@@ -55,6 +57,14 @@ for(const path of ['index.html','resources.html','research.html','jrsstandard.ht
  const html=load(path);
  assert.match(html,/<body class="[^"]*jrs-institutional/,path+': institutional theme regressed');
  assert.ok(html.includes('/assets/jrs-institutional-reference.css'),path+': shared stylesheet removed');
+}
+for(const path of ['right-to-know-why.html','decisions-you-can-defend.html','outreach-email-builder.html',
+ 'practitioner-questions.html','cite-jrs.html','field-evidence-status.html',
+ 'investigation-report-evidence-check.html','ai-drafted-record-source-verification.html',
+ 'decision-record-chronology-review.html','supplier-access-exception-documentation.html']){
+ const html=load(path);
+ assert.match(html,/<body class="[^"]*jrs-institutional/,path+': public reference theme missing');
+ assert.ok(html.includes('/assets/jrs-institutional-reference.css'),path+': shared public theme missing');
 }
 const references=[
  'reference/index.html','reference/ai-assisted-record-failure-modes/index.html',
@@ -91,9 +101,7 @@ const protectedLogin=load('owner-login.html');
 assert.ok(!protectedLogin.includes('jrs-legacy-public-alignment.css') &&
  !protectedLogin.includes('class="jrs-institutional jrs-legacy-public"'),
  'private owner sign-in must not be restyled by the public legacy bridge');
-const engine=load('review-engine.html');
-assert.ok(engine.includes('Public technical status information has moved.') &&
- engine.includes('resources.html'),'historical Review Engine closure route changed');
+assertRetiredReviewPage();
 const standard=load('jrsstandard.html'),training=load('training.html');
 assert.ok(standard.includes('jrs-standard-page') && training.includes('jrs-training-page'),
  'Standard or Training body style scope changed');
@@ -134,4 +142,4 @@ assert.ok(researchSummary.includes('/api/dl?e=accuracy&amp;src=research-summary'
  'research PDF routes missing');
 assert.ok(standard.includes('/api/dl?f=JRS_Investigator_Field_Guide.pdf&amp;src=jrsstandard'),
  'legacy general investigator guide route missing');
-console.log('PASS: 11 public/retained legacy routes, 6 principal pages, 17 reference pages, 9 linked PDF assets and locally generated training completion PNG guarded. PDF harmonization remains a separate controlled publication task.');
+console.log('PASS: 10 public/retained legacy routes, 6 principal pages, 17 reference pages, 9 linked PDF assets and locally generated training completion PNG guarded. PDF harmonization remains a separate controlled publication task.');
