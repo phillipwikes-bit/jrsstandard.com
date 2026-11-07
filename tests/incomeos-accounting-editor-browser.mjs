@@ -259,7 +259,9 @@ for(const width of [320,375,430]){
   assert.deepEqual(bad,[],"ledger view overflows at "+width+"px");
 }
 // A malformed restoration must show quarantine without destroying workspace recovery actions.
+await page.locator("#receipt-label").fill("Stale draft must clear");
 await page.evaluate(()=>document.dispatchEvent(new CustomEvent("incomeos:workspace-restored",{detail:{ledger:null}})));
+assert.equal(await page.locator("#receipt-label").inputValue(),"","Workspace replacement clears drafts from the prior ledger");
 assert.ok(await page.locator("#financial-staging-interlock").isVisible(),"Quarantine warning is visible");
 assert.match(await page.locator("#financial-staging-interlock strong").textContent(),/QUARANTINED/);
 assert.equal(await page.locator("#ledger-ws-new").count(),1,"New-workspace action survives warning updates");
