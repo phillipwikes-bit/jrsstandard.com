@@ -3,6 +3,7 @@
   var KEY = "incomeos.accountant.v1";
   var LEGACY_KEY = "incomeos.owner.prototype.v1";
   var db = { version: 2, entries: [] };
+  var localLoadUnsafe = false;
   var editingIncome = null, editingCost = null;
   var $ = function (id) { return document.getElementById(id); };
   var usd = new Intl.NumberFormat("en-US", { style:"currency", currency:"USD", minimumFractionDigits:2, maximumFractionDigits:2 });
@@ -66,6 +67,7 @@
   var wsMode=false,wsForeign=[];
   function locked(){return window.IncomeOSFinancialReadOnly===true&&!wsMode;}
   function fromWorkspace(ws){
+    localLoadUnsafe = false;
     var rows=ws&&Array.isArray(ws.ledger)?ws.ledger:[];
     db={version:2,entries:rows.filter(validate)};
     // Rows other panels wrote in a different shape are preserved untouched on every save.
@@ -87,6 +89,7 @@
   }
   function commitEntries(entries){
     if(locked())throw new Error("Financial changes are disabled in unapproved staging");
+    if(!wsMode&&localLoadUnsafe)throw new Error("Stored accounting records failed integrity checks. No edits accepted; preserve the original data for recovery.");
     if(!Array.isArray(entries)||entries.length>15000||!uniqueEntryIds(entries)||entries.some(function(x){return !validate(x);}))
       throw new Error("Financial records are invalid or exceed the ledger limit");
     if(wsMode){
@@ -125,11 +128,17 @@
     }catch(_e){}
   }
   function load(){
+    localLoadUnsafe = false;
     migrateLegacy();
     try{
       var saved=JSON.parse(localStorage.getItem(KEY)||"{}");
-      if(saved && Array.isArray(saved.entries))db.entries=saved.entries.filter(validate);
-    }catch(_e){db.entries=[];}
+      if(saved && Array.isArray(saved.entries)){
+        if(saved.entries.some(function(e){return !validate(e);})||!uniqueEntryIds(saved.entries)){
+          localLoadUnsafe=true;
+          db.entries=saved.entries.filter(validate);
+        }else db.entries=saved.entries;
+      }
+    }catch(_e){localLoadUnsafe=true;db.entries=[];}
   }
   function yearEntries(){var year=currentYear();return db.entries.filter(function(x){return x.date.slice(0,4)===year;});}
   function sum(items,get){return round(items.reduce(function(t,e){return t+(Number(get(e))||0);},0));}
