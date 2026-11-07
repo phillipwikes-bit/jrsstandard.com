@@ -4,8 +4,10 @@ on:
     paths:
       - 'owner/incomeos/vault-cloud.js'
       - 'owner/incomeos/workspace-revision-protocol.js'
+      - 'owner/incomeos/revision-store.js'
       - 'tests/incomeos-vault-envelope.test.cjs'
       - 'tests/incomeos-workspace-revision-protocol.test.cjs'
+      - 'tests/incomeos-revision-store.test.cjs'
       - '.github/workflows/incomeos-security-verification.yml'
   workflow_dispatch:
 permissions:
@@ -23,7 +25,9 @@ jobs:
         run: |
           node --check owner/incomeos/vault-cloud.js
           node --check owner/incomeos/workspace-revision-protocol.js
+          node --check owner/incomeos/revision-store.js
       - name: Synthetic regression tests
         run: |
           node tests/incomeos-vault-envelope.test.cjs
           node tests/incomeos-workspace-revision-protocol.test.cjs
+          node tests/incomeos-revision-store.test.cjs
