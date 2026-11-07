@@ -20,6 +20,9 @@
     var revision=null;
     // In-memory high-water mark survives failed reads/writes to detect server rollback.
     var highWaterRevision=null;
+    // An append-only revision must retain the same ciphertext checksum whenever
+    // the same revision is observed again, even after an uncertain network result.
+    var highWaterSha=null;
     var confirmationRequired=false;
     function integer(n){return Number.isSafeInteger(n)&&n>=0&&n<Number.MAX_SAFE_INTEGER;}
     async function parseLatest(row){
@@ -40,10 +43,16 @@
         var result=await parseLatest(await transport.latest());
         var baseline=revision!==null?revision:highWaterRevision;
         var recovery=baseline!==null?protocol.recover(baseline,result.revision):null;
+        if(highWaterRevision!==null&&result.revision===highWaterRevision&&
+           result.sha256!==highWaterSha)
+          throw Error("Server returned different ciphertext for an already trusted revision");
         // Re-reading the same server value cannot silently clear an owner-review hold.
         confirmationRequired=confirmationRequired||!!(recovery&&recovery.requiresOwnerConfirmation);
         revision=result.revision;
-        if(highWaterRevision===null||revision>highWaterRevision)highWaterRevision=revision;
+        if(highWaterRevision===null||revision>highWaterRevision){
+          highWaterRevision=revision;
+          highWaterSha=result.sha256||null;
+        }
         return Object.freeze(Object.assign({},result,{requiresOwnerConfirmation:confirmationRequired}));
       }catch(e){
         // A failed read must never leave a previously trusted revision usable.
@@ -64,6 +73,7 @@
         var next=await transport.append(request);
         revision=protocol.applyResult(expected,next);
         highWaterRevision=revision;
+        highWaterSha=request.payload_sha256;
         return Object.freeze({revision:revision});
       }catch(e){
         // Any uncertain write outcome, including timeout, forces a fresh read.
@@ -71,7 +81,7 @@
         throw e;
       }finally{busy=false;}
     }
-    function reset(){if(busy)throw Error("Cannot reset an in-flight revision operation");revision=null;highWaterRevision=null;confirmationRequired=false;}
+    function reset(){if(busy)throw Error("Cannot reset an in-flight revision operation");revision=null;highWaterRevision=null;highWaterSha=null;confirmationRequired=false;}
     function confirmRevision(value){
       if(busy)throw Error("Cannot confirm an in-flight revision operation");
       if(revision===null||!integer(value)||value!==revision)throw Error("Revision confirmation mismatch");
