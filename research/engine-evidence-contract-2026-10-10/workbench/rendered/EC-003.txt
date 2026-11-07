@@ -1,0 +1,19 @@
+WORKBENCH EC-003: Out-of-scope employment-related record, refused
+Synthetic fixture; candidate 0.2.0-local-candidate; NO_GO_NOT_VERIFIED
+
+1 INTAKE  gate=refuse instruction_risk=not_detected boundary=preserved
+2 IDENTITY  jrs-engine-local-0.2.0 / HREF-v1-0.1.0-validation-baebb512 / run ecr_cee503384dc1fb4b6201e598
+3 RECORD  1316 chars sha256:c835fad321f41e3b3b5c903f36c441e7f4523d13fca30cc3166841461f391f1c
+4 CANDIDATE RESPONSE  not_read
+5/6 reconstructability      not_assessed    candidate=none
+      reason: pre_analysis_refusal
+5/6 identifiable_basis      not_assessed    candidate=none
+      reason: pre_analysis_refusal
+5/6 chronology_integrity    not_assessed    candidate=none
+      reason: pre_analysis_refusal
+5/6 reasoning_traceability  not_assessed    candidate=none
+      reason: pre_analysis_refusal
+5/6 sufficiency             not_assessed    candidate=none
+      reason: pre_analysis_refusal
+8 pre_analysis regulated_domain_content (refuse)
+10 HUMAN REVIEW ACKNOWLEDGMENT: not recorded (placeholder)

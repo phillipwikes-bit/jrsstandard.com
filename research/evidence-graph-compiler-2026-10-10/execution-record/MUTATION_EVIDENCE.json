@@ -1,0 +1,499 @@
+{
+  "generated": "2026-10-10T00:00:00Z",
+  "probes": [
+    "q.fabricated_absent",
+    "q.unique_offsets_computed",
+    "q.duplicate_ambiguous",
+    "q.duplicate_section_disambiguated",
+    "q.near_quote_both_in_window_ambiguous",
+    "q.whitespace_variant",
+    "q.unicode_variant",
+    "q.heading_only_without_colon",
+    "q.elided",
+    "q.line_break",
+    "q.mid_word",
+    "q.too_broad",
+    "q.utf8_offsets",
+    "g.span_text_altered",
+    "g.supported_without_evidence_path",
+    "g.edge_wrong_shape",
+    "g.edge_meaning_altered",
+    "g.sufficiency_supported_rejected",
+    "g.unsorted_rejected",
+    "g.missing_limitation_rejected",
+    "g.untraceable_finding_rejected",
+    "g.edge_meaning_non_proof_altered",
+    "g.proof_claim_graph_guard_only",
+    "g.proof_claim_rejected",
+    "g.version_tamper_rejected",
+    "c.chronology_conflict_downgrades",
+    "c.validator_rejects_undowngraded_conflict_node",
+    "c.decision_date_conflict",
+    "c.authority_state_conflict",
+    "s.employment_refused",
+    "s.reworded_termination_refused",
+    "s.relieved_of_duties_refused",
+    "s.injection_routes_all_review",
+    "s.reworded_injection_detected",
+    "v.codebook_mismatch_refused",
+    "v.prompt_mismatch_refused",
+    "v.compiler_mismatch_refused",
+    "v.fixture_hash_mismatch_refused",
+    "v.response_prompt_mismatch_invalid",
+    "v.untrusted_field_reason",
+    "k.intent_inference_rejected",
+    "k.unstated_cause_rejected",
+    "k.marker_required",
+    "k.condition_permission_required",
+    "k.controls_neutral_and_present",
+    "k.templates_all_neutral",
+    "st.clean_statuses",
+    "st.unconfirmed_gap_routes_review",
+    "st.deterministic_not_assessed",
+    "e.synthetic_holdout",
+    "e.overlap",
+    "e.label_independence",
+    "e.raw_records_tracked",
+    "e.changed_after_freeze",
+    "e.never_authorises",
+    "e.registry_rejects_completed",
+    "e.registry_chain_detects_edit",
+    "e.authority_conflict"
+  ],
+  "mutations": [
+    {
+      "mutation": "M-01",
+      "description": "quote: duplicates treated as unique",
+      "file": "lib/engine-evidence-graph/quote-resolution.mjs",
+      "killed": true,
+      "failing_probes": [
+        "q.duplicate_ambiguous",
+        "q.duplicate_section_disambiguated",
+        "q.near_quote_both_in_window_ambiguous"
+      ]
+    },
+    {
+      "mutation": "M-02",
+      "description": "quote: whitespace-collapsed matching",
+      "file": "lib/engine-evidence-graph/quote-resolution.mjs",
+      "killed": true,
+      "failing_probes": [
+        "q.whitespace_variant"
+      ]
+    },
+    {
+      "mutation": "M-03",
+      "description": "quote: heading-only check removed",
+      "file": "lib/engine-evidence-graph/quote-resolution.mjs",
+      "killed": true,
+      "failing_probes": [
+        "q.heading_only_without_colon"
+      ]
+    },
+    {
+      "mutation": "M-04",
+      "description": "quote: ellipsis check removed",
+      "file": "lib/engine-evidence-graph/quote-resolution.mjs",
+      "killed": true,
+      "failing_probes": [
+        "q.elided"
+      ]
+    },
+    {
+      "mutation": "M-05",
+      "description": "quote: line-break check removed",
+      "file": "lib/engine-evidence-graph/quote-resolution.mjs",
+      "killed": true,
+      "failing_probes": [
+        "q.line_break"
+      ]
+    },
+    {
+      "mutation": "M-06",
+      "description": "quote: mid-word truncation allowed",
+      "file": "lib/engine-evidence-graph/quote-resolution.mjs",
+      "killed": true,
+      "failing_probes": [
+        "q.mid_word"
+      ]
+    },
+    {
+      "mutation": "M-07",
+      "description": "quote: disambiguator accepts several",
+      "file": "lib/engine-evidence-graph/quote-resolution.mjs",
+      "killed": true,
+      "failing_probes": [
+        "q.near_quote_both_in_window_ambiguous"
+      ]
+    },
+    {
+      "mutation": "M-08",
+      "description": "quote: breadth limit removed",
+      "file": "lib/engine-evidence-graph/quote-resolution.mjs",
+      "killed": true,
+      "failing_probes": [
+        "q.too_broad"
+      ]
+    },
+    {
+      "mutation": "M-09",
+      "description": "graph: span text check removed",
+      "file": "lib/engine-evidence-graph/graph-validate.mjs",
+      "killed": true,
+      "failing_probes": [
+        "g.span_text_altered"
+      ]
+    },
+    {
+      "mutation": "M-10",
+      "description": "graph: traversal check removed",
+      "file": "lib/engine-evidence-graph/graph-validate.mjs",
+      "killed": true,
+      "failing_probes": [
+        "g.untraceable_finding_rejected"
+      ]
+    },
+    {
+      "mutation": "M-11",
+      "description": "graph: evidence-path check removed",
+      "file": "lib/engine-evidence-graph/graph-validate.mjs",
+      "killed": true,
+      "failing_probes": [
+        "g.supported_without_evidence_path"
+      ]
+    },
+    {
+      "mutation": "M-12",
+      "description": "graph: edge shape check removed",
+      "file": "lib/engine-evidence-graph/graph-validate.mjs",
+      "killed": true,
+      "failing_probes": [
+        "g.edge_wrong_shape"
+      ]
+    },
+    {
+      "mutation": "M-13",
+      "description": "graph: edge meaning check removed",
+      "file": "lib/engine-evidence-graph/graph-validate.mjs",
+      "killed": true,
+      "failing_probes": [
+        "g.edge_meaning_non_proof_altered"
+      ]
+    },
+    {
+      "mutation": "M-14",
+      "description": "graph: sufficiency-supported check removed",
+      "file": "lib/engine-evidence-graph/graph-validate.mjs",
+      "killed": true,
+      "failing_probes": [
+        "g.sufficiency_supported_rejected"
+      ]
+    },
+    {
+      "mutation": "M-15",
+      "description": "graph: ordering check removed",
+      "file": "lib/engine-evidence-graph/graph-validate.mjs",
+      "killed": true,
+      "failing_probes": [
+        "g.unsorted_rejected"
+      ]
+    },
+    {
+      "mutation": "M-16",
+      "description": "graph: limitation check removed",
+      "file": "lib/engine-evidence-graph/graph-validate.mjs",
+      "killed": true,
+      "failing_probes": [
+        "g.missing_limitation_rejected"
+      ]
+    },
+    {
+      "mutation": "M-17",
+      "description": "graph: proof-claim guard removed",
+      "file": "lib/engine-evidence-graph/graph-validate.mjs",
+      "killed": true,
+      "failing_probes": [
+        "g.proof_claim_graph_guard_only"
+      ]
+    },
+    {
+      "mutation": "M-18",
+      "description": "graph: identity check removed",
+      "file": "lib/engine-evidence-graph/graph-validate.mjs",
+      "killed": true,
+      "failing_probes": [
+        "g.version_tamper_rejected"
+      ]
+    },
+    {
+      "mutation": "M-19",
+      "description": "graph: conflict-node downgrade check removed",
+      "file": "lib/engine-evidence-graph/graph-validate.mjs",
+      "killed": true,
+      "failing_probes": [
+        "c.validator_rejects_undowngraded_conflict_node"
+      ]
+    },
+    {
+      "mutation": "M-20",
+      "description": "contradiction: downgrade removed in compiler",
+      "file": "lib/engine-evidence-graph/compiler.mjs",
+      "killed": true,
+      "failing_probes": [
+        "c.chronology_conflict_downgrades",
+        "c.validator_rejects_undowngraded_conflict_node",
+        "k.controls_neutral_and_present"
+      ]
+    },
+    {
+      "mutation": "M-21",
+      "description": "contradiction: impossible-sequence detection removed",
+      "file": "lib/engine-evidence-graph/contradictions.mjs",
+      "killed": true,
+      "failing_probes": [
+        "c.chronology_conflict_downgrades",
+        "c.validator_rejects_undowngraded_conflict_node",
+        "k.controls_neutral_and_present"
+      ]
+    },
+    {
+      "mutation": "M-22",
+      "description": "contradiction: decision-date detection removed",
+      "file": "lib/engine-evidence-graph/contradictions.mjs",
+      "killed": true,
+      "failing_probes": [
+        "c.decision_date_conflict"
+      ]
+    },
+    {
+      "mutation": "M-23",
+      "description": "contradiction: authority-state detection removed",
+      "file": "lib/engine-evidence-graph/contradictions.mjs",
+      "killed": true,
+      "failing_probes": [
+        "c.authority_state_conflict"
+      ]
+    },
+    {
+      "mutation": "M-24",
+      "description": "scope: v0.3 employment phrasings removed",
+      "file": "lib/engine-evidence-graph/scope.mjs",
+      "killed": true,
+      "failing_probes": [
+        "s.relieved_of_duties_refused"
+      ]
+    },
+    {
+      "mutation": "M-25",
+      "description": "scope: refusal never decided",
+      "file": "lib/engine-evidence-graph/scope.mjs",
+      "killed": true,
+      "failing_probes": [
+        "s.employment_refused",
+        "s.reworded_termination_refused",
+        "s.relieved_of_duties_refused"
+      ]
+    },
+    {
+      "mutation": "M-26",
+      "description": "scope: reworded injection pattern removed",
+      "file": "lib/engine-evidence-graph/scope.mjs",
+      "killed": true,
+      "failing_probes": [
+        "s.reworded_injection_detected"
+      ]
+    },
+    {
+      "mutation": "M-27",
+      "description": "scope: instruction-risk downgrade removed",
+      "file": "lib/engine-evidence-graph/compiler.mjs",
+      "killed": true,
+      "failing_probes": [
+        "s.injection_routes_all_review"
+      ]
+    },
+    {
+      "mutation": "M-28",
+      "description": "version: declared-version check removed",
+      "file": "lib/engine-evidence-graph/scope.mjs",
+      "killed": true,
+      "failing_probes": [
+        "v.codebook_mismatch_refused",
+        "v.prompt_mismatch_refused",
+        "v.compiler_mismatch_refused"
+      ]
+    },
+    {
+      "mutation": "M-29",
+      "description": "version: fixture-hash check removed",
+      "file": "lib/engine-evidence-graph/scope.mjs",
+      "killed": true,
+      "failing_probes": [
+        "v.fixture_hash_mismatch_refused"
+      ]
+    },
+    {
+      "mutation": "M-30",
+      "description": "version: response prompt check removed",
+      "file": "lib/engine-evidence-graph/response.mjs",
+      "killed": true,
+      "failing_probes": [
+        "v.response_prompt_mismatch_invalid"
+      ]
+    },
+    {
+      "mutation": "M-31",
+      "description": "response: untrusted-field check removed",
+      "file": "lib/engine-evidence-graph/response.mjs",
+      "killed": true,
+      "failing_probes": [
+        "v.untrusted_field_reason"
+      ]
+    },
+    {
+      "mutation": "M-32",
+      "description": "claim: prohibited-inference check removed",
+      "file": "lib/engine-evidence-graph/assertions.mjs",
+      "killed": true,
+      "failing_probes": [
+        "k.intent_inference_rejected"
+      ]
+    },
+    {
+      "mutation": "M-33",
+      "description": "claim: unstated-cause check removed",
+      "file": "lib/engine-evidence-graph/assertions.mjs",
+      "killed": true,
+      "failing_probes": [
+        "k.unstated_cause_rejected"
+      ]
+    },
+    {
+      "mutation": "M-34",
+      "description": "claim: assertion marker check removed",
+      "file": "lib/engine-evidence-graph/assertions.mjs",
+      "killed": true,
+      "failing_probes": [
+        "k.marker_required"
+      ]
+    },
+    {
+      "mutation": "M-35",
+      "description": "claim: condition permission check removed",
+      "file": "lib/engine-evidence-graph/assertions.mjs",
+      "killed": true,
+      "failing_probes": [
+        "k.condition_permission_required"
+      ]
+    },
+    {
+      "mutation": "M-36",
+      "description": "controls: template drifts into a recommendation",
+      "file": "lib/engine-evidence-graph/controls.mjs",
+      "killed": true,
+      "failing_probes": [
+        "k.controls_neutral_and_present",
+        "k.templates_all_neutral"
+      ]
+    },
+    {
+      "mutation": "M-37",
+      "description": "status: sufficiency override removed",
+      "file": "lib/engine-evidence-graph/compiler.mjs",
+      "killed": true,
+      "failing_probes": [
+        "st.clean_statuses"
+      ]
+    },
+    {
+      "mutation": "M-38",
+      "description": "status: gap accepted without a visible rule gap",
+      "file": "lib/engine-evidence-graph/compiler.mjs",
+      "killed": true,
+      "failing_probes": [
+        "st.unconfirmed_gap_routes_review"
+      ]
+    },
+    {
+      "mutation": "M-39",
+      "description": "evaluation: synthetic-holdout check removed",
+      "file": "lib/engine-evidence-graph/evaluation/factory.mjs",
+      "killed": true,
+      "failing_probes": [
+        "e.synthetic_holdout"
+      ]
+    },
+    {
+      "mutation": "M-40",
+      "description": "evaluation: overlap check removed",
+      "file": "lib/engine-evidence-graph/evaluation/factory.mjs",
+      "killed": true,
+      "failing_probes": [
+        "e.overlap"
+      ]
+    },
+    {
+      "mutation": "M-41",
+      "description": "evaluation: label-independence check removed",
+      "file": "lib/engine-evidence-graph/evaluation/factory.mjs",
+      "killed": true,
+      "failing_probes": [
+        "e.label_independence"
+      ]
+    },
+    {
+      "mutation": "M-42",
+      "description": "evaluation: tracked-directory check removed",
+      "file": "lib/engine-evidence-graph/evaluation/factory.mjs",
+      "killed": true,
+      "failing_probes": [
+        "e.raw_records_tracked"
+      ]
+    },
+    {
+      "mutation": "M-43",
+      "description": "evaluation: freeze check removed",
+      "file": "lib/engine-evidence-graph/evaluation/factory.mjs",
+      "killed": true,
+      "failing_probes": [
+        "e.changed_after_freeze"
+      ]
+    },
+    {
+      "mutation": "M-44",
+      "description": "evaluation: checker can approve",
+      "file": "lib/engine-evidence-graph/evaluation/factory.mjs",
+      "killed": true,
+      "failing_probes": [
+        "e.never_authorises"
+      ]
+    },
+    {
+      "mutation": "M-45",
+      "description": "evaluation: registry accepts completed status",
+      "file": "lib/engine-evidence-graph/evaluation/factory.mjs",
+      "killed": true,
+      "failing_probes": [
+        "e.registry_rejects_completed"
+      ]
+    },
+    {
+      "mutation": "M-46",
+      "description": "evaluation: registry chain check removed",
+      "file": "lib/engine-evidence-graph/evaluation/factory.mjs",
+      "killed": true,
+      "failing_probes": [
+        "e.registry_chain_detects_edit"
+      ]
+    },
+    {
+      "mutation": "M-47",
+      "description": "evaluation: engineering-role conflict check removed",
+      "file": "lib/engine-evidence-graph/evaluation/factory.mjs",
+      "killed": true,
+      "failing_probes": [
+        "e.authority_conflict"
+      ]
+    }
+  ]
+}

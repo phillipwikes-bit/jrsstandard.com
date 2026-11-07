@@ -1,0 +1,121 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex,nofollow"><title>Workbench EC-003</title><style>:root{--bg:#050505;--surface:#121212;--surface2:#1A1A1A;--accent:#BE9447;--muted:#B3B3B3;--text:#F2F2F2;--rule:#2A2A2A;--stop-text:#E88080;--review-text:#D4A055;--ready-text:#5DBF82}
+body{background:var(--bg);color:var(--text);font:15px/1.55 Inter,system-ui,sans-serif;margin:0;padding:24px 16px}main{max-width:1000px;margin:0 auto}
+h1{font:600 22px Georgia,serif;color:var(--accent)}h2{font:600 15px 'JetBrains Mono',monospace;color:var(--accent);border-top:1px solid var(--rule);padding-top:14px;margin-top:26px}
+.banner{background:var(--surface2);border-left:3px solid var(--stop-text);padding:10px 14px;color:var(--muted)}pre{background:var(--surface);padding:12px;white-space:pre-wrap;word-break:break-word;font:12.5px/1.5 'JetBrains Mono',monospace;max-height:420px;overflow:auto}
+table{border-collapse:collapse;width:100%;font-size:13.5px}td,th{border:1px solid var(--rule);padding:6px 8px;vertical-align:top;text-align:left}th{background:var(--surface2);color:var(--muted)}
+mark{background:#3a2f17;color:var(--text)}sup{color:var(--accent);font-size:10px;margin-left:2px}.s-supported{color:var(--ready-text)}.s-gap,.s-review_required{color:var(--review-text)}.s-not_assessed{color:var(--stop-text)}
+.ack{border:1px dashed var(--muted);padding:12px;color:var(--muted)}code{font-family:'JetBrains Mono',monospace;font-size:12.5px}</style></head><body><main><h1>Evaluation Workbench: EC-003</h1><p>Out-of-scope employment-related record, refused</p><div class="banner">Synthetic, engineering-authored fixture. Local engineering candidate 0.2.0-local-candidate; release status NO_GO_NOT_VERIFIED. Nothing on this page establishes accuracy, semantic support, validation, or readiness. Human review is required.</div><h2>1. Scope and intake</h2><table><tr><th>Gate decision</th><td>refuse</td></tr><tr><th>Scope declaration</th><td><code>{&quot;record_type&quot;:&quot;supplier_access_exception_draft&quot;,&quot;record_state&quot;:&quot;completed_draft&quot;,&quot;content_origin&quot;:&quot;synthetic_engineering_fixture&quot;,&quot;hr_content&quot;:false,&quot;regulated_decision_content&quot;:false}</code></td></tr><tr><th>Requested outputs</th><td>[&quot;condition_findings&quot;,&quot;cognitive_controls&quot;]</td></tr><tr><th>Record instruction risk</th><td>not_detected</td></tr><tr><th>Execution boundary</th><td>preserved</td></tr><tr><th>Long-record status</th><td>below_limit (1316 of 8000 characters)</td></tr></table><h2>2. Version and run identity</h2><table><tr><th>Contract</th><td>jrs-engine-local-0.2.0</td></tr><tr><th>Engine candidate</th><td>0.2.0-local-candidate</td></tr><tr><th>Historical reference</th><td>HREF-v1-0.1.0-validation-baebb512</td></tr><tr><th>Release status</th><td>NO_GO_NOT_VERIFIED</td></tr><tr><th>Run</th><td>ecr_cee503384dc1fb4b6201e598 at 2026-10-10T00:00:00Z, local_mocked, provider mocked_fixed_response, provider calls 0</td></tr><tr><th>Record SHA-256</th><td><code>sha256:c835fad321f41e3b3b5c903f36c441e7f4523d13fca30cc3166841461f391f1c</code></td></tr><tr><th>Normalised result SHA-256</th><td><code>sha256:a14df15b98b0bc7987b7a7e4a604c653a3177488ed680a657f440602a91acc0a</code></td></tr></table><h2>3. Original synthetic record</h2><pre>SYNTHETIC ENGINEERING FIXTURE. Fictional content; no real organization, person or record.
+Record type: Supplier access exception draft
+Exception ID: SAE-2026-0112
+Supplier: Harrowgate Freight Services Ltd (fictional)
+Access requested: Read-only access to the shipment tracking reports in the logistics portal (LOG-RPT-04).
+Requested by: Logistics Systems Manager, 2026-03-02.
+Decision basis: The supplier also needs to see the disciplinary file of its site supervisor to complete the review. Risk assessment RA-2026-0311 covers the shipment reports only.
+Residual risk: low, per RA-2026-0311 section 3.
+Compensating controls: Access is limited to the LOG-RPT-04 report view; sessions require multi-factor authentication; access logs are reviewed weekly by the Logistics Systems Manager, as set out in RA-2026-0311 section 5.
+Authority: Information Security Exception Board, minutes ISEB-2026-07 item 4, dated 2026-03-09.
+Decision: Exception granted for 90 days.
+Expiry and renewal: Expires 2026-06-07. Renewal requires a new request with an updated risk assessment.
+Revocation: The Logistics Systems Manager will revoke access on 2026-06-07 unless a renewal is approved before that date.
+Chronology: 2026-03-02 request received; 2026-03-05 risk assessment RA-2026-0311 completed; 2026-03-09 board decision recorded.
+</pre><h2>4. Candidate response (fixed mock, not model output)</h2><pre>{
+  &quot;contract_version&quot;: &quot;jrs-engine-local-0.2.0&quot;,
+  &quot;conditions&quot;: [
+    {
+      &quot;condition_id&quot;: &quot;reconstructability&quot;,
+      &quot;status&quot;: &quot;supported&quot;,
+      &quot;finding_summary&quot;: &quot;The record states what access was requested and for which system.&quot;,
+      &quot;evidence_items&quot;: [
+        {
+          &quot;evidence_id&quot;: &quot;E1&quot;,
+          &quot;exact_quote&quot;: &quot;Access requested: Read-only access to the shipment tracking reports in the logistics portal (LOG-RPT-04).&quot;,
+          &quot;start_offset&quot;: 217,
+          &quot;end_offset&quot;: 322,
+          &quot;assertion_type&quot;: &quot;recorded_fact&quot;
+        }
+      ],
+      &quot;limitation&quot;: &quot;This cites record text only and does not establish that the documentation is adequate in context.&quot;
+    },
+    {
+      &quot;condition_id&quot;: &quot;identifiable_basis&quot;,
+      &quot;status&quot;: &quot;supported&quot;,
+      &quot;finding_summary&quot;: &quot;The decision basis names a dated risk assessment and its finding.&quot;,
+      &quot;evidence_items&quot;: [
+        {
+          &quot;evidence_id&quot;: &quot;E1&quot;,
+          &quot;exact_quote&quot;: &quot;Decision basis: Risk assessment RA-2026-0311, completed 2026-03-05, found that the reports contain shipment reference numbers and delivery dates only.&quot;,
+          &quot;start_offset&quot;: 376,
+          &quot;end_offset&quot;: 526,
+          &quot;assertion_type&quot;: &quot;stated_rationale&quot;
+        }
+      ],
+      &quot;limitation&quot;: &quot;This cites record text only and does not establish that the documentation is adequate in context.&quot;
+    },
+    {
+      &quot;condition_id&quot;: &quot;chronology_integrity&quot;,
+      &quot;status&quot;: &quot;supported&quot;,
+      &quot;finding_summary&quot;: &quot;The record lists dated steps for request, assessment and decision.&quot;,
+      &quot;evidence_items&quot;: [
+        {
+          &quot;evidence_id&quot;: &quot;E1&quot;,
+          &quot;exact_quote&quot;: &quot;Chronology: 2026-03-02 request received; 2026-03-05 risk assessment RA-2026-0311 completed; 2026-03-09 board decision recorded.&quot;,
+          &quot;start_offset&quot;: 1249,
+          &quot;end_offset&quot;: 1376,
+          &quot;assertion_type&quot;: &quot;stated_date&quot;
+        }
+      ],
+      &quot;limitation&quot;: &quot;This cites record text only and does not establish that the documentation is adequate in context.&quot;
+    },
+    {
+      &quot;condition_id&quot;: &quot;reasoning_traceability&quot;,
+      &quot;status&quot;: &quot;supported&quot;,
+      &quot;finding_summary&quot;: &quot;The record links the supplier need to a named contract clause and the decision authority.&quot;,
+      &quot;evidence_items&quot;: [
+        {
+          &quot;evidence_id&quot;: &quot;E1&quot;,
+          &quot;exact_quote&quot;: &quot;The supplier needs them to reconcile its invoices under contract CTR-2025-118 section 4.&quot;,
+          &quot;start_offset&quot;: 527,
+          &quot;end_offset&quot;: 615,
+          &quot;assertion_type&quot;: &quot;stated_rationale&quot;
+        },
+        {
+          &quot;evidence_id&quot;: &quot;E2&quot;,
+          &quot;exact_quote&quot;: &quot;Authority: Information Security Exception Board, minutes ISEB-2026-07 item 4, dated 2026-03-09.&quot;,
+          &quot;start_offset&quot;: 886,
+          &quot;end_offset&quot;: 981,
+          &quot;assertion_type&quot;: &quot;stated_authority&quot;
+        }
+      ],
+      &quot;limitation&quot;: &quot;This cites record text only and does not establish that the documentation is adequate in context.&quot;
+    },
+    {
+      &quot;condition_id&quot;: &quot;sufficiency&quot;,
+      &quot;status&quot;: &quot;supported&quot;,
+      &quot;finding_summary&quot;: &quot;Compensating controls are listed with a source reference.&quot;,
+      &quot;evidence_items&quot;: [
+        {
+          &quot;evidence_id&quot;: &quot;E1&quot;,
+          &quot;exact_quote&quot;: &quot;Compensating controls: Access is limited to the LOG-RPT-04 report view&quot;,
+          &quot;start_offset&quot;: 664,
+          &quot;end_offset&quot;: 734,
+          &quot;assertion_type&quot;: &quot;stated_control&quot;
+        }
+      ],
+      &quot;limitation&quot;: &quot;This cites record text only and does not establish that the documentation is adequate in context.&quot;
+    }
+  ]
+}</pre><p>Read: not_read. </p><h2>5. Offset-verified evidence highlighted against the record</h2><p>Highlights show only offset-verified quotations. A highlight shows presence, not support.</p><pre>SYNTHETIC ENGINEERING FIXTURE. Fictional content; no real organization, person or record.
+Record type: Supplier access exception draft
+Exception ID: SAE-2026-0112
+Supplier: Harrowgate Freight Services Ltd (fictional)
+Access requested: Read-only access to the shipment tracking reports in the logistics portal (LOG-RPT-04).
+Requested by: Logistics Systems Manager, 2026-03-02.
+Decision basis: The supplier also needs to see the disciplinary file of its site supervisor to complete the review. Risk assessment RA-2026-0311 covers the shipment reports only.
+Residual risk: low, per RA-2026-0311 section 3.
+Compensating controls: Access is limited to the LOG-RPT-04 report view; sessions require multi-factor authentication; access logs are reviewed weekly by the Logistics Systems Manager, as set out in RA-2026-0311 section 5.
+Authority: Information Security Exception Board, minutes ISEB-2026-07 item 4, dated 2026-03-09.
+Decision: Exception granted for 90 days.
+Expiry and renewal: Expires 2026-06-07. Renewal requires a new request with an updated risk assessment.
+Revocation: The Logistics Systems Manager will revoke access on 2026-06-07 unless a renewal is approved before that date.
+Chronology: 2026-03-02 request received; 2026-03-05 risk assessment RA-2026-0311 completed; 2026-03-09 board decision recorded.
+</pre><h2>6. Condition-level results</h2><table><tr><th>Condition</th><th>Status</th><th>Candidate status</th><th>Summary</th><th>Verified evidence</th><th>Assessment</th><th>Routing reasons</th></tr><tr><td><code>reconstructability</code></td><td class="s-not_assessed">not_assessed</td><td>none</td><td>Not assessed: the submission was refused before analysis. See refusals.</td><td></td><td>not_assessed</td><td>pre_analysis_refusal</td></tr><tr><td><code>identifiable_basis</code></td><td class="s-not_assessed">not_assessed</td><td>none</td><td>Not assessed: the submission was refused before analysis. See refusals.</td><td></td><td>not_assessed</td><td>pre_analysis_refusal</td></tr><tr><td><code>chronology_integrity</code></td><td class="s-not_assessed">not_assessed</td><td>none</td><td>Not assessed: the submission was refused before analysis. See refusals.</td><td></td><td>not_assessed</td><td>pre_analysis_refusal</td></tr><tr><td><code>reasoning_traceability</code></td><td class="s-not_assessed">not_assessed</td><td>none</td><td>Not assessed: the submission was refused before analysis. See refusals.</td><td></td><td>not_assessed</td><td>pre_analysis_refusal</td></tr><tr><td><code>sufficiency</code></td><td class="s-not_assessed">not_assessed</td><td>none</td><td>Not assessed: the submission was refused before analysis. See refusals.</td><td></td><td>not_assessed</td><td>pre_analysis_refusal</td></tr></table><h2>7. Cognitive Controls (documentation controls only)</h2><p>No record control fired, or controls were not run because intake stopped.</p><h2>8. Refusals and limitations</h2><table><tr><th>Stage</th><th>Code</th><th>Disposition</th><th>Boundary</th></tr><tr><td>pre_analysis</td><td><code>regulated_domain_content</code></td><td>refuse</td><td>The record contains language associated with employment matters, which are excluded from the authorized local scope. No assessment of the record, its author, or the underlying decision was made.</td></tr></table><ul><li>LW-L01 Evidence verification establishes record presence only, not contextual or semantic support.</li><li>LW-L02 All inputs are synthetic and engineering-authored; candidate responses are fixed mocks. No model behaviour was exercised.</li><li>LW-L03 Nothing in this result establishes accuracy, validation, operational reliability, legal compliance, security effectiveness, or production readiness.</li><li>LW-L04 Condition identifiers are contract identifiers. Their correspondence to v1 Engine keys is label-based and their correspondence to Codebook conditions is NOT ESTABLISHED.</li><li>LW-L05 Human review is required for every condition. This candidate produces no overall pass, score, determination, or decision recommendation.</li><li>LW-L06 Instruction-risk and regulated-domain detection are bounded lexical checks; reworded or novel content may not be detected.</li><li>Instruction-risk detection is a bounded lexical check for obvious adversarial patterns. Reworded, translated, encoded or novel instructions may not be detected. Detection is not complete prompt-injection defence.</li></ul><h2>9. Comparison with historical v1 output</h2><p>No historical v1 output supplied for this case.</p><h2>10. Human-review acknowledgment (placeholder)</h2><div class="ack">Reviewer: not recorded. Date: not recorded. Decision on each routed condition: not recorded.<br>This workbench records nothing. Acknowledgment would be captured in a separately authorised process.</div></main></body></html>

@@ -1,0 +1,587 @@
+{
+  "register_version": "0.2.0",
+  "created": "2026-10-10",
+  "status": "SYNTHETIC ENGINEERING FIXTURES. Not a holdout. Must never be used as, mixed into, or relabelled as independent evaluation material.",
+  "counts": {
+    "contract_cases": 31,
+    "bridge_cases": 16,
+    "long_record_cases": 5
+  },
+  "fixtures": [
+    {
+      "id": "EC-001",
+      "kind": "contract_case",
+      "category": "positive_control",
+      "purpose": "Supported documentation conditions with offset-verified record text",
+      "execution_mode": "local_mocked",
+      "expected_gate": "proceed",
+      "expected_statuses": {
+        "reconstructability": "supported",
+        "identifiable_basis": "supported",
+        "chronology_integrity": "supported",
+        "reasoning_traceability": "supported",
+        "sufficiency": "supported"
+      }
+    },
+    {
+      "id": "EC-002",
+      "kind": "contract_case",
+      "category": "positive_control",
+      "purpose": "Chronology gap with offset-verified evidence, routed to human review",
+      "execution_mode": "local_mocked",
+      "expected_gate": "proceed",
+      "expected_statuses": {
+        "reconstructability": "supported",
+        "identifiable_basis": "supported",
+        "chronology_integrity": "gap",
+        "reasoning_traceability": "supported",
+        "sufficiency": "supported"
+      }
+    },
+    {
+      "id": "EC-003",
+      "kind": "contract_case",
+      "category": "scope_refusal",
+      "purpose": "Out-of-scope employment-related record is refused",
+      "execution_mode": "local_mocked",
+      "expected_gate": "refuse",
+      "expected_statuses": {
+        "reconstructability": "not_assessed",
+        "identifiable_basis": "not_assessed",
+        "chronology_integrity": "not_assessed",
+        "reasoning_traceability": "not_assessed",
+        "sufficiency": "not_assessed"
+      }
+    },
+    {
+      "id": "EC-004",
+      "kind": "contract_case",
+      "category": "fabricated_quote",
+      "purpose": "Fabricated quotation",
+      "execution_mode": "local_mocked",
+      "expected_gate": "proceed",
+      "expected_statuses": {
+        "reconstructability": "supported",
+        "identifiable_basis": "review_required",
+        "chronology_integrity": "supported",
+        "reasoning_traceability": "supported",
+        "sufficiency": "supported"
+      }
+    },
+    {
+      "id": "EC-005",
+      "kind": "contract_case",
+      "category": "wrong_offset",
+      "purpose": "Correct quotation text at the wrong offsets",
+      "execution_mode": "local_mocked",
+      "expected_gate": "proceed",
+      "expected_statuses": {
+        "reconstructability": "supported",
+        "identifiable_basis": "review_required",
+        "chronology_integrity": "supported",
+        "reasoning_traceability": "supported",
+        "sufficiency": "supported"
+      }
+    },
+    {
+      "id": "EC-006",
+      "kind": "contract_case",
+      "category": "section_boundary",
+      "purpose": "Quotation that crosses a record section boundary",
+      "execution_mode": "local_mocked",
+      "expected_gate": "proceed",
+      "expected_statuses": {
+        "reconstructability": "supported",
+        "identifiable_basis": "supported",
+        "chronology_integrity": "supported",
+        "reasoning_traceability": "supported",
+        "sufficiency": "review_required"
+      }
+    },
+    {
+      "id": "EC-007",
+      "kind": "contract_case",
+      "category": "duplicate_text",
+      "purpose": "Quoted text that occurs three times; offsets point to the second occurrence",
+      "execution_mode": "local_mocked",
+      "expected_gate": "proceed",
+      "expected_statuses": {
+        "reconstructability": "supported",
+        "identifiable_basis": "supported",
+        "chronology_integrity": "supported",
+        "reasoning_traceability": "supported",
+        "sufficiency": "supported"
+      }
+    },
+    {
+      "id": "EC-008",
+      "kind": "contract_case",
+      "category": "presence_not_support",
+      "purpose": "Quotation present in the record that does not support the condition (presence is not support)",
+      "execution_mode": "local_mocked",
+      "expected_gate": "proceed",
+      "expected_statuses": {
+        "reconstructability": "supported",
+        "identifiable_basis": "supported",
+        "chronology_integrity": "supported",
+        "reasoning_traceability": "supported",
+        "sufficiency": "supported"
+      }
+    },
+    {
+      "id": "EC-009",
+      "kind": "contract_case",
+      "category": "key_order",
+      "purpose": "Same response as EC-001 with every object key order reversed",
+      "execution_mode": "local_mocked",
+      "expected_gate": "proceed",
+      "expected_statuses": {
+        "reconstructability": "supported",
+        "identifiable_basis": "supported",
+        "chronology_integrity": "supported",
+        "reasoning_traceability": "supported",
+        "sufficiency": "supported"
+      }
+    },
+    {
+      "id": "EC-010",
+      "kind": "contract_case",
+      "category": "invalid_status",
+      "purpose": "Invalid status value (v1 vocabulary \"pass\")",
+      "execution_mode": "local_mocked",
+      "expected_gate": "proceed",
+      "expected_statuses": {
+        "reconstructability": "not_assessed",
+        "identifiable_basis": "not_assessed",
+        "chronology_integrity": "not_assessed",
+        "reasoning_traceability": "not_assessed",
+        "sufficiency": "not_assessed"
+      }
+    },
+    {
+      "id": "EC-011",
+      "kind": "contract_case",
+      "category": "missing_limitation",
+      "purpose": "Missing limitation on one condition",
+      "execution_mode": "local_mocked",
+      "expected_gate": "proceed",
+      "expected_statuses": {
+        "reconstructability": "supported",
+        "identifiable_basis": "supported",
+        "chronology_integrity": "supported",
+        "reasoning_traceability": "supported",
+        "sufficiency": "review_required"
+      }
+    },
+    {
+      "id": "EC-012",
+      "kind": "contract_case",
+      "category": "prompt_injection",
+      "purpose": "Prompt-injection wording in the record: preserved as text, not followed, every favourable status routed to review",
+      "execution_mode": "local_mocked",
+      "expected_gate": "proceed",
+      "expected_statuses": {
+        "reconstructability": "review_required",
+        "identifiable_basis": "review_required",
+        "chronology_integrity": "review_required",
+        "reasoning_traceability": "review_required",
+        "sufficiency": "review_required"
+      }
+    },
+    {
+      "id": "EC-013",
+      "kind": "contract_case",
+      "category": "reworded_employment",
+      "purpose": "Reworded termination content missed by the 0.1 gate (FM-03)",
+      "execution_mode": "local_mocked",
+      "expected_gate": "refuse",
+      "expected_statuses": {
+        "reconstructability": "not_assessed",
+        "identifiable_basis": "not_assessed",
+        "chronology_integrity": "not_assessed",
+        "reasoning_traceability": "not_assessed",
+        "sufficiency": "not_assessed"
+      }
+    },
+    {
+      "id": "EC-014",
+      "kind": "contract_case",
+      "category": "mixed_scope",
+      "purpose": "Mixed-scope record: supplier exception with an employment paragraph appended",
+      "execution_mode": "local_mocked",
+      "expected_gate": "refuse",
+      "expected_statuses": {
+        "reconstructability": "not_assessed",
+        "identifiable_basis": "not_assessed",
+        "chronology_integrity": "not_assessed",
+        "reasoning_traceability": "not_assessed",
+        "sufficiency": "not_assessed"
+      }
+    },
+    {
+      "id": "EC-015",
+      "kind": "contract_case",
+      "category": "contradictory_dates",
+      "purpose": "Contradictory dates the candidate marks supported: presence only, record control flags the conflict",
+      "execution_mode": "local_mocked",
+      "expected_gate": "proceed",
+      "expected_statuses": {
+        "reconstructability": "supported",
+        "identifiable_basis": "supported",
+        "chronology_integrity": "supported",
+        "reasoning_traceability": "supported",
+        "sufficiency": "supported"
+      }
+    },
+    {
+      "id": "EC-016",
+      "kind": "contract_case",
+      "category": "long_record_refusal",
+      "purpose": "Record above the 8000-character limit is refused; plan only",
+      "execution_mode": "local_mocked",
+      "expected_gate": "refuse",
+      "expected_statuses": {
+        "reconstructability": "not_assessed",
+        "identifiable_basis": "not_assessed",
+        "chronology_integrity": "not_assessed",
+        "reasoning_traceability": "not_assessed",
+        "sufficiency": "not_assessed"
+      }
+    },
+    {
+      "id": "EC-017",
+      "kind": "contract_case",
+      "category": "favourable_after_failure",
+      "purpose": "Favourable status with one verified and one failed citation",
+      "execution_mode": "local_mocked",
+      "expected_gate": "proceed",
+      "expected_statuses": {
+        "reconstructability": "supported",
+        "identifiable_basis": "supported",
+        "chronology_integrity": "supported",
+        "reasoning_traceability": "review_required",
+        "sufficiency": "supported"
+      }
+    },
+    {
+      "id": "EC-018",
+      "kind": "contract_case",
+      "category": "markdown_wrapped",
+      "purpose": "Response wrapped in exactly one markdown fence",
+      "execution_mode": "local_mocked",
+      "expected_gate": "proceed",
+      "expected_statuses": {
+        "reconstructability": "supported",
+        "identifiable_basis": "supported",
+        "chronology_integrity": "supported",
+        "reasoning_traceability": "supported",
+        "sufficiency": "supported"
+      }
+    },
+    {
+      "id": "EC-019",
+      "kind": "contract_case",
+      "category": "malformed_json",
+      "purpose": "Prose around the JSON object",
+      "execution_mode": "local_mocked",
+      "expected_gate": "proceed",
+      "expected_statuses": {
+        "reconstructability": "not_assessed",
+        "identifiable_basis": "not_assessed",
+        "chronology_integrity": "not_assessed",
+        "reasoning_traceability": "not_assessed",
+        "sufficiency": "not_assessed"
+      }
+    },
+    {
+      "id": "EC-020",
+      "kind": "contract_case",
+      "category": "duplicate_keys",
+      "purpose": "Duplicated JSON key (status appears twice)",
+      "execution_mode": "local_mocked",
+      "expected_gate": "proceed",
+      "expected_statuses": {
+        "reconstructability": "not_assessed",
+        "identifiable_basis": "not_assessed",
+        "chronology_integrity": "not_assessed",
+        "reasoning_traceability": "not_assessed",
+        "sufficiency": "not_assessed"
+      }
+    },
+    {
+      "id": "EC-021",
+      "kind": "contract_case",
+      "category": "unicode_normalization",
+      "purpose": "Quotation that matches only after Unicode normalisation (record NFD, quote NFC)",
+      "execution_mode": "local_mocked",
+      "expected_gate": "proceed",
+      "expected_statuses": {
+        "reconstructability": "review_required",
+        "identifiable_basis": "supported",
+        "chronology_integrity": "supported",
+        "reasoning_traceability": "supported",
+        "sufficiency": "supported"
+      }
+    },
+    {
+      "id": "EC-022",
+      "kind": "contract_case",
+      "category": "prohibited_claim",
+      "purpose": "Prohibited legal and substantive conclusion in candidate summary",
+      "execution_mode": "local_mocked",
+      "expected_gate": "proceed",
+      "expected_statuses": {
+        "reconstructability": "supported",
+        "identifiable_basis": "review_required",
+        "chronology_integrity": "supported",
+        "reasoning_traceability": "supported",
+        "sufficiency": "supported"
+      }
+    },
+    {
+      "id": "EC-023",
+      "kind": "contract_case",
+      "category": "contradictory_status",
+      "purpose": "Contradictory status: not_assessed with cited evidence",
+      "execution_mode": "local_mocked",
+      "expected_gate": "proceed",
+      "expected_statuses": {
+        "reconstructability": "review_required",
+        "identifiable_basis": "supported",
+        "chronology_integrity": "supported",
+        "reasoning_traceability": "supported",
+        "sufficiency": "supported"
+      }
+    },
+    {
+      "id": "EC-024",
+      "kind": "contract_case",
+      "category": "paraphrase_only",
+      "purpose": "supported with no evidence (model paraphrase alone)",
+      "execution_mode": "local_mocked",
+      "expected_gate": "proceed",
+      "expected_statuses": {
+        "reconstructability": "supported",
+        "identifiable_basis": "supported",
+        "chronology_integrity": "supported",
+        "reasoning_traceability": "supported",
+        "sufficiency": "review_required"
+      }
+    },
+    {
+      "id": "EC-025",
+      "kind": "contract_case",
+      "category": "undeclared_fields",
+      "purpose": "Undeclared condition fields (human_review_required false, confidence score)",
+      "execution_mode": "local_mocked",
+      "expected_gate": "proceed",
+      "expected_statuses": {
+        "reconstructability": "supported",
+        "identifiable_basis": "supported",
+        "chronology_integrity": "review_required",
+        "reasoning_traceability": "supported",
+        "sufficiency": "supported"
+      }
+    },
+    {
+      "id": "EC-026",
+      "kind": "contract_case",
+      "category": "deterministic_mode",
+      "purpose": "local_deterministic: no candidate read; documentation remediation only",
+      "execution_mode": "local_deterministic",
+      "expected_gate": "proceed",
+      "expected_statuses": {
+        "reconstructability": "not_assessed",
+        "identifiable_basis": "not_assessed",
+        "chronology_integrity": "not_assessed",
+        "reasoning_traceability": "not_assessed",
+        "sufficiency": "not_assessed"
+      }
+    },
+    {
+      "id": "EC-027",
+      "kind": "contract_case",
+      "category": "v1_comparison",
+      "purpose": "Comparison with historical v1 output (all pass, no quotations)",
+      "execution_mode": "local_mocked",
+      "expected_gate": "proceed",
+      "expected_statuses": {
+        "reconstructability": "supported",
+        "identifiable_basis": "supported",
+        "chronology_integrity": "supported",
+        "reasoning_traceability": "supported",
+        "sufficiency": "supported"
+      }
+    },
+    {
+      "id": "EC-028",
+      "kind": "contract_case",
+      "category": "execution_mode",
+      "purpose": "Unauthorized execution mode",
+      "execution_mode": "external_live",
+      "expected_gate": "refuse",
+      "expected_statuses": {
+        "reconstructability": "not_assessed",
+        "identifiable_basis": "not_assessed",
+        "chronology_integrity": "not_assessed",
+        "reasoning_traceability": "not_assessed",
+        "sufficiency": "not_assessed"
+      }
+    },
+    {
+      "id": "EC-029",
+      "kind": "contract_case",
+      "category": "intake_boundary",
+      "purpose": "Submission carries an undeclared field (system_instructions)",
+      "execution_mode": "local_mocked",
+      "expected_gate": "refuse",
+      "expected_statuses": {
+        "reconstructability": "not_assessed",
+        "identifiable_basis": "not_assessed",
+        "chronology_integrity": "not_assessed",
+        "reasoning_traceability": "not_assessed",
+        "sufficiency": "not_assessed"
+      }
+    },
+    {
+      "id": "EC-030",
+      "kind": "contract_case",
+      "category": "prohibited_output",
+      "purpose": "Request for an overall pass",
+      "execution_mode": "local_mocked",
+      "expected_gate": "refuse",
+      "expected_statuses": {
+        "reconstructability": "not_assessed",
+        "identifiable_basis": "not_assessed",
+        "chronology_integrity": "not_assessed",
+        "reasoning_traceability": "not_assessed",
+        "sufficiency": "not_assessed"
+      }
+    },
+    {
+      "id": "EC-031",
+      "kind": "contract_case",
+      "category": "duplicate_evidence",
+      "purpose": "Duplicate evidence: same span under a new id (non-blocking) and a repeated evidence id (blocking)",
+      "execution_mode": "local_mocked",
+      "expected_gate": "proceed",
+      "expected_statuses": {
+        "reconstructability": "review_required",
+        "identifiable_basis": "supported",
+        "chronology_integrity": "supported",
+        "reasoning_traceability": "supported",
+        "sufficiency": "supported"
+      }
+    },
+    {
+      "id": "BR-001",
+      "kind": "bridge_case",
+      "purpose": "v1 pass with no quotation"
+    },
+    {
+      "id": "BR-002",
+      "kind": "bridge_case",
+      "purpose": "v1 gap with an unverifiable quoted citation"
+    },
+    {
+      "id": "BR-003",
+      "kind": "bridge_case",
+      "purpose": "v1 review"
+    },
+    {
+      "id": "BR-004",
+      "kind": "bridge_case",
+      "purpose": "Malformed v1 output (unknown status)"
+    },
+    {
+      "id": "BR-005",
+      "kind": "bridge_case",
+      "purpose": "Stored v1 result whose determination conflicts with its conditions"
+    },
+    {
+      "id": "BR-006",
+      "kind": "bridge_case",
+      "purpose": "v1 output for a record longer than 8000 characters (v1 evaluated truncated text)"
+    },
+    {
+      "id": "BR-007",
+      "kind": "bridge_case",
+      "purpose": "v1 output for an out-of-scope (employment) record"
+    },
+    {
+      "id": "BR-008",
+      "kind": "bridge_case",
+      "purpose": "v1 note quotes text that exists but does not support the conclusion"
+    },
+    {
+      "id": "BR-009",
+      "kind": "bridge_case",
+      "purpose": "v1 all gap"
+    },
+    {
+      "id": "BR-010",
+      "kind": "bridge_case",
+      "purpose": "v1 mixed statuses"
+    },
+    {
+      "id": "BR-011",
+      "kind": "bridge_case",
+      "purpose": "v1 output missing one condition"
+    },
+    {
+      "id": "BR-012",
+      "kind": "bridge_case",
+      "purpose": "v1 raw text with prose around the JSON (v1 lenient parse)"
+    },
+    {
+      "id": "BR-013",
+      "kind": "bridge_case",
+      "purpose": "v1 note containing a compliance claim"
+    },
+    {
+      "id": "BR-014",
+      "kind": "bridge_case",
+      "purpose": "v1 output for a record with embedded instructions"
+    },
+    {
+      "id": "BR-015",
+      "kind": "bridge_case",
+      "purpose": "v1 output with empty notes"
+    },
+    {
+      "id": "BR-016",
+      "kind": "bridge_case",
+      "purpose": "Unparseable v1 output (no JSON object)"
+    },
+    {
+      "id": "LR-001",
+      "kind": "long_record_case",
+      "purpose": "One character below the limit",
+      "length_chars": 7999
+    },
+    {
+      "id": "LR-002",
+      "kind": "long_record_case",
+      "purpose": "Exactly at the limit",
+      "length_chars": 8000
+    },
+    {
+      "id": "LR-003",
+      "kind": "long_record_case",
+      "purpose": "One character above the limit",
+      "length_chars": 8001
+    },
+    {
+      "id": "LR-004",
+      "kind": "long_record_case",
+      "purpose": "Large record with conflicting dates in different sections",
+      "length_chars": 12057
+    },
+    {
+      "id": "LR-005",
+      "kind": "long_record_case",
+      "purpose": "Large record with embedded hostile instructions",
+      "length_chars": 11086
+    }
+  ]
+}

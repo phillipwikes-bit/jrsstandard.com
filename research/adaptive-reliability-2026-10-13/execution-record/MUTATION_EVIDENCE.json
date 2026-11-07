@@ -1,0 +1,1060 @@
+{
+  "generated": "2026-10-13T00:00:00Z",
+  "identity": {
+    "change_control_sha256": "sha256:dd5661f10aeeda45ba84f4ad40d2672dee5e1e936614e2e5c738368d46887e51",
+    "baseline_sha256": "sha256:29a69d6d4afc48a7c0d8784af32b512e9f31e083f2a2c0b226f9ceab2847b3b8",
+    "patch_sha256": "none",
+    "fixture_set_sha256": "sha256:bbd5f2af30458f5cb1810f09f918818d9a117dd5cf9ec3eb5edd342c846be2df",
+    "fixtures": [
+      {
+        "fixture_id": "AR-017",
+        "fixture_hash": "sha256:67011cc6a217e367889d57d4a808154e96c65354e5ff9e4663819d8d86fcefac"
+      },
+      {
+        "fixture_id": "GC-001",
+        "fixture_hash": "sha256:f81cb2cfe6e1ab4cfc3cec4137cfb65350ee6e8dca34d4e85cadaba2bc9b3fb5"
+      },
+      {
+        "fixture_id": "GC-004",
+        "fixture_hash": "sha256:0ca62ded9043bd790e06975644b131e73bf95e7d021ffca4524c838a9b1ef69f"
+      },
+      {
+        "fixture_id": "GC-008",
+        "fixture_hash": "sha256:6c5b06538d9fd463e88fc6fac624a82422954c25e2c5441effd4043bd19b8361"
+      },
+      {
+        "fixture_id": "GC-018",
+        "fixture_hash": "sha256:201168a16622bd3ad35abffae8a053520f946c222803ee427c717e3787a0225e"
+      }
+    ],
+    "test_command": "node tests/engine-adaptive-reliability/run.mjs --record",
+    "execution_mode": "local_mutation",
+    "synthetic_local_only": true,
+    "clock": "2026-10-13T00:00:00Z",
+    "run_id": "arr_cd04420621bba7775d26b520"
+  },
+  "probes": [
+    "kb.valid_entry_accepted",
+    "kb.forbidden_word_rejected",
+    "kb.forbidden_underscore_word_rejected",
+    "kb.bad_status_rejected",
+    "kb.unknown_status_rejected",
+    "kb.bad_source_rejected",
+    "kb.bad_failure_class_rejected",
+    "kb.human_decision_must_be_true",
+    "kb.undeclared_field_rejected",
+    "kb.missing_field_rejected",
+    "kb.tamper_detected",
+    "kb.chain_link_checked",
+    "kb.duplicate_rejected",
+    "pc.good_with_record_awaits_review",
+    "pc.non_behavioural_awaits_without_record",
+    "pc.deterministic_id",
+    "pc.behavioural_without_record_blocked",
+    "pc.record_tampered_blocked",
+    "pc.record_other_request_blocked",
+    "pc.record_bound_to_request_text",
+    "pc.record_incomplete_identity_blocked",
+    "pc.record_disposition_set_blocked",
+    "pc.record_compile_failure_blocked",
+    "pc.engine_target_makes_behavioural",
+    "pc.observed_favourable_blocks_pending",
+    "pc.observed_refusal_removed_rejects",
+    "pc.observed_excluded_unrefused_rejects",
+    "pc.observed_limitation_removed_rejects",
+    "pc.expected_drift_rejected",
+    "pc.human_disposition_rejected",
+    "pc.scope_broaden_rejected",
+    "pc.scope_text_widening_rejected",
+    "pc.refusal_text_not_widening",
+    "pc.refusal_narrow_rejected",
+    "pc.refusal_remove_rejected",
+    "pc.evidence_lower_rejected",
+    "pc.limitation_remove_rejected",
+    "pc.limitation_weaken_rejected",
+    "pc.no_test_plan_rejected",
+    "pc.flag_without_test_plan_rejected",
+    "pc.rollback_missing_rejected",
+    "pc.compat_missing_rejected",
+    "pc.synthetic_independent_rejected",
+    "pc.label_status_independent_rejected",
+    "pc.self_authorization_rejected",
+    "pc.unknown_trigger_rejected",
+    "pc.unknown_change_type_rejected",
+    "pc.forbidden_wording_rejected",
+    "pc.path_dotdot_root_rejected",
+    "pc.path_inner_traversal_protected",
+    "pc.path_repeated_separators_protected",
+    "pc.path_windows_separators_protected",
+    "pc.path_absolute_rejected",
+    "pc.path_encoded_rejected",
+    "pc.path_valid_allowed",
+    "pc.path_outside_workspace",
+    "pc.protected_target_rejected",
+    "pc.traversal_target_rejected_in_proposal",
+    "pc.claim_in_summary_rejected",
+    "pc.claim_in_rollback_rejected",
+    "pc.claim_in_compat_rejected",
+    "pc.claim_in_notes_rejected",
+    "pc.loose_negation_rejected",
+    "pc.qualified_negation_allowed",
+    "pc.every_claim_term_caught",
+    "pc.release_target_rejected",
+    "pc.release_component_rejected",
+    "pc.release_text_rejected",
+    "ia.favourable_requires_review",
+    "ia.refusal_alter_flagged",
+    "ia.limitation_weaken_flagged",
+    "ia.scope_class",
+    "ia.evidence_class",
+    "ia.release_class",
+    "ia.docs_only_no_behaviour",
+    "ia.behaviour_needs_version",
+    "ia.malformed_not_assessed",
+    "ia.prior_versions_frozen",
+    "ia.observed_favourable_escalates",
+    "ia.observed_scope_escalates",
+    "ia.behavioural_without_observation_not_assessed",
+    "rs.no_safety_decision_field",
+    "rs.statement_present",
+    "rs.behavioural_full_suite",
+    "rs.refusal_selects_refusal_test",
+    "rs.gap_when_no_fixture",
+    "rs.excluded_reasoned",
+    "dl.identical_runs_no_rows",
+    "dl.review_to_supported_unsafe",
+    "dl.review_to_gap_unsafe",
+    "dl.gap_to_supported_unsafe",
+    "dl.not_assessed_to_supported_unsafe",
+    "dl.not_assessed_to_gap_unsafe",
+    "dl.lowering_not_unsafe",
+    "dl.proposer_documentation_ignored",
+    "dl.disposition_never_recorded",
+    "dl.refusal_disappear_fails",
+    "dl.excluded_domain_fails",
+    "dl.limitation_disappear_fails",
+    "dl.edge_proof_fails",
+    "dl.contradiction_review_fails",
+    "dl.independent_label_fails",
+    "dl.engineering_label_ok",
+    "dl.missing_fixture_fails",
+    "dl.withdrawn_under_refusal_not_limitation_loss",
+    "gs.external_never_present",
+    "gs.owner_not_authorized",
+    "gs.statement",
+    "gs.no_score_fields",
+    "gs.missing_artifact_reported",
+    "gs.unassessed_reported",
+    "gs.eighteen_categories",
+    "cp.valid_admitted",
+    "cp.non_synthetic_rejected",
+    "cp.untraced_trigger_rejected",
+    "cp.altered_independence_rejected",
+    "cp.excluded_without_refusal_rejected",
+    "cp.duplicate_id_rejected",
+    "sm.same_graph_as_expected",
+    "sm.invariant_status_change_detected",
+    "sm.lower_base_improvement_detected",
+    "sm.favourable_reported",
+    "sm.invariant_new_refusal_detected",
+    "sm.limitation_missing_detected",
+    "sm.review_route_missing_detected",
+    "sm.conflict_change_detected",
+    "cr.exact_match_passes",
+    "cr.status_mismatch_reported",
+    "cr.null_expectation_skipped",
+    "cr.unsafe_direction_detected",
+    "cr.refused_became_proceed_unsafe",
+    "cr.limitation_kind_checked",
+    "cr.conflict_node_count_checked",
+    "cr.textual_support_count_checked",
+    "cr.limitation_kinds_classified",
+    "id.complete_valid",
+    "id.missing_field_incomplete",
+    "id.synthetic_marker_required",
+    "id.synthetic_marker_isolated",
+    "id.run_id_bound",
+    "id.fixture_set_bound",
+    "id.mode_restricted",
+    "id.records_carry_identity"
+  ],
+  "mutations": [
+    {
+      "mutation": "MA-01",
+      "description": "kb: forbidden-word check removed",
+      "file": "lib/engine-change-control/knowledge-base.mjs",
+      "killed": true,
+      "failing_probes": [
+        "kb.forbidden_word_rejected",
+        "kb.forbidden_underscore_word_rejected"
+      ]
+    },
+    {
+      "mutation": "MA-02",
+      "description": "kb: status vocabulary unchecked",
+      "file": "lib/engine-change-control/knowledge-base.mjs",
+      "killed": true,
+      "failing_probes": [
+        "kb.unknown_status_rejected"
+      ]
+    },
+    {
+      "mutation": "MA-03",
+      "description": "kb: source vocabulary unchecked",
+      "file": "lib/engine-change-control/knowledge-base.mjs",
+      "killed": true,
+      "failing_probes": [
+        "kb.bad_source_rejected"
+      ]
+    },
+    {
+      "mutation": "MA-04",
+      "description": "kb: human decision may be false",
+      "file": "lib/engine-change-control/knowledge-base.mjs",
+      "killed": true,
+      "failing_probes": [
+        "kb.human_decision_must_be_true"
+      ]
+    },
+    {
+      "mutation": "MA-05",
+      "description": "kb: entry hash not verified",
+      "file": "lib/engine-change-control/knowledge-base.mjs",
+      "killed": true,
+      "failing_probes": [
+        "kb.tamper_detected"
+      ]
+    },
+    {
+      "mutation": "MA-06",
+      "description": "kb: chain link not verified",
+      "file": "lib/engine-change-control/knowledge-base.mjs",
+      "killed": true,
+      "failing_probes": [
+        "kb.chain_link_checked"
+      ]
+    },
+    {
+      "mutation": "MA-07",
+      "description": "kb: undeclared fields allowed",
+      "file": "lib/engine-change-control/knowledge-base.mjs",
+      "killed": true,
+      "failing_probes": [
+        "kb.undeclared_field_rejected"
+      ]
+    },
+    {
+      "mutation": "MA-08",
+      "description": "pc: declared scope broadening allowed",
+      "file": "lib/engine-change-control/proposal-compiler.mjs",
+      "killed": true,
+      "failing_probes": [
+        "pc.scope_broaden_rejected"
+      ]
+    },
+    {
+      "mutation": "MA-09",
+      "description": "pc: summary widening ignored",
+      "file": "lib/engine-change-control/proposal-compiler.mjs",
+      "killed": true,
+      "failing_probes": [
+        "pc.scope_text_widening_rejected"
+      ]
+    },
+    {
+      "mutation": "MA-10",
+      "description": "pc: refusal narrowing allowed",
+      "file": "lib/engine-change-control/proposal-compiler.mjs",
+      "killed": true,
+      "failing_probes": [
+        "pc.refusal_narrow_rejected"
+      ]
+    },
+    {
+      "mutation": "MA-11",
+      "description": "pc: evidence lowering allowed",
+      "file": "lib/engine-change-control/proposal-compiler.mjs",
+      "killed": true,
+      "failing_probes": [
+        "pc.evidence_lower_rejected"
+      ]
+    },
+    {
+      "mutation": "MA-12",
+      "description": "pc: limitation weakening allowed",
+      "file": "lib/engine-change-control/proposal-compiler.mjs",
+      "killed": true,
+      "failing_probes": [
+        "pc.limitation_weaken_rejected"
+      ]
+    },
+    {
+      "mutation": "MA-13",
+      "description": "pc: test plan needs only one kind",
+      "file": "lib/engine-change-control/proposal-compiler.mjs",
+      "killed": true,
+      "failing_probes": [
+        "pc.flag_without_test_plan_rejected"
+      ]
+    },
+    {
+      "mutation": "MA-14",
+      "description": "pc: behaviour flags ignored",
+      "file": "lib/engine-change-control/proposal-compiler.mjs",
+      "killed": true,
+      "failing_probes": [
+        "pc.flag_without_test_plan_rejected"
+      ]
+    },
+    {
+      "mutation": "MA-15",
+      "description": "pc: unqualified claims allowed",
+      "file": "lib/engine-change-control/proposal-compiler.mjs",
+      "killed": true,
+      "failing_probes": [
+        "pc.claim_in_summary_rejected",
+        "pc.claim_in_rollback_rejected",
+        "pc.claim_in_compat_rejected",
+        "pc.claim_in_notes_rejected",
+        "pc.loose_negation_rejected"
+      ]
+    },
+    {
+      "mutation": "MA-16",
+      "description": "pc: protected targets allowed after normalisation",
+      "file": "lib/engine-change-control/proposal-compiler.mjs",
+      "killed": true,
+      "failing_probes": [
+        "pc.path_inner_traversal_protected",
+        "pc.path_repeated_separators_protected",
+        "pc.path_windows_separators_protected",
+        "pc.protected_target_rejected",
+        "pc.traversal_target_rejected_in_proposal"
+      ]
+    },
+    {
+      "mutation": "MA-17",
+      "description": "pc: rollback optional",
+      "file": "lib/engine-change-control/proposal-compiler.mjs",
+      "killed": true,
+      "failing_probes": [
+        "pc.rollback_missing_rejected"
+      ]
+    },
+    {
+      "mutation": "MA-18",
+      "description": "pc: compatibility optional",
+      "file": "lib/engine-change-control/proposal-compiler.mjs",
+      "killed": true,
+      "failing_probes": [
+        "pc.compat_missing_rejected"
+      ]
+    },
+    {
+      "mutation": "MA-19",
+      "description": "pc: synthetic may be claimed independent",
+      "file": "lib/engine-change-control/proposal-compiler.mjs",
+      "killed": true,
+      "failing_probes": [
+        "pc.synthetic_independent_rejected"
+      ]
+    },
+    {
+      "mutation": "MA-20",
+      "description": "pc: self authorisation accepted",
+      "file": "lib/engine-change-control/proposal-compiler.mjs",
+      "killed": true,
+      "failing_probes": [
+        "pc.self_authorization_rejected"
+      ]
+    },
+    {
+      "mutation": "MA-21",
+      "description": "pc: unknown triggers accepted",
+      "file": "lib/engine-change-control/proposal-compiler.mjs",
+      "killed": true,
+      "failing_probes": [
+        "pc.unknown_trigger_rejected"
+      ]
+    },
+    {
+      "mutation": "MA-22",
+      "description": "pc: rejections do not set the state",
+      "file": "lib/engine-change-control/proposal-compiler.mjs",
+      "killed": true,
+      "failing_probes": [
+        "pc.expected_drift_rejected",
+        "pc.human_disposition_rejected",
+        "pc.scope_broaden_rejected",
+        "pc.scope_text_widening_rejected",
+        "pc.refusal_narrow_rejected",
+        "pc.refusal_remove_rejected",
+        "pc.evidence_lower_rejected",
+        "pc.limitation_remove_rejected",
+        "pc.limitation_weaken_rejected",
+        "pc.no_test_plan_rejected",
+        "pc.rollback_missing_rejected",
+        "pc.compat_missing_rejected",
+        "pc.synthetic_independent_rejected",
+        "pc.label_status_independent_rejected",
+        "pc.self_authorization_rejected",
+        "pc.unknown_trigger_rejected",
+        "pc.unknown_change_type_rejected",
+        "pc.forbidden_wording_rejected",
+        "pc.protected_target_rejected",
+        "pc.traversal_target_rejected_in_proposal",
+        "pc.claim_in_summary_rejected",
+        "pc.claim_in_rollback_rejected",
+        "pc.claim_in_compat_rejected",
+        "pc.claim_in_notes_rejected",
+        "pc.loose_negation_rejected",
+        "pc.release_target_rejected",
+        "pc.release_component_rejected",
+        "pc.release_text_rejected"
+      ]
+    },
+    {
+      "mutation": "MA-23",
+      "description": "vocab: negation qualifier ignored",
+      "file": "lib/engine-change-control/vocab.mjs",
+      "killed": true,
+      "failing_probes": [
+        "pc.qualified_negation_allowed"
+      ]
+    },
+    {
+      "mutation": "MA-24",
+      "description": "ia: favourability does not force review class",
+      "file": "lib/engine-change-control/impact-analyzer.mjs",
+      "killed": true,
+      "failing_probes": [
+        "ia.favourable_requires_review",
+        "ia.refusal_alter_flagged",
+        "ia.limitation_weaken_flagged"
+      ]
+    },
+    {
+      "mutation": "MA-25",
+      "description": "ia: scope class lost",
+      "file": "lib/engine-change-control/impact-analyzer.mjs",
+      "killed": true,
+      "failing_probes": [
+        "ia.scope_class",
+        "ia.observed_scope_escalates"
+      ]
+    },
+    {
+      "mutation": "MA-26",
+      "description": "ia: evidence class lost",
+      "file": "lib/engine-change-control/impact-analyzer.mjs",
+      "killed": true,
+      "failing_probes": [
+        "ia.evidence_class",
+        "ia.observed_favourable_escalates"
+      ]
+    },
+    {
+      "mutation": "MA-27",
+      "description": "ia: release class lost",
+      "file": "lib/engine-change-control/impact-analyzer.mjs",
+      "killed": true,
+      "failing_probes": [
+        "ia.release_class"
+      ]
+    },
+    {
+      "mutation": "MA-28",
+      "description": "ia: version identity not required",
+      "file": "lib/engine-change-control/impact-analyzer.mjs",
+      "killed": true,
+      "failing_probes": [
+        "ia.behaviour_needs_version"
+      ]
+    },
+    {
+      "mutation": "MA-29",
+      "description": "rs: full suite not mandatory",
+      "file": "lib/engine-change-control/regression-selector.mjs",
+      "killed": true,
+      "failing_probes": [
+        "rs.behavioural_full_suite"
+      ]
+    },
+    {
+      "mutation": "MA-30",
+      "description": "rs: plan declares change safe",
+      "file": "lib/engine-change-control/regression-selector.mjs",
+      "killed": true,
+      "failing_probes": [
+        "rs.no_safety_decision_field"
+      ]
+    },
+    {
+      "mutation": "MA-31",
+      "description": "rs: missing fixture not reported",
+      "file": "lib/engine-change-control/regression-selector.mjs",
+      "killed": true,
+      "failing_probes": [
+        "rs.gap_when_no_fixture"
+      ]
+    },
+    {
+      "mutation": "MA-32",
+      "description": "rs: refusal impact does not select refusal tests",
+      "file": "lib/engine-change-control/regression-selector.mjs",
+      "killed": true,
+      "failing_probes": [
+        "rs.refusal_selects_refusal_test"
+      ]
+    },
+    {
+      "mutation": "MA-33",
+      "description": "dl: review to supported removed from the unsafe list",
+      "file": "lib/engine-change-control/drift-ledger.mjs",
+      "killed": true,
+      "failing_probes": [
+        "pc.observed_favourable_blocks_pending",
+        "dl.review_to_supported_unsafe",
+        "dl.proposer_documentation_ignored"
+      ]
+    },
+    {
+      "mutation": "MA-34",
+      "description": "dl: missing fixture not flagged",
+      "file": "lib/engine-change-control/drift-ledger.mjs",
+      "killed": true,
+      "failing_probes": [
+        "dl.missing_fixture_fails"
+      ]
+    },
+    {
+      "mutation": "MA-35",
+      "description": "dl: refusal disappearance allowed",
+      "file": "lib/engine-change-control/drift-ledger.mjs",
+      "killed": true,
+      "failing_probes": [
+        "pc.observed_refusal_removed_rejects",
+        "dl.refusal_disappear_fails"
+      ]
+    },
+    {
+      "mutation": "MA-36",
+      "description": "dl: excluded domain may stop being refused",
+      "file": "lib/engine-change-control/drift-ledger.mjs",
+      "killed": true,
+      "failing_probes": [
+        "pc.observed_excluded_unrefused_rejects",
+        "dl.excluded_domain_fails"
+      ]
+    },
+    {
+      "mutation": "MA-37",
+      "description": "dl: limitation disappearance allowed",
+      "file": "lib/engine-change-control/drift-ledger.mjs",
+      "killed": true,
+      "failing_probes": [
+        "pc.observed_limitation_removed_rejects",
+        "dl.limitation_disappear_fails"
+      ]
+    },
+    {
+      "mutation": "MA-38",
+      "description": "dl: withdrawn-under-refusal exemption widened to any not_assessed",
+      "file": "lib/engine-change-control/drift-ledger.mjs",
+      "killed": true,
+      "failing_probes": [
+        "pc.observed_limitation_removed_rejects",
+        "dl.limitation_disappear_fails"
+      ]
+    },
+    {
+      "mutation": "MA-39",
+      "description": "dl: proof edges allowed",
+      "file": "lib/engine-change-control/drift-ledger.mjs",
+      "killed": true,
+      "failing_probes": [
+        "dl.edge_proof_fails"
+      ]
+    },
+    {
+      "mutation": "MA-40",
+      "description": "dl: contradiction review not checked",
+      "file": "lib/engine-change-control/drift-ledger.mjs",
+      "killed": true,
+      "failing_probes": [
+        "dl.contradiction_review_fails"
+      ]
+    },
+    {
+      "mutation": "MA-41",
+      "description": "dl: independent relabelling allowed",
+      "file": "lib/engine-change-control/drift-ledger.mjs",
+      "killed": true,
+      "failing_probes": [
+        "dl.independent_label_fails"
+      ]
+    },
+    {
+      "mutation": "MA-42",
+      "description": "gs: external categories can be satisfied locally",
+      "file": "lib/engine-change-control/gate-simulator.mjs",
+      "killed": true,
+      "failing_probes": [
+        "gs.external_never_present"
+      ]
+    },
+    {
+      "mutation": "MA-43",
+      "description": "gs: owner authorization can be present",
+      "file": "lib/engine-change-control/gate-simulator.mjs",
+      "killed": true,
+      "failing_probes": [
+        "gs.owner_not_authorized"
+      ]
+    },
+    {
+      "mutation": "MA-44",
+      "description": "gs: gate outputs a readiness score",
+      "file": "lib/engine-change-control/gate-simulator.mjs",
+      "killed": true,
+      "failing_probes": [
+        "gs.no_score_fields"
+      ]
+    },
+    {
+      "mutation": "MA-45",
+      "description": "cp: non-synthetic fixtures admitted",
+      "file": "lib/engine-change-control/corpus-protocol.mjs",
+      "killed": true,
+      "failing_probes": [
+        "cp.non_synthetic_rejected"
+      ]
+    },
+    {
+      "mutation": "MA-46",
+      "description": "cp: untraced triggers admitted",
+      "file": "lib/engine-change-control/corpus-protocol.mjs",
+      "killed": true,
+      "failing_probes": [
+        "cp.untraced_trigger_rejected"
+      ]
+    },
+    {
+      "mutation": "MA-47",
+      "description": "cp: independence statement may change",
+      "file": "lib/engine-change-control/corpus-protocol.mjs",
+      "killed": true,
+      "failing_probes": [
+        "cp.altered_independence_rejected"
+      ]
+    },
+    {
+      "mutation": "MA-48",
+      "description": "sm: invariant new refusals ignored",
+      "file": "lib/engine-change-control/stability.mjs",
+      "killed": true,
+      "failing_probes": [
+        "sm.invariant_new_refusal_detected"
+      ]
+    },
+    {
+      "mutation": "MA-49",
+      "description": "sm: missing review route ignored",
+      "file": "lib/engine-change-control/stability.mjs",
+      "killed": true,
+      "failing_probes": [
+        "sm.review_route_missing_detected"
+      ]
+    },
+    {
+      "mutation": "MA-50",
+      "description": "cr: unsafe direction not reported",
+      "file": "lib/engine-change-control/corpus-replay.mjs",
+      "killed": true,
+      "failing_probes": [
+        "cr.unsafe_direction_detected"
+      ]
+    },
+    {
+      "mutation": "MB-01",
+      "description": "path: percent-encoded paths accepted",
+      "file": "lib/engine-change-control/proposal-compiler.mjs",
+      "killed": true,
+      "failing_probes": [
+        "pc.path_encoded_rejected"
+      ]
+    },
+    {
+      "mutation": "MB-02",
+      "description": "path: absolute paths accepted",
+      "file": "lib/engine-change-control/proposal-compiler.mjs",
+      "killed": true,
+      "failing_probes": [
+        "pc.path_absolute_rejected"
+      ]
+    },
+    {
+      "mutation": "MB-03",
+      "description": "path: escaping paths accepted",
+      "file": "lib/engine-change-control/proposal-compiler.mjs",
+      "killed": true,
+      "failing_probes": [
+        "pc.path_dotdot_root_rejected"
+      ]
+    },
+    {
+      "mutation": "MB-04",
+      "description": "path: dot segments not resolved",
+      "file": "lib/engine-change-control/proposal-compiler.mjs",
+      "killed": true,
+      "failing_probes": [
+        "pc.path_inner_traversal_protected",
+        "pc.path_windows_separators_protected",
+        "pc.path_valid_allowed",
+        "pc.traversal_target_rejected_in_proposal"
+      ]
+    },
+    {
+      "mutation": "MB-05",
+      "description": "path: Windows separators not converted",
+      "file": "lib/engine-change-control/proposal-compiler.mjs",
+      "killed": true,
+      "failing_probes": [
+        "pc.path_windows_separators_protected"
+      ]
+    },
+    {
+      "mutation": "MB-06",
+      "description": "path: workspace boundary not enforced",
+      "file": "lib/engine-change-control/proposal-compiler.mjs",
+      "killed": true,
+      "failing_probes": [
+        "pc.path_outside_workspace"
+      ]
+    },
+    {
+      "mutation": "MB-07",
+      "description": "observed: missing record not blocking",
+      "file": "lib/engine-change-control/proposal-compiler.mjs",
+      "killed": true,
+      "failing_probes": [
+        "pc.behavioural_without_record_blocked",
+        "pc.engine_target_makes_behavioural",
+        "pc.flag_without_test_plan_rejected"
+      ]
+    },
+    {
+      "mutation": "MB-08",
+      "description": "observed: record hash not checked",
+      "file": "lib/engine-change-control/observed-change.mjs",
+      "killed": true,
+      "failing_probes": [
+        "pc.record_tampered_blocked"
+      ]
+    },
+    {
+      "mutation": "MB-09",
+      "description": "observed: request binding not checked",
+      "file": "lib/engine-change-control/observed-change.mjs",
+      "killed": true,
+      "failing_probes": [
+        "pc.record_bound_to_request_text"
+      ]
+    },
+    {
+      "mutation": "MB-10",
+      "description": "observed: run identity not validated",
+      "file": "lib/engine-change-control/observed-change.mjs",
+      "killed": true,
+      "failing_probes": [
+        "pc.record_incomplete_identity_blocked"
+      ]
+    },
+    {
+      "mutation": "MB-11",
+      "description": "observed: compile failures not blocking",
+      "file": "lib/engine-change-control/observed-change.mjs",
+      "killed": true,
+      "failing_probes": [
+        "pc.record_compile_failure_blocked"
+      ]
+    },
+    {
+      "mutation": "MB-12",
+      "description": "observed: human disposition in a record accepted",
+      "file": "lib/engine-change-control/observed-change.mjs",
+      "killed": true,
+      "failing_probes": [
+        "pc.record_disposition_set_blocked"
+      ]
+    },
+    {
+      "mutation": "MB-13",
+      "description": "compiler: engine targets do not make a proposal behavioural",
+      "file": "lib/engine-change-control/proposal-compiler.mjs",
+      "killed": true,
+      "failing_probes": [
+        "pc.engine_target_makes_behavioural"
+      ]
+    },
+    {
+      "mutation": "MB-14",
+      "description": "compiler: observed favourable transitions do not block",
+      "file": "lib/engine-change-control/proposal-compiler.mjs",
+      "killed": true,
+      "failing_probes": [
+        "pc.observed_favourable_blocks_pending"
+      ]
+    },
+    {
+      "mutation": "MB-15",
+      "description": "compiler: observed refusal removal ignored",
+      "file": "lib/engine-change-control/proposal-compiler.mjs",
+      "killed": true,
+      "failing_probes": [
+        "pc.observed_refusal_removed_rejects"
+      ]
+    },
+    {
+      "mutation": "MB-16",
+      "description": "compiler: observed limitation removal ignored",
+      "file": "lib/engine-change-control/proposal-compiler.mjs",
+      "killed": true,
+      "failing_probes": [
+        "pc.observed_limitation_removed_rejects"
+      ]
+    },
+    {
+      "mutation": "MB-17",
+      "description": "compiler: observed excluded-domain loss ignored",
+      "file": "lib/engine-change-control/proposal-compiler.mjs",
+      "killed": true,
+      "failing_probes": [
+        "pc.observed_excluded_unrefused_rejects"
+      ]
+    },
+    {
+      "mutation": "MB-18",
+      "description": "compiler: self-declared drift accepted",
+      "file": "lib/engine-change-control/proposal-compiler.mjs",
+      "killed": true,
+      "failing_probes": [
+        "pc.expected_drift_rejected"
+      ]
+    },
+    {
+      "mutation": "MB-19",
+      "description": "compiler: human disposition in a request accepted",
+      "file": "lib/engine-change-control/proposal-compiler.mjs",
+      "killed": true,
+      "failing_probes": [
+        "pc.human_disposition_rejected"
+      ]
+    },
+    {
+      "mutation": "MB-20",
+      "description": "claims: rollback text not scanned",
+      "file": "lib/engine-change-control/proposal-compiler.mjs",
+      "killed": true,
+      "failing_probes": [
+        "pc.claim_in_rollback_rejected"
+      ]
+    },
+    {
+      "mutation": "MB-21",
+      "description": "claims: compatibility text not scanned",
+      "file": "lib/engine-change-control/proposal-compiler.mjs",
+      "killed": true,
+      "failing_probes": [
+        "pc.claim_in_compat_rejected"
+      ]
+    },
+    {
+      "mutation": "MB-22",
+      "description": "claims: loose negation window",
+      "file": "lib/engine-change-control/vocab.mjs",
+      "killed": true,
+      "failing_probes": [
+        "pc.loose_negation_rejected"
+      ]
+    },
+    {
+      "mutation": "MB-23",
+      "description": "claims: `certified` dropped from the controlled terms",
+      "file": "lib/engine-change-control/vocab.mjs",
+      "killed": true,
+      "failing_probes": [
+        "pc.claim_in_notes_rejected",
+        "pc.every_claim_term_caught"
+      ]
+    },
+    {
+      "mutation": "MB-24",
+      "description": "release: release-gate targets not refused",
+      "file": "lib/engine-change-control/proposal-compiler.mjs",
+      "killed": true,
+      "failing_probes": [
+        "pc.release_target_rejected"
+      ]
+    },
+    {
+      "mutation": "MB-25",
+      "description": "release: advancement wording not refused",
+      "file": "lib/engine-change-control/proposal-compiler.mjs",
+      "killed": true,
+      "failing_probes": [
+        "pc.release_text_rejected"
+      ]
+    },
+    {
+      "mutation": "MB-26",
+      "description": "drift: gap to supported not unsafe",
+      "file": "lib/engine-change-control/drift-ledger.mjs",
+      "killed": true,
+      "failing_probes": [
+        "dl.gap_to_supported_unsafe"
+      ]
+    },
+    {
+      "mutation": "MB-27",
+      "description": "drift: review to gap not unsafe",
+      "file": "lib/engine-change-control/drift-ledger.mjs",
+      "killed": true,
+      "failing_probes": [
+        "dl.review_to_gap_unsafe"
+      ]
+    },
+    {
+      "mutation": "MB-28",
+      "description": "drift: not_assessed to supported not unsafe",
+      "file": "lib/engine-change-control/drift-ledger.mjs",
+      "killed": true,
+      "failing_probes": [
+        "dl.not_assessed_to_supported_unsafe"
+      ]
+    },
+    {
+      "mutation": "MB-29",
+      "description": "drift: not_assessed to gap not unsafe",
+      "file": "lib/engine-change-control/drift-ledger.mjs",
+      "killed": true,
+      "failing_probes": [
+        "dl.not_assessed_to_gap_unsafe"
+      ]
+    },
+    {
+      "mutation": "MB-30",
+      "description": "drift: rows carry a recorded disposition",
+      "file": "lib/engine-change-control/drift-ledger.mjs",
+      "killed": true,
+      "failing_probes": [
+        "dl.disposition_never_recorded"
+      ]
+    },
+    {
+      "mutation": "MB-31",
+      "description": "drift: favourable violation not raised",
+      "file": "lib/engine-change-control/drift-ledger.mjs",
+      "killed": true,
+      "failing_probes": [
+        "pc.observed_favourable_blocks_pending",
+        "dl.review_to_supported_unsafe",
+        "dl.review_to_gap_unsafe",
+        "dl.gap_to_supported_unsafe",
+        "dl.not_assessed_to_supported_unsafe",
+        "dl.not_assessed_to_gap_unsafe",
+        "dl.proposer_documentation_ignored"
+      ]
+    },
+    {
+      "mutation": "MB-32",
+      "description": "stability: favourable transitions not reported",
+      "file": "lib/engine-change-control/stability.mjs",
+      "killed": true,
+      "failing_probes": [
+        "sm.favourable_reported"
+      ]
+    },
+    {
+      "mutation": "MB-33",
+      "description": "fixtures: limitation expectations not executed",
+      "file": "lib/engine-change-control/corpus-replay.mjs",
+      "killed": true,
+      "failing_probes": [
+        "cr.limitation_kind_checked"
+      ]
+    },
+    {
+      "mutation": "MB-34",
+      "description": "fixtures: conflict-node expectation not executed",
+      "file": "lib/engine-change-control/corpus-replay.mjs",
+      "killed": true,
+      "failing_probes": [
+        "cr.conflict_node_count_checked"
+      ]
+    },
+    {
+      "mutation": "MB-35",
+      "description": "fixtures: textual-support expectation not executed",
+      "file": "lib/engine-change-control/corpus-replay.mjs",
+      "killed": true,
+      "failing_probes": [
+        "cr.textual_support_count_checked"
+      ]
+    },
+    {
+      "mutation": "MB-36",
+      "description": "identity: synthetic marker not required",
+      "file": "lib/engine-change-control/identity.mjs",
+      "killed": true,
+      "failing_probes": [
+        "id.synthetic_marker_isolated"
+      ]
+    },
+    {
+      "mutation": "MB-37",
+      "description": "identity: run id not bound",
+      "file": "lib/engine-change-control/identity.mjs",
+      "killed": true,
+      "failing_probes": [
+        "id.run_id_bound"
+      ]
+    },
+    {
+      "mutation": "MB-38",
+      "description": "identity: fixture set not bound",
+      "file": "lib/engine-change-control/identity.mjs",
+      "killed": true,
+      "failing_probes": [
+        "id.fixture_set_bound"
+      ]
+    },
+    {
+      "mutation": "MB-39",
+      "description": "identity: missing fields allowed",
+      "file": "lib/engine-change-control/identity.mjs",
+      "killed": true,
+      "failing_probes": [
+        "id.missing_field_incomplete"
+      ]
+    },
+    {
+      "mutation": "MB-40",
+      "description": "impact: observed favourable change does not escalate",
+      "file": "lib/engine-change-control/impact-analyzer.mjs",
+      "killed": true,
+      "failing_probes": [
+        "ia.observed_favourable_escalates"
+      ]
+    },
+    {
+      "mutation": "MB-41",
+      "description": "impact: behavioural without observation is assessed anyway",
+      "file": "lib/engine-change-control/impact-analyzer.mjs",
+      "killed": true,
+      "failing_probes": [
+        "ia.behavioural_without_observation_not_assessed"
+      ]
+    }
+  ]
+}

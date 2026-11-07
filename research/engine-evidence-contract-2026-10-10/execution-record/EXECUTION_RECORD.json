@@ -1,0 +1,945 @@
+{
+  "record_type": "jrs-evidence-contract-execution-record/0.2.0",
+  "generated_at": "2026-10-10T00:00:00Z",
+  "command": "node tools/engine-evidence-contract-replay.mjs --clock 2026-10-10T00:00:00Z",
+  "environment": {
+    "node": "v22.22.0",
+    "platform": "linux-x64"
+  },
+  "network": {
+    "trap_installed": true,
+    "trapped_attempts": 0,
+    "provider_calls": 0
+  },
+  "code_executed": [
+    {
+      "path": "lib/engine-evidence-contract/boundary.mjs",
+      "sha256": "sha256:949a176f5b9e81ea0f1c735dc189bd7961c98359a4db436ceab91b98d766804d"
+    },
+    {
+      "path": "lib/engine-evidence-contract/bridge.mjs",
+      "sha256": "sha256:4145c5c0ab3ac81aeace3470e13337847b69bbb0833c405c79c1728a188b5d07"
+    },
+    {
+      "path": "lib/engine-evidence-contract/claims.mjs",
+      "sha256": "sha256:e7a713b96b07000a4f2ac4ce89f04e0d06ac219f66f161c3772b02e2d329f5ca"
+    },
+    {
+      "path": "lib/engine-evidence-contract/contract.mjs",
+      "sha256": "sha256:35d472eccb3aa33cc693977246b48b3506d5e981066796198d2aaeb093ebaae2"
+    },
+    {
+      "path": "lib/engine-evidence-contract/evidence.mjs",
+      "sha256": "sha256:52c0b5311f3e20d06886ec02486f569760c0020872f1773d8801112836b1b395"
+    },
+    {
+      "path": "lib/engine-evidence-contract/long-record.mjs",
+      "sha256": "sha256:e1c1c8227726ae00d8519d42da91fc3e48acb01e5add63bb3ca7b93a08288cec"
+    },
+    {
+      "path": "lib/engine-evidence-contract/prompt.mjs",
+      "sha256": "sha256:2b209117fd782878d4ef74edef3088e2b572eb01c6d7badc385ea88598eba85e"
+    },
+    {
+      "path": "lib/engine-evidence-contract/remediation.mjs",
+      "sha256": "sha256:4d4e1606dea6bfe529c380ce652da568836b6ede10aae9245a0e2417808ad997"
+    },
+    {
+      "path": "lib/engine-evidence-contract/result-validate.mjs",
+      "sha256": "sha256:8d648159bada802deeae51b0033f3a8fc288537297376e66700abd434148b9e4"
+    },
+    {
+      "path": "lib/engine-evidence-contract/run.mjs",
+      "sha256": "sha256:a6075a432dacfb2e5fe299996f44ec121f4104676b26a8a89eb9ce8f4c641747"
+    },
+    {
+      "path": "lib/engine-evidence-contract/strict-json.mjs",
+      "sha256": "sha256:73fdc1332cf7d0af20195b773e74b226e28070588271873208e86dc0f79e7ab8"
+    },
+    {
+      "path": "lib/engine-evidence-contract/validator.mjs",
+      "sha256": "sha256:f35b1ba31f0b19422343e82c8ce2f145ade8c408a886d34d29deec0c2ea9de4c"
+    }
+  ],
+  "summary": {
+    "total": 52,
+    "passed": 52,
+    "failed": 0,
+    "skipped": 0,
+    "by_kind": {
+      "contract_case": 31,
+      "bridge_case": 16,
+      "long_record_case": 5
+    }
+  },
+  "cases": [
+    {
+      "id": "EC-001",
+      "kind": "contract_case",
+      "category": "positive_control",
+      "result": "pass",
+      "mismatches": [],
+      "statuses": {
+        "reconstructability": "supported",
+        "identifiable_basis": "supported",
+        "chronology_integrity": "supported",
+        "reasoning_traceability": "supported",
+        "sufficiency": "supported"
+      },
+      "gate": "proceed",
+      "hashes": {
+        "record": "sha256:6a36068e6b48bf674d81e75074a419e44767ef817a068e36bfa5a8db15e8d21b",
+        "candidate_response": "sha256:dbe5dfe09dbbc6d0fbe891cd18d7dc5d753f75eb18b7cb81ffd4604acc0a70eb",
+        "expected": "sha256:5246695e444dbbf64417706ace89e959bf4163fa38059f9375b36f3cb2761505",
+        "result_normalized": "sha256:6dbe09c9a927747fbde6ac85df977a8312d224fccdae6cfebdcd08f1f61338d5"
+      }
+    },
+    {
+      "id": "EC-002",
+      "kind": "contract_case",
+      "category": "positive_control",
+      "result": "pass",
+      "mismatches": [],
+      "statuses": {
+        "reconstructability": "supported",
+        "identifiable_basis": "supported",
+        "chronology_integrity": "gap",
+        "reasoning_traceability": "supported",
+        "sufficiency": "supported"
+      },
+      "gate": "proceed",
+      "hashes": {
+        "record": "sha256:ce85b45ef3aff846c0f79d1e1bdb770b0e162430329c84c33eb0419340599b3f",
+        "candidate_response": "sha256:544a37009c8a450072c5b7700a7d84dd655f677a28ef1a562cc3fdb55b3a08ce",
+        "expected": "sha256:066f09a45149419127f144021a3085de8bac326d4284fb6262bf8cee7c3271ba",
+        "result_normalized": "sha256:40ce1f541b06e296fcaacdc1bc1de83fc1df4c473e2d3085a0abdbd863f413e3"
+      }
+    },
+    {
+      "id": "EC-003",
+      "kind": "contract_case",
+      "category": "scope_refusal",
+      "result": "pass",
+      "mismatches": [],
+      "statuses": {
+        "reconstructability": "not_assessed",
+        "identifiable_basis": "not_assessed",
+        "chronology_integrity": "not_assessed",
+        "reasoning_traceability": "not_assessed",
+        "sufficiency": "not_assessed"
+      },
+      "gate": "refuse",
+      "hashes": {
+        "record": "sha256:c835fad321f41e3b3b5c903f36c441e7f4523d13fca30cc3166841461f391f1c",
+        "candidate_response": "sha256:dbe5dfe09dbbc6d0fbe891cd18d7dc5d753f75eb18b7cb81ffd4604acc0a70eb",
+        "expected": "sha256:93ace93e09302bd16a7b2ba974d4a3ffe82b2d63fda68cf0e83c88273c532830",
+        "result_normalized": "sha256:a14df15b98b0bc7987b7a7e4a604c653a3177488ed680a657f440602a91acc0a"
+      }
+    },
+    {
+      "id": "EC-004",
+      "kind": "contract_case",
+      "category": "fabricated_quote",
+      "result": "pass",
+      "mismatches": [],
+      "statuses": {
+        "reconstructability": "supported",
+        "identifiable_basis": "review_required",
+        "chronology_integrity": "supported",
+        "reasoning_traceability": "supported",
+        "sufficiency": "supported"
+      },
+      "gate": "proceed",
+      "hashes": {
+        "record": "sha256:6a36068e6b48bf674d81e75074a419e44767ef817a068e36bfa5a8db15e8d21b",
+        "candidate_response": "sha256:94a29dda85c487521f4a8d7adfcaa2485b3a3a8d22a4e8136ea32bbb2ffe2856",
+        "expected": "sha256:60208e0a9a0656b4bc2ce4a3682f9829c12e459fbf686b2de8fd584bc596bc68",
+        "result_normalized": "sha256:370b930804dc23a127f3fb017eb756f3cc9f5641b483303364a472d825c90906"
+      }
+    },
+    {
+      "id": "EC-005",
+      "kind": "contract_case",
+      "category": "wrong_offset",
+      "result": "pass",
+      "mismatches": [],
+      "statuses": {
+        "reconstructability": "supported",
+        "identifiable_basis": "review_required",
+        "chronology_integrity": "supported",
+        "reasoning_traceability": "supported",
+        "sufficiency": "supported"
+      },
+      "gate": "proceed",
+      "hashes": {
+        "record": "sha256:6a36068e6b48bf674d81e75074a419e44767ef817a068e36bfa5a8db15e8d21b",
+        "candidate_response": "sha256:62e3e6e7d0ce93faae6f507d84de94c4ba967ab36da8b078bbe25eba0a4e4c21",
+        "expected": "sha256:1171754a62d5e441be7181e8beeba3338158e78086097efa3cd8ae7f1f18a058",
+        "result_normalized": "sha256:0110f0e6e41c3868076b426a40efa16c79ab4eb74cd81f005506c1a19bdbec03"
+      }
+    },
+    {
+      "id": "EC-006",
+      "kind": "contract_case",
+      "category": "section_boundary",
+      "result": "pass",
+      "mismatches": [],
+      "statuses": {
+        "reconstructability": "supported",
+        "identifiable_basis": "supported",
+        "chronology_integrity": "supported",
+        "reasoning_traceability": "supported",
+        "sufficiency": "review_required"
+      },
+      "gate": "proceed",
+      "hashes": {
+        "record": "sha256:6a36068e6b48bf674d81e75074a419e44767ef817a068e36bfa5a8db15e8d21b",
+        "candidate_response": "sha256:4aabffc9340db5b421018f43caae85080dacc2b98f1710b1a7441f4c0e16f337",
+        "expected": "sha256:9fab4b0c53c6355895ad56c628615add26f9320d2015c21397084a24823df0c9",
+        "result_normalized": "sha256:50f1b0dd8fbf599c120980908ee43cad5bdfc30de1a32da099673fe488a82f10"
+      }
+    },
+    {
+      "id": "EC-007",
+      "kind": "contract_case",
+      "category": "duplicate_text",
+      "result": "pass",
+      "mismatches": [],
+      "statuses": {
+        "reconstructability": "supported",
+        "identifiable_basis": "supported",
+        "chronology_integrity": "supported",
+        "reasoning_traceability": "supported",
+        "sufficiency": "supported"
+      },
+      "gate": "proceed",
+      "hashes": {
+        "record": "sha256:6a36068e6b48bf674d81e75074a419e44767ef817a068e36bfa5a8db15e8d21b",
+        "candidate_response": "sha256:9ec95982e8cb8a319720ac121ec98b165a4f5e7ce628b13ed4f9572928724f2c",
+        "expected": "sha256:8fef9a412e925633b694d2fd96d931052dbd2bd8a54828c24182096f821f56a3",
+        "result_normalized": "sha256:66e62f9239a08ef44e20ce8f8b840593c89e407cae0bdd34d60ca9ab60dfed1b"
+      }
+    },
+    {
+      "id": "EC-008",
+      "kind": "contract_case",
+      "category": "presence_not_support",
+      "result": "pass",
+      "mismatches": [],
+      "statuses": {
+        "reconstructability": "supported",
+        "identifiable_basis": "supported",
+        "chronology_integrity": "supported",
+        "reasoning_traceability": "supported",
+        "sufficiency": "supported"
+      },
+      "gate": "proceed",
+      "hashes": {
+        "record": "sha256:6a36068e6b48bf674d81e75074a419e44767ef817a068e36bfa5a8db15e8d21b",
+        "candidate_response": "sha256:8407aa7e5d4bf1f9a8a593ad496a90c5577cc61f802a2e562ed126207f4b1cea",
+        "expected": "sha256:121fee62f697c6781a6af5e98d316c0ca9e7a9d15b3087c30b0e5a22aced3521",
+        "result_normalized": "sha256:130d6fabe0e4bde454eeb7f5ecb706e4f9f6b65b59afc517c3a33f6dc82aa135"
+      }
+    },
+    {
+      "id": "EC-009",
+      "kind": "contract_case",
+      "category": "key_order",
+      "result": "pass",
+      "mismatches": [],
+      "statuses": {
+        "reconstructability": "supported",
+        "identifiable_basis": "supported",
+        "chronology_integrity": "supported",
+        "reasoning_traceability": "supported",
+        "sufficiency": "supported"
+      },
+      "gate": "proceed",
+      "hashes": {
+        "record": "sha256:6a36068e6b48bf674d81e75074a419e44767ef817a068e36bfa5a8db15e8d21b",
+        "candidate_response": "sha256:bac8f9d22cf5911890a00280da2a1e9fa22dd5e3925cca5e2792ab4ff600251a",
+        "expected": "sha256:8ac63ede8e6dd123c97f651224e91a703402dfb7a6ab0e0ffb121af0caae9b3e",
+        "result_normalized": "sha256:687164af60a534a72f95e28acf0b336cb3d4d093675eaf09091ad032c5ffe034"
+      }
+    },
+    {
+      "id": "EC-010",
+      "kind": "contract_case",
+      "category": "invalid_status",
+      "result": "pass",
+      "mismatches": [],
+      "statuses": {
+        "reconstructability": "not_assessed",
+        "identifiable_basis": "not_assessed",
+        "chronology_integrity": "not_assessed",
+        "reasoning_traceability": "not_assessed",
+        "sufficiency": "not_assessed"
+      },
+      "gate": "proceed",
+      "hashes": {
+        "record": "sha256:6a36068e6b48bf674d81e75074a419e44767ef817a068e36bfa5a8db15e8d21b",
+        "candidate_response": "sha256:78c555b52912f6cb5b283973f1f55d0ae00dd5164643dc1113c87e5b9286ec60",
+        "expected": "sha256:010a0e0161c5679e86f9643212dc1a72a8b02da1f905538cb8c1f74d60fe5338",
+        "result_normalized": "sha256:d062ba0766391f0d3f4b521a424ee68e464e4bd0860f24c2ea8f436ac9629d4b"
+      }
+    },
+    {
+      "id": "EC-011",
+      "kind": "contract_case",
+      "category": "missing_limitation",
+      "result": "pass",
+      "mismatches": [],
+      "statuses": {
+        "reconstructability": "supported",
+        "identifiable_basis": "supported",
+        "chronology_integrity": "supported",
+        "reasoning_traceability": "supported",
+        "sufficiency": "review_required"
+      },
+      "gate": "proceed",
+      "hashes": {
+        "record": "sha256:6a36068e6b48bf674d81e75074a419e44767ef817a068e36bfa5a8db15e8d21b",
+        "candidate_response": "sha256:2b4d7dc9b5ea4a64888b94c5abf1adc5d007010d3e565c09f6aba141297d6762",
+        "expected": "sha256:d1d2b1fd07724edece9f45f41d53ef3240eacca31a64eec1205dff0788ed8c67",
+        "result_normalized": "sha256:b7c70b07ff50d18cad3c059a33314b5a9168fed9a9fb872b7398896331f45561"
+      }
+    },
+    {
+      "id": "EC-012",
+      "kind": "contract_case",
+      "category": "prompt_injection",
+      "result": "pass",
+      "mismatches": [],
+      "statuses": {
+        "reconstructability": "review_required",
+        "identifiable_basis": "review_required",
+        "chronology_integrity": "review_required",
+        "reasoning_traceability": "review_required",
+        "sufficiency": "review_required"
+      },
+      "gate": "proceed",
+      "hashes": {
+        "record": "sha256:7c6c464bbfe762efd669c722be014ebe70c8b1c5e4280c5d1785a6ea38ccf3da",
+        "candidate_response": "sha256:efc2e8aae22336199480fe3f721c312c0131800d77c3365dc04eecf161e12237",
+        "expected": "sha256:6e2da3e6bf721b01ee66997817f3f972608306450983f7e38d4652009de39989",
+        "result_normalized": "sha256:a0c877dfa7596513bcecc4c234cd38f3f2c994b3c831a8310bf1f8e0bb745900"
+      }
+    },
+    {
+      "id": "EC-013",
+      "kind": "contract_case",
+      "category": "reworded_employment",
+      "result": "pass",
+      "mismatches": [],
+      "statuses": {
+        "reconstructability": "not_assessed",
+        "identifiable_basis": "not_assessed",
+        "chronology_integrity": "not_assessed",
+        "reasoning_traceability": "not_assessed",
+        "sufficiency": "not_assessed"
+      },
+      "gate": "refuse",
+      "hashes": {
+        "record": "sha256:dd72af2f46827410c88d698b9958d20bd1003608d2bd8b2b186132a132a884d0",
+        "candidate_response": "sha256:dbe5dfe09dbbc6d0fbe891cd18d7dc5d753f75eb18b7cb81ffd4604acc0a70eb",
+        "expected": "sha256:b4bdeff00dd9d90051a71c3790f0caad3db3243f72b5025063049f0c82bb9ff1",
+        "result_normalized": "sha256:d630445653be6940220c8102d2678a732244e33f722fd3e54a409670a02bc353"
+      }
+    },
+    {
+      "id": "EC-014",
+      "kind": "contract_case",
+      "category": "mixed_scope",
+      "result": "pass",
+      "mismatches": [],
+      "statuses": {
+        "reconstructability": "not_assessed",
+        "identifiable_basis": "not_assessed",
+        "chronology_integrity": "not_assessed",
+        "reasoning_traceability": "not_assessed",
+        "sufficiency": "not_assessed"
+      },
+      "gate": "refuse",
+      "hashes": {
+        "record": "sha256:5665e2f62a06cf4ea0d49cc4071032b59701ff42e7fef60bd16daa9be41daa65",
+        "candidate_response": "sha256:dbe5dfe09dbbc6d0fbe891cd18d7dc5d753f75eb18b7cb81ffd4604acc0a70eb",
+        "expected": "sha256:07ed284e44ecf785bfbb18cb1cc3bb2d1c58c613c4756cf3a8768a909dce39af",
+        "result_normalized": "sha256:6605c150c13a07a43713411b8aaf9050ad5f078aae68bea6524961b77aca07a5"
+      }
+    },
+    {
+      "id": "EC-015",
+      "kind": "contract_case",
+      "category": "contradictory_dates",
+      "result": "pass",
+      "mismatches": [],
+      "statuses": {
+        "reconstructability": "supported",
+        "identifiable_basis": "supported",
+        "chronology_integrity": "supported",
+        "reasoning_traceability": "supported",
+        "sufficiency": "supported"
+      },
+      "gate": "proceed",
+      "hashes": {
+        "record": "sha256:ce85b45ef3aff846c0f79d1e1bdb770b0e162430329c84c33eb0419340599b3f",
+        "candidate_response": "sha256:d003f25682f76a64abcd26e018343bdbe1c8751b4705633504ee04be8a3996fd",
+        "expected": "sha256:8bbdd8f4df1ac9f1fb31b4a92e06fd8e0e1c615bc9cf2b5d8b7ed2c38024f65a",
+        "result_normalized": "sha256:c2396426afd75a9fb2aca7f041dca146a10872b6f48cc02e5d738d0461cbd268"
+      }
+    },
+    {
+      "id": "EC-016",
+      "kind": "contract_case",
+      "category": "long_record_refusal",
+      "result": "pass",
+      "mismatches": [],
+      "statuses": {
+        "reconstructability": "not_assessed",
+        "identifiable_basis": "not_assessed",
+        "chronology_integrity": "not_assessed",
+        "reasoning_traceability": "not_assessed",
+        "sufficiency": "not_assessed"
+      },
+      "gate": "refuse",
+      "hashes": {
+        "record": "sha256:1a96d865b8c3590d44e12e1c086abc6531fcd1b79ffe29dfc5d3e80e66a9cfd1",
+        "candidate_response": "sha256:dbe5dfe09dbbc6d0fbe891cd18d7dc5d753f75eb18b7cb81ffd4604acc0a70eb",
+        "expected": "sha256:1ff52c7e9f1ab1d7ebe56faa7cb07df7a885e0b2cc4d4bc308703d14dcbe5c86",
+        "result_normalized": "sha256:8da0c1f405455627f801812d3a243f0a703d0e9e34de4471a65fc33f41a8f28f"
+      }
+    },
+    {
+      "id": "EC-017",
+      "kind": "contract_case",
+      "category": "favourable_after_failure",
+      "result": "pass",
+      "mismatches": [],
+      "statuses": {
+        "reconstructability": "supported",
+        "identifiable_basis": "supported",
+        "chronology_integrity": "supported",
+        "reasoning_traceability": "review_required",
+        "sufficiency": "supported"
+      },
+      "gate": "proceed",
+      "hashes": {
+        "record": "sha256:6a36068e6b48bf674d81e75074a419e44767ef817a068e36bfa5a8db15e8d21b",
+        "candidate_response": "sha256:de4f2257fd400fb3376fe76abdf0395b0c0b55580a36250d39c5e57bc4f961c7",
+        "expected": "sha256:368fcb3b2623e93e771547a5066e72e0f6603392db9fd6f63d7b605a010833a0",
+        "result_normalized": "sha256:ec90258351bde00cfa0f49ba39bb6906c281f26ea72e8f072a0f28c1190b8ced"
+      }
+    },
+    {
+      "id": "EC-018",
+      "kind": "contract_case",
+      "category": "markdown_wrapped",
+      "result": "pass",
+      "mismatches": [],
+      "statuses": {
+        "reconstructability": "supported",
+        "identifiable_basis": "supported",
+        "chronology_integrity": "supported",
+        "reasoning_traceability": "supported",
+        "sufficiency": "supported"
+      },
+      "gate": "proceed",
+      "hashes": {
+        "record": "sha256:6a36068e6b48bf674d81e75074a419e44767ef817a068e36bfa5a8db15e8d21b",
+        "candidate_response": "sha256:d5543d6e88ea0b098368e45a64a64f92ffa0f2c5b5492e1bbd949688ced2c8c1",
+        "expected": "sha256:c2363f6e83990673c24541b295aa59b320c080eddf3bad273fce4ab4afb97c5a",
+        "result_normalized": "sha256:a0506c2d7c69241df0f001f2e0e7ada3a3db07fc53bc616858e1088edeb81107"
+      }
+    },
+    {
+      "id": "EC-019",
+      "kind": "contract_case",
+      "category": "malformed_json",
+      "result": "pass",
+      "mismatches": [],
+      "statuses": {
+        "reconstructability": "not_assessed",
+        "identifiable_basis": "not_assessed",
+        "chronology_integrity": "not_assessed",
+        "reasoning_traceability": "not_assessed",
+        "sufficiency": "not_assessed"
+      },
+      "gate": "proceed",
+      "hashes": {
+        "record": "sha256:6a36068e6b48bf674d81e75074a419e44767ef817a068e36bfa5a8db15e8d21b",
+        "candidate_response": "sha256:a4ae0c2efe5319d88c33dbdbacf013a7723f28ad708b89732968586a4b982ab9",
+        "expected": "sha256:f7c712c462d5268c672655bc6b5ef3044c5c05569720f131f16cbc4b03ec9820",
+        "result_normalized": "sha256:716b9178719da3fb4b812b83c908211a91b0409ddc538968f86cabffddf12282"
+      }
+    },
+    {
+      "id": "EC-020",
+      "kind": "contract_case",
+      "category": "duplicate_keys",
+      "result": "pass",
+      "mismatches": [],
+      "statuses": {
+        "reconstructability": "not_assessed",
+        "identifiable_basis": "not_assessed",
+        "chronology_integrity": "not_assessed",
+        "reasoning_traceability": "not_assessed",
+        "sufficiency": "not_assessed"
+      },
+      "gate": "proceed",
+      "hashes": {
+        "record": "sha256:6a36068e6b48bf674d81e75074a419e44767ef817a068e36bfa5a8db15e8d21b",
+        "candidate_response": "sha256:7b7ef5108dfea9e4dfcef12006e0cac8f283d471d2a18a6a33e8515ac236026f",
+        "expected": "sha256:8700de19460b00e26c2fa42c24f29237a83af77693fa01dcc01af26c8842abb9",
+        "result_normalized": "sha256:1649804a52325b439fe71f1c50d652a51f96c11821b122cec5fd03d286b08477"
+      }
+    },
+    {
+      "id": "EC-021",
+      "kind": "contract_case",
+      "category": "unicode_normalization",
+      "result": "pass",
+      "mismatches": [],
+      "statuses": {
+        "reconstructability": "review_required",
+        "identifiable_basis": "supported",
+        "chronology_integrity": "supported",
+        "reasoning_traceability": "supported",
+        "sufficiency": "supported"
+      },
+      "gate": "proceed",
+      "hashes": {
+        "record": "sha256:2f419fd6c49ea0e80b9f17d276b0e9af2c3a5fce009e9163a0799e7592bd73f2",
+        "candidate_response": "sha256:aeeaee88fe1b2bcc577302ade50e544e2c4c99ab522987fbaed420763596dc5d",
+        "expected": "sha256:ee59d434a4a2ca9aa0873910ae72f4af1f13ce60fa4cab19b0309e80a1fccad3",
+        "result_normalized": "sha256:205023abc6fb81d5592eae9ffc9363c3c9485536f44e095c554c154f2a59a95e"
+      }
+    },
+    {
+      "id": "EC-022",
+      "kind": "contract_case",
+      "category": "prohibited_claim",
+      "result": "pass",
+      "mismatches": [],
+      "statuses": {
+        "reconstructability": "supported",
+        "identifiable_basis": "review_required",
+        "chronology_integrity": "supported",
+        "reasoning_traceability": "supported",
+        "sufficiency": "supported"
+      },
+      "gate": "proceed",
+      "hashes": {
+        "record": "sha256:6a36068e6b48bf674d81e75074a419e44767ef817a068e36bfa5a8db15e8d21b",
+        "candidate_response": "sha256:8d797090b3bc24c8b60d1c60c7e722e7ea421034d734d69ba9b87a6ca7559975",
+        "expected": "sha256:3d9ffc068b4663be0711a19dcbf0c821f38ef88b250b45da53d5c05bd15e7b09",
+        "result_normalized": "sha256:b8a1a329b2a668a998a030938d497b03680aba579e2e194b5c16b50335ab9a16"
+      }
+    },
+    {
+      "id": "EC-023",
+      "kind": "contract_case",
+      "category": "contradictory_status",
+      "result": "pass",
+      "mismatches": [],
+      "statuses": {
+        "reconstructability": "review_required",
+        "identifiable_basis": "supported",
+        "chronology_integrity": "supported",
+        "reasoning_traceability": "supported",
+        "sufficiency": "supported"
+      },
+      "gate": "proceed",
+      "hashes": {
+        "record": "sha256:6a36068e6b48bf674d81e75074a419e44767ef817a068e36bfa5a8db15e8d21b",
+        "candidate_response": "sha256:3246afda60ae4ccd4ff15a34fa6c8f5d24297d90f9230f9a34a8e5da8ec3446e",
+        "expected": "sha256:e39d9bcbc4f5a1c2010edcb35d03cb6b7b6c103df3115273bed95d044f135296",
+        "result_normalized": "sha256:aeac769835d3c233367688a2795abbb76d591e319facc22bd389c8e0c164ed0e"
+      }
+    },
+    {
+      "id": "EC-024",
+      "kind": "contract_case",
+      "category": "paraphrase_only",
+      "result": "pass",
+      "mismatches": [],
+      "statuses": {
+        "reconstructability": "supported",
+        "identifiable_basis": "supported",
+        "chronology_integrity": "supported",
+        "reasoning_traceability": "supported",
+        "sufficiency": "review_required"
+      },
+      "gate": "proceed",
+      "hashes": {
+        "record": "sha256:6a36068e6b48bf674d81e75074a419e44767ef817a068e36bfa5a8db15e8d21b",
+        "candidate_response": "sha256:ce49d456386a1ca0db9373a4115912e96a0c3aa339f93eca83c460cbf36b7823",
+        "expected": "sha256:2dae3b1c50d2e6ad46c9e49758cfdee00145f88e6abae429cb8fddf08634e8f0",
+        "result_normalized": "sha256:6876eecbb63292aea51e53cdcf6d4ab409572de921b302111292bb02113c5e03"
+      }
+    },
+    {
+      "id": "EC-025",
+      "kind": "contract_case",
+      "category": "undeclared_fields",
+      "result": "pass",
+      "mismatches": [],
+      "statuses": {
+        "reconstructability": "supported",
+        "identifiable_basis": "supported",
+        "chronology_integrity": "review_required",
+        "reasoning_traceability": "supported",
+        "sufficiency": "supported"
+      },
+      "gate": "proceed",
+      "hashes": {
+        "record": "sha256:6a36068e6b48bf674d81e75074a419e44767ef817a068e36bfa5a8db15e8d21b",
+        "candidate_response": "sha256:65721c1aac2b7a44fbd37490f396fba3af944ce1b410251f881fdabbb695a0dc",
+        "expected": "sha256:a5cf9e2ce02fa480ff835d7c06b48d14d126f8751a7138b835d0d79cc5567ad7",
+        "result_normalized": "sha256:e6e3b1d98e7b05f498a81d137f19310ba9e1f0370286f442379697491094efd7"
+      }
+    },
+    {
+      "id": "EC-026",
+      "kind": "contract_case",
+      "category": "deterministic_mode",
+      "result": "pass",
+      "mismatches": [],
+      "statuses": {
+        "reconstructability": "not_assessed",
+        "identifiable_basis": "not_assessed",
+        "chronology_integrity": "not_assessed",
+        "reasoning_traceability": "not_assessed",
+        "sufficiency": "not_assessed"
+      },
+      "gate": "proceed",
+      "hashes": {
+        "record": "sha256:bbc4cebc014f74acab900a55fd81bd0bf03ca0ee368646fc5551f9e422694307",
+        "candidate_response": null,
+        "expected": "sha256:ff69121f1de740ea03d949dbe8207891e68cd0833162175c1e1383caf90de97b",
+        "result_normalized": "sha256:efc44b67cc216197e8203ea5ea2e192f9dda4eff4dfc0df13f6e910bf49dcd39"
+      }
+    },
+    {
+      "id": "EC-027",
+      "kind": "contract_case",
+      "category": "v1_comparison",
+      "result": "pass",
+      "mismatches": [],
+      "statuses": {
+        "reconstructability": "supported",
+        "identifiable_basis": "supported",
+        "chronology_integrity": "supported",
+        "reasoning_traceability": "supported",
+        "sufficiency": "supported"
+      },
+      "gate": "proceed",
+      "hashes": {
+        "record": "sha256:6a36068e6b48bf674d81e75074a419e44767ef817a068e36bfa5a8db15e8d21b",
+        "candidate_response": "sha256:dbe5dfe09dbbc6d0fbe891cd18d7dc5d753f75eb18b7cb81ffd4604acc0a70eb",
+        "expected": "sha256:e7c7be9cc2e8c1ad4aa523a4317e2045d3eb03f70d14cb04056f18aa649645c5",
+        "result_normalized": "sha256:df7df2b9d380ef54f4f754a499c538584acb7b5be4d0f3c707cca3ded566d348"
+      }
+    },
+    {
+      "id": "EC-028",
+      "kind": "contract_case",
+      "category": "execution_mode",
+      "result": "pass",
+      "mismatches": [],
+      "statuses": {
+        "reconstructability": "not_assessed",
+        "identifiable_basis": "not_assessed",
+        "chronology_integrity": "not_assessed",
+        "reasoning_traceability": "not_assessed",
+        "sufficiency": "not_assessed"
+      },
+      "gate": "refuse",
+      "hashes": {
+        "record": "sha256:6a36068e6b48bf674d81e75074a419e44767ef817a068e36bfa5a8db15e8d21b",
+        "candidate_response": "sha256:dbe5dfe09dbbc6d0fbe891cd18d7dc5d753f75eb18b7cb81ffd4604acc0a70eb",
+        "expected": "sha256:9a76ae7010aeba2e80f5be16738d7ff498673997ddf99662596bebce3309db85",
+        "result_normalized": "sha256:671999ef6a1b92c0767fdef3a972fdc22fbc7dac6f64a109e7c017ceff292b67"
+      }
+    },
+    {
+      "id": "EC-029",
+      "kind": "contract_case",
+      "category": "intake_boundary",
+      "result": "pass",
+      "mismatches": [],
+      "statuses": {
+        "reconstructability": "not_assessed",
+        "identifiable_basis": "not_assessed",
+        "chronology_integrity": "not_assessed",
+        "reasoning_traceability": "not_assessed",
+        "sufficiency": "not_assessed"
+      },
+      "gate": "refuse",
+      "hashes": {
+        "record": "sha256:6a36068e6b48bf674d81e75074a419e44767ef817a068e36bfa5a8db15e8d21b",
+        "candidate_response": "sha256:dbe5dfe09dbbc6d0fbe891cd18d7dc5d753f75eb18b7cb81ffd4604acc0a70eb",
+        "expected": "sha256:f50454a088afa61935902adfa6bccb9da58c4d5f52b4bbacf9005ad8e310610d",
+        "result_normalized": "sha256:c10506f163b16c9937460c52d0416b8fa7b704fd7ce89b33233e04a429ae50d4"
+      }
+    },
+    {
+      "id": "EC-030",
+      "kind": "contract_case",
+      "category": "prohibited_output",
+      "result": "pass",
+      "mismatches": [],
+      "statuses": {
+        "reconstructability": "not_assessed",
+        "identifiable_basis": "not_assessed",
+        "chronology_integrity": "not_assessed",
+        "reasoning_traceability": "not_assessed",
+        "sufficiency": "not_assessed"
+      },
+      "gate": "refuse",
+      "hashes": {
+        "record": "sha256:6a36068e6b48bf674d81e75074a419e44767ef817a068e36bfa5a8db15e8d21b",
+        "candidate_response": "sha256:dbe5dfe09dbbc6d0fbe891cd18d7dc5d753f75eb18b7cb81ffd4604acc0a70eb",
+        "expected": "sha256:3d25c530f14443673629c4c0a0e01f664351e05ee3e1770c8ff3bc17b9f3b2a2",
+        "result_normalized": "sha256:24eae56fb88b556c89e07e9472d185d177dad64e54a6c9cb528ca8b4578df41a"
+      }
+    },
+    {
+      "id": "EC-031",
+      "kind": "contract_case",
+      "category": "duplicate_evidence",
+      "result": "pass",
+      "mismatches": [],
+      "statuses": {
+        "reconstructability": "review_required",
+        "identifiable_basis": "supported",
+        "chronology_integrity": "supported",
+        "reasoning_traceability": "supported",
+        "sufficiency": "supported"
+      },
+      "gate": "proceed",
+      "hashes": {
+        "record": "sha256:6a36068e6b48bf674d81e75074a419e44767ef817a068e36bfa5a8db15e8d21b",
+        "candidate_response": "sha256:ef1f4ba78ca516032093ed6788cf0ddb007c4de13388f84bc1da13c7636340d3",
+        "expected": "sha256:4c946d2da13cf4c378b0522f5380bbacc281a3d8de2418ab02dff838bd2e80c7",
+        "result_normalized": "sha256:9b80c5ae37606c02d4e74e298654aad6553197b2048c07c6e292d291e67c49c4"
+      }
+    },
+    {
+      "id": "BR-001",
+      "kind": "bridge_case",
+      "result": "pass",
+      "mismatches": [],
+      "hashes": {
+        "original_output": "sha256:13539cfd37ad4121aafeed8ac42a6177fe5cc31bd0f00a219e7c1fd73d446355",
+        "expected": "sha256:50c4f2b75ada2bc36807e4b82504ce84e1e4b573c6cd186db912040ad11c4e8c"
+      }
+    },
+    {
+      "id": "BR-002",
+      "kind": "bridge_case",
+      "result": "pass",
+      "mismatches": [],
+      "hashes": {
+        "original_output": "sha256:2714cf26827c7376c2e5a240064d90e2d99fdabba2cf5077c9387398ceaa9797",
+        "expected": "sha256:ac4851e15480f7f99a1bd85b57b311ae62715fa1d6a8be08fd67758a9fcfe1b7"
+      }
+    },
+    {
+      "id": "BR-003",
+      "kind": "bridge_case",
+      "result": "pass",
+      "mismatches": [],
+      "hashes": {
+        "original_output": "sha256:f68b63f03aa77849f3577158a3a7acee390ccdaf737a2516e676b4fa89857dbf",
+        "expected": "sha256:a7226179b44b876b013f547d56eb59535beede91ed9b8106711aa3b6b32b36af"
+      }
+    },
+    {
+      "id": "BR-004",
+      "kind": "bridge_case",
+      "result": "pass",
+      "mismatches": [],
+      "hashes": {
+        "original_output": "sha256:66da7ae350bcc30f06e2b677b0da5436309ebae245b8ed0402eb76570291463d",
+        "expected": "sha256:2adfbbf5a945f27f8a4407268273cdc9708c3512fe3ee5611d9586f558409c08"
+      }
+    },
+    {
+      "id": "BR-005",
+      "kind": "bridge_case",
+      "result": "pass",
+      "mismatches": [],
+      "hashes": {
+        "original_output": "sha256:98876fc1fd13a721d003437a3b7d17db068cf6d43119095be80136494f6b94e6",
+        "expected": "sha256:14fd763f6b584ef3941c07ae4ad5f049592a7d03f22776fee475d24d6374b7e3"
+      }
+    },
+    {
+      "id": "BR-006",
+      "kind": "bridge_case",
+      "result": "pass",
+      "mismatches": [],
+      "hashes": {
+        "original_output": "sha256:13539cfd37ad4121aafeed8ac42a6177fe5cc31bd0f00a219e7c1fd73d446355",
+        "expected": "sha256:6ff1b8ebb0621781d2bcd8c1e84f17a5f845bdddbbb0b95c7979b006178bd3cb"
+      }
+    },
+    {
+      "id": "BR-007",
+      "kind": "bridge_case",
+      "result": "pass",
+      "mismatches": [],
+      "hashes": {
+        "original_output": "sha256:13539cfd37ad4121aafeed8ac42a6177fe5cc31bd0f00a219e7c1fd73d446355",
+        "expected": "sha256:e6f5e886059cc22d01e0e978005790a93900269148892260bc857afeca41d431"
+      }
+    },
+    {
+      "id": "BR-008",
+      "kind": "bridge_case",
+      "result": "pass",
+      "mismatches": [],
+      "hashes": {
+        "original_output": "sha256:5093aa8827008ebbf65d22217c046e584e69eee80398cc80c4ebe989f9657fe5",
+        "expected": "sha256:9b4e4537c33d6179c0c7e802146329f0e952dff5ce29ffdedd7bdf56144c1487"
+      }
+    },
+    {
+      "id": "BR-009",
+      "kind": "bridge_case",
+      "result": "pass",
+      "mismatches": [],
+      "hashes": {
+        "original_output": "sha256:13bd789c5414ea1defc399bd12aaf8f5a3b90d06585e73b563958d05506b5f1d",
+        "expected": "sha256:77ee7daedf6dcd45029a18ea5add5e6b494dec529a5983cea62c7ae5256fdab7"
+      }
+    },
+    {
+      "id": "BR-010",
+      "kind": "bridge_case",
+      "result": "pass",
+      "mismatches": [],
+      "hashes": {
+        "original_output": "sha256:c63ca743f10076e66b30ea6d1e3136f753b3dc41e5d0787b7b393e0809d666c3",
+        "expected": "sha256:352037fa0b835c51d78f094f321ff58d5ab88871c4664853d76518b9ffa83c1c"
+      }
+    },
+    {
+      "id": "BR-011",
+      "kind": "bridge_case",
+      "result": "pass",
+      "mismatches": [],
+      "hashes": {
+        "original_output": "sha256:251cf8ea964eef54de53d9de2104018612ee7f093cb701e59cb7c77845f24dbe",
+        "expected": "sha256:739ef1072f7a5d6b397ff4c4efb5891ac7b3b673cd8c33c4903e22c3dc7f54b5"
+      }
+    },
+    {
+      "id": "BR-012",
+      "kind": "bridge_case",
+      "result": "pass",
+      "mismatches": [],
+      "hashes": {
+        "original_output": "sha256:dd6be42261d2815920690d34abe9a169fb0b88201f0159cd92d9dcbc9a34701c",
+        "expected": "sha256:ba104a11751609cdee3ba71d4c5dfb4476a4a513032eea152a8e2f826b092abe"
+      }
+    },
+    {
+      "id": "BR-013",
+      "kind": "bridge_case",
+      "result": "pass",
+      "mismatches": [],
+      "hashes": {
+        "original_output": "sha256:fa79059ec83d4ead44760d820bebf81e4817efa0dd21ec57327fd75350aec2b8",
+        "expected": "sha256:27c1192e015e8f4ae4028e49e4f2676dc072d4aa89cbb59bb7b7e476c5bb4588"
+      }
+    },
+    {
+      "id": "BR-014",
+      "kind": "bridge_case",
+      "result": "pass",
+      "mismatches": [],
+      "hashes": {
+        "original_output": "sha256:13539cfd37ad4121aafeed8ac42a6177fe5cc31bd0f00a219e7c1fd73d446355",
+        "expected": "sha256:db6ac7294a61134274c245f1d93b8b1934cbe729be1527a2a9d3a845989c736c"
+      }
+    },
+    {
+      "id": "BR-015",
+      "kind": "bridge_case",
+      "result": "pass",
+      "mismatches": [],
+      "hashes": {
+        "original_output": "sha256:14eaf10f818afe85672f1072c487c3acac65c966ccbbd3b22aa6ed1a1843ec92",
+        "expected": "sha256:fcc6fa6cb052b9601100368d6023f510735bcfdb363c05c46a8581cd2df1ead3"
+      }
+    },
+    {
+      "id": "BR-016",
+      "kind": "bridge_case",
+      "result": "pass",
+      "mismatches": [],
+      "hashes": {
+        "original_output": "sha256:5c6ad37dcdb769deee978e5c49eb62d85b5e49afdb3278bfb070b27381feed5f",
+        "expected": "sha256:4dd47d922f966d2485c3a2ef95c5cc7eaadb5360bbd630b9410c619651c55d26"
+      }
+    },
+    {
+      "id": "LR-001",
+      "kind": "long_record_case",
+      "result": "pass",
+      "mismatches": [],
+      "segments": 0,
+      "hashes": {
+        "record": "sha256:e82fa5d86591fb7ff914d7e74abe1c237c876d37926572d4af35103fbf54ee07",
+        "expected": "sha256:3e0b3a5b0bf551211472aafeebb771726c48831af5a991769ecc56da760dc6f8"
+      }
+    },
+    {
+      "id": "LR-002",
+      "kind": "long_record_case",
+      "result": "pass",
+      "mismatches": [],
+      "segments": 0,
+      "hashes": {
+        "record": "sha256:2c012f5aa0f268880c7498dfd0d8c0d28ebfc1324c3d7d09929967b099db02ee",
+        "expected": "sha256:7a82eb096374d85d8ab1c74f0f3c4dd9d91a274dd8801b5832a8689ad4fe565e"
+      }
+    },
+    {
+      "id": "LR-003",
+      "kind": "long_record_case",
+      "result": "pass",
+      "mismatches": [],
+      "segments": 2,
+      "hashes": {
+        "record": "sha256:e6b38e07becd94012dd13eeeb752261a706750bb4b6d70946894fc509e96c9ed",
+        "expected": "sha256:4cf802efd83e2bccf19da5ae2d7517a807adb604c74df450021fbbe9ba18b538"
+      }
+    },
+    {
+      "id": "LR-004",
+      "kind": "long_record_case",
+      "result": "pass",
+      "mismatches": [],
+      "segments": 2,
+      "hashes": {
+        "record": "sha256:711302fafe0d194ade2ccdd33be46064043852b728e430685dc52e56f6a6e2ce",
+        "expected": "sha256:08147f8b58e5c6b2a13f180f3ca94cd38bf26c32e0c77fa40281e9dc2d2f7d35"
+      }
+    },
+    {
+      "id": "LR-005",
+      "kind": "long_record_case",
+      "result": "pass",
+      "mismatches": [],
+      "segments": 2,
+      "hashes": {
+        "record": "sha256:479bf51117504b1e7bbd8eb3fcf0fa2483fe72ea0d553e6cafd8e951f220ec67",
+        "expected": "sha256:23cd93ff714a8f6965f40bc18ec50e3d7c67ffcd887a85538fa2f7bcccaf0194"
+      }
+    }
+  ],
+  "status_statement": "This package is a local engineering candidate and evaluation-preparation workbench. It does not establish independent accuracy, semantic-support validity, operational reliability, production readiness, security effectiveness, legal compliance, licensing readiness, or sale readiness.",
+  "content_guard_findings": 0
+}

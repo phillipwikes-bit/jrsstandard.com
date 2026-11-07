@@ -1,0 +1,7 @@
+{
+  "id": "BR-006",
+  "purpose": "v1 output for a record longer than 8000 characters (v1 evaluated truncated text)",
+  "record": "../../../engine-assurance-2026-10-10/fixtures/records/SAE-019.txt",
+  "scope_refused": false,
+  "v1_form": "raw_provider_text"
+}

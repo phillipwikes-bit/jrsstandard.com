@@ -1,0 +1,32 @@
+{
+  "status": "NON-CANONICAL local working manifest (local ID VL-003-MANIFEST)",
+  "generated": "2026-10-10",
+  "rule": "Each version is a separate boundary. No result produced under one version is evidence under another.",
+  "versions": {
+    "v1": {
+      "identity": "0.1.0-validation (historical Review Engine; git blob baebb512)",
+      "location": "research/engine-evidence-contract-2026-10-10/historical-reference/ (frozen copy); lib/engine-assurance/candidate-core.mjs (executable logic)",
+      "public_surface": "Retired. Public routes return 503 refusal stubs via api/_controlled-review.js.",
+      "migration": "Not migrated. v1 outputs are not v0.3 evidence."
+    },
+    "v0.1": {
+      "identity": "Controlled assurance layer 0.1.0-local (envelope jrs-review-run-envelope/0.1.0)",
+      "location": "lib/engine-assurance/, research/engine-assurance-2026-10-10/, tests/engine-assurance/",
+      "public_surface": "None. Local only.",
+      "migration": "Not migrated. v0.1 replay results are not v0.3 evidence."
+    },
+    "v0.2": {
+      "identity": "jrs-engine-local-0.2.0 (offset-cited evidence contract)",
+      "location": "lib/engine-evidence-contract/, research/engine-evidence-contract-2026-10-10/, tests/engine-evidence-contract/",
+      "public_surface": "None. Local only.",
+      "migration": "Not migrated. v0.2 findings are not v0.3 evidence; the workbench shows them side by side for comparison only."
+    },
+    "v0.3": {
+      "identity": "jrs-engine-local-0.3.0-evidence-graph (quote-only contract; compiler 0.3.0-local; graph jrs-evidence-graph/0.3.0)",
+      "location": "lib/engine-evidence-graph/, research/evidence-graph-compiler-2026-10-10/, tests/engine-evidence-graph/, tools/engine-evidence-graph-replay.mjs",
+      "public_surface": "None. Local only. Uncommitted at the time of this manifest.",
+      "migration": "Origin version. Accepts no prior-version results as input."
+    }
+  },
+  "unchanged_by_v0.3": ["git blob baebb512", "lib/engine-assurance/", "lib/engine-evidence-contract/", "api/ (503 refusal stubs)", "NO_GO_NOT_VERIFIED", "B-018 open"]
+}

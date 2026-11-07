@@ -1,0 +1,1 @@
+{"conditions": {"basis_identification": {"status": "pass", "note": "n"}, "reasoning_traceability": {"status": "pass", "note": "n"}, "cold_reviewer_clarity": {"status": "pass", "note": "n"}, "accountability_support": {"status": "pass", "note": "n"}}}

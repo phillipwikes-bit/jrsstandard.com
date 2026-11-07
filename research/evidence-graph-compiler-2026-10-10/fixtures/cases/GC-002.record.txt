@@ -1,0 +1,14 @@
+SYNTHETIC ENGINEERING FIXTURE. Fictional content; no real organization, person or record.
+Record type: Supplier access exception draft
+Exception ID: SAE-2026-0105
+Supplier: Harrowgate Freight Services Ltd (fictional)
+Access requested: Read-only access to the shipment tracking reports in the logistics portal (LOG-RPT-04).
+Requested by: Logistics Systems Manager, 2026-03-02.
+Decision basis: Risk assessment RA-2026-0311, completed 2026-03-05, found that the reports contain shipment reference numbers and delivery dates only. The supplier needs them to reconcile its invoices under contract CTR-2025-118 section 4.
+Residual risk: low, per RA-2026-0311 section 3.
+Compensating controls: Access is limited to the LOG-RPT-04 report view; sessions require multi-factor authentication; access logs are reviewed weekly by the Logistics Systems Manager, as set out in RA-2026-0311 section 5.
+Authority: Approved by senior management in line with policy.
+Decision: Exception granted for 90 days.
+Expiry and renewal: Expires 2026-06-07. Renewal requires a new request with an updated risk assessment.
+Revocation: The Logistics Systems Manager will revoke access on 2026-06-07 unless a renewal is approved before that date.
+Chronology: 2026-03-02 request received; 2026-03-05 risk assessment RA-2026-0311 completed; 2026-03-09 board decision recorded.

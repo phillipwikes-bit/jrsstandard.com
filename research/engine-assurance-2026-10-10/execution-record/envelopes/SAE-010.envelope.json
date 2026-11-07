@@ -1,0 +1,176 @@
+{
+  "schema_version": "jrs-review-run-envelope/0.1.0",
+  "engine_version": "0.1.0-validation",
+  "codebook_version": "1.0",
+  "assurance_layer_version": "0.1.0-local",
+  "condition_vocabulary": "review_engine_keys",
+  "fixture_id": "SAE-010",
+  "fixture_content_hash": "sha256:3924b705a4259d6d9450e5e547153741c173893bae1941a6a66120f4415b0149",
+  "run_id": "run_a91009ea2d62834577be6026",
+  "run_timestamp": "2026-10-10T05:53:30.932Z",
+  "execution_mode": "local_mocked",
+  "provider_mode": "mocked",
+  "provider_invocations": 0,
+  "source_identity_status": "candidate_core_matches_git_history",
+  "source_identity": {
+    "candidate_source_path": "api/v1/review-engine.js",
+    "candidate_source_commit": "0177c5184182b5b1f51ff18c80da29f668996e49",
+    "candidate_source_blob": "baebb512e5f296e1b41da138b7868aae4b6098fc",
+    "repository_head": "97087e915245a15808f121e2263a7385a6bf5a04",
+    "working_tree": "modified_uncommitted"
+  },
+  "test_or_demo_status": "synthetic_engineering_test",
+  "release_status": "NO_GO_NOT_VERIFIED",
+  "limitations": [
+    {
+      "id": "L-01",
+      "statement": "Source-span verification establishes record presence only: the quoted text occurs in the submitted record at the stated offsets. It does not establish contextual or semantic validity, that the passage supports this finding, or that the underlying decision was justified."
+    },
+    {
+      "id": "L-02",
+      "statement": "This run used a synthetic, engineering-authored fixture. It is not independent, real-world, practitioner, buyer or holdout evidence, and it cannot establish accuracy."
+    },
+    {
+      "id": "L-03",
+      "statement": "The candidate has not been independently evaluated. Nothing in this run establishes accuracy, validation, legal compliance, security effectiveness, or production readiness."
+    },
+    {
+      "id": "L-04",
+      "statement": "Condition identifiers are the Review Engine's own keys. The Engine-to-Codebook mapping is NOT ESTABLISHED, so no finding is a Codebook condition finding."
+    },
+    {
+      "id": "L-05",
+      "statement": "Human review is required for every output. This package does not decide whether the underlying decision was correct, justified, fair, approved, or lawful, and it produces no overall pass."
+    },
+    {
+      "id": "L-06",
+      "statement": "Candidate output came from a fixed, engineering-authored mock provider response. Model behaviour was not exercised; this run tests how candidate output is handled, not its quality."
+    },
+    {
+      "id": "L-07",
+      "statement": "Record controls are lexical pattern detectors that route passages to human review. They make no statement about the person who wrote the record."
+    }
+  ],
+  "human_review_required": true,
+  "gate": {
+    "decision": "escalate",
+    "trigger_codes": [
+      "incomplete_record"
+    ]
+  },
+  "findings": {
+    "condition_findings": [
+      {
+        "condition_id": "basis_identification",
+        "condition_label": "Basis Identification (Engine key)",
+        "outcome": "not_assessed",
+        "outcome_basis": "pre_analysis_escalation",
+        "candidate_status": "none",
+        "explanation": "Not assessed: the record was escalated before analysis. See refusals.",
+        "explanation_content_class": "no_record_content",
+        "source_spans": [],
+        "evidence_classification": "no_verified_record_support",
+        "limitation": "Source-span verification establishes record presence only: the quoted text occurs in the submitted record at the stated offsets. It does not establish contextual or semantic validity, that the passage supports this finding, or that the underlying decision was justified. Condition identifiers are the Engine's keys, not Codebook conditions.",
+        "what_would_change_this_finding": "This condition would be assessed only after the refusal, escalation or execution boundary listed in refusals is resolved."
+      },
+      {
+        "condition_id": "reasoning_traceability",
+        "condition_label": "Decision-Process Traceability (Engine key)",
+        "outcome": "not_assessed",
+        "outcome_basis": "pre_analysis_escalation",
+        "candidate_status": "none",
+        "explanation": "Not assessed: the record was escalated before analysis. See refusals.",
+        "explanation_content_class": "no_record_content",
+        "source_spans": [],
+        "evidence_classification": "no_verified_record_support",
+        "limitation": "Source-span verification establishes record presence only: the quoted text occurs in the submitted record at the stated offsets. It does not establish contextual or semantic validity, that the passage supports this finding, or that the underlying decision was justified. Condition identifiers are the Engine's keys, not Codebook conditions.",
+        "what_would_change_this_finding": "This condition would be assessed only after the refusal, escalation or execution boundary listed in refusals is resolved."
+      },
+      {
+        "condition_id": "cold_reviewer_clarity",
+        "condition_label": "Reconstructability (Engine key)",
+        "outcome": "not_assessed",
+        "outcome_basis": "pre_analysis_escalation",
+        "candidate_status": "none",
+        "explanation": "Not assessed: the record was escalated before analysis. See refusals.",
+        "explanation_content_class": "no_record_content",
+        "source_spans": [],
+        "evidence_classification": "no_verified_record_support",
+        "limitation": "Source-span verification establishes record presence only: the quoted text occurs in the submitted record at the stated offsets. It does not establish contextual or semantic validity, that the passage supports this finding, or that the underlying decision was justified. Condition identifiers are the Engine's keys, not Codebook conditions.",
+        "what_would_change_this_finding": "This condition would be assessed only after the refusal, escalation or execution boundary listed in refusals is resolved."
+      },
+      {
+        "condition_id": "accountability_support",
+        "condition_label": "Evidentiary Sufficiency (Engine key)",
+        "outcome": "not_assessed",
+        "outcome_basis": "pre_analysis_escalation",
+        "candidate_status": "none",
+        "explanation": "Not assessed: the record was escalated before analysis. See refusals.",
+        "explanation_content_class": "no_record_content",
+        "source_spans": [],
+        "evidence_classification": "no_verified_record_support",
+        "limitation": "Source-span verification establishes record presence only: the quoted text occurs in the submitted record at the stated offsets. It does not establish contextual or semantic validity, that the passage supports this finding, or that the underlying decision was justified. Condition identifiers are the Engine's keys, not Codebook conditions.",
+        "what_would_change_this_finding": "This condition would be assessed only after the refusal, escalation or execution boundary listed in refusals is resolved."
+      },
+      {
+        "condition_id": "temporal_reconstructability",
+        "condition_label": "Chronology (Engine key)",
+        "outcome": "not_assessed",
+        "outcome_basis": "pre_analysis_escalation",
+        "candidate_status": "none",
+        "explanation": "Not assessed: the record was escalated before analysis. See refusals.",
+        "explanation_content_class": "no_record_content",
+        "source_spans": [],
+        "evidence_classification": "no_verified_record_support",
+        "limitation": "Source-span verification establishes record presence only: the quoted text occurs in the submitted record at the stated offsets. It does not establish contextual or semantic validity, that the passage supports this finding, or that the underlying decision was justified. Condition identifiers are the Engine's keys, not Codebook conditions.",
+        "what_would_change_this_finding": "This condition would be assessed only after the refusal, escalation or execution boundary listed in refusals is resolved."
+      }
+    ],
+    "record_controls": []
+  },
+  "refusals": [
+    {
+      "code": "incomplete_record",
+      "stage": "pre_analysis",
+      "disposition": "escalate",
+      "category": "completeness",
+      "boundary": "The record contains placeholder text, so it is not a completed draft. A human should confirm the final content before review. No assessment of the record, its author, or the underlying decision was made.",
+      "location": {
+        "offset_unit": "utf16_code_unit",
+        "start": 687,
+        "end": 692,
+        "matched_text": "[TBD]"
+      }
+    }
+  ],
+  "manifest_reference": {
+    "produced": false,
+    "reason": "No Manifest is produced unless the candidate ran and no condition was downgraded."
+  },
+  "artifact_hashes": {
+    "record": "sha256:941316a27b0b4a80960760449de8f202b3d84d541f8cfd1c13d500ab8950d426",
+    "request": "sha256:9442d762e79fd43bb1bc2a77630856c2a9eef5afaf36438294a6136b2433489d",
+    "normalized_output": "sha256:9b8c2c916ec6404f8962b78e7f48b892ad3f872f8c6837e27fc1b3ce5eeeb936",
+    "code": {
+      "lib/engine-assurance/candidate-core.mjs": "sha256:cb0e1df14aea31c5a58809b36e0f91d8c951c35f75c75d7916360041b476f45d",
+      "lib/engine-assurance/cognitive-controls.mjs": "sha256:b038932dd14e7c926ede70816051badb91989e88f3f185ced08b59f718053cf4",
+      "lib/engine-assurance/content-guard.mjs": "sha256:8f0129220b4ed7384b53bb8b6b5673a7fb7070f8c88c128aaac636a4961055a4",
+      "lib/engine-assurance/envelope.mjs": "sha256:ea5d1a0d3d0ceb7a9a8f08e06643e547614d1ef8839310a88cdb80698eb5f39f",
+      "lib/engine-assurance/network-guard.mjs": "sha256:15dc96038b0f7117d5628158c6fb24283704b06ef815f1f7e0bbc7d50beef093",
+      "lib/engine-assurance/provenance.mjs": "sha256:16d6412b866c7a204a2372b7dea2005f6813bddf7c6df36a89bc44f34da9e017",
+      "lib/engine-assurance/run.mjs": "sha256:1327fc6ee5377959078a029c1800b19be3476d87924386ef8e17b8acf13975c2",
+      "lib/engine-assurance/scope-gate.mjs": "sha256:48bba831c522e5d3bedf21ec07e8aa81af0d25a0b41f5f73af9ea125d0d56535",
+      "lib/engine-assurance/span-verify.mjs": "sha256:7262e2448096833744cfe37b44ebbac42ffbdd38c872650e7b1a5f9461892c96",
+      "lib/engine-assurance/versions.mjs": "sha256:c3c48bf6a8e4983625742501ef69b9abbcb90282bc6a20b68284505a7796b940",
+      "api/_manifest/build.js": "sha256:e4e71b4f10d88d9364c2f8a9974143fabf29743d9ae96ff1d58e27b207dfdcae",
+      "api/_manifest/from-engine.js": "sha256:48640d7447ea41bb0b5ec4c74d62ded15465bff78b9441ef07fb9191e71d4091",
+      "api/_manifest/canonicalize.js": "sha256:ee060fbdfba9c6678bd6f5ac98c422a18db8f188984ad01867bbc6de378f732c",
+      "api/_manifest/hash.js": "sha256:183765176b1941c39e90c02bd052af97b5c1bde242900e8c4c1d876a27e73b53",
+      "tools/validate-manifest.js": "sha256:816a07af8936afc2ca084d01a51d819bec5dd55780b8b14b47d7d6eb6434e9f0",
+      "tools/engine-assurance-replay.mjs": "sha256:0495c82799cc47b8d8f65bbef335d08ebeb3cfc3c56ff52de0e09c131ebbafeb",
+      "schemas/jrs-decision-reconstruction-manifest.schema.json": "sha256:214b4b6f67fcc6ec7426c5005bf90a16d959ef2ec866c81448f95581fe4d5ed8",
+      "research/engine-assurance-2026-10-10/contracts/review-run-envelope.schema.json": "sha256:c3dce8796eb874a08138a9d0037c6d78a77c83840db33fe2b83be72b8c51a6c9"
+    },
+    "provider_response": "sha256:6a19f6b739ba48605d28629375334151fff273db30b7c8551020cd665f3aa87f"
+  }
+}

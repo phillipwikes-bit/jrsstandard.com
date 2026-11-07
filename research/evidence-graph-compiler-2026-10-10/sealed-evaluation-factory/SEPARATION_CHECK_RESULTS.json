@@ -1,0 +1,112 @@
+{
+  "generated": "2026-10-10",
+  "statement": "No package here is authorised. The best possible result is not_authorized_to_execute.",
+  "registry_problems": [],
+  "results": {
+    "P-00-structure-with-placeholder-authorities": {
+      "decision": "refused",
+      "reasons": [
+        "missing_owner_authorization",
+        "placeholder_adjudication_authority",
+        "label_independence_not_supported"
+      ]
+    },
+    "P-01-synthetic-as-holdout": {
+      "decision": "refused",
+      "reasons": [
+        "missing_owner_authorization",
+        "placeholder_adjudication_authority",
+        "synthetic_presented_as_holdout",
+        "label_independence_not_supported"
+      ]
+    },
+    "P-02-development-overlap": {
+      "decision": "refused",
+      "reasons": [
+        "missing_owner_authorization",
+        "placeholder_adjudication_authority",
+        "development_sealed_overlap",
+        "label_independence_not_supported"
+      ]
+    },
+    "P-03-same-process-label-claimed-independent": {
+      "decision": "refused",
+      "reasons": [
+        "missing_owner_authorization",
+        "placeholder_adjudication_authority",
+        "label_independence_not_supported"
+      ]
+    },
+    "P-04-raw-records-in-tracked-directory": {
+      "decision": "refused",
+      "reasons": [
+        "missing_owner_authorization",
+        "placeholder_adjudication_authority",
+        "label_independence_not_supported",
+        "raw_records_in_tracked_directory"
+      ]
+    },
+    "P-05-missing-version-identity": {
+      "decision": "refused",
+      "reasons": [
+        "missing_version_identity",
+        "missing_owner_authorization",
+        "placeholder_adjudication_authority",
+        "label_independence_not_supported"
+      ]
+    },
+    "P-06-missing-codebook-hash": {
+      "decision": "refused",
+      "reasons": [
+        "missing_codebook_hash",
+        "missing_owner_authorization",
+        "placeholder_adjudication_authority",
+        "label_independence_not_supported"
+      ]
+    },
+    "P-07-missing-owner-authorization": {
+      "decision": "refused",
+      "reasons": [
+        "missing_owner_authorization",
+        "placeholder_adjudication_authority",
+        "label_independence_not_supported"
+      ]
+    },
+    "P-08-unapproved-data-classification": {
+      "decision": "refused",
+      "reasons": [
+        "missing_owner_authorization",
+        "unapproved_data_classification",
+        "placeholder_adjudication_authority",
+        "label_independence_not_supported"
+      ]
+    },
+    "P-09-placeholder-adjudicator": {
+      "decision": "refused",
+      "reasons": [
+        "missing_owner_authorization",
+        "placeholder_adjudication_authority",
+        "label_independence_not_supported"
+      ]
+    },
+    "P-10-changed-after-freeze": {
+      "decision": "refused",
+      "reasons": [
+        "missing_owner_authorization",
+        "placeholder_adjudication_authority",
+        "label_independence_not_supported",
+        "component_changed_after_freeze"
+      ]
+    },
+    "P-11-completion-claimed-from-template": {
+      "decision": "refused",
+      "reasons": [
+        "missing_owner_authorization",
+        "placeholder_adjudication_authority",
+        "label_independence_not_supported",
+        "status_claim_not_permitted",
+        "template_only_material"
+      ]
+    }
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "case_id": "GC-008",
+  "label_status": "engineering_authored_expected_result_not_adjudicated",
+  "execution_mode": "local_mocked",
+  "gate_decision": "refuse",
+  "record_instruction_risk": "not_detected",
+  "candidate_valid": null,
+  "statuses": {
+    "reconstructability": "not_assessed",
+    "identifiable_basis": "not_assessed",
+    "chronology_integrity": "not_assessed",
+    "reasoning_traceability": "not_assessed",
+    "sufficiency": "not_assessed"
+  },
+  "reasons_include": {},
+  "conflict_kinds": [],
+  "refusal_codes": [
+    "excluded_domain_content"
+  ],
+  "quote_statuses": {},
+  "cc_defects": null
+}

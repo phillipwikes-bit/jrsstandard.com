@@ -1,0 +1,205 @@
+{
+  "generated": "2026-10-10T00:00:00Z",
+  "probes": [
+    "span.correct_offsets_verify",
+    "span.shifted_offsets_rejected",
+    "span.fabricated_rejected",
+    "downgrade.failed_evidence",
+    "downgrade.no_evidence",
+    "downgrade.run_path",
+    "downgrade.instruction_risk",
+    "limitation.presence_only_text",
+    "limitation.semantic_flag",
+    "guard.legal_claim",
+    "guard.rightness_claim",
+    "guard.candidate_claim_downgraded",
+    "guard.remediation_neutral",
+    "guard.neutrality_check_rejects_advice",
+    "guard.no_remediation_withheld_and_cc03_present",
+    "version.contract_literal",
+    "version.intake_refuses_v1_label",
+    "version.validator_rejects_tamper",
+    "validator.rejects_supported_without_evidence",
+    "bridge.never_favourable",
+    "long_record.refused",
+    "json.duplicate_key_rejected"
+  ],
+  "mutations": [
+    {
+      "mutation": "M-01",
+      "description": "exact-span verification disabled",
+      "file": "lib/engine-evidence-contract/evidence.mjs",
+      "killed": true,
+      "failing_probes": [
+        "span.shifted_offsets_rejected",
+        "span.fabricated_rejected",
+        "downgrade.failed_evidence",
+        "downgrade.run_path"
+      ]
+    },
+    {
+      "mutation": "M-02",
+      "description": "exact-span verification weakened to substring presence",
+      "file": "lib/engine-evidence-contract/evidence.mjs",
+      "killed": true,
+      "failing_probes": [
+        "span.shifted_offsets_rejected",
+        "downgrade.failed_evidence"
+      ]
+    },
+    {
+      "mutation": "M-03",
+      "description": "status downgrade removed",
+      "file": "lib/engine-evidence-contract/validator.mjs",
+      "killed": true,
+      "failing_probes": [
+        "downgrade.failed_evidence",
+        "downgrade.no_evidence",
+        "downgrade.run_path",
+        "guard.candidate_claim_downgraded"
+      ]
+    },
+    {
+      "mutation": "M-04",
+      "description": "instruction-risk downgrade removed",
+      "file": "lib/engine-evidence-contract/run.mjs",
+      "killed": true,
+      "failing_probes": [
+        "downgrade.instruction_risk"
+      ]
+    },
+    {
+      "mutation": "M-05",
+      "description": "source-presence limitation weakened",
+      "file": "lib/engine-evidence-contract/contract.mjs",
+      "killed": true,
+      "failing_probes": [
+        "limitation.presence_only_text"
+      ]
+    },
+    {
+      "mutation": "M-06",
+      "description": "semantic_support_not_verified flag dropped",
+      "file": "lib/engine-evidence-contract/evidence.mjs",
+      "killed": true,
+      "failing_probes": [
+        "downgrade.run_path",
+        "downgrade.instruction_risk",
+        "limitation.presence_only_text",
+        "limitation.semantic_flag",
+        "guard.candidate_claim_downgraded",
+        "version.contract_literal",
+        "version.validator_rejects_tamper",
+        "validator.rejects_supported_without_evidence"
+      ]
+    },
+    {
+      "mutation": "M-07",
+      "description": "legal-conclusion guard disabled",
+      "file": "lib/engine-evidence-contract/claims.mjs",
+      "killed": true,
+      "failing_probes": [
+        "guard.legal_claim",
+        "guard.candidate_claim_downgraded"
+      ]
+    },
+    {
+      "mutation": "M-08",
+      "description": "substantive-rightness guard disabled",
+      "file": "lib/engine-evidence-contract/claims.mjs",
+      "killed": true,
+      "failing_probes": [
+        "guard.rightness_claim"
+      ]
+    },
+    {
+      "mutation": "M-09",
+      "description": "remediation drifts into advice and the neutrality guard is disabled",
+      "file": "lib/engine-evidence-contract/remediation.mjs",
+      "killed": true,
+      "failing_probes": [
+        "guard.neutrality_check_rejects_advice"
+      ]
+    },
+    {
+      "mutation": "M-17",
+      "description": "remediation template drifts into a recommendation (guard left active)",
+      "file": "lib/engine-evidence-contract/remediation.mjs",
+      "killed": true,
+      "failing_probes": [
+        "guard.remediation_neutral",
+        "guard.no_remediation_withheld_and_cc03_present"
+      ]
+    },
+    {
+      "mutation": "M-10",
+      "description": "contract version identity changed",
+      "file": "lib/engine-evidence-contract/contract.mjs",
+      "killed": true,
+      "failing_probes": [
+        "downgrade.failed_evidence",
+        "downgrade.no_evidence",
+        "downgrade.run_path",
+        "downgrade.instruction_risk",
+        "guard.candidate_claim_downgraded",
+        "version.contract_literal",
+        "version.validator_rejects_tamper",
+        "validator.rejects_supported_without_evidence"
+      ]
+    },
+    {
+      "mutation": "M-11",
+      "description": "intake version check disabled",
+      "file": "lib/engine-evidence-contract/boundary.mjs",
+      "killed": true,
+      "failing_probes": [
+        "version.intake_refuses_v1_label"
+      ]
+    },
+    {
+      "mutation": "M-12",
+      "description": "result validator RV-01 version check disabled",
+      "file": "lib/engine-evidence-contract/result-validate.mjs",
+      "killed": true,
+      "failing_probes": [
+        "version.validator_rejects_tamper"
+      ]
+    },
+    {
+      "mutation": "M-13",
+      "description": "result validator RV-05 disabled",
+      "file": "lib/engine-evidence-contract/result-validate.mjs",
+      "killed": true,
+      "failing_probes": [
+        "validator.rejects_supported_without_evidence"
+      ]
+    },
+    {
+      "mutation": "M-14",
+      "description": "bridge migrates v1 statuses",
+      "file": "lib/engine-evidence-contract/bridge.mjs",
+      "killed": true,
+      "failing_probes": [
+        "bridge.never_favourable"
+      ]
+    },
+    {
+      "mutation": "M-15",
+      "description": "long-record refusal removed",
+      "file": "lib/engine-evidence-contract/boundary.mjs",
+      "killed": true,
+      "failing_probes": [
+        "long_record.refused"
+      ]
+    },
+    {
+      "mutation": "M-16",
+      "description": "duplicate-key rejection removed",
+      "file": "lib/engine-evidence-contract/strict-json.mjs",
+      "killed": true,
+      "failing_probes": [
+        "json.duplicate_key_rejected"
+      ]
+    }
+  ]
+}

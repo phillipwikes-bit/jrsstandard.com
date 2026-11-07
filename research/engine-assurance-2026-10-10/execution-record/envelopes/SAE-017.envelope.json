@@ -1,0 +1,237 @@
+{
+  "schema_version": "jrs-review-run-envelope/0.1.0",
+  "engine_version": "0.1.0-validation",
+  "codebook_version": "1.0",
+  "assurance_layer_version": "0.1.0-local",
+  "condition_vocabulary": "review_engine_keys",
+  "fixture_id": "SAE-017",
+  "fixture_content_hash": "sha256:7ae3dfa097fce8bfd8c3ccbe80806d6a5994b227451e3964bcd5d8f12a5ce891",
+  "run_id": "run_f1d999b65f5fba98de6f7fe9",
+  "run_timestamp": "2026-10-10T05:53:30.986Z",
+  "execution_mode": "local_mocked",
+  "provider_mode": "mocked",
+  "provider_invocations": 1,
+  "source_identity_status": "candidate_core_matches_git_history",
+  "source_identity": {
+    "candidate_source_path": "api/v1/review-engine.js",
+    "candidate_source_commit": "0177c5184182b5b1f51ff18c80da29f668996e49",
+    "candidate_source_blob": "baebb512e5f296e1b41da138b7868aae4b6098fc",
+    "repository_head": "97087e915245a15808f121e2263a7385a6bf5a04",
+    "working_tree": "modified_uncommitted"
+  },
+  "test_or_demo_status": "synthetic_engineering_test",
+  "release_status": "NO_GO_NOT_VERIFIED",
+  "limitations": [
+    {
+      "id": "L-01",
+      "statement": "Source-span verification establishes record presence only: the quoted text occurs in the submitted record at the stated offsets. It does not establish contextual or semantic validity, that the passage supports this finding, or that the underlying decision was justified."
+    },
+    {
+      "id": "L-02",
+      "statement": "This run used a synthetic, engineering-authored fixture. It is not independent, real-world, practitioner, buyer or holdout evidence, and it cannot establish accuracy."
+    },
+    {
+      "id": "L-03",
+      "statement": "The candidate has not been independently evaluated. Nothing in this run establishes accuracy, validation, legal compliance, security effectiveness, or production readiness."
+    },
+    {
+      "id": "L-04",
+      "statement": "Condition identifiers are the Review Engine's own keys. The Engine-to-Codebook mapping is NOT ESTABLISHED, so no finding is a Codebook condition finding."
+    },
+    {
+      "id": "L-05",
+      "statement": "Human review is required for every output. This package does not decide whether the underlying decision was correct, justified, fair, approved, or lawful, and it produces no overall pass."
+    },
+    {
+      "id": "L-06",
+      "statement": "Candidate output came from a fixed, engineering-authored mock provider response. Model behaviour was not exercised; this run tests how candidate output is handled, not its quality."
+    },
+    {
+      "id": "L-07",
+      "statement": "Record controls are lexical pattern detectors that route passages to human review. They make no statement about the person who wrote the record."
+    }
+  ],
+  "human_review_required": true,
+  "gate": {
+    "decision": "proceed",
+    "trigger_codes": []
+  },
+  "findings": {
+    "condition_findings": [
+      {
+        "condition_id": "basis_identification",
+        "condition_label": "Basis Identification (Engine key)",
+        "outcome": "supported",
+        "outcome_basis": "candidate_status_with_verified_span",
+        "candidate_status": "pass",
+        "explanation": "The decision basis names the risk assessment and its finding.",
+        "explanation_content_class": "derived_record_content",
+        "source_spans": [
+          {
+            "quote": "Decision basis: Risk assessment RA-2026-0311, completed 2026-03-05, found that the reports contain shipment reference numbers and delivery dates only",
+            "start": 376,
+            "end": 525,
+            "offset_unit": "utf16_code_unit",
+            "occurrence_count": 1,
+            "verification": "exact_match_record_presence_only"
+          }
+        ],
+        "evidence_classification": "contains_record",
+        "limitation": "Source-span verification establishes record presence only: the quoted text occurs in the submitted record at the stated offsets. It does not establish contextual or semantic validity, that the passage supports this finding, or that the underlying decision was justified. Condition identifiers are the Engine's keys, not Codebook conditions.",
+        "what_would_change_this_finding": "This would change if the quoted passage were removed or altered, or if a human reviewer finds in context that it does not address Basis Identification (Engine key)."
+      },
+      {
+        "condition_id": "reasoning_traceability",
+        "condition_label": "Decision-Process Traceability (Engine key)",
+        "outcome": "supported",
+        "outcome_basis": "candidate_status_with_verified_span",
+        "candidate_status": "pass",
+        "explanation": "The record links the supplier need to a named contract clause.",
+        "explanation_content_class": "derived_record_content",
+        "source_spans": [
+          {
+            "quote": "The supplier needs them to reconcile its invoices under contract CTR-2025-118 section 4",
+            "start": 527,
+            "end": 614,
+            "offset_unit": "utf16_code_unit",
+            "occurrence_count": 1,
+            "verification": "exact_match_record_presence_only"
+          }
+        ],
+        "evidence_classification": "contains_record",
+        "limitation": "Source-span verification establishes record presence only: the quoted text occurs in the submitted record at the stated offsets. It does not establish contextual or semantic validity, that the passage supports this finding, or that the underlying decision was justified. Condition identifiers are the Engine's keys, not Codebook conditions.",
+        "what_would_change_this_finding": "This would change if the quoted passage were removed or altered, or if a human reviewer finds in context that it does not address Decision-Process Traceability (Engine key)."
+      },
+      {
+        "condition_id": "cold_reviewer_clarity",
+        "condition_label": "Reconstructability (Engine key)",
+        "outcome": "supported",
+        "outcome_basis": "candidate_status_with_verified_span",
+        "candidate_status": "pass",
+        "explanation": "The access requested is described specifically.",
+        "explanation_content_class": "derived_record_content",
+        "source_spans": [
+          {
+            "quote": "Access requested: Read-only access to the shipment tracking reports in the logistics portal (LOG-RPT-04).",
+            "start": 217,
+            "end": 322,
+            "offset_unit": "utf16_code_unit",
+            "occurrence_count": 1,
+            "verification": "exact_match_record_presence_only"
+          }
+        ],
+        "evidence_classification": "contains_record",
+        "limitation": "Source-span verification establishes record presence only: the quoted text occurs in the submitted record at the stated offsets. It does not establish contextual or semantic validity, that the passage supports this finding, or that the underlying decision was justified. Condition identifiers are the Engine's keys, not Codebook conditions.",
+        "what_would_change_this_finding": "This would change if the quoted passage were removed or altered, or if a human reviewer finds in context that it does not address Reconstructability (Engine key)."
+      },
+      {
+        "condition_id": "accountability_support",
+        "condition_label": "Evidentiary Sufficiency (Engine key)",
+        "outcome": "review_required",
+        "outcome_basis": "candidate_status_review",
+        "candidate_status": "review",
+        "explanation": "A corrective action is stated without an owner or date.",
+        "explanation_content_class": "derived_record_content",
+        "source_spans": [
+          {
+            "quote": "Corrective action: Gaps in supplier session logging will be remediated.",
+            "start": 1127,
+            "end": 1198,
+            "offset_unit": "utf16_code_unit",
+            "occurrence_count": 1,
+            "verification": "exact_match_record_presence_only"
+          }
+        ],
+        "evidence_classification": "contains_record",
+        "limitation": "Source-span verification establishes record presence only: the quoted text occurs in the submitted record at the stated offsets. It does not establish contextual or semantic validity, that the passage supports this finding, or that the underlying decision was justified. Condition identifiers are the Engine's keys, not Codebook conditions.",
+        "what_would_change_this_finding": "A human reviewer decides this condition. A candidate finding anchored to exact record text, with a note, would be needed before supported or gap could be reported."
+      },
+      {
+        "condition_id": "temporal_reconstructability",
+        "condition_label": "Chronology (Engine key)",
+        "outcome": "supported",
+        "outcome_basis": "candidate_status_with_verified_span",
+        "candidate_status": "pass",
+        "explanation": "The chronology lists dated steps.",
+        "explanation_content_class": "derived_record_content",
+        "source_spans": [
+          {
+            "quote": "Chronology: 2026-03-02 request received; 2026-03-05 risk assessment RA-2026-0311 completed; 2026-03-09 board decision recorded.",
+            "start": 1199,
+            "end": 1326,
+            "offset_unit": "utf16_code_unit",
+            "occurrence_count": 1,
+            "verification": "exact_match_record_presence_only"
+          }
+        ],
+        "evidence_classification": "contains_record",
+        "limitation": "Source-span verification establishes record presence only: the quoted text occurs in the submitted record at the stated offsets. It does not establish contextual or semantic validity, that the passage supports this finding, or that the underlying decision was justified. Condition identifiers are the Engine's keys, not Codebook conditions.",
+        "what_would_change_this_finding": "This would change if the quoted passage were removed or altered, or if a human reviewer finds in context that it does not address Chronology (Engine key)."
+      }
+    ],
+    "record_controls": [
+      {
+        "control_id": "CC-06",
+        "control_name": "Corrective action without owner or deadline",
+        "scope": "Record control only. This output describes the documentation and makes no statement about the person who wrote it.",
+        "detect": {
+          "pattern_id": "action_missing_owner_and_deadline",
+          "summary": "1 corrective or follow-up action(s) lack a documented owner and deadline or follow-up date in the same passage.",
+          "spans": [
+            {
+              "quote": "Corrective action: Gaps in supplier session logging will be remediated.",
+              "start": 1127,
+              "end": 1198,
+              "offset_unit": "utf16_code_unit",
+              "occurrence_count": 1,
+              "verification": "exact_match_record_presence_only"
+            }
+          ]
+        },
+        "reflect": "An action without an owner and a date cannot be followed up, so a later reviewer cannot tell whether it was expected to happen or did.",
+        "correct": "Name the role responsible for each action and the date by which it is due or will be checked.",
+        "learn": "Checklist candidate: \"Does every stated action have an owner and a date?\"",
+        "route": "human_review"
+      }
+    ]
+  },
+  "refusals": [],
+  "manifest_reference": {
+    "produced": true,
+    "reason": "Produced by the existing Manifest adapter from the unmodified v1 candidate output. Its pass/review/gap statuses are v1 vocabulary; the findings in this envelope govern.",
+    "represents": "unmodified_v1_candidate_output",
+    "manifest_id": "5b90764b-b8ba-4a1c-841f-08d7a06e6eaf",
+    "manifest_version": "1.0",
+    "manifest_hash": "sha256:6e3b1986045e05332cf53176d6d541a2ec0ee720495034cf27dfa4fcab195786",
+    "engine_version": "0.1.0-validation",
+    "codebook_version": "1.0",
+    "jrs_version": "1.0",
+    "offline_validation": "schema_valid_and_self_consistent"
+  },
+  "artifact_hashes": {
+    "record": "sha256:bbc4cebc014f74acab900a55fd81bd0bf03ca0ee368646fc5551f9e422694307",
+    "request": "sha256:dfb741e6fc5e6df14b6331677b1aee3fffd14baac117696551dec2bd33492803",
+    "normalized_output": "sha256:5f10f05d9fa559b3a9234dd0e3bbd3bb51c8b2388cf10669a742b4bdda6c9858",
+    "code": {
+      "lib/engine-assurance/candidate-core.mjs": "sha256:cb0e1df14aea31c5a58809b36e0f91d8c951c35f75c75d7916360041b476f45d",
+      "lib/engine-assurance/cognitive-controls.mjs": "sha256:b038932dd14e7c926ede70816051badb91989e88f3f185ced08b59f718053cf4",
+      "lib/engine-assurance/content-guard.mjs": "sha256:8f0129220b4ed7384b53bb8b6b5673a7fb7070f8c88c128aaac636a4961055a4",
+      "lib/engine-assurance/envelope.mjs": "sha256:ea5d1a0d3d0ceb7a9a8f08e06643e547614d1ef8839310a88cdb80698eb5f39f",
+      "lib/engine-assurance/network-guard.mjs": "sha256:15dc96038b0f7117d5628158c6fb24283704b06ef815f1f7e0bbc7d50beef093",
+      "lib/engine-assurance/provenance.mjs": "sha256:16d6412b866c7a204a2372b7dea2005f6813bddf7c6df36a89bc44f34da9e017",
+      "lib/engine-assurance/run.mjs": "sha256:1327fc6ee5377959078a029c1800b19be3476d87924386ef8e17b8acf13975c2",
+      "lib/engine-assurance/scope-gate.mjs": "sha256:48bba831c522e5d3bedf21ec07e8aa81af0d25a0b41f5f73af9ea125d0d56535",
+      "lib/engine-assurance/span-verify.mjs": "sha256:7262e2448096833744cfe37b44ebbac42ffbdd38c872650e7b1a5f9461892c96",
+      "lib/engine-assurance/versions.mjs": "sha256:c3c48bf6a8e4983625742501ef69b9abbcb90282bc6a20b68284505a7796b940",
+      "api/_manifest/build.js": "sha256:e4e71b4f10d88d9364c2f8a9974143fabf29743d9ae96ff1d58e27b207dfdcae",
+      "api/_manifest/from-engine.js": "sha256:48640d7447ea41bb0b5ec4c74d62ded15465bff78b9441ef07fb9191e71d4091",
+      "api/_manifest/canonicalize.js": "sha256:ee060fbdfba9c6678bd6f5ac98c422a18db8f188984ad01867bbc6de378f732c",
+      "api/_manifest/hash.js": "sha256:183765176b1941c39e90c02bd052af97b5c1bde242900e8c4c1d876a27e73b53",
+      "tools/validate-manifest.js": "sha256:816a07af8936afc2ca084d01a51d819bec5dd55780b8b14b47d7d6eb6434e9f0",
+      "tools/engine-assurance-replay.mjs": "sha256:0495c82799cc47b8d8f65bbef335d08ebeb3cfc3c56ff52de0e09c131ebbafeb",
+      "schemas/jrs-decision-reconstruction-manifest.schema.json": "sha256:214b4b6f67fcc6ec7426c5005bf90a16d959ef2ec866c81448f95581fe4d5ed8",
+      "research/engine-assurance-2026-10-10/contracts/review-run-envelope.schema.json": "sha256:c3dce8796eb874a08138a9d0037c6d78a77c83840db33fe2b83be72b8c51a6c9"
+    },
+    "provider_response": "sha256:2525fb8cc813701f75181b91203d774764e4202cc1e54f13086ae596897eb78a"
+  }
+}

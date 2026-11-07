@@ -1,0 +1,7 @@
+{
+  "id": "BR-002",
+  "purpose": "v1 gap with an unverifiable quoted citation",
+  "record": "../../../engine-assurance-2026-10-10/fixtures/records/SAE-003.txt",
+  "scope_refused": false,
+  "v1_form": "raw_provider_text"
+}

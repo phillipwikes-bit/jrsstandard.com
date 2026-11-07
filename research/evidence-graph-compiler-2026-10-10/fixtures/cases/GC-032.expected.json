@@ -1,0 +1,28 @@
+{
+  "case_id": "GC-032",
+  "label_status": "engineering_authored_expected_result_not_adjudicated",
+  "execution_mode": "local_mocked",
+  "gate_decision": "proceed",
+  "record_instruction_risk": "not_detected",
+  "candidate_valid": true,
+  "statuses": {
+    "reconstructability": "supported",
+    "identifiable_basis": "supported",
+    "chronology_integrity": "supported",
+    "reasoning_traceability": "review_required",
+    "sufficiency": "review_required"
+  },
+  "reasons_include": {
+    "reasoning_traceability": [
+      "record_conflict:risk_state_conflict"
+    ]
+  },
+  "conflict_kinds": [
+    "risk_state_conflict"
+  ],
+  "refusal_codes": [],
+  "quote_statuses": {},
+  "cc_defects": [
+    "risk_state_conflict"
+  ]
+}
