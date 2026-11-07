@@ -1,6 +1,6 @@
 "use strict";
 const assert=require("node:assert/strict");
-const {createTransport}=require("../owner/incomeos/revision-supabase-transport.js");
+const {createTransport}=require("./incomeos-browser-script-loader.cjs")("revision-supabase-transport.js","IncomeOSSupabaseRevisionTransport");
 (async()=>{
   const calls=[];
   const transport=createTransport({
