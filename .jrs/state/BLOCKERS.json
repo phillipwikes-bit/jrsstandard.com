@@ -425,6 +425,46 @@
       "note": "WHAT IS ESTABLISHED AND WHAT IS NOT. ESTABLISHED FROM REPOSITORY EVIDENCE: the promise, the grant, and the published export link all exist and contradict each other. NOT ESTABLISHED: whether any response rows exist and are actually retrievable by an anonymous caller. A direct read of the production table was attempted and correctly DENIED by the execution environment's production-read control, so the live row count is PRODUCTION VERIFICATION REQUIRED and is not inferred. The remediation does not depend on the count: a privacy promise contradicted by a grant is a defect whether or not anyone has yet typed into the box. SCOPE NOTE, so this is not over-read: interaction_events was examined in the same pass and is a WEAKER case, not this one. Its collecting pages promise 'No free text and no identifying information are collected' and 'aggregated without individual attribution', and select=* over a payload jsonb is consistent with that promise. The enforcement of 'no free text' lives in the client code that builds the payload rather than in the schema, which is a separate and lesser matter recorded as X-1 rather than folded in here.",
       "next_action_by": "OWNER",
       "next_action_basis": "The anon SELECT grant on public.finding_responses must be revoked in the production console. Nothing here can perform or verify it."
+    },
+    {
+      "blocker_id": "B-018",
+      "severity": "MEDIUM",
+      "category": "ACCOUNTING_DESIGN",
+      "description": "IncomeOS monthly close cannot close a month in which an internal transfer or card payment leaves one account on the last day(s) of a month and posts to the other account in the next month. double-entry.js requires the entry date to be on or after both posted dates (PREMATURE_BOOKING); monthly-close.js requires the entry date and both postings inside the calendar month (ENTRY_OUTSIDE_CLOSE_WINDOW and the source-window check). Both months therefore HOLD and the period rollforward can never be accepted for them. Found in the 2026-11-04 review of double-entry.js, monthly-close.js and period-rollforward.js.",
+      "evidence_refs": [
+        "owner/incomeos/double-entry.js (PREMATURE_BOOKING; INTERNAL_TRANSFER and CREDIT_CARD_PAYMENT require both legs in one entry)",
+        "owner/incomeos/monthly-close.js (ENTRY_OUTSIDE_CLOSE_WINDOW; source window check in assessSources)"
+      ],
+      "affected_assets": [
+        "INCOMEOS-PROTOTYPE"
+      ],
+      "required_action": "PROPOSAL, not implemented: book each leg separately against a 'transfer in transit' clearing account (new account kind), so the outgoing leg closes in month one and the incoming leg in month two, with the clearing balance required to be zero once both legs are reviewed. This changes the chart-of-accounts model and how transfers are evidenced, so it needs an owner (and preferably accountant) decision before it is built. Until then such months stay on HOLD, which is fail-closed.",
+      "owner": "OWNER",
+      "status": "OPEN - DESIGN DECISION REQUIRED",
+      "created": "2026-11-04",
+      "note": "Not a data-loss or exposure risk: the effect is a false HOLD. Synthetic tests do not yet cover a cross-month pair.",
+      "next_action_by": "OWNER",
+      "next_action_basis": "Approve or reject the clearing-account proposal; Claude can then build and test it."
+    },
+    {
+      "blocker_id": "B-019",
+      "severity": "MEDIUM",
+      "category": "PRIVACY",
+      "description": "IncomeOS keeps the plaintext accountant ledger (localStorage key incomeos.accountant.v1) after it is migrated into the encrypted active ledger (incomeos.owner.encrypted.v1). encrypted-accountant-bridge.js returns legacyPreserved:true and never removes or archives the plaintext copy, so anyone with access to the browser profile can read the ledger in plaintext and the two copies drift apart. Found in the 2026-11-04 review of vault.js, active-vault.js and encrypted-accountant-bridge.js. Mitigated today by the staging interlock, which blocks financial writes in the deployed interface.",
+      "evidence_refs": [
+        "owner/incomeos/encrypted-accountant-bridge.js (createNew: legacyPreserved:true; storage.removeItem required but never called)",
+        "owner/incomeos/staging-interlock.js (IncomeOSFinancialReadOnly=true)"
+      ],
+      "affected_assets": [
+        "INCOMEOS-PROTOTYPE"
+      ],
+      "required_action": "OWNER DECISION. Removing the plaintext copy deletes financial data, which CLAUDE.md rule 12 reserves for explicit human confirmation. PROPOSAL: after migration, offer an explicit 'Remove plaintext copy' action that is enabled only once an encrypted backup containing the active ledger has been downloaded (vault.js now includes it) and the encrypted ledger has been unlocked and compared entry by entry; record the removal in the change log. Not implemented.",
+      "owner": "OWNER",
+      "status": "OPEN - OWNER DECISION REQUIRED",
+      "created": "2026-11-04",
+      "note": "Related: CLAUDE.md section 36.5 lists sanctioned browser-storage keys for the JRS site; the IncomeOS keys (incomeos.accountant.v1, incomeos.owner.prototype.v1, incomeos.spend.preferences.v1, incomeos.research.radar.v1, incomeos.owner.encrypted.v1) predate this review and are not on it. Whether that list governs owner/incomeos is also an owner decision; CLAUDE.md was not edited.",
+      "next_action_by": "OWNER",
+      "next_action_basis": "Approve or reject the removal proposal, and decide whether the CLAUDE.md storage-key list should cover IncomeOS."
     }
   ],
   "_decisions_recorded_2026_09_15": {

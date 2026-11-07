@@ -1,0 +1,17 @@
+import assert from "node:assert/strict";
+import {readFileSync} from "node:fs";
+import vm from "node:vm";
+const context={window:{}};
+vm.runInNewContext(readFileSync(new URL("../owner/incomeos/release-gate.js",import.meta.url),"utf8"),context);
+const assess=context.window.IncomeOSReleaseGate.assess;
+assert.equal(assess(null).status,"HOLD");
+assert.equal(assess({}).failures.includes("NO_EVENTS"),true);
+const forged={events:[{id:"fake"}],statementEntries:[{id:"fake"}],serverAuthenticated:true,ownerAccessVerified:true,reconciliationComplete:true,auditLogDurable:true,releaseSecurityApproved:true};
+const result=assess(forged);
+assert.equal(result.status,"HOLD");
+assert.equal(result.failures.includes("INDEPENDENT_SOURCE_VERIFICATION_REQUIRED"),true);
+assert.equal(result.incomeCents,null);
+assert.equal(result.availableToInvestCents,null);
+assert.equal(result.transferAuthorized,false);
+assert.equal(result.investmentExecutionEnabled,false);
+console.log("IncomeOS release gate tests passed");

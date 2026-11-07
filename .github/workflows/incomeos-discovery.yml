@@ -1,0 +1,52 @@
+name: IncomeOS live opportunity discovery
+# Reads documented PUBLIC job-board APIs only and uploads a public-data-only
+# snapshot plus an execution receipt as a short-lived workflow artifact.
+# It never reads an owner profile, never commits, never deploys and never
+# applies to anything. The schedule activates only once this file exists on
+# the default branch, which requires explicit owner authorization to merge.
+on:
+  schedule:
+    - cron: '17 */6 * * *'
+  workflow_dispatch:
+  pull_request:
+    paths:
+      - 'owner/incomeos/discovery-connectors.js'
+      - 'owner/incomeos/discovery-sources.json'
+      - 'owner/incomeos/opportunity-normalizer.js'
+      - 'owner/incomeos/listing-requirements.js'
+      - 'owner/incomeos/compensation.js'
+      - 'scripts/incomeos/discover.mjs'
+      - '.github/workflows/incomeos-discovery.yml'
+permissions:
+  contents: read
+concurrency:
+  group: incomeos-discovery-${{ github.ref }}
+  cancel-in-progress: false
+jobs:
+  discover:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+        with:
+          persist-credentials: false
+      - name: Run live public-board discovery
+        env:
+          USAJOBS_API_KEY: ${{ secrets.USAJOBS_API_KEY }}
+          USAJOBS_USER_AGENT: ${{ secrets.USAJOBS_USER_AGENT }}
+        run: node scripts/incomeos/discover.mjs --out incomeos-discovery-out
+      - name: Publish execution receipt to the job summary
+        if: always()
+        run: |
+          if [ -f incomeos-discovery-out/discovery-receipt.json ]; then
+            node -e 'const r=require("./incomeos-discovery-out/discovery-receipt.json");const l=["## IncomeOS discovery receipt","",`Run ${r.startedAt} to ${r.finishedAt}, commit ${r.commit}`,"",`${r.summary.ok} ok, ${r.summary.failed} failed, ${r.summary.disabled} disabled; ${r.opportunityCount} public listings; ${r.newCount} new, ${r.changedCount} changed`,"","| source | status | http | listings | error |","|---|---|---|---|---|"].concat(r.connectors.map(c=>`| ${c.sourceId} | ${c.status} | ${c.httpStatus} | ${c.listingCount} | ${c.error||""} |`));console.log(l.join("\n"));' >> "$GITHUB_STEP_SUMMARY"
+          else
+            echo "No receipt produced." >> "$GITHUB_STEP_SUMMARY"
+          fi
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2
+        if: always()
+        with:
+          name: incomeos-discovery-${{ github.run_id }}
+          path: incomeos-discovery-out/
+          retention-days: 7
+          if-no-files-found: error
