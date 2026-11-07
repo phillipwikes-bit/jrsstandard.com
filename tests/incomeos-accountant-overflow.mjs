@@ -11,7 +11,7 @@ assert.doesNotMatch(loader,/\.slice\(0,\s*15000\)/,"workspace loader must not si
 assert.match(source,/entries\.length>15000/,"editor must reject writes beyond its supported limit");
 assert.match(source,/entries:entries\.concat\(wsForeign\)/,"foreign ledger records must be preserved");
 const idStart=source.indexOf("function uniqueEntryIds(entries)");
-const idEnd=source.indexOf("\\n  function commitEntries",idStart);
+const idEnd=source.indexOf("\n  function commitEntries",idStart);
 assert.ok(idStart>=0&&idEnd>idStart,"unique ID gate must exist");
 const uniqueEntryIds=runInNewContext("("+source.slice(idStart,idEnd).trim()+")",{Set});
 assert.equal(uniqueEntryIds([{id:"a"},{id:"b"}]),true);
