@@ -6,6 +6,7 @@ on:
       - 'owner/incomeos/workspace-revision-protocol.js'
       - 'owner/incomeos/revision-store.js'
       - 'owner/incomeos/revision-supabase-transport.js'
+      - 'tests/incomeos-browser-script-loader.cjs'
       - 'tests/incomeos-vault-envelope.test.cjs'
       - 'tests/incomeos-workspace-revision-protocol.test.cjs'
       - 'tests/incomeos-revision-store.test.cjs'
@@ -29,6 +30,7 @@ jobs:
           node --check owner/incomeos/workspace-revision-protocol.js
           node --check owner/incomeos/revision-store.js
           node --check owner/incomeos/revision-supabase-transport.js
+          node --check tests/incomeos-browser-script-loader.cjs
       - name: Synthetic regression tests
         run: |
           node tests/incomeos-vault-envelope.test.cjs
