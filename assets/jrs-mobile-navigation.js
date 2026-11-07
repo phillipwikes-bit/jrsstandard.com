@@ -1,9 +1,14 @@
 /* JRS shared progressive-enhancement navigation, 2026-11-01.
    Static navigation remains usable when JavaScript is unavailable. */
 (function(){
-  function addBackLink(nav){
+  function addBackLink(anchor){
     var path=location.pathname;
-    if(path==='/' || path==='/index.html' || document.querySelector('.jrs-mobile-back-wrap'))return;
+    if(path==='/' || path==='/index.html' || !anchor || document.querySelector('.jrs-mobile-back-wrap'))return;
+    var sheet=document.createElement('link');
+    sheet.rel='stylesheet';
+    sheet.href='/assets/jrs-mobile-back.css';
+    sheet.setAttribute('data-jrs-back-style','');
+    document.head.appendChild(sheet);
     var wrap=document.createElement('div');
     wrap.className='jrs-mobile-back-wrap';
     var back=document.createElement('a');
@@ -20,12 +25,13 @@
       history.back();
     });
     wrap.appendChild(back);
-    nav.insertAdjacentElement('afterend',wrap);
+    if(anchor.tagName==='MAIN')anchor.insertAdjacentElement('beforebegin',wrap);
+    else anchor.insertAdjacentElement('afterend',wrap);
   }
   function ready(){
     var nav=document.querySelector('nav.jrs-sitenav');
+    addBackLink(nav || document.querySelector('header') || document.querySelector('main'));
     if(!nav)return;
-    addBackLink(nav);
     if(document.querySelector('.jrs-global-nav-toggle'))return;
     var button=document.createElement('button');
     button.type='button';
