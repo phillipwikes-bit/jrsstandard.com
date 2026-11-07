@@ -48,7 +48,7 @@ begin
      or encode(extensions.digest(convert_to(encrypted_payload,'UTF8'),'sha256'),'hex') <> payload_sha256 then
     raise exception 'Invalid encrypted payload or checksum';
   end if;
-  if not (pg_catalog.jsonb_typeof(encrypted_payload::jsonb) = 'object'
+  if (pg_catalog.jsonb_typeof(encrypted_payload::jsonb) = 'object'
     and (encrypted_payload::jsonb)->>'format' = 'incomeos-workspace'
     and (encrypted_payload::jsonb)->'version' = '1'::jsonb
     and (encrypted_payload::jsonb)->>'kdf' = 'PBKDF2-SHA256'
@@ -61,7 +61,7 @@ begin
     and (encrypted_payload::jsonb)->>'salt' ~ '^[A-Za-z0-9+/]{22}==$'
     and pg_catalog.jsonb_typeof((encrypted_payload::jsonb)->'iv') = 'string'
     and (encrypted_payload::jsonb)->>'iv' ~ '^[A-Za-z0-9+/]{16}$'
-    and (select count(*) from pg_catalog.jsonb_object_keys(encrypted_payload::jsonb)) = 8) then
+    and (select count(*) from pg_catalog.jsonb_object_keys(encrypted_payload::jsonb)) = 8) is not true then
     raise exception 'Unsupported encrypted workspace envelope';
   end if;
   perform pg_catalog.pg_advisory_xact_lock(pg_catalog.hashtextextended(actor::text, 0));
