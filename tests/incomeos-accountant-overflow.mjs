@@ -46,4 +46,9 @@ for(const name of ["exportReview","exportDetail","exportSummary"]){
   assert.ok(source.slice(start,start+300).includes("Export blocked: accounting ledger integrity review is required"),name+" must block unsafe exports");
 }
 assert.ok(source.includes("function annualReview(){\n    if((wsMode&&workspaceLoadUnsafe)||(!wsMode&&localLoadUnsafe))return null;"),"unsafe ledger must not yield a documentation review");
+for(const [name,message] of [["backup","Backup blocked:"],["printReport","Print blocked:"]]){
+  const start=source.indexOf("function "+name+"(){");
+  assert.ok(start>=0,"missing "+name);
+  assert.ok(source.slice(start,start+400).includes(message),name+" must block unsafe output");
+}
 console.log("Accounting workspace preserves all imported valid rows and refuses over-limit edits.");
