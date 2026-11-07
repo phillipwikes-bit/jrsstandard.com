@@ -131,7 +131,14 @@
     localLoadUnsafe = false;
     migrateLegacy();
     try{
-      var saved=JSON.parse(localStorage.getItem(KEY)||"{}");
+      var raw=localStorage.getItem(KEY);
+      if(raw===null)return;
+      var saved=JSON.parse(raw);
+      if(!saved||typeof saved!=="object"||Array.isArray(saved)||saved.version!==2||!Array.isArray(saved.entries)){
+        localLoadUnsafe=true;
+        db.entries=[];
+        return;
+      }
       if(saved && Array.isArray(saved.entries)){
         if(saved.entries.some(function(e){return !validate(e);})||!uniqueEntryIds(saved.entries)){
           localLoadUnsafe=true;
