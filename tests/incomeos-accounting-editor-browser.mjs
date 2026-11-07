@@ -265,6 +265,12 @@ assert.match(await page.locator("#financial-staging-interlock strong").textConte
 assert.equal(await page.locator("#ledger-ws-new").count(),1,"New-workspace action survives warning updates");
 assert.equal(await page.locator("#ledger-ws-open").count(),1,"Open-workspace action survives warning updates");
 assert.ok(await page.locator("#receipt-save").isDisabled(),"Quarantine blocks editing");
+
+await page.evaluate(()=>document.dispatchEvent(new CustomEvent("incomeos:workspace-loaded",{detail:{ledger:[]}})));
+assert.ok(await page.locator("#financial-staging-interlock").isHidden(),"Valid restored workspace clears quarantine banner");
+assert.ok(await page.locator("#receipt-save").isEnabled(),"Valid restored workspace re-enables editing");
+assert.ok(await page.locator("#ledger-ws-open").count()===1,"Workspace recovery action remains in DOM after clearing quarantine");
+
 assert.equal(await page.evaluate(()=>localStorage.length+sessionStorage.length),0);
 assert.deepEqual(errors,[]);
 await browser.close();server.close();
