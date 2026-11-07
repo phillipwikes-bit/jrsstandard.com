@@ -1,7 +1,8 @@
 "use strict";
 const assert=require("node:assert/strict");
-const protocol=require("../owner/incomeos/workspace-revision-protocol.js");
-const {createRevisionStore}=require("../owner/incomeos/revision-store.js");
+const load=require("./incomeos-browser-script-loader.cjs");
+const protocol=load("workspace-revision-protocol.js","IncomeOSWorkspaceRevision");
+const {createRevisionStore}=load("revision-store.js","IncomeOSRevisionStore");
 const envelope=JSON.stringify({format:"incomeos-workspace",version:1,kdf:"PBKDF2-SHA256",iterations:600000,cipher:"AES-256-GCM",salt:"AAAAAAAAAAAAAAAAAAAAAA==",iv:"AAAAAAAAAAAAAAAA",data:"AAAAAAAAAAAAAAAAAAAAAA=="});
 const digest="a".repeat(64);
 (async()=>{
