@@ -296,6 +296,11 @@ assert.ok(await page.locator("#cost-save").isEnabled(),"Valid restored workspace
 assert.equal(await page.locator("#receipt-label").inputValue(),"","Recovery does not reinstate the previous income draft");
 assert.equal(await page.locator("#cost-label").inputValue(),"","Recovery does not reinstate the previous expense draft");
 assert.ok(await page.locator("#ledger-ws-open").count()===1,"Workspace recovery action remains in DOM after clearing quarantine");
+await page.locator("#receipt-label").fill("Unsubmitted income draft");
+await page.locator("#cost-label").fill("Unsubmitted expense draft");
+await page.evaluate(()=>document.dispatchEvent(new CustomEvent("incomeos:workspace-changed",{detail:{ledger:[],metadata:{synthetic:true}}})));
+assert.equal(await page.locator("#receipt-label").inputValue(),"Unsubmitted income draft","Unchanged accounting ledger preserves income draft");
+assert.equal(await page.locator("#cost-label").inputValue(),"Unsubmitted expense draft","Unchanged accounting ledger preserves expense draft");
 
 assert.equal(await page.evaluate(()=>localStorage.length+sessionStorage.length),0);
 assert.deepEqual(errors,[]);
