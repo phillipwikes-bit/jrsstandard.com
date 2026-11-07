@@ -35,4 +35,6 @@ assert.ok(source.includes("ws.ledger!==undefined&&!Array.isArray(ws.ledger)"),"m
 assert.ok(source.includes("if(!uniqueEntryIds(rows))workspaceLoadUnsafe=true"),"duplicate IDs in imported workspace must block edits");
 assert.ok(source.includes("if(wsMode&&workspaceLoadUnsafe)throw new Error"),"unsafe workspace must not be overwritten");
 assert.ok(source.includes('(e.kind==="income"||e.kind==="outflow")&&!validate(e)'),"invalid accounting-shaped workspace records must block edits");
+assert.ok(source.includes("if(workspaceLoadUnsafe)db.entries=[];"),"unsafe workspace must not show partial financial totals");
+assert.ok(source.includes("db.entries=[]; // Partial totals could be mistaken"),"unsafe local ledger must not show partial financial totals");
 console.log("Accounting workspace preserves all imported valid rows and refuses over-limit edits.");
