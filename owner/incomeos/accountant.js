@@ -78,9 +78,16 @@
   }
   // Persist first, then update the current ledger. An interrupted storage write
   // must never appear as an accepted accounting record in the running interface.
+  function uniqueEntryIds(entries){
+    var ids=new Set();
+    return entries.every(function(e){
+      if(!e||typeof e.id!=="string"||!e.id.trim()||ids.has(e.id.trim()))return false;
+      ids.add(e.id.trim());return true;
+    });
+  }
   function commitEntries(entries){
     if(locked())throw new Error("Financial changes are disabled in unapproved staging");
-    if(!Array.isArray(entries)||entries.length>15000||entries.some(function(x){return !validate(x);}))
+    if(!Array.isArray(entries)||entries.length>15000||!uniqueEntryIds(entries)||entries.some(function(x){return !validate(x);}))
       throw new Error("Financial records are invalid or exceed the ledger limit");
     if(wsMode){
       // The workspace owner applies the change and reports back; nothing is accepted unless it did.
