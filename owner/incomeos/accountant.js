@@ -813,7 +813,7 @@
     var entries=parsed.entries.filter(validate);
     if(entries.length!==parsed.entries.length)throw new Error("Backup contains invalid or incomplete financial records");
     // Apply the same canonical identifier integrity rule to backup and live ledger.
-    if(!uniqueEntryIds(entries))throw new Error("Backup contains missing or duplicate record identifiers");
+    if(!uniqueEntryIds(entries))throw new Error("Backup contains records without a unique identifier (missing or duplicate IDs)");
     var ids=new Set(db.entries.map(function(e){return e.id.trim();})),accepted=[];
     entries.forEach(function(e){if(!ids.has(e.id.trim())){accepted.push(e);ids.add(e.id.trim());}});
     if(!accepted.length)return {accepted:0,skipped:entries.length};
