@@ -258,6 +258,13 @@ for(const width of [320,375,430]){
     return out;},width);
   assert.deepEqual(bad,[],"ledger view overflows at "+width+"px");
 }
+// A malformed restoration must show quarantine without destroying workspace recovery actions.
+await page.evaluate(()=>document.dispatchEvent(new CustomEvent("incomeos:workspace-restored",{detail:{ledger:null}})));
+assert.ok(await page.locator("#financial-staging-interlock").isVisible(),"Quarantine warning is visible");
+assert.match(await page.locator("#financial-staging-interlock strong").textContent(),/QUARANTINED/);
+assert.equal(await page.locator("#ledger-ws-new").count(),1,"New-workspace action survives warning updates");
+assert.equal(await page.locator("#ledger-ws-open").count(),1,"Open-workspace action survives warning updates");
+assert.ok(await page.locator("#receipt-save").isDisabled(),"Quarantine blocks editing");
 assert.equal(await page.evaluate(()=>localStorage.length+sessionStorage.length),0);
 assert.deepEqual(errors,[]);
 await browser.close();server.close();
