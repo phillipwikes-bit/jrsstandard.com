@@ -89,4 +89,7 @@ assert.match(source,/function recoverRawLocal\(\)/,"Dedicated raw recovery must 
 assert.match(source,/download\(raw,"IncomeOS-UNVERIFIED-raw-ledger-recovery-/,"Recovery must export original raw content without rewriting");
 assert.match(source,/if\(!localLoadUnsafe\)/,"Recovery must be limited to quarantined local data");
 assert.match(source,/if\(wsMode\)/,"Recovery must not silently substitute workspace records");
+const onWorkspaceBody=source.slice(source.indexOf("function onWorkspace(ev){"),source.indexOf("function onWorkspace(ev){")+450);
+assert.ok(onWorkspaceBody.includes("wsMode=true;fromWorkspace(ws)"),"Workspace event must reach integrity loader");
+assert.ok(!onWorkspaceBody.includes("!Array.isArray(ws.ledger)"),"Malformed workspace ledger must not be ignored before quarantine");
 console.log("Accounting workspace preserves all imported valid rows and refuses over-limit edits.");
