@@ -38,6 +38,11 @@
       busy=true;
       try{
         workspace.validate(document);
+        // On an existing vault, require the save passphrase to unlock the last
+        // verified encrypted snapshot. Otherwise a typo silently rotates the
+        // encryption key and can permanently lock out the owner.
+        if(openedCiphertext!==null)
+          workspace.validate(await workspace.decrypt(passphrase,openedCiphertext));
         var ciphertext=await workspace.encrypt(passphrase,document);
         var checksum=await integrity.sha256(ciphertext);
         var result=await revisions.append(ciphertext,checksum);
