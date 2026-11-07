@@ -86,12 +86,38 @@ BEGIN
   END IF;
 END $test$;
 
+-- Authorized clients must not bypass the append-only RPC through table DML.
+SET request.jwt.claim.sub = '11111111-1111-4111-8111-111111111111';
+DO $test$
+BEGIN
+  BEGIN
+    UPDATE incomeos_private.workspace_revisions SET ciphertext='tampered'
+      WHERE owner_id='11111111-1111-4111-8111-111111111111';
+    RAISE EXCEPTION 'Authenticated actor modified an append-only revision';
+  EXCEPTION WHEN insufficient_privilege THEN NULL;
+  END;
+  BEGIN
+    DELETE FROM incomeos_private.workspace_revisions
+      WHERE owner_id='11111111-1111-4111-8111-111111111111';
+    RAISE EXCEPTION 'Authenticated actor deleted an append-only revision';
+  EXCEPTION WHEN insufficient_privilege THEN NULL;
+  END;
+END $test$;
+
 SET request.jwt.claim.sub = '33333333-3333-4333-8333-333333333333';
 DO $test$
+DECLARE
+  payload text := '{"format":"incomeos-workspace","version":1,"kdf":"PBKDF2-SHA256","iterations":600000,"cipher":"AES-256-GCM","salt":"AAAAAAAAAAAAAAAAAAAAAA==","iv":"AAAAAAAAAAAAAAAA","data":"AAAAAAAAAAAAAAAAAAAAAA=="}';
 BEGIN
   BEGIN
     PERFORM public.incomeos_latest_workspace_revision();
     RAISE EXCEPTION 'Unlisted actor could read a workspace';
+  EXCEPTION WHEN insufficient_privilege THEN NULL;
+  END;
+  BEGIN
+    PERFORM public.incomeos_append_workspace_revision(0,payload,
+      '7cca319d5a7ae502c4b7fcbb5313aa2b5912b523750d543c2c54ce10d8b706ec');
+    RAISE EXCEPTION 'Unlisted actor could append an owner revision';
   EXCEPTION WHEN insufficient_privilege THEN NULL;
   END;
 END $test$;
