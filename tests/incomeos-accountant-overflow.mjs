@@ -122,4 +122,20 @@ assert.equal(exerciseWorkspaceEvent(null).unsafe,true,"Null workspace event must
 assert.equal(exerciseWorkspaceEvent(undefined).unsafe,true,"Undefined workspace event must enter quarantine");
 
 assert.equal(exerciseWorkspaceEvent([]).unsafe,false,"Valid empty ledger event must remain usable");
+
+const staleContext={Set,Array,document:{},modeNote(){},render(){},$(){return null}};
+runInNewContext(`
+  var localLoadUnsafe=false,workspaceLoadUnsafe=false,wsMode=false,wsDirty=false,db={version:2,entries:[]},wsForeign=[];
+  function validate(e){return !!e&&e.kind==="income"&&e.valid===true;}
+  ${source.slice(idStart,idEnd)}
+  ${loader}
+  ${source.slice(eventStart,eventEnd)}
+  onWorkspace({type:"incomeos:workspace-loaded",detail:{ledger:[{id:"prior",kind:"income",valid:true}]}});
+  before={unsafe:workspaceLoadUnsafe,count:db.entries.length};
+  onWorkspace({type:"incomeos:workspace-restored",detail:null});
+  after={unsafe:workspaceLoadUnsafe,count:db.entries.length,foreign:wsForeign.length};
+`,staleContext);
+assert.deepEqual(JSON.parse(JSON.stringify(staleContext.before)),{unsafe:false,count:1},"Precondition: valid workspace is loaded");
+assert.deepEqual(JSON.parse(JSON.stringify(staleContext.after)),{unsafe:true,count:0,foreign:0},"Malformed restoration must remove stale ledger from analysis without retaining foreign rows");
+
 console.log("Accounting workspace preserves all imported valid rows and refuses over-limit edits.");
