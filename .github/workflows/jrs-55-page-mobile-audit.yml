@@ -1,0 +1,45 @@
+name: JRS 55-page mobile acceptance smoke audit
+
+on:
+  push:
+    branches:
+      - jrs-first-visit-message-clarity-20261106
+    paths:
+      - 'scripts/jrs-55-page-mobile-audit.mjs'
+      - '.github/workflows/jrs-55-page-mobile-audit.yml'
+  workflow_dispatch:
+    inputs:
+      base_url:
+        description: 'Public or preview base URL to audit'
+        required: true
+        default: 'https://www.jrsstandard.com'
+        type: string
+
+permissions:
+  contents: read
+
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 35
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Install isolated browser tooling
+        run: npm install --no-save --package-lock=false playwright
+      - name: Install Chromium
+        run: npx playwright install --with-deps chromium
+      - name: Run 55-page mobile audit
+        env:
+          JRS_BASE_URL: ${{ inputs.base_url || 'https://www.jrsstandard.com' }}
+        run: node scripts/jrs-55-page-mobile-audit.mjs
+      - name: Preserve evidence regardless of failures
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: jrs-55-page-mobile-audit
+          path: artifacts/jrs-acceptance/
+          if-no-files-found: warn
+          retention-days: 30

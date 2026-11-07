@@ -72,7 +72,10 @@ const history=read('review-engine.html');
 assert.match(history,/<meta name="robots" content="noindex,nofollow,noarchive">/);
 assert.match(history,/Historical route/);
 assert.match(history,/No online record processing/);
-assert.ok(existsSync(join(root,'jrs-decision-reconstruction-manifest-v1.0.1.schema.json')));
+const manifestPage=read('manifest.html');
+assert.match(manifestPage,/conceptual reference for documentation traceability/i,'Manifest reference must clearly identify conceptual scope');
+assert.match(manifestPage,/does not offer a machine-readable service/i,'Manifest reference must not imply an available machine-readable service');
+assert.match(manifestPage,/No confidential records should be provided/i,'Manifest reference must retain no-submission boundary');
 assert.ok(read('contact.html').includes('https://formspree.io/f/mreddwdg'));
 const research=read('research.html');
 for(const p of ['research-summary.html','methodology.html','evidence-ledger.html','questions.html','research-register.html']){

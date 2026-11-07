@@ -471,6 +471,11 @@
       "source": "/manifest",
       "destination": "/manifest.html",
       "permanent": false
+    },
+    {
+      "source": "/openapi",
+      "destination": "/manifest.html",
+      "permanent": false
     }
   ],
   "rewrites": [
