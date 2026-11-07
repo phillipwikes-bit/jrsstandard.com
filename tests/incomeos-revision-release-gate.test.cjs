@@ -15,7 +15,7 @@ const storage=acceptance.items.find(x=>x.id==="A14");
 assert.match(storage.limitation,/not been migrated to the live database/);
 assert.match(storage.limitation,/real owner save-and-restore/);
 const html=read("owner/incomeos/index.html");
-for(const script of ["revision-store.js","revision-supabase-transport.js","revision-workspace-bridge.js","revision-runtime-staging.js"]){
+for(const script of ["revision-store.js","revision-supabase-transport.js","revision-workspace-bridge.js","revision-runtime-staging.js","revision-accounting-coordinator.js"]){
   assert.ok(!html.includes('src="./'+script+'"'),"Staging revision script cannot load in live Owner Desk: "+script);
 }
 assert.match(read("engineering/incomeos/workspace-revision-staging.sql"),/STAGING ONLY/);
