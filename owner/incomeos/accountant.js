@@ -897,11 +897,18 @@
   }
   function onWorkspace(ev){
     var ws=ev&&ev.detail;
+    // Other panels may update workspace metadata without changing the accounting ledger.
+    // Preserve unsaved accounting drafts unless the ledger itself is replaced or changed.
+    var priorLedger=wsMode&&!workspaceLoadUnsafe?JSON.stringify(db.entries):null;
+    var priorForeign=wsMode&&!workspaceLoadUnsafe?JSON.stringify(wsForeign):null;
+    var priorUnsafe=workspaceLoadUnsafe;
     wsMode=true;fromWorkspace(ws);
-    // A workspace replacement invalidates any form edit tied to the previous ledger.
-    editingIncome=null;editingCost=null;
-    if(typeof document!=="undefined"&&$("receipt-form")&&$("cost-form")){
-      resetForm("receipt-form","income");resetForm("cost-form","outflow");
+    var ledgerChanged=ev&&ev.type!=="incomeos:workspace-changed"||priorUnsafe!==workspaceLoadUnsafe||priorLedger!==JSON.stringify(db.entries)||priorForeign!==JSON.stringify(wsForeign);
+    if(ledgerChanged){
+      editingIncome=null;editingCost=null;
+      if(typeof document!=="undefined"&&$("receipt-form")&&$("cost-form")){
+        resetForm("receipt-form","income");resetForm("cost-form","outflow");
+      }
     }
     if(ev&&ev.type==="incomeos:workspace-loaded")wsDirty=false;else wsDirty=true;
     var go=$("ledger-save-now");if(go)go.hidden=!wsDirty||workspaceLoadUnsafe;
