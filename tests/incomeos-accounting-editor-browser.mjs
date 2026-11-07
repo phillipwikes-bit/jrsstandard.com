@@ -263,8 +263,14 @@ await page.locator("#ledger-filter").selectOption("all");
 await row("Synthetic study payout").getByRole("button",{name:"Edit"}).click();
 assert.ok(await page.locator("#receipt-editing").isVisible(),"Existing entry is in edit mode before restoration");
 await page.locator("#receipt-label").fill("Stale draft must clear");
+await row("Synthetic AI subscription").getByRole("button",{name:"Edit"}).click();
+assert.ok(await page.locator("#cost-editing").isVisible(),"Expense edit is active before workspace replacement");
+await page.locator("#cost-label").fill("Stale expense draft must clear");
 await page.evaluate(()=>document.dispatchEvent(new CustomEvent("incomeos:workspace-restored",{detail:{ledger:null}})));
 assert.equal(await page.locator("#receipt-label").inputValue(),"","Workspace replacement clears drafts from the prior ledger");
+assert.equal(await page.locator("#cost-label").inputValue(),"","Workspace replacement clears stale expense draft");
+assert.ok(await page.locator("#cost-editing").isHidden(),"Workspace replacement clears stale expense edit status");
+assert.ok(await page.locator("#cost-cancel").isHidden(),"Workspace replacement clears expense cancel action");
 
 assert.ok(await page.locator("#receipt-editing").isHidden(),"Workspace replacement clears stale edit status");
 assert.ok(await page.locator("#receipt-cancel").isHidden(),"Workspace replacement clears stale edit cancel action");
