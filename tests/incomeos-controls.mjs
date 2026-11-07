@@ -110,7 +110,7 @@ assert.match(accountant,/if\(window\.IncomeOSFinancialReadOnly===true\)return fa
 // 2026-11-04: edits are allowed only in workspace mode (records go to the owner's workspace file, never
 // browser storage); without a workspace the staging lock still refuses them. Browser-storage writes stay
 // blocked unconditionally (line above).
-assert.match(accountant,/function locked\(\)\{return window\.IncomeOSFinancialReadOnly===true&&!wsMode;\}/);
+assert.match(accountant,/function locked\(\)\{return workspaceLoadUnsafe\|\|\(!wsMode&&\(localLoadUnsafe\|\|window\.IncomeOSFinancialReadOnly===true\)\);\}/);
 assert.match(accountant,/function startEdit\(e\)\{\s*if\(locked\(\)\)return;/);
 assert.match(accountant,/if\(window\.IncomeOSFinancialReadOnly===true\|\|wsMode\)return;/,"legacy migration never runs in staging or workspace mode");
 assert.match(html,/placeholder="Unknown"/);
