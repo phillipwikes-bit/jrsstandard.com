@@ -18,6 +18,7 @@ on:
       - 'owner/incomeos/revision-workspace-bridge.js'
       - 'tests/incomeos-revision-workspace-bridge.test.cjs'
       - 'tests/incomeos-revision-release-gate.test.cjs'
+      - 'tests/incomeos-vault-revision-session.test.cjs'
       - 'owner/incomeos/ACCOUNTING-EDITOR-ACCEPTANCE.json'
       - '.github/workflows/incomeos-security-verification.yml'
   workflow_dispatch:
@@ -49,4 +50,5 @@ jobs:
           node tests/incomeos-revision-rpc-integration.test.cjs
           node tests/incomeos-revision-workspace-bridge.test.cjs
           node tests/incomeos-revision-release-gate.test.cjs
+          node tests/incomeos-vault-revision-session.test.cjs
           node tests/incomeos-revision-staging-sql.test.cjs
