@@ -2,8 +2,8 @@
    Static navigation remains usable when JavaScript is unavailable. */
 (function(){
   function addBackLink(nav){
-    var path=location.pathname.replace(/\\/+$/,'');
-    if(path==='' || path==='/index.html' || document.querySelector('.jrs-mobile-back-wrap'))return;
+    var path=location.pathname;
+    if(path==='/' || path==='/index.html' || document.querySelector('.jrs-mobile-back-wrap'))return;
     var wrap=document.createElement('div');
     wrap.className='jrs-mobile-back-wrap';
     var back=document.createElement('a');
