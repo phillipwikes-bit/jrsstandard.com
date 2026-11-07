@@ -11,10 +11,10 @@
        !workspace||typeof workspace.validate!=="function"||typeof workspace.encrypt!=="function"||
        typeof workspace.decrypt!=="function"||!integrity||typeof integrity.sha256!=="function")
       throw Error("Workspace bridge requires verified staging dependencies");
-    var busy=false,openedRevision=null;
+    var busy=false,openedRevision=null,openedCiphertext=null,openedSha256=null;
     function ensureIdle(){if(busy)throw Error("Workspace bridge operation already in progress");}
     async function open(passphrase){
-      ensureIdle();busy=true;openedRevision=null;
+      ensureIdle();busy=true;openedRevision=null;openedCiphertext=null;openedSha256=null;
       try{
         var remote=await revisions.refresh();
         var doc=null;
@@ -23,6 +23,8 @@
           doc=workspace.validate(await workspace.decrypt(passphrase,remote.text));
         }
         openedRevision=remote.revision;
+        openedCiphertext=remote.text;
+        openedSha256=remote.sha256||null;
         return Object.freeze({revision:remote.revision,workspace:doc,
           requiresOwnerConfirmation:remote.requiresOwnerConfirmation===true});
       }finally{busy=false;}
@@ -40,10 +42,12 @@
         var checksum=await integrity.sha256(ciphertext);
         var result=await revisions.append(ciphertext,checksum);
         openedRevision=result.revision;
+        openedCiphertext=ciphertext;
+        openedSha256=checksum;
         return Object.freeze({revision:result.revision,encrypted:true});
       }catch(e){
         // An uncertain append must never leave a cached revision authorized.
-        openedRevision=null;
+        openedRevision=null;openedCiphertext=null;openedSha256=null;
         throw e;
       }finally{busy=false;}
     }
@@ -54,10 +58,17 @@
         throw Error("Open the exact newer server workspace before owner confirmation");
       revisions.confirmRevision(revision);
     }
-    function close(){
-      ensureIdle();openedRevision=null;revisions.reset();
+    function encryptedBackup(){
+      ensureIdle();
+      if(openedRevision===null||openedRevision!==revisions.currentRevision()||
+         typeof openedCiphertext!=="string"||!openedSha256||revisions.requiresOwnerConfirmation())
+        throw Error("Verified current encrypted workspace required for backup export");
+      return Object.freeze({revision:openedRevision,ciphertext:openedCiphertext,sha256:openedSha256});
     }
-    return Object.freeze({open:open,save:save,confirmOpenedRevision:confirmOpenedRevision,
+    function close(){
+      ensureIdle();openedRevision=null;openedCiphertext=null;openedSha256=null;revisions.reset();
+    }
+    return Object.freeze({open:open,save:save,encryptedBackup:encryptedBackup,confirmOpenedRevision:confirmOpenedRevision,
       close:close,status:function(){return Object.freeze({
         openedRevision:openedRevision,requiresOwnerConfirmation:revisions.requiresOwnerConfirmation()
       });}});
