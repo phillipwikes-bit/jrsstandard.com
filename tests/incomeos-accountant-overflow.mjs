@@ -28,4 +28,7 @@ assert.ok(source.includes("if(!wsMode&&localLoadUnsafe)throw new Error"),"unsafe
 assert.ok(source.includes("!uniqueEntryIds(saved.entries)"),"local load must detect duplicate IDs");
 assert.ok(source.includes("saved.entries.some(function(e){return !validate(e);})"),"local load must detect invalid rows");
 assert.ok(source.includes("catch(_e){localLoadUnsafe=true;db.entries=[];}"),"unreadable local data must block writes");
+assert.ok(source.includes("if(raw===null)return;"),"missing local ledger may initialize empty");
+assert.ok(source.includes("saved.version!==2||!Array.isArray(saved.entries)"),"malformed or unsupported local ledger envelope must be quarantined");
+assert.ok(source.includes("localLoadUnsafe=true;\n        db.entries=[];"),"invalid envelope must block edits without overwriting original");
 console.log("Accounting workspace preserves all imported valid rows and refuses over-limit edits.");
