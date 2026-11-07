@@ -1,0 +1,29 @@
+name: JRS public route acceptance audit
+on:
+  workflow_dispatch:
+  pull_request:
+    paths:
+      - 'sitemap.xml'
+      - 'vercel.json'
+      - 'scripts/audit-public-routes.mjs'
+      - '.github/workflows/public-route-audit.yml'
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Verify sitemap routes
+        run: node scripts/audit-public-routes.mjs
+      - name: Preserve route audit evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: jrs-route-audit
+          path: artifacts/jrs-route-audit.json
+          if-no-files-found: warn
