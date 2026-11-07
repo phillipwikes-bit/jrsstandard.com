@@ -2,7 +2,7 @@
 // Pure protocol client. No credentials, browser storage, network endpoints, or side effects.
 (function(root){
   function revision(value){
-    if(!Number.isSafeInteger(value)||value<0)throw Error("Invalid workspace revision");
+    if(!Number.isSafeInteger(value)||value<0||value===Number.MAX_SAFE_INTEGER)throw Error("Invalid workspace revision");
     return value;
   }
   function checksum(value){
@@ -18,7 +18,10 @@
       var obj;try{obj=JSON.parse(value);}catch{throw Error("Invalid encrypted workspace");}
       if(!obj||obj.format!=="incomeos-workspace"||obj.version!==1||obj.kdf!=="PBKDF2-SHA256"||
          obj.iterations!==600000||obj.cipher!=="AES-256-GCM"||
-         Object.keys(obj).sort().join(",")!=="cipher,data,format,iterations,iv,kdf,salt,version")
+         Object.keys(obj).sort().join(",")!=="cipher,data,format,iterations,iv,kdf,salt,version"||
+         typeof obj.data!=="string"||!obj.data||!/^[A-Za-z0-9+/=]+$/.test(obj.data)||
+         typeof obj.salt!=="string"||!/^[A-Za-z0-9+/]{22}==$/.test(obj.salt)||
+         typeof obj.iv!=="string"||!/^[A-Za-z0-9+/]{16}$/.test(obj.iv))
         throw Error("Unsupported encrypted workspace");
     }
     return value;
