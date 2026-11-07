@@ -1,6 +1,6 @@
 "use strict";
 const assert=require("node:assert/strict");
-const protocol=require("../owner/incomeos/workspace-revision-protocol.js");
+const protocol=require("./incomeos-browser-script-loader.cjs")("workspace-revision-protocol.js","IncomeOSWorkspaceRevision");
 const payload=JSON.stringify({format:"incomeos-workspace",version:1,kdf:"PBKDF2-SHA256",iterations:600000,cipher:"AES-256-GCM",salt:"AAAAAAAAAAAAAAAAAAAAAA==",iv:"AAAAAAAAAAAAAAAA",data:"AAAAAAAAAAAAAAAAAAAAAA=="});
 const sha="a".repeat(64);
 assert.equal(protocol.appendRequest(0,payload,sha).expected_revision,0);
