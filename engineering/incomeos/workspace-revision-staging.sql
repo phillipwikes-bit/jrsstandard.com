@@ -56,68 +56,11 @@ begin
     and (encrypted_payload::jsonb)->>'cipher' = 'AES-256-GCM'
     -- Match the client envelope's base64 field types and byte-length constraints.
     and pg_catalog.jsonb_typeof((encrypted_payload::jsonb)->'data') = 'string'
-    and (encrypted_payload::jsonb)->>'data' ~ '^[A-Za-z0-9+/=]+
-    and (select count(*) from pg_catalog.jsonb_object_keys(encrypted_payload::jsonb)) = 8) then
-    raise exception 'Unsupported encrypted workspace envelope';
-  end if;
-  perform pg_catalog.pg_advisory_xact_lock(pg_catalog.hashtextextended(actor::text, 0));
-  select coalesce(max(revision),0) into current_revision
-    from incomeos_private.workspace_revisions where owner_id = actor;
-  if current_revision <> expected_revision then
-    raise exception 'Stale workspace revision' using errcode = '40001';
-  end if;
-  insert into incomeos_private.workspace_revisions
-    (owner_id, revision, parent_revision, ciphertext, ciphertext_sha256)
-  values (actor, current_revision + 1, current_revision, encrypted_payload, payload_sha256);
-  return current_revision + 1;
-end;
-$$;
--- Grant execution only after reviewing extension location, API schema exposure,
--- and the separate owner provisioning process. Do not deploy as-is.
-revoke all on function incomeos_private.append_workspace_revision(bigint,text,text) from public, anon, authenticated;
-
+    and (encrypted_payload::jsonb)->>'data' ~ '^[A-Za-z0-9+/=]+$'
     and pg_catalog.jsonb_typeof((encrypted_payload::jsonb)->'salt') = 'string'
-    and (encrypted_payload::jsonb)->>'salt' ~ '^[A-Za-z0-9+/]{22}==
-    and (select count(*) from pg_catalog.jsonb_object_keys(encrypted_payload::jsonb)) = 8) then
-    raise exception 'Unsupported encrypted workspace envelope';
-  end if;
-  perform pg_catalog.pg_advisory_xact_lock(pg_catalog.hashtextextended(actor::text, 0));
-  select coalesce(max(revision),0) into current_revision
-    from incomeos_private.workspace_revisions where owner_id = actor;
-  if current_revision <> expected_revision then
-    raise exception 'Stale workspace revision' using errcode = '40001';
-  end if;
-  insert into incomeos_private.workspace_revisions
-    (owner_id, revision, parent_revision, ciphertext, ciphertext_sha256)
-  values (actor, current_revision + 1, current_revision, encrypted_payload, payload_sha256);
-  return current_revision + 1;
-end;
-$$;
--- Grant execution only after reviewing extension location, API schema exposure,
--- and the separate owner provisioning process. Do not deploy as-is.
-revoke all on function incomeos_private.append_workspace_revision(bigint,text,text) from public, anon, authenticated;
-
+    and (encrypted_payload::jsonb)->>'salt' ~ '^[A-Za-z0-9+/]{22}==$'
     and pg_catalog.jsonb_typeof((encrypted_payload::jsonb)->'iv') = 'string'
-    and (encrypted_payload::jsonb)->>'iv' ~ '^[A-Za-z0-9+/]{16}
-    and (select count(*) from pg_catalog.jsonb_object_keys(encrypted_payload::jsonb)) = 8) then
-    raise exception 'Unsupported encrypted workspace envelope';
-  end if;
-  perform pg_catalog.pg_advisory_xact_lock(pg_catalog.hashtextextended(actor::text, 0));
-  select coalesce(max(revision),0) into current_revision
-    from incomeos_private.workspace_revisions where owner_id = actor;
-  if current_revision <> expected_revision then
-    raise exception 'Stale workspace revision' using errcode = '40001';
-  end if;
-  insert into incomeos_private.workspace_revisions
-    (owner_id, revision, parent_revision, ciphertext, ciphertext_sha256)
-  values (actor, current_revision + 1, current_revision, encrypted_payload, payload_sha256);
-  return current_revision + 1;
-end;
-$$;
--- Grant execution only after reviewing extension location, API schema exposure,
--- and the separate owner provisioning process. Do not deploy as-is.
-revoke all on function incomeos_private.append_workspace_revision(bigint,text,text) from public, anon, authenticated;
-
+    and (encrypted_payload::jsonb)->>'iv' ~ '^[A-Za-z0-9+/]{16}$'
     and (select count(*) from pg_catalog.jsonb_object_keys(encrypted_payload::jsonb)) = 8) then
     raise exception 'Unsupported encrypted workspace envelope';
   end if;
