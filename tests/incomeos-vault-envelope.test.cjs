@@ -1,6 +1,6 @@
 "use strict";
 const assert=require("node:assert/strict");
-const vault=require("../owner/incomeos/vault-cloud.js");
+const vault=require("./incomeos-browser-script-loader.cjs")("vault-cloud.js","IncomeOSVaultCloud");
 const valid={format:"incomeos-workspace",version:1,kdf:"PBKDF2-SHA256",iterations:600000,cipher:"AES-256-GCM",salt:"AAAAAAAAAAAAAAAAAAAAAA==",iv:"AAAAAAAAAAAAAAAA",data:"AAAAAAAAAAAAAAAAAAAAAA=="};
 assert.equal(vault.assertEncrypted(JSON.stringify(valid)).version,1);
 for(const [field,value] of [["version",2],["kdf","PBKDF2-SHA1"],["iterations",1],["cipher","AES-128-GCM"],["salt","short"],["iv","short"],["data",""]]){
