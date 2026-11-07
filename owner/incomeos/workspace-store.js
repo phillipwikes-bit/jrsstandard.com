@@ -79,10 +79,12 @@
   function setLedger(ws,entries,on){
     if(!isDate(on))throw Error("Date required");
     if(!Array.isArray(entries)||entries.length>15000)throw Error("Ledger is missing or exceeds 15,000 rows");
-    var ids={};
+    var ids=new Set();
     entries.forEach(function(e){
       if(!e||typeof e!=="object"||Array.isArray(e)||(e.kind!=="income"&&e.kind!=="outflow"))throw Error("Invalid ledger row");
-      if(typeof e.id!=="string"||!e.id.trim()||ids[e.id])throw Error("Every ledger row needs a unique id");ids[e.id]=1;
+      if(typeof e.id!=="string"||!e.id.trim()||ids.has(e.id.trim()))
+        throw Error("Every ledger row needs a unique id");
+      ids.add(e.id.trim());
     });
     var next=clone(validate(ws)),before=arr(next.ledger).length;
     next.ledger=clone(entries);
