@@ -118,5 +118,8 @@ function exerciseWorkspaceEvent(ledger,includeLedger=true){
 }
 assert.deepEqual(JSON.parse(JSON.stringify(exerciseWorkspaceEvent(undefined,false))),{unsafe:true,mode:true,entries:0},"Missing ledger event must enter quarantine");
 assert.equal(exerciseWorkspaceEvent("bad").unsafe,true,"Malformed ledger event must enter quarantine");
+assert.equal(exerciseWorkspaceEvent(null).unsafe,true,"Null workspace event must enter quarantine");
+assert.equal(exerciseWorkspaceEvent(undefined).unsafe,true,"Undefined workspace event must enter quarantine");
+
 assert.equal(exerciseWorkspaceEvent([]).unsafe,false,"Valid empty ledger event must remain usable");
 console.log("Accounting workspace preserves all imported valid rows and refuses over-limit edits.");
