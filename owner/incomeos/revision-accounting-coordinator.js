@@ -93,7 +93,8 @@
       ensureIdle();
       if(!dirty)throw Error("No pending accounting draft");
       working=null;opened=false;dirty=false;needsReview=false;needsRecovery=false;
-      bridge.close();
+      // Preserve the revision store's high-water mark after a conflict.
+      // Explicit draft discard is not an authorization to reset rollback detection.
     }
     function encryptedBackup(){
       ensureIdle();
