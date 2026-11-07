@@ -14,6 +14,7 @@ on:
       - 'tests/incomeos-workspace-revision-protocol.test.cjs'
       - 'tests/incomeos-revision-store.test.cjs'
       - 'tests/incomeos-revision-supabase-transport.test.cjs'
+      - 'tests/incomeos-revision-rpc-integration.test.cjs'
       - '.github/workflows/incomeos-security-verification.yml'
   workflow_dispatch:
 permissions:
@@ -40,4 +41,5 @@ jobs:
           node tests/incomeos-workspace-revision-protocol.test.cjs
           node tests/incomeos-revision-store.test.cjs
           node tests/incomeos-revision-supabase-transport.test.cjs
+          node tests/incomeos-revision-rpc-integration.test.cjs
           node tests/incomeos-revision-staging-sql.test.cjs
