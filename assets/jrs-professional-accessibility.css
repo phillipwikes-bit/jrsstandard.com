@@ -83,3 +83,30 @@ html{scroll-padding-top:3.5rem}
  .jrs-sitenav a,.footer-link,.footer-copy{color:var(--text,#f5f3ed)!important}
  .card,.start-link{border-color:var(--muted,#bbb7ad)!important}
 }
+
+/* Small, accessible return control on secondary pages at mobile widths. */
+.jrs-mobile-back-wrap{display:none}
+@media(max-width:760px){
+ .jrs-mobile-back-wrap{
+  display:flex;
+  max-width:1120px;
+  margin:0 auto;
+  padding:6px 18px 0;
+ }
+ .jrs-mobile-back{
+  display:inline-flex;
+  align-items:center;
+  gap:7px;
+  min-height:44px;
+  padding:0 12px;
+  border:1px solid var(--rule,var(--line,#59544a));
+  border-radius:6px;
+  background:var(--surface,var(--panel,#151410));
+  color:var(--accent,var(--gold,#d4b276));
+  font-size:13px;
+  line-height:1.2;
+  font-weight:600;
+  text-decoration:none;
+ }
+ .jrs-mobile-back:hover{text-decoration:underline;text-underline-offset:3px}
+}
