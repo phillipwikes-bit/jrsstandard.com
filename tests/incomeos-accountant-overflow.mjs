@@ -8,6 +8,7 @@ assert.ok(start>=0&&end>start,"workspace loader must exist");
 const loader=source.slice(start,end);
 assert.match(loader,/entries:rows\.filter\(validate\)/,"valid workspace entries must not be silently truncated");
 assert.doesNotMatch(loader,/\.slice\(0,\s*15000\)/,"workspace loader must not silently drop overflow rows");
+assert.doesNotMatch(source,/saved\.entries\.filter\(validate\)\.slice\(0,\s*15000\)/,"local ledger must not silently truncate on load");
 assert.match(source,/entries\.length>15000/,"editor must reject writes beyond its supported limit");
 assert.match(source,/entries:entries\.concat\(wsForeign\)/,"foreign ledger records must be preserved");
 const idStart=source.indexOf("function uniqueEntryIds(entries)");
