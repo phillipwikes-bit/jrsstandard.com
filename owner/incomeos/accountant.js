@@ -90,6 +90,8 @@
     if(!Array.isArray(entries)||entries.length>15000||!uniqueEntryIds(entries)||entries.some(function(x){return !validate(x);}))
       throw new Error("Financial records are invalid or exceed the ledger limit");
     if(wsMode){
+      // A foreign panel may own a record with the same identifier. Never merge colliding IDs.
+      if(!uniqueEntryIds(entries.concat(wsForeign)))throw new Error("Workspace contains duplicate or missing record identifiers. No ledger update was accepted.");
       // The workspace owner applies the change and reports back; nothing is accepted unless it did.
       var result=null;
       try{document.dispatchEvent(new CustomEvent("incomeos:ledger-replace",{detail:{entries:entries.concat(wsForeign),done:function(r){result=r;}}}));}catch(_e){}
