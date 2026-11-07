@@ -37,4 +37,7 @@ assert.ok(source.includes("if(wsMode&&workspaceLoadUnsafe)throw new Error"),"uns
 assert.ok(source.includes('(e.kind==="income"||e.kind==="outflow")&&!validate(e)'),"invalid accounting-shaped workspace records must block edits");
 assert.ok(source.includes("if(workspaceLoadUnsafe)db.entries=[];"),"unsafe workspace must not show partial financial totals");
 assert.ok(source.includes("db.entries=[]; // Partial totals could be mistaken"),"unsafe local ledger must not show partial financial totals");
+assert.ok(source.includes('el.textContent="Unavailable"'),"unsafe financial metrics must be marked unavailable, not zero");
+assert.ok(source.includes('count.textContent="Integrity review required"'),"unsafe ledger must show review status");
+assert.ok(source.includes("Financial totals are unavailable because the stored ledger failed integrity checks"),"unsafe report must explain the integrity restriction");
 console.log("Accounting workspace preserves all imported valid rows and refuses over-limit edits.");
