@@ -1,0 +1,112 @@
+[
+  {
+    "test": "public-method-first-release.mjs",
+    "exit_code": 0,
+    "tail": "PASS: 85 public pages screened, 9 training scripts parsed; no Engine promotion, no record-entry assessor, conceptual Manifest and retired API boundaries, evidence/download/contact preserved.\n"
+  },
+  {
+    "test": "public-reference-navigation.mjs",
+    "exit_code": 0,
+    "tail": "JRS public navigation: 4 routes, 5 resource sections, research traceability and preserved integrations verified.\n"
+  },
+  {
+    "test": "public-research-accessibility.test.mjs",
+    "exit_code": 0,
+    "tail": "isting Formspree contact delivery remains installed (0.19424ms)\n\u2714 research evidence links do not redirect back to the overview (0.457592ms)\n\u2139 tests 13\n\u2139 suites 0\n\u2139 pass 13\n\u2139 fail 0\n\u2139 cancelled 0\n\u2139 skipped 0\n\u2139 todo 0\n\u2139 duration_ms 18.921682\n"
+  },
+  {
+    "test": "jrs-public-resource-integrity.mjs",
+    "exit_code": 0,
+    "tail": "PASS: 59 public pages; 1575 internal links; 1517 local targets; 58 tracked downloads; 149 section anchors; document inventories and research/version crosswalks.\n"
+  },
+  {
+    "test": "jrs-a-improvements.test.mjs",
+    "exit_code": 0,
+    "tail": "PASS public practitioner routes, source labels, organizational boundaries, GA4 payload allowlist and owner isolation.\n"
+  },
+  {
+    "test": "jrs-accessibility-acceptance.test.mjs",
+    "exit_code": 0,
+    "tail": " lack a detected structure-tree marker. Tag presence alone would not establish correct reading order or WCAG conformance.\nNOT ASSESSED: VoiceOver, PDF/UA, every WCAG criterion, full-site independent QA and protected-preview authentication.\n"
+  },
+  {
+    "test": "jrs-practitioner-journey.mjs",
+    "exit_code": 0,
+    "tail": "PASS: fictional 3-stage example, separated detection/reliability/field boundaries, source links and shared responsive public styling.\n"
+  },
+  {
+    "test": "jrs-resource-directory.mjs",
+    "exit_code": 0,
+    "tail": "PASS: 16 accessible, progressively enhanced catalog entries; 6 tracked PDF assets; 10 web/interactive targets; no personal-query transmission.\n"
+  },
+  {
+    "test": "jrs-human-examples-contract.mjs",
+    "exit_code": 0,
+    "tail": "PASS: five fictional illustrated scenarios, mobile CSS, two original campaign routes, POST support, research limits and source integrity.\n"
+  },
+  {
+    "test": "public-practitioner-identity.mjs",
+    "exit_code": 0,
+    "tail": "PASS: JRS method-first navigation, active-tool scope, source integrity, archival boundaries and readable styling.\n"
+  },
+  {
+    "test": "jrs-public-type-palette.mjs",
+    "exit_code": 0,
+    "tail": "PASS: 10 public/retained legacy routes, 6 principal pages, 17 reference pages, 9 linked PDF assets and locally generated training completion PNG guarded. PDF harmonization remains a separate controlled publication task.\n"
+  },
+  {
+    "test": "jrs-training-completion-behavior.mjs",
+    "exit_code": 0,
+    "tail": "ning enrollment origin, consent, size and error minimization enforced.\nPASS: funnel telemetry reports recorded only on database acceptance.\nPASS: guide-directory visits and registration-form views are distinct; preview traffic is excluded.\n"
+  },
+  {
+    "test": "public-route-alignment.mjs",
+    "exit_code": 0,
+    "tail": "-evaluation.html has a status redirect\nPASS  Standard does not describe a public Engine API\nPASS  Training does not direct visitors to submit records\nPASS  Current Engine handoff preserves the no-public-intake boundary\n\n17 checks, 0 failed\n"
+  },
+  {
+    "test": "jrs-professional-publications.mjs",
+    "exit_code": 0,
+    "tail": "PASS: both attributed publisher links, safe external navigation, research boundary and 16-item practitioner directory.\nPASS: public top-level pages contain no obsolete pilot or enterprise destinations.\n"
+  },
+  {
+    "test": "jrs-institutional-reference-regression.mjs",
+    "exit_code": 0,
+    "tail": "y boundaries preserved.\nPASS: historic reviewer receipt minimizes legacy-link exposure and prevents click telemetry leakage.\nPASS: Standard sections are independently addressable; no hidden nesting, orphan containers or footer containment.\n"
+  },
+  {
+    "test": "jrs-published-pdf-identity.mjs",
+    "exit_code": 0,
+    "tail": "PASS: exact original binary identities for all nine linked published PDFs, with JRS Standard v2.0 edition guard.\n"
+  },
+  {
+    "test": "jrs-download-read-safety.mjs",
+    "exit_code": 0,
+    "tail": "PASS: six verification routes, six prefetch routes, three legitimate events and unknown fallback; no destructive GET side effects.\n"
+  },
+  {
+    "test": "jrs-contrast-guards.mjs",
+    "exit_code": 0,
+    "tail": "PASS: scoped Standard/Training text contrast >=4.5:1 on representative light surfaces; visibly disabled poll and underlined training links.\n"
+  },
+  {
+    "test": "jrs-reconstruction-contract.mjs",
+    "exit_code": 0,
+    "tail": "PASS: two reader-led reconstructions; unchanged approvals; sources before neutral prompt; deferred interpretation; no answer collection. Comprehension NOT VALIDATED.\n"
+  },
+  {
+    "test": "public-site-inquiry.test.mjs",
+    "exit_code": 0,
+    "tail": "27ms)\n\u2714 network exception is not an accepted receipt (0.580325ms)\n\u2714 no Supabase service-role or credential dependency in route (0.261049ms)\n\u2139 tests 12\n\u2139 suites 0\n\u2139 pass 12\n\u2139 fail 0\n\u2139 cancelled 0\n\u2139 skipped 0\n\u2139 todo 0\n\u2139 duration_ms 20.183057\n"
+  },
+  {
+    "test": "engine/auth-matrix.mjs",
+    "exit_code": 0,
+    "tail": "SS  api/v1/review-engine.js: removed, no public record evaluation\nPASS  conceptual Manifest; three machine-readable routes remain blocked\nScope: source and local refusal checks only. Deployed behavior and release gates are NOT ESTABLISHED.\n"
+  },
+  {
+    "test": "scripts/test_review_incomplete.mjs",
+    "exit_code": 0,
+    "tail": "PASS  public review route is removed; no public record processing restored\n"
+  }
+]

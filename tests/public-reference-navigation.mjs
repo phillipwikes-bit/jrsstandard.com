@@ -1,6 +1,7 @@
 // Public-navigation regression. Source-level only: does not certify live behavior or accessibility.
 import assert from 'node:assert/strict';
 import { readFileSync, existsSync } from 'node:fs';
+import {assertRetiredReviewPage,assertConceptualManifest} from './helpers/public-boundary.mjs';
 
 const file = name => readFileSync(new URL('../' + name, import.meta.url), 'utf8');
 const home = file('index.html');
@@ -40,6 +41,6 @@ for (const target of ['research-summary.html', 'methodology.html', 'evidence-led
   assert.ok(evidence.includes('href="' + target + '"'), 'research traceability link lost: ' + target);
 }
 assert.ok(contact.includes('action="https://formspree.io/f/mreddwdg"'), 'existing inquiry workflow must remain unchanged');
-assert.ok(file('review-engine.html').includes('No online record processing.'), 'technical no-processing boundary removed');
-assert.ok(file('review-engine.html').includes('noindex,nofollow,noarchive'), 'archived technical page must not be indexed');
+assertRetiredReviewPage();
+assertConceptualManifest();
 console.log('JRS public navigation: 4 routes, 5 resource sections, research traceability and preserved integrations verified.');

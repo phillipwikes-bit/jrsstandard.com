@@ -21,3 +21,8 @@ table{width:100%;border-collapse:collapse;margin:20px 0}th,td{text-align:left;ve
 footer{border-top:1px solid var(--line);padding:24px;max-width:860px;margin:auto;font-size:13px;color:var(--muted)}
 footer a{margin-right:14px}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+
+/* Existing public reference theme, including the seven topic-guide routes. */
+body.jrs-topic-page .brand{color:#193e58}
+body.jrs-topic-page .skip{background:#193e58;color:#fff}
+body.jrs-topic-page .panel,body.jrs-topic-page .notice{border-color:#b7c8d3}

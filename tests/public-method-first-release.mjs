@@ -5,6 +5,7 @@ import {readFileSync, readdirSync, statSync, existsSync} from 'node:fs';
 import {join, resolve} from 'node:path';
 import {fileURLToPath} from 'node:url';
 import vm from 'node:vm';
+import {assertRetiredReviewPage,assertConceptualManifest,assertClosedReviewRoute,retiredReviewRoutes} from './helpers/public-boundary.mjs';
 
 const root=resolve(fileURLToPath(new URL('..',import.meta.url)));
 const read=p=>readFileSync(join(root,p),'utf8');
@@ -20,7 +21,7 @@ function walk(base){
     const path=base?base+'/'+name:name;
     const st=statSync(join(root,path));
     if(st.isDirectory()){
-      if(['.git','node_modules'].includes(name))return [];
+      if(['.git','node_modules','.openai','preview'].includes(name))return [];
       return walk(path);
     }
     return path.endsWith('.html')?[path]:[];
@@ -68,11 +69,9 @@ assert.ok(!vercel.redirects.some(x=>x.source==='/manifest.html'),'Manifest schem
 assert.ok(!vercel.redirects.some(x=>x.destination==='/review-engine.html'),'legacy routing must not promote Engine page');
 const sitemap=read('sitemap.xml');
 assert.doesNotMatch(sitemap,/review-engine\.html|platform-evaluation-001\.html/);
-const history=read('review-engine.html');
-assert.match(history,/<meta name="robots" content="noindex,nofollow,noarchive">/);
-assert.match(history,/Historical route/);
-assert.match(history,/No online record processing/);
-assert.ok(existsSync(join(root,'jrs-decision-reconstruction-manifest-v1.0.1.schema.json')));
+assertRetiredReviewPage();
+assertConceptualManifest();
+for(const route of retiredReviewRoutes)await assertClosedReviewRoute(route);
 assert.ok(read('contact.html').includes('https://formspree.io/f/mreddwdg'));
 const research=read('research.html');
 for(const p of ['research-summary.html','methodology.html','evidence-ledger.html','questions.html','research-register.html']){
@@ -80,4 +79,4 @@ for(const p of ['research-summary.html','methodology.html','evidence-ledger.html
 }
 const guide=read('investigator-guides.html');
 for(const f of ['JRS_Investigator_Field_Guide_Employment.pdf','JRS_Investigator_Field_Guide_FairHousing.pdf','JRS_Investigator_Field_Guide_International.pdf'])assert.ok(guide.includes(f));
-console.log('PASS: '+publicPages.length+' public pages screened, '+checked+' training scripts parsed; no Engine promotion, no record-entry assessor, Manifest route restored, evidence/download/contact preserved.');
+console.log('PASS: '+publicPages.length+' public pages screened, '+checked+' training scripts parsed; no Engine promotion, no record-entry assessor, conceptual Manifest and retired API boundaries, evidence/download/contact preserved.');
