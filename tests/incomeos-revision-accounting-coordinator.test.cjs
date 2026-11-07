@@ -28,6 +28,11 @@ const expense=(id,amount)=>({id,kind:"outflow",date,label:"Synthetic vendor "+id
   const second=expense("exp-2",18);
   assert.equal(accountant.validateEntry(first),true);
   assert.equal(accountant.validateEntry(second),true);
+  const pendingIncome={id:"income-1",kind:"income",date,label:"Synthetic pending research payment",
+    category:"research",grossUsd:120,feesUsd:0,status:"pending",scope:"income",
+    payer:"Synthetic Study",source:"synthetic"};
+  assert.equal(accountant.validateEntry(pendingIncome),true);
+  assert.equal(accountant.validateEntry({...pendingIncome,status:"paid"}),true);
   let remote=null,writes=0;
   const transport={
     latest:async()=>remote,
@@ -50,6 +55,8 @@ const expense=(id,amount)=>({id,kind:"outflow",date,label:"Synthetic vendor "+id
   assert.throws(()=>a.encryptedBackup(),/Save or resolve/);
   assert.throws(()=>a.initializeNew("invalid"),/Valid initialization date/);
   a.initializeNew(date);
+  assert.throws(()=>a.replaceLedger([first,{...first,id:" exp-1 "}],date),/Invalid or unsupported/,
+    "Whitespace-equivalent identifiers cannot coexist in an authoritative ledger");
   assert.throws(()=>a.replaceLedger([{...first,amountUsd:-1}],date),/Invalid or unsupported/);
   assert.equal(a.replaceLedger([first],date).ledgerCount,1);
   assert.equal(a.status().dirty,true);
@@ -105,6 +112,15 @@ const expense=(id,amount)=>({id,kind:"outflow",date,label:"Synthetic vendor "+id
   assert.equal(latest.ledger[0].amountUsd,30);
   assert.equal(latest.ledger[1].id,second.id);
   assert.ok(latest.changeLog.length>=2,"Workspace change log must be retained");
+  // An unpaid research claim is a real ledger record but cannot be classified
+  // as a received payment simply because it is included in a server save.
+  b.replaceLedger([...latest.ledger,pendingIncome],date);
+  assert.equal((await b.save(passphrase)).revision,4);
+  assert.equal(writes,4);
+  const incomeWorkspace=await workspace.decrypt(passphrase,remote.ciphertext);
+  assert.equal(incomeWorkspace.ledger.length,3);
+  assert.equal(incomeWorkspace.ledger.find(e=>e.id==="income-1").status,"pending");
+  assert.equal(incomeWorkspace.ledger.find(e=>e.id==="income-1").grossUsd,120);
   assert.throws(()=>b.pendingDraft(),/No pending accounting draft/);
   b.close();
   assert.equal(b.status().opened,false);
