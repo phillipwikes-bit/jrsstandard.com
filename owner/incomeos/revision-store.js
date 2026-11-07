@@ -12,7 +12,8 @@
     function integer(n){return Number.isSafeInteger(n)&&n>=0&&n<Number.MAX_SAFE_INTEGER;}
     function parseLatest(row){
       if(row===null)return {revision:0,text:null};
-      if(!row||!integer(row.revision)||row.revision===0||typeof row.ciphertext!=="string")
+      if(!row||!integer(row.revision)||row.revision===0||typeof row.ciphertext!=="string"||
+         typeof row.ciphertext_sha256!=="string"||!/^[0-9a-f]{64}$/.test(row.ciphertext_sha256))
         throw Error("Invalid server revision response");
       return {revision:row.revision,text:row.ciphertext,sha256:row.ciphertext_sha256};
     }
@@ -24,6 +25,10 @@
         if(revision!==null)protocol.recover(revision,result.revision);
         revision=result.revision;
         return Object.freeze(result);
+      }catch(e){
+        // A failed read must never leave a previously trusted revision usable.
+        revision=null;
+        throw e;
       }finally{busy=false;}
     }
     async function append(ciphertext,sha256){
