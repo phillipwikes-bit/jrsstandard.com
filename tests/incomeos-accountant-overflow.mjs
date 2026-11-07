@@ -168,4 +168,5 @@ assert.match(source,/render\(\);\s*modeNote\(\);\s*}\s*var wsDirty=false/,"Initi
 assert.match(source,/var n=\$\("ledger-mode"\);\s*if\(n\)\{/,"Missing mode banner must not bypass control interlocks");
 assert.doesNotMatch(source,/banner\.textContent\s*=/,"Staging warning must not replace nested workspace action buttons");
 assert.match(source,/banner\.querySelector\("strong"\)/,"Quarantine warning must update only the heading");
+assert.match(source,/function locked\(\)\{return workspaceLoadUnsafe\|\|\(!wsMode&&\(localLoadUnsafe\|\|window\.IncomeOSFinancialReadOnly===true\)\);\}/,"Shared interaction guard must block quarantined ledgers independently of staging lock");
 console.log("Accounting workspace preserves all imported valid rows and refuses over-limit edits.");
