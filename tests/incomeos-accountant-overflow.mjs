@@ -24,4 +24,8 @@ assert.ok(source.includes("!uniqueEntryIds(entries)"),"commit gate must enforce 
 assert.ok(source.includes("!uniqueEntryIds(entries.concat(wsForeign))"),"workspace commit must reject collisions with foreign rows");
 assert.equal(uniqueEntryIds([{id:"accounting-1"},{id:"foreign-1"}]),true);
 assert.equal(uniqueEntryIds([{id:"shared-1"},{id:"shared-1"}]),false);
+assert.ok(source.includes("if(!wsMode&&localLoadUnsafe)throw new Error"),"unsafe local ledger must block writes");
+assert.ok(source.includes("!uniqueEntryIds(saved.entries)"),"local load must detect duplicate IDs");
+assert.ok(source.includes("saved.entries.some(function(e){return !validate(e);})"),"local load must detect invalid rows");
+assert.ok(source.includes("catch(_e){localLoadUnsafe=true;db.entries=[];}"),"unreadable local data must block writes");
 console.log("Accounting workspace preserves all imported valid rows and refuses over-limit edits.");
