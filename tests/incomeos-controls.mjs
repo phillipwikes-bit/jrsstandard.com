@@ -17,7 +17,7 @@ new Script(decision);
 new Script(vault);
 new Script(ui);
 new Script(vaultUi);
-const obj={window:{},Date,Math,Number,Array,Object,JSON,String,Error,RangeError};
+const obj={window:{},Date,Math,Number,Array,Object,JSON,String,Error,RangeError,URL};
 runInNewContext(decision,obj);
 const engine=obj.window.IncomeOSDecisionEngine;
 assert.equal(engine.VERSION,"1.0.0");
