@@ -889,7 +889,7 @@
     var ws=ev&&ev.detail;
     wsMode=true;fromWorkspace(ws);
     if(ev&&ev.type==="incomeos:workspace-loaded")wsDirty=false;else wsDirty=true;
-    var go=$("ledger-save-now");if(go)go.hidden=!wsDirty;
+    var go=$("ledger-save-now");if(go)go.hidden=!wsDirty||workspaceLoadUnsafe;
     if(typeof document!=="undefined"&&$("ledger-list"))render();
     modeNote();
   }
