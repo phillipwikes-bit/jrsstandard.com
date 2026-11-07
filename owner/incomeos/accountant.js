@@ -474,6 +474,12 @@
     return false;
   }
   function renderSummary(){
+    if((wsMode&&workspaceLoadUnsafe)||(!wsMode&&localLoadUnsafe)){
+      ["ledger-total","ledger-fees","ledger-expenses","ledger-net","metric-paid","cash-assessed"].forEach(function(id){var el=$(id);if(el)el.textContent="Unavailable";});
+      var count=$("ledger-count");if(count)count.textContent="Integrity review required";
+      var preview=$("report-preview");if(preview){preview.replaceChildren();place(preview,"p","muted","Financial totals are unavailable because the stored ledger failed integrity checks. The original data has not been overwritten. Preserve the source and resolve the record errors before relying on reports or making edits.");}
+      return;
+    }
     var rows=yearEntries(),t=totals(rows);
     $("ledger-total").textContent=money(t.gross);
     $("ledger-fees").textContent=money(t.fees);
