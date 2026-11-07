@@ -5,6 +5,7 @@ on:
       - 'engineering/incomeos/workspace-revision-staging.sql'
       - 'engineering/incomeos/workspace-revision-rpc-staging.sql'
       - 'tests/incomeos-revision-rpc-db.sql'
+      - 'tests/incomeos-revision-rpc-concurrency.sh'
       - '.github/workflows/incomeos-revision-postgres.yml'
   workflow_dispatch:
 permissions:
@@ -44,4 +45,6 @@ jobs:
           PGDATABASE: postgres
           PGUSER: postgres
           PGPASSWORD: incomeos-ci-only
-        run: psql -X -v ON_ERROR_STOP=1 -f tests/incomeos-revision-rpc-db.sql
+        run: |
+          psql -X -v ON_ERROR_STOP=1 -f tests/incomeos-revision-rpc-db.sql
+          bash tests/incomeos-revision-rpc-concurrency.sh
