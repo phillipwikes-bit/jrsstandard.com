@@ -161,10 +161,16 @@
         "tests/incomeos-accounting-editor-browser.mjs",
         "tests/incomeos-vault-cloud.mjs",
         "tests/incomeos-vault-cloud-browser.mjs",
-        "owner/incomeos/VAULT-SCHEMA.sql"
+        "owner/incomeos/VAULT-SCHEMA.sql",
+        "engineering/incomeos/workspace-revision-staging.sql",
+        "engineering/incomeos/workspace-revision-rpc-staging.sql",
+        "tests/incomeos-revision-rpc-db.sql",
+        "tests/incomeos-revision-workspace-bridge.test.cjs",
+        ".github/workflows/incomeos-revision-postgres.yml",
+        ".github/workflows/incomeos-security-verification.yml"
       ],
       "blockedBy": "Owner vault account not yet created and allow-listed; the hosted save-and-restore round trip has not been performed",
-      "limitation": "Superseded 2026-11-05: earlier text said server-side storage was a prepared, unapplied schema. Now: a separate free Supabase project (incomeos-private) holds only device-encrypted workspaces, append-only, readable only by an allow-listed owner; access rules verified in the database with anonymous and non-owner roles; client round trip tested against a fake service only. Free plan pauses after a week unused and has no automatic backups; the owner keeps file saves as backup"
+      "limitation": "Superseded 2026-11-05: earlier text said server-side storage was a prepared, unapplied schema. Now: a separate free Supabase project (incomeos-private) holds only device-encrypted workspaces, append-only, readable only by an allow-listed owner; access rules verified in the database with anonymous and non-owner roles; client round trip tested against a fake service only. Free plan pauses after a week unused and has no automatic backups; the owner keeps file saves as backup Separate from that existing append-only vault, a server-authoritative compare-and-swap revision service is under development on an isolated branch. Its SQL has passed disposable PostgreSQL tests, and the encrypted workspace bridge has passed synthetic, real-crypto integration tests. It has not been migrated to the live database, enabled in the Owner Desk, or accepted through a real owner save-and-restore round trip."
     },
     {
       "id": "A15",
