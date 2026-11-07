@@ -34,6 +34,11 @@ const expense=(id,amount)=>({id,kind:"outflow",date,label:"Synthetic vendor "+id
   assert.equal(accountant.validateEntry(pendingIncome),true);
   assert.equal(accountant.validateEntry({...pendingIncome,status:"paid"}),true);
   const empty=workspace.newWorkspace(date);
+  assert.throws(()=>workspace.setLedger(empty,[first],"2026-02-30"),/Date required/,
+    "Invalid calendar dates cannot become workspace change-log chronology");
+  assert.throws(()=>workspace.setLedger(empty,[first],"2026-13-01"),/Date required/);
+  assert.equal(workspace.setLedger(empty,[first],"2028-02-29").ledger.length,1,
+    "Valid leap-day chronology must remain supported");
   assert.throws(()=>workspace.setLedger(empty,[first,{...first,id:" exp-1 "}],date),/unique id/,
     "Authoritative workspace must normalize duplicate ledger IDs");
   assert.equal(workspace.setLedger(empty,[{...first,id:"constructor"}],date).ledger[0].id,"constructor",
