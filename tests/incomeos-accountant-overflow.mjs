@@ -164,4 +164,6 @@ runInNewContext(`
 assert.equal(saveControl.hidden,true,"Quarantined changed workspace must hide save action");
 
 assert.ok(source.includes("var disabled=workspaceLoadUnsafe||(localLoadUnsafe&&!wsMode)||(window.IncomeOSFinancialReadOnly===true&&!wsMode)"),"All quarantined ledgers must disable edit and import controls even without staging lock");
+assert.match(source,/render\(\);\s*modeNote\(\);\s*}\s*var wsDirty=false/,"Initial load must apply integrity interlocks");
+assert.match(source,/var n=\$\("ledger-mode"\);\s*if\(n\)\{/,"Missing mode banner must not bypass control interlocks");
 console.log("Accounting workspace preserves all imported valid rows and refuses over-limit edits.");
