@@ -3,7 +3,7 @@
 const assert=require("node:assert/strict");
 const {webcrypto,createHash}=require("node:crypto");
 const load=require("./incomeos-browser-script-loader.cjs");
-globalThis.crypto=globalThis.crypto||webcrypto;
+if(typeof globalThis.crypto==="undefined") Object.defineProperty(globalThis,"crypto",{value:webcrypto,configurable:true});
 const protocol=load("workspace-revision-protocol.js","IncomeOSWorkspaceRevision");
 const workspace=load("workspace-store.js","IncomeOSWorkspace");
 const {createRevisionStore}=load("revision-store.js","IncomeOSRevisionStore");
