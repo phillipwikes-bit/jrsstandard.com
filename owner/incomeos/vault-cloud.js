@@ -97,8 +97,5 @@
       var r=await ask("incomeos:vault-open",{text:v.text});if(!r.ok)throw Error(r.error);say("Opened the vault copy saved "+String(v.savedAt).slice(0,16).replace("T"," ")+" UTC.");});});
     refresh();
   }
-  if(typeof module!=="undefined"&&module.exports)module.exports=Object.freeze({assertEncrypted:assertEncrypted});
-  if(typeof document!=="undefined"){
-    if(document.readyState==="loading")document.addEventListener("DOMContentLoaded",init);else init();
-  }
+  if(document.readyState==="loading")document.addEventListener("DOMContentLoaded",init);else init();
 }(typeof window!=="undefined"?window:(typeof globalThis!=="undefined"?globalThis:null)));
