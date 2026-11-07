@@ -126,7 +126,7 @@
     migrateLegacy();
     try{
       var saved=JSON.parse(localStorage.getItem(KEY)||"{}");
-      if(saved && Array.isArray(saved.entries))db.entries=saved.entries.filter(validate).slice(0,15000);
+      if(saved && Array.isArray(saved.entries))db.entries=saved.entries.filter(validate);
     }catch(_e){db.entries=[];}
   }
   function yearEntries(){var year=currentYear();return db.entries.filter(function(x){return x.date.slice(0,4)===year;});}
