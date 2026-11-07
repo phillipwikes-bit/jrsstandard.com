@@ -21,10 +21,12 @@ const browser=await chromium.launch(launchOptions);
 const ctx=await browser.newContext({...devices["iPhone 13"],acceptDownloads:true});
 const page=await ctx.newPage();const errors=[];page.on("pageerror",e=>errors.push(String(e)));
 const dialogs=[];page.on("dialog",async d=>{dialogs.push(d.message());await d.dismiss();});
-const feed={asOf:"2026-11-01",notice:"synthetic",studies:[
-  {id:"syn-js",title:"Synthetic hostile link",provider:"Test",paymentUsd:100,minutes:60,mode:"online",eventEnd:"2099-12-31",dates:"Any",eligibility:["Anyone"],status:"Open",url:"javascript:alert(1)",sourceUrl:"javascript:alert(1)",linkKind:"Direct screener",risk:[],reviewed:"2026-11-01"},
-  {id:"syn-nokind",title:"Synthetic no link kind",provider:"Test",paymentUsd:50,minutes:30,mode:"online",eventEnd:"2099-12-31",dates:"Any",eligibility:[],status:"Open",url:"https://example.org/apply",sourceUrl:"https://example.org/apply",risk:[],reviewed:"2026-11-01"}],
- assets:[{id:"syn-asset",title:"Synthetic asset",type:"Test",provider:"Test",capitalUsd:0,terms:"t",payout:"p",status:"s",linkKind:"k",risks:[],opportunityUrl:"data:text/html,x",reviewed:"2026-11-01"}]};
+// Reviews are current so the direct-filter assertion tests link classification, not a stale-source hold.
+const today=new Date().toISOString().slice(0,10);
+const feed={asOf:today,notice:"synthetic",studies:[
+  {id:"syn-js",title:"Synthetic hostile link",provider:"Test",paymentUsd:100,minutes:60,mode:"online",eventEnd:"2099-12-31",dates:"Any",eligibility:["Anyone"],status:"Open",url:"javascript:alert(1)",sourceUrl:"javascript:alert(1)",linkKind:"Direct screener",risk:[],reviewed:today},
+  {id:"syn-nokind",title:"Synthetic no link kind",provider:"Test",paymentUsd:50,minutes:30,mode:"online",eventEnd:"2099-12-31",dates:"Any",eligibility:[],status:"Open",url:"https://example.org/apply",sourceUrl:"https://example.org/apply",risk:[],reviewed:today}],
+ assets:[{id:"syn-asset",title:"Synthetic asset",type:"Test",provider:"Test",capitalUsd:0,terms:"t",payout:"p",status:"s",linkKind:"k",risks:[],opportunityUrl:"data:text/html,x",reviewed:today}]};
 await page.route("**/opportunities.json",r=>r.fulfill({status:200,contentType:"application/json",body:JSON.stringify(feed)}));
 await page.goto(`http://127.0.0.1:${server.address().port}/index.html?study=syn-nokind`);
 await page.waitForFunction(()=>document.querySelectorAll("#research-cards article").length===2);

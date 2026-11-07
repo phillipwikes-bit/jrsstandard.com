@@ -80,7 +80,7 @@
         "tests/incomeos-accounting-editor-browser.mjs",
         "tests/incomeos-controls.mjs"
       ],
-      "limitation": "Preservation is the owner-saved workspace file; there is no hosted persistence or cross-device sync"
+      "limitation": "Preservation is the owner-saved workspace file; there is no hosted persistence or cross-device sync A separately staged accounting coordinator now tests owner-workspace ledger saves against synthetic encrypted server revisions, including conflict preservation and owner review; it is not loaded into the live accounting editor."
     },
     {
       "id": "A07",
@@ -161,10 +161,19 @@
         "tests/incomeos-accounting-editor-browser.mjs",
         "tests/incomeos-vault-cloud.mjs",
         "tests/incomeos-vault-cloud-browser.mjs",
-        "owner/incomeos/VAULT-SCHEMA.sql"
+        "owner/incomeos/VAULT-SCHEMA.sql",
+        "engineering/incomeos/workspace-revision-staging.sql",
+        "engineering/incomeos/workspace-revision-rpc-staging.sql",
+        "tests/incomeos-revision-rpc-db.sql",
+        "tests/incomeos-revision-workspace-bridge.test.cjs",
+        ".github/workflows/incomeos-revision-postgres.yml",
+        ".github/workflows/incomeos-security-verification.yml",
+        "owner/incomeos/revision-accounting-coordinator.js",
+        "tests/incomeos-revision-accounting-coordinator.test.cjs",
+        "tests/incomeos-revision-release-gate.test.cjs"
       ],
       "blockedBy": "Owner vault account not yet created and allow-listed; the hosted save-and-restore round trip has not been performed",
-      "limitation": "Superseded 2026-11-05: earlier text said server-side storage was a prepared, unapplied schema. Now: a separate free Supabase project (incomeos-private) holds only device-encrypted workspaces, append-only, readable only by an allow-listed owner; access rules verified in the database with anonymous and non-owner roles; client round trip tested against a fake service only. Free plan pauses after a week unused and has no automatic backups; the owner keeps file saves as backup"
+      "limitation": "Superseded 2026-11-05: earlier text said server-side storage was a prepared, unapplied schema. Now: a separate free Supabase project (incomeos-private) holds only device-encrypted workspaces, append-only, readable only by an allow-listed owner; access rules verified in the database with anonymous and non-owner roles; client round trip tested against a fake service only. Free plan pauses after a week unused and has no automatic backups; the owner keeps file saves as backup Separate from that existing append-only vault, a server-authoritative compare-and-swap revision service is under development on an isolated branch. Its SQL has passed disposable PostgreSQL tests, and the encrypted workspace bridge has passed synthetic, real-crypto integration tests. It has not been migrated to the live database, enabled in the Owner Desk, or accepted through a real owner save-and-restore round trip. The staged accounting coordinator reuses the existing accountant's record validator and the authoritative workspace change log; synthetic tests verify conflicts, retained drafts, encrypted backups and explicit review. This evidence does not establish live hosted persistence, real owner authentication or owner acceptance."
     },
     {
       "id": "A15",

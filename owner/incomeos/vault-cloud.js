@@ -18,7 +18,7 @@
   function assertEncrypted(text){
     var o;try{o=JSON.parse(text);}catch(e){throw Error("Not an encrypted workspace");}
     var keys=o&&typeof o==="object"?Object.keys(o).sort().join(","):"";
-    if(keys!=="cipher,data,format,iterations,iv,kdf,salt,version"||o.format!=="incomeos-workspace"||o.cipher!=="AES-256-GCM"||typeof o.data!=="string"||!/^[A-Za-z0-9+/=]+$/.test(o.data))
+    if(keys!=="cipher,data,format,iterations,iv,kdf,salt,version"||o.format!=="incomeos-workspace"||o.version!==1||o.kdf!=="PBKDF2-SHA256"||o.iterations!==600000||o.cipher!=="AES-256-GCM"||typeof o.data!=="string"||!/^[A-Za-z0-9+/=]+$/.test(o.data)||!o.data.length||typeof o.salt!=="string"||!/^[A-Za-z0-9+/]{22}==$/.test(o.salt)||typeof o.iv!=="string"||!/^[A-Za-z0-9+/]{16}$/.test(o.iv))
       throw Error("Refused: only an encrypted workspace can be sent to the vault");
     return o;
   }
@@ -63,7 +63,40 @@
     assertEncrypted(r.ciphertext);
     return {text:r.ciphertext,savedAt:r.saved_at,id:r.id};
   }
-  var api=Object.freeze({CONFIG:CONFIG,assertEncrypted:assertEncrypted,signUp:signUp,signIn:signIn,signOut:signOut,signedIn:signedIn,save:save,latest:latest});
+  // Staging composition only. The revision client is not loaded by the live Owner Desk.
+  // Keep the bearer token private to this closure and invalidate in-flight results
+  // when the owner signs out or another session replaces the current one.
+  function createRevisionTransport(){
+    var factory=root&&root.IncomeOSSupabaseRevisionTransport&&root.IncomeOSSupabaseRevisionTransport.createTransport;
+    if(typeof factory!=="function")throw Error("Staged revision transport is unavailable");
+    if(!session)throw Error("Sign in to your vault first");
+    var boundEpoch=sessionEpoch,boundUser=session.userId;
+    var transport=factory({
+      url:CONFIG.url,key:CONFIG.key,
+      getToken:async function(){
+        return session&&sessionEpoch===boundEpoch&&session.userId===boundUser?session.access_token:null;
+      },
+      fetch:function(url,options){return root.fetch(url,options);}
+    });
+    async function guarded(method,request){
+      if(!session||sessionEpoch!==boundEpoch||session.userId!==boundUser)
+        throw Error("Vault session changed; create a new revision transport after sign-in");
+      var epoch=sessionEpoch;
+      try{
+        var result=method==="latest"?await transport.latest():await transport.append(request);
+        if(epoch!==sessionEpoch)throw Error("Vault session changed during request");
+        return result;
+      }catch(e){
+        if(epoch!==sessionEpoch)throw Error("Vault session changed during request");
+        throw e;
+      }
+    }
+    return Object.freeze({
+      latest:function(){return guarded("latest");},
+      append:function(request){return guarded("append",request);}
+    });
+  }
+  var api=Object.freeze({CONFIG:CONFIG,assertEncrypted:assertEncrypted,signUp:signUp,signIn:signIn,signOut:signOut,signedIn:signedIn,save:save,latest:latest,createRevisionTransport:createRevisionTransport});
   if(root)root.IncomeOSVaultCloud=api;
   if(typeof module!=="undefined"&&module.exports)module.exports=api;
 
