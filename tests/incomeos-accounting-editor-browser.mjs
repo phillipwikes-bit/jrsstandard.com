@@ -292,6 +292,9 @@ assert.deepEqual(errors,[],"Rejected submissions must not raise uncaught errors"
 await page.evaluate(()=>document.dispatchEvent(new CustomEvent("incomeos:workspace-loaded",{detail:{ledger:[]}})));
 assert.ok(await page.locator("#financial-staging-interlock").isHidden(),"Valid restored workspace clears quarantine banner");
 assert.ok(await page.locator("#receipt-save").isEnabled(),"Valid restored workspace re-enables editing");
+assert.ok(await page.locator("#cost-save").isEnabled(),"Valid restored workspace re-enables expense editing");
+assert.equal(await page.locator("#receipt-label").inputValue(),"","Recovery does not reinstate the previous income draft");
+assert.equal(await page.locator("#cost-label").inputValue(),"","Recovery does not reinstate the previous expense draft");
 assert.ok(await page.locator("#ledger-ws-open").count()===1,"Workspace recovery action remains in DOM after clearing quarantine");
 
 assert.equal(await page.evaluate(()=>localStorage.length+sessionStorage.length),0);
