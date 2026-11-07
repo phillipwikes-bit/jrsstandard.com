@@ -87,4 +87,22 @@ assert.equal(unsafeMemory.size,1,"Unsafe ledger remains preserved");
 assert.equal(unsafe.clear(),false,"Clear must refuse quarantined ledger");
 assert.equal(unsafeMemory.size,1,"Clear must not erase original quarantined data");
 
+const originalQuarantined=unsafeMemory.get("incomeos.accountant.v1");
+let recoveryPayload=null, recoveryConfirmation=false;
+const recoveryCtx={...unsafeCtx,window:{IncomeOSFinancialReadOnly:false,__captureRaw:(raw,name,type)=>{recoveryPayload={raw,name,type};}},confirm:()=>recoveryConfirmation};
+const recoverySource=source
+  .replace('download(raw,"IncomeOS-UNVERIFIED-raw-ledger-recovery-"+today()+".txt","text/plain");',
+    'window.__captureRaw(raw,"IncomeOS-UNVERIFIED-raw-ledger-recovery-"+today()+".txt","text/plain");')
+  .replace(/\}\)\(\);\s*$/, "load();window.__recoverRawLocal=recoverRawLocal;\n})();");
+assert.notEqual(recoverySource,source,"Recovery test must instrument original source");
+runInNewContext(recoverySource,recoveryCtx);
+assert.equal(recoveryCtx.window.__recoverRawLocal(),false,"Recovery must require confirmation");
+assert.equal(recoveryPayload,null);
+recoveryConfirmation=true;
+assert.equal(recoveryCtx.window.__recoverRawLocal(),true);
+assert.equal(recoveryPayload.raw,originalQuarantined,"Recovery must preserve original raw bytes");
+assert.match(recoveryPayload.name,/UNVERIFIED-raw-ledger-recovery/);
+assert.equal(recoveryPayload.type,"text/plain");
+assert.equal(unsafeMemory.get("incomeos.accountant.v1"),originalQuarantined,"Recovery must never mutate stored records");
+
 console.log("IncomeOS ledger persistence QA passed: quota failure leaves memory unchanged; imports idempotent, exact calendar validation, strict CSV headers, allocations unknown, and staging imports denied.");
