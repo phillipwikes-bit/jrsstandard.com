@@ -69,7 +69,7 @@
   function locked(){return window.IncomeOSFinancialReadOnly===true&&!wsMode;}
   function fromWorkspace(ws){
     localLoadUnsafe = false;
-    workspaceLoadUnsafe = !!(ws&&ws.ledger!==undefined&&!Array.isArray(ws.ledger));
+    workspaceLoadUnsafe = !ws||!Array.isArray(ws.ledger);
     var rows=ws&&Array.isArray(ws.ledger)?ws.ledger:[];
     db={version:2,entries:rows.filter(validate)};
     // Rows other panels wrote in a different shape are preserved untouched on every save.
