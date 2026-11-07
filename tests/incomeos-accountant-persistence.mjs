@@ -86,6 +86,16 @@ assert.equal(unsafe.entriesForAnalysis().length,0,"Unsafe stored ledger must not
 assert.equal(unsafeMemory.size,1,"Unsafe ledger remains preserved");
 assert.equal(unsafe.clear(),false,"Clear must refuse quarantined ledger");
 assert.equal(unsafeMemory.size,1,"Clear must not erase original quarantined data");
+const safeClearMemory=new Map([["incomeos.accountant.v1",JSON.stringify({version:2,entries:[]})]]);
+const safeClearCtx={...unsafeCtx,window:{IncomeOSFinancialReadOnly:false},localStorage:{
+  getItem:k=>safeClearMemory.get(k)??null,
+  setItem:(k,v)=>safeClearMemory.set(k,v),
+  removeItem:k=>safeClearMemory.delete(k)
+}};
+runInNewContext(source.replace(/\}\)\(\);\s*$/, "load();\n})();"),safeClearCtx);
+assert.equal(safeClearCtx.window.IncomeOSAccountant.clear(),true,"Valid local ledger may be cleared");
+assert.equal(safeClearMemory.has("incomeos.accountant.v1"),false,"Valid local ledger clear removes stored data");
+
 
 const originalQuarantined=unsafeMemory.get("incomeos.accountant.v1");
 let recoveryPayload=null, recoveryConfirmation=false;
