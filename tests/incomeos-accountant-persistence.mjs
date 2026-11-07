@@ -68,4 +68,21 @@ assert.equal(accountant.entriesForAnalysis().length,2);
 assert.equal(memory.size,1);
 assert.equal(accountant.totals(rows).allocationPending,2);
 assert.doesNotMatch(source,/<script[^>]*src=["']https?:/);
+
+const unsafeMemory=new Map([["incomeos.accountant.v1",JSON.stringify({version:2,entries:[{id:"broken",kind:"outflow"}]})]]);
+const unsafeAlerts=[];
+const unsafeNodes=new Map();
+const unsafeDoc={getElementById(id){if(!unsafeNodes.has(id)){const x=node();if(id==="report-year")x.value="2026";unsafeNodes.set(id,x);}return unsafeNodes.get(id);},createElement:()=>node()};
+const unsafeCtx={window:{IncomeOSFinancialReadOnly:false},localStorage:{
+  getItem:k=>unsafeMemory.get(k)??null,
+  setItem(){throw Error("Unsafe storage must not be overwritten");}
+},document:unsafeDoc,Date,Intl,Math,Number,String,Array,Object,Set,Map,JSON,console,
+alert:x=>unsafeAlerts.push(String(x)),confirm:()=>{throw Error("Unsafe ledger must not reach confirmation");}};
+runInNewContext(source,unsafeCtx);
+const unsafe=unsafeCtx.window.IncomeOSAccountant;
+assert.throws(()=>unsafe.importCsv(csv),/Import blocked: stored accounting records failed integrity checks/);
+assert.throws(()=>unsafe.importJson(JSON.stringify({format:"incomeos-accountant",version:2,entries:[]})),/Import blocked: stored accounting records failed integrity checks/);
+assert.equal(unsafe.entriesForAnalysis().length,0,"Unsafe stored ledger must not be represented as complete entries");
+assert.equal(unsafeMemory.size,1,"Unsafe ledger remains preserved");
+
 console.log("IncomeOS ledger persistence QA passed: quota failure leaves memory unchanged; imports idempotent, exact calendar validation, strict CSV headers, allocations unknown, and staging imports denied.");
