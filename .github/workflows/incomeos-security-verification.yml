@@ -18,6 +18,8 @@ on:
       - 'owner/incomeos/revision-workspace-bridge.js'
       - 'owner/incomeos/revision-runtime-staging.js'
       - 'tests/incomeos-revision-workspace-bridge.test.cjs'
+      - 'owner/incomeos/revision-accounting-coordinator.js'
+      - 'tests/incomeos-revision-accounting-coordinator.test.cjs'
       - 'tests/incomeos-revision-release-gate.test.cjs'
       - 'tests/incomeos-vault-revision-session.test.cjs'
       - 'owner/incomeos/ACCOUNTING-EDITOR-ACCEPTANCE.json'
@@ -42,6 +44,7 @@ jobs:
           node --check owner/incomeos/revision-supabase-transport.js
           node --check owner/incomeos/revision-workspace-bridge.js
           node --check owner/incomeos/revision-runtime-staging.js
+          node --check owner/incomeos/revision-accounting-coordinator.js
           node --check tests/incomeos-browser-script-loader.cjs
       - name: Synthetic regression tests
         run: |
@@ -51,6 +54,7 @@ jobs:
           node tests/incomeos-revision-supabase-transport.test.cjs
           node tests/incomeos-revision-rpc-integration.test.cjs
           node tests/incomeos-revision-workspace-bridge.test.cjs
+          node tests/incomeos-revision-accounting-coordinator.test.cjs
           node tests/incomeos-revision-release-gate.test.cjs
           node tests/incomeos-vault-revision-session.test.cjs
           node tests/incomeos-revision-staging-sql.test.cjs
