@@ -34,7 +34,7 @@ async function fakeFetch(url,opt){
 }
 const ctx={window:{crypto:webcrypto,fetch:fakeFetch},TextEncoder,JSON,URL,Promise,Error,setTimeout};
 vm.runInNewContext(src,ctx);const V=ctx.window.IncomeOSVaultCloud;
-const envelope=JSON.stringify({format:"incomeos-workspace",version:1,kdf:"PBKDF2-SHA256",iterations:600000,cipher:"AES-256-GCM",salt:"c2FsdA==",iv:"aXY=",data:"ZW5jcnlwdGVkLWJ5dGVz"});
+const envelope=JSON.stringify({format:"incomeos-workspace",version:1,kdf:"PBKDF2-SHA256",iterations:600000,cipher:"AES-256-GCM",salt:"AAAAAAAAAAAAAAAAAAAAAA==",iv:"AAAAAAAAAAAAAAAA",data:"ZW5jcnlwdGVkLWJ5dGVz"});
 const plain=JSON.stringify({schema:"incomeos.workspace.v1",ledger:[{label:"Synthetic salary"}]});
 // Unencrypted or altered envelopes are refused before any request.
 for(const bad of [plain,JSON.stringify({...JSON.parse(envelope),ledger:[]}),JSON.stringify({...JSON.parse(envelope),data:"not base64!"}),"nonsense"])

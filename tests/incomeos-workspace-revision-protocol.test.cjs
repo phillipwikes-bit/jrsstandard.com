@@ -1,0 +1,16 @@
+"use strict";
+const assert=require("node:assert/strict");
+const protocol=require("./incomeos-browser-script-loader.cjs")("workspace-revision-protocol.js","IncomeOSWorkspaceRevision");
+const payload=JSON.stringify({format:"incomeos-workspace",version:1,kdf:"PBKDF2-SHA256",iterations:600000,cipher:"AES-256-GCM",salt:"AAAAAAAAAAAAAAAAAAAAAA==",iv:"AAAAAAAAAAAAAAAA",data:"AAAAAAAAAAAAAAAAAAAAAA=="});
+const sha="a".repeat(64);
+assert.equal(protocol.appendRequest(0,payload,sha).expected_revision,0);
+for(const revision of [-1,0.5,Number.MAX_SAFE_INTEGER+1,"1",null])assert.throws(()=>protocol.appendRequest(revision,payload,sha));
+assert.throws(()=>protocol.appendRequest(0,payload,"bad"));
+assert.throws(()=>protocol.appendRequest(0,JSON.stringify({ledger:[]}),sha));
+assert.equal(protocol.applyResult(0,1),1);
+assert.throws(()=>protocol.applyResult(2,2),/quarantine/);
+assert.throws(()=>protocol.applyResult(2,4),/quarantine/);
+assert.throws(()=>protocol.recover(4,3),/refuse overwrite/);
+assert.deepEqual(protocol.recover(4,5),{revision:5,requiresOwnerConfirmation:true});
+assert.deepEqual(protocol.recover(4,4),{revision:4,requiresOwnerConfirmation:false});
+console.log("PASS: revision protocol validates writes and prevents stale recovery");

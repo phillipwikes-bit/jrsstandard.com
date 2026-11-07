@@ -33,8 +33,16 @@
    }
    const status=doc.getElementById("feed-status")?.textContent||"";
    assert(status.includes("Reviewed source snapshot"),"Opportunity snapshot loaded at "+width);
+   // The default upcoming filter can legitimately be empty when dated studies expire.
+   // Audit the archived snapshot instead of requiring an expired offer to appear current.
+   const filter=doc.getElementById("research-filter");
+   if(!doc.querySelector("#research-cards article.card")){
+     filter.value="all";
+     filter.dispatchEvent(new win.Event("change",{bubbles:true}));
+     await delay(100);
+   }
    const cards=doc.querySelectorAll("#research-cards article.card").length;
-   assert(cards>=1,"At least one research card rendered at "+width);
+   assert(cards>=1,"At least one research card available in current or archived snapshot at "+width);
    assert(doc.querySelectorAll("#asset-cards article.card").length>=1,"Alternative asset cards available at "+width);
    assert(win.IncomeOSFinancialReadOnly===true,"Financial staging is fail-closed at "+width);
    const exceptionStatus=doc.getElementById("review-summary");
@@ -60,7 +68,7 @@
       assert(target.classList.contains("active")&&!target.hidden,"Navigation opens "+view+" at "+width);
    }
    doc.getElementById("research-filter").value="online";
-   doc.getElementById("research-filter").dispatchEvent(new Event("change",{bubbles:true}));
+   doc.getElementById("research-filter").dispatchEvent(new win.Event("change",{bubbles:true}));
    const onlineCards=doc.querySelectorAll("#research-cards article.card").length;
    assert(onlineCards<=cards,"Online filter does not increase results at "+width);
    const bar=doc.querySelector(".bottomnav").getBoundingClientRect();
