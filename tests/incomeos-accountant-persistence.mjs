@@ -84,5 +84,7 @@ assert.throws(()=>unsafe.importCsv(csv),/Import blocked: stored accounting recor
 assert.throws(()=>unsafe.importJson(JSON.stringify({format:"incomeos-accountant",version:2,entries:[]})),/Import blocked: stored accounting records failed integrity checks/);
 assert.equal(unsafe.entriesForAnalysis().length,0,"Unsafe stored ledger must not be represented as complete entries");
 assert.equal(unsafeMemory.size,1,"Unsafe ledger remains preserved");
+assert.equal(unsafe.clear(),false,"Clear must refuse quarantined ledger");
+assert.equal(unsafeMemory.size,1,"Clear must not erase original quarantined data");
 
 console.log("IncomeOS ledger persistence QA passed: quota failure leaves memory unchanged; imports idempotent, exact calendar validation, strict CSV headers, allocations unknown, and staging imports denied.");
