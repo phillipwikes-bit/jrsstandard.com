@@ -21,9 +21,9 @@
       var ids=new Set();
       entries.forEach(function(e){
         if(!e||typeof e!=="object"||Array.isArray(e)||typeof e.id!=="string"||
-           !e.id.trim()||ids.has(e.id)||accountant.validateEntry(e)!==true)
+           !e.id.trim()||ids.has(e.id.trim())||accountant.validateEntry(e)!==true)
           throw Error("Invalid or unsupported accounting record: preserve original workspace");
-        ids.add(e.id);
+        ids.add(e.id.trim());
       });
     }
     async function open(passphrase){
