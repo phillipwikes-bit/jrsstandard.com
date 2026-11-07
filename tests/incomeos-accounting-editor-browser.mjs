@@ -263,7 +263,7 @@ await page.locator("#ledger-filter").selectOption("all");
 await page.locator("#ledger-list .entry",{hasText:"Synthetic study payout"}).getByRole("button",{name:"Edit"}).click();
 assert.ok(await page.locator("#receipt-editing").isVisible(),"Existing entry is in edit mode before restoration");
 await page.locator("#receipt-label").fill("Stale draft must clear");
-await page.locator("#ledger-list .entry",{hasText:"Synthetic AI subscription"}).getByRole("button",{name:"Edit"}).click();
+await page.locator("#ledger-list .entry",{hasText:"Synthetic domain renewal"}).getByRole("button",{name:"Edit"}).click();
 assert.ok(await page.locator("#cost-editing").isVisible(),"Expense edit is active before workspace replacement");
 await page.locator("#cost-label").fill("Stale expense draft must clear");
 await page.evaluate(()=>document.dispatchEvent(new CustomEvent("incomeos:workspace-restored",{detail:{ledger:null}})));
