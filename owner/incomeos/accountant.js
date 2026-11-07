@@ -660,8 +660,16 @@
     cats=cats.concat([[],["Unclassified: date","Description","Kind","USD","Reason"]],un.items.map(function(x){return [x.date,x.label,x.kind,x.usd,x.reasons.join("; ")];}),[["Unclassified total","",un.count,un.usd]]);
     download(csv([["IncomeOS personal tax-year summary",currentYear()]].concat([["Category","Amount or count"]],pairs,[[],["By category: group","Category","Records","USD"]],cats)),"IncomeOS-accountant-summary-"+currentYear()+".csv","text/csv;charset=utf-8");
   }
-  function backup(){download(JSON.stringify({format:"incomeos-accountant",version:2,exportedAt:new Date().toISOString(),entries:db.entries},null,2),"IncomeOS-accountant-private-backup-"+today()+".json","application/json");}
+  function backup(){
+    if((wsMode&&workspaceLoadUnsafe)||(!wsMode&&localLoadUnsafe)){
+      alert("Backup blocked: the accounting ledger failed integrity checks. An export from the current editor could omit original records. Preserve the original workspace or browser storage for recovery.");return;
+    }
+    download(JSON.stringify({format:"incomeos-accountant",version:2,exportedAt:new Date().toISOString(),entries:db.entries},null,2),"IncomeOS-accountant-private-backup-"+today()+".json","application/json");
+  }
   function printReport(){
+    if((wsMode&&workspaceLoadUnsafe)||(!wsMode&&localLoadUnsafe)){
+      alert("Print blocked: accounting ledger integrity review is required. A partial report would be misleading.");return;
+    }
     var t=totals(yearEntries());
     var r=$("print-report");r.replaceChildren();
     place(r,"h1","","IncomeOS | Accountant Annual Earnings & Expense Report");
