@@ -18,6 +18,8 @@ assert.match(privateSql,/current_revision <> expected_revision/);
 assert.match(privateSql,/extensions\.digest\(convert_to\(encrypted_payload,'UTF8'\),'sha256'\)/);
 assert.match(privateSql,/->'version' = '1'::jsonb/);
 assert.match(privateSql,/->'iterations' = '600000'::jsonb/);
+assert.match(privateSql,/\) is not true then/,"Missing envelope fields must fail closed under SQL NULL semantics");
+assert.doesNotMatch(privateSql,/if not \(pg_catalog\.jsonb_typeof/,"SQL NOT(NULL) must not bypass validation");
 for(const field of ["data","salt","iv"]){
   assert.ok(privateSql.includes("jsonb_typeof((encrypted_payload::jsonb)->'"+field+"') = 'string'"),field+" must be a JSON string");
 }
