@@ -9,7 +9,11 @@
   var FORMAT="incomeos-workspace",ITERATIONS=600000,SCHEMA="incomeos.workspace.v1";
   var KEYS=["schema","note","ledger","rules","accounts","balances","claims","livedInStates","searchHistory","serviceNotes","offers","yieldParams","researchStages","recruiterOf","verifiedPayments","lifecycle","previousAlertIds","changeLog","researchTimes","dsProgram","researchProgress","passiveFindings","researchStudies"];
   var dep=function(name,file){return root&&root[name]||(typeof require==="function"?require(file):null);};
-  function isDate(x){return typeof x==="string"&&/^\d{4}-\d{2}-\d{2}$/.test(x)&&Number.isFinite(Date.parse(x+"T00:00:00Z"));}
+  function isDate(x){
+    if(typeof x!=="string"||!/^\d{4}-\d{2}-\d{2}$/.test(x))return false;
+    var ms=Date.parse(x+"T00:00:00Z");
+    return Number.isFinite(ms)&&new Date(ms).toISOString().slice(0,10)===x;
+  }
   function clone(x){return JSON.parse(JSON.stringify(x));}
   function arr(x){return Array.isArray(x)?x:[];}
 
