@@ -63,7 +63,35 @@
     assertEncrypted(r.ciphertext);
     return {text:r.ciphertext,savedAt:r.saved_at,id:r.id};
   }
-  var api=Object.freeze({CONFIG:CONFIG,assertEncrypted:assertEncrypted,signUp:signUp,signIn:signIn,signOut:signOut,signedIn:signedIn,save:save,latest:latest});
+  // Staging composition only. The revision client is not loaded by the live Owner Desk.
+  // Keep the bearer token private to this closure and invalidate in-flight results
+  // when the owner signs out or another session replaces the current one.
+  function createRevisionTransport(){
+    var factory=root&&root.IncomeOSSupabaseRevisionTransport&&root.IncomeOSSupabaseRevisionTransport.createTransport;
+    if(typeof factory!=="function")throw Error("Staged revision transport is unavailable");
+    var transport=factory({
+      url:CONFIG.url,key:CONFIG.key,
+      getToken:async function(){return session&&session.access_token;},
+      fetch:function(url,options){return root.fetch(url,options);}
+    });
+    async function guarded(method,request){
+      if(!session)throw Error("Sign in to your vault first");
+      var epoch=sessionEpoch;
+      try{
+        var result=method==="latest"?await transport.latest():await transport.append(request);
+        if(epoch!==sessionEpoch)throw Error("Vault session changed during request");
+        return result;
+      }catch(e){
+        if(epoch!==sessionEpoch)throw Error("Vault session changed during request");
+        throw e;
+      }
+    }
+    return Object.freeze({
+      latest:function(){return guarded("latest");},
+      append:function(request){return guarded("append",request);}
+    });
+  }
+  var api=Object.freeze({CONFIG:CONFIG,assertEncrypted:assertEncrypted,signUp:signUp,signIn:signIn,signOut:signOut,signedIn:signedIn,save:save,latest:latest,createRevisionTransport:createRevisionTransport});
   if(root)root.IncomeOSVaultCloud=api;
   if(typeof module!=="undefined"&&module.exports)module.exports=api;
 
