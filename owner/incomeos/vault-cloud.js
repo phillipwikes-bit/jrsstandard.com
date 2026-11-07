@@ -69,13 +69,16 @@
   function createRevisionTransport(){
     var factory=root&&root.IncomeOSSupabaseRevisionTransport&&root.IncomeOSSupabaseRevisionTransport.createTransport;
     if(typeof factory!=="function")throw Error("Staged revision transport is unavailable");
+    if(!session)throw Error("Sign in to your vault first");
+    var boundEpoch=sessionEpoch,boundUser=session.userId;
     var transport=factory({
       url:CONFIG.url,key:CONFIG.key,
       getToken:async function(){return session&&session.access_token;},
       fetch:function(url,options){return root.fetch(url,options);}
     });
     async function guarded(method,request){
-      if(!session)throw Error("Sign in to your vault first");
+      if(!session||sessionEpoch!==boundEpoch||session.userId!==boundUser)
+        throw Error("Vault session changed; create a new revision transport after sign-in");
       var epoch=sessionEpoch;
       try{
         var result=method==="latest"?await transport.latest():await transport.append(request);
