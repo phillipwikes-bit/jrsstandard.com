@@ -308,6 +308,10 @@ assert.ok(await page.locator("#receipt-save").isDisabled(),"Invalid changed ledg
 assert.ok(await page.locator("#cost-save").isDisabled(),"Invalid changed ledger blocks expense editing");
 await page.evaluate(()=>document.dispatchEvent(new CustomEvent("incomeos:workspace-loaded",{detail:{ledger:[]}})));
 assert.ok(await page.locator("#receipt-save").isEnabled(),"Valid workspace restores income editing after changed-ledger quarantine");
+assert.ok(await page.locator("#cost-save").isEnabled(),"Valid workspace restores expense editing after changed-ledger quarantine");
+assert.ok(await page.locator("#financial-staging-interlock").isHidden(),"Valid workspace clears changed-ledger quarantine warning");
+assert.equal(await page.locator("#receipt-label").inputValue(),"","Quarantined income draft does not reappear after recovery");
+assert.equal(await page.locator("#cost-label").inputValue(),"","Quarantined expense draft does not reappear after recovery");
 
 assert.equal(await page.evaluate(()=>localStorage.length+sessionStorage.length),0);
 assert.deepEqual(errors,[]);
