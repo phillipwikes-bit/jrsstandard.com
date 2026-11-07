@@ -73,4 +73,11 @@ for(const [name,message] of [["backup","Backup blocked:"],["printReport","Print 
   assert.ok(start>=0,"missing "+name);
   assert.ok(source.slice(start,start+400).includes(message),name+" must block unsafe output");
 }
+const restoreStart=source.indexOf("function importJson(text)");
+const restoreEnd=source.indexOf("async function handleFile",restoreStart);
+assert.ok(restoreStart>=0&&restoreEnd>restoreStart,"backup restoration must exist");
+const restoreSource=source.slice(restoreStart,restoreEnd);
+assert.ok(restoreSource.includes("parsed.version!==2"),"restore must reject unsupported backup versions");
+assert.ok(restoreSource.includes("!uniqueEntryIds(entries)"),"restore must reject duplicate canonical IDs");
+assert.ok(restoreSource.includes("e.id.trim()"),"restore must compare canonical IDs against existing records");
 console.log("Accounting workspace preserves all imported valid rows and refuses over-limit edits.");
