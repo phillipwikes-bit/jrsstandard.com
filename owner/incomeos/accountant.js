@@ -4,6 +4,7 @@
   var LEGACY_KEY = "incomeos.owner.prototype.v1";
   var db = { version: 2, entries: [] };
   var localLoadUnsafe = false;
+  var workspaceLoadUnsafe = false;
   var editingIncome = null, editingCost = null;
   var $ = function (id) { return document.getElementById(id); };
   var usd = new Intl.NumberFormat("en-US", { style:"currency", currency:"USD", minimumFractionDigits:2, maximumFractionDigits:2 });
@@ -68,10 +69,12 @@
   function locked(){return window.IncomeOSFinancialReadOnly===true&&!wsMode;}
   function fromWorkspace(ws){
     localLoadUnsafe = false;
+    workspaceLoadUnsafe = !!(ws&&ws.ledger!==undefined&&!Array.isArray(ws.ledger));
     var rows=ws&&Array.isArray(ws.ledger)?ws.ledger:[];
     db={version:2,entries:rows.filter(validate)};
     // Rows other panels wrote in a different shape are preserved untouched on every save.
     wsForeign=rows.filter(function(x){return !validate(x);});
+    if(!uniqueEntryIds(rows))workspaceLoadUnsafe=true;
   }
   function write(){
     if(window.IncomeOSFinancialReadOnly===true)return false;
@@ -90,6 +93,7 @@
   function commitEntries(entries){
     if(locked())throw new Error("Financial changes are disabled in unapproved staging");
     if(!wsMode&&localLoadUnsafe)throw new Error("Stored accounting records failed integrity checks. No edits accepted; preserve the original data for recovery.");
+    if(wsMode&&workspaceLoadUnsafe)throw new Error("Workspace ledger failed integrity checks. No edits accepted; preserve the original workspace for recovery.");
     if(!Array.isArray(entries)||entries.length>15000||!uniqueEntryIds(entries)||entries.some(function(x){return !validate(x);}))
       throw new Error("Financial records are invalid or exceed the ledger limit");
     if(wsMode){
