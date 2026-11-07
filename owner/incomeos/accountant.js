@@ -880,9 +880,10 @@
     var banner=$("financial-staging-interlock");if(banner&&window.IncomeOSFinancialReadOnly===true)banner.hidden=wsMode;
     // The staging lock disables these controls for browser storage; in workspace mode they edit the file instead.
     ["receipt-form","cost-form","import-trigger","import-csv-trigger","import-ledger","import-csv"].forEach(function(id){
-      var el=$(id);if(!el||window.IncomeOSFinancialReadOnly!==true)return;
+      var el=$(id);if(!el)return;
       var targets=el.tagName==="FORM"?el.querySelectorAll("input,select,textarea,button"):[el];
-      Array.prototype.forEach.call(targets,function(c){c.disabled=!wsMode||workspaceLoadUnsafe;if(wsMode&&!workspaceLoadUnsafe)c.removeAttribute("aria-disabled");else c.setAttribute("aria-disabled","true");});
+      var disabled=workspaceLoadUnsafe||(localLoadUnsafe&&!wsMode)||(window.IncomeOSFinancialReadOnly===true&&!wsMode);
+      Array.prototype.forEach.call(targets,function(c){c.disabled=disabled;if(!disabled)c.removeAttribute("aria-disabled");else c.setAttribute("aria-disabled","true");});
     });
   }
   function onWorkspace(ev){
