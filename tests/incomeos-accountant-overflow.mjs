@@ -85,4 +85,8 @@ for(const name of ["importCsv","importJson"]){
   assert.ok(start>=0,"missing "+name);
   assert.ok(source.slice(start,start+500).includes("Import blocked: stored accounting records failed integrity checks"),name+" must reject unsafe baseline before processing");
 }
+assert.match(source,/function recoverRawLocal\(\)/,"Dedicated raw recovery must exist");
+assert.match(source,/download\(raw,"IncomeOS-UNVERIFIED-raw-ledger-recovery-/,"Recovery must export original raw content without rewriting");
+assert.match(source,/if\(!localLoadUnsafe\)/,"Recovery must be limited to quarantined local data");
+assert.match(source,/if\(wsMode\)/,"Recovery must not silently substitute workspace records");
 console.log("Accounting workspace preserves all imported valid rows and refuses over-limit edits.");
