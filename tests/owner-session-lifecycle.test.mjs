@@ -187,6 +187,26 @@ test('rotation or expiry during cookie signing cannot report a successful login'
    }
  }finally{crypto.subtle.sign=sign;Date.now=originalDateNow;configured();}
 });
+test('interrupted authentication crypto returns a private failure without leaking errors',async()=>{
+ configured();const cookie=valueFromSetCookie(await createOwnerCookie());
+ for(const operation of ['digest','importKey','sign','verify']){
+   const original=crypto.subtle[operation];
+   try{
+     crypto.subtle[operation]=async()=>{throw Error('synthetic_PRIVATE_crypto_failure_detail');};
+     const response=operation==='verify'
+       ?await session(ownerReq({cookie}))
+       :await tokenPost();
+     assert.equal(response.status,503);assertPrivate(response);
+     assert.equal(response.headers.has('set-cookie'),false);
+     assert.deepEqual(await response.json(),{error:'owner_access_unavailable'});
+     if(operation==='digest'){
+       const read=await session(ownerReq({authorization:'Bearer '+SYNTHETIC_SECRET}));
+       assert.equal(read.status,503);assertPrivate(read);
+       assert.deepEqual(await read.json(),{error:'owner_access_unavailable'});
+     }
+   }finally{crypto.subtle[operation]=original;}
+ }
+});
 test('invalid POST bodies do not yield signed cookies',async()=>{
  configured();
  const invalid=[

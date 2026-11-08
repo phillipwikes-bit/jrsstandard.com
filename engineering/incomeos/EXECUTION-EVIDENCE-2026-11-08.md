@@ -1,5 +1,15 @@
 # IncomeOS controlled engineering evidence, 8 November 2026
 
+## Interrupted authentication operations
+
+Baseline `a03d3e7660df8f272d733cfd588a50adc1c1a5dc`. A new synthetic crypto-failure regression initially failed because a rejected digest escaped the login handler as an exception. The shared owner-access gate now catches interrupted digest/key-import/HMAC operations and returns a private no-store 503 with only owner_access_unavailable. Token login covers verification and cookie issuance in the same sanitized error boundary. No failure issues a cookie or allows the protected reader to proceed. Invalid credentials still receive 401.
+
+The expanded complete accounting-source suite passed 47 tests, zero failed. Failure injection covers digest, key import, signing and signature verification; bearer and cookie reads deny access and return no raw crypto error detail. A separate local expanded router command initially passed 23 tests and failed one module load because @vercel/functions was absent. After installing the existing pinned dependency without install scripts or lockfile changes, that same expanded command passed all 24 tests, zero failed. Hosted current-commit router gates remain required.
+
+All 16 accounting dispositions, stateless captured-cookie revocation limitation, original DS-A/Codebook/rights dependencies and production/commercial holds remain unchanged. Source error handling does not provide a durable server-session registry or live owner recovery evidence.
+
+The preceding credential-continuity commit `a03d3e7660df8f272d733cfd588a50adc1c1a5dc` completed all ten applicable workflows successfully: mobile/staging 42494376839, owner safety 42494376843, private prototype 42494376840, owner gates 42494376956, source 42494376918, isolated security 42494376932, accounting/DS-N1 browser 42494376955, disposable PostgreSQL 42494377022, owner-data denial 42494376978 and anonymous denial 42494376936. These results apply to that exact preceding commit, not automatically to this follow-on correction.
+
 ## Login credential continuity and issuance failure handling
 
 Baseline `af35553900843294e1f008aa089650dd1039a29f`, existing draft PR #180 and development branch. Bearer-token verification now rechecks signing-secret identity after asynchronous digest comparison. Token-to-cookie exchange binds issuance to the exact authenticated credential, preventing a rotation between verification and issuance from accepting the old credential under the new signing key. Cookie issuance rechecks the signing secret and finite validity window after asynchronous HMAC signing. Failed issuance returns a sanitized 503 without a Set-Cookie header or authenticated-success body.

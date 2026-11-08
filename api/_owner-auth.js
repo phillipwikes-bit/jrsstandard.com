@@ -85,10 +85,12 @@ async function validCookie(value,secret){
 export async function ownerAccess(req){
   const secret=envSecret();
   if(secret.length<32)return denied('owner_access_unavailable',503);
-  const authorization=req.headers.get('authorization')||'';
-  if(/^Bearer [^\s]+$/i.test(authorization) && await ownerSecretMatches(authorization.slice(7)))return null;
-  if(await validCookie(cookieValue(req),secret))return null;
-  return denied('unauthorized',401);
+  try{
+    const authorization=req.headers.get('authorization')||'';
+    if(/^Bearer [^\s]+$/i.test(authorization) && await ownerSecretMatches(authorization.slice(7)))return null;
+    if(await validCookie(cookieValue(req),secret))return null;
+    return denied('unauthorized',401);
+  }catch{return denied('owner_access_unavailable',503);}
 }
 export function revokeOwnerCookie(){
   return COOKIE+'=; Path=/; Max-Age=0; HttpOnly; Secure; SameSite=Strict';
