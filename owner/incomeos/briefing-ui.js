@@ -13,6 +13,50 @@
     if(!input||!button||!status||!out||!WS||Object.keys(E).some(function(k){return !E[k];}))return;
     var state={ws:null,screen:null,dirty:false,history:[],research:window.IncomeOSResearchLatest||null};
     var revisionDesk=null;
+    var revisionControls=null;
+    function mountRevisionControls(){
+      var desk=revisionDesk,box=document.createElement("details");box.id="revision-recovery-controls";box.className="vault-panel";
+      out.parentNode.insertBefore(box,out);revisionControls=box;
+      el(box,"summary","Revision recovery and encrypted backups");
+      el(box,"p","Recovery creates an unsaved edit. Current history and programme acceptance records are preserved.","muted");
+      var feedback=el(box,"p",null,"muted");feedback.id="revision-recovery-status";feedback.setAttribute("role","status");
+      var choices=el(box,"fieldset");el(choices,"legend","Select reviewed sections to recover");
+      async function run(fn){try{if(revisionDesk!==desk)throw Error("Revision editor is no longer attached");await fn();}catch(e){feedback.textContent="Not completed: "+e.message;}}
+      var reviewedRevision=null;
+      btn(box,"Open latest revision",function(){run(async function(){
+        reviewedRevision=null;var r=await desk.open(passInput.value);if(r.hasWorkspace)installRevision();reviewedRevision=r.revision;
+        feedback.textContent="Opened revision "+r.revision+(r.requiresOwnerConfirmation?". Review the workspace, then confirm this revision.":".");
+      });});
+      btn(box,"Confirm reviewed revision",function(){run(function(){
+        if(!reviewedRevision)throw Error("Open the latest revision before confirmation");
+        desk.confirmOpenedRevision(reviewedRevision);installRevision();feedback.textContent="Reviewed revision confirmed.";
+      });});
+      btn(box,"Download verified encrypted backup",function(){run(function(){
+        download(JSON.stringify(desk.encryptedBackup()),"incomeos-revision-backup.encrypted.json");feedback.textContent="Verified encrypted backup downloaded.";
+      });});
+      btn(box,"Rescue unsaved draft encrypted",function(){run(async function(){
+        var r=await desk.exportPendingDraftEncrypted(passInput.value);download(r.ciphertext,"incomeos-unsaved-draft.encrypted.json");feedback.textContent="Encrypted draft downloaded. It is not saved to the server.";
+      });});
+      btn(box,"Discard unsaved draft",function(){run(function(){
+        if(!confirm("Discard the unsaved revision draft? Preserve an encrypted rescue copy first."))return;
+        desk.discardDraft();state.ws=null;state.dirty=false;state.history=[];choices.replaceChildren();render();announce();feedback.textContent="Draft discarded. Open the latest revision before editing.";
+      });});
+      var label=el(box,"label","Encrypted revision backup file");label.htmlFor="revision-recovery-file";
+      var file=el(box,"input");file.id="revision-recovery-file";file.type="file";file.accept=".json,application/json";
+      btn(box,"Review backup sections",function(){run(async function(){
+        choices.replaceChildren();el(choices,"legend","Select reviewed sections to recover");
+        if(!file.files||file.files.length!==1||file.files[0].size>8000000)throw Error("Choose one encrypted revision backup under 8 MB");
+        var text=await file.files[0].text();if(revisionDesk!==desk)throw Error("Revision editor changed during file read");
+        var review=await desk.prepareWorkspaceRecovery(JSON.parse(text),passInput.value);
+        review.sections.forEach(function(key){var row=el(choices,"label"),check=el(row,"input");check.type="checkbox";check.value=key;row.appendChild(document.createTextNode(" "+key));});
+        feedback.textContent=review.sections.length+" changed section(s) reviewed. Programme and current history will be preserved.";
+      });});
+      btn(box,"Apply selected sections as unsaved edit",function(){run(function(){
+        var selected=Array.prototype.map.call(choices.querySelectorAll("input:checked"),function(e){return e.value;});
+        desk.applyWorkspaceRecovery(selected,today());installRevision();choices.replaceChildren();file.value="";
+        feedback.textContent="Selected sections recovered as unsaved edits. Save explicitly to retain them.";
+      });});
+    }
     function installRevision(){
       var s=revisionDesk.status();
       state.ws=s.opened&&s.ledgerCount!==undefined?revisionDesk.workspaceSnapshot():null;
@@ -25,10 +69,11 @@
       if(!options||options.stagingOnly!==true||revisionDesk||state.ws||state.dirty)
         throw Error("Attach staging revisions only before opening a local workspace");
       ["open","save","status","workspaceSnapshot","replaceLedger","updateProgram","editWorkspace","reverseEdit","initializeNew",
-       "confirmOpenedRevision","exportPendingDraftEncrypted","restoreLedgerBackup","prepareWorkspaceRecovery","applyWorkspaceRecovery","discardDraft","close"].forEach(function(k){
+       "confirmOpenedRevision","encryptedBackup","exportPendingDraftEncrypted","restoreLedgerBackup","prepareWorkspaceRecovery","applyWorkspaceRecovery","discardDraft","close"].forEach(function(k){
         if(!coordinator||typeof coordinator[k]!=="function")throw Error("Verified revision coordinator required");
       });
       revisionDesk=coordinator;
+      mountRevisionControls();
       return Object.freeze({
         open:async function(pass){var r=await coordinator.open(pass);if(r.hasWorkspace)installRevision();return r;},
         confirm:function(revision){coordinator.confirmOpenedRevision(revision);installRevision();},
@@ -37,7 +82,7 @@
         applyRecovery:function(sections,on){var r=coordinator.applyWorkspaceRecovery(sections,on);installRevision();return r;},
         restore:async function(backup,pass,on){var r=await coordinator.restoreLedgerBackup(backup,pass,on);installRevision();return r;},
         discard:function(){coordinator.discardDraft();state.ws=null;state.dirty=false;state.history=[];render();announce();},
-        close:function(){coordinator.close();revisionDesk=null;state.ws=null;state.dirty=false;state.history=[];render();announce();}
+        close:function(){coordinator.close();revisionDesk=null;if(revisionControls)revisionControls.remove();revisionControls=null;state.ws=null;state.dirty=false;state.history=[];render();announce();}
       });
     }});
     function announce(){try{document.dispatchEvent(new CustomEvent("incomeos:workspace-loaded",{detail:state.ws}));}catch(e){}}
@@ -199,6 +244,10 @@
       if(saveBtn)saveBtn.hidden=!state.ws;
       if(undoBtn)undoBtn.hidden=!state.history.length;
       status.textContent=state.ws?(state.dirty?"Unsaved changes. Save the updated workspace to keep them.":"Workspace loaded in memory only. Nothing is stored or sent."):"Showing system health only. Load your workspace file to see your finances.";
+      if(revisionDesk){var revisionState=revisionDesk.status();status.textContent=revisionState.needsRecovery?
+        "Revision outcome requires recovery. Preserve an encrypted draft before reopening.":revisionState.requiresOwnerConfirmation?
+        "Review and confirm the newer revision before editing.":revisionState.dirty?
+        "Unsaved revision edits. Save explicitly to retain them.":"Staged revision workspace. Open, review and save through the revision controls.";}
     }
     async function openText(text,assertOwnerSession){
       if(revisionDesk)throw Error("Use verified revision recovery while the staged editor is attached");

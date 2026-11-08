@@ -1,5 +1,13 @@
 # IncomeOS controlled engineering evidence, 8 November 2026
 
+## Existing Desk recovery controls
+
+Baseline `c96ade42beb44e48fd00e4d2eb3e1bf88b429a02`. Explicit staged attachment now mounts recovery controls inside the existing This week panel. The controls open the latest revision, confirm the exact opened revision after review, download a verified encrypted revision backup, rescue a pending draft encrypted, discard only after confirmation, inspect an uploaded revision-backup wrapper and apply explicitly checked sections as an unsaved edit. Selection starts blank. File reads are bounded to 8 MB and attachment identity is rechecked after reading. The coordinator continues to enforce authentication, checksum/decryption, unchanged-head review and explicit saving.
+
+Recovery controls are removed when the staging host closes. Background panel rendering now retains owner-facing conflict/review/unsaved-revision status rather than replacing it with the legacy local-file message. No new application, financial ledger, automatic login, migration or production activation is introduced. Revision scripts remain absent from index.html.
+
+Targeted local recovery/runtime/release-gate checks passed ten tests, zero failed. The full Owner Desk mobile browser exercise now uploads a synthetic encrypted backup, reviews changed sections through native controls, checks that selection is initially blank, applies the selected note without a write, explicitly saves, downloads the verified encrypted backup and checks control removal on close. The exact-commit CI result is required before claiming browser success. All 16 acceptance dispositions and original DS-A/commercial release holds remain unchanged. Actual owner recovery and approved migration credentials are still required.
+
 ## Reviewed workspace-section recovery
 
 Baseline `02714887380d2a5fa7e95c023de2aafc4e22af14`. The staged coordinator can now inspect an encrypted workspace backup, return a changed-section review, and apply only explicitly selected sections. The backup is checksum/decryption/schema checked and its ledger uses the existing accountant validator. Recovery requires a clean, confirmed current workspace. Section shapes are checked against the existing workspace template; this is structural validation, not independent authentication or semantic verification of every historical record.
