@@ -156,6 +156,37 @@ test('expiry and secret rotation during HMAC verification deny the old session',
    }
  }finally{crypto.subtle.verify=verify;Date.now=originalDateNow;configured();}
 });
+test('rotation during bearer digest comparison denies the previous credential',async()=>{
+ configured();const digest=crypto.subtle.digest;let calls=0;
+ try{
+   crypto.subtle.digest=async function(...args){const result=await digest.apply(this,args);if(++calls===2)process.env.OWNER_DASHBOARD_TOKEN=ROTATED_SECRET;return result;};
+   assert.equal(await ownerSecretMatches(SYNTHETIC_SECRET),false);
+ }finally{crypto.subtle.digest=digest;configured();}
+});
+test('cookie issuance cannot exchange a previously verified credential after rotation',async()=>{
+ configured();assert.equal(await ownerSecretMatches(SYNTHETIC_SECRET),true);
+ process.env.OWNER_DASHBOARD_TOKEN=ROTATED_SECRET;
+ await assert.rejects(createOwnerCookie(SYNTHETIC_SECRET),/owner_session_changed_during_signin/);
+ configured();
+});
+test('rotation or expiry during cookie signing cannot report a successful login',async()=>{
+ const sign=crypto.subtle.sign;
+ try{
+   for(const phase of ['rotation','expiry']){
+     configured();const now=1800000000000;Date.now=()=>now;
+     crypto.subtle.sign=async function(...args){
+       const result=await sign.apply(this,args);
+       if(phase==='rotation')process.env.OWNER_DASHBOARD_TOKEN=ROTATED_SECRET;
+       else Date.now=()=>now+8*60*60*1000;
+       return result;
+     };
+     const response=await tokenPost();
+     assert.equal(response.status,503);assert.equal(response.headers.has('set-cookie'),false);
+     assert.deepEqual(await response.json(),{error:'owner_access_unavailable'});
+     crypto.subtle.sign=sign;
+   }
+ }finally{crypto.subtle.sign=sign;Date.now=originalDateNow;configured();}
+});
 test('invalid POST bodies do not yield signed cookies',async()=>{
  configured();
  const invalid=[

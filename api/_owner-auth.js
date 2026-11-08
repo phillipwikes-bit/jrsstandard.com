@@ -43,14 +43,19 @@ export async function ownerSecretMatches(given){
   const b=new Uint8Array(await crypto.subtle.digest('SHA-256',encoder.encode(secret)));
   let bad=given.length===secret.length?0:1;
   for(let i=0;i<a.length;i++)bad|=a[i]^b[i];
-  return bad===0;
+  return bad===0 && envSecret()===secret;
 }
-export async function createOwnerCookie(){
+export async function createOwnerCookie(expectedSecret){
   const secret=envSecret();
   if(secret.length<32)throw Error('owner_secret_unconfigured');
+  // Token login must issue under the same credential it authenticated.
+  if(expectedSecret!==undefined && expectedSecret!==secret)throw Error('owner_session_changed_during_signin');
   const nonce=new Uint8Array(16);crypto.getRandomValues(nonce);
-  const payload='v1.'+Math.floor(Date.now()/1000+MAX_AGE)+'.'+bytesToUrl(nonce);
+  const expiry=Math.floor(Date.now()/1000+MAX_AGE);
+  const payload='v1.'+expiry+'.'+bytesToUrl(nonce);
   const signature=bytesToUrl(new Uint8Array(await crypto.subtle.sign('HMAC',await key(secret),encoder.encode(payload))));
+  const now=Math.floor(Date.now()/1000);
+  if(envSecret()!==secret||expiry<=now||expiry-now>MAX_AGE)throw Error('owner_session_changed_during_signin');
   return COOKIE+'='+payload+'.'+signature+'; Path=/; Max-Age='+MAX_AGE+
     '; HttpOnly; Secure; SameSite=Strict';
 }
