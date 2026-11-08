@@ -75,6 +75,55 @@ const passphrase="synthetic test passphrase with 20+ characters";
   remote=good;
   await assert.rejects(ownerA.open("wrong synthetic passphrase"),/Wrong passphrase/);
   assert.equal(ownerA.status().openedRevision,null);
+  // A vault sign-out during local AES decryption must not return even a
+  // verified workspace from an in-flight revision read.
+  let unlockDecrypt, signalDecrypt;
+  const decryptStarted=new Promise(resolve=>{signalDecrypt=resolve;});
+  const decryptBlocked=new Promise(resolve=>{unlockDecrypt=resolve;});
+  let decryptAuthorized=true;
+  const decryptWorkspace=Object.assign({},workspace,{
+    decrypt:async(p,ciphertext)=>{
+      signalDecrypt();
+      await decryptBlocked;
+      return workspace.decrypt(p,ciphertext);
+    }
+  });
+  const decryptGuard=()=>{if(!decryptAuthorized)throw Error("Vault session changed");};
+  const readBridge=createWorkspaceBridge(createRevisionStore(transport,protocol,{sha256:digest}),
+    decryptWorkspace,{sha256:digest},decryptGuard);
+  const pendingRead=readBridge.open(passphrase);
+  await decryptStarted;
+  decryptAuthorized=false;
+  unlockDecrypt();
+  await assert.rejects(pendingRead,/Vault session changed/);
+  assert.equal(readBridge.status().openedRevision,null,
+    "Sign-out during decryption must not authorize a recovered workspace");
+  assert.throws(()=>readBridge.encryptedBackup(),/Vault session changed/);
+  // A sign-out while encryption is in progress must not append ciphertext or
+  // report a successful save, even when the original revision was verified.
+  let unlockEncrypt,signalEncrypt;
+  const encryptStarted=new Promise(resolve=>{signalEncrypt=resolve;});
+  const encryptBlocked=new Promise(resolve=>{unlockEncrypt=resolve;});
+  let encryptAuthorized=true;
+  const encryptWorkspace=Object.assign({},workspace,{
+    encrypt:async(p,document)=>{
+      signalEncrypt();
+      await encryptBlocked;
+      return workspace.encrypt(p,document);
+    }
+  });
+  const encryptGuard=()=>{if(!encryptAuthorized)throw Error("Vault session changed");};
+  const writeBridge=createWorkspaceBridge(createRevisionStore(transport,protocol,{sha256:digest}),
+    encryptWorkspace,{sha256:digest},encryptGuard);
+  await writeBridge.open(passphrase);
+  const writesBeforeRevocation=writes;
+  const pendingWrite=writeBridge.save(doc,passphrase);
+  await encryptStarted;
+  encryptAuthorized=false;
+  unlockEncrypt();
+  await assert.rejects(pendingWrite,/Vault session changed/);
+  assert.equal(writes,writesBeforeRevocation,"Logout during encryption must prevent remote append");
+  assert.equal(writeBridge.status().openedRevision,null);
   ownerA.close();
   assert.equal(ownerA.status().openedRevision,null);
   assert.throws(()=>ownerA.encryptedBackup(),/Verified current encrypted workspace/);
