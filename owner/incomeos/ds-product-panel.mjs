@@ -29,9 +29,11 @@ function ownerProductFinance(workspace, program) {
   return projection;
 }
 function renderProductFinance(root, workspace, program) {
-  const finance = add(root, 'section');
+  const finance = add(root, 'details');
   finance.setAttribute('aria-label', 'Decision Spellchecker product finance');
-  add(finance, 'h4', 'Product revenue and costs');
+  const financeSummary = add(finance, 'summary', 'Inspect product revenue and costs');
+  financeSummary.style.minHeight = '44px';
+  financeSummary.style.padding = '10px 0';
   let report;
   try { report = ownerProductFinance(workspace, program); }
   catch (_) { report = null; }
@@ -104,7 +106,14 @@ function init() {
       add(line, 'p', 'Original clause: ' + clause + '; source: ' + source +
         '; linked evidence records: ' + item.evidenceIds.length, 'muted');
     }
-    const list = add(root, 'dl');
+    // Detailed provenance is available on demand rather than rendering a
+    // long unbroken source table over the fixed iPhone navigation surface.
+    const provenance = add(root, 'details');
+    const provenanceSummary = add(provenance, 'summary', 'Inspect source versions, evidence and release controls');
+    provenanceSummary.style.minHeight = '44px';
+    provenanceSummary.style.padding = '10px 0';
+    add(root, 'p', 'Original SP acceptance: ' + view.originalAcceptance.accepted + ' of ' + view.originalAcceptance.total + '; customer access and release: NOT AUTHORIZED.', 'muted');
+    const list = add(provenance, 'dl');
     for (const [label, value] of [
       ['Candidate source', view.candidate + ' ' + view.candidateVersion],
       ['Rules', view.rulesVersion],
