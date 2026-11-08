@@ -81,6 +81,23 @@ readVault.signOut();
 releaseRead();
 await assert.rejects(pendingRead,/session changed/);
 assert.equal(readVault.signedIn(),false);
+// A save already in flight must not report success after the owner signs out.
+let releaseSave;
+const delayedSaveFetch=(url,opt)=>url.includes("/rest/v1/incomeos_vault")&&opt.method==="POST"?
+  new Promise(resolve=>{releaseSave=()=>resolve({ok:true,status:201,text:async()=>""});}):
+  fakeFetch(url,opt);
+const saveCtx={window:{crypto:webcrypto,fetch:delayedSaveFetch},TextEncoder,JSON,URL,Promise,Error,setTimeout};
+vm.runInNewContext(src,saveCtx);
+const saveVault=saveCtx.window.IncomeOSVaultCloud;
+await saveVault.signIn("owner@example.org","right password 12");
+const pendingSave=saveVault.save(envelope);
+// SHA-256 is asynchronous, so wait until the mocked authenticated POST starts.
+for(let i=0;i<100&&!releaseSave;i++)await new Promise(resolve=>setTimeout(resolve,1));
+assert.equal(typeof releaseSave,"function","encrypted save must reach the mocked vault");
+saveVault.signOut();
+releaseSave();
+await assert.rejects(pendingSave,/session changed/);
+assert.equal(saveVault.signedIn(),false,"late save response cannot reinstate authentication");
 // Save sends only the envelope, its format tag and hash.
 await V.save(envelope);
 const post=calls.find(c=>c.opt.method==="POST"&&c.url.endsWith("/rest/v1/incomeos_vault"));
