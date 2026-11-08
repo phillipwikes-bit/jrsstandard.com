@@ -30,6 +30,7 @@ const vault=Object.freeze({
     const boundEpoch=epoch;
     const guard=()=>{if(!authenticated||boundEpoch!==epoch)throw Error("Owner session changed");};
     return Object.freeze({
+      assertSession:()=>{guard();return true;},
       latest:async()=>{guard();reads++;return remote;},
       append:async request=>{
         guard();
@@ -110,6 +111,8 @@ const expense=(id,amount)=>({id,kind:"outflow",date,label:"SYNTHETIC PRIVATE ACC
   signOut();
   const d=createAccountingRuntime;
   assert.throws(()=>d({stagingOnly:true}),/Authenticated owner vault session/);
+  assert.throws(()=>c.encryptedBackup(),/Owner session changed/,
+    "Logout must revoke encrypted backup reads even if a workspace was opened");
   await assert.rejects(c.open(passphrase),/Owner session changed/);
   assert.equal(writes,beforeLogoutWrites,"A revoked session cannot write or refresh");
   assert.equal(globalThis.IncomeOSRevisionRuntime.createAccountingRuntime,createAccountingRuntime);
