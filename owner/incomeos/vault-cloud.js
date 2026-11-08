@@ -51,7 +51,12 @@
   async function save(text){
     assertEncrypted(text);
     if(text.length>5000000)throw Error("Encrypted workspace exceeds 5 MB");
-    await call("/rest/v1/incomeos_vault",{method:"POST",auth:true,body:{format:CONFIG.format,ciphertext:text,sha256:await sha256(text)}});
+    if(!session)throw Error("Sign in to your vault first");
+    var epoch=sessionEpoch;
+    var digest=await sha256(text);
+    if(epoch!==sessionEpoch||!session)throw Error("Vault session changed during request");
+    await call("/rest/v1/incomeos_vault",{method:"POST",auth:true,body:{format:CONFIG.format,ciphertext:text,sha256:digest}});
+    if(epoch!==sessionEpoch)throw Error("Vault session changed during request");
     return {ok:true};
   }
   async function latest(){
