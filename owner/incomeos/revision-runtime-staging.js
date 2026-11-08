@@ -27,9 +27,12 @@
       return Array.prototype.map.call(new Uint8Array(hash),function(b){return ("0"+b.toString(16)).slice(-2);}).join("");
     };
     var integrity=Object.freeze({sha256:digest});
+    var transport=vault.createRevisionTransport();
+    if(!transport||typeof transport.assertSession!=="function")
+      throw Error("Session-bound owner revision transport required");
     return bridge.createWorkspaceBridge(
-      store.createRevisionStore(vault.createRevisionTransport(),protocol,integrity),
-      workspace,integrity
+      store.createRevisionStore(transport,protocol,integrity),
+      workspace,integrity,transport.assertSession
     );
   }
   // Compose the tested accountant, authoritative workspace and revision bridge.
