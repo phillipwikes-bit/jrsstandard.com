@@ -6,6 +6,11 @@ on:
       - 'engineering/incomeos/workspace-revision-rpc-staging.sql'
       - 'tests/incomeos-revision-rpc-db.sql'
       - 'tests/incomeos-revision-rpc-concurrency.sh'
+      # Any change to the staged client or its recovery tests must recheck
+      # the server-side atomic append contract in disposable PostgreSQL.
+      - 'owner/incomeos/revision-*.js'
+      - 'owner/incomeos/workspace-revision-protocol.js'
+      - 'tests/incomeos-revision-*.test.cjs'
       - '.github/workflows/incomeos-revision-postgres.yml'
   workflow_dispatch:
 permissions:
