@@ -13,7 +13,9 @@
     if(!input||!button||!status||!out||!WS||Object.keys(E).some(function(k){return !E[k];}))return;
     var state={ws:null,screen:null,dirty:false,history:[],research:window.IncomeOSResearchLatest||null};
     var revisionDesk=null;
-    var revisionControls=null;
+    var revisionControls=null,workspaceEpoch=0,fileOpenSequence=0,localSavePending=false;
+    function workspaceMarker(){return {ws:state.ws,dirty:state.dirty,epoch:workspaceEpoch,desk:revisionDesk,text:state.ws?JSON.stringify(state.ws):null};}
+    function unchanged(marker){return marker.ws===state.ws&&marker.dirty===state.dirty&&marker.epoch===workspaceEpoch&&marker.desk===revisionDesk&&(!state.ws||JSON.stringify(state.ws)===marker.text);}
     function mountRevisionControls(){
       var desk=revisionDesk,box=document.createElement("details");box.id="revision-recovery-controls";box.className="vault-panel";
       out.parentNode.insertBefore(box,out);revisionControls=box;
@@ -80,7 +82,7 @@
        "confirmOpenedRevision","encryptedBackup","exportPendingDraftEncrypted","restoreLedgerBackup","prepareWorkspaceRecovery","applyWorkspaceRecovery","discardDraft","close"].forEach(function(k){
         if(!coordinator||typeof coordinator[k]!=="function")throw Error("Verified revision coordinator required");
       });
-      revisionDesk=coordinator;
+      revisionDesk=coordinator;workspaceEpoch++;
       mountRevisionControls();
       function bound(){if(revisionDesk!==coordinator)throw Error("Revision editor is no longer attached");}
       return Object.freeze({
@@ -94,7 +96,7 @@
         close:function(){bound();closeRevisionHost();}
       });
     }});
-    function announce(){try{document.dispatchEvent(new CustomEvent("incomeos:workspace-loaded",{detail:state.ws}));}catch(e){}}
+    function announce(){workspaceEpoch++;try{document.dispatchEvent(new CustomEvent("incomeos:workspace-loaded",{detail:state.ws}));}catch(e){}}
     function today(){var d=new Date();return [d.getFullYear(),String(d.getMonth()+1).padStart(2,"0"),String(d.getDate()).padStart(2,"0")].join("-");}
     function el(p,tag,text,cls){var e=document.createElement(tag);if(text!=null)e.textContent=String(text);if(cls)e.className=cls;p.appendChild(e);return e;}
     function link(p,url,label){try{var u=new URL(url);if(u.protocol!=="https:")return;}catch(e){return;}var a=el(p,"a",label);a.href=url;a.target="_blank";a.rel="noopener noreferrer";a.referrerPolicy="no-referrer";}
@@ -258,23 +260,30 @@
         "Review and confirm the newer revision before editing.":revisionState.dirty?
         "Unsaved revision edits. Save explicitly to retain them.":"Staged revision workspace. Open, review and save through the revision controls.";}
     }
-    async function openText(text,assertOwnerSession){
+    async function openText(text,assertOwnerSession,fileSequence){
+      function currentSelection(){if(fileSequence!==undefined&&fileSequence!==fileOpenSequence)throw Error("A newer workspace file was selected. Earlier file was not installed.");}
+      currentSelection();
       if(revisionDesk)throw Error("Use verified revision recovery while the staged editor is attached");
       if(assertOwnerSession!==undefined&&typeof assertOwnerSession!=="function")
         throw Error("Invalid owner session check");
       if(assertOwnerSession)assertOwnerSession();
       // Decryption is asynchronous. A newly created, edited, or replaced workspace
       // must not be overwritten by an older restore that finishes afterward.
-      var beforeWs=state.ws,beforeDirty=state.dirty,beforeSnapshot=beforeWs?JSON.stringify(beforeWs):null;
+      var before=workspaceMarker();
       var loaded=await WS.load(text,passInput&&passInput.value||"");
+      currentSelection();
       if(revisionDesk)throw Error("Revision editor attached during file recovery; local file was not installed");
       // Never install a plaintext workspace after the initiating vault owner
       // has signed out while PBKDF2/AES decryption was running.
       if(assertOwnerSession)assertOwnerSession();
-      if(state.ws!==beforeWs||state.dirty!==beforeDirty||(beforeWs&&JSON.stringify(state.ws)!==beforeSnapshot))
+      if(!unchanged(before))
         throw Error("Workspace changed during file restore. The newer workspace was preserved.");
       if(loaded.schema!==WS.SCHEMA)throw Error("That is a profile, not a workspace. Open it in the opportunities panel.");
-      state.ws=loaded;announce();if(WS.isEncrypted(text)){try{document.dispatchEvent(new CustomEvent("incomeos:workspace-saved",{detail:{encrypted:true}}));}catch(e){}}state.dirty=false;state.history=[];render();
+      // Establish the file's baseline before notifying subscribers. Their
+      // synchronous edits must retain their own dirty flag and undo history.
+      state.ws=loaded;state.dirty=false;state.history=[];announce();
+      if(state.ws===loaded&&!state.dirty&&WS.isEncrypted(text)){try{document.dispatchEvent(new CustomEvent("incomeos:workspace-saved",{detail:{encrypted:true}}));}catch(e){}}
+      render();
     }
     // Private vault: the vault panel receives only the workspace already encrypted here with the passphrase, and
     // only hands back an encrypted save to open. Nothing unencrypted ever leaves this panel.
@@ -311,12 +320,17 @@
         if(state.dirty&&!confirm("Replace the unsaved workspace on screen with the vault copy?"))return d.done({ok:false,error:"Cancelled"});
         await openText(d.text,d.assertSession);d.done({ok:true});}catch(err){d.done({ok:false,error:err.message});}});
     button.addEventListener("click",async function(){
+      var sequence=++fileOpenSequence,before=workspaceMarker();
       var f=input.files&&input.files[0];
       if(!f){status.textContent="Choose your workspace file first.";return;}
       if(f.size>5000000){status.textContent="Workspace file exceeds 5 MB.";return;}
-      try{await openText(await f.text());}
+      try{
+        var text=await f.text();
+        if(sequence!==fileOpenSequence||!unchanged(before))throw Error("Workspace changed during file read. The newer workspace was preserved.");
+        await openText(text,undefined,sequence);
+      }
       catch(err){status.textContent="Workspace rejected: "+err.message;}
-      finally{input.value="";}
+      finally{if(sequence===fileOpenSequence&&input.files&&input.files[0]===f)input.value="";}
     });
     var newBtn=document.getElementById("briefing-new");
     if(newBtn)newBtn.addEventListener("click",function(){if(revisionDesk){try{revisionDesk.initializeNew(today());installRevision();}catch(e){status.textContent=e.message;}return;}state.ws=WS.newWorkspace(today());state.history=[];state.dirty=true;state.lastAct=null;render();announce();
@@ -340,9 +354,11 @@
         finally{saveBtn.disabled=false;}
         return;
       }
-      if(!state.ws)return;
-      var p=passInput&&passInput.value||"",stamp=today(),snapshot=JSON.stringify(state.ws);
+      if(!state.ws||localSavePending)return;
+      localSavePending=true;saveBtn.disabled=true;status.textContent="Preparing workspace download…";
+      var p=passInput&&passInput.value||"",stamp=today(),snapshot;
       try{
+        snapshot=JSON.stringify(state.ws);
         if(p){download(await WS.encrypt(p,JSON.parse(snapshot)),"incomeos-workspace-"+stamp+".encrypted.json");}
         else{download(JSON.stringify(JSON.parse(snapshot),null,1),"incomeos-workspace-"+stamp+".json");}
         if(state.ws&&JSON.stringify(state.ws)===snapshot){
@@ -353,6 +369,7 @@
           status.textContent="An earlier workspace version was downloaded. Changes made during that save are not included. Save the current workspace again.";
         }
       }catch(err){status.textContent="Not saved: "+err.message;}
+      finally{localSavePending=false;saveBtn.disabled=false;}
     });
     window.addEventListener("beforeunload",function(e){if(state.dirty){e.preventDefault();e.returnValue="";}});
     document.addEventListener("incomeos:research-screened",function(ev){state.research=ev.detail||null;render();});

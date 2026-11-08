@@ -237,7 +237,59 @@ const unlabeled=await page.evaluate(()=>[...document.querySelectorAll("#briefing
 assert.deepEqual(unlabeled,[],"every control in the owner panels has a label");
 assert.deepEqual(errors,[]);
 if(process.env.INCOMEOS_BRIEFING_SCREENSHOT)await page.locator("#briefing-panel").screenshot({path:process.env.INCOMEOS_BRIEFING_SCREENSHOT});
-page.once("dialog",dialog=>dialog.accept()); // explicitly leave the earlier unsaved synthetic workspace
+// ---------- Interrupted local file operations preserve the current draft ----------
+await page.locator('.bottomnav button[data-view="research"]').click();
+await page.evaluate(()=>{
+  window.__fileBoundary={latest:null,started:false,release:null,read:File.prototype.text};
+  ["incomeos:workspace-loaded","incomeos:workspace-changed","incomeos:workspace-restored"].forEach(type=>document.addEventListener(type,event=>{
+    window.__fileBoundary.latest=event.detail;
+  }));
+  File.prototype.text=function(){
+    if(this.name!=="synthetic-held-workspace.json")return window.__fileBoundary.read.call(this);
+    const file=this;window.__fileBoundary.started=true;
+    return new Promise(resolve=>{window.__fileBoundary.release=async()=>resolve(await window.__fileBoundary.read.call(file));});
+  };
+});
+const oldLocal=await page.evaluate(()=>{const w=IncomeOSWorkspace.newWorkspace("2026-11-08");w.note="Synthetic superseded local file";return w;});
+await page.locator("#briefing-file").setInputFiles({name:"synthetic-held-workspace.json",mimeType:"application/json",buffer:Buffer.from(JSON.stringify(oldLocal))});
+await page.locator("#briefing-load").click();await page.waitForFunction(()=>window.__fileBoundary.started);
+await page.locator("#briefing-new").click();
+await page.evaluate(()=>window.__fileBoundary.release());
+await page.waitForFunction(()=>/changed during file read/.test(document.getElementById("briefing-status").textContent));
+assert.notEqual(await page.evaluate(()=>window.__fileBoundary.latest.note),oldLocal.note);
+assert.equal(await page.evaluate(()=>{const e=new Event("beforeunload",{cancelable:true});window.dispatchEvent(e);return e.defaultPrevented;}),true,"A stale file read cannot remove the newer draft's unload warning");
+await page.evaluate(()=>{
+  File.prototype.text=window.__fileBoundary.read;
+  document.addEventListener("incomeos:workspace-loaded",function editOnLoad(event){
+    if(event.detail?.note!=="Synthetic subscriber-edited file")return;
+    document.removeEventListener("incomeos:workspace-loaded",editOnLoad);
+    document.dispatchEvent(new CustomEvent("incomeos:research-progress",{detail:{id:"synthetic-file-subscriber",status:"Applied"}}));
+  });
+});
+const subscriberFile={...oldLocal,note:"Synthetic subscriber-edited file"};
+await page.locator("#briefing-file").setInputFiles({name:"synthetic-subscriber.json",mimeType:"application/json",buffer:Buffer.from(JSON.stringify(subscriberFile))});
+await page.locator("#briefing-load").click();
+await page.waitForFunction(()=>window.__fileBoundary.latest?.researchProgress?.["synthetic-file-subscriber"]?.status==="Applied");
+assert.match(await page.locator("#briefing-status").textContent(),/Unsaved changes/);
+assert.equal(await page.locator("#briefing-undo").isVisible(),true);
+await page.locator("#briefing-undo").click();
+assert.equal(await page.evaluate(()=>window.__fileBoundary.latest.researchProgress["synthetic-file-subscriber"]),undefined);
+await page.locator("#briefing-passphrase").fill("synthetic local file passphrase");
+await page.evaluate(()=>{
+  const original=crypto.subtle.deriveKey;
+  let release;const gate=new Promise(resolve=>{release=resolve;});
+  window.__localSaveHold={started:false,release:()=>{crypto.subtle.deriveKey=original;release();}};
+  crypto.subtle.deriveKey=async function(...args){window.__localSaveHold.started=true;await gate;return original.apply(this,args);};
+});
+await page.locator("#briefing-save").click();await page.waitForFunction(()=>window.__localSaveHold.started);
+assert.match(await page.locator("#briefing-status").textContent(),/Preparing workspace download/);
+assert.equal(await page.locator("#briefing-save").isDisabled(),true);
+const [localSnapshot]=await Promise.all([page.waitForEvent("download"),page.evaluate(()=>window.__localSaveHold.release())]);
+await page.waitForFunction(()=>/^Encrypted workspace saved/.test(document.getElementById("briefing-status").textContent));
+assert.equal(await page.locator("#briefing-save").isEnabled(),true);
+assert.match(localSnapshot.suggestedFilename(),/encrypted\.json$/);
+assert.doesNotMatch(readFileSync(await localSnapshot.path(),"utf8"),/Synthetic subscriber-edited file/);
+page.once("dialog",dialog=>dialog.accept()); // accept a warning if this synthetic scenario has unsaved edits
 await page.goto(base);
 for(const script of ["workspace-revision-protocol.js","revision-store.js","revision-workspace-bridge.js","revision-accounting-coordinator.js","revision-runtime-staging.js"])
   await page.addScriptTag({url:new URL(script,base).href});

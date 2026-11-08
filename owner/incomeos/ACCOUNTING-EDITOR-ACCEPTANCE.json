@@ -73,7 +73,8 @@
       "status": "SOURCE TESTED",
       "evidence": [
         "tests/incomeos-accounting-editor-browser.mjs",
-        "tests/incomeos-workspace-accountant-compatibility.test.cjs"
+        "tests/incomeos-workspace-accountant-compatibility.test.cjs",
+        "tests/incomeos-workspace-file-operations.test.cjs"
       ],
       "limitation": "Edits keep a correction history (earlier values and source); browser-tested with synthetic records"
     },
@@ -90,7 +91,8 @@
         "tests/incomeos-revision-store.test.cjs",
         "tests/incomeos-revision-supabase-transport.test.cjs",
         "tests/incomeos-workspace-panel-cleanup.test.cjs",
-        "tests/incomeos-project-ui-browser.mjs"
+        "tests/incomeos-project-ui-browser.mjs",
+        "tests/incomeos-workspace-file-operations.test.cjs"
       ],
       "limitation": "Owner-held encrypted workspace files and the existing append-only encrypted vault are separate from the staged server-authoritative revision runtime. Synthetic accounting/revision integration is tested. Live owner-authenticated recovery, cross-device revision integration and a durable rollback trust anchor remain unverified; the staged runtime is not loaded in the live Owner Desk. Synthetic asynchronous-mutation checks bind a staged save to its submitted document, a trusted read to the checksum-verified response values and an RPC dispatch to its submitted request."
     },
@@ -103,7 +105,8 @@
         "tests/incomeos-accounting-backup-browser.mjs",
         "tests/incomeos-accountant-fixes.mjs",
         "tests/incomeos-vault-concurrency.test.cjs",
-        "tests/incomeos-revision-backup-restore.test.cjs"
+        "tests/incomeos-revision-backup-restore.test.cjs",
+        "tests/incomeos-workspace-file-operations.test.cjs"
       ],
       "limitation": "Encrypted workspace save and reopen, and JSON backup download, reload and restore through the page, are tested end to end with synthetic records in simulated Chromium; tampered backups are refused without changing the ledger Staged encrypted revision backups can now restore validated ledger rows as an unsaved edit against the current verified server head. Synthetic tests cover checksum, passphrase, ledger validation, conflict/review holds and session revocation. Current nonfinancial sections, Decision Spellchecker programme and server history are preserved. This is accounting-row restoration, not full-program rollback, source authentication of an owner-supplied backup or independently observed owner recovery."
     },
