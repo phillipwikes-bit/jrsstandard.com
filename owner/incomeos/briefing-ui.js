@@ -12,6 +12,32 @@
     var E={rules:window.IncomeOSLedgerRules,nw:window.IncomeOSNetWorth,claims:window.IncomeOSClaims,ren:window.IncomeOSRenewals,intel:window.IncomeOSIntelligence,rh:window.IncomeOSRecruiterHistory,yc:window.IncomeOSYieldCompare,wb:window.IncomeOSWeeklyBriefing,life:window.IncomeOSLifecycle};
     if(!input||!button||!status||!out||!WS||Object.keys(E).some(function(k){return !E[k];}))return;
     var state={ws:null,screen:null,dirty:false,history:[],research:window.IncomeOSResearchLatest||null};
+    var revisionDesk=null;
+    function installRevision(){
+      var s=revisionDesk.status();
+      state.ws=s.opened&&s.ledgerCount!==undefined?revisionDesk.workspaceSnapshot():null;
+      state.dirty=s.dirty;state.history=[];render();announce();
+      if(s.dirty)document.dispatchEvent(new CustomEvent("incomeos:workspace-changed",{detail:state.ws}));
+    }
+    // Explicit staging attachment only. No scripts, login or RPC are loaded
+    // automatically, and a local workspace cannot be silently replaced.
+    window.IncomeOSRevisionDeskHost=Object.freeze({attach:function(coordinator,options){
+      if(!options||options.stagingOnly!==true||revisionDesk||state.ws||state.dirty)
+        throw Error("Attach staging revisions only before opening a local workspace");
+      ["open","save","status","workspaceSnapshot","replaceLedger","updateProgram","initializeNew",
+       "confirmOpenedRevision","exportPendingDraftEncrypted","restoreLedgerBackup","discardDraft","close"].forEach(function(k){
+        if(!coordinator||typeof coordinator[k]!=="function")throw Error("Verified revision coordinator required");
+      });
+      revisionDesk=coordinator;
+      return Object.freeze({
+        open:async function(pass){var r=await coordinator.open(pass);if(r.hasWorkspace)installRevision();return r;},
+        confirm:function(revision){coordinator.confirmOpenedRevision(revision);installRevision();},
+        rescue:function(pass){return coordinator.exportPendingDraftEncrypted(pass);},
+        restore:async function(backup,pass,on){var r=await coordinator.restoreLedgerBackup(backup,pass,on);installRevision();return r;},
+        discard:function(){coordinator.discardDraft();state.ws=null;state.dirty=false;state.history=[];render();announce();},
+        close:function(){coordinator.close();revisionDesk=null;state.ws=null;state.dirty=false;state.history=[];render();announce();}
+      });
+    }});
     function announce(){try{document.dispatchEvent(new CustomEvent("incomeos:workspace-loaded",{detail:state.ws}));}catch(e){}}
     function today(){var d=new Date();return [d.getFullYear(),String(d.getMonth()+1).padStart(2,"0"),String(d.getDate()).padStart(2,"0")].join("-");}
     function el(p,tag,text,cls){var e=document.createElement(tag);if(text!=null)e.textContent=String(text);if(cls)e.className=cls;p.appendChild(e);return e;}
@@ -19,8 +45,11 @@
     function money(x){return x==null?"n/a":"$"+Number(x).toLocaleString("en-US",{minimumFractionDigits:2,maximumFractionDigits:2});}
     function section(title){var s=el(out,"section",null,"briefing-section");el(s,"h4",title,"project-subhead");return s;}
     function arr(x){return Array.isArray(x)?x:[];}
-    function act(fn,label){
-      try{var before=state.ws;state.ws=fn(state.ws);state.history.push(before);if(state.history.length>20)state.history.shift();state.dirty=true;clearTyped();
+    function act(fn,label,revisionEdit){
+      try{var before=state.ws;
+        if(revisionDesk){if(typeof revisionEdit!=="function")throw Error("This workspace action is unavailable during staged revision editing");revisionEdit();state.ws=revisionDesk.workspaceSnapshot();}
+        else state.ws=fn(state.ws);
+        state.history.push(before);if(state.history.length>20)state.history.shift();state.dirty=true;clearTyped();
         try{document.dispatchEvent(new CustomEvent("incomeos:workspace-changed",{detail:state.ws}));}catch(e){}state.lastAct=label;render();status.textContent=label+". Save the updated workspace to keep this change, or undo it.";return {ok:true};}
       catch(err){status.textContent="Not changed: "+err.message;return {ok:false,error:err.message};}
     }
@@ -170,6 +199,7 @@
       status.textContent=state.ws?(state.dirty?"Unsaved changes. Save the updated workspace to keep them.":"Workspace loaded in memory only. Nothing is stored or sent."):"Showing system health only. Load your workspace file to see your finances.";
     }
     async function openText(text,assertOwnerSession){
+      if(revisionDesk)throw Error("Use verified revision recovery while the staged editor is attached");
       if(assertOwnerSession!==undefined&&typeof assertOwnerSession!=="function")
         throw Error("Invalid owner session check");
       if(assertOwnerSession)assertOwnerSession();
@@ -177,6 +207,7 @@
       // must not be overwritten by an older restore that finishes afterward.
       var beforeWs=state.ws,beforeDirty=state.dirty,beforeSnapshot=beforeWs?JSON.stringify(beforeWs):null;
       var loaded=await WS.load(text,passInput&&passInput.value||"");
+      if(revisionDesk)throw Error("Revision editor attached during file recovery; local file was not installed");
       // Never install a plaintext workspace after the initiating vault owner
       // has signed out while PBKDF2/AES decryption was running.
       if(assertOwnerSession)assertOwnerSession();
@@ -191,7 +222,7 @@
     // workspace. Only the exact encrypted snapshot may clear its dirty flag.
     var vaultSaveSequence=0,pendingVaultSave=null;
     document.addEventListener("incomeos:vault-encrypt",async function(ev){var d=ev.detail;if(!d||typeof d.done!=="function")return;
-      try{if(!state.ws)throw Error("Open or start a workspace first");var p=passInput&&passInput.value||"";if(p.length<16)throw Error("Enter a passphrase of at least 16 characters; the vault only accepts encrypted saves");
+      try{if(revisionDesk)throw Error("Use the explicit revision save control");if(!state.ws)throw Error("Open or start a workspace first");var p=passInput&&passInput.value||"";if(p.length<16)throw Error("Enter a passphrase of at least 16 characters; the vault only accepts encrypted saves");
         var snapshot=JSON.stringify(state.ws),saveId=++vaultSaveSequence;
         if(typeof d.assertSession!=="function")throw Error("Vault owner session check required");
         d.assertSession();
@@ -201,6 +232,7 @@
         d.done({ok:true,text:encrypted,saveId:saveId});
       }catch(err){d.done({ok:false,error:err.message});}});
     document.addEventListener("incomeos:vault-saved",function(ev){
+      if(revisionDesk)return;
       var receipt=ev.detail||{},pending=pendingVaultSave;
       if(!pending||receipt.saveId!==pending.saveId)return;
       pendingVaultSave=null;
@@ -227,13 +259,15 @@
       finally{input.value="";}
     });
     var newBtn=document.getElementById("briefing-new");
-    if(newBtn)newBtn.addEventListener("click",function(){state.ws=WS.newWorkspace(today());state.history=[];state.dirty=true;state.lastAct=null;render();announce();
+    if(newBtn)newBtn.addEventListener("click",function(){if(revisionDesk){try{revisionDesk.initializeNew(today());installRevision();}catch(e){status.textContent=e.message;}return;}state.ws=WS.newWorkspace(today());state.history=[];state.dirty=true;state.lastAct=null;render();announce();
       status.textContent="New empty workspace. Add accounts and entries below, then save it encrypted."+(state.lastAct?" "+state.lastAct+".":"");});
     if(undoBtn)undoBtn.addEventListener("click",function(){
+      if(revisionDesk){status.textContent="Staged revisions require an explicit correction; history cannot be rewound.";return;}
       if(!state.history.length)return;
       state.ws=state.history.pop();state.dirty=true;clearTyped();try{document.dispatchEvent(new CustomEvent("incomeos:workspace-restored",{detail:state.ws}));}catch(e){}render();status.textContent="Last change undone. Save to keep the workspace as it is now.";
     });
     if(saveBtn)saveBtn.addEventListener("click",async function(){
+      if(revisionDesk){try{await revisionDesk.save(passInput&&passInput.value||"");installRevision();document.dispatchEvent(new CustomEvent("incomeos:workspace-saved",{detail:{encrypted:true}}));status.textContent="Encrypted revision saved.";}catch(e){status.textContent="Revision not confirmed: "+e.message;}return;}
       if(!state.ws)return;
       var p=passInput&&passInput.value||"",stamp=today(),snapshot=JSON.stringify(state.ws);
       try{
@@ -275,9 +309,9 @@
     // Each reports the outcome back through detail.done so the Program view never claims an unapplied change.
     function reply(d,r){if(d&&typeof d.done==="function")d.done(r);}
     document.addEventListener("incomeos:ds-update",function(ev){var d=ev.detail;if(!d||!d.program)return;if(!state.ws){reply(d,{ok:false,error:"No workspace is loaded"});return;}
-      reply(d,act(function(w){return WS.setDsProgram(w,d.program,today());},d.label||"Program record updated"));});
+      reply(d,act(function(w){return WS.setDsProgram(w,d.program,today());},d.label||"Program record updated",function(){revisionDesk.updateProgram(d.program,today());}));});
     document.addEventListener("incomeos:ledger-replace",function(ev){var d=ev.detail;if(!d||!Array.isArray(d.entries))return;if(!state.ws){reply(d,{ok:false,error:"No workspace is loaded"});return;}
-      reply(d,act(function(w){return WS.setLedger(w,d.entries,today());},"Income and expense records updated in your workspace"));});
+      reply(d,act(function(w){return WS.setLedger(w,d.entries,today());},"Income and expense records updated in your workspace",function(){revisionDesk.replaceLedger(d.entries,today());}));});
     document.addEventListener("incomeos:ds-ledger",function(ev){var d=ev.detail;if(!d||!d.entry)return;if(!state.ws){reply(d,{ok:false,error:"No workspace is loaded"});return;}
       reply(d,act(function(w){return WS.addRecord(w,"ledger",d.entry,today());},"Program cost added to your workspace ledger"));});
     render();

@@ -1,5 +1,13 @@
 # IncomeOS controlled engineering evidence, 8 November 2026
 
+## Staged Owner Desk host connection
+
+Baseline `a2e0f68102b1062e87fb6d4c46f1e58f681dddfe`. The existing briefing host now permits explicit staging-only coordinator attachment before any local workspace is open. Existing accountant ledger-replace and programme-update events route through the coordinator. The existing new/save controls initialize a verified empty revision and explicitly save encrypted revisions. Recovery inspection, confirmation, encrypted draft rescue, discard and close remain explicit host operations.
+
+Legacy vault saves, local-file installation, history rewind and unsupported workspace mutations are refused while attached, preventing competing save paths and divergence from the coordinator. Late local-file recovery cannot replace a subsequently attached revision workspace. No staged modules are loaded by index.html, no login or server operation occurs on attachment, and no live migration or activation is claimed.
+
+Local combined security/revision/programme verification passed 30 tests, zero failed. The full existing Owner Desk mobile browser test is extended to attach a synthetic authenticated CAS service, initialize via the existing button, edit through the existing ledger event, save via the existing button, provoke a competing-writer conflict, reject further edits, rescue the draft encrypted and reopen/confirm the newer revision. Current-commit CI must establish that browser result. All 16 accounting dispositions and original-product/commercial holds remain unchanged. Non-ledger/non-programme editing and staged undo are deliberately refused until their coordinator integration is implemented.
+
 ## Follow-on shared programme revision integration
 
 Baseline: `868dc636f6dd77368671d24e3f062c3d89ed862d`, same draft PR #180 and branch. The staged coordinator previously exposed ledger edits but no validated way to commit programme-management changes alongside them. `updateProgram` now calls the existing workspace/Decision Spellchecker validator, retains the current ledger, requires the bound owner session and a confirmed revision, and marks only an unsaved draft. It performs no network write. An explicit save commits programme and accounting rows in the same encrypted workspace revision.

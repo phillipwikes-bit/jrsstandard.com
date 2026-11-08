@@ -237,5 +237,49 @@ const unlabeled=await page.evaluate(()=>[...document.querySelectorAll("#briefing
 assert.deepEqual(unlabeled,[],"every control in the owner panels has a label");
 assert.deepEqual(errors,[]);
 if(process.env.INCOMEOS_BRIEFING_SCREENSHOT)await page.locator("#briefing-panel").screenshot({path:process.env.INCOMEOS_BRIEFING_SCREENSHOT});
+await page.goto(base);
+for(const script of ["workspace-revision-protocol.js","revision-store.js","revision-workspace-bridge.js","revision-accounting-coordinator.js","revision-runtime-staging.js"])
+  await page.addScriptTag({url:new URL(script,base).href});
+await page.evaluate(async()=>{
+  let remote=null,writes=0;
+  window.__revisionTest={writes:()=>writes};
+  window.IncomeOSVaultCloud={signedIn:()=>true,createRevisionTransport:()=>({assertSession:()=>true,
+    latest:async()=>remote,append:async r=>{
+      if(r.expected_revision!==(remote?remote.revision:0))throw Error("Synthetic stale revision");
+      if(r.encrypted_payload.includes("SYNTHETIC HOST ENTRY"))throw Error("Plaintext transmission");
+      writes++;remote={revision:writes,ciphertext:r.encrypted_payload,ciphertext_sha256:r.payload_sha256};return writes;
+    }})};
+  window.__coordinator=IncomeOSRevisionRuntime.createAccountingRuntime({stagingOnly:true});
+  window.__binding=IncomeOSRevisionDeskHost.attach(window.__coordinator,{stagingOnly:true});
+  await window.__binding.open("synthetic shared host passphrase");
+});
+await page.locator('.bottomnav button[data-view="research"]').click();
+await page.locator("#briefing-new").click();
+const edit=()=>page.evaluate(()=>new Promise(resolve=>document.dispatchEvent(new CustomEvent("incomeos:ledger-replace",{detail:{
+  entries:[{id:"syn-host",kind:"outflow",date:"2026-11-08",label:"SYNTHETIC HOST ENTRY",category:"software",type:"expense",amountUsd:10,businessUse:null,paymentStatus:"paid"}],done:resolve
+}}))));
+assert.equal((await edit()).ok,true);
+assert.equal(await page.evaluate(()=>window.__revisionTest.writes()),0);
+await page.locator("#briefing-passphrase").fill("synthetic shared host passphrase");
+await page.locator("#briefing-save").click();
+await page.waitForFunction(()=>document.getElementById("briefing-status").textContent==="Encrypted revision saved.");
+assert.equal(await page.evaluate(()=>window.__revisionTest.writes()),1);
+await page.evaluate(async()=>{
+  const other=IncomeOSRevisionRuntime.createAccountingRuntime({stagingOnly:true});
+  await other.open("synthetic shared host passphrase");
+  other.replaceLedger([],"2026-11-08");await other.save("synthetic shared host passphrase");
+});
+assert.equal((await edit()).ok,true);
+await page.locator("#briefing-save").click();
+await page.waitForFunction(()=>/Revision not confirmed:.*stale/.test(document.getElementById("briefing-status").textContent));
+assert.equal((await edit()).ok,false,"Conflicted editor cannot accept further edits");
+assert.equal(await page.evaluate(()=>window.__revisionTest.writes()),2,"Conflict never retries");
+assert.equal(await page.evaluate(async()=>{
+  const r=await window.__binding.rescue("synthetic shared host passphrase");
+  window.__binding.discard();const opened=await window.__binding.open("synthetic shared host passphrase");
+  if(!opened.requiresOwnerConfirmation)throw Error("Missing conflict review");
+  window.__binding.confirm(opened.revision);window.__binding.close();return r.serverSaved;
+}),false);
+assert.deepEqual(errors,[]);
 await browser.close();server.close();
 console.log("IncomeOS project UI browser QA passed (iPhone 13 emulation, synthetic data): confirm-gated eligibility, inert injection, HTTPS apply link, no overflow, no storage writes");
