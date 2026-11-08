@@ -52,6 +52,19 @@ assert.match(dsView,/DS-N1/,"integrated panel identifies the synthetic developme
 assert.match(dsView,/Original SP acceptance/,"original DS-A acceptance stays visible and separate");
 assert.match(dsView,/NOT_AUTHORIZED/,"product access and release remain blocked");
 assert.ok(await page.locator("#ds-product-runtime button").isDisabled(),"synthetic reviewer is not exposed as a customer control");
+// Diagnose mobile fixed-navigation hit testing after the expanded DS view.
+const dsNavHit=await page.evaluate(()=>{
+  const b=document.querySelector('.bottomnav button[data-view="ledger"]');
+  const n=b.closest('.bottomnav');
+  const r=b.getBoundingClientRect();
+  const hit=document.elementFromPoint(r.left+r.width/2,r.top+r.height/2);
+  const cs=getComputedStyle(n);
+  return {nav:{top:r.top,bottom:r.bottom,left:r.left,right:r.right},
+    hit:hit?.tagName,hitInsideButton:b.contains(hit),hitInsideNav:n.contains(hit),
+    position:cs.position,zIndex:cs.zIndex,display:cs.display,
+    scrollY:window.scrollY,viewport:window.innerHeight,layoutWidth:document.documentElement.clientWidth};
+});
+console.log('IncomeOS DS navigation hit test',JSON.stringify(dsNavHit));
 await nav("ledger");
 // Add a received research payment and an expense with unknown business use.
 await page.locator("#receipt-label").fill("Synthetic study payout");await page.locator("#receipt-payer").fill("Synthetic Recruiter");
