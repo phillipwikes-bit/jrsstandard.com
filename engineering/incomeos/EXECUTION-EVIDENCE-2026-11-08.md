@@ -1,5 +1,13 @@
 # IncomeOS controlled engineering evidence, 8 November 2026
 
+## Follow-on shared programme revision integration
+
+Baseline: `868dc636f6dd77368671d24e3f062c3d89ed862d`, same draft PR #180 and branch. The staged coordinator previously exposed ledger edits but no validated way to commit programme-management changes alongside them. `updateProgram` now calls the existing workspace/Decision Spellchecker validator, retains the current ledger, requires the bound owner session and a confirmed revision, and marks only an unsaved draft. It performs no network write. An explicit save commits programme and accounting rows in the same encrypted workspace revision.
+
+Targeted local verification passed eight tests, zero failed: programme changes survive encrypted ledger restoration; malformed gate approvals are refused without altering the workspace; unconfirmed newer revisions and revoked sessions cannot edit the programme; the existing accounting runtime and original-SP gate regressions remain passing. These are synthetic management/control checks, not execution or acceptance of original DS-A. The staged browser exercise now also checks the programme record after encrypted save and ledger restoration. CI on the resulting exact commit is required before claiming browser verification.
+
+All 16 accounting dispositions remain unchanged. This extends the shared data integration; it does not activate staged RPCs, connect the live Owner Desk UI, migrate a database or authorize a release. Previously recorded staging credentials, hosting capacity, original Codebook/source identity, real owner recovery and commercial approval dependencies remain open.
+
 ## Continued execution: public vault API serialization
 
 Starting source: `27d9b7b5fc653db310843ce1877e33c8155f44df`, same branch and draft PR #180. The vault UI interlock did not cover direct calls from another owner panel. A new synthetic regression initially reported three failures and one pass: overlapping saves before SHA-256 completed, recovery during an upload and a save during recovery were not rejected by the API.

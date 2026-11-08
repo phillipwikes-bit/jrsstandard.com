@@ -11,7 +11,7 @@ catch {if(process.env.CI)throw Error("playwright-core must be installed for brow
 const scripts=new Set([
   "workspace-store.js","workspace-revision-protocol.js",
   "revision-store.js","revision-workspace-bridge.js",
-  "revision-runtime-staging.js","revision-accounting-coordinator.js","accountant.js"
+  "revision-runtime-staging.js","revision-accounting-coordinator.js","accountant.js","ds-program.js"
 ]);
 const base=new URL("../owner/incomeos/",import.meta.url);
 const server=createServer((req,res)=>{
@@ -123,6 +123,10 @@ try {
     accounting.replaceLedger([row],"2026-11-08");
     assert((await accounting.save(password)).revision===4,"Explicit initial accounting save");
     const backup=accounting.encryptedBackup();
+    const programme=window.IncomeOSDSProgram.add(window.IncomeOSDSProgram.newProgram("2026-11-08"),"tasks",{
+      id:"T-BROWSER-SHARED",title:"Synthetic programme task",module:"engineering"
+    },"2026-11-08");
+    accounting.updateProgram(programme,"2026-11-08");
     accounting.replaceLedger([{...row,amountUsd:20}],"2026-11-08");
     assert((await accounting.save(password)).revision===5,"Current revision advances after backup");
     const history=accounting.workspaceSnapshot().changeLog;
@@ -137,6 +141,8 @@ try {
     assert(JSON.stringify(restored.changeLog.slice(0,history.length))===JSON.stringify(history),"Restore preserves current history");
     assert((await accounting.save(password)).revision===6,"Restoration appends against current head, never revision 4");
     assert((await ws.decrypt(password,latest.ciphertext)).ledger[0].amountUsd===10,"Saved restoration decrypts exactly");
+    assert((await ws.decrypt(password,latest.ciphertext)).dsProgram.tasks.some(t=>t.id==="T-BROWSER-SHARED"),
+      "The same encrypted revision retains programme management changes after ledger recovery");
     return {writes,reads,finalRevision:latest.revision,viewport:innerWidth};
   });
   assert.deepEqual(errors,[],"No page errors or external requests");

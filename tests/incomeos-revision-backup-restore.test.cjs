@@ -52,6 +52,11 @@ test("old encrypted ledger backup becomes an explicit new revision with current 
   const current=f.a.workspaceSnapshot();
   current.ledger[0].amountUsd=999;
   assert.equal(f.a.workspaceSnapshot().ledger[0].amountUsd,10,"Snapshots cannot mutate the coordinator");
+  const programme=dsProgram.add(f.a.workspaceSnapshot().dsProgram,"tasks",{
+    id:"T-SYN-REVISION",title:"Synthetic shared revision programme task",module:"engineering"
+  },date);
+  assert.equal(f.a.updateProgram(programme,date).serverSaved,false);
+  assert.equal(f.writes(),0,"Programme edits cannot autosave financial records");
   f.a.replaceLedger([expense(25)],date);await f.a.save(passphrase);
   const before=f.a.workspaceSnapshot(),writes=f.writes(),reads=f.reads();
   const oldDocument=await workspace.decrypt(passphrase,f.backup.ciphertext);
@@ -74,6 +79,25 @@ test("old encrypted ledger backup becomes an explicit new revision with current 
     detail:{sourceRevision:1,sourceSha256:olderBackup.sha256,ledgerRows:1}});
   assert.equal((await f.a.save(passphrase)).revision,3,"Restore appends against revision 2, never rolls it back");
   assert.equal((await workspace.decrypt(passphrase,f.remote().ciphertext)).ledger[0].amountUsd,10);
+  assert.ok((await workspace.decrypt(passphrase,f.remote().ciphertext)).dsProgram.tasks.some(t=>t.id==="T-SYN-REVISION"),
+    "Programme management changes survive ledger restoration in the same encrypted revision");
+});
+test("programme edits retain the existing gate validator and cannot bypass session or revision holds",async()=>{
+  const f=await fixture(),before=f.a.workspaceSnapshot();
+  const invalid=JSON.parse(JSON.stringify(before.dsProgram));
+  invalid.gates[0].approval={by:"OWNER"};
+  assert.throws(()=>f.a.updateProgram(invalid,date),/approval lacks/);
+  assert.equal(f.a.status().dirty,false);
+  assert.deepEqual(f.a.workspaceSnapshot(),before);
+  const other=f.coordinator();await other.open(passphrase);
+  other.replaceLedger([expense(30)],date);await other.save(passphrase);
+  assert.equal((await f.a.open(passphrase)).requiresOwnerConfirmation,true);
+  assert.throws(()=>f.a.updateProgram(before.dsProgram,date),/Open and confirm/);
+  f.a.confirmOpenedRevision(2);
+  assert.equal(f.a.updateProgram(before.dsProgram,date).unsaved,true);
+  f.signOut();
+  assert.throws(()=>f.a.updateProgram(before.dsProgram,date),/Owner session changed/);
+  assert.equal(f.writes(),1,"Programme editing and revocation perform no extra writes");
 });
 test("wrong passphrases, tamper, invalid ledger and invalid chronology preserve current workspace",async()=>{
   const f=await fixture(),before=f.a.workspaceSnapshot();

@@ -69,6 +69,19 @@
       working=next;dirty=true;
       return Object.freeze({ledgerCount:next.ledger.length,unsaved:true});
     }
+    function updateProgram(program,on){
+      ensureIdle();verifySession();
+      if(!opened||!working||needsReview||needsRecovery)
+        throw Error("Open and confirm a verified owner workspace before editing");
+      if(typeof workspace.setDsProgram!=="function")
+        throw Error("Existing Decision Spellchecker programme engine required");
+      // The existing programme engine owns its validation and acceptance
+      // rules. Save the programme in the SAME revision as the financial rows.
+      var next=workspace.setDsProgram(working,clone(program),on);
+      workspace.validate(next);validateLedger(next.ledger);verifySession();
+      working=next;dirty=true;
+      return Object.freeze({unsaved:true,serverSaved:false});
+    }
     async function restoreLedgerBackup(backup,passphrase,on){
       ensureIdle();verifySession();
       if(!opened||!working||dirty||needsReview||needsRecovery)
@@ -161,7 +174,7 @@
       if(dirty)throw Error("Preserve or explicitly discard unsaved accounting draft before closing");
       bridge.close();working=null;opened=false;needsReview=false;needsRecovery=false;
     }
-    return Object.freeze({open:open,initializeNew:initializeNew,replaceLedger:replaceLedger,restoreLedgerBackup:restoreLedgerBackup,
+    return Object.freeze({open:open,initializeNew:initializeNew,replaceLedger:replaceLedger,updateProgram:updateProgram,restoreLedgerBackup:restoreLedgerBackup,
       save:save,confirmOpenedRevision:confirmOpenedRevision,pendingDraft:pendingDraft,
       workspaceSnapshot:workspaceSnapshot,
       exportPendingDraftEncrypted:exportPendingDraftEncrypted,
