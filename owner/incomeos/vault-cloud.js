@@ -46,7 +46,15 @@
     if(!d||typeof d.access_token!=="string"||!d.user||typeof d.user.id!=="string")throw Error("Sign-in did not return a session");
     session={access_token:d.access_token,userId:d.user.id,email:d.user.email||""};return {ok:true,userId:session.userId};
   }
-  function signOut(){sessionEpoch++;session=null;}
+  function signOut(){
+    sessionEpoch++;session=null;
+    // Revocation is immediate. Clear any passphrase retained in the local
+    // workspace form, but do not silently discard unsaved financial edits.
+    // Local plaintext remains in page memory until the page is reloaded.
+    var doc=root&&root.document;
+    var pass=doc&&doc.getElementById&&doc.getElementById("briefing-passphrase");
+    if(pass)pass.value="";
+  }
   function signedIn(){return !!session;}
   async function save(text){
     assertEncrypted(text);
@@ -140,7 +148,7 @@
     async function guard(fn){try{await fn();}catch(e){say("Vault: "+e.message);}refresh();}
     $("cloud-vault-signin").addEventListener("click",function(){guard(async function(){say("Signing in…");await signIn($("cloud-vault-email").value,$("cloud-vault-password").value);say("Signed in to your private vault for this visit only.");});});
     $("cloud-vault-signup").addEventListener("click",function(){guard(async function(){await signUp($("cloud-vault-email").value,$("cloud-vault-password").value);say("Account requested. Confirm it from the email Supabase sends, then sign in. The vault opens only after the owner account is approved.");});});
-    $("cloud-vault-signout").addEventListener("click",function(){signOut();say("Signed out.");refresh();});
+    $("cloud-vault-signout").addEventListener("click",function(){signOut();say("Private vault signed out. Your loaded workspace may remain visible in this tab. Reload or close this page to clear it; save unsaved changes securely first.");refresh();});
     $("cloud-vault-save").addEventListener("click",function(){
       // A second upload cannot overtake an earlier encrypted snapshot and
       // make the latest vault copy older than the owner's last save.
