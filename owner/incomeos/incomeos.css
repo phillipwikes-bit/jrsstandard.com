@@ -130,3 +130,8 @@ textarea{display:block;width:100%;min-height:60px;resize:vertical;background:whi
 .vault-panel{margin-top:12px;border-top:1px solid var(--border);padding-top:10px}.vault-panel summary{font-weight:700;font-size:13px;cursor:pointer;min-height:44px;display:flex;align-items:center}.vault-buttons{flex-wrap:wrap;gap:8px;justify-content:flex-start;margin-top:10px}
 /* Keyboard-visible disclosure in the existing DS product integration panel. */
 #ds-product-runtime details > summary:focus-visible{outline:3px solid #40b79d;outline-offset:3px;border-radius:4px}
+
+/* Long provenance labels in the read-only DS source view must not expand the
+   iPhone layout viewport or cover fixed bottom navigation hit targets. */
+#ds-product-runtime{min-width:0}
+#ds-product-runtime dl,#ds-product-runtime dt,#ds-product-runtime dd,#ds-product-runtime li{min-width:0;max-width:100%;overflow-wrap:anywhere;word-break:normal}
