@@ -23,7 +23,7 @@ const calls=[];let rows=[];let owner=true;
 async function fakeFetch(url,opt){
   calls.push({url,opt});const u=new URL(url);assert.equal(u.origin,ORIGIN);assert.equal(opt.headers.apikey.startsWith("sb_publishable_"),true);
   const ok=(d,s=200)=>({ok:s<300,status:s,text:async()=>JSON.stringify(d)});
-  if(u.pathname==="/auth/v1/token"){const b=JSON.parse(opt.body);return b.password==="right password 12"?ok({access_token:"tok-1",user:{id:"u-1",email:b.email}}):ok({error_description:"Invalid login credentials"},400);}
+  if(u.pathname==="/auth/v1/token"){const b=JSON.parse(opt.body);return b.password==="right password 12"?ok({access_token:"tok-1",expires_in:3600,user:{id:"u-1",email:b.email}}):ok({error_description:"Invalid login credentials"},400);}
   if(u.pathname==="/auth/v1/signup")return ok({id:"u-1"});
   if(u.pathname==="/rest/v1/incomeos_vault"){
     if(opt.method!=="POST")assert.equal(u.searchParams.get("order"),"saved_at.desc,id.desc","latest recovery must break same-timestamp ties by immutable id");
@@ -57,7 +57,7 @@ assert.equal(V.signedIn(),true);
 // A delayed authentication response must never reopen a session after explicit sign-out.
 let releaseLogin;
 const delayedFetch=(url,opt)=>url.includes("/auth/v1/token")?
-  new Promise(resolve=>{releaseLogin=()=>resolve({ok:true,status:200,text:async()=>JSON.stringify({access_token:"delayed-token",user:{id:"u-1",email:"owner@example.org"}})});}):
+  new Promise(resolve=>{releaseLogin=()=>resolve({ok:true,status:200,text:async()=>JSON.stringify({access_token:"delayed-token",expires_in:3600,user:{id:"u-1",email:"owner@example.org"}})});}):
   fakeFetch(url,opt);
 const delayedCtx={window:{crypto:webcrypto,fetch:delayedFetch},TextEncoder,JSON,URL,Promise,Error,setTimeout};
 vm.runInNewContext(src,delayedCtx);

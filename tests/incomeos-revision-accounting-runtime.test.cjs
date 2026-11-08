@@ -107,13 +107,24 @@ const expense=(id,amount)=>({id,kind:"outflow",date,label:"SYNTHETIC PRIVATE ACC
   assert.equal(c.status().dirty,false);
   assert.equal(c.encryptedBackup().revision,4);
   assert.equal((await workspace.decrypt(passphrase,c.encryptedBackup().ciphertext)).ledger[0].amountUsd,45);
+  c.replaceLedger([first,second],date);
   const beforeLogoutWrites=writes;
   signOut();
   const d=createAccountingRuntime;
   assert.throws(()=>d({stagingOnly:true}),/Authenticated owner vault session/);
-  assert.throws(()=>c.encryptedBackup(),/Owner session changed/,
+  assert.throws(()=>a.encryptedBackup(),/Owner session changed/,
     "Logout must revoke encrypted backup reads even if a workspace was opened");
+  assert.throws(()=>c.pendingDraft(),/Owner session changed/,
+    "Logout must revoke access to the coordinator's plaintext accounting draft");
+  assert.throws(()=>c.replaceLedger([first],date),/Owner session changed/);
+  await assert.rejects(c.exportPendingDraftEncrypted(passphrase),/Owner session changed/);
+  await assert.rejects(c.save(passphrase),/Owner session changed/);
   await assert.rejects(c.open(passphrase),/Owner session changed/);
+  signIn();
+  assert.throws(()=>c.pendingDraft(),/Owner session changed/,
+    "Reauthentication cannot reactivate a previously bound draft reader");
+  c.discardDraft();
+  c.close();
   assert.equal(writes,beforeLogoutWrites,"A revoked session cannot write or refresh");
   assert.equal(globalThis.IncomeOSRevisionRuntime.createAccountingRuntime,createAccountingRuntime);
   console.log("PASS: staged existing accountant + AES vault + CAS revision composition, conflict rescue, timeout and logout guards; no automatic writes");

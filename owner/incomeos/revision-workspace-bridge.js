@@ -85,6 +85,7 @@
       ensureIdle();openedRevision=null;openedCiphertext=null;openedSha256=null;revisions.suspend();
     }
     return Object.freeze({open:open,save:save,encryptedBackup:encryptedBackup,confirmOpenedRevision:confirmOpenedRevision,
+      assertSession:verifySession,
       close:close,status:function(){return Object.freeze({
         openedRevision:openedRevision,requiresOwnerConfirmation:revisions.requiresOwnerConfirmation()
       });}});

@@ -3,6 +3,8 @@ on:
   pull_request:
     paths:
       - 'owner/incomeos/vault-cloud.js'
+      - 'owner/incomeos/ds-program.js'
+      - 'tests/incomeos-ds-original-verification.mjs'
       - 'owner/incomeos/workspace-revision-protocol.js'
       - 'owner/incomeos/revision-store.js'
       - 'owner/incomeos/revision-supabase-transport.js'
@@ -26,6 +28,7 @@ on:
       - 'tests/incomeos-revision-reliability-soak.test.cjs'
       - 'tests/incomeos-revision-release-gate.test.cjs'
       - 'tests/incomeos-vault-revision-session.test.cjs'
+      - 'tests/incomeos-vault-expiry.test.cjs'
       - 'owner/incomeos/ACCOUNTING-EDITOR-ACCEPTANCE.json'
       - '.github/workflows/incomeos-security-verification.yml'
   workflow_dispatch:
@@ -45,6 +48,7 @@ jobs:
       - name: Syntax check
         run: |
           node --check owner/incomeos/vault-cloud.js
+          node --check owner/incomeos/ds-program.js
           node --check owner/incomeos/workspace-revision-protocol.js
           node --check owner/incomeos/revision-store.js
           node --check owner/incomeos/revision-supabase-transport.js
@@ -66,4 +70,6 @@ jobs:
           node tests/incomeos-revision-reliability-soak.test.cjs
           node tests/incomeos-revision-release-gate.test.cjs
           node tests/incomeos-vault-revision-session.test.cjs
+          node tests/incomeos-vault-expiry.test.cjs
+          node tests/incomeos-ds-original-verification.mjs
           node tests/incomeos-revision-staging-sql.test.cjs

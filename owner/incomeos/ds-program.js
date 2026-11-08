@@ -129,6 +129,7 @@
     p.tasks.forEach(function(t){refs(t.dependsOn,"tasks","Task "+t.id);refs(t.evidenceIds,"evidence","Task "+t.id);});
     p.gates.forEach(function(g){refs(g.evidenceIds,"evidence","Gate "+g.id);});
     p.acceptance.forEach(function(a){refs(a.evidenceIds,"evidence","Check "+a.id);});
+    p.acceptance.forEach(function(a){refs(a.criterionEvidenceIds,"evidence","Original clause "+a.id);});
     p.findings.forEach(function(f){refs(f.evidenceIds,"evidence","Finding "+f.id);});
     p.pipeline.forEach(function(e){refs(e.evidenceIds,"evidence","Pipeline "+e.id);if(e.contactId)refs([e.contactId],"contacts","Pipeline "+e.id);});
     p.runs.forEach(function(r){refs([r.studyId],"studies","Run "+r.id);refs(r.evidenceIds,"evidence","Run "+r.id);});
@@ -141,6 +142,8 @@
       if(!g.approval)return;
       if(g.approval.by!==def.approver||!isDate(g.approval.on)||!g.approval.ref||!g.evidenceIds.length||g.evidenceIds.some(function(e){return level(e)>2;}))
         throw Error("Gate "+g.id+" approval lacks its approver, date, reference or primary evidence");
+      if(g.id==="G1"&&!originalEvidence(p,g.evidenceIds))
+        throw Error("Gate G1 requires independent primary evidence about original DS-A source and Codebook");
       if(g.id==="G2"&&p.acceptance.some(function(x){return x.status!=="ACCEPTED";}))throw Error("Gate G2 is approved while SP checks remain unaccepted");
       if(g.id==="G3"&&(!p.rights.length||p.rights.some(function(r){return r.grantSpecificTransferAuthorization!==true;})))throw Error("Gate G3 is approved while rights authorizations are missing");
     });
@@ -158,16 +161,47 @@
       if(e.stage==="EXECUTED_AGREEMENT"&&(!e.agreementRef||e.nonbinding!==false||!e.evidenceIds.some(function(x){return level(x)===1;})))throw Error("Pipeline "+e.id+" is executed without an executed instrument");
     });
     // A new-module (DS-C) result can never satisfy an acceptance check of the original (DS-A).
-    p.acceptance.forEach(function(a){
+    if(p.acceptance.length!==18)throw Error("All eighteen original SP checks must be present");
+    p.acceptance.forEach(function(a,index){
+      if(a.id!=="SP-"+String(index+1).padStart(2,"0")||["NOT_ACCEPTED","ACCEPTED"].indexOf(a.status)<0)
+        throw Error("Original SP checks must retain their ordered identities and acceptance states");
       if(a.identity!=="DS-A")throw Error("SP checks apply to the original DS-A only");
-      if(a.status==="ACCEPTED"&&!acceptable(p,a))throw Error(a.id+" is marked accepted without qualifying independent evidence");
+      if(a.status==="ACCEPTED"&&(!acceptable(p,a)||!originalSourceReady(p)||!originalCriterionReady(p,a)))
+        throw Error(a.id+" is marked accepted without qualifying independent evidence, authenticated original source and sourced original criterion");
     });
     return p;
   }
   function byId(p,c,id){return arr(p[c]).filter(function(r){return r.id===id;})[0]||null;}
   function acceptable(p,a){
-    var ev=arr(a.evidenceIds).map(function(i){return byId(p,"evidence",i);});
-    return ev.length>0&&ev.every(function(e){return e&&e.level<=2&&e.subject==="DS-A"&&e.independent===true;});
+    return originalEvidence(p,a.evidenceIds);
+  }
+  function originalEvidence(p,list){
+    var ev=arr(list).map(function(i){return byId(p,"evidence",i);});
+    return ev.length>0&&ev.every(function(e){return e&&Number.isInteger(e.level)&&e.level>=1&&e.level<=2&&e.subject==="DS-A"&&e.independent===true;});
+  }
+  function originalSourceReady(p){
+    var gate=byId(p,"gates","G1");
+    return !!(gate&&gate.approval&&originalEvidence(p,gate.evidenceIds));
+  }
+  function originalCriterionReady(p,a){
+    return typeof a.criterion==="string"&&!!a.criterion.trim()&&
+      typeof a.criterionSource==="string"&&!!a.criterionSource.trim()&&a.criterionSource.trim()!=="NOT IN REPOSITORY"&&
+      originalEvidence(p,a.criterionEvidenceIds);
+  }
+  // A verification harness over the same programme, with no test execution,
+  // synthetic replacement, new evidence store or implicit acceptance.
+  function originalVerificationPlan(p0){
+    var p=validate(p0),sourceReady=originalSourceReady(p);
+    return {identity:"DS-A",recordedSourceGateReady:sourceReady,releaseAuthorized:false,
+      notice:"Recorded-evidence preflight only. This does not authenticate source bytes, rights or original criteria, and does not execute SP acceptance tests.",
+      checks:p.acceptance.map(function(a){
+        var blockedBy=[];
+        if(!sourceReady)blockedBy.push("ORIGINAL_SOURCE_AND_CODEBOOK_NOT_AUTHENTICATED");
+        if(!originalCriterionReady(p,a))blockedBy.push("ORIGINAL_CRITERION_NOT_AUTHENTICATED");
+        return {id:a.id,identity:a.identity,acceptance:a.status,
+          execution:"NOT_EXECUTED",verification:blockedBy.length?"BLOCKED":"READY_FOR_CONTROLLED_VERIFICATION",
+          blockedBy:blockedBy,evidenceIds:arr(a.evidenceIds).slice(),criterionEvidenceIds:arr(a.criterionEvidenceIds).slice()};
+      })};
   }
 
   // ---------- additions ----------
@@ -271,6 +305,7 @@
     if(!a||a.by!==g.approver)throw Error("Gate "+gateId+" is approved by "+g.approver+" only");
     var ref=txt(a.ref,200,"Approval record reference");
     if(!g.evidenceIds.length||g.evidenceIds.some(function(e){return byId(p,"evidence",e).level>2;}))throw Error("A gate needs primary evidence (level 1 or 2) before approval");
+    if(gateId==="G1"&&!originalEvidence(p,g.evidenceIds))throw Error("Gate G1 requires independent primary evidence about original DS-A source and Codebook");
     if(gateId==="G2"&&p.acceptance.some(function(x){return x.status!=="ACCEPTED";}))throw Error("Every SP check must be accepted first");
     if(gateId==="G3"&&(!p.rights.length||p.rights.some(function(r){return r.grantSpecificTransferAuthorization!==true;})))throw Error("Every component needs a grant-specific transfer authorization first");
     g.approval={by:a.by,on:on,ref:ref};
@@ -280,7 +315,21 @@
     if(!isDate(on))throw Error("Date required");
     var p=clone(validate(p0)),a=byId(p,"acceptance",checkId);if(!a)throw Error("Unknown check");
     if(!acceptable(p,a))throw Error("Acceptance needs independent primary evidence about the original DS-A; new-module test passes do not qualify");
+    if(!originalSourceReady(p))throw Error("Authenticate original DS-A source and Codebook at gate G1 before acceptance");
+    if(!originalCriterionReady(p,a))throw Error("Acceptance requires the sourced original criterion and independent primary criterion evidence");
     a.status="ACCEPTED";return validate(log(p,"SP_ACCEPTED",{id:checkId},on));
+  }
+  function recordOriginalCriterion(p0,checkId,input,on){
+    if(!isDate(on))throw Error("Date required");
+    var p=clone(validate(p0)),a=byId(p,"acceptance",checkId);if(!a)throw Error("Unknown check");
+    if(a.status==="ACCEPTED")throw Error("Accepted original criterion cannot be silently replaced");
+    if(!input||!originalEvidence(p,input.evidenceIds))
+      throw Error("Original criterion requires independent primary DS-A evidence");
+    if(typeof input.text!=="string"||!input.text.trim()||input.text.length>10000||
+       typeof input.source!=="string"||!input.source.trim()||input.source.length>1000||input.source.trim()==="NOT IN REPOSITORY")
+      throw Error("Exact original criterion and source locator required without truncation");
+    a.criterion=input.text;a.criterionSource=input.source;a.criterionEvidenceIds=input.evidenceIds.slice();
+    return validate(log(p,"ORIGINAL_CRITERION_RECORDED",{id:checkId,evidenceIds:a.criterionEvidenceIds.slice()},on));
   }
   function recordRightsAuthorization(p0,componentId,evidenceId,on){
     if(!isDate(on))throw Error("Date required");
@@ -564,6 +613,7 @@
   var api=Object.freeze({SCHEMA:SCHEMA,MODULES:MODULES.slice(),STATUS:STATUS.slice(),LEVELS:LEVELS,PHASES:PHASES.slice(),STAGES:STAGES.slice(),BASES:BASES.slice(),
     FORBIDDEN_ORIGINS:FORBIDDEN_ORIGINS.slice(),COST_DIMS:COST_DIMS.slice(),REVENUE_DIMS:REVENUE_DIMS.slice(),DIMS:DIMS.slice(),ACTIONS:Object.keys(ACTIONS),
     newProgram:newProgram,validate:validate,add:add,setTaskState:setTaskState,linkEvidence:linkEvidence,approveGate:approveGate,acceptCheck:acceptCheck,
+    originalVerificationPlan:originalVerificationPlan,recordOriginalCriterion:recordOriginalCriterion,
     recordRightsAuthorization:recordRightsAuthorization,authorized:authorized,authorize:authorize,approveMessage:approveMessage,recordContact:recordContact,suppress:suppress,
     advance:advance,setPhase:setPhase,prioritize:prioritize,comparisons:comparisons,runMetrics:runMetrics,finance:finance,command:command,runCycle:runCycle,report:report});
   if(typeof module!=="undefined"&&module.exports)module.exports=api;

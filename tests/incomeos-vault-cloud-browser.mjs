@@ -28,7 +28,7 @@ await ctx.route(VAULT+"/**",async route=>{
   if(r.method()==="OPTIONS")return route.fulfill({status:204,headers:cors});
   sent.push({path:u.pathname,body:r.postData()||""});
   if(u.pathname==="/auth/v1/token"){const b=JSON.parse(r.postData());
-    return route.fulfill({status:b.password==="synthetic vault pw"?200:400,headers:cors,body:JSON.stringify(b.password==="synthetic vault pw"?{access_token:"tok",user:{id:"u-1",email:b.email}}:{error_description:"Invalid login credentials"})});}
+    return route.fulfill({status:b.password==="synthetic vault pw"?200:400,headers:cors,body:JSON.stringify(b.password==="synthetic vault pw"?{access_token:"tok",expires_in:3600,user:{id:"u-1",email:b.email}}:{error_description:"Invalid login credentials"})});}
   if(u.pathname==="/rest/v1/incomeos_vault"){
     if(r.method()==="POST"){
       rows.unshift({id:rows.length+1,...JSON.parse(r.postData()),saved_at:"2026-11-05T12:00:00Z"});

@@ -12,6 +12,14 @@
   });
   var session=null;
   var sessionEpoch=0;
+  function activeSession(){
+    if(session&&Date.now()>=session.expiresAt)signOut();
+    return session;
+  }
+  function requireSession(epoch){
+    if(!activeSession()||(epoch!==undefined&&epoch!==sessionEpoch))
+      throw Error(epoch===undefined?"Sign in to your vault first":"Vault session changed during request");
+  }
   function hex(buf){return Array.prototype.map.call(new Uint8Array(buf),function(b){return ("0"+b.toString(16)).slice(-2);}).join("");}
   async function sha256(text){return hex(await root.crypto.subtle.digest("SHA-256",new TextEncoder().encode(text)));}
   // The only shape accepted for upload: the workspace store's encrypted envelope with no readable workspace fields.
@@ -28,23 +36,41 @@
     opts=opts||{};
     var requestEpoch=sessionEpoch;
     var headers={"apikey":CONFIG.key,"Content-Type":"application/json"};
-    if(opts.auth){if(!session)throw Error("Sign in to your vault first");headers.Authorization="Bearer "+session.access_token;}
+    if(opts.auth){requireSession();headers.Authorization="Bearer "+session.access_token;}
     var res=await root.fetch(CONFIG.url+path,{method:opts.method||"GET",headers:headers,body:opts.body?JSON.stringify(opts.body):undefined,credentials:"omit",cache:"no-store",referrerPolicy:"no-referrer"});
     var text=await res.text(),data=null;
-    if(opts.auth&&requestEpoch!==sessionEpoch)throw Error("Vault session changed during request");
+    if(opts.auth)requireSession(requestEpoch);
     try{data=text?JSON.parse(text):null;}catch(e){}
-    if(!res.ok){var msg=data&&(data.msg||data.message||data.error_description||data.error)||("HTTP "+res.status);throw Error(String(msg).slice(0,200));}
+    if(!res.ok){
+      // Never reflect arbitrary service errors into owner-facing messages.
+      // A response may contain echoed input, internal SQL or credentials.
+      if(opts.auth&&res.status===401){signOut();throw Error("Vault session expired or was rejected; sign in again");}
+      if(!opts.auth&&res.status===400&&data&&data.error_description==="Invalid login credentials")
+        throw Error("Invalid login credentials");
+      if(opts.auth&&res.status===403)throw Error("Vault access denied by owner row-level security");
+      throw Error("Vault request rejected (HTTP "+res.status+")");
+    }
     return data;
   }
   async function signUp(e,p){await call("/auth/v1/signup",{method:"POST",body:{email:email(e),password:password(p)}});return {ok:true};}
   async function signIn(e,p){
     // A failed or interrupted sign-in must not retain an earlier owner session.
     session=null;
-    var epoch=++sessionEpoch;
+    var epoch=++sessionEpoch,started=Date.now();
     var d=await call("/auth/v1/token?grant_type=password",{method:"POST",body:{email:email(e),password:password(p)}});
     if(epoch!==sessionEpoch)throw Error("Sign-in was cancelled");
     if(!d||typeof d.access_token!=="string"||!d.user||typeof d.user.id!=="string")throw Error("Sign-in did not return a session");
-    session={access_token:d.access_token,userId:d.user.id,email:d.user.email||""};return {ok:true,userId:session.userId};
+    // Use the earlier supplied expiry. Missing/invalid expiry cannot grant an
+    // indefinite in-memory session, and no refresh token is retained.
+    var now=Date.now(),deadlines=[];
+    if(typeof d.expires_in==="number"&&Number.isFinite(d.expires_in)&&d.expires_in>0)
+      deadlines.push(started+d.expires_in*1000);
+    if(typeof d.expires_at==="number"&&Number.isFinite(d.expires_at)&&d.expires_at>0)
+      deadlines.push(d.expires_at*1000);
+    var expiresAt=Math.min.apply(null,deadlines);
+    if(!deadlines.length||!Number.isFinite(expiresAt)||expiresAt<=now)
+      throw Error("Sign-in did not return a valid session expiry");
+    session={access_token:d.access_token,userId:d.user.id,email:d.user.email||"",expiresAt:expiresAt};return {ok:true,userId:session.userId};
   }
   function signOut(){
     sessionEpoch++;session=null;
@@ -55,30 +81,30 @@
     var pass=doc&&doc.getElementById&&doc.getElementById("briefing-passphrase");
     if(pass)pass.value="";
   }
-  function signedIn(){return !!session;}
+  function signedIn(){return !!activeSession();}
   async function save(text){
     assertEncrypted(text);
     if(text.length>5000000)throw Error("Encrypted workspace exceeds 5 MB");
-    if(!session)throw Error("Sign in to your vault first");
+    requireSession();
     var epoch=sessionEpoch;
     var digest=await sha256(text);
-    if(epoch!==sessionEpoch||!session)throw Error("Vault session changed during request");
+    requireSession(epoch);
     await call("/rest/v1/incomeos_vault",{method:"POST",auth:true,body:{format:CONFIG.format,ciphertext:text,sha256:digest}});
-    if(epoch!==sessionEpoch)throw Error("Vault session changed during request");
+    requireSession(epoch);
     return {ok:true};
   }
   async function latest(){
-    if(!session)throw Error("Sign in to your vault first");
+    requireSession();
     var epoch=sessionEpoch;
     var rows=await call("/rest/v1/incomeos_vault?select=id,ciphertext,sha256,saved_at&order=saved_at.desc,id.desc&limit=1",{auth:true});
     if(!Array.isArray(rows)||!rows.length)return null;
     var r=rows[0];
     if(typeof r.ciphertext!=="string"||r.ciphertext.length>5000000)throw Error("The vault copy is missing or exceeds the 5 MB encrypted workspace limit");
     var digest=await sha256(r.ciphertext);
-    if(epoch!==sessionEpoch||!session)throw Error("Vault session changed during request");
+    requireSession(epoch);
     if(digest!==r.sha256)throw Error("The vault copy failed its integrity check; it was not opened");
     assertEncrypted(r.ciphertext);
-    if(epoch!==sessionEpoch||!session)throw Error("Vault session changed during request");
+    requireSession(epoch);
     return {text:r.ciphertext,savedAt:r.saved_at,id:r.id};
   }
   // Staging composition only. The revision client is not loaded by the live Owner Desk.
@@ -87,17 +113,17 @@
   function createRevisionTransport(){
     var factory=root&&root.IncomeOSSupabaseRevisionTransport&&root.IncomeOSSupabaseRevisionTransport.createTransport;
     if(typeof factory!=="function")throw Error("Staged revision transport is unavailable");
-    if(!session)throw Error("Sign in to your vault first");
+    requireSession();
     var boundEpoch=sessionEpoch,boundUser=session.userId;
     var transport=factory({
       url:CONFIG.url,key:CONFIG.key,
       getToken:async function(){
-        return session&&sessionEpoch===boundEpoch&&session.userId===boundUser?session.access_token:null;
+        return activeSession()&&sessionEpoch===boundEpoch&&session.userId===boundUser?session.access_token:null;
       },
       fetch:function(url,options){return root.fetch(url,options);}
     });
     function assertSession(){
-      if(!session||sessionEpoch!==boundEpoch||session.userId!==boundUser)
+      if(!activeSession()||sessionEpoch!==boundEpoch||session.userId!==boundUser)
         throw Error("Vault session changed; create a new revision transport after sign-in");
       return true;
     }
@@ -106,10 +132,11 @@
       var epoch=sessionEpoch;
       try{
         var result=method==="latest"?await transport.latest():await transport.append(request);
-        if(epoch!==sessionEpoch)throw Error("Vault session changed during request");
+        assertSession();
         return result;
       }catch(e){
         if(epoch!==sessionEpoch)throw Error("Vault session changed during request");
+        if(e&&e.status===401){signOut();throw Error("Vault session expired or was rejected; sign in again");}
         throw e;
       }
     }
@@ -161,10 +188,10 @@
     // session that initiated it, not just the HTTP request. The callback
     // exposes no token, owner identifier or epoch to another module.
     function sessionAssertion(){
-      if(!session)throw Error("Sign in to your vault first");
+      requireSession();
       var epoch=sessionEpoch,userId=session.userId;
       return function(){
-        if(!session||sessionEpoch!==epoch||session.userId!==userId)
+        if(!activeSession()||sessionEpoch!==epoch||session.userId!==userId)
           throw Error("Vault session changed during workspace operation");
       };
     }

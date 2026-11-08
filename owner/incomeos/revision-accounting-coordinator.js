@@ -7,6 +7,7 @@
     if(!bridge||typeof bridge.open!=="function"||typeof bridge.save!=="function"||
        typeof bridge.confirmOpenedRevision!=="function"||
        typeof bridge.encryptedBackup!=="function"||typeof bridge.close!=="function"||
+       typeof bridge.assertSession!=="function"||
        !workspace||typeof workspace.validate!=="function"||
        typeof workspace.newWorkspace!=="function"||typeof workspace.setLedger!=="function"||
        typeof workspace.encrypt!=="function"||typeof workspace.decrypt!=="function"||
@@ -15,6 +16,10 @@
     var working=null,opened=false,dirty=false,needsReview=false,needsRecovery=false,busy=false;
     function clone(value){return JSON.parse(JSON.stringify(value));}
     function ensureIdle(){if(busy)throw Error("Accounting operation already in progress");}
+    // Authentication governs local draft access and cryptographic exports as
+    // well as HTTP calls. A revoked runtime cannot regain authority through a
+    // later sign-in. Discard and close remain available for local cleanup.
+    function verifySession(){bridge.assertSession();}
     function validateLedger(entries){
       if(!Array.isArray(entries)||entries.length>15000)
         throw Error("Unsupported accounting ledger collection");
@@ -27,11 +32,12 @@
       });
     }
     async function open(passphrase){
-      ensureIdle();
+      ensureIdle();verifySession();
       if(dirty)throw Error("Preserve or explicitly discard unsaved accounting draft before reopening");
       busy=true;opened=false;working=null;needsReview=false;needsRecovery=false;
       try{
         var result=await bridge.open(passphrase);
+        verifySession();
         if(result.workspace!==null){
           workspace.validate(result.workspace);
           validateLedger(result.workspace.ledger);
@@ -43,7 +49,7 @@
       }finally{busy=false;}
     }
     function initializeNew(on){
-      ensureIdle();
+      ensureIdle();verifySession();
       if(!opened||working!==null||needsReview||needsRecovery)
         throw Error("Open an empty, verified server workspace before initialization");
       var next=workspace.newWorkspace(on);
@@ -54,7 +60,7 @@
       working=next;dirty=true;
     }
     function replaceLedger(entries,on){
-      ensureIdle();
+      ensureIdle();verifySession();
       if(!opened||!working||needsReview||needsRecovery)
         throw Error("Open and confirm a verified owner workspace before editing");
       validateLedger(entries);
@@ -64,7 +70,7 @@
       return Object.freeze({ledgerCount:next.ledger.length,unsaved:true});
     }
     async function save(passphrase){
-      ensureIdle();
+      ensureIdle();verifySession();
       if(!opened||!working||needsReview||needsRecovery||!dirty)
         throw Error("A verified unsaved accounting draft is required before saving");
       busy=true;
@@ -80,18 +86,18 @@
       }finally{busy=false;}
     }
     function confirmOpenedRevision(revision){
-      ensureIdle();
+      ensureIdle();verifySession();
       if(!opened||dirty||!needsReview)throw Error("A verified newer owner workspace must be reviewed");
       bridge.confirmOpenedRevision(revision);
       needsReview=false;
     }
     function pendingDraft(){
-      ensureIdle();
+      ensureIdle();verifySession();
       if(!dirty||!working)throw Error("No pending accounting draft");
       return clone(working);
     }
     async function exportPendingDraftEncrypted(passphrase){
-      ensureIdle();
+      ensureIdle();verifySession();
       if(!dirty||!working)throw Error("No pending accounting draft to preserve");
       busy=true;
       try{
@@ -100,7 +106,9 @@
         var snapshot=clone(workspace.validate(working));
         validateLedger(snapshot.ledger);
         var ciphertext=await workspace.encrypt(passphrase,snapshot);
+        verifySession();
         var restored=await workspace.decrypt(passphrase,ciphertext);
+        verifySession();
         if(JSON.stringify(restored)!==JSON.stringify(snapshot))
           throw Error("Encrypted accounting draft verification failed");
         return Object.freeze({encrypted:true,ciphertext:ciphertext,serverSaved:false});

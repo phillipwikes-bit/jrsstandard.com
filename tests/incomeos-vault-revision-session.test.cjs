@@ -21,7 +21,7 @@ const read=name=>readFileSync(resolve(directory,name),"utf8");
       tokenNumber++;
       const body=JSON.parse(options.body);
       assert.match(body.email,/@example\.org$/);
-      return reply({access_token:"synthetic-owner-token-"+tokenNumber,
+      return reply({access_token:"synthetic-owner-token-"+tokenNumber,expires_in:3600,
         user:{id:"synthetic-owner-"+tokenNumber,email:body.email}});
     }
     if(url.includes("/rest/v1/rpc/incomeos_")){
@@ -36,7 +36,7 @@ const read=name=>readFileSync(resolve(directory,name),"utf8");
     }
     throw Error("Unexpected request "+url);
   }
-  const context={window:{crypto:webcrypto,fetch:fakeFetch},JSON,Promise,TextEncoder,Error,URL};
+  const context={window:{crypto:webcrypto,fetch:fakeFetch},JSON,Promise,TextEncoder,Error,URL,setTimeout,clearTimeout,AbortController};
   runInNewContext(read("revision-supabase-transport.js"),context);
   runInNewContext(read("vault-cloud.js"),context);
   const vault=context.window.IncomeOSVaultCloud;
