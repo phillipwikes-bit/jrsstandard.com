@@ -23,7 +23,19 @@ const ctx=await browser.newContext({...devices["iPhone 13"],acceptDownloads:true
 const page=await ctx.newPage();const errors=[];page.on("pageerror",e=>errors.push(String(e)));
 const dialogs=[];page.on("dialog",d=>{dialogs.push(d.message());d.accept();});
 await page.goto(`http://127.0.0.1:${server.address().port}/index.html`);
-const nav=v=>page.locator(`.bottomnav button[data-view="${v}"]`).tap();
+const nav=async v=>{
+  // A fixed iPhone navigation bar must be directly touchable. Locator.tap()
+  // auto-scrolls the document first and can displace fixed elements in mobile
+  // emulation, so test the viewport hit target and send a real touch there.
+  const button=page.locator(`.bottomnav button[data-view="${v}"]`);
+  const point=await button.evaluate(el=>{
+    const r=el.getBoundingClientRect();
+    const x=r.left+r.width/2,y=r.top+r.height/2;
+    return {x,y,hit:el.contains(document.elementFromPoint(x,y))};
+  });
+  assert.ok(point.hit,"Mobile navigation must be the topmost touch target: "+v);
+  await page.touchscreen.tap(point.x,point.y);
+};
 // Without a workspace the editor stays locked by the staging interlock.
 await nav("ledger");
 assert.ok(await page.locator("#financial-staging-interlock").isVisible());
