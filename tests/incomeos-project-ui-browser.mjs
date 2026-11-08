@@ -237,6 +237,7 @@ const unlabeled=await page.evaluate(()=>[...document.querySelectorAll("#briefing
 assert.deepEqual(unlabeled,[],"every control in the owner panels has a label");
 assert.deepEqual(errors,[]);
 if(process.env.INCOMEOS_BRIEFING_SCREENSHOT)await page.locator("#briefing-panel").screenshot({path:process.env.INCOMEOS_BRIEFING_SCREENSHOT});
+page.once("dialog",dialog=>dialog.accept()); // explicitly leave the earlier unsaved synthetic workspace
 await page.goto(base);
 for(const script of ["workspace-revision-protocol.js","revision-store.js","revision-workspace-bridge.js","revision-accounting-coordinator.js","revision-runtime-staging.js"])
   await page.addScriptTag({url:new URL(script,base).href});
