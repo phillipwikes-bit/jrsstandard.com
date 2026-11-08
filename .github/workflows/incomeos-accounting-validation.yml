@@ -33,6 +33,9 @@ on:
       - 'tests/incomeos-acceptance-record.mjs'
       - 'tests/incomeos-gate-review.mjs'
       - 'tests/incomeos-source-boundary.mjs'
+  pull_request:
+    branches:
+      - chatgpt/incomeos-vault-envelope-validation-20261107
   workflow_dispatch:
 permissions:
   contents: read

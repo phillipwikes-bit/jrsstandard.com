@@ -11,6 +11,9 @@ on:
       - 'tests/incomeos-vault-cloud-browser.mjs'
       - 'lib/ds-n1/**'
       - 'tests/ds-n1/author.browser.mjs'
+  pull_request:
+    branches:
+      - chatgpt/incomeos-vault-envelope-validation-20261107
   workflow_dispatch:
 permissions:
   contents: read
