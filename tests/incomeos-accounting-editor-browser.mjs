@@ -64,7 +64,10 @@ const dsNavHit=await page.evaluate(()=>{
     position:cs.position,zIndex:cs.zIndex,display:cs.display,
     scrollY:window.scrollY,viewport:window.innerHeight,layoutWidth:document.documentElement.clientWidth};
 });
-console.log('IncomeOS DS navigation hit test',JSON.stringify(dsNavHit));
+assert.ok(dsNavHit.nav.right<=dsNavHit.layoutWidth+1,
+  "Fixed mobile navigation must fit viewport after Decision Spellchecker renders: "+JSON.stringify(dsNavHit));
+assert.ok(dsNavHit.hitInsideNav,
+  "A mobile navigation button must be the actual touch target: "+JSON.stringify(dsNavHit));
 await nav("ledger");
 // Add a received research payment and an expense with unknown business use.
 await page.locator("#receipt-label").fill("Synthetic study payout");await page.locator("#receipt-payer").fill("Synthetic Recruiter");
