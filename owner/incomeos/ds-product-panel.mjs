@@ -146,9 +146,19 @@ function init() {
     blocked.disabled = true;
     blocked.setAttribute('aria-disabled', 'true');
   }
+  // Replacements, closures and malformed workspace events must revoke the
+  // prior programme view. Never keep showing a previous owner's programme
+  // because the next event has an absent or invalid payload.
+  function verifiedWorkspace(candidate) {
+    const WS = window.IncomeOSWorkspace;
+    if (!candidate || typeof candidate !== 'object' || Array.isArray(candidate) ||
+        !WS || typeof WS.validate !== 'function') return null;
+    try { WS.validate(candidate); return candidate; }
+    catch (_) { return null; }
+  }
   for (const eventName of ['incomeos:workspace-loaded','incomeos:workspace-changed','incomeos:workspace-restored']) {
     document.addEventListener(eventName, ev => {
-      if (ev.detail && typeof ev.detail === 'object') workspace = ev.detail;
+      workspace = verifiedWorkspace(ev.detail);
       render();
     });
   }
