@@ -146,6 +146,7 @@ const expense=(id,amount)=>({id,kind:"outflow",date,label:"SYNTHETIC PRIVATE ACC
     rescuing.discardDraft();rescuing.close();
   }
   globalThis.IncomeOSWorkspace=workspace;
+  assert.equal(writes,beforeLogoutWrites,"Revoked local rescue operations cannot issue server writes");
   assert.equal(writes,beforeLogoutWrites,"A revoked session cannot write or refresh");
   assert.equal(globalThis.IncomeOSRevisionRuntime.createAccountingRuntime,createAccountingRuntime);
   console.log("PASS: staged existing accountant + AES vault + CAS revision composition, conflict rescue, timeout and logout guards; no automatic writes");

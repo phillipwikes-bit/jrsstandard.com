@@ -60,13 +60,19 @@ try {
     // Scroll the actual touch target clear of fixed navigation, verify its
     // center is unobstructed, then send a real emulated touch. Never force it.
     await spSummary.evaluate(el=>el.scrollIntoView({block:'center',inline:'nearest',behavior:'instant'}));
-    const hit=await spSummary.evaluate(el=>{
+    const target=await spSummary.evaluate(el=>{
       const r=el.getBoundingClientRect();
-      const target=document.elementFromPoint(r.left+r.width/2,r.top+r.height/2);
-      return target===el||el.contains(target);
+      const x=r.left+r.width/2,y=r.top+r.height/2;
+      const hit=document.elementFromPoint(x,y);
+      return {x,y,receivesPointer:hit===el||el.contains(hit)};
     });
-    assert.equal(hit,true,'SP disclosure center must receive pointer events at '+width+'px');
-    await spSummary.tap();
+    assert.equal(target.receivesPointer,true,'SP disclosure center must receive pointer events at '+width+'px');
+    // Send a real touch at freshly measured viewport coordinates. Locator.tap
+    // repeatedly auto-scrolls this long mobile document after the hit test,
+    // moving the target under unrelated status/header elements in Chromium.
+    // Coordinate input still undergoes native browser hit-testing; no force,
+    // DOM click, synthetic event dispatch or keyboard substitution is used.
+    await page.touchscreen.tap(target.x,target.y);
     assert.equal(await spDetails.evaluate(el => el.open),true);
     const spRows = spDetails.locator('li');
     assert.equal(await spRows.count(),18);
