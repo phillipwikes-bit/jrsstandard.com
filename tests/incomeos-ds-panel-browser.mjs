@@ -47,6 +47,10 @@ try {
     assert.match(t,/Inspect product revenue and costs/);
     assert.match(t,/Product-tagged ledger rows0/);
     assert.match(t,/Recorded operating costs \(owner ledger\)\$0\.00/);
+    const layout=await page.evaluate(()=>({pageWidth:document.documentElement.scrollWidth,
+      layoutViewport:innerWidth,visualViewport:window.visualViewport?.width}));
+    assert.ok(layout.pageWidth<=width+1&&layout.layoutViewport<=width+1,
+      'Product content must not enlarge the configured mobile viewport: '+JSON.stringify({width,...layout}));
     // Every original acceptance status is visible on demand, without
     // disclosing case/source contents or treating DS-N1 results as DS-A.
     const spDetails = page.locator('#ds-product-runtime details').first();
@@ -74,12 +78,9 @@ try {
       return {x,y,receivesPointer:hit===el||el.contains(hit)};
     });
     assert.equal(target.receivesPointer,true,'SP disclosure center must receive pointer events at '+width+'px');
-    // Send a real touch at freshly measured viewport coordinates. Locator.tap
-    // repeatedly auto-scrolls this long mobile document after the hit test,
-    // moving the target under unrelated status/header elements in Chromium.
-    // Coordinate input still undergoes native browser hit-testing; no force,
-    // DOM click, synthetic event dispatch or keyboard substitution is used.
-    await page.touchscreen.tap(target.x,target.y);
+    // Exercise normal locator touch after validating the real viewport.
+    // No force, DOM click, synthetic event or keyboard substitute is used.
+    await spSummary.tap();
     try{
       await page.waitForFunction(()=>document.querySelector('#ds-product-runtime details')?.open===true,null,{timeout:3000});
     }catch(error){
@@ -107,7 +108,7 @@ try {
     await page.keyboard.press('Enter');
     assert.equal(await spDetails.evaluate(el => el.open),true,
       'keyboard Enter should reopen the disclosure');
-    assert.ok(await page.evaluate(()=>document.documentElement.scrollWidth<=window.innerWidth+1),
+    assert.ok(await page.evaluate(w=>document.documentElement.scrollWidth<=w+1,width),
       'SP acceptance detail must not overflow at '+width+'px');
     assert.equal(await page.locator('#ds-product-runtime button').isDisabled(),true);
     // Owner product finance uses the SAME workspace ledger, never the reviewer.
@@ -181,7 +182,7 @@ try {
     assert.match(await page.locator('#ds-product-runtime').textContent(),/Programme record cannot be verified/);
 
     assert.deepEqual(errors,[], 'page errors at '+width+'px');
-    assert.ok(await page.evaluate(()=>document.documentElement.scrollWidth<=window.innerWidth+1),'no horizontal overflow at '+width+'px');
+    assert.ok(await page.evaluate(w=>document.documentElement.scrollWidth<=w+1,width),'no horizontal overflow at '+width+'px');
     await ctx.close();
   }
   console.log('PASS: IncomeOS imported product source and fail-closed reviewer boundary at 320, 375, 430px');
