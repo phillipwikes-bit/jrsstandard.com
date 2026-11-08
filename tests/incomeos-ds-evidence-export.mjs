@@ -37,6 +37,7 @@ test('CLI executes the fictional reviewer, writes a verifiable export once, and 
     const first = spawnSync(process.execPath, args, { encoding:'utf8' });
     assert.equal(first.status, 0, first.stderr);
     assert.equal(JSON.parse(first.stdout).accepted, true);
+    assert.equal(JSON.parse(first.stdout).scope, 'DEVELOPMENT_ONLY_CONSTRUCTED_FICTIONAL');
     assert.equal(verifyExport(JSON.parse(read(exportPath, 'utf8'))).verdict, VERDICT.CONSISTENT);
     if (process.platform !== 'win32') assert.equal(statSync(exportPath).mode & 0o777, 0o600);
     const second = spawnSync(process.execPath, args, { encoding:'utf8' });
