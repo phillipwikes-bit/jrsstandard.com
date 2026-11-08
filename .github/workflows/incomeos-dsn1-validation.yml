@@ -3,6 +3,7 @@ on:
   push:
     branches:
       - chatgpt/incomeos-v25-synthetic-review-sequence-20261106
+      - verification/incomeos-dsn1-cli-20261108
     paths:
       - '.github/workflows/incomeos-dsn1-validation.yml'
       - 'owner/incomeos/**'
