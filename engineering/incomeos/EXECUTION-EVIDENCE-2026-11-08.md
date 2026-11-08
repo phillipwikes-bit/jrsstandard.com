@@ -1,5 +1,15 @@
 # IncomeOS controlled engineering evidence, 8 November 2026
 
+## Authentication input cleanup and truthful in-flight save status
+
+Baseline `46f3ccaedbd2d64d15dc504164709cc0eaaf66ee`. A synthetic cleanup regression initially failed because sign-out retained the entered vault password. The shared input cleanup now clears both the workspace passphrase and vault password immediately when sign-in begins or sign-out occurs, including expiry and rejected authentication paths. It does not discard workspace records or promise JavaScript-memory zeroization. Tests explicitly reenter fields after login so the expiry assertions prove actual expiry cleanup rather than a field already cleared by sign-in.
+
+The preceding panel-cleanup commit passed nine workflows but failed mobile/staging run 42496828767. The new native close fixture checked for its newly saved private finding while the UI still displayed the preceding save's success status. The static mobile audit passed 96 assertions first. The native staged Save now reports Saving encrypted revision and disables its button synchronously, then returns to enabled only after success or failure. This avoids leaving an earlier success claim visible while another save is pending. A controlled synthetic append hold now tests the pending message, disabled Save, zero premature commits and final reenabling; the original private-view cleanup assertions remain required.
+
+Local focused cleanup/vault verification passed thirteen tests, zero failed, plus independent RPC/session/network/release checks. The complete source command passed 47 tests, zero failed; all 31 isolated-security syntax/regression commands passed. Exact-head browser CI must still establish the native-control result. The existing browser vault test also checks cleared password/passphrase fields after rejected login. The local browser remains blocked at Chromium socket creation, not accepted as a simulated pass.
+
+A01/A06/A12/A13 gain source verification within their existing suites; all 16 formal dispositions remain unchanged and milestoneComplete=false. A14/A16 remain blocked. No live revision migration, automatic record deletion, financial action, original DS-A acceptance or production/commercial authorization occurred. Explicit workspace close remains distinct from vault sign-out; loaded local records may remain in the tab after sign-out until explicitly closed/reloaded. Copied-cookie durable revocation and approved migration access remain unresolved.
+
 ## Dependent-panel cleanup and workspace replacement isolation
 
 Baseline `2c5eddd0fc5624ca74dc4027371dba0a0b7e635e`, same existing branch and draft PR #180. Six initial synthetic UI event regressions failed: research treated null/invalid close events as an opened workspace and emitted prior study progress, times and records into a successor; the passive panel ignored null events and retained private kept findings. Direct replacement also carried research records from the preceding workspace. No real owner record or external source was used.

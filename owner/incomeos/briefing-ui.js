@@ -333,7 +333,13 @@
       state.ws=state.history.pop();state.dirty=true;clearTyped();try{document.dispatchEvent(new CustomEvent("incomeos:workspace-restored",{detail:state.ws}));}catch(e){}render();status.textContent="Last change undone. Save to keep the workspace as it is now.";
     });
     if(saveBtn)saveBtn.addEventListener("click",async function(){
-      if(revisionDesk){try{await revisionDesk.save(passInput&&passInput.value||"");installRevision();document.dispatchEvent(new CustomEvent("incomeos:workspace-saved",{detail:{encrypted:true}}));status.textContent="Encrypted revision saved.";}catch(e){status.textContent="Revision not confirmed: "+e.message;}return;}
+      if(revisionDesk){
+        saveBtn.disabled=true;status.textContent="Saving encrypted revision…";
+        try{await revisionDesk.save(passInput&&passInput.value||"");installRevision();document.dispatchEvent(new CustomEvent("incomeos:workspace-saved",{detail:{encrypted:true}}));status.textContent="Encrypted revision saved.";}
+        catch(e){status.textContent="Revision not confirmed: "+e.message;}
+        finally{saveBtn.disabled=false;}
+        return;
+      }
       if(!state.ws)return;
       var p=passInput&&passInput.value||"",stamp=today(),snapshot=JSON.stringify(state.ws);
       try{

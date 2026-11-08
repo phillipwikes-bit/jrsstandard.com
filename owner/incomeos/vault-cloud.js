@@ -79,7 +79,7 @@
   async function signUp(e,p){await call("/auth/v1/signup",{method:"POST",body:{email:email(e),password:password(p)}});return {ok:true};}
   async function signIn(e,p){
     // A failed or interrupted sign-in must not retain an earlier owner session.
-    session=null;
+    session=null;clearSensitiveInputs();
     var epoch=++sessionEpoch,started=Date.now();
     var d=await call("/auth/v1/token?grant_type=password",{method:"POST",body:{email:email(e),password:password(p)}});
     if(epoch!==sessionEpoch)throw Error("Sign-in was cancelled");
@@ -101,9 +101,14 @@
     // Revocation is immediate. Clear any passphrase retained in the local
     // workspace form, but do not silently discard unsaved financial edits.
     // Local plaintext remains in page memory until the page is reloaded.
+    clearSensitiveInputs();
+  }
+  function clearSensitiveInputs(){
     var doc=root&&root.document;
-    var pass=doc&&doc.getElementById&&doc.getElementById("briefing-passphrase");
-    if(pass)pass.value="";
+    if(!doc||typeof doc.getElementById!=="function")return;
+    ["briefing-passphrase","cloud-vault-password"].forEach(function(id){
+      var input=doc.getElementById(id);if(input)input.value="";
+    });
   }
   function signedIn(){return !!activeSession();}
   async function saveEncrypted(text){

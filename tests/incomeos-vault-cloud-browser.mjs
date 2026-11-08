@@ -61,6 +61,8 @@ assert.ok(await page.locator("#cloud-vault-save").isDisabled(),"save needs sign-
 await page.locator("#cloud-vault-email").fill("owner@example.org");await page.locator("#cloud-vault-password").fill("wrong password 99");
 await page.locator("#cloud-vault-signin").tap();
 await page.waitForFunction(()=>/Invalid login credentials/.test(document.getElementById("cloud-vault-status").textContent));
+assert.equal(await page.locator("#cloud-vault-password").inputValue(),"","Rejected sign-in clears the entered password");
+assert.equal(await page.locator("#briefing-passphrase").inputValue(),"","Authentication changes clear the previous workspace passphrase");
 await page.locator("#cloud-vault-password").fill("synthetic vault pw");await page.locator("#cloud-vault-signin").tap();
 await page.waitForFunction(()=>/Signed in/.test(document.getElementById("cloud-vault-status").textContent));
 assert.equal(await page.locator("#cloud-vault-password").inputValue(),"","password cleared after sign-in");
