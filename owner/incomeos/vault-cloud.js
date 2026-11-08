@@ -12,6 +12,7 @@
   });
   var session=null;
   var sessionEpoch=0;
+  var uncertainSaveOwner=null;
   function activeSession(){
     if(session&&Date.now()>=session.expiresAt)signOut();
     return session;
@@ -37,8 +38,23 @@
     var requestEpoch=sessionEpoch;
     var headers={"apikey":CONFIG.key,"Content-Type":"application/json"};
     if(opts.auth){requireSession();headers.Authorization="Bearer "+session.access_token;}
-    var res=await root.fetch(CONFIG.url+path,{method:opts.method||"GET",headers:headers,body:opts.body?JSON.stringify(opts.body):undefined,credentials:"omit",cache:"no-store",referrerPolicy:"no-referrer"});
-    var text=await res.text(),data=null;
+    var controller=typeof AbortController==="function"?new AbortController():null;
+    var timer=null,timedOut=false,res,text,data=null;
+    try{
+      var received=await Promise.race([
+        (async function(){
+          var response=await root.fetch(CONFIG.url+path,{method:opts.method||"GET",headers:headers,body:opts.body?JSON.stringify(opts.body):undefined,credentials:"omit",cache:"no-store",referrerPolicy:"no-referrer",signal:controller?controller.signal:undefined});
+          return {response:response,text:await response.text()};
+        }()),
+        new Promise(function(resolve,reject){timer=setTimeout(function(){
+          timedOut=true;reject(Error("Vault request timed out"));if(controller)controller.abort();
+        },30000);})
+      ]);
+      res=received.response;text=received.text;
+    }catch(e){
+      if(opts.auth)requireSession(requestEpoch);
+      throw Error(timedOut?"Vault request timed out; verify the latest vault copy before saving again":"Vault network request failed; verify the latest vault copy before saving again");
+    }finally{if(timer!==null)clearTimeout(timer);}
     if(opts.auth)requireSession(requestEpoch);
     try{data=text?JSON.parse(text):null;}catch(e){}
     if(!res.ok){
@@ -86,18 +102,28 @@
     assertEncrypted(text);
     if(text.length>5000000)throw Error("Encrypted workspace exceeds 5 MB");
     requireSession();
+    if(uncertainSaveOwner!==null)throw Error("Previous vault save outcome is uncertain; open the latest vault copy before another save");
     var epoch=sessionEpoch;
     var digest=await sha256(text);
     requireSession(epoch);
-    await call("/rest/v1/incomeos_vault",{method:"POST",auth:true,body:{format:CONFIG.format,ciphertext:text,sha256:digest}});
-    requireSession(epoch);
+    var ownerId=session.userId;
+    try{
+      await call("/rest/v1/incomeos_vault",{method:"POST",auth:true,body:{format:CONFIG.format,ciphertext:text,sha256:digest}});
+      requireSession(epoch);
+    }catch(e){
+      // An interrupted response can follow a committed append. Never retry
+      // automatically or permit another save before a verified fresh read.
+      uncertainSaveOwner=ownerId;
+      throw Error(e.message+". Save outcome is uncertain; open the latest vault copy before another save.");
+    }
     return {ok:true};
   }
   async function latest(){
     requireSession();
     var epoch=sessionEpoch;
     var rows=await call("/rest/v1/incomeos_vault?select=id,ciphertext,sha256,saved_at&order=saved_at.desc,id.desc&limit=1",{auth:true});
-    if(!Array.isArray(rows)||!rows.length)return null;
+    if(!Array.isArray(rows))throw Error("Invalid vault recovery response; records were not opened");
+    if(!rows.length){if(uncertainSaveOwner===session.userId)uncertainSaveOwner=null;return null;}
     var r=rows[0];
     if(typeof r.ciphertext!=="string"||r.ciphertext.length>5000000)throw Error("The vault copy is missing or exceeds the 5 MB encrypted workspace limit");
     var digest=await sha256(r.ciphertext);
@@ -105,6 +131,7 @@
     if(digest!==r.sha256)throw Error("The vault copy failed its integrity check; it was not opened");
     assertEncrypted(r.ciphertext);
     requireSession(epoch);
+    if(uncertainSaveOwner===session.userId)uncertainSaveOwner=null;
     return {text:r.ciphertext,savedAt:r.saved_at,id:r.id};
   }
   // Staging composition only. The revision client is not loaded by the live Owner Desk.
@@ -120,7 +147,9 @@
       getToken:async function(){
         return activeSession()&&sessionEpoch===boundEpoch&&session.userId===boundUser?session.access_token:null;
       },
-      fetch:function(url,options){return root.fetch(url,options);}
+      // Recheck synchronously immediately before network dispatch. Awaiting
+      // getToken yields a microtask in which the owner may have signed out.
+      fetch:function(url,options){assertSession();return root.fetch(url,options);}
     });
     function assertSession(){
       if(!activeSession()||sessionEpoch!==boundEpoch||session.userId!==boundUser)
@@ -148,7 +177,8 @@
       assertSession:assertSession
     });
   }
-  var api=Object.freeze({CONFIG:CONFIG,assertEncrypted:assertEncrypted,signUp:signUp,signIn:signIn,signOut:signOut,signedIn:signedIn,save:save,latest:latest,createRevisionTransport:createRevisionTransport});
+  function recoveryRequired(){return uncertainSaveOwner!==null;}
+  var api=Object.freeze({CONFIG:CONFIG,assertEncrypted:assertEncrypted,signUp:signUp,signIn:signIn,signOut:signOut,signedIn:signedIn,save:save,latest:latest,createRevisionTransport:createRevisionTransport,recoveryRequired:recoveryRequired});
   if(root)root.IncomeOSVaultCloud=api;
   if(typeof module!=="undefined"&&module.exports)module.exports=api;
 
@@ -196,7 +226,7 @@
       };
     }
     var saving=false,restoring=false;
-    function refresh(){var on=signedIn(),busy=saving||restoring;$("cloud-vault-signin").hidden=on;$("cloud-vault-signup").hidden=on;$("cloud-vault-signout").hidden=!on;$("cloud-vault-save").disabled=!on||busy;$("cloud-vault-restore").disabled=!on||busy;$("cloud-vault-password").value=on?"":$("cloud-vault-password").value;}
+    function refresh(){var on=signedIn(),busy=saving||restoring;$("cloud-vault-signin").hidden=on;$("cloud-vault-signup").hidden=on;$("cloud-vault-signout").hidden=!on;$("cloud-vault-save").disabled=!on||busy||recoveryRequired();$("cloud-vault-restore").disabled=!on||busy;$("cloud-vault-password").value=on?"":$("cloud-vault-password").value;}
     async function guard(fn){try{await fn();}catch(e){say("Vault: "+e.message);}refresh();}
     $("cloud-vault-signin").addEventListener("click",function(){guard(async function(){say("Signing in…");await signIn($("cloud-vault-email").value,$("cloud-vault-password").value);say("Signed in to your private vault for this visit only.");});});
     $("cloud-vault-signup").addEventListener("click",function(){guard(async function(){await signUp($("cloud-vault-email").value,$("cloud-vault-password").value);say("Account requested. Confirm it from the email Supabase sends, then sign in. The vault opens only after the owner account is approved.");});});
@@ -204,7 +234,7 @@
     $("cloud-vault-save").addEventListener("click",function(){
       // A second upload cannot overtake an earlier encrypted snapshot and
       // make the latest vault copy older than the owner's last save.
-      if(saving||restoring)return;
+      if(saving||restoring||recoveryRequired())return;
       saving=true;refresh();
       guard(async function(){
         var verify=sessionAssertion();

@@ -1,6 +1,7 @@
 // Synthetic control-model regression. This does NOT test or accept original DS-A.
 import assert from 'node:assert/strict';
 import '../owner/incomeos/ds-program.js';
+import {inspectOwnerProduct} from '../owner/incomeos/ds-owner-inspection.mjs';
 const D=globalThis.IncomeOSDSProgram,on='2026-11-08';
 const copy=x=>JSON.parse(JSON.stringify(x));
 let p=D.newProgram(on);
@@ -12,6 +13,8 @@ assert.equal(plan.checks.length,18);
 assert.ok(plan.checks.every(x=>x.acceptance==='NOT_ACCEPTED'&&x.execution==='NOT_EXECUTED'&&x.verification==='BLOCKED'));
 assert.equal(new Set(plan.checks.map(x=>x.id)).size,18);
 assert.equal(plan.checks[0].id,'SP-01');assert.equal(plan.checks.at(-1).id,'SP-18');
+assert.deepEqual(inspectOwnerProduct(p).originalVerification,plan,
+  'The existing Owner Desk must project the same programme verification plan');
 
 const evidence={id:'E-CONTROL-FIXTURE',title:'Synthetic gate-control fixture, not original-product proof',level:2,
   source:'fictional control test only',date:on,assumptions:'No actual DS-A source or acceptance run',

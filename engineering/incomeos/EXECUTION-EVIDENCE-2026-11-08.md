@@ -62,3 +62,13 @@ The existing `owner/incomeos/ACCOUNTING-EDITOR-ACCEPTANCE.json` remains authorit
 Retain the draft, production hold, original-product acceptance hold and commercial hold. No merge, promotion, paid access, billing, purchase, transfer or reinvestment is authorized by this evidence.
 
 Independent tasks include current-head CI verification, additional interrupted-save regressions, mobile disclosure hit-testing, staged editor integration, disposable PostgreSQL authorization/concurrency checks and non-destructive source-custody reconciliation. A real authenticated owner recovery exercise, actual iPhone acceptance, grant/rights decisions and final production/commercial approval require their respective human evidence. Unavailable infrastructure credentials must be recorded specifically rather than bypassed.
+
+## Follow-on correction and exact-commit CI evidence
+
+Commit `30615d8f7f3393e459c19c80c1c833457f1ed02b` completed all seven workflows successfully: source `42467807192`, isolated security `42467807190`, disposable PostgreSQL `42467807191`, accounting/DS browser `42467807298`, mobile/staging browser `42467807254`, private prototype `42467807212`, anonymous denial `42467807245`. These are CI/source and synthetic browser/database results, not live owner acceptance.
+
+Subsequent source work adds a 30-second legacy vault deadline covering the response body, an uncertain-save quarantine requiring a fresh integrity-verified read, and a synchronous session check immediately before staged RPC dispatch. A synthetic commit-then-lost-ACK test observed one write, zero automatic retries, a retained hold after a late ACK, rejected malformed/corrupt recovery, and read-only release of the hold after verified recovery. The uncertainty marker is memory-only and is not cross-device CAS or durable recovery across page reloads.
+
+The Owner Desk original acceptance disclosure now projects the verification plan from the existing programme. A separate desktop browser check observed a successful pointer opening and a 44px disclosure target at 1363px width. This does not establish mobile touch acceptance. A new mobile CI test checks actual target hit-testing and emulated touch after centering the target clear of fixed navigation; its result must be read on the resulting commit.
+
+Local process inspection found no available Supabase database/management connection variable for an approved non-production target. The migration/rollback runbook now identifies the two distinct allowlists, existing-object drift checks, actual Supabase negative authorization tests, additive rollback and preservation of encrypted revisions. No hosted migration or permission change was attempted.

@@ -134,4 +134,5 @@ textarea{display:block;width:100%;min-height:60px;resize:vertical;background:whi
 /* Long provenance labels in the read-only DS source view must not expand the
    iPhone layout viewport or cover fixed bottom navigation hit targets. */
 #ds-product-runtime{min-width:0}
+#ds-product-runtime details > summary{scroll-margin-top:24px;scroll-margin-bottom:120px}
 #ds-product-runtime dl,#ds-product-runtime dt,#ds-product-runtime dd,#ds-product-runtime li{min-width:0;max-width:100%;overflow-wrap:anywhere;word-break:normal}

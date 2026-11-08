@@ -55,6 +55,7 @@ export function inspectOwnerProduct(program, provenance = null) {
     reflectiveVersion: meta.reflectiveVersion || 'NOT_LOADED_IN_OWNER_DESK',
     originalSource: 'AUTHENTIC_SOURCE_NOT_RECOVERED',
     originalAcceptance: { accepted, total: 18 },
+    originalVerification: globalThis.IncomeOSDSProgram.originalVerificationPlan(p),
     openGates: p.gates.filter(x => !x.approval).map(x => x.id),
     // Programme counts are not a GitHub CI query or independent acceptance.
     programmeEvidenceEntries: p.evidence.length,

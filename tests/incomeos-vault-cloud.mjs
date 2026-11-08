@@ -33,7 +33,7 @@ async function fakeFetch(url,opt){
     return ok(rows.slice(0,1));}
   return ok({},404);
 }
-const ctx={window:{crypto:webcrypto,fetch:fakeFetch},TextEncoder,JSON,URL,Promise,Error,setTimeout};
+const ctx={window:{crypto:webcrypto,fetch:fakeFetch},TextEncoder,JSON,URL,Promise,Error,setTimeout,clearTimeout,AbortController};
 vm.runInNewContext(src,ctx);const V=ctx.window.IncomeOSVaultCloud;
 const envelope=JSON.stringify({format:"incomeos-workspace",version:1,kdf:"PBKDF2-SHA256",iterations:600000,cipher:"AES-256-GCM",salt:"AAAAAAAAAAAAAAAAAAAAAA==",iv:"AAAAAAAAAAAAAAAA",data:"ZW5jcnlwdGVkLWJ5dGVz"});
 const plain=JSON.stringify({schema:"incomeos.workspace.v1",ledger:[{label:"Synthetic salary"}]});
@@ -59,7 +59,7 @@ let releaseLogin;
 const delayedFetch=(url,opt)=>url.includes("/auth/v1/token")?
   new Promise(resolve=>{releaseLogin=()=>resolve({ok:true,status:200,text:async()=>JSON.stringify({access_token:"delayed-token",expires_in:3600,user:{id:"u-1",email:"owner@example.org"}})});}):
   fakeFetch(url,opt);
-const delayedCtx={window:{crypto:webcrypto,fetch:delayedFetch},TextEncoder,JSON,URL,Promise,Error,setTimeout};
+const delayedCtx={window:{crypto:webcrypto,fetch:delayedFetch},TextEncoder,JSON,URL,Promise,Error,setTimeout,clearTimeout,AbortController};
 vm.runInNewContext(src,delayedCtx);
 const delayedVault=delayedCtx.window.IncomeOSVaultCloud;
 const pendingLogin=delayedVault.signIn("owner@example.org","right password 12");
@@ -72,7 +72,7 @@ let releaseRead;
 const delayedReadFetch=(url,opt)=>url.includes("/rest/v1/incomeos_vault")?
   new Promise(resolve=>{releaseRead=()=>resolve({ok:true,status:200,text:async()=>JSON.stringify([{id:9,ciphertext:envelope,sha256:createHash("sha256").update(envelope).digest("hex"),saved_at:"2026-11-06T00:00:00Z"}])});}):
   fakeFetch(url,opt);
-const readCtx={window:{crypto:webcrypto,fetch:delayedReadFetch},TextEncoder,JSON,URL,Promise,Error,setTimeout};
+const readCtx={window:{crypto:webcrypto,fetch:delayedReadFetch},TextEncoder,JSON,URL,Promise,Error,setTimeout,clearTimeout,AbortController};
 vm.runInNewContext(src,readCtx);
 const readVault=readCtx.window.IncomeOSVaultCloud;
 await readVault.signIn("owner@example.org","right password 12");
@@ -90,7 +90,7 @@ const restoreCtx={window:{crypto:restoreCrypto,fetch:async(url,opt)=>{
   if(url.includes("/rest/v1/incomeos_vault")&&opt.method==="GET")
     return {ok:true,status:200,text:async()=>JSON.stringify([{id:9,ciphertext:envelope,sha256:createHash("sha256").update(envelope).digest("hex"),saved_at:"2026-11-06T00:00:00Z"}])};
   return fakeFetch(url,opt);
-}},TextEncoder,JSON,URL,Promise,Error,setTimeout};
+}},TextEncoder,JSON,URL,Promise,Error,setTimeout,clearTimeout,AbortController};
 vm.runInNewContext(src,restoreCtx);
 const restoreVault=restoreCtx.window.IncomeOSVaultCloud;
 await restoreVault.signIn("owner@example.org","right password 12");
@@ -109,7 +109,7 @@ const pausedCrypto={subtle:{digest:async(...args)=>new Promise(resolve=>{
 const hashCtx={window:{crypto:pausedCrypto,fetch:async(url,opt)=>{
   if(url.includes("/rest/v1/incomeos_vault")&&opt.method==="POST")prePostCount++;
   return fakeFetch(url,opt);
-}},TextEncoder,JSON,URL,Promise,Error,setTimeout};
+}},TextEncoder,JSON,URL,Promise,Error,setTimeout,clearTimeout,AbortController};
 vm.runInNewContext(src,hashCtx);
 const hashVault=hashCtx.window.IncomeOSVaultCloud;
 await hashVault.signIn("owner@example.org","right password 12");
@@ -125,7 +125,7 @@ let releaseSave;
 const delayedSaveFetch=(url,opt)=>url.includes("/rest/v1/incomeos_vault")&&opt.method==="POST"?
   new Promise(resolve=>{releaseSave=()=>resolve({ok:true,status:201,text:async()=>""});}):
   fakeFetch(url,opt);
-const saveCtx={window:{crypto:webcrypto,fetch:delayedSaveFetch},TextEncoder,JSON,URL,Promise,Error,setTimeout};
+const saveCtx={window:{crypto:webcrypto,fetch:delayedSaveFetch},TextEncoder,JSON,URL,Promise,Error,setTimeout,clearTimeout,AbortController};
 vm.runInNewContext(src,saveCtx);
 const saveVault=saveCtx.window.IncomeOSVaultCloud;
 await saveVault.signIn("owner@example.org","right password 12");

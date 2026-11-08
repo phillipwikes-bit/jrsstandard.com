@@ -66,6 +66,17 @@ const read=name=>readFileSync(resolve(directory,name),"utf8");
     "A new sign-in cannot reactivate the previous session assertion");
   assert.equal(await second.latest(),null);
   assert.equal(tokenNumber,2);
+  for(const operation of ["latest","append"]){
+    const bound=vault.createRevisionTransport();
+    const beforeDispatch=calls.filter(x=>x.url.includes("/rest/v1/rpc/")).length;
+    const attempt=operation==="latest"?bound.latest():bound.append({expected_revision:0});
+    // getToken has returned but its awaited promise has not resumed dispatch.
+    vault.signOut();
+    await assert.rejects(attempt,/Vault session changed/);
+    assert.equal(calls.filter(x=>x.url.includes("/rest/v1/rpc/")).length,beforeDispatch,
+      "Sign-out during the token microtask cannot dispatch an authenticated "+operation);
+    await vault.signIn("owner@example.org","a synthetic password 12");
+  }
   assert.ok(calls.some(x=>x.url.endsWith("/rest/v1/rpc/incomeos_latest_workspace_revision")));
   assert.ok(calls.some(x=>x.url.endsWith("/rest/v1/rpc/incomeos_append_workspace_revision")));
   console.log("PASS: staged RPC transport is bound to owner vault session and rejects sign-out races");

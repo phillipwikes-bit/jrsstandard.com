@@ -57,17 +57,23 @@ try {
     const spSummary = spDetails.locator('summary');
     assert.ok(await spSummary.evaluate(el => el.getBoundingClientRect().height >= 44),
       'SP disclosure must have a 44px tap target at '+width+'px');
-    // Native summary must remain keyboard operable even if mobile viewport
-    // emulation cannot reliably synthesize a pointer tap after long scrolling.
-    // Do not force-click: that would conceal a real hit-target obstruction.
-    await spSummary.focus();
-    await page.keyboard.press('Enter');
+    // Scroll the actual touch target clear of fixed navigation, verify its
+    // center is unobstructed, then send a real emulated touch. Never force it.
+    await spSummary.evaluate(el=>el.scrollIntoView({block:'center',inline:'nearest',behavior:'instant'}));
+    const hit=await spSummary.evaluate(el=>{
+      const r=el.getBoundingClientRect();
+      const target=document.elementFromPoint(r.left+r.width/2,r.top+r.height/2);
+      return target===el||el.contains(target);
+    });
+    assert.equal(hit,true,'SP disclosure center must receive pointer events at '+width+'px');
+    await spSummary.tap();
     assert.equal(await spDetails.evaluate(el => el.open),true);
     const spRows = spDetails.locator('li');
     assert.equal(await spRows.count(),18);
     assert.match(await spRows.first().textContent(),/SP-01: NOT_ACCEPTED/);
     assert.match(await spRows.first().textContent(),/source: not available in repository/);
     assert.match(await spRows.first().textContent(),/linked evidence records: 0/);
+    assert.match(await spRows.first().textContent(),/Verification blocked/);
     assert.match(await spRows.last().textContent(),/SP-18: NOT_ACCEPTED/);
     assert.equal(await spDetails.evaluate(el => el.open),true);
     await spDetails.locator('summary').focus();

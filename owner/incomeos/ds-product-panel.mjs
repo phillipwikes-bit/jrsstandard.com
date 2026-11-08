@@ -105,6 +105,10 @@ function init() {
         ? 'not available in repository' : 'reference recorded, not authenticated by this view';
       add(line, 'p', 'Original clause: ' + clause + '; source: ' + source +
         '; linked evidence records: ' + item.evidenceIds.length, 'muted');
+      const check = view.originalVerification.checks.find(entry => entry.id === id);
+      add(line, 'p', check.blockedBy.length
+        ? 'Verification blocked. Authenticate the original source, Codebook and criterion evidence before testing.'
+        : 'Recorded prerequisites available for controlled verification. This view has executed no acceptance test.', 'muted');
     }
     // Detailed provenance is available on demand rather than rendering a
     // long unbroken source table over the fixed iPhone navigation surface.

@@ -125,6 +125,27 @@ const expense=(id,amount)=>({id,kind:"outflow",date,label:"SYNTHETIC PRIVATE ACC
     "Reauthentication cannot reactivate a previously bound draft reader");
   c.discardDraft();
   c.close();
+  // Revoke during each expensive local rescue boundary. Returning ciphertext
+  // is still a disclosure and cannot be allowed after the initiating session ends.
+  for(const phase of ["encrypt","decrypt"]){
+    signIn();
+    let rescueStarted=false;
+    const protectedWorkspace={...workspace};
+    protectedWorkspace[phase]=async(...args)=>{
+      const value=await workspace[phase](...args);
+      if(rescueStarted)signOut();
+      return value;
+    };
+    globalThis.IncomeOSWorkspace=protectedWorkspace;
+    const rescuing=createAccountingRuntime({stagingOnly:true});
+    await rescuing.open(passphrase);
+    rescuing.replaceLedger([first,second],date);
+    rescueStarted=true;
+    await assert.rejects(rescuing.exportPendingDraftEncrypted(passphrase),/Owner session changed/);
+    assert.equal(rescuing.status().dirty,true,"Revocation must not silently discard the unsaved draft");
+    rescuing.discardDraft();rescuing.close();
+  }
+  globalThis.IncomeOSWorkspace=workspace;
   assert.equal(writes,beforeLogoutWrites,"A revoked session cannot write or refresh");
   assert.equal(globalThis.IncomeOSRevisionRuntime.createAccountingRuntime,createAccountingRuntime);
   console.log("PASS: staged existing accountant + AES vault + CAS revision composition, conflict rescue, timeout and logout guards; no automatic writes");

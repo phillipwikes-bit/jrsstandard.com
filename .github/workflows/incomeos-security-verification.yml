@@ -29,6 +29,7 @@ on:
       - 'tests/incomeos-revision-release-gate.test.cjs'
       - 'tests/incomeos-vault-revision-session.test.cjs'
       - 'tests/incomeos-vault-expiry.test.cjs'
+      - 'tests/incomeos-vault-network.test.cjs'
       - 'owner/incomeos/ACCOUNTING-EDITOR-ACCEPTANCE.json'
       - '.github/workflows/incomeos-security-verification.yml'
   workflow_dispatch:
@@ -71,5 +72,6 @@ jobs:
           node tests/incomeos-revision-release-gate.test.cjs
           node tests/incomeos-vault-revision-session.test.cjs
           node tests/incomeos-vault-expiry.test.cjs
+          node tests/incomeos-vault-network.test.cjs
           node tests/incomeos-ds-original-verification.mjs
           node tests/incomeos-revision-staging-sql.test.cjs

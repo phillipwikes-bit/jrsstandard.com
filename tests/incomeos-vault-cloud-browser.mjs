@@ -254,6 +254,27 @@ rows[0].ciphertext=JSON.parse(up.body).ciphertext;
 rows[0].ciphertext=rows[0].ciphertext.replace(/"data":"(.)/,(m,c)=>'"data":"'+(c==="A"?"B":"A"));
 await vault();await page.locator("#cloud-vault-restore").tap();
 await page.waitForFunction(()=>/integrity check/.test(document.getElementById("cloud-vault-status").textContent));
+// Commit-then-timeout: the fake service accepts exactly one ciphertext but
+// withholds its ACK. The UI must quarantine save, retain recovery and make no
+// automatic retry. Only the 30-second HTTP deadline is accelerated here.
+rows[0]={id:99,...JSON.parse(up.body),saved_at:"2026-11-05T12:00:00Z"};
+await page.locator("#briefing-passphrase").fill("synthetic passphrase for tests");
+await page.evaluate(()=>{
+  window.__incomeosNativeNetworkTimer=window.setTimeout;
+  window.setTimeout=(fn,ms,...args)=>window.__incomeosNativeNetworkTimer(fn,ms===30000?120:ms,...args);
+});
+holdNextUpload=true;
+const beforeLostAck=sent.filter(x=>x.path==="/rest/v1/incomeos_vault"&&x.body).length;
+await page.locator("#cloud-vault-save").tap();
+await page.waitForFunction(()=>/Save outcome is uncertain/.test(document.getElementById("cloud-vault-status").textContent));
+await page.evaluate(()=>{window.setTimeout=window.__incomeosNativeNetworkTimer;delete window.__incomeosNativeNetworkTimer;});
+assert.equal(sent.filter(x=>x.path==="/rest/v1/incomeos_vault"&&x.body).length,beforeLostAck+1);
+assert.equal(await page.locator("#cloud-vault-save").isDisabled(),true,"Uncertain commit must disable further saves");
+assert.equal(await page.locator("#cloud-vault-restore").isDisabled(),false,"Read-only recovery must remain available");
+await page.locator("#cloud-vault-restore").tap();
+await page.waitForFunction(()=>/Opened the vault copy saved/.test(document.getElementById("cloud-vault-status").textContent));
+assert.equal(await page.locator("#cloud-vault-save").isDisabled(),false,"Verified recovery permits another explicit save");
+assert.equal(sent.filter(x=>x.path==="/rest/v1/incomeos_vault"&&x.body).length,beforeLostAck+1,"Recovery must not repeat the write");
 assert.ok(await page.evaluate(w=>document.documentElement.scrollWidth<=w,page.viewportSize().width),"no horizontal overflow");
 assert.equal(await page.evaluate(()=>localStorage.length+sessionStorage.length),0);
 assert.deepEqual(external,[]);assert.deepEqual(errors,[]);
