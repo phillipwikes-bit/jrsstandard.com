@@ -32,7 +32,23 @@
       workspace,integrity
     );
   }
-  var api=Object.freeze({createRuntime:createRuntime});
+  // Compose the tested accountant, authoritative workspace and revision bridge.
+  // This is staging-only and is deliberately not loaded by index.html: the
+  // revision RPC has not been migrated to the live owner vault. There is no
+  // browser-triggered save, background synchronization or plaintext store.
+  function createAccountingRuntime(options){
+    if(!options||options.stagingOnly!==true)
+      throw Error("Explicit staging-only accounting runtime authorization required");
+    var coordinator=root&&root.IncomeOSRevisionAccountingCoordinator,
+      accountant=root&&root.IncomeOSAccountant,
+      workspace=root&&root.IncomeOSWorkspace;
+    if(!coordinator||typeof coordinator.createAccountingCoordinator!=="function"||
+       !accountant||typeof accountant.validateEntry!=="function"||
+       !workspace||typeof workspace.setLedger!=="function")
+      throw Error("Verified existing accountant, workspace and coordinator required");
+    return coordinator.createAccountingCoordinator(createRuntime(options),workspace,accountant);
+  }
+  var api=Object.freeze({createRuntime:createRuntime,createAccountingRuntime:createAccountingRuntime});
   if(root)root.IncomeOSRevisionRuntime=api;
   if(typeof module!=="undefined"&&module.exports)module.exports=api;
 }(typeof window!=="undefined"?window:globalThis));
