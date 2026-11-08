@@ -81,6 +81,26 @@ readVault.signOut();
 releaseRead();
 await assert.rejects(pendingRead,/session changed/);
 assert.equal(readVault.signedIn(),false);
+// Sign-out during restore integrity hashing must not return an encrypted workspace.
+let releaseRestoreDigest;
+const restoreCrypto={subtle:{digest:async(...args)=>new Promise(resolve=>{
+  releaseRestoreDigest=async()=>resolve(await webcrypto.subtle.digest(...args));
+})}};
+const restoreCtx={window:{crypto:restoreCrypto,fetch:async(url,opt)=>{
+  if(url.includes("/rest/v1/incomeos_vault")&&opt.method==="GET")
+    return {ok:true,status:200,text:async()=>JSON.stringify([{id:9,ciphertext:envelope,sha256:createHash("sha256").update(envelope).digest("hex"),saved_at:"2026-11-06T00:00:00Z"}])};
+  return fakeFetch(url,opt);
+}},TextEncoder,JSON,URL,Promise,Error,setTimeout};
+vm.runInNewContext(src,restoreCtx);
+const restoreVault=restoreCtx.window.IncomeOSVaultCloud;
+await restoreVault.signIn("owner@example.org","right password 12");
+const pendingRestore=restoreVault.latest();
+for(let i=0;i<100&&!releaseRestoreDigest;i++)await new Promise(resolve=>setTimeout(resolve,1));
+assert.equal(typeof releaseRestoreDigest,"function","restore must calculate integrity hash");
+restoreVault.signOut();
+await releaseRestoreDigest();
+await assert.rejects(pendingRestore,/session changed/);
+assert.equal(restoreVault.signedIn(),false);
 // Signing out while the hash is pending must prevent any authenticated POST.
 let releaseDigest,prePostCount=0;
 const pausedCrypto={subtle:{digest:async(...args)=>new Promise(resolve=>{
