@@ -156,6 +156,66 @@ await page.locator("#cloud-vault-password").fill("synthetic vault pw");
 await page.locator("#cloud-vault-signin").tap();
 await page.waitForFunction(()=>/Signed in/.test(document.getElementById("cloud-vault-status").textContent));
 
+// Fast, deterministic simulation of a local crypto operation that completes
+// AFTER the browser vault's handoff deadline. No 15-second wall-clock sleep is
+// required: only the local test's 15,000 ms deadline is accelerated.
+const holdLocalCrypto=async()=>{
+  await page.evaluate(()=>{
+    const nativeDerive=SubtleCrypto.prototype.deriveKey;
+    const nativeTimer=window.setTimeout;
+    const marker={started:false,completed:false,release:null,restore:null};
+    window.__incomeosHeldCrypto=marker;
+    SubtleCrypto.prototype.deriveKey=function(...args){
+      marker.started=true;
+      const subtle=this;
+      return new Promise((resolve,reject)=>{
+        marker.release=()=>{
+          nativeDerive.apply(subtle,args).then(resolve,reject).finally(()=>{marker.completed=true;});
+        };
+      });
+    };
+    marker.restore=()=>{
+      SubtleCrypto.prototype.deriveKey=nativeDerive;
+      window.setTimeout=nativeTimer;
+    };
+    window.setTimeout=function(fn,ms,...args){
+      return nativeTimer(fn,ms===15000?80:ms,...args);
+    };
+  });
+};
+const releaseLocalCrypto=async()=>{
+  const started=await page.evaluate(()=>window.__incomeosHeldCrypto?.started===true);
+  assert.equal(started,true,"Local AES key derivation must actually be held");
+  await page.evaluate(()=>{
+    const marker=window.__incomeosHeldCrypto;
+    marker.restore();
+    marker.release();
+  });
+  await page.waitForFunction(()=>window.__incomeosHeldCrypto?.completed===true,null,{timeout:30000});
+  await page.waitForTimeout(50);
+};
+await vault();
+await page.locator("#briefing-passphrase").fill("synthetic passphrase for tests");
+await holdLocalCrypto();
+await page.locator("#cloud-vault-restore").tap();
+await page.waitForFunction(()=>/Workspace handoff timed out/.test(
+  document.getElementById("cloud-vault-status").textContent),null,{timeout:10000});
+await releaseLocalCrypto();
+await nav("ledger");
+assert.doesNotMatch(await page.locator("#ledger-list").textContent(),/Synthetic vault payout/,
+  "A late decrypt cannot replace a newer owner workspace after the handoff times out");
+await vault();
+const beforeExpiredSave=sent.filter(x=>x.path==="/rest/v1/incomeos_vault"&&x.body).length;
+await holdLocalCrypto();
+await page.locator("#cloud-vault-save").tap();
+await page.waitForFunction(()=>/Workspace handoff timed out/.test(
+  document.getElementById("cloud-vault-status").textContent),null,{timeout:10000});
+await releaseLocalCrypto();
+assert.equal(sent.filter(x=>x.path==="/rest/v1/incomeos_vault"&&x.body).length,beforeExpiredSave,
+  "A late encrypted workspace handoff must never upload after its deadline");
+assert.equal(await page.evaluate(()=>localStorage.length+sessionStorage.length),0,
+  "Expired cryptographic operations must not fall back to browser storage");
+
 // A hostile or corrupted hosted response larger than the accepted encrypted-workspace limit
 // must be refused before hashing, decrypting, or replacing the current workspace.
 rows[0].ciphertext="x".repeat(5000001);
