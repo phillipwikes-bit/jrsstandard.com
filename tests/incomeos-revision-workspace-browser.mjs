@@ -11,7 +11,7 @@ catch {if(process.env.CI)throw Error("playwright-core must be installed for brow
 const scripts=new Set([
   "workspace-store.js","workspace-revision-protocol.js",
   "revision-store.js","revision-workspace-bridge.js",
-  "revision-runtime-staging.js"
+  "revision-runtime-staging.js","revision-accounting-coordinator.js","accountant.js"
 ]);
 const base=new URL("../owner/incomeos/",import.meta.url);
 const server=createServer((req,res)=>{
@@ -115,12 +115,34 @@ try {
       "Composed authenticated runtime must decrypt the latest owner workspace");
     assert(writes===3,"Runtime construction/open must not silently save");
     composed.close();
-    return {writes,reads,finalRevision:untampered.revision,viewport:innerWidth};
+    const accounting=runtime.createAccountingRuntime({stagingOnly:true});
+    assert((await accounting.open(password)).revision===3,"Accounting runtime opens the same workspace");
+    const row={id:"synthetic-browser-restore",kind:"outflow",date:"2026-11-08",
+      label:"Synthetic browser backup expense",category:"software",type:"expense",
+      amountUsd:10,businessUse:null,paymentStatus:"paid",source:"synthetic"};
+    accounting.replaceLedger([row],"2026-11-08");
+    assert((await accounting.save(password)).revision===4,"Explicit initial accounting save");
+    const backup=accounting.encryptedBackup();
+    accounting.replaceLedger([{...row,amountUsd:20}],"2026-11-08");
+    assert((await accounting.save(password)).revision===5,"Current revision advances after backup");
+    const history=accounting.workspaceSnapshot().changeLog;
+    await rejects(()=>accounting.restoreLedgerBackup({...backup,sha256:"0".repeat(64)},password,"2026-11-08"),"checksum mismatch");
+    assert(accounting.workspaceSnapshot().ledger[0].amountUsd===20,"Tamper cannot change current ledger");
+    const counts={writes,reads};
+    const restoration=await accounting.restoreLedgerBackup(backup,password,"2026-11-08");
+    assert(restoration.unsaved&&restoration.serverSaved===false,"Restore requires an explicit new save");
+    assert(writes===counts.writes&&reads===counts.reads,"Backup restoration must be entirely local");
+    const restored=accounting.pendingDraft();
+    assert(restored.ledger[0].amountUsd===10&&restored.note===updated.note,"Restore preserves current nonfinancial workspace");
+    assert(JSON.stringify(restored.changeLog.slice(0,history.length))===JSON.stringify(history),"Restore preserves current history");
+    assert((await accounting.save(password)).revision===6,"Restoration appends against current head, never revision 4");
+    assert((await ws.decrypt(password,latest.ciphertext)).ledger[0].amountUsd===10,"Saved restoration decrypts exactly");
+    return {writes,reads,finalRevision:latest.revision,viewport:innerWidth};
   });
   assert.deepEqual(errors,[],"No page errors or external requests");
-  assert.equal(result.writes,3);
-  assert.equal(result.finalRevision,3);
-  console.log("PASS: Chromium 375px real AES-GCM staging bridge, two clients, CAS and fail-closed recovery");
+  assert.equal(result.writes,6);
+  assert.equal(result.finalRevision,6);
+  console.log("PASS: Chromium 375px real AES-GCM staging accounting, CAS, fail-closed recovery and explicit ledger-backup restoration");
 }finally{
   if(browser)await browser.close();
   await new Promise(resolve=>server.close(resolve));

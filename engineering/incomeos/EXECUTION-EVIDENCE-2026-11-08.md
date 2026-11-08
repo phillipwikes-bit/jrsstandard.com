@@ -8,6 +8,20 @@ The vault API now acquires one operation lock before asynchronous hashing or HTT
 
 Observed local verification after correction: `node --test` over vault concurrency, network, expiry, revision-session, envelope and cloud-client regressions passed 9 tests, 0 failed. All identities, payloads and responses were synthetic. The concurrency test is included in isolated-security CI. Hosted staging, current-commit CI and real owner recovery are not established by these local results. No accounting acceptance status, deployment, commercial authority or original-product acceptance is upgraded.
 
+### Repository verification of the serialization correction
+
+Published engineering commit: `4c58fec77d6aca4993666b086718e24a1c66e9d1`. Its tree is identical to locally tested tree `e055f6ae0b18187ac03b624d03bc32646b1c7519`. All seven applicable workflows completed SUCCESS: isolated security `42471706246`, accounting source `42471706250`, disposable PostgreSQL `42471706259`, private prototype `42471706294`, accounting/DS-N1 browser `42471706203`, anonymous probe `42471706198`, mobile/staging browser `42471706181`.
+
+### Staged accounting backup restoration
+
+The existing revision bridge now verifies a supplied encrypted revision backup's size, revision shape, SHA-256, decryption and workspace schema without server I/O. The existing accounting coordinator validates its ledger through the existing accountant, stages its rows against the current opened server head, preserves current nonfinancial sections and Decision Spellchecker programme, and appends restoration provenance to current change history. The owner must explicitly save the resulting draft. A backup does not decrement a server revision. The supplied backup revision/checksum identifies its bytes; it does not independently authenticate source ownership or provenance.
+
+An owner can inspect a cloned, session-bound current workspace before confirming a newer revision. Snapshots cannot mutate the authoritative draft. Restore refuses pending drafts, unresolved conflicts, unconfirmed newer revisions, wrong passphrases, tamper, invalid accounting rows, invalid dates and revoked sessions. Other operations are excluded during restoration. These modules remain staged and are not loaded in the live Owner Desk.
+
+Observed local verification: accounting/source command from CI passed 41 tests, 0 failed. The combined vault/revision/original-gate suite passed 23 tests, 0 failed, including four encrypted-backup restoration tests and four vault API concurrency tests. The deterministic soak again completed 120 concurrent-owner races and denied all 120 stale writes. This is deterministic synthetic execution, not an unattended owner observation window. The browser regression is extended to exercise actual AES-GCM backup restoration and explicit new-revision saving; its current-commit CI result is still required.
+
+Acceptance evaluation: A06/A07/A14 gain source-evidence references and A07 gains its precise restoration scope. All 16 dispositions remain unchanged: A01 OWNER ACCEPTANCE PENDING; A02/A15 PROTECTED PREVIEW VERIFIED on historical evidence; A03 through A13 SOURCE TESTED; A14/A16 BLOCKED. No requirement is PRODUCTION VERIFIED and `milestoneComplete=false`.
+
 Repository: `phillipwikes-bit/jrsstandard.com`. Draft PR #180. Branch: `verification/incomeos-accounting-ci-20261108`. Starting commit: `e55e3d38f8ffd57e2d059cd12d6b5b8faaab6e63`.
 
 ## Corrections implemented

@@ -24,6 +24,7 @@ on:
       - 'owner/incomeos/workspace-store.js'
       - 'owner/incomeos/accountant.js'
       - 'tests/incomeos-revision-accounting-coordinator.test.cjs'
+      - 'tests/incomeos-revision-backup-restore.test.cjs'
       - 'tests/incomeos-revision-accounting-runtime.test.cjs'
       - 'tests/incomeos-revision-reliability-soak.test.cjs'
       - 'tests/incomeos-revision-release-gate.test.cjs'
@@ -68,6 +69,7 @@ jobs:
           node tests/incomeos-revision-rpc-integration.test.cjs
           node tests/incomeos-revision-workspace-bridge.test.cjs
           node tests/incomeos-revision-accounting-coordinator.test.cjs
+          node --test tests/incomeos-revision-backup-restore.test.cjs
           node tests/incomeos-revision-accounting-runtime.test.cjs
           node tests/incomeos-revision-reliability-soak.test.cjs
           node tests/incomeos-revision-release-gate.test.cjs

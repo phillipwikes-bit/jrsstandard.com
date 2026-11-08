@@ -69,6 +69,28 @@
       working=next;dirty=true;
       return Object.freeze({ledgerCount:next.ledger.length,unsaved:true});
     }
+    async function restoreLedgerBackup(backup,passphrase,on){
+      ensureIdle();verifySession();
+      if(!opened||!working||dirty||needsReview||needsRecovery)
+        throw Error("Open and confirm the current workspace; preserve or discard any draft before backup restoration");
+      if(typeof bridge.inspectEncryptedBackup!=="function")
+        throw Error("Verified encrypted backup inspection required");
+      busy=true;
+      try{
+        var restored=await bridge.inspectEncryptedBackup(backup,passphrase);
+        verifySession();validateLedger(restored.workspace.ledger);
+        // Restore accounting rows as a new local edit against the CURRENT
+        // server head. Preserve current programme, nonfinancial sections and
+        // history. An old backup is never installed as an old server revision.
+        var next=workspace.setLedger(working,clone(restored.workspace.ledger),on);
+        next.changeLog.push({on:on,action:"LEDGER_BACKUP_RESTORED",detail:{
+          sourceRevision:restored.revision,sourceSha256:restored.sha256,
+          ledgerRows:next.ledger.length}});
+        workspace.validate(next);verifySession();working=next;dirty=true;
+        return Object.freeze({ledgerCount:next.ledger.length,sourceRevision:restored.revision,
+          unsaved:true,serverSaved:false});
+      }finally{busy=false;}
+    }
     async function save(passphrase){
       ensureIdle();verifySession();
       if(!opened||!working||needsReview||needsRecovery||!dirty)
@@ -94,6 +116,13 @@
     function pendingDraft(){
       ensureIdle();verifySession();
       if(!dirty||!working)throw Error("No pending accounting draft");
+      return clone(working);
+    }
+    function workspaceSnapshot(){
+      ensureIdle();verifySession();
+      if(!opened||!working||needsRecovery)throw Error("Open a verified current workspace before inspection");
+      // Review is possible before confirmation, but callers cannot mutate the
+      // authoritative working copy through a returned object reference.
       return clone(working);
     }
     async function exportPendingDraftEncrypted(passphrase){
@@ -132,8 +161,9 @@
       if(dirty)throw Error("Preserve or explicitly discard unsaved accounting draft before closing");
       bridge.close();working=null;opened=false;needsReview=false;needsRecovery=false;
     }
-    return Object.freeze({open:open,initializeNew:initializeNew,replaceLedger:replaceLedger,
+    return Object.freeze({open:open,initializeNew:initializeNew,replaceLedger:replaceLedger,restoreLedgerBackup:restoreLedgerBackup,
       save:save,confirmOpenedRevision:confirmOpenedRevision,pendingDraft:pendingDraft,
+      workspaceSnapshot:workspaceSnapshot,
       exportPendingDraftEncrypted:exportPendingDraftEncrypted,
       discardDraft:discardDraft,encryptedBackup:encryptedBackup,close:close,
       status:function(){return Object.freeze({opened:opened,dirty:dirty,

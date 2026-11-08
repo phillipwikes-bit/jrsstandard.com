@@ -81,10 +81,32 @@
         throw Error("Verified current encrypted workspace required for backup export");
       return Object.freeze({revision:openedRevision,ciphertext:openedCiphertext,sha256:openedSha256});
     }
+    async function inspectEncryptedBackup(backup,passphrase){
+      ensureIdle();verifySession();
+      if(!backup||typeof backup!=="object"||Array.isArray(backup)||
+         !Number.isSafeInteger(backup.revision)||backup.revision<1||backup.revision>=Number.MAX_SAFE_INTEGER||
+         typeof backup.ciphertext!=="string"||!backup.ciphertext||
+         new TextEncoder().encode(backup.ciphertext).length>5000000||
+         typeof backup.sha256!=="string"||!/^[a-f0-9]{64}$/.test(backup.sha256))
+        throw Error("Invalid encrypted revision backup");
+      // Copy the supplied bytes before hashing. Caller mutation cannot swap
+      // ciphertext or provenance between asynchronous verification steps.
+      var text=backup.ciphertext,checksum=backup.sha256,revision=backup.revision;
+      busy=true;
+      try{
+        if(await integrity.sha256(text)!==checksum)throw Error("Encrypted backup checksum mismatch");
+        verifySession();
+        var restored=workspace.validate(await workspace.decrypt(passphrase,text));
+        verifySession();
+        // This inspection does not move the trusted server revision, release
+        // an owner-review hold, replace a workspace or perform any RPC.
+        return Object.freeze({workspace:restored,revision:revision,sha256:checksum});
+      }finally{busy=false;}
+    }
     function close(){
       ensureIdle();openedRevision=null;openedCiphertext=null;openedSha256=null;revisions.suspend();
     }
-    return Object.freeze({open:open,save:save,encryptedBackup:encryptedBackup,confirmOpenedRevision:confirmOpenedRevision,
+    return Object.freeze({open:open,save:save,encryptedBackup:encryptedBackup,inspectEncryptedBackup:inspectEncryptedBackup,confirmOpenedRevision:confirmOpenedRevision,
       assertSession:verifySession,
       close:close,status:function(){return Object.freeze({
         openedRevision:openedRevision,requiresOwnerConfirmation:revisions.requiresOwnerConfirmation()
