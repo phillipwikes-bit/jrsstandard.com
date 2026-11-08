@@ -27,3 +27,5 @@ jobs:
           node-version: '22'
       - name: Run DS-N1 runtime bridge and local security boundary tests
         run: node --test tests/incomeos-ds-runtime-bridge.mjs tests/incomeos-ds-local-server-boundary.mjs tests/incomeos-ds-evidence-export.mjs
+      - name: Run native DS-N1 synthetic engine and cognitive regressions
+        run: node --test tests/ds-n1/ds-n1.test.mjs tests/ds-n1/cognitive-controls.test.mjs tests/ds-n1/cognitive-source-trace.test.mjs tests/ds-n1/reflective-guidance.test.mjs
