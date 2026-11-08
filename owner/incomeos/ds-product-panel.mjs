@@ -1,6 +1,6 @@
 // Read-only view inside the EXISTING IncomeOS Decision Spellchecker programme.
 // This does not create another store, another dashboard or customer access.
-import { inspectProduct } from './ds-runtime-bridge.mjs';
+import { inspectOwnerProduct as inspectProduct } from './ds-owner-inspection.mjs';
 
 function add(parent, tag, value, className) {
   const el = document.createElement(tag);
@@ -139,7 +139,7 @@ function init() {
       }
       if (view.openDefects.length > 5) add(section, 'p', (view.openDefects.length - 5) + ' additional defect records are in the programme.', 'muted');
     }
-    add(root, 'p', 'Version identity is read from the imported DS-N1 source. Defects, tasks, evidence counts, study-run counts and gate status are read from the same IncomeOS programme record. A recorded study run is not a CI pass or independent acceptance. Live GitHub CI, browser validation and deployment status are not connected.', 'muted');
+    add(root, 'p', 'The experimental DS-N1 review engine is not packaged or executable in this Owner Desk preview. Version identifiers are withheld unless verified by the separate source-linked engineering harness. Defects, tasks, evidence counts, study-run counts and gate status are read from the same IncomeOS programme record. A recorded study run is not a CI pass or independent acceptance. Live GitHub CI, browser validation and deployment status are not connected.', 'muted');
     renderProductFinance(root, workspace, workspace.dsProgram);
     const blocked = add(root, 'button', 'Synthetic reviewer unavailable until server-enforced owner access and isolated product delivery are verified.', 'smallbtn');
     blocked.type = 'button';
