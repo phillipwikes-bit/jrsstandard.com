@@ -1,5 +1,13 @@
 # IncomeOS controlled engineering evidence, 8 November 2026
 
+## Continued execution: public vault API serialization
+
+Starting source: `27d9b7b5fc653db310843ce1877e33c8155f44df`, same branch and draft PR #180. The vault UI interlock did not cover direct calls from another owner panel. A new synthetic regression initially reported three failures and one pass: overlapping saves before SHA-256 completed, recovery during an upload and a save during recovery were not rejected by the API.
+
+The vault API now acquires one operation lock before asynchronous hashing or HTTP. It rejects overlapping saves/recovery reads, releases the lock on success and failure, and preserves the separate uncertain-save quarantine after failed uploads. Sign-out still revokes the session immediately. This is a same-page ordering control, not cross-device CAS or durable recovery.
+
+Observed local verification after correction: `node --test` over vault concurrency, network, expiry, revision-session, envelope and cloud-client regressions passed 9 tests, 0 failed. All identities, payloads and responses were synthetic. The concurrency test is included in isolated-security CI. Hosted staging, current-commit CI and real owner recovery are not established by these local results. No accounting acceptance status, deployment, commercial authority or original-product acceptance is upgraded.
+
 Repository: `phillipwikes-bit/jrsstandard.com`. Draft PR #180. Branch: `verification/incomeos-accounting-ci-20261108`. Starting commit: `e55e3d38f8ffd57e2d059cd12d6b5b8faaab6e63`.
 
 ## Corrections implemented

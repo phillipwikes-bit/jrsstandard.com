@@ -13,6 +13,14 @@
   var session=null;
   var sessionEpoch=0;
   var uncertainSaveOwner=null;
+  // Enforce serialization at the API boundary, before hashing or HTTP yields.
+  // Button disabling alone cannot prevent calls from another owner panel.
+  var vaultOperation=false;
+  async function exclusive(operation){
+    if(vaultOperation)throw Error("Vault operation already in progress");
+    vaultOperation=true;
+    try{return await operation();}finally{vaultOperation=false;}
+  }
   function activeSession(){
     if(session&&Date.now()>=session.expiresAt)signOut();
     return session;
@@ -98,7 +106,7 @@
     if(pass)pass.value="";
   }
   function signedIn(){return !!activeSession();}
-  async function save(text){
+  async function saveEncrypted(text){
     assertEncrypted(text);
     if(text.length>5000000)throw Error("Encrypted workspace exceeds 5 MB");
     requireSession();
@@ -118,7 +126,7 @@
     }
     return {ok:true};
   }
-  async function latest(){
+  async function latestEncrypted(){
     requireSession();
     var epoch=sessionEpoch;
     var rows=await call("/rest/v1/incomeos_vault?select=id,ciphertext,sha256,saved_at&order=saved_at.desc,id.desc&limit=1",{auth:true});
@@ -134,6 +142,8 @@
     if(uncertainSaveOwner===session.userId)uncertainSaveOwner=null;
     return {text:r.ciphertext,savedAt:r.saved_at,id:r.id};
   }
+  function save(text){return exclusive(function(){return saveEncrypted(text);});}
+  function latest(){return exclusive(latestEncrypted);}
   // Staging composition only. The revision client is not loaded by the live Owner Desk.
   // Keep the bearer token private to this closure and invalidate in-flight results
   // when the owner signs out or another session replaces the current one.
