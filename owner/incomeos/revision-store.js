@@ -81,13 +81,21 @@
         throw e;
       }finally{busy=false;}
     }
+    // Closing the editor revokes read/write authorization without erasing the
+    // last trusted server revision or any outstanding owner-review hold.
+    // This detects replay/rollback when the same signed-in owner reopens the
+    // workspace. No revision or plaintext is persisted to browser storage.
+    function suspend(){
+      if(busy)throw Error("Cannot suspend an in-flight revision operation");
+      revision=null;
+    }
     function reset(){if(busy)throw Error("Cannot reset an in-flight revision operation");revision=null;highWaterRevision=null;highWaterSha=null;confirmationRequired=false;}
     function confirmRevision(value){
       if(busy)throw Error("Cannot confirm an in-flight revision operation");
       if(revision===null||!integer(value)||value!==revision)throw Error("Revision confirmation mismatch");
       confirmationRequired=false;
     }
-    return Object.freeze({refresh:refresh,append:append,reset:reset,confirmRevision:confirmRevision,requiresOwnerConfirmation:function(){return confirmationRequired;},currentRevision:function(){return revision;},highestObservedRevision:function(){return highWaterRevision;}});
+    return Object.freeze({refresh:refresh,append:append,suspend:suspend,reset:reset,confirmRevision:confirmRevision,requiresOwnerConfirmation:function(){return confirmationRequired;},currentRevision:function(){return revision;},highestObservedRevision:function(){return highWaterRevision;}});
   }
   if(root)root.IncomeOSRevisionStore=Object.freeze({createRevisionStore:createRevisionStore});
   if(typeof module!=="undefined"&&module.exports)module.exports={createRevisionStore:createRevisionStore};
