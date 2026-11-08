@@ -197,8 +197,16 @@
     if(!DS||!$("ds-output"))return;
     var start=$("ds-start");
     if(start)start.addEventListener("click",function(){if(!state.ws)return;send(DS.newProgram(today()),"Decision Spellchecker program record started");msg("Program record started. Save the workspace to keep it.");});
+    // Fail closed when a workspace is closed, replaced or malformed. Holding
+    // the preceding programme open after an invalid event misstates which
+    // owner record the controls would operate on.
+    function verifiedWorkspace(value){
+      var WS=window.IncomeOSWorkspace;
+      if(!value||typeof value!=="object"||Array.isArray(value)||!WS||typeof WS.validate!=="function")return null;
+      try{WS.validate(value);return value;}catch(e){return null;}
+    }
     ["incomeos:workspace-loaded","incomeos:workspace-changed","incomeos:workspace-restored"].forEach(function(n){
-      document.addEventListener(n,function(ev){if(ev.detail&&typeof ev.detail==="object")state.ws=ev.detail;render();});
+      document.addEventListener(n,function(ev){state.ws=verifiedWorkspace(ev.detail);render();});
     });
     render();
   }
