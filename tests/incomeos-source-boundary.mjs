@@ -8,7 +8,7 @@ const extensions=new Set(["html","js","css","json","svg","webmanifest","md","sql
 // Explicitly permit only reviewed JavaScript ESM modules in this PUBLIC tree.
 // .mjs is executable source, not a private financial document; do not allow
 // arbitrary future .mjs files to bypass the public-source review gate.
-const reviewedESM=new Set(["ds-product-panel.mjs","ds-runtime-bridge.mjs","ds-local-review.mjs"]);
+const reviewedESM=new Set(["ds-product-panel.mjs","ds-runtime-bridge.mjs","ds-local-review.mjs","ds-owner-inspection.mjs"]);
 assert.ok(paths.length>=12,"Expected reviewed IncomeOS source tree");
 for(const path of paths){
   assert.match(path,/^owner\/incomeos\/[A-Za-z0-9_.-]+$/,"No arbitrary paths inside publicly readable owner subtree");
@@ -26,6 +26,17 @@ for(const filename of reviewedESM){
   assert.ok(paths.includes("owner/incomeos/"+filename),
     "Reviewed owner ESM module missing: "+filename);
 }
+// This newly reviewed module is a derived programme view, not an owner
+// vault, reviewer engine or network client. Keep it local to the protected
+// IncomeOS static bundle; do not import source libraries outside that bundle.
+const ownerInspection=readFileSync("owner/incomeos/ds-owner-inspection.mjs","utf8");
+const ownerPanel=readFileSync("owner/incomeos/ds-product-panel.mjs","utf8");
+assert.match(ownerPanel,/from '\\.\\/ds-owner-inspection\\.mjs'/,
+  "Protected Owner Desk must load only its locally packaged DS inspection module");
+assert.doesNotMatch(ownerInspection,/\\bfetch\\s*\\(|WebSocket|XMLHttpRequest|sendBeacon|localStorage|sessionStorage|document\\.cookie/,
+  "Read-only DS inspection must not persist, transmit or request owner records");
+assert.doesNotMatch(ownerInspection,/\\.\\.\\/\\.\\.\\/lib\\//,
+  "Read-only Owner Desk module cannot import undeployed DS-N1 engine source");
 // Public JRS previews must not package or serve the owner-only workspace.
 // The separate IncomeOS project can use its own project-level ignore file.
 const jrsIgnore=readFileSync(".vercelignore","utf8");
