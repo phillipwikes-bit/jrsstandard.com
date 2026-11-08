@@ -22,6 +22,24 @@ Observed local verification: accounting/source command from CI passed 41 tests, 
 
 Acceptance evaluation: A06/A07/A14 gain source-evidence references and A07 gains its precise restoration scope. All 16 dispositions remain unchanged: A01 OWNER ACCEPTANCE PENDING; A02/A15 PROTECTED PREVIEW VERIFIED on historical evidence; A03 through A13 SOURCE TESTED; A14/A16 BLOCKED. No requirement is PRODUCTION VERIFIED and `milestoneComplete=false`.
 
+### Expanded disposable PostgreSQL reliability exercise
+
+The existing disposable concurrency script now prepares 24 successive two-writer races, checks exactly one commit and one explicit stale-revision refusal per cycle, verifies contiguous owner history, rolls back a completed append transaction and then explicitly appends against the unchanged head. It emits actual counts and elapsed time only after all assertions pass. This is synthetic PostgreSQL fixture execution, not a live Supabase migration, network lost-ACK simulation or owner-operation measurement. The previous source soak separately covers commit-then-timeout recovery. `bash -n` passes locally; no local PostgreSQL executable is available. Actual database results must be read from the resulting CI commit before claiming success.
+
+### Continued original-source custody inspection
+
+The current native saved-version metadata again identifies the historical 0.7 candidate source commit recorded in the earlier custody note. All 18 declared local candidate file hashes again match its provenance manifest, whose SHA-256 remains `171f365c784176979d56067ec1a7bdb71a17985caf1b095425bc977225e71cd7`. The local candidate tar's SHA-256 differs from the native saved archive's recorded SHA-256. The local tar must therefore not be described as a byte-identical copy of that archive. Matching individual manifest files does not settle archive custody or original-product identity.
+
+Authorized native source retrieval was attempted with a freshly issued credential. The supported source-opening workflow returned `Unable to prepare the Site` and did not create a source checkout. No source push, deployment, access change or private-source publication occurred. No clean rebuild or original SP acceptance run is claimed. The original source/Codebook gate remains open.
+
+Bounded searches inspected the other connected repository's non-truncated default-branch tree (588 entries) and found no filenames matching Codebook, Spellchecker, original, provenance or source-manifest. That is a filename-scope result, not a claim about every archived byte or every historical commit. Current Library reads of the 0.6.7 crosswalk and 0.6.11 original-source gate identify those implementations as separate references and retain the missing original Codebook condition. The available Issue 3.6 document remains a controlled proposal; it does not authenticate the executable. No DS-N1 or JRS source is substituted for DS-A.
+
+### Dependencies and next independent engineering
+
+The process exposes no database/migration connection for an approved non-production Supabase target. Existing publishable browser credentials do not provide migration authority. Current-head protected deployment remains unverified; the previously observed provider deployment limit is not assumed resolved. Real owner save/recovery, actual iPhone acceptance and explicit production/commercial authorization remain human acceptance conditions. No production configuration or owner record was changed.
+
+Further independent work includes a staged binding from the existing Owner Desk workspace lifecycle to the revision coordinator, full-workspace recovery reconciliation beyond accounting-row restoration, protected-deployment revalidation when capacity is available, and original-source provenance/reproducibility inspection when retrieval succeeds. Activation and owner acceptance remain subject to the documented protocol. The UI/legacy vault and staged CAS service are not represented as live-integrated by this session's source tests.
+
 Repository: `phillipwikes-bit/jrsstandard.com`. Draft PR #180. Branch: `verification/incomeos-accounting-ci-20261108`. Starting commit: `e55e3d38f8ffd57e2d059cd12d6b5b8faaab6e63`.
 
 ## Corrections implemented
