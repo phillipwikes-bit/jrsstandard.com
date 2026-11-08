@@ -171,17 +171,23 @@
                typeof balance.sourceRef!=="string"||!balance.sourceRef.trim())throw Error("Recovered balance lacks a valid account, date, amount or source");
           });
         }
-        if(sections.indexOf("offers")>=0)current.offers.forEach(function(offer){
-          var url;try{url=new URL(offer.sourceUrl);}catch(e){throw Error("Invalid recovered offer source");}
-          if(url.protocol!=="https:"||url.username||url.password||!Number.isFinite(offer.apyPct)||offer.apyPct<0||offer.apyPct>=25)
-            throw Error("Invalid recovered offer source or rate");
-          // Reuse the existing entry engine for product/provider/date checks.
-          workspace.addRecord(workspace.newWorkspace(on),"offers",offer,offer.checkedOn);
-          if(typeof offer.id!=="string"||!offer.id.trim()||["FDIC","NCUA","US_TREASURY","NONE"].indexOf(offer.insurance)<0||
-             (offer.termMonths!==undefined&&(!Number.isSafeInteger(offer.termMonths)||offer.termMonths<1))||
-             (offer.earlyPenaltyMonths!==undefined&&(!Number.isFinite(offer.earlyPenaltyMonths)||offer.earlyPenaltyMonths<0)))
-            throw Error("Invalid recovered offer identity, insurance or term");
-        });
+        if(sections.indexOf("offers")>=0){
+          var offerIds=new Set();
+          current.offers.forEach(function(offer){
+            if(!offer||typeof offer.id!=="string"||!offer.id.trim()||offer.id!==offer.id.trim()||offerIds.has(offer.id))
+              throw Error("Invalid or duplicate recovered offer identity");
+            offerIds.add(offer.id);
+            var url;try{url=new URL(offer.sourceUrl);}catch(e){throw Error("Invalid recovered offer source");}
+            if(url.protocol!=="https:"||url.username||url.password||!Number.isFinite(offer.apyPct)||offer.apyPct<0||offer.apyPct>=25)
+              throw Error("Invalid recovered offer source or rate");
+            // Reuse the existing entry engine for product/provider/date checks.
+            workspace.addRecord(workspace.newWorkspace(on),"offers",offer,offer.checkedOn);
+            if(["FDIC","NCUA","US_TREASURY","NONE"].indexOf(offer.insurance)<0||
+               (offer.termMonths!==undefined&&(!Number.isSafeInteger(offer.termMonths)||offer.termMonths<1))||
+               (offer.earlyPenaltyMonths!==undefined&&(!Number.isFinite(offer.earlyPenaltyMonths)||offer.earlyPenaltyMonths<0)))
+              throw Error("Invalid recovered offer insurance or term");
+          });
+        }
         current.changeLog=current.changeLog.concat([{on:on,action:"WORKSPACE_BACKUP_RECONCILED",detail:{
           sourceRevision:candidate.revision,sourceSha256:candidate.sha256,sections:sections.slice()}}]);
         return current;

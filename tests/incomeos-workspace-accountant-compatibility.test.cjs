@@ -54,3 +54,14 @@ test("deleting an older row cannot cause the next generated identifier to collid
   assert.equal(new Set(next.ledger.map(row=>row.id)).size,3);
   assert.equal(earlierIds.has(next.ledger.at(-1).id),false);
 });
+
+test("rate offer identifiers remain unique when an older offer has been removed",()=>{
+  const input={provider:"Synthetic provider",product:"savings",apyPct:2,sourceUrl:"https://example.org/rates"};
+  let ws=workspace.newWorkspace(date);
+  for(let n=0;n<3;n++)ws=workspace.addRecord(ws,"offers",input,date);
+  ws.offers=ws.offers.slice(1);
+  const ids=new Set(ws.offers.map(offer=>offer.id));
+  const next=workspace.addRecord(ws,"offers",input,date);
+  assert.equal(new Set(next.offers.map(offer=>offer.id)).size,3);
+  assert.equal(ids.has(next.offers.at(-1).id),false);
+});

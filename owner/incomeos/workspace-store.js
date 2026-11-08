@@ -87,7 +87,10 @@
       var apy=Number(x.apyPct);if(!(apy>=0&&apy<25))throw Error("Enter the APY in percent");
       var url;try{url=new URL(x.sourceUrl);}catch(e){throw Error("Paste the provider's https page");}
       if(url.protocol!=="https:")throw Error("Paste the provider's https page");
-      rec={id:"offer-"+slug(x.provider)+"-"+(list.length+1),provider:text(x.provider,80,"Provider"),product:x.product,apyPct:apy,insurance:x.insurance||"FDIC",sourceUrl:url.href,checkedOn:on};
+      var offerStem="offer-"+slug(x.provider)+"-",offerSuffix=list.length+1;
+      var offerIds=new Set(list.map(function(offer){return offer&&typeof offer.id==="string"?offer.id.trim():null;}));
+      while(offerIds.has(offerStem+offerSuffix))offerSuffix++;
+      rec={id:offerStem+offerSuffix,provider:text(x.provider,80,"Provider"),product:x.product,apyPct:apy,insurance:x.insurance||"FDIC",sourceUrl:url.href,checkedOn:on};
       if(x.termMonths)rec.termMonths=Math.round(Number(x.termMonths));
       if(x.earlyPenaltyMonths!==""&&x.earlyPenaltyMonths!=null)rec.earlyPenaltyMonths=Number(x.earlyPenaltyMonths);
     }else throw Error("Unknown section");

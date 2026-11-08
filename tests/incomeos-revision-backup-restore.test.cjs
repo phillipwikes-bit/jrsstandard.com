@@ -153,7 +153,10 @@ test("section-reviewed workspace recovery preserves programme and history and re
 });
 test("recovery refuses duplicate accounts, orphan balances and unsafe offer sources atomically",async()=>{
   const f=await fixture(),before=f.a.workspaceSnapshot();
+  const offer={id:"synthetic-offer",provider:"Synthetic provider",product:"savings",apyPct:2,insurance:"FDIC",sourceUrl:"https://example.org/rates",checkedOn:date};
   const cases=[
+    {offers:[offer,{...offer}]},
+    {offers:[{...offer,id:" synthetic-offer "}]},
     {accounts:[{id:"dup",name:"Synthetic",type:"checking"},{id:"dup",name:"Synthetic",type:"checking"}]},
     {balances:[{accountId:"missing",asOf:date,balanceUsd:"12",source:"statement",sourceRef:"Synthetic statement"}]},
     {offers:[{sourceUrl:"http://example.org",apyPct:2}]}
@@ -164,6 +167,20 @@ test("recovery refuses duplicate accounts, orphan balances and unsafe offer sour
     assert.throws(()=>f.a.applyWorkspaceRecovery(review.sections.slice(),date),/recovered|Recovered/);
     assert.deepEqual(f.a.workspaceSnapshot(),before);assert.equal(f.a.status().dirty,false);assert.equal(f.writes(),0);
   }
+});
+test("valid unique offers recover as a reviewed draft and persist only on explicit save",async()=>{
+  const f=await fixture(),before=f.a.workspaceSnapshot();
+  const offer={id:"synthetic-offer",provider:"Synthetic provider",product:"savings",apyPct:2,insurance:"FDIC",sourceUrl:"https://example.org/rates",checkedOn:date};
+  const old={...before,offers:[offer,{...offer,id:"synthetic-offer-2"}]};
+  const ciphertext=await workspace.encrypt(passphrase,old);
+  const review=await f.a.prepareWorkspaceRecovery({revision:1,ciphertext,sha256:await sha256(ciphertext)},passphrase);
+  assert.deepEqual(review.sections,["offers"]);assert.equal(f.writes(),0);
+  f.a.applyWorkspaceRecovery(["offers"],date);
+  assert.deepEqual(f.a.pendingDraft().offers,old.offers);
+  assert.deepEqual(f.a.pendingDraft().dsProgram,before.dsProgram);
+  assert.equal(f.a.status().dirty,true);assert.equal(f.writes(),0);
+  await f.a.save(passphrase);assert.equal(f.writes(),1);
+  assert.deepEqual((await workspace.decrypt(passphrase,f.remote().ciphertext)).offers,old.offers);
 });
 test("complex recovery sections cannot bypass their dedicated evidence and lifecycle engines",async()=>{
   const f=await fixture(),before=f.a.workspaceSnapshot();
