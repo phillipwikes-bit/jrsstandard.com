@@ -37,20 +37,21 @@ try {
     await page.locator('#ds-start').click();
     await page.waitForFunction(()=>document.querySelector('#ds-product-runtime')?.textContent?.includes('DS-N1'));
     const t=await page.locator('#ds-product-runtime').textContent();
-    assert.match(t,/DS-N1 0\.7\.0-dev/);
+    assert.match(t,/DS-N1 NOT_LOADED_IN_OWNER_DESK/, 'Hosted Owner Desk must not claim the unbundled DS-N1 engine is active');
     assert.match(t,/Original SP acceptance0 of 18/);
     assert.match(t,/AUTHENTIC_SOURCE_NOT_RECOVERED/);
-    assert.match(t,/INTEGRATION_IN_PROGRESS/);
+    assert.match(t,/READ_ONLY_SOURCE_NOT_PACKAGED/);
     assert.match(t,/Live GitHub CI connectionNOT_CONNECTED/);
     assert.match(t,/Recorded study runs, synthetic \/ independent0 \/ 0/);
     assert.match(t,/NOT_AUTHORIZED/);
-    assert.match(t,/Product revenue and costs/);
+    assert.match(t,/Inspect product revenue and costs/);
     assert.match(t,/Product-tagged ledger rows0/);
     assert.match(t,/Recorded operating costs \(owner ledger\)\$0\.00/);
     // Every original acceptance status is visible on demand, without
     // disclosing case/source contents or treating DS-N1 results as DS-A.
-    const spDetails = page.locator('#ds-product-runtime details');
-    assert.equal(await spDetails.count(),1);
+    const spDetails = page.locator('#ds-product-runtime details').first();
+    assert.equal(await page.locator('#ds-product-runtime details').count(),3,
+      'SP acceptance, engineering provenance, and finance are separate disclosures');
     // The disclosure is near the top of the product card, clear of the
     // fixed bottom navigation, and has a mobile-sized native summary target.
     const spSummary = spDetails.locator('summary');
@@ -104,7 +105,7 @@ try {
       }, '2026-11-05');
       document.dispatchEvent(new CustomEvent('incomeos:workspace-changed',{detail:w}));
     });
-    const financial=page.locator('#ds-product-runtime section[aria-label="Decision Spellchecker product finance"]');
+    const financial=page.locator('#ds-product-runtime details[aria-label="Decision Spellchecker product finance"]');
     const financialText=await financial.textContent();
     assert.match(financialText,/Product-tagged ledger rows4/);
     assert.match(financialText,/Recorded operating costs \(owner ledger\)\$29\.50/);
@@ -134,7 +135,8 @@ try {
         id:'TASK-SYN-01',title:'Inspect synthetic evidence reference',
         module:'engineering',dependsOn:[],value:5,cost:1,risk:1
       },'2026-11-05');
-      document.dispatchEvent(new CustomEvent('incomeos:workspace-changed',{detail:{dsProgram:p}}));
+      const ws=window.IncomeOSWorkspace.newWorkspace('2026-11-05');
+      document.dispatchEvent(new CustomEvent('incomeos:workspace-changed',{detail:{...ws,dsProgram:p}}));
     });
     const updated=await page.locator('#ds-product-runtime').textContent();
     assert.match(updated,/BUG-SYN-01: Constructed source mismatch/);
@@ -143,7 +145,8 @@ try {
     await page.evaluate(() => {
       let p = window.IncomeOSDSProgram.newProgram('2026-11-05');
       p.acceptance[0].status='ACCEPTED';
-      document.dispatchEvent(new CustomEvent('incomeos:workspace-changed',{detail:{dsProgram:p}}));
+      const ws=window.IncomeOSWorkspace.newWorkspace('2026-11-05');
+      document.dispatchEvent(new CustomEvent('incomeos:workspace-changed',{detail:{...ws,dsProgram:p}}));
     });
     assert.match(await page.locator('#ds-product-runtime').textContent(),/Programme record cannot be verified/);
 
