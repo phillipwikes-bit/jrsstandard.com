@@ -143,11 +143,21 @@ try {
     assert((await ws.decrypt(password,latest.ciphertext)).ledger[0].amountUsd===10,"Saved restoration decrypts exactly");
     assert((await ws.decrypt(password,latest.ciphertext)).dsProgram.tasks.some(t=>t.id==="T-BROWSER-SHARED"),
       "The same encrypted revision retains programme management changes after ledger recovery");
+    const recoveryDocument=await ws.decrypt(password,backup.ciphertext);
+    recoveryDocument.accounts=[{id:"synthetic-browser-account",name:"Synthetic recovered account",type:"checking"}];
+    const recoveryText=await ws.encrypt(password,recoveryDocument);
+    const review=await accounting.prepareWorkspaceRecovery({revision:backup.revision,ciphertext:recoveryText,sha256:await sha256(recoveryText)},password);
+    assert(review.sections.includes("accounts")&&!review.sections.includes("dsProgram"),"Recovery must expose section review without programme replacement");
+    accounting.applyWorkspaceRecovery(["accounts"],"2026-11-08");
+    assert(writes===6,"Workspace recovery cannot autosave");
+    assert((await accounting.save(password)).revision===7,"Selected recovery appends a new revision");
+    const reconciled=await ws.decrypt(password,latest.ciphertext);
+    assert(reconciled.accounts[0].id==="synthetic-browser-account"&&reconciled.dsProgram.tasks.some(t=>t.id==="T-BROWSER-SHARED"),"Section recovery retains current programme");
     return {writes,reads,finalRevision:latest.revision,viewport:innerWidth};
   });
   assert.deepEqual(errors,[],"No page errors or external requests");
-  assert.equal(result.writes,6);
-  assert.equal(result.finalRevision,6);
+  assert.equal(result.writes,7);
+  assert.equal(result.finalRevision,7);
   console.log("PASS: Chromium 375px real AES-GCM staging accounting, CAS, fail-closed recovery and explicit ledger-backup restoration");
 }finally{
   if(browser)await browser.close();

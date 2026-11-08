@@ -1,5 +1,15 @@
 # IncomeOS controlled engineering evidence, 8 November 2026
 
+## Reviewed workspace-section recovery
+
+Baseline `02714887380d2a5fa7e95c023de2aafc4e22af14`. The staged coordinator can now inspect an encrypted workspace backup, return a changed-section review, and apply only explicitly selected sections. The backup is checksum/decryption/schema checked and its ledger uses the existing accountant validator. Recovery requires a clean, confirmed current workspace. Section shapes are checked against the existing workspace template; this is structural validation, not independent authentication or semantic verification of every historical record.
+
+Schema, current change history and the Decision Spellchecker programme are excluded from generic replacement. Selected sections become an unsaved current-head edit with WORKSPACE_BACKUP_RECONCILED provenance. A separate explicit encrypted save appends a revision. Reviews become unusable after intervening edits, and reopening, discarding or closing clears their candidate. Programme recovery still requires the dedicated programme validator and authentic evidence; source/acceptance gates are not restored from an older backup.
+
+The existing staging host exposes explicit prepare/apply operations. No new ledger, automatic write, browser persistence or production activation is introduced. Real owner recovery remains unaccepted.
+
+Targeted local recovery/runtime/release-gate verification passed ten tests, zero failed. One initial test assertion tried to sort a deliberately frozen review array and failed; it now sorts a copy without weakening immutability. Browser coverage adds section review, account recovery, preservation of the current programme and explicit append after reconciliation. Exact-commit CI results must be read before claiming browser verification. All 16 acceptance statuses and production/commercial holds remain unchanged.
+
 ## Remaining staged workspace controls and explicit reversals
 
 Baseline `5bbc434606a6c16990413c7e3d6a1d885867196a`, same draft PR #180 and branch. The coordinator now stages changes made by existing workspace engines, including programme-cost entry, account records and nonfinancial controls. Each transformation receives a detached copy. The coordinator validates the resulting ledger, preserves the programme unless its separate update validator is used, requires valid chronology and retained change history, prevents reentrant edits, and checks the bound session. Existing bounded 5000-entry history rollover is permitted; arbitrary history replacement is refused. No editing operation writes to the server.

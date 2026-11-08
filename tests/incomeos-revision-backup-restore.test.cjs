@@ -130,6 +130,27 @@ test("explicit unsaved reversal restores content while appending current history
   await f.a.save(passphrase);
   assert.equal((await workspace.decrypt(passphrase,f.remote().ciphertext)).changeLog.at(-1).action,"WORKSPACE_EDIT_REVERSED");
 });
+test("section-reviewed workspace recovery preserves programme and history and requires a new save",async()=>{
+  const f=await fixture(),before=f.a.workspaceSnapshot();
+  const old=await workspace.decrypt(passphrase,f.backup.ciphertext);
+  old.accounts=[{id:"synthetic-restored",name:"Synthetic restored account",type:"checking"}];
+  old.ledger=[];old.dsProgram.title="Older programme must not replace current";old.changeLog=[];
+  const ciphertext=await workspace.encrypt(passphrase,old),backup={revision:1,ciphertext,sha256:await sha256(ciphertext)};
+  const review=await f.a.prepareWorkspaceRecovery(backup,passphrase);
+  assert.deepEqual(review.sections.slice().sort(),["accounts","ledger"]);
+  assert.equal(f.a.status().dirty,false);assert.equal(f.writes(),0);
+  assert.throws(()=>f.a.applyWorkspaceRecovery(["dsProgram"],date),/Review recovery sections/);
+  f.a.applyWorkspaceRecovery(["accounts","ledger"],date);
+  const pending=f.a.pendingDraft();assert.equal(pending.ledger.length,0);assert.equal(pending.accounts.length,1);
+  assert.deepEqual(pending.dsProgram,before.dsProgram);
+  assert.deepEqual(pending.changeLog.slice(0,before.changeLog.length),before.changeLog);
+  assert.equal(pending.changeLog.at(-1).action,"WORKSPACE_BACKUP_RECONCILED");
+  assert.equal(f.writes(),0);await f.a.save(passphrase);
+  assert.equal((await workspace.decrypt(passphrase,f.remote().ciphertext)).accounts.length,1);
+  await f.a.prepareWorkspaceRecovery(f.backup,passphrase);
+  f.a.replaceLedger([expense(20)],date);
+  assert.throws(()=>f.a.applyWorkspaceRecovery(["ledger"],date),/unchanged current workspace/);
+});
 test("wrong passphrases, tamper, invalid ledger and invalid chronology preserve current workspace",async()=>{
   const f=await fixture(),before=f.a.workspaceSnapshot();
   const malformed=workspace.newWorkspace(date);malformed.ledger=[expense(-1)];

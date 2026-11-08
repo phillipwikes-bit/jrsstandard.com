@@ -14,6 +14,7 @@
        !accountant||typeof accountant.validateEntry!=="function")
       throw Error("Verified workspace, accounting and revision dependencies required");
     var working=null,opened=false,dirty=false,needsReview=false,needsRecovery=false,busy=false;
+    var recoveryCandidate=null;
     function clone(value){return JSON.parse(JSON.stringify(value));}
     function ensureIdle(){if(busy)throw Error("Accounting operation already in progress");}
     // Authentication governs local draft access and cryptographic exports as
@@ -34,7 +35,7 @@
     async function open(passphrase){
       ensureIdle();verifySession();
       if(dirty)throw Error("Preserve or explicitly discard unsaved accounting draft before reopening");
-      busy=true;opened=false;working=null;needsReview=false;needsRecovery=false;
+      busy=true;recoveryCandidate=null;opened=false;working=null;needsReview=false;needsRecovery=false;
       try{
         var result=await bridge.open(passphrase);
         verifySession();
@@ -117,6 +118,43 @@
         return next;
       },on);
     }
+    async function prepareWorkspaceRecovery(backup,passphrase){
+      ensureIdle();verifySession();recoveryCandidate=null;
+      if(!opened||!working||dirty||needsReview||needsRecovery)
+        throw Error("Open and confirm a clean current workspace before recovery review");
+      busy=true;
+      try{
+        var inspected=await bridge.inspectEncryptedBackup(backup,passphrase);
+        verifySession();validateLedger(inspected.workspace.ledger);
+        var candidate=clone(inspected.workspace),baseline=JSON.stringify(working);
+        var template=workspace.newWorkspace("2026-01-01"),changes=[];
+        Object.keys(candidate).forEach(function(key){
+          if(["schema","changeLog","dsProgram"].indexOf(key)>=0)return;
+          var expected=template[key],value=candidate[key];
+          if(expected===undefined||value===null||Array.isArray(expected)!==Array.isArray(value)||typeof expected!==typeof value)
+            throw Error("Unsupported recovery section shape");
+          if(JSON.stringify(value)!==JSON.stringify(working[key]))changes.push(key);
+        });
+        recoveryCandidate={workspace:candidate,baseline:baseline,changes:changes,revision:inspected.revision,sha256:inspected.sha256};
+        return Object.freeze({sections:Object.freeze(changes.slice()),sourceRevision:inspected.revision,
+          sourceSha256:inspected.sha256,serverSaved:false,programmePreserved:true});
+      }finally{busy=false;}
+    }
+    function applyWorkspaceRecovery(sections,on){
+      ensureIdle();verifySession();
+      var candidate=recoveryCandidate;
+      if(!candidate||!Array.isArray(sections)||!sections.length||new Set(sections).size!==sections.length||
+         sections.some(function(key){return candidate.changes.indexOf(key)<0;})||
+         !opened||dirty||needsReview||needsRecovery||JSON.stringify(working)!==candidate.baseline)
+        throw Error("Review recovery sections against the unchanged current workspace first");
+      var result=editWorkspace(function(current){
+        sections.forEach(function(key){current[key]=clone(candidate.workspace[key]);});
+        current.changeLog=current.changeLog.concat([{on:on,action:"WORKSPACE_BACKUP_RECONCILED",detail:{
+          sourceRevision:candidate.revision,sourceSha256:candidate.sha256,sections:sections.slice()}}]);
+        return current;
+      },on);
+      recoveryCandidate=null;return result;
+    }
     async function restoreLedgerBackup(backup,passphrase,on){
       ensureIdle();verifySession();
       if(!opened||!working||dirty||needsReview||needsRecovery)
@@ -194,7 +232,7 @@
     function discardDraft(){
       ensureIdle();
       if(!dirty)throw Error("No pending accounting draft");
-      working=null;opened=false;dirty=false;needsReview=false;needsRecovery=false;
+      working=null;recoveryCandidate=null;opened=false;dirty=false;needsReview=false;needsRecovery=false;
       // Preserve the revision store's high-water mark after a conflict.
       // Explicit draft discard is not an authorization to reset rollback detection.
     }
@@ -207,9 +245,9 @@
     function close(){
       ensureIdle();
       if(dirty)throw Error("Preserve or explicitly discard unsaved accounting draft before closing");
-      bridge.close();working=null;opened=false;needsReview=false;needsRecovery=false;
+      bridge.close();working=null;recoveryCandidate=null;opened=false;needsReview=false;needsRecovery=false;
     }
-    return Object.freeze({open:open,initializeNew:initializeNew,replaceLedger:replaceLedger,updateProgram:updateProgram,editWorkspace:editWorkspace,reverseEdit:reverseEdit,restoreLedgerBackup:restoreLedgerBackup,
+    return Object.freeze({open:open,initializeNew:initializeNew,replaceLedger:replaceLedger,updateProgram:updateProgram,editWorkspace:editWorkspace,reverseEdit:reverseEdit,prepareWorkspaceRecovery:prepareWorkspaceRecovery,applyWorkspaceRecovery:applyWorkspaceRecovery,restoreLedgerBackup:restoreLedgerBackup,
       save:save,confirmOpenedRevision:confirmOpenedRevision,pendingDraft:pendingDraft,
       workspaceSnapshot:workspaceSnapshot,
       exportPendingDraftEncrypted:exportPendingDraftEncrypted,

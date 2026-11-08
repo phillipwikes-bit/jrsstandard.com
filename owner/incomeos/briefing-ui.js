@@ -25,7 +25,7 @@
       if(!options||options.stagingOnly!==true||revisionDesk||state.ws||state.dirty)
         throw Error("Attach staging revisions only before opening a local workspace");
       ["open","save","status","workspaceSnapshot","replaceLedger","updateProgram","editWorkspace","reverseEdit","initializeNew",
-       "confirmOpenedRevision","exportPendingDraftEncrypted","restoreLedgerBackup","discardDraft","close"].forEach(function(k){
+       "confirmOpenedRevision","exportPendingDraftEncrypted","restoreLedgerBackup","prepareWorkspaceRecovery","applyWorkspaceRecovery","discardDraft","close"].forEach(function(k){
         if(!coordinator||typeof coordinator[k]!=="function")throw Error("Verified revision coordinator required");
       });
       revisionDesk=coordinator;
@@ -33,6 +33,8 @@
         open:async function(pass){var r=await coordinator.open(pass);if(r.hasWorkspace)installRevision();return r;},
         confirm:function(revision){coordinator.confirmOpenedRevision(revision);installRevision();},
         rescue:function(pass){return coordinator.exportPendingDraftEncrypted(pass);},
+        prepareRecovery:function(backup,pass){return coordinator.prepareWorkspaceRecovery(backup,pass);},
+        applyRecovery:function(sections,on){var r=coordinator.applyWorkspaceRecovery(sections,on);installRevision();return r;},
         restore:async function(backup,pass,on){var r=await coordinator.restoreLedgerBackup(backup,pass,on);installRevision();return r;},
         discard:function(){coordinator.discardDraft();state.ws=null;state.dirty=false;state.history=[];render();announce();},
         close:function(){coordinator.close();revisionDesk=null;state.ws=null;state.dirty=false;state.history=[];render();announce();}
