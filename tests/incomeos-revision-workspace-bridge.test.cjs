@@ -127,6 +127,14 @@ const passphrase="synthetic test passphrase with 20+ characters";
   ownerA.close();
   assert.equal(ownerA.status().openedRevision,null);
   assert.throws(()=>ownerA.encryptedBackup(),/Verified current encrypted workspace/);
+  // A prior trusted revision must remain a rollback boundary after a close.
+  const current=remote;
+  remote={...current,revision:current.revision-1};
+  await assert.rejects(ownerA.open(passphrase),/refuse overwrite/,
+    "Closing the owner workspace must not erase server rollback evidence");
+  remote=current;
+  assert.equal((await ownerA.open(passphrase)).revision,current.revision);
+  ownerA.close();
   assert.equal(writes,3);
   console.log("PASS: encrypted workspace-to-revision bridge, verified backup, decryption, CAS and owner-review hold");
 })().catch(err=>{console.error(err);process.exitCode=1;});
