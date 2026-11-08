@@ -21,12 +21,14 @@
       "evidence": [
         ".github/workflows/incomeos-anonymous-access-probe.yml"
       ],
-      "limitation": "The owner reached the app while signed in to Vercel (iPhone Safari screenshot, 2026-11-04); sign-in is Vercel account login. Owner confirmation that only the owner's Vercel account has access is pending",
+      "limitation": "Vercel team membership independently checked 2026-11-08: one confirmed OWNER member. Vercel project incomeos-opportunity-desk reports SSO protection enabled for all deployments. This does not independently verify project-specific access grants, bypass tokens, the owner's Supabase vault identity, or authenticated live recovery; owner acceptance remains pending.",
       "deploymentEvidence": {
         "commit": "43651b9086640406ce2fe58cdfc12fe1c5d86434",
         "url": "https://incomeos-opportunity-desk.vercel.app",
         "probe": "GitHub Actions run 41917521403 (workflow incomeos-anonymous-access-probe.yml, commit 9ae99b1): /, /index.html, /accountant.js and /manifest.webmanifest each returned HTTP 302 to vercel.com/sso-api with no app content",
-        "date": "2026-11-04"
+        "date": "2026-11-04",
+        "teamMembershipVerification": "2026-11-08: Vercel list_team_members for team_Q2KvghlnRA3ePBm4zAiYzbIf returned totalCount=1, one confirmed OWNER; no additional members listed. No email or credential stored in this record.",
+        "currentProtectionVerification": "2026-11-08: Vercel get_project for incomeos-opportunity-desk returned ssoProtection.enabled=true, deploymentType=all."
       }
     },
     {
@@ -36,7 +38,7 @@
       "evidence": [
         ".github/workflows/incomeos-anonymous-access-probe.yml"
       ],
-      "limitation": "Vercel Authentication (All Deployments) on the separate incomeos-opportunity-desk project denies anonymous visitors. Access control is Vercel's team login, not an app-level owner account; anyone added to the Vercel team could open it; follow-up seven-path SSO probe passed 2026-11-06, but exclusive owner team membership remains unverified",
+      "limitation": "Vercel project SSO is enabled for all deployments; 2026-11-08 Vercel team membership returned one confirmed OWNER. Existing anonymous denial probes passed. Project-specific access grants and bypass exceptions have not been independently enumerated; exclusive effective access and live owner vault recovery are not production verified.",
       "deploymentEvidence": {
         "commit": "43651b9086640406ce2fe58cdfc12fe1c5d86434",
         "url": "https://incomeos-opportunity-desk.vercel.app",
