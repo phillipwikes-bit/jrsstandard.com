@@ -22,6 +22,9 @@ on:
       - 'tests/incomeos-revision-workspace-bridge.test.cjs'
       - 'owner/incomeos/revision-accounting-coordinator.js'
       - 'owner/incomeos/workspace-store.js'
+      - 'owner/incomeos/research-ui.js'
+      - 'owner/incomeos/passive-radar-ui.js'
+      - 'tests/incomeos-workspace-panel-cleanup.test.cjs'
       - 'owner/incomeos/accountant.js'
       - 'tests/incomeos-revision-accounting-coordinator.test.cjs'
       - 'tests/incomeos-revision-backup-restore.test.cjs'
@@ -60,9 +63,12 @@ jobs:
           node --check owner/incomeos/revision-runtime-staging.js
           node --check owner/incomeos/revision-accounting-coordinator.js
           node --check owner/incomeos/workspace-store.js
+          node --check owner/incomeos/research-ui.js
+          node --check owner/incomeos/passive-radar-ui.js
           node --check tests/incomeos-browser-script-loader.cjs
       - name: Synthetic regression tests
         run: |
+          node --test tests/incomeos-workspace-panel-cleanup.test.cjs
           node tests/incomeos-vault-envelope.test.cjs
           node tests/incomeos-workspace-revision-protocol.test.cjs
           node tests/incomeos-revision-store.test.cjs

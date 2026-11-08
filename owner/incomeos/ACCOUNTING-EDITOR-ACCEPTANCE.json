@@ -88,7 +88,9 @@
         "tests/incomeos-revision-backup-restore.test.cjs",
         "tests/incomeos-revision-workspace-bridge.test.cjs",
         "tests/incomeos-revision-store.test.cjs",
-        "tests/incomeos-revision-supabase-transport.test.cjs"
+        "tests/incomeos-revision-supabase-transport.test.cjs",
+        "tests/incomeos-workspace-panel-cleanup.test.cjs",
+        "tests/incomeos-project-ui-browser.mjs"
       ],
       "limitation": "Owner-held encrypted workspace files and the existing append-only encrypted vault are separate from the staged server-authoritative revision runtime. Synthetic accounting/revision integration is tested. Live owner-authenticated recovery, cross-device revision integration and a durable rollback trust anchor remain unverified; the staged runtime is not loaded in the live Owner Desk. Synthetic asynchronous-mutation checks bind a staged save to its submitted document, a trusted read to the checksum-verified response values and an RPC dispatch to its submitted request."
     },
@@ -166,7 +168,9 @@
         "tests/incomeos-vault-cloud.mjs",
         "tests/incomeos-vault-expiry.test.cjs",
         "tests/incomeos-vault-revision-session.test.cjs",
-        "tests/incomeos-revision-supabase-transport.test.cjs"
+        "tests/incomeos-revision-supabase-transport.test.cjs",
+        "tests/incomeos-workspace-panel-cleanup.test.cjs",
+        "tests/incomeos-project-ui-browser.mjs"
       ],
       "limitation": "The owner vault client intentionally contacts only its configured HTTPS Supabase origin for authentication and encrypted envelopes. Authentication passwords are sent only to that HTTPS authentication endpoint; workspace passphrases and plaintext records are not sent. Tokens remain in page memory and authenticated responses and local crypto handoffs are session-bound. Synthetic tests do not establish hosted response-header correctness or exclusive live owner access. The staged RPC transport snapshots validated configuration, refuses redirects, includes token retrieval in its deadline and sanitizes token-provider errors. This does not certify a live hosted session."
     },

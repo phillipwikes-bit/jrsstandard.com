@@ -312,11 +312,31 @@ assert.equal(await page.evaluate(()=>window.__coordinator.pendingDraft().note),"
 assert.equal(await page.evaluate(()=>window.__revisionTest.writes()),2,"Recovery review and application cannot autosave");
 await page.locator("#briefing-save").click();
 await page.waitForFunction(()=>document.getElementById("briefing-status").textContent==="Encrypted revision saved.");
+// Populate private panel state through the existing workspace engines. Closing
+// the verified host must clear every subscriber, not just the accounting form.
+await page.evaluate(()=>{
+  const W=window.IncomeOSWorkspace,on="2026-11-08",id="synthetic-close-study";
+  window.__coordinator.editWorkspace(w=>{
+    w=W.setResearchStudies(w,[{id,title:"Synthetic private close study",provider:"Synthetic Recruiter",paymentUsd:100,minutes:30,screenMinutes:5,mode:"online",reviewed:on,eventEnd:null,url:"https://example.org/a/close",sourceUrl:"https://example.org/s/close",status:"Open"}],on);
+    w=W.setResearchProgress(w,id,"Applied",on);
+    w=W.setResearchTime(w,id,{screenMinutes:7,prepMinutes:0,adminMinutes:0,timeConfidence:"estimated"},on);
+    return W.setPassiveFinding(w,{id:"synthetic-close-finding",title:"Synthetic private close finding",valueType:"savings",sourceName:"Synthetic",sourceUrl:"https://example.org/s",directUrl:"https://example.gov/d",foundOn:on,amountUsd:40,amountBasis:"stated"},"Pursuing",on);
+  },on);
+});
+await page.locator("#briefing-save").click();
+await page.waitForFunction(()=>document.getElementById("briefing-status").textContent==="Encrypted revision saved.");
+assert.match(await page.locator("#passive-kept").textContent(),/Synthetic private close finding/);
+assert.match(await page.locator("#radar-results").textContent(),/Synthetic private close study/);
 const [revisionBackupDownload]=await Promise.all([page.waitForEvent("download"),page.getByRole("button",{name:"Download verified encrypted backup",exact:true}).click()]);
 assert.equal(revisionBackupDownload.suggestedFilename(),"incomeos-revision-backup.encrypted.json");
 await page.getByRole("button",{name:"Close private workspace",exact:true}).click();
 assert.equal(await page.locator("#briefing-passphrase").inputValue(),"","Explicit close clears the workspace passphrase");
 assert.equal(await page.locator("#revision-recovery-controls").count(),0);
+assert.doesNotMatch(await page.locator("#passive-kept").textContent(),/Synthetic private close finding/);
+assert.match(await page.locator("#passive-kept").textContent(),/Open your workspace/);
+assert.doesNotMatch(await page.locator("#radar-results").textContent(),/Synthetic private close study/);
+assert.equal(await page.$$eval('#radar-results select[aria-label^="Owner progress"]',els=>els.every(el=>el.disabled)),true,"Closed workspace cannot retain active research tracking controls");
+
 assert.equal(await page.evaluate(async()=>{
   const next=IncomeOSRevisionRuntime.createAccountingRuntime({stagingOnly:true});
   const current=IncomeOSRevisionDeskHost.attach(next,{stagingOnly:true});
@@ -324,6 +344,15 @@ assert.equal(await page.evaluate(async()=>{
   if(!document.getElementById("revision-recovery-controls"))throw Error("Old handle closed the newer host");
   current.close();return refused;
 }),true,"Detached handles cannot close a later attachment");
+await page.evaluate(()=>{
+  ["incomeos:workspace-loaded","incomeos:workspace-changed"].forEach(name=>document.addEventListener(name,event=>{window.__replacementWorkspace=event.detail;}));
+});
+await page.locator("#briefing-new").click();
+await page.evaluate(()=>new Promise(resolve=>setTimeout(resolve,0)));
+assert.deepEqual(await page.evaluate(()=>{
+  const w=window.__replacementWorkspace;
+  return {studies:w.researchStudies,progress:w.researchProgress,times:w.researchTimes,findings:w.passiveFindings};
+}),{studies:[],progress:{},times:{},findings:{}},"A new workspace cannot inherit the closed workspace's private panel state");
 assert.deepEqual(errors,[]);
 await browser.close();server.close();
 console.log("IncomeOS project UI browser QA passed (iPhone 13 emulation, synthetic data): confirm-gated eligibility, inert injection, HTTPS apply link, no overflow, no storage writes");
