@@ -20,6 +20,9 @@ const integrity={sha256};
   };
   assert.throws(()=>createRevisionStore(transport,protocol),/Independent SHA-256 verifier required/);
   const store=createRevisionStore(transport,protocol,integrity);
+  assert.equal(store.reset,undefined,
+    "An owner session cannot manually erase trusted revision history or pending review");
+  assert.equal(typeof store.suspend,"function");
   await assert.rejects(store.append(envelope,digest),/Read server revision/);
   assert.equal((await store.refresh()).revision,0);
   assert.equal((await store.append(envelope,digest)).revision,1);
