@@ -165,6 +165,17 @@ test("recovery refuses duplicate accounts, orphan balances and unsafe offer sour
     assert.deepEqual(f.a.workspaceSnapshot(),before);assert.equal(f.a.status().dirty,false);assert.equal(f.writes(),0);
   }
 });
+test("complex recovery sections cannot bypass their dedicated evidence and lifecycle engines",async()=>{
+  const f=await fixture(),before=f.a.workspaceSnapshot();
+  const doc={...before,claims:[{id:"synthetic-unverified",state:"PAID"}],verifiedPayments:{synthetic:true},researchProgress:{}};
+  const ciphertext=await workspace.encrypt(passphrase,doc);
+  const review=await f.a.prepareWorkspaceRecovery({revision:1,ciphertext,sha256:await sha256(ciphertext)},passphrase);
+  assert.deepEqual(review.sections,[]);
+  assert.ok(review.blockedSections.includes("claims"));assert.ok(review.blockedSections.includes("verifiedPayments"));
+  assert.throws(()=>f.a.applyWorkspaceRecovery(["claims"],date),/Review recovery sections/);
+  assert.throws(()=>f.a.applyWorkspaceRecovery(["verifiedPayments"],date),/Review recovery sections/);
+  assert.deepEqual(f.a.workspaceSnapshot(),before);assert.equal(f.writes(),0);
+});
 test("wrong passphrases, tamper, invalid ledger and invalid chronology preserve current workspace",async()=>{
   const f=await fixture(),before=f.a.workspaceSnapshot();
   const malformed=workspace.newWorkspace(date);malformed.ledger=[expense(-1)];

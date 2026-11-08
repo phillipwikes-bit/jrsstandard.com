@@ -1,5 +1,13 @@
 # IncomeOS controlled engineering evidence, 8 November 2026
 
+## Fail-closed recovery scope and owner-session races
+
+Baseline `6aff334f2b75f1d8110941901fe76e77671e96e8`. Generic recovery now lists complex evidence/lifecycle sections as blocked rather than accepting structural shape as semantic validation. Only note, ledger, accounts, balances and offers can enter this generic recovery path. Claims, verified-payment maps, research state and other specialized sections must use their dedicated engines. The recovery UI explicitly reports blocked section names. Selected offers additionally pass existing entry-engine provider/product/date checks and explicit identity, insurance and term checks. This intentionally limits supported generic recovery rather than silently accepting unvalidated evidence.
+
+The separate legacy owner-reader cookie verifier now rechecks expiry and signing-secret identity after asynchronous HMAC verification. A session that expires or whose signing secret rotates during that operation is denied. Cross-origin/cross-site DELETE logout requests return 403 without clearing a cookie. Same-origin and existing non-browser logout behavior remain supported.
+
+Local targeted recovery/runtime/release checks passed twelve tests, zero failed. Local owner authentication/logout/OTP checks passed eighteen tests, zero failed, including synthetic crypto-time expiry and secret rotation. The retained captured-cookie replay test still demonstrates the stateless-cookie limitation; it is not relabelled as durable revocation success. No durable registry is configured or migrated by these changes. Available tools expose no direct approved Supabase migration connection; the Lovable project-management capabilities discovered are not authority to modify the owner vault or substitute the public study database. Owner-record recovery, original DS-A/Codebook/rights and release approval remain blocked. All 16 accounting dispositions remain unchanged. Current-head CI remains required.
+
 ## Recovery relationships and attachment cleanup
 
 Baseline `0554facf4e3a8b158f2b9c5e17b81b327a4de4dc`. Selected account/balance recovery now validates unique canonical account IDs, supported account types, balance-to-account references, real calendar dates, decimal amounts and stated source references. Selected offer recovery refuses non-HTTPS URLs, embedded URL credentials and invalid rates. A rejected application retains the original workspace and performs no save. This strengthens those sections; it does not independently verify financial evidence or provide complete semantic validation of every other workspace section.

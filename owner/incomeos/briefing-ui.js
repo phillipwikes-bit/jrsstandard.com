@@ -49,7 +49,8 @@
         var text=await file.files[0].text();if(revisionDesk!==desk)throw Error("Revision editor changed during file read");
         var review=await desk.prepareWorkspaceRecovery(JSON.parse(text),passInput.value);
         review.sections.forEach(function(key){var row=el(choices,"label"),check=el(row,"input");check.type="checkbox";check.value=key;row.appendChild(document.createTextNode(" "+key));});
-        feedback.textContent=review.sections.length+" changed section(s) reviewed. Programme and current history will be preserved.";
+        feedback.textContent=review.sections.length+" recoverable section(s) reviewed. Programme and current history will be preserved."+
+          (review.blockedSections.length?" These sections require their dedicated validation workflows and cannot be replaced here: "+review.blockedSections.join(", ")+".":"");
       });});
       btn(box,"Apply selected sections as unsaved edit",function(){run(function(){
         var selected=Array.prototype.map.call(choices.querySelectorAll("input:checked"),function(e){return e.value;});

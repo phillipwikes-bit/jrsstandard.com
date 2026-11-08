@@ -71,7 +71,11 @@ async function validCookie(value,secret){
   if(!Number.isSafeInteger(expiry) || expiry<=now || expiry-now>MAX_AGE)return false;
   const signature=urlToBytes(m[3]);
   if(!signature||signature.length!==32)return false;
-  return crypto.subtle.verify('HMAC',await key(secret),signature,encoder.encode(m[1]));
+  const verified=await crypto.subtle.verify('HMAC',await key(secret),signature,encoder.encode(m[1]));
+  // Cryptographic verification yields. Expiry or key rotation during it
+  // cannot authorize a response using the earlier session decision.
+  const finished=Math.floor(Date.now()/1000);
+  return verified && expiry>finished && expiry-finished<=MAX_AGE && envSecret()===secret;
 }
 export async function ownerAccess(req){
   const secret=envSecret();

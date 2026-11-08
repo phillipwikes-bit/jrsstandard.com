@@ -127,16 +127,21 @@
         var inspected=await bridge.inspectEncryptedBackup(backup,passphrase);
         verifySession();validateLedger(inspected.workspace.ledger);
         var candidate=clone(inspected.workspace),baseline=JSON.stringify(working);
-        var template=workspace.newWorkspace("2026-01-01"),changes=[];
+        var template=workspace.newWorkspace("2026-01-01"),changes=[],blockedSections=[];
         Object.keys(candidate).forEach(function(key){
           if(["schema","changeLog","dsProgram"].indexOf(key)>=0)return;
           var expected=template[key],value=candidate[key];
           if(expected===undefined||value===null||Array.isArray(expected)!==Array.isArray(value)||typeof expected!==typeof value)
             throw Error("Unsupported recovery section shape");
-          if(JSON.stringify(value)!==JSON.stringify(working[key]))changes.push(key);
+          if(JSON.stringify(value)!==JSON.stringify(working[key])){
+            // Complex evidence/lifecycle sections must use their own engines.
+            // Shape alone is insufficient authority to restore their contents.
+            if(["note","ledger","accounts","balances","offers"].indexOf(key)>=0)changes.push(key);
+            else blockedSections.push(key);
+          }
         });
         recoveryCandidate={workspace:candidate,baseline:baseline,changes:changes,revision:inspected.revision,sha256:inspected.sha256};
-        return Object.freeze({sections:Object.freeze(changes.slice()),sourceRevision:inspected.revision,
+        return Object.freeze({sections:Object.freeze(changes.slice()),blockedSections:Object.freeze(blockedSections),sourceRevision:inspected.revision,
           sourceSha256:inspected.sha256,serverSaved:false,programmePreserved:true});
       }finally{busy=false;}
     }
@@ -170,6 +175,12 @@
           var url;try{url=new URL(offer.sourceUrl);}catch(e){throw Error("Invalid recovered offer source");}
           if(url.protocol!=="https:"||url.username||url.password||!Number.isFinite(offer.apyPct)||offer.apyPct<0||offer.apyPct>=25)
             throw Error("Invalid recovered offer source or rate");
+          // Reuse the existing entry engine for product/provider/date checks.
+          workspace.addRecord(workspace.newWorkspace(on),"offers",offer,offer.checkedOn);
+          if(typeof offer.id!=="string"||!offer.id.trim()||["FDIC","NCUA","US_TREASURY","NONE"].indexOf(offer.insurance)<0||
+             (offer.termMonths!==undefined&&(!Number.isSafeInteger(offer.termMonths)||offer.termMonths<1))||
+             (offer.earlyPenaltyMonths!==undefined&&(!Number.isFinite(offer.earlyPenaltyMonths)||offer.earlyPenaltyMonths<0)))
+            throw Error("Invalid recovered offer identity, insurance or term");
         });
         current.changeLog=current.changeLog.concat([{on:on,action:"WORKSPACE_BACKUP_RECONCILED",detail:{
           sourceRevision:candidate.revision,sourceSha256:candidate.sha256,sections:sections.slice()}}]);

@@ -133,6 +133,29 @@ test('KNOWN LIMITATION: captured cookie remains server-valid after browser sign-
  assert.equal(replay.status,200);
  assert.equal((await replay.json()).authenticated,true);
 });
+test('cross-origin logout is refused without clearing the owner cookie',async()=>{
+ for(const headers of [{Origin:'https://another.example'},{'Sec-Fetch-Site':'cross-site'}]){
+   const res=await session(new Request(OWNER_URL,{method:'DELETE',headers}));
+   assert.equal(res.status,403);assert.equal(res.headers.has('set-cookie'),false);assertPrivate(res);
+ }
+});
+test('expiry and secret rotation during HMAC verification deny the old session',async()=>{
+ const verify=crypto.subtle.verify;
+ try{
+   for(const change of ['expiry','rotation']){
+     configured();const now=1800000000000;Date.now=()=>now;
+     const cookie=valueFromSetCookie(await createOwnerCookie());
+     crypto.subtle.verify=async function(...args){
+       const result=await verify.apply(this,args);
+       if(change==='expiry')Date.now=()=>now+8*60*60*1000;
+       else process.env.OWNER_DASHBOARD_TOKEN=ROTATED_SECRET;
+       return result;
+     };
+     assert.equal((await session(ownerReq({cookie}))).status,401);
+     crypto.subtle.verify=verify;
+   }
+ }finally{crypto.subtle.verify=verify;Date.now=originalDateNow;configured();}
+});
 test('invalid POST bodies do not yield signed cookies',async()=>{
  configured();
  const invalid=[
