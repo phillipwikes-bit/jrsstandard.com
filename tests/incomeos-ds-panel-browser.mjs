@@ -24,7 +24,7 @@ await new Promise(done=>server.once('listening',done));
 const browser = await chromium.launch({ executablePath: process.env.INCOMEOS_BROWSER, args:['--no-sandbox']});
 try {
   for (const width of [320,375,430]) {
-    const ctx=await browser.newContext({viewport:{width,height:812},isMobile:true,hasTouch:true});
+    const ctx=await browser.newContext({viewport:{width,height:812},isMobile:true,hasTouch:true,reducedMotion:'reduce'});
     const page=await ctx.newPage(), errors=[];
     page.on('pageerror',e=>errors.push(String(e)));
     await page.goto('http://127.0.0.1:'+server.address().port+'/owner/incomeos/index.html');
