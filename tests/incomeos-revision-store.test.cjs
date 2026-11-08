@@ -91,5 +91,35 @@ const integrity={sha256};
   const neverWritten=createRevisionStore({latest:async()=>null,append:transport.append},protocol,integrity);
   assert.equal((await neverWritten.refresh()).revision,0);
   assert.equal((await neverWritten.refresh()).revision,0);
+  // Closing the workspace must revoke edit authorization while retaining
+  // the trusted high-water mark. The same owner may reopen within this session.
+  let observed={revision:8,ciphertext:envelope,ciphertext_sha256:digest};
+  const suspended=createRevisionStore({latest:async()=>observed,append:async()=>{
+    throw Error("No write expected");
+  }},protocol,integrity);
+  assert.equal((await suspended.refresh()).revision,8);
+  suspended.suspend();
+  assert.equal(suspended.currentRevision(),null,"Close revokes the open revision");
+  assert.equal(suspended.highestObservedRevision(),8,"Close retains rollback history");
+  await assert.rejects(suspended.append(envelope,digest),/Read server revision/);
+  observed={...observed,revision:7};
+  await assert.rejects(suspended.refresh(),/refuse overwrite/,
+    "Reopen cannot launder a server rollback after a close");
+  assert.equal(suspended.highestObservedRevision(),8);
+  observed={revision:8,ciphertext:envelope,ciphertext_sha256:digest};
+  assert.equal((await suspended.refresh()).revision,8);
+  suspended.suspend();
+  observed={revision:8,ciphertext:alternateEnvelope,
+    ciphertext_sha256:createHash("sha256").update(alternateEnvelope,"utf8").digest("hex")};
+  await assert.rejects(suspended.refresh(),/different ciphertext/,
+    "Reopen cannot launder same-revision ciphertext substitution");
+  observed={revision:9,ciphertext:envelope,ciphertext_sha256:digest};
+  assert.equal((await suspended.refresh()).requiresOwnerConfirmation,true);
+  suspended.suspend();
+  assert.equal((await suspended.refresh()).requiresOwnerConfirmation,true,
+    "Closing before owner review cannot silently clear a confirmation hold");
+  assert.throws(()=>suspended.confirmRevision(8),/confirmation mismatch/);
+  suspended.confirmRevision(9);
+  assert.equal(suspended.requiresOwnerConfirmation(),false);
   console.log("PASS: revision adapter conflict, integrity, equivocation, uncertain write, recovery rollback");
 })().catch(e=>{console.error(e);process.exitCode=1;});
