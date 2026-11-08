@@ -31,11 +31,11 @@ for(const filename of reviewedESM){
 // IncomeOS static bundle; do not import source libraries outside that bundle.
 const ownerInspection=readFileSync("owner/incomeos/ds-owner-inspection.mjs","utf8");
 const ownerPanel=readFileSync("owner/incomeos/ds-product-panel.mjs","utf8");
-assert.match(ownerPanel,/from '\\.\\/ds-owner-inspection\\.mjs'/,
+assert.ok(ownerPanel.includes("from './ds-owner-inspection.mjs'"),
   "Protected Owner Desk must load only its locally packaged DS inspection module");
-assert.doesNotMatch(ownerInspection,/\\bfetch\\s*\\(|WebSocket|XMLHttpRequest|sendBeacon|localStorage|sessionStorage|document\\.cookie/,
+assert.doesNotMatch(ownerInspection, /\bfetch\s*\(|WebSocket|XMLHttpRequest|sendBeacon|localStorage|sessionStorage|document\.cookie/,
   "Read-only DS inspection must not persist, transmit or request owner records");
-assert.doesNotMatch(ownerInspection,/\\.\\.\\/\\.\\.\\/lib\\//,
+assert.ok(!ownerInspection.includes("../../lib/"),
   "Read-only Owner Desk module cannot import undeployed DS-N1 engine source");
 // Public JRS previews must not package or serve the owner-only workspace.
 // The separate IncomeOS project can use its own project-level ignore file.
