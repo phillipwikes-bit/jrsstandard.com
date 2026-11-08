@@ -143,7 +143,9 @@
           ll=field(f1,"add-label","Description"),la=field(f1,"add-amount","Amount (USD)","text"),lc=select(f1,"add-cat","Category",WS.COST_CATS.map(function(c){return [c,c];}));
         // Only categories valid for the chosen type, so nothing is silently changed to "other".
         lk.addEventListener("change",function(){var cats=lk.value==="income"?WS.INCOME_CATS:WS.COST_CATS;lc.replaceChildren();cats.forEach(function(c){var op=el(lc,"option",c);op.value=c;});});
-        btn(f1,"Add entry",function(){act(function(w){return WS.addRecord(w,"ledger",{kind:lk.value,date:ld.value,payer:lp.value,label:ll.value,amountUsd:la.value,category:lc.value},asOf);},"Entry added");});
+        var payment=select(f1,"add-payment","Payment status",[["pending","Not yet received or paid"],["paid","Received or paid (owner-recorded)"]]);
+        btn(f1,"Add entry",function(){act(function(w){return WS.addRecord(w,"ledger",{kind:lk.value,date:ld.value,payer:lp.value,label:ll.value,amountUsd:la.value,category:lc.value,
+          status:payment.value==="paid"?"paid":"expected",paymentStatus:payment.value==="paid"?"paid":"scheduled"},asOf);},"Entry added");});
         var f2=el(s,"div",null,"briefing-actions");el(f2,"p","Account (for net worth)");
         var an=field(f2,"add-acct-name","Account name"),at=select(f2,"add-acct-type","Account type",WS.ACCOUNT_TYPES.map(function(t){return [t,t.replace(/_/g," ")];}));
         btn(f2,"Add account",function(){act(function(w){return WS.addRecord(w,"accounts",{name:an.value,type:at.value},asOf);},"Account added");});

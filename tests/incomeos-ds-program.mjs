@@ -94,8 +94,8 @@ assert.deepEqual(q.map(t=>[t.id,t.state]),[["T-1","READY"],["T-2","BLOCKED_BY_DE
 
 // Finance: actuals from tagged workspace rows only; revenue needs an executed agreement and bank match; projections stay separate.
 let ws=W.newWorkspace(on);
-ws=W.addRecord(ws,"ledger",{kind:"outflow",date:"2026-10-12",payer:"API provider",amountUsd:"40.00",category:"software",dsDimension:"software_api"},on);
-ws=W.addRecord(ws,"ledger",{kind:"outflow",date:"2026-11-02",payer:"Host",amountUsd:"20.00",category:"software",dsDimension:"hosting_infrastructure"},on);
+ws=W.addRecord(ws,"ledger",{kind:"outflow",date:"2026-10-12",payer:"API provider",amountUsd:"40.00",category:"software",dsDimension:"software_api",paymentStatus:"paid"},on);
+ws=W.addRecord(ws,"ledger",{kind:"outflow",date:"2026-11-02",payer:"Host",amountUsd:"20.00",category:"software",dsDimension:"hosting_infrastructure",paymentStatus:"paid"},on);
 ws=W.addRecord(ws,"ledger",{kind:"outflow",date:"2026-10-20",payer:"Unrelated",amountUsd:"99.00",category:"other"},on);
 ws=W.addRecord(ws,"ledger",{kind:"income",date:"2026-10-25",payer:"Example Org",amountUsd:"500.00",category:"business",dsDimension:"licensing_revenue",dsAgreementId:"PL-001"},on);
 assert.throws(()=>W.addRecord(ws,"ledger",{kind:"income",date:on,payer:"x",amountUsd:"1.00",dsDimension:"software_api"},on),/revenue dimension/);
@@ -176,7 +176,7 @@ for(const origin of ["JRS website visitor","Research participant","jrs training"
 // Financial evidence correction: do not net an unattributed refund against an
 // original programme charge, even with identical merchant, amount or reference.
 {let w2=W.newWorkspace(on);
- w2=W.addRecord(w2,"ledger",{kind:"outflow",date:"2026-10-12",payer:"API provider",amountUsd:"40.00",category:"software",dsDimension:"software_api"},on);
+ w2=W.addRecord(w2,"ledger",{kind:"outflow",date:"2026-10-12",payer:"API provider",amountUsd:"40.00",category:"software",dsDimension:"software_api",paymentStatus:"paid"},on);
  w2.ledger[0].reference="ORDER-TEST-09";
  w2.ledger.push({...w2.ledger[0],id:"refund-1",type:"refund",date:"2026-11-02",amountUsd:"10.00"});
  let f=D.finance(p,w2,on);
@@ -200,7 +200,7 @@ for(const origin of ["JRS website visitor","Research participant","jrs training"
 // recorded product operating cost, even when a product dimension is supplied.
 {
  let wMove=W.newWorkspace(on);
- wMove=W.addRecord(wMove,"ledger",{kind:"outflow",date:"2026-10-12",payer:"Software vendor",amountUsd:"12.00",category:"software",dsDimension:"software_api"},on);
+ wMove=W.addRecord(wMove,"ledger",{kind:"outflow",date:"2026-10-12",payer:"Software vendor",amountUsd:"12.00",category:"software",dsDimension:"software_api",paymentStatus:"paid"},on);
  wMove=W.addRecord(wMove,"ledger",{kind:"outflow",date:"2026-10-13",payer:"Investment custodian",amountUsd:"500.00",category:"investing",dsDimension:"reinvestment"},on);
  wMove=W.addRecord(wMove,"ledger",{kind:"outflow",date:"2026-10-14",payer:"Internal account",amountUsd:"75.00",category:"software",dsDimension:"software_api"},on);
  wMove.ledger[1].type="capital";
@@ -228,6 +228,7 @@ for(const origin of ["JRS website visitor","Research participant","jrs training"
    const row=wStatus.ledger[wStatus.ledger.length-1];
    row.type=type;
    if(paymentStatus!=="legacy")row.paymentStatus=paymentStatus;
+   else delete row.paymentStatus; // explicitly construct a historical missing-status row
  };
  add("12.00","paid","expense");
  add("7.00","legacy","expense"); // existing accountant treats missing status as paid

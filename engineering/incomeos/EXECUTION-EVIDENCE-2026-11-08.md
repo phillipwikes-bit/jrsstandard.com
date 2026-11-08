@@ -40,6 +40,22 @@ The process exposes no database/migration connection for an approved non-product
 
 Further independent work includes a staged binding from the existing Owner Desk workspace lifecycle to the revision coordinator, full-workspace recovery reconciliation beyond accounting-row restoration, protected-deployment revalidation when capacity is available, and original-source provenance/reproducibility inspection when retrieval succeeds. Activation and owner acceptance remain subject to the documented protocol. The UI/legacy vault and staged CAS service are not represented as live-integrated by this session's source tests.
 
+### Verified backup and database commits
+
+Backup restoration engineering commit `8cefb87380cde9d5afa869b428a97bc3ae92a4eb` completed all seven workflows successfully: accounting/DS browser `42472007948`, mobile/staging browser `42472007968`, disposable PostgreSQL `42472007965`, anonymous probe `42472007954`, accounting source `42472007950`, isolated security `42472007959`, private prototype `42472007956`. The mobile job log explicitly records successful real AES-GCM staged accounting, CAS, recovery and ledger-backup restoration at its simulated 375px viewport.
+
+PostgreSQL exercise commit `ec8be2baf2219883dd6dc2660bfc1d10a51e4cf6` completed all seven workflows successfully: private prototype `42472225523`, isolated security `42472225549`, anonymous probe `42472225500`, accounting source `42472225522`, accounting/DS browser `42472225486`, disposable PostgreSQL `42472225509`, mobile/staging browser `42472225476`. Database job `128705465474` records 24 race cycles, 48 attempted race writes, 24 committed race writes, 24 rejected stale writes, one rollback check, one explicit recovery append, two elapsed seconds and zero unexpected failures. The setup race is separate from those 24 cycles. These are bounded synthetic fixture results, not owner-operation or unattended-automation results.
+
+GitHub commit statuses independently show both configured Vercel projects rejecting the commit at the provider build-rate limit. This is a current observed protected-preview blocker, not a successful deployment or an instruction to upgrade a paid plan. No deployment-protection setting was changed.
+
+### Shared entry-path compatibility correction
+
+Cross-component tests reproduced four failures: workspace/programme-created expenses lacked the accountant's allocation/payment fields, income lacked receipt/scope fields, explicitly supplied payment states were dropped, and deleting an older row could make the next generated identifier collide. This could quarantine the shared ledger after an otherwise accepted entry in This week or the programme panel.
+
+The existing workspace entry engine now emits accountant-compatible rows. Income defaults to expected and expenses to scheduled; the existing forms expose an explicit owner-recorded payment choice. Expense allocation remains unknown (`null`), evidence remains missing, and no bank link is inferred. New IDs skip existing identifiers, including after deletion. Existing rows are not rewritten or automatically reclassified. Synthetic programme-finance fixtures that represent paid historical expenses now state paid explicitly; the historical missing-status case explicitly removes that field so legacy behavior remains tested.
+
+The four new compatibility tests pass locally and are included in isolated-security CI. Existing browser checks are extended to verify that both entry panels leave the same accountant ledger editable, and that unpaid entries remain expected/scheduled. A03/A04/A05/A09 gain evidence references without a status upgrade. Current-commit browser and complete CI outcomes remain to be collected.
+
 Repository: `phillipwikes-bit/jrsstandard.com`. Draft PR #180. Branch: `verification/incomeos-accounting-ci-20261108`. Starting commit: `e55e3d38f8ffd57e2d059cd12d6b5b8faaab6e63`.
 
 ## Corrections implemented

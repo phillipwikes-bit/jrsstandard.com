@@ -197,6 +197,11 @@ assert.match(await page.locator("#briefing-status").textContent(),/Not changed: 
 await page.locator("#add-amount").fill("85.00");
 await page.locator("#briefing-output").getByRole("button",{name:"Add entry"}).click();
 assert.match(await page.locator("#briefing-status").textContent(),/Entry added/);
+assert.doesNotMatch(await page.locator("#ledger-mode").textContent(),/QUARANTINED/,
+  "This week creates an accountant-compatible expense in the same workspace");
+const createdExpense=await page.evaluate(()=>window.IncomeOSAccountant.entriesForAnalysis()[0]);
+assert.equal(createdExpense.paymentStatus,"scheduled");
+assert.equal(createdExpense.businessUse,null);
 // Category choices follow the type; a half-typed field survives a background refresh.
 await page.locator("#add-kind").selectOption("income");
 const cats=await page.$$eval("#add-cat option",o=>o.map(x=>x.value));
@@ -206,6 +211,15 @@ await page.evaluate(()=>document.dispatchEvent(new CustomEvent("incomeos:researc
 assert.equal(await page.locator("#add-payer").inputValue(),"Half typed vendor","typed text survives a re-render");
 assert.equal(await page.locator("#add-kind").inputValue(),"income");
 assert.ok((await page.$$eval("#add-cat option",o=>o.map(x=>x.value))).includes("research"),"category options still match income after re-render");
+await page.locator("#add-amount").fill("35.00");
+await page.locator("#add-cat").selectOption("research");
+await page.locator("#briefing-output").getByRole("button",{name:"Add entry"}).click();
+const createdIncome=await page.evaluate(()=>window.IncomeOSAccountant.entriesForAnalysis().find(e=>e.kind==="income"));
+assert.equal(createdIncome.status,"expected");
+assert.equal(createdIncome.scope,"income");
+assert.equal(createdIncome.evidenceStatus,"missing");
+assert.doesNotMatch(await page.locator("#ledger-mode").textContent(),/QUARANTINED/,
+  "This week creates an accountant-compatible income record without inventing receipt");
 // The checklist does not count a fresh workspace as saved.
 await page.locator("#briefing-new").click();
 assert.ok(!(await page.$$eval("#start-here-steps li",els=>els[4].textContent)).startsWith("Done:"),"new workspace is not saved");

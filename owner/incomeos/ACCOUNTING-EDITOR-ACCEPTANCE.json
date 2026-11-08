@@ -53,7 +53,8 @@
       "status": "SOURCE TESTED",
       "evidence": [
         "tests/incomeos-accounting-editor-browser.mjs",
-        "tests/incomeos-accountant-fixes.mjs"
+        "tests/incomeos-accountant-fixes.mjs",
+        "tests/incomeos-workspace-accountant-compatibility.test.cjs"
       ]
     },
     {
@@ -62,7 +63,8 @@
       "status": "SOURCE TESTED",
       "evidence": [
         "tests/incomeos-accounting-editor-browser.mjs",
-        "tests/incomeos-accountant-fixes.mjs"
+        "tests/incomeos-accountant-fixes.mjs",
+        "tests/incomeos-workspace-accountant-compatibility.test.cjs"
       ]
     },
     {
@@ -70,7 +72,8 @@
       "requirement": "Correct editing and deletion behavior",
       "status": "SOURCE TESTED",
       "evidence": [
-        "tests/incomeos-accounting-editor-browser.mjs"
+        "tests/incomeos-accounting-editor-browser.mjs",
+        "tests/incomeos-workspace-accountant-compatibility.test.cjs"
       ],
       "limitation": "Edits keep a correction history (earlier values and source); browser-tested with synthetic records"
     },
@@ -116,7 +119,8 @@
       "evidence": [
         "tests/incomeos-accountant-fixes.mjs",
         "tests/incomeos-accounting-controls.mjs",
-        "tests/incomeos-accounting-editor-browser.mjs"
+        "tests/incomeos-accounting-editor-browser.mjs",
+        "tests/incomeos-workspace-accountant-compatibility.test.cjs"
       ],
       "limitation": "CSV import skips duplicates; a manual entry matching an existing record's kind, date, amount and payer asks first, and unconfirmed repeats are reported as a completeness gap. Duplicates across different payees or amounts are not detected"
     },

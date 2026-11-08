@@ -148,8 +148,9 @@
     form(s,"Pipeline prospect",[["id","Identifier","text"],["organization","Organization","text"]],
       function(v){attempt(function(x){return DS.add(x,"pipeline",v,asOf);},"Prospect identified");});
     var costDims=DS.COST_DIMS.map(function(d){return [d,d.replace(/_/g," ")];});
-    form(s,"Program cost (adds a ledger row)",[["date","Date","date"],["payer","Vendor","text"],["amountUsd","Amount (USD)","text"],["dsDimension","Dimension","select",costDims]],
-      function(v){dispatch("incomeos:ds-ledger",{entry:{kind:"outflow",date:v.date,payer:v.payer,amountUsd:v.amountUsd,category:"software",dsDimension:v.dsDimension}},"Program cost added to the workspace ledger");},"Add cost");
+    form(s,"Program cost (adds a ledger row)",[["date","Date","date"],["payer","Vendor","text"],["amountUsd","Amount (USD)","text"],["dsDimension","Dimension","select",costDims],
+      ["paymentStatus","Payment status","select",[["scheduled","Scheduled, not paid"],["paid","Paid (owner-recorded)"],["disputed","Disputed, not counted"]]]],
+      function(v){dispatch("incomeos:ds-ledger",{entry:{kind:"outflow",date:v.date,payer:v.payer,amountUsd:v.amountUsd,category:"software",dsDimension:v.dsDimension,paymentStatus:v.paymentStatus}},"Program cost added to the workspace ledger");},"Add cost");
     actions(out,p,asOf);
   }
   // Phase 3 and 4 records and the owner's own controlled actions. Each goes through the engine's rules.
