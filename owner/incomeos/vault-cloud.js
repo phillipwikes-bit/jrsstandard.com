@@ -128,7 +128,32 @@
   // Panel wiring (browser only).
   if(typeof document==="undefined")return;
   var $=function(id){return document.getElementById(id);};
-  function ask(name,detail){return new Promise(function(resolve){detail.done=resolve;document.dispatchEvent(new CustomEvent(name,{detail:detail}));setTimeout(function(){resolve({ok:false,error:"No workspace panel answered"});},15000);});}
+  function ask(name,detail){
+    return new Promise(function(resolve){
+      var settled=false,expired=false,timer=null;
+      var assertOwner=detail.assertSession;
+      // The deadline applies to the local cryptographic handoff, not only
+      // its caller. A delayed PBKDF2/AES completion may not install plaintext
+      // or submit an encrypted upload after the vault reports a timeout.
+      if(typeof assertOwner==="function")detail.assertSession=function(){
+        if(expired)throw Error("Vault workspace handoff expired");
+        return assertOwner();
+      };
+      detail.done=function(value){
+        if(settled)return;
+        settled=true;
+        if(timer!==null)clearTimeout(timer);
+        resolve(value);
+      };
+      timer=setTimeout(function(){
+        if(settled)return;
+        expired=true;
+        detail.done({ok:false,error:"Workspace handoff timed out; no vault operation was accepted"});
+      },15000);
+      try{document.dispatchEvent(new CustomEvent(name,{detail:detail}));}
+      catch(e){detail.done({ok:false,error:"Workspace panel unavailable"});}
+    });
+  }
   function init(){
     var st=$("cloud-vault-status");if(!st)return;
     function say(t){st.textContent=t;}
