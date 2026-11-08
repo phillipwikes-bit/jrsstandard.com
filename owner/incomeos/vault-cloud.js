@@ -55,7 +55,7 @@
     return {ok:true};
   }
   async function latest(){
-    var rows=await call("/rest/v1/incomeos_vault?select=id,ciphertext,sha256,saved_at&order=saved_at.desc&limit=1",{auth:true});
+    var rows=await call("/rest/v1/incomeos_vault?select=id,ciphertext,sha256,saved_at&order=saved_at.desc,id.desc&limit=1",{auth:true});
     if(!Array.isArray(rows)||!rows.length)return null;
     var r=rows[0];
     if(typeof r.ciphertext!=="string"||r.ciphertext.length>5000000)throw Error("The vault copy is missing or exceeds the 5 MB encrypted workspace limit");

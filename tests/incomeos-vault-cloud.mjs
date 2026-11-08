@@ -26,6 +26,7 @@ async function fakeFetch(url,opt){
   if(u.pathname==="/auth/v1/token"){const b=JSON.parse(opt.body);return b.password==="right password 12"?ok({access_token:"tok-1",user:{id:"u-1",email:b.email}}):ok({error_description:"Invalid login credentials"},400);}
   if(u.pathname==="/auth/v1/signup")return ok({id:"u-1"});
   if(u.pathname==="/rest/v1/incomeos_vault"){
+    if(opt.method!=="POST")assert.equal(u.searchParams.get("order"),"saved_at.desc,id.desc","latest recovery must break same-timestamp ties by immutable id");
     assert.equal(opt.headers.Authorization,"Bearer tok-1");
     if(!owner)return opt.method==="POST"?ok({message:"new row violates row-level security policy"},403):ok([]);
     if(opt.method==="POST"){rows.unshift({id:rows.length+1,...JSON.parse(opt.body),saved_at:"2026-11-05T12:00:00Z"});return ok("",201);}
