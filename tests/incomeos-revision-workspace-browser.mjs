@@ -100,7 +100,11 @@ try {
     assert(absent,"Missing vault session must block runtime construction");
     window.IncomeOSVaultCloud={
       signedIn:()=>true,
-      createRevisionTransport:()=>transport
+      createRevisionTransport:()=>Object.freeze({
+        latest:transport.latest,
+        append:transport.append,
+        assertSession:()=>true
+      })
     };
     absent=false;
     try{runtime.createRuntime({});}catch(e){absent=String(e).includes("Explicit staging-only");}
