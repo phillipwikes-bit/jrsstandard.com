@@ -40,6 +40,19 @@ assert.ok(await page.locator("#view-ledger").isVisible(),"stays on the Income sc
 assert.equal(await page.evaluate(()=>document.activeElement.id),"receipt-label","ready to type the first record");
 assert.ok(!(await page.locator("#financial-staging-interlock").isVisible()));
 assert.match(await page.locator("#ledger-mode").textContent(),/Editing the ledger in your open workspace/);
+// Decision Spellchecker must be part of this same owner workspace, not a
+// second dashboard or ledger. Starting the programme uses the existing
+// workspace update event, with no customer reviewer or payment action.
+await nav("ds");
+assert.ok(await page.locator("#ds-start").isVisible(),"programme start is available with the owner workspace");
+await page.locator("#ds-start").click();
+await page.waitForFunction(()=>document.querySelector("#ds-product-runtime")?.textContent.includes("Candidate source"));
+const dsView=await page.locator("#ds-product-runtime").textContent();
+assert.match(dsView,/DS-N1/,"integrated panel identifies the synthetic development candidate");
+assert.match(dsView,/Original SP acceptance/,"original DS-A acceptance stays visible and separate");
+assert.match(dsView,/NOT_AUTHORIZED/,"product access and release remain blocked");
+assert.ok(await page.locator("#ds-product-runtime button").isDisabled(),"synthetic reviewer is not exposed as a customer control");
+await nav("ledger");
 // Add a received research payment and an expense with unknown business use.
 await page.locator("#receipt-label").fill("Synthetic study payout");await page.locator("#receipt-payer").fill("Synthetic Recruiter");
 await page.locator("#receipt-amount").fill("150");await page.locator("#receipt-date").fill("2026-10-15");
@@ -313,6 +326,22 @@ assert.ok(await page.locator("#financial-staging-interlock").isHidden(),"Valid w
 assert.equal(await page.locator("#receipt-label").inputValue(),"","Quarantined income draft does not reappear after recovery");
 assert.equal(await page.locator("#cost-label").inputValue(),"","Quarantined expense draft does not reappear after recovery");
 
+// A missing or malformed workspace replacement must immediately clear the
+// previous programme and finance projection, including the editing controls.
+await page.evaluate(()=>document.dispatchEvent(new CustomEvent("incomeos:workspace-loaded",{
+  detail:{...window.IncomeOSWorkspace.newWorkspace("2026-11-08"),
+    dsProgram:window.IncomeOSDSProgram.newProgram("2026-11-08")}
+})));
+assert.match(await page.locator("#ds-product-runtime").textContent(),/Candidate source/);
+await page.evaluate(()=>document.dispatchEvent(new CustomEvent("incomeos:workspace-restored",{
+  detail:{dsProgram:window.IncomeOSDSProgram.newProgram("2026-11-08")}
+})));
+assert.match(await page.locator("#ds-product-runtime").textContent(),/Load an IncomeOS owner workspace/,
+  "malformed workspace replacement must revoke the prior programme view");
+assert.ok(await page.locator("#ds-start").isHidden(),"invalid workspace cannot retain DS editor controls");
+await page.evaluate(()=>document.dispatchEvent(new CustomEvent("incomeos:workspace-loaded",{detail:null})));
+assert.match(await page.locator("#ds-product-runtime").textContent(),/Load an IncomeOS owner workspace/,
+  "closing a workspace must not leave a stale programme visible");
 assert.equal(await page.evaluate(()=>localStorage.length+sessionStorage.length),0);
 assert.deepEqual(errors,[]);
 await browser.close();server.close();
