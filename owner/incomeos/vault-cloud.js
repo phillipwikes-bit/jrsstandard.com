@@ -124,6 +124,17 @@
   function init(){
     var st=$("cloud-vault-status");if(!st)return;
     function say(t){st.textContent=t;}
+    // Bind the entire local encrypt/decrypt handoff to the authenticated
+    // session that initiated it, not just the HTTP request. The callback
+    // exposes no token, owner identifier or epoch to another module.
+    function sessionAssertion(){
+      if(!session)throw Error("Sign in to your vault first");
+      var epoch=sessionEpoch,userId=session.userId;
+      return function(){
+        if(!session||sessionEpoch!==epoch||session.userId!==userId)
+          throw Error("Vault session changed during workspace operation");
+      };
+    }
     var saving=false;
     function refresh(){var on=signedIn();$("cloud-vault-signin").hidden=on;$("cloud-vault-signup").hidden=on;$("cloud-vault-signout").hidden=!on;$("cloud-vault-save").disabled=!on||saving;$("cloud-vault-restore").disabled=!on||saving;$("cloud-vault-password").value=on?"":$("cloud-vault-password").value;}
     async function guard(fn){try{await fn();}catch(e){say("Vault: "+e.message);}refresh();}
@@ -136,15 +147,20 @@
       if(saving)return;
       saving=true;refresh();
       guard(async function(){
-        var r=await ask("incomeos:vault-encrypt",{});if(!r.ok)throw Error(r.error);
+        var verify=sessionAssertion();
+        var r=await ask("incomeos:vault-encrypt",{assertSession:verify});if(!r.ok)throw Error(r.error);
+        verify();
         say("Saving encrypted copy…");await save(r.text);
+        verify();
         document.dispatchEvent(new CustomEvent("incomeos:vault-saved",{detail:{saveId:r.saveId}}));
         say("Encrypted copy saved to your private vault.");
       }).finally(function(){saving=false;refresh();});
     });
     $("cloud-vault-restore").addEventListener("click",function(){guard(async function(){
-      say("Fetching your latest encrypted save…");var v=await latest();if(!v){say("Your vault has no saves yet.");return;}
-      var r=await ask("incomeos:vault-open",{text:v.text});if(!r.ok)throw Error(r.error);say("Opened the vault copy saved "+String(v.savedAt).slice(0,16).replace("T"," ")+" UTC.");});});
+      var verify=sessionAssertion();
+      say("Fetching your latest encrypted save…");var v=await latest();verify();if(!v){say("Your vault has no saves yet.");return;}
+      var r=await ask("incomeos:vault-open",{text:v.text,assertSession:verify});if(!r.ok)throw Error(r.error);
+      verify();say("Opened the vault copy saved "+String(v.savedAt).slice(0,16).replace("T"," ")+" UTC.");});});
     refresh();
   }
   if(document.readyState==="loading")document.addEventListener("DOMContentLoaded",init);else init();
