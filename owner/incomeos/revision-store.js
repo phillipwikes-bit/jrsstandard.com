@@ -89,13 +89,15 @@
       if(busy)throw Error("Cannot suspend an in-flight revision operation");
       revision=null;
     }
-    function reset(){if(busy)throw Error("Cannot reset an in-flight revision operation");revision=null;highWaterRevision=null;highWaterSha=null;confirmationRequired=false;}
+    // A session-bound revision store has no public history-reset operation.
+    // Re-authentication creates a new store; closing within a session must
+    // never erase the rollback evidence or owner-review hold.
     function confirmRevision(value){
       if(busy)throw Error("Cannot confirm an in-flight revision operation");
       if(revision===null||!integer(value)||value!==revision)throw Error("Revision confirmation mismatch");
       confirmationRequired=false;
     }
-    return Object.freeze({refresh:refresh,append:append,suspend:suspend,reset:reset,confirmRevision:confirmRevision,requiresOwnerConfirmation:function(){return confirmationRequired;},currentRevision:function(){return revision;},highestObservedRevision:function(){return highWaterRevision;}});
+    return Object.freeze({refresh:refresh,append:append,suspend:suspend,confirmRevision:confirmRevision,requiresOwnerConfirmation:function(){return confirmationRequired;},currentRevision:function(){return revision;},highestObservedRevision:function(){return highWaterRevision;}});
   }
   if(root)root.IncomeOSRevisionStore=Object.freeze({createRevisionStore:createRevisionStore});
   if(typeof module!=="undefined"&&module.exports)module.exports={createRevisionStore:createRevisionStore};
