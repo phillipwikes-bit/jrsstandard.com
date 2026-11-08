@@ -167,11 +167,17 @@
       if(undoBtn)undoBtn.hidden=!state.history.length;
       status.textContent=state.ws?(state.dirty?"Unsaved changes. Save the updated workspace to keep them.":"Workspace loaded in memory only. Nothing is stored or sent."):"Showing system health only. Load your workspace file to see your finances.";
     }
-    async function openText(text){
+    async function openText(text,assertOwnerSession){
+      if(assertOwnerSession!==undefined&&typeof assertOwnerSession!=="function")
+        throw Error("Invalid owner session check");
+      if(assertOwnerSession)assertOwnerSession();
       // Decryption is asynchronous. A newly created, edited, or replaced workspace
       // must not be overwritten by an older restore that finishes afterward.
       var beforeWs=state.ws,beforeDirty=state.dirty,beforeSnapshot=beforeWs?JSON.stringify(beforeWs):null;
       var loaded=await WS.load(text,passInput&&passInput.value||"");
+      // Never install a plaintext workspace after the initiating vault owner
+      // has signed out while PBKDF2/AES decryption was running.
+      if(assertOwnerSession)assertOwnerSession();
       if(state.ws!==beforeWs||state.dirty!==beforeDirty||(beforeWs&&JSON.stringify(state.ws)!==beforeSnapshot))
         throw Error("Workspace changed during file restore. The newer workspace was preserved.");
       if(loaded.schema!==WS.SCHEMA)throw Error("That is a profile, not a workspace. Open it in the opportunities panel.");
@@ -185,7 +191,10 @@
     document.addEventListener("incomeos:vault-encrypt",async function(ev){var d=ev.detail;if(!d||typeof d.done!=="function")return;
       try{if(!state.ws)throw Error("Open or start a workspace first");var p=passInput&&passInput.value||"";if(p.length<16)throw Error("Enter a passphrase of at least 16 characters; the vault only accepts encrypted saves");
         var snapshot=JSON.stringify(state.ws),saveId=++vaultSaveSequence;
+        if(typeof d.assertSession!=="function")throw Error("Vault owner session check required");
+        d.assertSession();
         var encrypted=await WS.encrypt(p,JSON.parse(snapshot));
+        d.assertSession();
         pendingVaultSave={saveId:saveId,snapshot:snapshot};
         d.done({ok:true,text:encrypted,saveId:saveId});
       }catch(err){d.done({ok:false,error:err.message});}});
@@ -206,7 +215,7 @@
     document.addEventListener("incomeos:vault-open",async function(ev){var d=ev.detail;if(!d||typeof d.done!=="function")return;
       try{if(typeof d.text!=="string"||!WS.isEncrypted(d.text))throw Error("The vault returned something that is not an encrypted workspace");
         if(state.dirty&&!confirm("Replace the unsaved workspace on screen with the vault copy?"))return d.done({ok:false,error:"Cancelled"});
-        await openText(d.text);d.done({ok:true});}catch(err){d.done({ok:false,error:err.message});}});
+        await openText(d.text,d.assertSession);d.done({ok:true});}catch(err){d.done({ok:false,error:err.message});}});
     button.addEventListener("click",async function(){
       var f=input.files&&input.files[0];
       if(!f){status.textContent="Choose your workspace file first.";return;}
