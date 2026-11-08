@@ -81,6 +81,25 @@ readVault.signOut();
 releaseRead();
 await assert.rejects(pendingRead,/session changed/);
 assert.equal(readVault.signedIn(),false);
+// Signing out while the hash is pending must prevent any authenticated POST.
+let releaseDigest,prePostCount=0;
+const pausedCrypto={subtle:{digest:async(...args)=>new Promise(resolve=>{
+  releaseDigest=async()=>resolve(await webcrypto.subtle.digest(...args));
+})}};
+const hashCtx={window:{crypto:pausedCrypto,fetch:async(url,opt)=>{
+  if(url.includes("/rest/v1/incomeos_vault")&&opt.method==="POST")prePostCount++;
+  return fakeFetch(url,opt);
+}},TextEncoder,JSON,URL,Promise,Error,setTimeout};
+vm.runInNewContext(src,hashCtx);
+const hashVault=hashCtx.window.IncomeOSVaultCloud;
+await hashVault.signIn("owner@example.org","right password 12");
+const pendingHashSave=hashVault.save(envelope);
+assert.equal(typeof releaseDigest,"function","save must calculate integrity hash");
+hashVault.signOut();
+await releaseDigest();
+await assert.rejects(pendingHashSave,/session changed/);
+assert.equal(prePostCount,0,"sign-out during hashing must prevent vault upload");
+assert.equal(hashVault.signedIn(),false);
 // A save already in flight must not report success after the owner signs out.
 let releaseSave;
 const delayedSaveFetch=(url,opt)=>url.includes("/rest/v1/incomeos_vault")&&opt.method==="POST"?
