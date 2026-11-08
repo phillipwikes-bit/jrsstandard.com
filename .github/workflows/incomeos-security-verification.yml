@@ -23,6 +23,7 @@ on:
       - 'owner/incomeos/accountant.js'
       - 'tests/incomeos-revision-accounting-coordinator.test.cjs'
       - 'tests/incomeos-revision-accounting-runtime.test.cjs'
+      - 'tests/incomeos-revision-reliability-soak.test.cjs'
       - 'tests/incomeos-revision-release-gate.test.cjs'
       - 'tests/incomeos-vault-revision-session.test.cjs'
       - 'owner/incomeos/ACCOUNTING-EDITOR-ACCEPTANCE.json'
@@ -62,6 +63,7 @@ jobs:
           node tests/incomeos-revision-workspace-bridge.test.cjs
           node tests/incomeos-revision-accounting-coordinator.test.cjs
           node tests/incomeos-revision-accounting-runtime.test.cjs
+          node tests/incomeos-revision-reliability-soak.test.cjs
           node tests/incomeos-revision-release-gate.test.cjs
           node tests/incomeos-vault-revision-session.test.cjs
           node tests/incomeos-revision-staging-sql.test.cjs
