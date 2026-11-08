@@ -82,6 +82,41 @@
       working=next;dirty=true;
       return Object.freeze({unsaved:true,serverSaved:false});
     }
+    function editWorkspace(transform,on){
+      ensureIdle();verifySession();
+      if(!opened||!working||needsReview||needsRecovery||typeof transform!=="function")
+        throw Error("Open and confirm a verified owner workspace before editing");
+      if(typeof on!=="string"||!/^\d{4}-\d{2}-\d{2}$/.test(on)||!Number.isFinite(Date.parse(on+"T00:00:00Z"))||new Date(on+"T00:00:00Z").toISOString().slice(0,10)!==on)
+        throw Error("Valid workspace edit date required");
+      busy=true;
+      try{
+        var next=clone(workspace.validate(transform(clone(working))));
+        validateLedger(next.ledger);
+        if(JSON.stringify(next.dsProgram)!==JSON.stringify(working.dsProgram))
+          throw Error("Programme changes require the existing programme update validator");
+        var before=working.changeLog,after=next.changeLog,retained=false;
+        if(!Array.isArray(before)||!Array.isArray(after))throw Error("Workspace history required");
+        // Existing workspace engines retain at most 5000 history entries.
+        // Permit their bounded rollover, but never an arbitrary history rewind.
+        for(var drop=0;drop<=Math.min(20,before.length);drop++){
+          if(drop>0&&(before.length<5000||after.length!==5000))continue;
+          var keep=before.length-drop;
+          if(after.length>keep&&JSON.stringify(after.slice(0,keep))===JSON.stringify(before.slice(drop)))retained=true;
+        }
+        if(!retained)throw Error("Workspace edit must preserve history and append its change record");
+        verifySession();working=next;dirty=true;
+        return Object.freeze({unsaved:true,serverSaved:false});
+      }finally{busy=false;}
+    }
+    function reverseEdit(previous,on){
+      ensureIdle();verifySession();
+      if(!dirty)throw Error("Only an unsaved workspace edit can be reversed");
+      return editWorkspace(function(current){
+        var next=clone(workspace.validate(previous));
+        next.changeLog=current.changeLog.concat([{on:on,action:"WORKSPACE_EDIT_REVERSED",detail:{ownerRequested:true}}]);
+        return next;
+      },on);
+    }
     async function restoreLedgerBackup(backup,passphrase,on){
       ensureIdle();verifySession();
       if(!opened||!working||dirty||needsReview||needsRecovery)
@@ -174,7 +209,7 @@
       if(dirty)throw Error("Preserve or explicitly discard unsaved accounting draft before closing");
       bridge.close();working=null;opened=false;needsReview=false;needsRecovery=false;
     }
-    return Object.freeze({open:open,initializeNew:initializeNew,replaceLedger:replaceLedger,updateProgram:updateProgram,restoreLedgerBackup:restoreLedgerBackup,
+    return Object.freeze({open:open,initializeNew:initializeNew,replaceLedger:replaceLedger,updateProgram:updateProgram,editWorkspace:editWorkspace,reverseEdit:reverseEdit,restoreLedgerBackup:restoreLedgerBackup,
       save:save,confirmOpenedRevision:confirmOpenedRevision,pendingDraft:pendingDraft,
       workspaceSnapshot:workspaceSnapshot,
       exportPendingDraftEncrypted:exportPendingDraftEncrypted,

@@ -24,7 +24,7 @@
     window.IncomeOSRevisionDeskHost=Object.freeze({attach:function(coordinator,options){
       if(!options||options.stagingOnly!==true||revisionDesk||state.ws||state.dirty)
         throw Error("Attach staging revisions only before opening a local workspace");
-      ["open","save","status","workspaceSnapshot","replaceLedger","updateProgram","initializeNew",
+      ["open","save","status","workspaceSnapshot","replaceLedger","updateProgram","editWorkspace","reverseEdit","initializeNew",
        "confirmOpenedRevision","exportPendingDraftEncrypted","restoreLedgerBackup","discardDraft","close"].forEach(function(k){
         if(!coordinator||typeof coordinator[k]!=="function")throw Error("Verified revision coordinator required");
       });
@@ -47,7 +47,7 @@
     function arr(x){return Array.isArray(x)?x:[];}
     function act(fn,label,revisionEdit){
       try{var before=state.ws;
-        if(revisionDesk){if(typeof revisionEdit!=="function")throw Error("This workspace action is unavailable during staged revision editing");revisionEdit();state.ws=revisionDesk.workspaceSnapshot();}
+        if(revisionDesk){if(typeof revisionEdit==="function")revisionEdit();else revisionDesk.editWorkspace(fn,today());state.ws=revisionDesk.workspaceSnapshot();}
         else state.ws=fn(state.ws);
         state.history.push(before);if(state.history.length>20)state.history.shift();state.dirty=true;clearTyped();
         try{document.dispatchEvent(new CustomEvent("incomeos:workspace-changed",{detail:state.ws}));}catch(e){}state.lastAct=label;render();status.textContent=label+". Save the updated workspace to keep this change, or undo it.";return {ok:true};}
@@ -262,7 +262,13 @@
     if(newBtn)newBtn.addEventListener("click",function(){if(revisionDesk){try{revisionDesk.initializeNew(today());installRevision();}catch(e){status.textContent=e.message;}return;}state.ws=WS.newWorkspace(today());state.history=[];state.dirty=true;state.lastAct=null;render();announce();
       status.textContent="New empty workspace. Add accounts and entries below, then save it encrypted."+(state.lastAct?" "+state.lastAct+".":"");});
     if(undoBtn)undoBtn.addEventListener("click",function(){
-      if(revisionDesk){status.textContent="Staged revisions require an explicit correction; history cannot be rewound.";return;}
+      if(revisionDesk){try{
+        if(!state.history.length)return;
+        revisionDesk.reverseEdit(state.history[state.history.length-1],today());state.history.pop();
+        state.ws=revisionDesk.workspaceSnapshot();state.dirty=true;
+        document.dispatchEvent(new CustomEvent("incomeos:workspace-restored",{detail:state.ws}));render();
+        status.textContent="Edit reversed with history retained. Save explicitly to keep the correction.";
+      }catch(e){status.textContent="Not reversed: "+e.message;}return;}
       if(!state.history.length)return;
       state.ws=state.history.pop();state.dirty=true;clearTyped();try{document.dispatchEvent(new CustomEvent("incomeos:workspace-restored",{detail:state.ws}));}catch(e){}render();status.textContent="Last change undone. Save to keep the workspace as it is now.";
     });

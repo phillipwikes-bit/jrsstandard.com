@@ -99,6 +99,37 @@ test("programme edits retain the existing gate validator and cannot bypass sessi
   assert.throws(()=>f.a.updateProgram(before.dsProgram,date),/Owner session changed/);
   assert.equal(f.writes(),1,"Programme editing and revocation perform no extra writes");
 });
+test("existing workspace engines stage programme costs and nonfinancial edits without rewriting history",async()=>{
+  const f=await fixture(),before=f.a.workspaceSnapshot();
+  f.a.editWorkspace(w=>workspace.addRecord(w,"accounts",{name:"Synthetic account",type:"checking"},date),date);
+  f.a.editWorkspace(w=>workspace.addRecord(w,"ledger",{kind:"outflow",date,payer:"Synthetic programme vendor",amountUsd:"12",category:"software",dsDimension:"software_api"},date),date);
+  assert.equal(f.writes(),0);
+  const draft=f.a.pendingDraft();
+  assert.equal(draft.accounts[0].name,"Synthetic account");
+  assert.equal(draft.ledger.at(-1).paymentStatus,"scheduled");
+  assert.deepEqual(draft.changeLog.slice(0,before.changeLog.length),before.changeLog);
+  assert.throws(()=>f.a.editWorkspace(w=>{w.changeLog=[];return w;},date),/preserve history/);
+  assert.throws(()=>f.a.editWorkspace(w=>{w.ledger[0].amountUsd=-1;return w;},date),/Invalid or unsupported/);
+  assert.deepEqual(f.a.pendingDraft(),draft,"Rejected edits cannot change the authoritative draft");
+  assert.throws(()=>f.a.editWorkspace(w=>{f.a.replaceLedger([],date);return w;},date),/already in progress/);
+  await f.a.save(passphrase);
+  assert.equal((await workspace.decrypt(passphrase,f.remote().ciphertext)).accounts.length,1);
+  f.signOut();assert.throws(()=>f.a.editWorkspace(w=>w,date),/Owner session changed/);
+});
+test("explicit unsaved reversal restores content while appending current history",async()=>{
+  const f=await fixture(),before=f.a.workspaceSnapshot();
+  assert.throws(()=>f.a.reverseEdit(before,date),/Only an unsaved/);
+  f.a.editWorkspace(w=>workspace.addRecord(w,"accounts",{name:"Synthetic reversed account",type:"checking"},date),date);
+  const changed=f.a.pendingDraft();
+  f.a.reverseEdit(before,date);
+  const reversed=f.a.pendingDraft();
+  assert.equal(reversed.accounts.length,0);
+  assert.deepEqual(reversed.changeLog.slice(0,changed.changeLog.length),changed.changeLog);
+  assert.equal(reversed.changeLog.at(-1).action,"WORKSPACE_EDIT_REVERSED");
+  assert.equal(f.writes(),0);
+  await f.a.save(passphrase);
+  assert.equal((await workspace.decrypt(passphrase,f.remote().ciphertext)).changeLog.at(-1).action,"WORKSPACE_EDIT_REVERSED");
+});
 test("wrong passphrases, tamper, invalid ledger and invalid chronology preserve current workspace",async()=>{
   const f=await fixture(),before=f.a.workspaceSnapshot();
   const malformed=workspace.newWorkspace(date);malformed.ledger=[expense(-1)];

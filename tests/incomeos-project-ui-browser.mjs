@@ -260,6 +260,15 @@ const edit=()=>page.evaluate(()=>new Promise(resolve=>document.dispatchEvent(new
   entries:[{id:"syn-host",kind:"outflow",date:"2026-11-08",label:"SYNTHETIC HOST ENTRY",category:"software",type:"expense",amountUsd:10,businessUse:null,paymentStatus:"paid"}],done:resolve
 }}))));
 assert.equal((await edit()).ok,true);
+await page.locator("#add-acct-name").fill("Synthetic staged account");
+await page.locator("#briefing-output").getByRole("button",{name:"Add account",exact:true}).click();
+assert.equal(await page.evaluate(()=>window.__coordinator.workspaceSnapshot().accounts[0].name),"Synthetic staged account");
+assert.equal(await page.evaluate(()=>new Promise(resolve=>document.dispatchEvent(new CustomEvent("incomeos:ds-ledger",{detail:{
+  entry:{kind:"outflow",date:"2026-11-08",payer:"Synthetic programme cost",amountUsd:"8",category:"software",dsDimension:"software_api"},done:resolve
+}})))).then(r=>r.ok),true);
+await page.locator("#briefing-undo").click();
+assert.equal(await page.evaluate(()=>window.__coordinator.workspaceSnapshot().changeLog.at(-1).action),"WORKSPACE_EDIT_REVERSED");
+assert.equal(await page.evaluate(()=>window.__coordinator.workspaceSnapshot().ledger.length),1);
 assert.equal(await page.evaluate(()=>window.__revisionTest.writes()),0);
 await page.locator("#briefing-passphrase").fill("synthetic shared host passphrase");
 await page.locator("#briefing-save").click();

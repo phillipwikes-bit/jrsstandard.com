@@ -1,5 +1,13 @@
 # IncomeOS controlled engineering evidence, 8 November 2026
 
+## Remaining staged workspace controls and explicit reversals
+
+Baseline `5bbc434606a6c16990413c7e3d6a1d885867196a`, same draft PR #180 and branch. The coordinator now stages changes made by existing workspace engines, including programme-cost entry, account records and nonfinancial controls. Each transformation receives a detached copy. The coordinator validates the resulting ledger, preserves the programme unless its separate update validator is used, requires valid chronology and retained change history, prevents reentrant edits, and checks the bound session. Existing bounded 5000-entry history rollover is permitted; arbitrary history replacement is refused. No editing operation writes to the server.
+
+The existing Undo control now requests an explicit reversal of an unsaved edit. It restores prior content while retaining current history and appending WORKSPACE_EDIT_REVERSED. A saved revision cannot be silently rewound. Programme changes still require their separate validator; generic reversal cannot replace that programme record.
+
+Targeted local accounting/recovery/runtime/release-gate verification passed nine tests with zero failures. Browser coverage extends the existing staged host exercise to native account entry, programme-cost entry and native Undo with retained history, followed by explicit save and concurrent-owner conflict recovery. Exact-commit CI remains required for browser certification. All 16 accounting dispositions remain unchanged; real migration/recovery, original DS-A/Codebook authenticity and commercial approval are not established by these source checks.
+
 ## Staged Owner Desk host connection
 
 Baseline `a2e0f68102b1062e87fb6d4c46f1e58f681dddfe`. The existing briefing host now permits explicit staging-only coordinator attachment before any local workspace is open. Existing accountant ledger-replace and programme-update events route through the coordinator. The existing new/save controls initialize a verified empty revision and explicitly save encrypted revisions. Recovery inspection, confirmation, encrypted draft rescue, discard and close remain explicit host operations.
