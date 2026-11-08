@@ -120,6 +120,39 @@ assert.doesNotMatch(await page.locator("#ledger-list").textContent(),/Synthetic 
   "new workspace must not be overwritten by a stale decrypted vault copy");
 assert.match(await page.locator("#briefing-status").textContent(),/New empty workspace/);
 
+// Logout during local PBKDF2/AES restoration must not install a decrypted
+// workspace or report success, even though the encrypted GET has completed.
+// A second listener signs out synchronously after the workspace listener has
+// started its asynchronous decryption. No fake service or real account is used.
+await vault();
+await page.evaluate(()=>document.addEventListener("incomeos:vault-open",
+  ()=>window.IncomeOSVaultCloud.signOut(),{once:true}));
+await page.locator("#cloud-vault-restore").tap();
+await page.waitForFunction(()=>/Vault session changed during workspace operation/.test(
+  document.getElementById("cloud-vault-status").textContent),null,{timeout:30000});
+await nav("ledger");
+assert.doesNotMatch(await page.locator("#ledger-list").textContent(),/Synthetic vault payout/,
+  "Owner sign-out during decryption cannot restore a stale plaintext workspace");
+assert.equal(await page.evaluate(()=>window.IncomeOSVaultCloud.signedIn()),false);
+await vault();
+await page.locator("#cloud-vault-email").fill("owner@example.org");
+await page.locator("#cloud-vault-password").fill("synthetic vault pw");
+await page.locator("#cloud-vault-signin").tap();
+await page.waitForFunction(()=>/Signed in/.test(document.getElementById("cloud-vault-status").textContent));
+// Logout during local AES encryption must prevent the browser-to-vault POST.
+const beforeLogoutUpload=sent.filter(x=>x.path==="/rest/v1/incomeos_vault"&&x.body).length;
+await page.evaluate(()=>document.addEventListener("incomeos:vault-encrypt",
+  ()=>window.IncomeOSVaultCloud.signOut(),{once:true}));
+await page.locator("#cloud-vault-save").tap();
+await page.waitForFunction(()=>/Vault session changed during workspace operation/.test(
+  document.getElementById("cloud-vault-status").textContent),null,{timeout:30000});
+assert.equal(sent.filter(x=>x.path==="/rest/v1/incomeos_vault"&&x.body).length,beforeLogoutUpload,
+  "Owner sign-out during encryption cannot submit a vault copy");
+await page.locator("#cloud-vault-email").fill("owner@example.org");
+await page.locator("#cloud-vault-password").fill("synthetic vault pw");
+await page.locator("#cloud-vault-signin").tap();
+await page.waitForFunction(()=>/Signed in/.test(document.getElementById("cloud-vault-status").textContent));
+
 // A hostile or corrupted hosted response larger than the accepted encrypted-workspace limit
 // must be refused before hashing, decrypting, or replacing the current workspace.
 rows[0].ciphertext="x".repeat(5000001);
