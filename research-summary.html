@@ -163,7 +163,7 @@ h2{font-family:'Bodoni Moda',serif;font-size:22px;font-weight:500;color:var(--te
   <div class="section-label" id="hr-h">The Result</div>
   <div class="headline">
     <div class="fig">83.9%</div>
-    <div class="cap">Panel detection accuracy against a reference classification fixed before scoring</div>
+    <div class="cap">Mean reviewer agreement with the author-defined operational reference classification</div>
     <p class="qual">95% confidence interval 72.7 to 95.1 at participant level. Sensitivity 87.0 percent for unsupported records, specificity 80.7 percent for grounded ones. Produced by <span data-panel="completers_detection">16</span> independent experts across <span data-panel="countries_detection">11</span> countries and <span data-panel="continents_detection">5</span> continents, reading cold and blind, over 384 graded reads.</p>
   </div>
   <div class="cards" style="grid-template-columns:repeat(auto-fit,minmax(215px,1fr))">
@@ -217,7 +217,7 @@ h2{font-family:'Bodoni Moda',serif;font-size:22px;font-weight:500;color:var(--te
     <div class="st-k">4. The crossed mixed-effects model <span class="badge b-explore" style="margin-left:6px">Exploratory</span></div>
     <p>The primary analysis treats the reviewer as the unit of observation and does not model record difficulty. To size that omission rather than argue about it, a mixed-effects logistic model was fitted over all 384 graded reads, crossing both random factors:</p>
     <span class="st-f" tabindex="0">correct ~ 1 + (1 | reviewer) + (1 | record)</span>
-    <p>Fitted by Laplace-approximated maximum likelihood, with no participant excluded by the pre-registered rule. The intercept places an average reviewer on an average record at <b style="color:var(--text)">89.2 percent</b>. Reviewer SD is <b style="color:var(--text)">1.769</b> (profile interval 1.292 to 3.000); record SD is <b style="color:var(--text)">0.011</b> and sits at the boundary, with a profile interval of 0.001 to 0.556. The latent-scale intraclass correlation is <b style="color:var(--text)">0.488 for reviewers and 0.0000 for records</b>.</p>
+    <p>Fitted by Laplace-approximated maximum likelihood, with no participant excluded by the pre-registered rule. The model's conditional intercept-based estimate, distinct from the observed 83.9% reviewer-level mean, places an average reviewer on an average record at <b style="color:var(--text)">89.2 percent</b>. Reviewer SD is <b style="color:var(--text)">1.769</b> (profile interval 1.292 to 3.000); record SD is <b style="color:var(--text)">0.011</b> and sits at the boundary, with a profile interval of 0.001 to 0.556. The latent-scale intraclass correlation is <b style="color:var(--text)">0.488 for reviewers and 0.0000 for records</b>.</p>
     <p>Two things follow, and only two. Modelling item difficulty does not materially move the panel estimate, because the participant-level mean sits inside the reviewer-level spread the model estimates. And the variation that matters on this corpus is between reviewers, not between records, which is the same conclusion the raw dispersion reaches by a different route. <b style="color:var(--text)">This analysis was added after pre-registration and is labelled exploratory throughout.</b> The record component is weakly identified, and its profile interval permits a materially larger record effect than the point estimate suggests.</p>
   </div>
   </section>
@@ -268,7 +268,7 @@ h2{font-family:'Bodoni Moda',serif;font-size:22px;font-weight:500;color:var(--te
 
   <a class="study" href="codebook.html" style="display:block;text-decoration:none">
     <div class="study-top"><div><span class="study-id">Instrument</span> &middot; <span class="study-title">JRS Codebook, version 1.0</span></div><span class="badge">Versioned</span></div>
-    <div class="study-desc">The measurement instrument itself: the five conditions, their decision rules, and the routing bands. Every figure on this page was produced by human reviewers and independent models applying this document, unchanged, to the same records. <span style="color:var(--accent)">Read the codebook &#8594;</span></div>
+    <div class="study-desc">The measurement instrument itself: the five conditions, their decision rules, and the routing bands. The findings summarize distinct human-reviewer and automated-model studies. They do not all use the same records, instrument, or independent reference classification. <span style="color:var(--accent)">Read the codebook &#8594;</span></div>
   </a>
 
   <a class="study" href="training.html" style="display:block;text-decoration:none">
