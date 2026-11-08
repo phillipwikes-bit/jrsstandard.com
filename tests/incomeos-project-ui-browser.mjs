@@ -291,6 +291,10 @@ assert.equal(await page.evaluate(async()=>{
   window.__binding.confirm(opened.revision);return r.serverSaved;
 }),false);
 await page.locator("#revision-recovery-controls summary").click();
+for(const width of [320,375,430]){
+  await page.setViewportSize({width,height:812});
+  assert.ok(await page.evaluate(w=>document.documentElement.scrollWidth<=w+1&&innerWidth<=w+1,width),"Recovery controls must fit the configured mobile viewport");
+}
 const fileBackup=await page.evaluate(async()=>{
   const backup=window.__coordinator.encryptedBackup(),W=IncomeOSWorkspace;
   const doc=await W.decrypt("synthetic shared host passphrase",backup.ciphertext);doc.note="Synthetic reviewed recovery note";

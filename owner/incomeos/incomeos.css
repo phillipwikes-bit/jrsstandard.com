@@ -137,3 +137,9 @@ textarea{display:block;width:100%;min-height:60px;resize:vertical;background:whi
 #ds-product-runtime .smallbtn{max-width:100%;white-space:normal;overflow-wrap:anywhere}
 #ds-product-runtime details > summary{scroll-margin-top:24px;scroll-margin-bottom:120px}
 #ds-product-runtime dl,#ds-product-runtime dt,#ds-product-runtime dd,#ds-product-runtime li{min-width:0;max-width:100%;overflow-wrap:anywhere;word-break:normal}
+
+#revision-recovery-controls{max-width:100%;overflow-wrap:anywhere}
+#revision-recovery-controls .smallbtn{white-space:normal;max-width:100%;min-height:44px;margin:4px 4px 4px 0}
+#revision-recovery-controls fieldset{min-width:0;max-width:100%}
+#revision-recovery-controls label{display:block}
+#revision-recovery-controls input[type="file"]{width:100%;max-width:100%}
