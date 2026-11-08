@@ -149,6 +149,28 @@
         throw Error("Review recovery sections against the unchanged current workspace first");
       var result=editWorkspace(function(current){
         sections.forEach(function(key){current[key]=clone(candidate.workspace[key]);});
+        if(sections.indexOf("accounts")>=0||sections.indexOf("balances")>=0){
+          var ids=new Set();
+          current.accounts.forEach(function(account){
+            if(!account||typeof account.id!=="string"||!account.id.trim()||account.id!==account.id.trim()||ids.has(account.id)||
+               typeof account.name!=="string"||!account.name.trim()||account.name.length>80||
+               workspace.ACCOUNT_TYPES.indexOf(account.type)<0)throw Error("Invalid recovered account identity or type");
+            ids.add(account.id);
+          });
+          current.balances.forEach(function(balance){
+            if(!balance||!ids.has(balance.accountId)||typeof balance.asOf!=="string"||
+               !/^\d{4}-\d{2}-\d{2}$/.test(balance.asOf)||!Number.isFinite(Date.parse(balance.asOf+"T00:00:00Z"))||
+               new Date(balance.asOf+"T00:00:00Z").toISOString().slice(0,10)!==balance.asOf||
+               !/^-?\d{1,12}(\.\d{1,2})?$/.test(String(balance.balanceUsd))||
+               ["statement","institution_export","appraisal","owner_estimate"].indexOf(balance.source)<0||
+               typeof balance.sourceRef!=="string"||!balance.sourceRef.trim())throw Error("Recovered balance lacks a valid account, date, amount or source");
+          });
+        }
+        if(sections.indexOf("offers")>=0)current.offers.forEach(function(offer){
+          var url;try{url=new URL(offer.sourceUrl);}catch(e){throw Error("Invalid recovered offer source");}
+          if(url.protocol!=="https:"||url.username||url.password||!Number.isFinite(offer.apyPct)||offer.apyPct<0||offer.apyPct>=25)
+            throw Error("Invalid recovered offer source or rate");
+        });
         current.changeLog=current.changeLog.concat([{on:on,action:"WORKSPACE_BACKUP_RECONCILED",detail:{
           sourceRevision:candidate.revision,sourceSha256:candidate.sha256,sections:sections.slice()}}]);
         return current;

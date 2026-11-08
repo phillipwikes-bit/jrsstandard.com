@@ -314,8 +314,16 @@ await page.locator("#briefing-save").click();
 await page.waitForFunction(()=>document.getElementById("briefing-status").textContent==="Encrypted revision saved.");
 const [revisionBackupDownload]=await Promise.all([page.waitForEvent("download"),page.getByRole("button",{name:"Download verified encrypted backup",exact:true}).click()]);
 assert.equal(revisionBackupDownload.suggestedFilename(),"incomeos-revision-backup.encrypted.json");
-await page.evaluate(()=>window.__binding.close());
+await page.getByRole("button",{name:"Close private workspace",exact:true}).click();
+assert.equal(await page.locator("#briefing-passphrase").inputValue(),"","Explicit close clears the workspace passphrase");
 assert.equal(await page.locator("#revision-recovery-controls").count(),0);
+assert.equal(await page.evaluate(async()=>{
+  const next=IncomeOSRevisionRuntime.createAccountingRuntime({stagingOnly:true});
+  const current=IncomeOSRevisionDeskHost.attach(next,{stagingOnly:true});
+  let refused=false;try{window.__binding.close();}catch(e){refused=/no longer attached/.test(e.message);}
+  if(!document.getElementById("revision-recovery-controls"))throw Error("Old handle closed the newer host");
+  current.close();return refused;
+}),true,"Detached handles cannot close a later attachment");
 assert.deepEqual(errors,[]);
 await browser.close();server.close();
 console.log("IncomeOS project UI browser QA passed (iPhone 13 emulation, synthetic data): confirm-gated eligibility, inert injection, HTTPS apply link, no overflow, no storage writes");

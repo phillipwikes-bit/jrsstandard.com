@@ -56,6 +56,13 @@
         desk.applyWorkspaceRecovery(selected,today());installRevision();choices.replaceChildren();file.value="";
         feedback.textContent="Selected sections recovered as unsaved edits. Save explicitly to retain them.";
       });});
+      btn(box,"Close private workspace",function(){run(closeRevisionHost);});
+    }
+    function closeRevisionHost(){
+      revisionDesk.close();revisionDesk=null;
+      if(passInput)passInput.value="";
+      if(revisionControls){var selectedFile=revisionControls.querySelector('input[type="file"]');if(selectedFile)selectedFile.value="";revisionControls.remove();}
+      revisionControls=null;state.ws=null;state.dirty=false;state.history=[];render();announce();
     }
     function installRevision(){
       var s=revisionDesk.status();
@@ -74,15 +81,16 @@
       });
       revisionDesk=coordinator;
       mountRevisionControls();
+      function bound(){if(revisionDesk!==coordinator)throw Error("Revision editor is no longer attached");}
       return Object.freeze({
-        open:async function(pass){var r=await coordinator.open(pass);if(r.hasWorkspace)installRevision();return r;},
-        confirm:function(revision){coordinator.confirmOpenedRevision(revision);installRevision();},
-        rescue:function(pass){return coordinator.exportPendingDraftEncrypted(pass);},
-        prepareRecovery:function(backup,pass){return coordinator.prepareWorkspaceRecovery(backup,pass);},
-        applyRecovery:function(sections,on){var r=coordinator.applyWorkspaceRecovery(sections,on);installRevision();return r;},
-        restore:async function(backup,pass,on){var r=await coordinator.restoreLedgerBackup(backup,pass,on);installRevision();return r;},
-        discard:function(){coordinator.discardDraft();state.ws=null;state.dirty=false;state.history=[];render();announce();},
-        close:function(){coordinator.close();revisionDesk=null;if(revisionControls)revisionControls.remove();revisionControls=null;state.ws=null;state.dirty=false;state.history=[];render();announce();}
+        open:async function(pass){bound();var r=await coordinator.open(pass);if(r.hasWorkspace)installRevision();return r;},
+        confirm:function(revision){bound();coordinator.confirmOpenedRevision(revision);installRevision();},
+        rescue:function(pass){bound();return coordinator.exportPendingDraftEncrypted(pass);},
+        prepareRecovery:function(backup,pass){bound();return coordinator.prepareWorkspaceRecovery(backup,pass);},
+        applyRecovery:function(sections,on){bound();var r=coordinator.applyWorkspaceRecovery(sections,on);installRevision();return r;},
+        restore:async function(backup,pass,on){bound();var r=await coordinator.restoreLedgerBackup(backup,pass,on);installRevision();return r;},
+        discard:function(){bound();coordinator.discardDraft();state.ws=null;state.dirty=false;state.history=[];render();announce();},
+        close:function(){bound();closeRevisionHost();}
       });
     }});
     function announce(){try{document.dispatchEvent(new CustomEvent("incomeos:workspace-loaded",{detail:state.ws}));}catch(e){}}

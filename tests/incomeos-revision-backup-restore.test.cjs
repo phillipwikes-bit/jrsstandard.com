@@ -151,6 +151,20 @@ test("section-reviewed workspace recovery preserves programme and history and re
   f.a.replaceLedger([expense(20)],date);
   assert.throws(()=>f.a.applyWorkspaceRecovery(["ledger"],date),/unchanged current workspace/);
 });
+test("recovery refuses duplicate accounts, orphan balances and unsafe offer sources atomically",async()=>{
+  const f=await fixture(),before=f.a.workspaceSnapshot();
+  const cases=[
+    {accounts:[{id:"dup",name:"Synthetic",type:"checking"},{id:"dup",name:"Synthetic",type:"checking"}]},
+    {balances:[{accountId:"missing",asOf:date,balanceUsd:"12",source:"statement",sourceRef:"Synthetic statement"}]},
+    {offers:[{sourceUrl:"http://example.org",apyPct:2}]}
+  ];
+  for(const fields of cases){
+    const doc={...before,...fields},ciphertext=await workspace.encrypt(passphrase,doc);
+    const review=await f.a.prepareWorkspaceRecovery({revision:1,ciphertext,sha256:await sha256(ciphertext)},passphrase);
+    assert.throws(()=>f.a.applyWorkspaceRecovery(review.sections.slice(),date),/recovered|Recovered/);
+    assert.deepEqual(f.a.workspaceSnapshot(),before);assert.equal(f.a.status().dirty,false);assert.equal(f.writes(),0);
+  }
+});
 test("wrong passphrases, tamper, invalid ledger and invalid chronology preserve current workspace",async()=>{
   const f=await fixture(),before=f.a.workspaceSnapshot();
   const malformed=workspace.newWorkspace(date);malformed.ledger=[expense(-1)];

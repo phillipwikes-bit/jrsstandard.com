@@ -1,5 +1,13 @@
 # IncomeOS controlled engineering evidence, 8 November 2026
 
+## Recovery relationships and attachment cleanup
+
+Baseline `0554facf4e3a8b158f2b9c5e17b81b327a4de4dc`. Selected account/balance recovery now validates unique canonical account IDs, supported account types, balance-to-account references, real calendar dates, decimal amounts and stated source references. Selected offer recovery refuses non-HTTPS URLs, embedded URL credentials and invalid rates. A rejected application retains the original workspace and performs no save. This strengthens those sections; it does not independently verify financial evidence or provide complete semantic validation of every other workspace section.
+
+The existing staging recovery panel gains an explicit Close private workspace control. It preserves the coordinator's refusal to close an unsaved draft, and clears displayed workspace references, the passphrase input and selected recovery file after a successful close. Every exported host operation checks its attachment identity so a retained old handle cannot close or operate a later attachment. This is local lifecycle cleanup, not browser-memory zeroization or durable server-token revocation.
+
+Targeted local recovery/runtime/release tests passed eleven tests, zero failed. Browser coverage extends native close to passphrase/control cleanup and refusal of an old handle against a new attachment. Exact-commit CI must establish the browser result. All 16 accounting dispositions and production/commercial holds remain unchanged. Live migration, actual owner recovery and authenticated original DS-A/Codebook/rights remain dependencies.
+
 ## Existing Desk recovery controls
 
 Baseline `c96ade42beb44e48fd00e4d2eb3e1bf88b429a02`. Explicit staged attachment now mounts recovery controls inside the existing This week panel. The controls open the latest revision, confirm the exact opened revision after review, download a verified encrypted revision backup, rescue a pending draft encrypted, discard only after confirmation, inspect an uploaded revision-backup wrapper and apply explicitly checked sections as an unsaved edit. Selection starts blank. File reads are bounded to 8 MB and attachment identity is rechecked after reading. The coordinator continues to enforce authentication, checksum/decryption, unchanged-head review and explicit saving.
