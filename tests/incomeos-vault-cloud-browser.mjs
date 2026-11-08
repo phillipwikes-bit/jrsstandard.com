@@ -134,12 +134,15 @@ await nav("ledger");
 assert.doesNotMatch(await page.locator("#ledger-list").textContent(),/Synthetic vault payout/,
   "Owner sign-out during decryption cannot restore a stale plaintext workspace");
 assert.equal(await page.evaluate(()=>window.IncomeOSVaultCloud.signedIn()),false);
+assert.equal(await page.locator("#briefing-passphrase").inputValue(),"",
+  "Vault logout must clear the retained local encryption passphrase");
 await vault();
 await page.locator("#cloud-vault-email").fill("owner@example.org");
 await page.locator("#cloud-vault-password").fill("synthetic vault pw");
 await page.locator("#cloud-vault-signin").tap();
 await page.waitForFunction(()=>/Signed in/.test(document.getElementById("cloud-vault-status").textContent));
 // Logout during local AES encryption must prevent the browser-to-vault POST.
+await page.locator("#briefing-passphrase").fill("synthetic passphrase for tests");
 const beforeLogoutUpload=sent.filter(x=>x.path==="/rest/v1/incomeos_vault"&&x.body).length;
 await page.evaluate(()=>document.addEventListener("incomeos:vault-encrypt",
   ()=>window.IncomeOSVaultCloud.signOut(),{once:true}));
