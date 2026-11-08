@@ -21,7 +21,7 @@ const origin=`http://127.0.0.1:${server.address().port}`,VAULT="https://pmvqxdgv
 const browser=await chromium.launch(launchOptions);
 const ctx=await browser.newContext({...devices["iPhone SE"]});
 const sent=[],rows=[],external=[];
-let holdNextUpload=false,releaseHeldUpload=null;
+let holdNextUpload=false,releaseHeldUpload=null,holdNextRead=false,releaseHeldRead=null;
 const cors={"access-control-allow-origin":origin,"access-control-allow-headers":"apikey,authorization,content-type,prefer","access-control-allow-methods":"GET,POST,OPTIONS","content-type":"application/json"};
 await ctx.route(VAULT+"/**",async route=>{
   const r=route.request(),u=new URL(r.url());
@@ -38,6 +38,11 @@ await ctx.route(VAULT+"/**",async route=>{
         return;
       }
       return route.fulfill({status:201,headers:cors,body:""});
+    }
+    if(holdNextRead){
+      holdNextRead=false;
+      releaseHeldRead=()=>route.fulfill({status:200,headers:cors,body:JSON.stringify(rows.slice(0,1))});
+      return;
     }
     return route.fulfill({status:200,headers:cors,body:JSON.stringify(rows.slice(0,1))});}
   return route.fulfill({status:404,headers:cors,body:"{}"});
@@ -80,6 +85,7 @@ await page.waitForFunction(()=>/Saving encrypted copy/.test(document.getElementB
 for(let i=0;i<60&&!releaseHeldUpload;i++)await new Promise(resolve=>setTimeout(resolve,100));
 assert.ok(releaseHeldUpload,"the fake vault upload is paused after encryption");
 assert.equal(await page.locator("#cloud-vault-save").isDisabled(),true,"overlapping vault uploads must be disabled");
+assert.equal(await page.locator("#cloud-vault-restore").isDisabled(),true,"restore cannot overtake a pending upload");
 await nav("research");
 await page.locator("#briefing-new").tap();
 assert.match(await page.locator("#briefing-status").textContent(),/New empty workspace/);
@@ -99,8 +105,22 @@ assert.ok(await page.locator("#cloud-vault-restore").isDisabled(),"signed out af
 await page.locator("#cloud-vault-email").fill("owner@example.org");await page.locator("#cloud-vault-password").fill("synthetic vault pw");await page.locator("#cloud-vault-signin").tap();
 await page.waitForFunction(()=>/Signed in/.test(document.getElementById("cloud-vault-status").textContent));
 await page.locator("#briefing-passphrase").fill("synthetic passphrase for tests");
+// An in-flight vault GET must exclude both local save and a second restore.
+holdNextRead=true;
 await page.locator("#cloud-vault-restore").tap();
+for(let i=0;i<50&&!releaseHeldRead;i++)await new Promise(resolve=>setTimeout(resolve,30));
+assert.ok(releaseHeldRead,"controlled vault restore request did not start");
+assert.equal(await page.locator("#cloud-vault-save").isDisabled(),true,
+  "an in-flight restore must block encrypted saves");
+assert.equal(await page.locator("#cloud-vault-restore").isDisabled(),true,
+  "a second restore must not overtake the first");
+const writesBeforeRestore=sent.filter(x=>x.path==="/rest/v1/incomeos_vault"&&x.body).length;
+await releaseHeldRead();
 await page.waitForFunction(()=>/Opened the vault copy saved 2026-11-05 12:00/.test(document.getElementById("cloud-vault-status").textContent),null,{timeout:30000});
+assert.equal(sent.filter(x=>x.path==="/rest/v1/incomeos_vault"&&x.body).length,writesBeforeRestore,
+  "opening a vault cannot trigger a save");
+assert.equal(await page.locator("#cloud-vault-save").isDisabled(),false,
+  "save is reenabled after successful restore");
 await nav("ledger");await page.locator("#report-year").fill("2026");await page.locator("#report-year").dispatchEvent("change");
 assert.match(await page.locator("#ledger-list").textContent(),/Synthetic vault payout/,"record restored from the vault");
 // A pending encrypted restore must never replace an owner workspace created
