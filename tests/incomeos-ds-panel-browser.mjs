@@ -118,7 +118,7 @@ try {
       w.dsProgram = D.newProgram('2026-11-05');
       w = W.addRecord(w, 'ledger', {
         kind:'outflow',date:'2026-11-05',payer:'PRIVATE-VENDOR-DO-NOT-RENDER',
-        amountUsd:'29.50',category:'software',dsDimension:'software_api'
+        amountUsd:'29.50',category:'software',dsDimension:'software_api',paymentStatus:'paid'
       }, '2026-11-05');
       w = W.addRecord(w, 'ledger', {
         kind:'outflow',date:'2026-11-05',payer:'PRIVATE-UNPAID-DO-NOT-RENDER',

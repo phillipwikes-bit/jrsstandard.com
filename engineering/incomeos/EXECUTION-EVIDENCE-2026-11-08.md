@@ -56,6 +56,8 @@ The existing workspace entry engine now emits accountant-compatible rows. Income
 
 The four new compatibility tests pass locally and are included in isolated-security CI. Existing browser checks are extended to verify that both entry panels leave the same accountant ledger editable, and that unpaid entries remain expected/scheduled. A03/A04/A05/A09 gain evidence references without a status upgrade. Current-commit browser and complete CI outcomes remain to be collected.
 
+Compatibility commit `0b20dc8e2287d3a22979b7e017fb5f1a2a8d93a4`: local combined revision/security/programme checks passed 29 tests, 0 failed. CI source, isolated security, disposable PostgreSQL, private prototype and anonymous checks passed. Accounting/DS browser run `42472553637` failed in the product-finance fixture: it expected a paid 29.50 USD cost but did not explicitly record payment, so the corrected engine classified it as scheduled. The fixture is corrected to declare `paymentStatus: paid`; the separate scheduled 80 USD fixture and all exclusion assertions are retained. No runtime classification rule or financial assertion was relaxed. The failing run remains inspectable in CI history. Final browser and current-head workflow results must be read before claiming a pass.
+
 Repository: `phillipwikes-bit/jrsstandard.com`. Draft PR #180. Branch: `verification/incomeos-accounting-ci-20261108`. Starting commit: `e55e3d38f8ffd57e2d059cd12d6b5b8faaab6e63`.
 
 ## Corrections implemented
