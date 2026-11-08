@@ -23,7 +23,7 @@ const ctx=await browser.newContext({...devices["iPhone 13"],acceptDownloads:true
 const page=await ctx.newPage();const errors=[];page.on("pageerror",e=>errors.push(String(e)));
 const dialogs=[];page.on("dialog",d=>{dialogs.push(d.message());d.accept();});
 await page.goto(`http://127.0.0.1:${server.address().port}/index.html`);
-const nav=v=>page.locator(`.bottomnav button[data-view="${v}"]`).click();
+const nav=v=>page.locator(`.bottomnav button[data-view="${v}"]`).tap();
 // Without a workspace the editor stays locked by the staging interlock.
 await nav("ledger");
 assert.ok(await page.locator("#financial-staging-interlock").isVisible());
