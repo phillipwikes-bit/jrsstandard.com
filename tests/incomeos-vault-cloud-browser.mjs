@@ -205,9 +205,13 @@ await nav("ledger");
 assert.doesNotMatch(await page.locator("#ledger-list").textContent(),/Synthetic vault payout/,
   "A late decrypt cannot replace a newer owner workspace after the handoff times out");
 await vault();
+// Clear the previous restore error so this assertion cannot match a stale
+// status before the second, independent timeout has actually fired.
+await page.evaluate(()=>{document.getElementById("cloud-vault-status").textContent="Synthetic save deadline test initialized";});
 const beforeExpiredSave=sent.filter(x=>x.path==="/rest/v1/incomeos_vault"&&x.body).length;
 await holdLocalCrypto();
 await page.locator("#cloud-vault-save").tap();
+await page.waitForFunction(()=>window.__incomeosHeldCrypto?.started===true);
 await page.waitForFunction(()=>/Workspace handoff timed out/.test(
   document.getElementById("cloud-vault-status").textContent),null,{timeout:10000});
 await releaseLocalCrypto();
