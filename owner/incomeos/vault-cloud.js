@@ -88,9 +88,13 @@
       },
       fetch:function(url,options){return root.fetch(url,options);}
     });
-    async function guarded(method,request){
+    function assertSession(){
       if(!session||sessionEpoch!==boundEpoch||session.userId!==boundUser)
         throw Error("Vault session changed; create a new revision transport after sign-in");
+      return true;
+    }
+    async function guarded(method,request){
+      assertSession();
       var epoch=sessionEpoch;
       try{
         var result=method==="latest"?await transport.latest():await transport.append(request);
@@ -103,7 +107,10 @@
     }
     return Object.freeze({
       latest:function(){return guarded("latest");},
-      append:function(request){return guarded("append",request);}
+      append:function(request){return guarded("append",request);},
+      // Credential-free session check for expensive local decrypt/encrypt work.
+      // No token, user ID or session epoch is exposed to callers.
+      assertSession:assertSession
     });
   }
   var api=Object.freeze({CONFIG:CONFIG,assertEncrypted:assertEncrypted,signUp:signUp,signIn:signIn,signOut:signOut,signedIn:signedIn,save:save,latest:latest,createRevisionTransport:createRevisionTransport});
