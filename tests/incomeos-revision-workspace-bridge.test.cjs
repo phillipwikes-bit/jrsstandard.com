@@ -136,5 +136,36 @@ const passphrase="synthetic test passphrase with 20+ characters";
   assert.equal((await ownerA.open(passphrase)).revision,current.revision);
   ownerA.close();
   assert.equal(writes,3);
+  // Saving must bind to the document supplied when Save was requested.
+  // Passphrase verification yields before encryption on an existing revision.
+  {
+    let saved=null,appends=0,pause=false,started,release;
+    const waiting=new Promise(resolve=>{started=resolve;});
+    const blocked=new Promise(resolve=>{release=resolve;});
+    const snapshotTransport={latest:async()=>saved,append:async req=>{
+      assert.equal(req.expected_revision,saved?saved.revision:0);
+      saved={revision:req.expected_revision+1,ciphertext:req.encrypted_payload,ciphertext_sha256:req.payload_sha256};
+      appends++;return saved.revision;
+    }};
+    const delayedWorkspace=Object.assign({},workspace,{decrypt:async(p,text)=>{
+      if(pause){started();await blocked;}return workspace.decrypt(p,text);
+    }});
+    const snapshotBridge=createWorkspaceBridge(createRevisionStore(snapshotTransport,protocol,{sha256:digest}),delayedWorkspace,{sha256:digest});
+    await snapshotBridge.open(passphrase);
+    await snapshotBridge.save(workspace.newWorkspace("2026-11-08"),passphrase);
+    const requested=workspace.addRecord(workspace.newWorkspace("2026-11-08"),"ledger",{
+      kind:"outflow",date:"2026-11-08",payer:"Synthetic snapshot vendor",amountUsd:"25.00",category:"software"
+    },"2026-11-08");
+    requested.note="Synthetic explicitly requested snapshot";
+    const expected=structuredClone(requested);pause=true;
+    const saving=snapshotBridge.save(requested,passphrase);await waiting;
+    requested.note="Synthetic caller change after Save";
+    requested.ledger[0].amountUsd="999.00";
+    release();await saving;
+    assert.deepEqual(await workspace.decrypt(passphrase,saved.ciphertext),expected,
+      "Caller edits during passphrase verification must not replace the explicitly requested save snapshot");
+    assert.equal(appends,2,"Snapshot protection does not add or retry writes");
+    snapshotBridge.close();
+  }
   console.log("PASS: encrypted workspace-to-revision bridge, verified backup, decryption, CAS and owner-review hold");
 })().catch(err=>{console.error(err);process.exitCode=1;});

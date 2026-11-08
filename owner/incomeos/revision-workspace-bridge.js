@@ -43,7 +43,10 @@
         throw Error("Owner must review and confirm newer server workspace before saving");
       busy=true;
       try{
-        workspace.validate(document);
+        // Bind Save to the submitted snapshot before passphrase verification
+        // yields. A caller may continue editing its object while crypto runs.
+        var snapshot=JSON.parse(JSON.stringify(workspace.validate(document)));
+        workspace.validate(snapshot);
         // On an existing vault, require the save passphrase to unlock the last
         // verified encrypted snapshot. Otherwise a typo silently rotates the
         // encryption key and can permanently lock out the owner.
@@ -51,7 +54,7 @@
           workspace.validate(await workspace.decrypt(passphrase,openedCiphertext));
           verifySession();
         }
-        var ciphertext=await workspace.encrypt(passphrase,document);
+        var ciphertext=await workspace.encrypt(passphrase,snapshot);
         verifySession();
         var checksum=await integrity.sha256(ciphertext);
         verifySession();

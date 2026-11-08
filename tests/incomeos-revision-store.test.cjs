@@ -124,5 +124,23 @@ const integrity={sha256};
   assert.throws(()=>suspended.confirmRevision(8),/confirmation mismatch/);
   suspended.confirmRevision(9);
   assert.equal(suspended.requiresOwnerConfirmation(),false);
+  // A transport may retain a reference to its response object. The values
+  // returned as trusted must be the exact values checked before digest yields.
+  {
+    let signal,release;
+    const started=new Promise(resolve=>{signal=resolve;});
+    const blocked=new Promise(resolve=>{release=resolve;});
+    const mutable={revision:1,ciphertext:envelope,ciphertext_sha256:digest};
+    const pinned=createRevisionStore({latest:async()=>mutable,append:async()=>{throw Error("No writes expected");}},protocol,{
+      sha256:async text=>{signal();await blocked;return sha256(text);}
+    });
+    const read=pinned.refresh();await started;
+    mutable.revision=42;mutable.ciphertext="synthetic unverified plaintext";mutable.ciphertext_sha256="b".repeat(64);
+    release();const result=await read;
+    assert.equal(result.revision,1,"Response mutation cannot advance the verified revision");
+    assert.equal(result.text,envelope,"Response mutation cannot substitute bytes after checksum verification");
+    assert.equal(result.sha256,digest);
+    assert.equal(pinned.highestObservedRevision(),1);
+  }
   console.log("PASS: revision adapter conflict, integrity, equivocation, uncertain write, recovery rollback");
 })().catch(e=>{console.error(e);process.exitCode=1;});

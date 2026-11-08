@@ -1,5 +1,38 @@
 # IncomeOS controlled engineering evidence, 8 November 2026
 
+## Asynchronous snapshot integrity and authenticated RPC boundary
+
+Baseline `d829bc0b91a807cb8b4031ce63309744ea63bed0`, same draft PR #180 and branch. Three synthetic mutation regressions initially failed: a caller changed a staged expense from 25.00 to 999.00 during passphrase verification and the changed value was encrypted; a retained response object changed revision 1 to 42 while checksum verification yielded and the unverified revision was returned; mutable RPC configuration replaced the fetch callback after authentication began. A further regression demonstrated that a request body could change during token retrieval. All use fictional data and in-memory providers, not external attack traffic.
+
+The bridge now detaches and validates the submitted document before any asynchronous operation. The revision store captures primitive response fields before validating/hashing them, so returned bytes/revision/checksum are the values actually verified. The RPC transport captures validated configuration at construction, serializes each submitted request before authentication yields, and sets redirect=error on credential-bearing fetches. These controls do not freeze caller-owned objects or introduce automatic writes, additional ledgers or browser persistence.
+
+Token retrieval now falls within the existing bounded RPC deadline. A late token is checked before dispatch and cannot send a request after timeout. Token-provider exceptions, including errors carrying a status property and null/undefined rejections, are sanitized; only locally constructed HTTP errors retain their safe numeric status for existing 401 handling. Synthetic regressions initially exposed raw token-provider error text before this correction. Existing no-token, HTTP rejection, delayed response-body, abort, sign-out and no-retry behavior remains tested.
+
+Observed local verification: the complete accounting-source suite passed 47 tests, zero failed; all 28 isolated-security syntax/regression commands passed. Focused final transport/RPC/session checks passed after the last sanitizer guard change. The real AES-GCM bridge test confirms the original nested ledger amount is saved despite caller mutation, with exactly two requested appends and no retry. The deterministic soak again completed 120 CAS race cycles with 120 stale refusals and explicit uncertain-commit recovery. Current-commit CI/browser/PostgreSQL and hosted preview results must be read separately.
+
+### Independent accounting evaluation
+
+| ID | Retained status | Current session evidence boundary |
+| --- | --- | --- |
+| A01 | OWNER ACCEPTANCE PENDING | Existing authentication checks retained; live owner acceptance absent |
+| A02 | PROTECTED PREVIEW VERIFIED | Historical protected-denial evidence; no new effective-access certification |
+| A03 | SOURCE TESTED | Existing synthetic income-entry regression retained |
+| A04 | SOURCE TESTED | Existing expense validation retained; submitted save snapshot now pinned |
+| A05 | SOURCE TESTED | Existing edit/delete/history checks retained |
+| A06 | SOURCE TESTED | New asynchronous document/response/request mutation regressions pass |
+| A07 | SOURCE TESTED | Existing real-crypto recovery checks retained; owner recovery absent |
+| A08 | SOURCE TESTED | Existing synthetic calculation regressions retained |
+| A09 | SOURCE TESTED | Existing declared-scope duplicate checks retained |
+| A10 | SOURCE TESTED | Owner-recorded evidence remains distinct from bank verification |
+| A11 | SOURCE TESTED | Existing synthetic reporting checks retained; no accountant acceptance |
+| A12 | SOURCE TESTED | Exact-head browser CI still required; physical iPhone acceptance absent |
+| A13 | SOURCE TESTED | RPC configuration/request pinning, redirect refusal, bounded token wait and error sanitization |
+| A14 | BLOCKED | Approved nonproduction migration access, durable trust/revocation and real owner recovery absent |
+| A15 | PROTECTED PREVIEW VERIFIED | Historical evidence only; current preview/rollback acceptance not inferred |
+| A16 | BLOCKED | Explicit owner release approval remains required |
+
+A06/A13 evidence references are extended in the existing acceptance register without changing a disposition. milestoneComplete remains false. No migration, production promotion, owner-record operation, original DS-A test, financial transaction or commercial activation occurred. Existing infrastructure, actual owner recovery, original source/Codebook/rights and commercial holds remain in force. Next independent work can extend specialized recovery validation and session cleanup adversarial coverage; deployment verification requires available protected build capacity and an actual deployment, while durable storage integration requires an approved target and scoped access.
+
 ## Interrupted authentication operations
 
 Baseline `a03d3e7660df8f272d733cfd588a50adc1c1a5dc`. A new synthetic crypto-failure regression initially failed because a rejected digest escaped the login handler as an exception. The shared owner-access gate now catches interrupted digest/key-import/HMAC operations and returns a private no-store 503 with only owner_access_unavailable. Token login covers verification and cookie issuance in the same sanitized error boundary. No failure issues a cookie or allows the protected reader to proceed. Invalid credentials still receive 401.

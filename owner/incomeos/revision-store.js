@@ -27,6 +27,9 @@
     function integer(n){return Number.isSafeInteger(n)&&n>=0&&n<Number.MAX_SAFE_INTEGER;}
     async function parseLatest(row){
       if(row===null)return {revision:0,text:null,sha256:null};
+      // Detach primitive response values before digest verification yields.
+      // Trust must describe the checked bytes, not a later transport mutation.
+      if(row)row={revision:row.revision,ciphertext:row.ciphertext,ciphertext_sha256:row.ciphertext_sha256};
       if(!row||!integer(row.revision)||row.revision===0||typeof row.ciphertext!=="string"||
          typeof row.ciphertext_sha256!=="string"||!/^[0-9a-f]{64}$/.test(row.ciphertext_sha256))
         throw Error("Invalid server revision response");
