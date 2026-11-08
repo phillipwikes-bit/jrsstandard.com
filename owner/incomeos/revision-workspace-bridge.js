@@ -7,7 +7,7 @@
   function createWorkspaceBridge(revisions,workspace,integrity,assertOwnerSession){
     if(!revisions||typeof revisions.refresh!=="function"||typeof revisions.append!=="function"||
        typeof revisions.currentRevision!=="function"||typeof revisions.requiresOwnerConfirmation!=="function"||
-       typeof revisions.confirmRevision!=="function"||typeof revisions.reset!=="function"||
+       typeof revisions.confirmRevision!=="function"||typeof revisions.suspend!=="function"||
        !workspace||typeof workspace.validate!=="function"||typeof workspace.encrypt!=="function"||
        typeof workspace.decrypt!=="function"||!integrity||typeof integrity.sha256!=="function")
       throw Error("Workspace bridge requires verified staging dependencies");
@@ -82,7 +82,7 @@
       return Object.freeze({revision:openedRevision,ciphertext:openedCiphertext,sha256:openedSha256});
     }
     function close(){
-      ensureIdle();openedRevision=null;openedCiphertext=null;openedSha256=null;revisions.reset();
+      ensureIdle();openedRevision=null;openedCiphertext=null;openedSha256=null;revisions.suspend();
     }
     return Object.freeze({open:open,save:save,encryptedBackup:encryptedBackup,confirmOpenedRevision:confirmOpenedRevision,
       close:close,status:function(){return Object.freeze({
