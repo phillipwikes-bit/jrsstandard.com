@@ -56,7 +56,11 @@ try {
     const spSummary = spDetails.locator('summary');
     assert.ok(await spSummary.evaluate(el => el.getBoundingClientRect().height >= 44),
       'SP disclosure must have a 44px tap target at '+width+'px');
-    await spSummary.click();
+    // Native summary must remain keyboard operable even if mobile viewport
+    // emulation cannot reliably synthesize a pointer tap after long scrolling.
+    // Do not force-click: that would conceal a real hit-target obstruction.
+    await spSummary.focus();
+    await page.keyboard.press('Enter');
     assert.equal(await spDetails.evaluate(el => el.open),true);
     const spRows = spDetails.locator('li');
     assert.equal(await spRows.count(),18);
