@@ -61,6 +61,13 @@ try {
     // center is unobstructed, then send a real emulated touch. Never force it.
     await spSummary.evaluate(el=>el.scrollIntoView({block:'center',inline:'nearest',behavior:'instant'}));
     const target=await spSummary.evaluate(el=>{
+      window.__spTouchEvidence=[];
+      for(const name of ['pointerdown','pointerup','touchstart','touchend','click','toggle']){
+        document.addEventListener(name,event=>{
+          if(window.__spTouchEvidence.length<20)window.__spTouchEvidence.push({event:name,
+            tag:event.target?.tagName,id:event.target?.id||null,scrollY:window.scrollY});
+        },{capture:true});
+      }
       const r=el.getBoundingClientRect();
       const x=r.left+r.width/2,y=r.top+r.height/2;
       const hit=document.elementFromPoint(x,y);
@@ -73,6 +80,17 @@ try {
     // Coordinate input still undergoes native browser hit-testing; no force,
     // DOM click, synthetic event dispatch or keyboard substitution is used.
     await page.touchscreen.tap(target.x,target.y);
+    try{
+      await page.waitForFunction(()=>document.querySelector('#ds-product-runtime details')?.open===true,null,{timeout:3000});
+    }catch(error){
+      const observed=await spSummary.evaluate(el=>({events:window.__spTouchEvidence,
+        rect:el.getBoundingClientRect().toJSON(),scrollY:window.scrollY,
+        viewport:{width:innerWidth,height:innerHeight,scale:visualViewport?.scale,
+          offsetTop:visualViewport?.offsetTop,pageTop:visualViewport?.pageTop},
+        open:el.parentElement.open}));
+      console.error('SP native touch failure geometry',JSON.stringify({width,target,observed}));
+      throw error;
+    }
     assert.equal(await spDetails.evaluate(el => el.open),true);
     const spRows = spDetails.locator('li');
     assert.equal(await spRows.count(),18);
