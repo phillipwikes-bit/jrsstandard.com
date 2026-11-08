@@ -10,6 +10,9 @@ on:
       - 'lib/ds-n1/**'
       - 'tests/incomeos-ds-*.mjs'
       - 'tests/ds-n1/**'
+  pull_request:
+    branches:
+      - chatgpt/incomeos-v25-synthetic-review-sequence-20261106
   workflow_dispatch:
 permissions:
   contents: read
