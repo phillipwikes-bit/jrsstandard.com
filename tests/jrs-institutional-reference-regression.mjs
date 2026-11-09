@@ -36,13 +36,20 @@ for(const path of ['index.html','resources.html','about.html','organization.html
  assert.doesNotMatch(html,/for later independent review\.<\/strong>/,
   path+' contains unmatched emphasis after long-form non-purchase statement');
 }
-for(const path of ['index.html','resources.html','about.html','organization.html']){
+// The homepage uses the approved, shorter action-oriented statement.
+// Other institutional pages retain the longer instrument definition.
+const homepagePositioning='Apply JRS within an existing authorized review workflow. No new software platform or case-record upload is required.';
+for(const path of ['resources.html','about.html','organization.html']){
  const html=read(path);
  assert.equal(html.split(practicalPositioning).length-1,1,
   path+' must prominently state the approved practitioner-first proposition once');
  assert.ok(html.includes('<strong>'+practicalPositioning+'</strong>'),
   path+' must visibly emphasize the practitioner-first proposition');
 }
+assert.equal(read('index.html').split(homepagePositioning).length-1,1,
+ 'homepage must prominently state its approved practitioner-first proposition once');
+assert.ok(read('index.html').includes('<strong>'+homepagePositioning+'</strong>'),
+ 'homepage must visibly emphasize its approved practitioner-first proposition');
 for(const path of ['index.html','resources.html','organization.html']){
  assert.ok(read(path).includes('Organizations do not need to purchase or replace a software platform'),
   path+' must retain the exact longer non-purchase statement');
@@ -52,7 +59,7 @@ for(const path of ['index.html','resources.html','organization.html']){
 // available, but not compete in the prominent introductory bold statement.
 const homeTypography=read('index.html');
 const homeDesign=read('assets/jrs-a-pathways.css');
-assert.ok(homeTypography.includes('<p class="jr-platform-promise"><strong>'+practicalPositioning+'</strong></p>'),
+assert.ok(homeTypography.includes('<p class="jr-platform-promise"><strong>'+homepagePositioning+'</strong></p>'),
  'the homepage hero must feature only the concise core instrument proposition');
 assert.ok(homeTypography.includes('<p class="jrs-task-context">Organizations do not need to purchase or replace a software platform'),
  'the full no-purchase explanation must survive as normal-weight first-use guidance');
