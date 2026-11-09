@@ -26,7 +26,11 @@ for(const anchor of ['id="training-modules"','id="simulator"','id="practice-guid
 for(const bad of ['id="pa-input"','record-review-workspace','runAssessment(','/api/review'])
  assert.ok(!training.includes(bad),'unavailable record-upload interface remains: '+bad);
 assert.ok(training.includes('Practice with constructed records'));
-assert.ok(read('api/review.js').includes('unavailable(req, res)'),'unreleased API boundary altered');
+// The old public assessor route was retired and its source removed in November.
+assert.ok(!existsSync(new URL('../api/review.js',import.meta.url)),
+ 'retired public /api/review handler must remain absent');
+assert.ok(!existsSync(new URL('../api/v1/review-engine.js',import.meta.url)),
+ 'retired v1 public review-engine handler must remain absent');
 const simulations=read('simulations.html');
 assert.ok(simulations.includes('Open the manual review check'));
 assert.ok(!simulations.includes('Open AI-Assisted Record Reviewer'));
@@ -52,8 +56,8 @@ assert.equal(redirects.find(r=>r.source==='/submit-record.html')?.destination,'/
 assert.equal(redirects.find(r=>r.source==='/sandbox')?.destination,'/resources.html');
 assert.ok(read('manifest.html').includes('jrs-decision-reconstruction-manifest-v1.0.1.schema.json'),
  'technical specification did not survive as direct public reference');
-assert.ok(existsSync(new URL('../review-engine.html',import.meta.url)),'archival technical evidence removed');
-assert.match(read('review-engine.html'),/name="robots" content="noindex,nofollow,noarchive"/);
+assert.ok(!existsSync(new URL('../review-engine.html',import.meta.url)),
+ 'retired public Review Engine page must remain absent');
 assert.doesNotMatch(read('sitemap.xml'),/\/(?:review-engine|pilot|platform-evaluation-001)\.html/);
 for(const path of ['security.html','engagement.html']){
  assert.match(read(path),/name="robots" content="noindex,nofollow"/,'historical page indexed: '+path);
