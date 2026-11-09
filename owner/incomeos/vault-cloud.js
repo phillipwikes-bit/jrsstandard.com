@@ -4,14 +4,21 @@
   // encrypted on this device (AES-256-GCM; the passphrase never leaves the device). Sign-in tokens are kept in page
   // memory only: nothing is written to browser storage. The database allows reads and new saves for the
   // allow-listed owner only; saves cannot be changed or deleted through this connection.
-  var CONFIG=Object.freeze({
+  var legacyConfig=Object.freeze({
     url:"https://pmvqxdgvnwhckzxojioa.supabase.co",
     // Publishable key: designed to be public; access is decided by the database rules, not by this key.
     key:"sb_publishable_TmUlJHebPm895zoRuCGzng_RKtoAZ8s",
     format:"incomeos-workspace-encrypted-v1"
   });
+  var staged=root&&root.IncomeOSRevisionPreviewConfig;
+  var stageEnabled=!!(staged&&staged.stagingOnly===true&&root.location&&root.location.origin===staged.origin&&
+    typeof staged.url==="string"&&/^https:\/\/[a-z]{20}\.supabase\.co$/.test(staged.url)&&
+    [legacyConfig.url,"https://pjzxkeviouofdseagvpf.supabase.co","https://ndjoqlnztjcqtmbbwybv.supabase.co"].indexOf(staged.url)<0&&
+    typeof staged.key==="string"&&/^sb_publishable_[A-Za-z0-9_-]{20,120}$/.test(staged.key));
+  var CONFIG=staged?(stageEnabled?Object.freeze({url:staged.url,key:staged.key}):null):legacyConfig;
   var session=null;
   var sessionEpoch=0;
+  var expiryTimer=null;
   var uncertainSaveOwner=null;
   // Enforce serialization at the API boundary, before hashing or HTTP yields.
   // Button disabling alone cannot prevent calls from another owner panel.
@@ -42,6 +49,7 @@
   function email(x){x=String(x||"").trim();if(!/^[^\s@]{1,64}@[^\s@]{1,190}\.[^\s@]{2,}$/.test(x))throw Error("Enter a valid email address");return x;}
   function password(x){x=String(x||"");if(x.length<12)throw Error("Use a password of at least 12 characters");return x;}
   async function call(path,opts){
+    if(!CONFIG)throw Error("The staged vault is unavailable on this origin");
     opts=opts||{};
     var requestEpoch=sessionEpoch;
     var headers={"apikey":CONFIG.key,"Content-Type":"application/json"};
@@ -80,9 +88,13 @@
     }
     return data;
   }
-  async function signUp(e,p){await call("/auth/v1/signup",{method:"POST",body:{email:email(e),password:password(p)}});return {ok:true};}
+  async function signUp(e,p){
+    if(staged)throw Error("Staged identities must be provisioned by the authorized operator");
+    await call("/auth/v1/signup",{method:"POST",body:{email:email(e),password:password(p)}});return {ok:true};
+  }
   async function signIn(e,p){
     // A failed or interrupted sign-in must not retain an earlier owner session.
+    if(staged&&session)signOut();
     session=null;clearSensitiveInputs();
     var epoch=++sessionEpoch,started=Date.now();
     var d=await call("/auth/v1/token?grant_type=password",{method:"POST",body:{email:email(e),password:password(p)}});
@@ -98,14 +110,28 @@
     var expiresAt=Math.min.apply(null,deadlines);
     if(!deadlines.length||!Number.isFinite(expiresAt)||expiresAt<=now)
       throw Error("Sign-in did not return a valid session expiry");
-    session={access_token:d.access_token,userId:d.user.id,email:d.user.email||"",expiresAt:expiresAt};return {ok:true,userId:session.userId};
+    session={access_token:d.access_token,userId:d.user.id,email:d.user.email||"",expiresAt:expiresAt};
+    if(stageEnabled){
+      function checkExpiry(){
+        if(!activeSession())return;
+        expiryTimer=setTimeout(checkExpiry,Math.min(session.expiresAt-Date.now(),2147483647));
+      }
+      checkExpiry();requireSession(epoch);previewSessionChanged(true);requireSession(epoch);
+    }
+    return {ok:true,userId:session.userId};
   }
-  function signOut(){
+  function previewSessionChanged(signedIn,reason){
+    if(stageEnabled)root.document.dispatchEvent(new root.CustomEvent("incomeos:revision-preview-session",{detail:{signedIn:signedIn,reason:reason}}));
+  }
+  function signOut(reason){
+    var hadSession=!!session;
     sessionEpoch++;session=null;
     // Revocation is immediate. Clear any passphrase retained in the local
     // workspace form, but do not silently discard unsaved financial edits.
     // Local plaintext remains in page memory until the page is reloaded.
     clearSensitiveInputs();
+    if(expiryTimer!==null){clearTimeout(expiryTimer);expiryTimer=null;}
+    if(hadSession)previewSessionChanged(false,reason);
   }
   function clearSensitiveInputs(){
     var doc=root&&root.document;
@@ -116,6 +142,7 @@
   }
   function signedIn(){return !!activeSession();}
   async function saveEncrypted(text){
+    if(staged)throw Error("Use the staged revision editor for encrypted saves");
     assertEncrypted(text);
     if(text.length>5000000)throw Error("Encrypted workspace exceeds 5 MB");
     requireSession();
@@ -136,6 +163,7 @@
     return {ok:true};
   }
   async function latestEncrypted(){
+    if(staged)throw Error("Use the staged revision editor for encrypted recovery");
     requireSession();
     var epoch=sessionEpoch;
     var rows=await call("/rest/v1/incomeos_vault?select=id,ciphertext,sha256,saved_at&order=saved_at.desc,id.desc&limit=1",{auth:true});
@@ -185,6 +213,7 @@
       }catch(e){
         if(epoch!==sessionEpoch)throw Error("Vault session changed during request");
         if(e&&e.status===401){signOut();throw Error("Vault session expired or was rejected; sign in again");}
+        if(stageEnabled&&e&&e.status===403){signOut("denied");throw Error("Staged revision access denied");}
         throw e;
       }
     }
@@ -197,7 +226,7 @@
     });
   }
   function recoveryRequired(){return uncertainSaveOwner!==null;}
-  var api=Object.freeze({CONFIG:CONFIG,assertEncrypted:assertEncrypted,signUp:signUp,signIn:signIn,signOut:signOut,signedIn:signedIn,save:save,latest:latest,createRevisionTransport:createRevisionTransport,recoveryRequired:recoveryRequired});
+  var api=Object.freeze({CONFIG:CONFIG,revisionPreview:stageEnabled,assertEncrypted:assertEncrypted,signUp:signUp,signIn:signIn,signOut:signOut,signedIn:signedIn,save:save,latest:latest,createRevisionTransport:createRevisionTransport,recoveryRequired:recoveryRequired});
   if(root)root.IncomeOSVaultCloud=api;
   if(typeof module!=="undefined"&&module.exports)module.exports=api;
 
@@ -245,11 +274,20 @@
       };
     }
     var saving=false,restoring=false;
-    function refresh(){var on=signedIn(),busy=saving||restoring;$("cloud-vault-signin").hidden=on;$("cloud-vault-signup").hidden=on;$("cloud-vault-signout").hidden=!on;$("cloud-vault-save").disabled=!on||busy||recoveryRequired();$("cloud-vault-restore").disabled=!on||busy;$("cloud-vault-password").value=on?"":$("cloud-vault-password").value;}
+    function refresh(){var on=signedIn(),busy=saving||restoring;$("cloud-vault-signin").hidden=on;$("cloud-vault-signup").hidden=!!staged||on;$("cloud-vault-signout").hidden=!on;$("cloud-vault-save").hidden=!!staged;$("cloud-vault-restore").hidden=!!staged;$("cloud-vault-save").disabled=!!staged||!on||busy||recoveryRequired();$("cloud-vault-restore").disabled=!!staged||!on||busy;$("cloud-vault-password").value=on?"":$("cloud-vault-password").value;}
     async function guard(fn){try{await fn();}catch(e){say("Vault: "+e.message);}refresh();}
     $("cloud-vault-signin").addEventListener("click",function(){guard(async function(){say("Signing in…");await signIn($("cloud-vault-email").value,$("cloud-vault-password").value);say("Signed in to your private vault for this visit only.");});});
     $("cloud-vault-signup").addEventListener("click",function(){guard(async function(){await signUp($("cloud-vault-email").value,$("cloud-vault-password").value);say("Account requested. Confirm it from the email Supabase sends, then sign in. The vault opens only after the owner account is approved.");});});
-    $("cloud-vault-signout").addEventListener("click",function(){signOut();say("Private vault signed out. Your loaded workspace may remain visible in this tab. Reload or close this page to clear it; save unsaved changes securely first.");refresh();});
+    $("cloud-vault-signout").addEventListener("click",function(){
+      if(stageEnabled&&!document.dispatchEvent(new CustomEvent("incomeos:revision-preview-signout",{cancelable:true})))return;
+      signOut();
+      if(!stageEnabled)say("Private vault signed out. Your loaded workspace may remain visible in this tab. Reload or close this page to clear it; save unsaved changes securely first.");
+      refresh();
+    });
+    if(stageEnabled){
+      document.addEventListener("incomeos:revision-preview-session",refresh);
+      document.addEventListener("visibilitychange",refresh);
+    }
     $("cloud-vault-save").addEventListener("click",function(){
       // A second upload cannot overtake an earlier encrypted snapshot and
       // make the latest vault copy older than the owner's last save.

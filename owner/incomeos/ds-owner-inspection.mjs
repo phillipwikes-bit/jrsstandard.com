@@ -32,6 +32,7 @@ export function checkProgram(program) {
 // A filtered snapshot, not a new source-of-truth or a GitHub status poll.
 export function inspectOwnerProduct(program, provenance = null) {
   const p = checkProgram(program);
+  const originalVerification = globalThis.IncomeOSDSProgram.originalVerificationPlan(p);
   const accepted = p.acceptance.filter(x => x.status === 'ACCEPTED').length;
   // The owner programme remains the only mutable source for defects, tasks,
   // research evidence and experimental study run records.
@@ -53,10 +54,15 @@ export function inspectOwnerProduct(program, provenance = null) {
     rulesVersion: meta.rulesVersion || 'NOT_LOADED_IN_OWNER_DESK',
     cognitiveVersion: meta.cognitiveVersion || 'NOT_LOADED_IN_OWNER_DESK',
     reflectiveVersion: meta.reflectiveVersion || 'NOT_LOADED_IN_OWNER_DESK',
-    originalSource: 'AUTHENTIC_SOURCE_NOT_RECOVERED',
+    originalSource: originalVerification.recordedSourceGateReady
+      ? 'RECORDED_SOURCE_PREREQUISITES' : 'AUTHENTIC_SOURCE_NOT_RECOVERED',
     originalAcceptance: { accepted, total: 18 },
-    originalVerification: globalThis.IncomeOSDSProgram.originalVerificationPlan(p),
-    openGates: p.gates.filter(x => !x.approval).map(x => x.id),
+    originalVerification,
+    openGates: p.gates.filter(x => {
+      if (x.id === 'G1') return !originalVerification.recordedSourceGateReady;
+      if (x.id === 'G2') return !originalVerification.recordedAcceptanceGateReady;
+      return !x.approval;
+    }).map(x => x.id),
     // Programme counts are not a GitHub CI query or independent acceptance.
     programmeEvidenceEntries: p.evidence.length,
     programmeRequirementsRecorded: p.requirements.length,

@@ -15,7 +15,9 @@ const payload=n=>JSON.stringify({
   data:Buffer.alloc(16,1+n%254).toString("base64")
 });
 (async()=>{
-  let remote=null,reads=0,writes=0,conflicts=0;
+  const started=performance.now();
+  let remote=null,reads=0,writes=0,conflicts=0,reviewConfirmations=0;
+  function confirm(client,revision){client.confirmRevision(revision);reviewConfirmations++;}
   let commitThenTimeout=false;
   const transport={
     latest:async()=>{reads++;return remote;},
@@ -51,8 +53,8 @@ const payload=n=>JSON.stringify({
     const ra=await a.refresh(),rb=await b.refresh();
     assert.equal(ra.revision,head);
     assert.equal(rb.revision,head);
-    if(ra.requiresOwnerConfirmation)a.confirmRevision(head);
-    if(rb.requiresOwnerConfirmation)b.confirmRevision(head);
+    if(ra.requiresOwnerConfirmation)confirm(a,head);
+    if(rb.requiresOwnerConfirmation)confirm(b,head);
     assert.equal(writes,before,"Reading or confirming a revision never writes");
     const encrypted=payload(i),digest=await sha256(encrypted);
     const [x,y]=await Promise.allSettled([
@@ -82,7 +84,7 @@ const payload=n=>JSON.stringify({
     if(state.requiresOwnerConfirmation){
       const again=await client.refresh();
       assert.equal(again.requiresOwnerConfirmation,true);
-      client.confirmRevision(CYCLES);
+      confirm(client,CYCLES);
     }
   }
   assert.ok(reads>=stableReads+2);
@@ -99,7 +101,7 @@ const payload=n=>JSON.stringify({
   assert.equal(recovered.revision,CYCLES+1);
   assert.equal(recovered.requiresOwnerConfirmation,true);
   await assert.rejects(a.append(next,nextHash),/Owner confirmation required/);
-  a.confirmRevision(CYCLES+1);
+  confirm(a,CYCLES+1);
   assert.equal((await a.append(payload(201),await sha256(payload(201)))).revision,CYCLES+2);
   assert.equal(writes,CYCLES+2);
   // A server may not replace ciphertext for an already trusted revision
@@ -116,5 +118,8 @@ const payload=n=>JSON.stringify({
   remote=good;
   assert.equal((await a.refresh()).revision,CYCLES+2);
   assert.equal(writes,CYCLES+2);
+  console.log(JSON.stringify({scope:"synthetic-revision-protocol",raceCycles:CYCLES,raceAttempts:2*CYCLES,
+    raceCommits:stableWrites,staleRefusals:conflicts,serverReads:reads,reviewConfirmations,interruptedCommitsRecovered:1,
+    writesAfterRace:writes-stableWrites,unexpectedFailures:0,elapsedMs:Math.round(performance.now()-started)}));
   console.log("PASS: 120 simultaneous-owner revision cycles, 120 denied CAS races, commit-then-timeout recovery, equivocation, rollback, no auto writes");
 })().catch(err=>{console.error(err);process.exitCode=1;});

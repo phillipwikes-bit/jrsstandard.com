@@ -12,7 +12,7 @@
     var E={rules:window.IncomeOSLedgerRules,nw:window.IncomeOSNetWorth,claims:window.IncomeOSClaims,ren:window.IncomeOSRenewals,intel:window.IncomeOSIntelligence,rh:window.IncomeOSRecruiterHistory,yc:window.IncomeOSYieldCompare,wb:window.IncomeOSWeeklyBriefing,life:window.IncomeOSLifecycle};
     if(!input||!button||!status||!out||!WS||Object.keys(E).some(function(k){return !E[k];}))return;
     var state={ws:null,screen:null,dirty:false,history:[],research:window.IncomeOSResearchLatest||null};
-    var revisionDesk=null;
+    var revisionDesk=null,revisionAttachment=null;
     var revisionControls=null,workspaceEpoch=0,fileOpenSequence=0,localSavePending=false;
     function workspaceMarker(){return {ws:state.ws,dirty:state.dirty,epoch:workspaceEpoch,desk:revisionDesk,text:state.ws?JSON.stringify(state.ws):null};}
     function unchanged(marker){return marker.ws===state.ws&&marker.dirty===state.dirty&&marker.epoch===workspaceEpoch&&marker.desk===revisionDesk&&(!state.ws||JSON.stringify(state.ws)===marker.text);}
@@ -75,7 +75,10 @@
       btn(box,"Close private workspace",function(){run(closeRevisionHost);});
     }
     function closeRevisionHost(){
-      revisionDesk.close();revisionDesk=null;
+      revisionDesk.close();detachRevisionHost();
+    }
+    function detachRevisionHost(){
+      revisionDesk=null;revisionAttachment=null;
       if(passInput)passInput.value="";
       if(revisionControls){var selectedFile=revisionControls.querySelector('input[type="file"]');if(selectedFile)selectedFile.value="";revisionControls.remove();}
       revisionControls=null;clearRevisionDisplay();
@@ -114,10 +117,12 @@
        "confirmOpenedRevision","encryptedBackup","exportPendingDraftEncrypted","restoreLedgerBackup","prepareWorkspaceRecovery","applyWorkspaceRecovery","discardDraft","close"].forEach(function(k){
         if(!coordinator||typeof coordinator[k]!=="function")throw Error("Verified revision coordinator required");
       });
-      revisionDesk=coordinator;workspaceEpoch++;
+      var attachment={};revisionDesk=coordinator;revisionAttachment=attachment;workspaceEpoch++;
       mountRevisionControls();
-      function bound(){if(revisionDesk!==coordinator)throw Error("Revision editor is no longer attached");}
+      function attached(){return revisionAttachment===attachment;}
+      function bound(){if(!attached())throw Error("Revision editor is no longer attached");}
       return Object.freeze({
+        attached:attached,
         open:function(pass){bound();return openRevision(coordinator,pass);},
         confirm:function(revision){bound();coordinator.confirmOpenedRevision(revision);installRevision();},
         rescue:function(pass){bound();return coordinator.exportPendingDraftEncrypted(pass);},
@@ -125,7 +130,8 @@
         applyRecovery:function(sections,on){bound();var r=coordinator.applyWorkspaceRecovery(sections,on);installRevision();return r;},
         restore:async function(backup,pass,on){bound();var r=await coordinator.restoreLedgerBackup(backup,pass,on);installRevision();return r;},
         discard:function(){bound();coordinator.discardDraft();clearRevisionDisplay();},
-        close:function(){bound();closeRevisionHost();}
+        close:function(){bound();closeRevisionHost();},
+        lock:function(){bound();detachRevisionHost();}
       });
     }});
     function announce(){workspaceEpoch++;try{document.dispatchEvent(new CustomEvent("incomeos:workspace-loaded",{detail:state.ws}));}catch(e){}}
@@ -295,7 +301,7 @@
     async function openText(text,assertOwnerSession,fileSequence){
       function currentSelection(){if(fileSequence!==undefined&&fileSequence!==fileOpenSequence)throw Error("A newer workspace file was selected. Earlier file was not installed.");}
       currentSelection();
-      if(revisionDesk)throw Error("Use verified revision recovery while the staged editor is attached");
+      if(revisionDesk||window.IncomeOSRevisionPreviewConfig)throw Error("Use verified revision recovery while the staged editor is configured");
       if(assertOwnerSession!==undefined&&typeof assertOwnerSession!=="function")
         throw Error("Invalid owner session check");
       if(assertOwnerSession)assertOwnerSession();
@@ -323,7 +329,7 @@
     // workspace. Only the exact encrypted snapshot may clear its dirty flag.
     var vaultSaveSequence=0,pendingVaultSave=null;
     document.addEventListener("incomeos:vault-encrypt",async function(ev){var d=ev.detail;if(!d||typeof d.done!=="function")return;
-      try{if(revisionDesk)throw Error("Use the explicit revision save control");if(!state.ws)throw Error("Open or start a workspace first");var p=passInput&&passInput.value||"";if(p.length<16)throw Error("Enter a passphrase of at least 16 characters; the vault only accepts encrypted saves");
+      try{if(revisionDesk||window.IncomeOSRevisionPreviewConfig)throw Error("Use the explicit revision save control");if(!state.ws)throw Error("Open or start a workspace first");var p=passInput&&passInput.value||"";if(p.length<16)throw Error("Enter a passphrase of at least 16 characters; the vault only accepts encrypted saves");
         var snapshot=JSON.stringify(state.ws),saveId=++vaultSaveSequence;
         if(typeof d.assertSession!=="function")throw Error("Vault owner session check required");
         d.assertSession();
@@ -352,6 +358,7 @@
         if(state.dirty&&!confirm("Replace the unsaved workspace on screen with the vault copy?"))return d.done({ok:false,error:"Cancelled"});
         await openText(d.text,d.assertSession);d.done({ok:true});}catch(err){d.done({ok:false,error:err.message});}});
     button.addEventListener("click",async function(){
+      if(window.IncomeOSRevisionPreviewConfig){status.textContent="Open the authenticated revision editor to load the staged workspace.";return;}
       var sequence=++fileOpenSequence,before=workspaceMarker();
       var f=input.files&&input.files[0];
       if(!f){status.textContent="Choose your workspace file first.";return;}
@@ -365,7 +372,9 @@
       finally{if(sequence===fileOpenSequence&&input.files&&input.files[0]===f)input.value="";}
     });
     var newBtn=document.getElementById("briefing-new");
-    if(newBtn)newBtn.addEventListener("click",function(){if(revisionDesk){try{revisionDesk.initializeNew(today());installRevision();}catch(e){status.textContent=e.message;}return;}state.ws=WS.newWorkspace(today());state.history=[];state.dirty=true;state.lastAct=null;render();announce();
+    if(newBtn)newBtn.addEventListener("click",function(){if(revisionDesk){try{revisionDesk.initializeNew(today());installRevision();}catch(e){status.textContent=e.message;}return;}
+      if(window.IncomeOSRevisionPreviewConfig){status.textContent="Open an empty authenticated revision workspace before creating a staged draft.";return;}
+      state.ws=WS.newWorkspace(today());state.history=[];state.dirty=true;state.lastAct=null;render();announce();
       status.textContent="New empty workspace. Add accounts and entries below, then save it encrypted."+(state.lastAct?" "+state.lastAct+".":"");});
     if(undoBtn)undoBtn.addEventListener("click",function(){
       if(revisionDesk){try{
@@ -380,10 +389,11 @@
     });
     if(saveBtn)saveBtn.addEventListener("click",async function(){
       if(revisionDesk){
+        var activeDesk=revisionDesk;
         saveBtn.disabled=true;status.textContent="Saving encrypted revision…";
-        try{await revisionDesk.save(passInput&&passInput.value||"");installRevision();document.dispatchEvent(new CustomEvent("incomeos:workspace-saved",{detail:{encrypted:true}}));status.textContent="Encrypted revision saved.";}
-        catch(e){status.textContent="Revision not confirmed: "+e.message;}
-        finally{saveBtn.disabled=false;}
+        try{await activeDesk.save(passInput&&passInput.value||"");if(revisionDesk===activeDesk){installRevision();document.dispatchEvent(new CustomEvent("incomeos:workspace-saved",{detail:{encrypted:true}}));status.textContent="Encrypted revision saved.";}}
+        catch(e){if(revisionDesk===activeDesk)status.textContent="Revision not confirmed: "+e.message;}
+        finally{if(!revisionDesk||revisionDesk===activeDesk)saveBtn.disabled=false;}
         return;
       }
       if(!state.ws||localSavePending)return;

@@ -33,7 +33,7 @@ assert.throws(()=>D.add(p,"tasks",{id:"E-SYN-001",title:"dup"},on),/already used
 
 // New-module (DS-C) passes never accept an SP check of the original.
 p=D.linkEvidence(p,"acceptance","SP-01","E-SYN-001",on);
-assert.throws(()=>D.acceptCheck(p,"SP-01",on),/new-module test passes do not qualify/);
+assert.throws(()=>D.acceptCheck(p,"SP-01",on),/new-module test passes do not qualify/i);
 const forced=plain(p);forced.acceptance[0].status="ACCEPTED";
 assert.throws(()=>D.validate(forced),/without qualifying independent evidence/);
 

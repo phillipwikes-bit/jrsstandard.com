@@ -8,6 +8,25 @@ The active execution environment provides no Supabase management/database creden
 
 An authorized operator must provide an approved non-production Supabase project and a sufficiently scoped migration connection through protected secret injection. Source preparation, disposable PostgreSQL tests and rollback documentation can proceed independently.
 
+## Prepare the existing Owner Desk for protected staging
+
+Use `engineering/incomeos/prepare-revision-preview.mjs` after verifying the exact protected IncomeOS preview origin and the isolated Supabase project. The local command accepts a new output directory as its only argument. It prepares a copy of the existing Owner Desk with the staged revision entry and content policy for that project. The command does not deploy the copy or apply SQL.
+
+| Operator setting | Required value |
+| --- | --- |
+| `INCOMEOS_REVISION_PREVIEW_AUTHORIZED` | `yes` after documenting the approved staging target |
+| `INCOMEOS_REVISION_PREVIEW_ORIGIN` | Exact HTTPS origin of the protected IncomeOS preview |
+| `INCOMEOS_REVISION_SUPABASE_REF` | Approved isolated project reference |
+| `INCOMEOS_REVISION_SUPABASE_PUBLISHABLE_KEY` | Browser publishable key for that isolated project |
+
+```bash
+node engineering/incomeos/prepare-revision-preview.mjs /path/to/new-staging-output
+```
+
+Keep migration access and staging identity passwords separate from the build. The builder refuses the canonical IncomeOS host, known existing Supabase projects and non-publishable keys. On the protected preview, confirm origin binding, the content policy and anonymous denial before signing in. The protected staging copy uses operator-provisioned identities, the staged revision RPC and explicit saves. The regular Owner Desk entry retains its release interlock. Deploy only to the exact approved preview origin after completing preflight and migration verification below.
+
+For synthetic acceptance, sign in with each test identity, open the revision editor, verify the independent allowlist, and exercise save and restore. An expired or denied staging session clears the displayed workspace and disables reopening until sign-in. A dirty draft prompts before voluntary sign-out. Edits that have never been saved or exported cannot be recovered after the tab loses its session. Record that boundary during the restart test.
+
 ## Preflight on the approved non-production target
 
 1. Record the immutable client/source commit, target project identity in a private operations record, operator, time and explicit non-production authorization. Preserve current protected access rules and enumerate effective access exceptions. Stop if the target cannot be independently distinguished from production.

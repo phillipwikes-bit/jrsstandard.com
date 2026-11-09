@@ -41,7 +41,12 @@ await page.locator("#ds-start").tap();
 await page.waitForFunction(()=>document.querySelectorAll("#view-ds details.ds-form").length>=6);
 // Record evidence and a task through the forms.
 const ev=page.locator("details.ds-form",{hasText:"Evidence"}).first();
-await ev.locator("summary").tap();
+await ev.locator(":scope > summary").tap();
+const original=ev.getByText("Original DS-A verification evidence (optional)",{exact:true});
+await original.tap();
+assert.equal(await ev.getByLabel("Role",{exact:true}).inputValue(),"","General evidence stays outside original acceptance by default");
+assert.equal(await ev.getByLabel("Independence of the evidence").inputValue(),"","Independence needs an explicit record");
+await original.tap();
 await ev.getByLabel("Identifier",{exact:true}).fill("E-UI-001");await ev.getByLabel("Title").fill("Synthetic DS-C unit run");
 await ev.getByLabel("Evidence level").selectOption("2");await ev.getByLabel("Source (file, URL or document)").fill("tests run");
 await ev.getByLabel("Date",{exact:true}).fill("2026-11-01");await ev.getByLabel("Assumptions").fill("Synthetic");await ev.getByLabel("Contradictory evidence").fill("none found");

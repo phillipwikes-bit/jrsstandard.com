@@ -4,6 +4,7 @@ import assert from "node:assert/strict";
 import {createServer} from "node:http";
 import {readFileSync} from "node:fs";
 import {createRequire} from "node:module";
+import {verifyRevisionPreview} from "./incomeos-revision-preview-browser.mjs";
 const require=createRequire(import.meta.url);
 let chromium;
 try {({chromium}=require("playwright-core"));}
@@ -27,9 +28,10 @@ const server=createServer((req,res)=>{
 });
 await new Promise(resolve=>server.listen(0,"127.0.0.1",resolve));
 let browser;
+const launchOptions=process.env.INCOMEOS_BROWSER?
+  {executablePath:process.env.INCOMEOS_BROWSER,args:["--no-sandbox"]}:{headless:true};
 try {
-  browser=await chromium.launch(process.env.INCOMEOS_BROWSER?
-    {executablePath:process.env.INCOMEOS_BROWSER,args:["--no-sandbox"]}:{headless:true});
+  browser=await chromium.launch(launchOptions);
   const context=await browser.newContext({viewport:{width:375,height:812},isMobile:true,hasTouch:true});
   const page=await context.newPage();
   const errors=[];
@@ -163,3 +165,4 @@ try {
   if(browser)await browser.close();
   await new Promise(resolve=>server.close(resolve));
 }
+await verifyRevisionPreview(chromium,launchOptions);
