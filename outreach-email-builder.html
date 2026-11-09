@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Prepare a JRS Resource-Sharing Email | JRS™</title>
+<meta name="description" content="Prepare a voluntary email about free JRS documentation-review resources. Draft locally, review before sending, and keep recipient information on your device.">
+<meta name="robots" content="index,follow">
+<link rel="canonical" href="https://www.jrsstandard.com/outreach-email-builder.html">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<style>
+:root{color-scheme:dark;--bg:#070707;--surface:#141414;--line:#414141;--text:#f3f3f3;--muted:#c5c5c5;--amber:#c9a35e}*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--text);font:16px/1.55 -apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif}
+a{color:var(--amber)}a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible,select:focus-visible{outline:3px solid var(--amber);outline-offset:3px}
+header{border-bottom:1px solid var(--line)}header .inner,main,footer{max-width:850px;margin:auto;padding:22px}
+header .inner{display:flex;justify-content:space-between;align-items:center;gap:15px;flex-wrap:wrap}
+header a.brand{font:26px Georgia,serif;text-decoration:none}nav a{margin-right:17px}
+h1,h2{font-family:Georgia,serif;font-weight:400;line-height:1.25}h1{font-size:clamp(30px,6vw,44px);margin:6px 0 12px}h2{font-size:25px}
+p{margin:0 0 16px}.lead{font-size:18px}.muted,small{color:var(--muted)}
+.notice{border-left:3px solid var(--amber);background:var(--surface);padding:17px;margin:20px 0}
+.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:15px}
+label{display:block;font-weight:600;margin:16px 0 5px}
+input,select,textarea{width:100%;background:#1c1c1c;border:1px solid #777;border-radius:4px;color:var(--text);padding:12px;font:inherit}
+textarea{min-height:260px;resize:vertical}
+button{background:var(--amber);color:#0a0a0a;border:1px solid var(--amber);border-radius:4px;padding:12px 16px;font:600 16px inherit;cursor:pointer;margin:10px 12px 4px 0}
+button.secondary{background:transparent;color:var(--text)}
+#status{min-height:24px;color:var(--muted)}.skip{position:absolute;left:-9999px}.skip:focus{left:10px;top:10px;background:var(--bg);z-index:10}
+footer{border-top:1px solid var(--line);font-size:14px}
+@media(max-width:620px){.grid{grid-template-columns:1fr}header .inner,main,footer{padding:18px}nav a{display:inline-block;margin:0 12px 8px 0}button{width:100%;margin:8px 0}}
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Skip to email draft</a>
+<header><div class="inner"><a class="brand" href="index.html">JRS™</a><nav aria-label="Main"><a href="resources.html">Resources</a><a href="decisions-you-can-defend.html">Professional initiative</a><a href="right-to-know-why.html">Public-interest initiative</a></nav></div></header>
+<main id="main">
+<p class="muted">Optional, local drafting aid</p>
+<h1>Prepare an email about a free JRS resource</h1>
+<p class="lead">Share an independently reviewable example or practical documentation question. The draft is yours to review, edit or discard. No email is sent by this site.</p>
+<div class="notice"><strong>Operating boundary.</strong> This form runs in your browser. It does not submit the form, retain its fields or access your contacts. Do not enter confidential case material. Copying a draft uses your device clipboard. Opening a mail draft transfers its content to your email application. Neither action sends an email. The site does not record recipient addresses, draft bodies or send outcomes.</div>
+<div class="grid">
+<div><label for="audience">Resource and audience</label><select id="audience"><option value="investigations">Investigation and report review</option><option value="professional">Compliance, audit and other professional review</option><option value="rights">Civil rights and public-interest education</option></select></div>
+<div><label for="recipient">Recipient email (optional)</label><input id="recipient" type="email" autocomplete="off" placeholder="Optional, for your mail app"></div>
+</div>
+<div class="grid">
+<div><label for="organization">Organization (optional)</label><input id="organization" maxlength="120" autocomplete="off" placeholder="Use a verified organization name"></div>
+<div><label for="sender">Sender name (optional)</label><input id="sender" maxlength="120" autocomplete="name" placeholder="Your name"></div>
+</div>
+<label for="relevance">Verified reason this resource fits the recipient (optional)</label>
+<textarea id="relevance" rows="2" style="min-height:80px" placeholder="Only describe the recipient's documented professional or educational work."></textarea>
+<label for="mailing">Sender postal address (optional; review legal requirements before any commercial email)</label>
+<input id="mailing" maxlength="240" autocomplete="off" placeholder="Your accurate postal contact details, if required">
+<h2>Review your draft before using it</h2>
+<label for="subject">Email subject</label><input id="subject" maxlength="200">
+<label for="body">Email body</label><textarea id="body" rows="12"></textarea>
+<div><button type="button" id="regenerate">Use selected resource template</button><button type="button" class="secondary" id="copy">Copy draft</button><button type="button" class="secondary" id="compose">Open in mail app</button></div>
+<p id="status" role="status" aria-live="polite"></p>
+<div class="notice"><strong>Before sending:</strong> Verify the recipient's appropriate contact route, the factual relevance statement and the destination link. Determine whether CAN-SPAM commercial-email requirements apply, including a valid postal address and an appropriate opt-out method when applicable. Do not imply endorsement, completed adoption, legal certification or validated effectiveness. Respect declines and do not send automatic follow-ups. See <a href="https://www.ftc.gov/business-guidance/resources/can-spam-act-compliance-guide-business">FTC CAN-SPAM guidance</a> and <a href="privacy-notice.html#outreach-email-drafts">privacy boundaries</a>.</div>
+</main>
+<footer><a href="resources.html">Free practitioner resources</a> · <a href="research-summary.html">Research and limitations</a> · <a href="privacy-notice.html">Privacy notice</a><p>JRS is in operational validation. The free materials do not certify legal correctness or organizational effectiveness.</p></footer>
+<script>
+(function(){
+'use strict';
+var profiles={
+ investigations:{subject:'Free evidence-support questions for investigation reports',url:'https://www.jrsstandard.com/investigation-report-evidence-check.html',reason:'investigation report writing and review',description:'a fictional investigation finding with questions about underlying evidence, chronology and the connection between source and conclusion'},
+ professional:{subject:'Free decision-record documentation review questions',url:'https://www.jrsstandard.com/decisions-you-can-defend.html#constructed-example',reason:'professional documentation review',description:'a fictional decision record, optional self-check and a link to seven evidence, chronology and reasoning questions'},
+ rights:{subject:'When a consequential decision record does not explain why',url:'https://www.jrsstandard.com/right-to-know-why.html#constructed-example',reason:'public-interest education about accountable decision records',description:'a fictional decision, a brief reader self-check and an explanation of Decision Reconstruction Risk'}
+};
+var $=function(id){return document.getElementById(id)};
+function value(id){return $(id).value.trim()}
+function make(){
+ var p=profiles[value('audience')]||profiles.professional;
+ var org=value('organization'),why=value('relevance'),who=value('sender'),postal=value('mailing');
+ var opening=org?'Hello '+org+' team,':'Hello,';
+ var intro=why?'I noticed your published work involving '+why+'.':'I thought this resource could be relevant to your work involving '+p.reason+'.';
+ var body=[opening,'','A retained decision record may preserve a conclusion without identifying the source evidence, event chronology or reasoning that supports it.','',intro,'','The Justification Review Standard (JRS) provides '+p.description+':',p.url,'','Would you be willing to examine it and decide whether the resource is useful for your educational or review work?','','This is a free, optional resource. No software purchase or registration is required. JRS remains in operational validation and does not establish legal correctness or demonstrated effectiveness in operational records.','','If this note is not relevant, please let me know and I will not contact you again.','','Regards,',who||'[Sender name]'];
+ if(postal)body.push(postal);
+ $('subject').value=p.subject;$('body').value=body.join('\n');
+ $('status').textContent='Draft prepared on this device. Nothing has been transmitted.';
+}
+$('regenerate').addEventListener('click',make);
+$('audience').addEventListener('change',make);
+$('copy').addEventListener('click',async function(){
+ var txt='Subject: '+value('subject')+'\n\n'+value('body');
+ try{if(!navigator.clipboard||!navigator.clipboard.writeText)throw new Error('Clipboard unavailable');await navigator.clipboard.writeText(txt);$('status').textContent='Draft copied. Review it before sending.'}
+ catch(e){$('status').textContent='Copy was not confirmed. Select the text above and copy it manually.'}
+});
+$('compose').addEventListener('click',function(){
+ var to=value('recipient');if(to&&(!$('recipient').checkValidity())){$('status').textContent='Check the recipient email address before opening the mail app.';return;}
+ var subject=value('subject'),body=value('body');if(!subject||!body){$('status').textContent='Enter a subject and body first.';return;}
+ var href='mailto:'+encodeURIComponent(to)+'?subject='+encodeURIComponent(subject)+'&body='+encodeURIComponent(body);
+ $('status').textContent='Opening your mail application. No email has been sent by JRS.';
+ window.location.href=href;
+});
+var campaign=new URLSearchParams(location.search).get('campaign');
+if(campaign==='rights')$('audience').value='rights';
+if(campaign==='professional')$('audience').value='professional';
+make();
+})();
+</script>
+</body>
+</html>
