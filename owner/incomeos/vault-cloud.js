@@ -51,7 +51,11 @@
     try{
       var received=await Promise.race([
         (async function(){
-          var response=await root.fetch(CONFIG.url+path,{method:opts.method||"GET",headers:headers,body:opts.body?JSON.stringify(opts.body):undefined,credentials:"omit",cache:"no-store",referrerPolicy:"no-referrer",signal:controller?controller.signal:undefined});
+          var response=await root.fetch(CONFIG.url+path,{
+            method:opts.method||"GET",headers:headers,body:opts.body?JSON.stringify(opts.body):undefined,
+            credentials:"omit",cache:"no-store",referrerPolicy:"no-referrer",redirect:"error",
+            signal:controller?controller.signal:undefined
+          });
           return {response:response,text:await response.text()};
         }()),
         new Promise(function(resolve,reject){timer=setTimeout(function(){

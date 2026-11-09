@@ -16,7 +16,11 @@
   var STATES=["SEARCH_DUE","SEARCHED_NONE_FOUND","MATCH_FOUND","CLAIM_FILED","DOCUMENTS_REQUESTED","APPROVED","PAID","DENIED","ABANDONED"];
   var NEXT={SEARCH_DUE:["SEARCHED_NONE_FOUND","MATCH_FOUND"],SEARCHED_NONE_FOUND:["SEARCH_DUE"],MATCH_FOUND:["CLAIM_FILED","ABANDONED"],
     CLAIM_FILED:["DOCUMENTS_REQUESTED","APPROVED","DENIED"],DOCUMENTS_REQUESTED:["CLAIM_FILED","APPROVED","DENIED","ABANDONED"],APPROVED:["PAID","DENIED"],PAID:[],DENIED:[],ABANDONED:[]};
-  function isDate(x){return typeof x==="string"&&/^\d{4}-\d{2}-\d{2}$/.test(x)&&Number.isFinite(Date.parse(x+"T00:00:00Z"));}
+  function isDate(x){
+    if(typeof x!=="string"||!/^\d{4}-\d{2}-\d{2}$/.test(x))return false;
+    var ms=Date.parse(x+"T00:00:00Z");
+    return Number.isFinite(ms)&&new Date(ms).toISOString().slice(0,10)===x;
+  }
   function addDays(d,n){return new Date(Date.parse(d+"T00:00:00Z")+n*86400000).toISOString().slice(0,10);}
   function c(x){var n=Math.round(Number(x)*100);return Number.isSafeInteger(n)&&n>0?n:NaN;}
 
@@ -64,10 +68,88 @@
       estimatedUsd:Number.isFinite(c(x.estimatedUsd))?c(x.estimatedUsd)/100:null,feeUsd:Number.isFinite(c(x.feeUsd))?c(x.feeUsd)/100:0,feeCharger:x.feeCharger||null,
       deadline:isDate(x.deadline)?x.deadline:null,statementDate:isDate(x.statementDate)?x.statementDate:null,state:start,history:[{to:start,on:x.openedOn,evidenceRef:"opened"}]};
   }
+
+  function sameFields(record,expected){
+    if(!record||typeof record!=="object"||Array.isArray(record))return false;
+    var keys=Object.keys(expected);
+    return Object.keys(record).length===keys.length&&keys.every(function(key){
+      return Object.hasOwn(record,key)&&record[key]===expected[key];
+    });
+  }
+  function validateRecoveryClaim(claim){
+    if(!claim||typeof claim.id!=="string"||!claim.id.trim()||claim.id!==claim.id.trim()||
+       !Array.isArray(claim.history)||!claim.history.length||!claim.history[0])
+      throw Error("Invalid recovered claim identity or opening history");
+    var {state,history,finding,...details}=claim;
+    var {state:openingState,history:opening,...expected}=create(Object.assign({},details,{openedOn:history[0].on}));
+    if(!sameFields(details,expected)||[details.sourceId,details.feeCharger].some(function(value){
+      return value!==null&&(typeof value!=="string"||!value.trim());
+    })||!sameFields(history[0],opening[0]))throw Error("Invalid recovered claim details");
+    var prior=opening[0];
+    history.slice(1).forEach(function(step){
+      // Replay the same transition rules as manual entry. Only the previous
+      // step is needed to verify chronology, so replay stays linear.
+      if(!step)throw Error("Missing recovered claim history entry");
+      var result=transition({state:prior.to,history:[prior]},step);
+      if(!result.ok||!sameFields(step,result.claim.history[1]))throw Error("Invalid recovered claim history entry");
+      prior=step;
+    });
+    if(state!==prior.to)throw Error("Recovered claim status does not match its history");
+    if(finding!==undefined){
+      function sourceUrl(value){
+        if(typeof value!=="string")return false;
+        try{var url=new URL(value);return url.protocol==="https:"&&!url.username&&!url.password;}catch(e){return false;}
+      }
+      if(!finding||typeof finding.id!=="string"||!/^[^\u0000-\u001f]{1,120}$/.test(finding.id)||
+         !sourceUrl(finding.sourceUrl)||!sourceUrl(finding.directUrl)||!isDate(finding.foundOn)||
+         !sameFields(finding,{id:finding.id,sourceUrl:finding.sourceUrl,directUrl:finding.directUrl,foundOn:finding.foundOn}))
+        throw Error("Invalid recovered claim finding reference");
+    }
+    return details;
+  }
+  function mergeRecovery(current,backup,passiveFindings){
+    function index(claims){
+      if(!Array.isArray(claims))throw Error("Claim history collection required for recovery");
+      var byId=new Map();
+      claims.forEach(function(claim){
+        var details=validateRecoveryClaim(claim);
+        if(byId.has(claim.id))throw Error("Duplicate recovered claim identity");
+        byId.set(claim.id,{claim:claim,details:details});
+      });
+      return byId;
+    }
+    var merged=index(current),added=0,advanced=0;
+    index(backup).forEach(function(incoming,id){
+      var saved=merged.get(id);
+      if(!saved){merged.set(id,incoming);added++;return;}
+      var a=saved.claim,b=incoming.claim;
+      if(!sameFields(saved.details,incoming.details)||
+         (b.finding?!sameFields(a.finding,b.finding):a.finding!==undefined)||
+         a.history.slice(0,b.history.length).some(function(step,i){return !sameFields(step,b.history[i]);}))
+        throw Error("Conflicting recovered claim history or evidence");
+      if(b.history.length>a.history.length){merged.set(id,incoming);advanced++;}
+    });
+    if(merged.size>20000)throw Error("Recovered claim collection exceeds workspace capacity");
+    var claims=Array.from(merged.values(),function(entry){return entry.claim;}),postings=new Set(),findings=new Set();
+    claims.forEach(function(claim){
+      if(claim.state==="PAID"){
+        var ref=claim.history[claim.history.length-1].bankRef;
+        if(postings.has(ref))throw Error("Recovered claims reuse a payment reference");
+        postings.add(ref);
+      }
+      if(claim.finding){
+        var id=claim.finding.id,linked=passiveFindings&&Object.hasOwn(passiveFindings,id)&&passiveFindings[id];
+        if(findings.has(id)||(linked&&linked.claimId&&linked.claimId!==claim.id))
+          throw Error("Recovered claims conflict with a finding reference");
+        findings.add(id);
+      }
+    });
+    return {claims:claims,added:added,advanced:advanced};
+  }
   // Queue of actions for the owner, plus recovered totals counted only from PAID with a bank reference.
   function review(claims,asOf){
     if(!isDate(asOf))throw Error("asOf date required");
-    var actions=[],recoveredCents=0,pendingCents=0,warnings=[],seenBank={};
+    var actions=[],recoveredCents=0,pendingCents=0,warnings=[],seenBank=new Set();
     (claims||[]).forEach(function(cl){
       var closed=["PAID","DENIED","ABANDONED"].indexOf(cl.state)>=0;
       if(!closed&&cl.feeUsd>0&&cl.feeCharger!=="government")warnings.push({claimId:cl.id,code:"FINDER_FEE",detail:"Official unclaimed-property searches and claims are free; a paid finder is not required."});
@@ -85,15 +167,15 @@
       if((cl.state==="CLAIM_FILED"||cl.state==="APPROVED")&&(Date.parse(asOf)-Date.parse(lastOn))/86400000>60)actions.push({claimId:cl.id,priority:3,code:"FOLLOW_UP_NO_RESPONSE_60_DAYS"});
       if(cl.state==="PAID"){
         var p=cl.history[cl.history.length-1];
-        if(seenBank[p.bankRef]){warnings.push({claimId:cl.id,code:"BANK_REFERENCE_REUSED"});return;}
-        seenBank[p.bankRef]=1;recoveredCents+=Math.round(p.amountUsd*100);
+        if(seenBank.has(p.bankRef)){warnings.push({claimId:cl.id,code:"BANK_REFERENCE_REUSED"});return;}
+        seenBank.add(p.bankRef);recoveredCents+=Math.round(p.amountUsd*100);
       }else if(cl.state==="APPROVED"&&cl.estimatedUsd)pendingCents+=Math.round(cl.estimatedUsd*100);
     });
     actions.sort(function(a,b){return a.priority-b.priority;});
     return {version:VERSION,asOf:asOf,actions:actions,warnings:warnings,recoveredUsd:recoveredCents/100,approvedNotYetPaidUsd:pendingCents/100,
       notice:"Recovered funds are one-time recoveries, not recurring income, and count only once paid into a bank account."};
   }
-  var api=Object.freeze({VERSION:VERSION,SOURCES:SOURCES.map(function(s){return Object.freeze(Object.assign({},s));}),KINDS:KINDS.slice(),STATES:STATES.slice(),searchesDue:searchesDue,create:create,transition:transition,review:review});
+  var api=Object.freeze({VERSION:VERSION,SOURCES:SOURCES.map(function(s){return Object.freeze(Object.assign({},s));}),KINDS:KINDS.slice(),STATES:STATES.slice(),searchesDue:searchesDue,create:create,transition:transition,mergeRecovery:mergeRecovery,review:review});
   if(typeof module!=="undefined"&&module.exports)module.exports=api;
   if(root)root.IncomeOSClaims=api;
 }(typeof window!=="undefined"?window:(typeof globalThis!=="undefined"?globalThis:null)));

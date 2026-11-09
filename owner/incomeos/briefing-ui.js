@@ -52,7 +52,9 @@
         var review=await desk.prepareWorkspaceRecovery(JSON.parse(text),passInput.value);
         review.sections.forEach(function(key){var row=el(choices,"label"),check=el(row,"input");check.type="checkbox";check.value=key;row.appendChild(document.createTextNode(" "+key));});
         feedback.textContent=review.sections.length+" recoverable section(s) reviewed. Programme and current history will be preserved."+
-          (review.blockedSections.length?" These sections require their dedicated validation workflows and cannot be replaced here: "+review.blockedSections.join(", ")+".":"");
+          (review.claimRecovery?" Claim review found "+review.claimRecovery.added+" additional and "+review.claimRecovery.advanced+
+            " extended histories. Payment references are owner records and require independent verification.":"")+
+          (review.blockedSections.length?" These sections did not qualify for this recovery: "+review.blockedSections.join(", ")+".":"");
       });});
       btn(box,"Apply selected sections as unsaved edit",function(){run(function(){
         var selected=Array.prototype.map.call(choices.querySelectorAll("input:checked"),function(e){return e.value;});

@@ -108,7 +108,7 @@
         "tests/incomeos-revision-backup-restore.test.cjs",
         "tests/incomeos-workspace-file-operations.test.cjs"
       ],
-      "limitation": "Encrypted workspace save and reopen, and JSON backup download, reload and restore through the page, are tested end to end with synthetic records in simulated Chromium; tampered backups are refused without changing the ledger Staged encrypted revision backups can now restore validated ledger rows as an unsaved edit against the current verified server head. Synthetic tests cover checksum, passphrase, ledger validation, conflict/review holds and session revocation. Current nonfinancial sections, Decision Spellchecker programme and server history are preserved. This is accounting-row restoration, not full-program rollback, source authentication of an owner-supplied backup or independently observed owner recovery."
+      "limitation": "Encrypted workspace save, download, reload and restore were browser-tested with synthetic records. Tampered backups are refused. Staged encrypted revision backups support selected accounting sections and separately validated claim histories. Claim recovery preserves existing records and refuses divergent histories and reused payment references. A payment reference is an owner record and requires independent verification. Recovery creates an unsaved edit against the current verified head and preserves the Decision Spellchecker programme and server history. Other specialized evidence remains outside this recovery procedure. Owner recovery and backup provenance remain unverified."
     },
     {
       "id": "A08",
@@ -170,12 +170,13 @@
         "tests/incomeos-staging-privacy.mjs",
         "tests/incomeos-vault-cloud.mjs",
         "tests/incomeos-vault-expiry.test.cjs",
+        "tests/incomeos-vault-network.test.cjs",
         "tests/incomeos-vault-revision-session.test.cjs",
         "tests/incomeos-revision-supabase-transport.test.cjs",
         "tests/incomeos-workspace-panel-cleanup.test.cjs",
         "tests/incomeos-project-ui-browser.mjs"
       ],
-      "limitation": "The owner vault client intentionally contacts only its configured HTTPS Supabase origin for authentication and encrypted envelopes. Authentication passwords are sent only to that HTTPS authentication endpoint; workspace passphrases and plaintext records are not sent. Tokens remain in page memory and authenticated responses and local crypto handoffs are session-bound. Synthetic tests do not establish hosted response-header correctness or exclusive live owner access. The staged RPC transport snapshots validated configuration, refuses redirects, includes token retrieval in its deadline and sanitizes token-provider errors. This does not certify a live hosted session."
+      "limitation": "The legacy vault and staged revision transport refuse HTTP redirects. Authentication requests are limited to the configured HTTPS Supabase origin. Workspace passphrases and plaintext records stay on the device. Tokens remain in page memory. Authenticated responses and local cryptographic handoffs are session-bound. The staged transport snapshots validated configuration, bounds token retrieval and sanitizes provider errors. Hosted response headers and exclusive live owner access remain unverified."
     },
     {
       "id": "A14",

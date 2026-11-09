@@ -127,10 +127,22 @@
         var inspected=await bridge.inspectEncryptedBackup(backup,passphrase);
         verifySession();validateLedger(inspected.workspace.ledger);
         var candidate=clone(inspected.workspace),baseline=JSON.stringify(working);
-        var template=workspace.newWorkspace("2026-01-01"),changes=[],blockedSections=[];
+        var template=workspace.newWorkspace("2026-01-01"),changes=[],blockedSections=[],claimRecovery=null;
         Object.keys(candidate).forEach(function(key){
           if(["schema","changeLog","dsProgram"].indexOf(key)>=0)return;
           var expected=template[key],value=candidate[key];
+          if(key==="claims"){
+            if(JSON.stringify(value)===JSON.stringify(working.claims))return;
+            try{
+              var merged=root.IncomeOSClaims.mergeRecovery(working.claims===undefined?[]:working.claims,value,working.passiveFindings);
+              if(merged.added||merged.advanced){
+                candidate.claims=merged.claims;
+                claimRecovery=Object.freeze({added:merged.added,advanced:merged.advanced});
+                changes.push(key);
+              }
+            }catch(e){blockedSections.push(key);}
+            return;
+          }
           if(expected===undefined||value===null||Array.isArray(expected)!==Array.isArray(value)||typeof expected!==typeof value)
             throw Error("Unsupported recovery section shape");
           if(JSON.stringify(value)!==JSON.stringify(working[key])){
@@ -141,7 +153,7 @@
           }
         });
         recoveryCandidate={workspace:candidate,baseline:baseline,changes:changes,revision:inspected.revision,sha256:inspected.sha256};
-        return Object.freeze({sections:Object.freeze(changes.slice()),blockedSections:Object.freeze(blockedSections),sourceRevision:inspected.revision,
+        return Object.freeze({sections:Object.freeze(changes.slice()),blockedSections:Object.freeze(blockedSections),claimRecovery:claimRecovery,sourceRevision:inspected.revision,
           sourceSha256:inspected.sha256,serverSaved:false,programmePreserved:true});
       }finally{busy=false;}
     }

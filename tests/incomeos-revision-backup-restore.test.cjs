@@ -13,6 +13,7 @@ const context={window:{},Date,Intl,Math,Number,Array,Object,Set,JSON,String,cons
 runInNewContext(readFileSync(resolve(__dirname,"../owner/incomeos/accountant.js"),"utf8"),context);
 const accountant=context.window.IncomeOSAccountant;
 const workspace=load("workspace-store.js","IncomeOSWorkspace");
+load("claims-tracker.js","IncomeOSClaims");
 const dsProgram=load("ds-program.js","IncomeOSDSProgram");
 const protocol=load("workspace-revision-protocol.js","IncomeOSWorkspaceRevision");
 const {createRevisionStore}=load("revision-store.js","IncomeOSRevisionStore");
@@ -20,6 +21,10 @@ const {createWorkspaceBridge}=load("revision-workspace-bridge.js","IncomeOSWorks
 const {createAccountingCoordinator}=load("revision-accounting-coordinator.js","IncomeOSRevisionAccountingCoordinator");
 const sha256=async text=>createHash("sha256").update(text,"utf8").digest("hex");
 const passphrase="synthetic recovery passphrase 2026",date="2026-11-08";
+async function backupOf(document){
+  const ciphertext=await workspace.encrypt(passphrase,document);
+  return {revision:1,ciphertext,sha256:await sha256(ciphertext)};
+}
 const expense=amount=>({id:"synthetic-expense",kind:"outflow",date,label:"Synthetic recovery vendor",
   category:"software",type:"expense",amountUsd:amount,businessUse:null,paymentStatus:"paid",source:"synthetic"});
 async function fixture(){
@@ -192,6 +197,55 @@ test("complex recovery sections cannot bypass their dedicated evidence and lifec
   assert.throws(()=>f.a.applyWorkspaceRecovery(["claims"],date),/Review recovery sections/);
   assert.throws(()=>f.a.applyWorkspaceRecovery(["verifiedPayments"],date),/Review recovery sections/);
   assert.deepEqual(f.a.workspaceSnapshot(),before);assert.equal(f.writes(),0);
+});
+test("reviewed claim recovery appends supported history and preserves current records",async()=>{
+  const f=await fixture(),before=f.a.workspaceSnapshot();
+  const opened=workspace.openClaim(before,{id:"synthetic-claim",kind:"refund",openedOn:date});
+  const current=workspace.openClaim(opened,{id:"current-only",kind:"rebate",openedOn:date});
+  f.a.editWorkspace(()=>current,date);await f.a.save(passphrase);
+  const advance=(document,to,evidenceRef,extra={})=>workspace.advanceClaim(document,"synthetic-claim",{to,on:date,evidenceRef,...extra});
+  const paid=advance(advance(advance(opened,"CLAIM_FILED","synthetic filing"),"APPROVED","synthetic letter"),
+    "PAID","synthetic receipt",{amountUsd:25,bankRef:"synthetic-posting"});
+  const withAdditional=workspace.openClaim(paid,{id:"backup-only",kind:"rebate",openedOn:date});
+  const backup=await backupOf(withAdditional);
+  const review=await f.a.prepareWorkspaceRecovery(backup,passphrase);
+  assert.deepEqual(review.sections,["claims"]);
+  assert.deepEqual({...review.claimRecovery},{added:1,advanced:1});
+  assert.equal(f.writes(),1,"Preview must not write");
+  f.a.applyWorkspaceRecovery(["claims"],date);
+  const draft=f.a.pendingDraft();
+  assert.deepEqual(draft.claims,[paid.claims[0],current.claims[1],withAdditional.claims[1]]);
+  assert.deepEqual(draft.ledger,current.ledger,"Claim references are not bank links or ledger entries");
+  assert.deepEqual(draft.changeLog.slice(0,-1),current.changeLog);
+  assert.equal(f.writes(),1,"Apply is an unsaved edit");
+  await f.a.save(passphrase);
+  assert.equal(f.writes(),2);
+  const stale=await f.a.prepareWorkspaceRecovery(await backupOf(opened),passphrase);
+  assert.deepEqual(stale.sections,[],"An older prefix must not rewind a paid claim");
+  assert.deepEqual(f.a.workspaceSnapshot().claims,draft.claims);
+});
+test("claim recovery blocks divergent, malformed and reused payment evidence without blocking a safe section",async()=>{
+  const f=await fixture(),before=f.a.workspaceSnapshot();
+  const add=id=>workspace.openClaim(before,{id,kind:"refund",openedOn:date});
+  const advance=(document,id,to,evidenceRef,extra={})=>workspace.advanceClaim(document,id,{to,on:date,evidenceRef,...extra});
+  const paid=(id,ref)=>advance(advance(advance(add(id),id,"CLAIM_FILED","original filing"),id,"APPROVED","synthetic approval"),
+    id,"PAID","synthetic receipt",{amountUsd:25,bankRef:ref}).claims[0];
+  const current=paid("current-claim","synthetic-posting");
+  f.a.editWorkspace(w=>{w.claims=[current];w.changeLog.push({on:date,action:"SYNTHETIC_FIXTURE"});return w;},date);
+  await f.a.save(passphrase);
+  const snapshot=f.a.workspaceSnapshot(),copy=x=>JSON.parse(JSON.stringify(x));
+  const diverged=copy(current);diverged.history[1].evidenceRef="different filing";
+  const badDate=copy(current);badDate.history[2].on="2026-02-30";
+  const missingReference=paid("missing-reference","different-posting");delete missingReference.history.at(-1).bankRef;
+  for(const claims of [[diverged],[badDate],[missingReference],[paid("another-claim","synthetic-posting")],[current,current],null]){
+    const review=await f.a.prepareWorkspaceRecovery(await backupOf({...snapshot,note:"Synthetic safe note",claims}),passphrase);
+    assert.deepEqual(review.sections,["note"]);
+    assert.ok(review.blockedSections.includes("claims"));
+    assert.throws(()=>f.a.applyWorkspaceRecovery(["claims"],date),/Review recovery sections/);
+    assert.deepEqual(f.a.workspaceSnapshot(),snapshot);assert.equal(f.writes(),1);
+  }
+  f.a.applyWorkspaceRecovery(["note"],date);
+  assert.equal(f.a.pendingDraft().note,"Synthetic safe note");
 });
 test("wrong passphrases, tamper, invalid ledger and invalid chronology preserve current workspace",async()=>{
   const f=await fixture(),before=f.a.workspaceSnapshot();

@@ -13,6 +13,7 @@ const reply=data=>({ok:true,status:200,text:async()=>JSON.stringify(data)});
 (async()=>{
   let rows=[],writes=0,releaseAck,mode="ordinary",signal;
   const context={window:{crypto:webcrypto,fetch:async(url,options)=>{
+    assert.equal(options.redirect,"error","Vault credentials and request bodies must remain on the configured origin");
     if(url.includes("/auth/v1/token"))return reply({access_token:"synthetic-token",expires_in:3600,user:{id:"synthetic-owner"}});
     signal=options.signal;
     if(options.method==="POST"){
