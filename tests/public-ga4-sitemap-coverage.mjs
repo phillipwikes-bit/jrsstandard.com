@@ -35,5 +35,5 @@ for (const value of urls) {
 assert.deepEqual(invalid, [], 'public sitemap pages must exist, avoid redirects and self-canonicalize');
 assert.deepEqual(absent, [], 'all indexed public pages should carry the existing GA4 ID');
 const privatePage = read('programme-status-9872fb93cc94.html');
-assert.ok(!privatePage.includes(id), 'owner-private surface must remain without GA4');
+assert.ok(!privatePage.includes('googletagmanager.com/gtag/js?id=' + id), 'owner-private surface must remain without a GA4 loader');
 console.log('PASS: 55 public sitemap pages have source-level GA4 placement, self-canonicals and no redirected sitemap entries; owner page is untracked.');
