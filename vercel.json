@@ -3,13 +3,8 @@
   "crons": [],
   "redirects": [
     {
-      "source": "/outreach-email-builder.html",
-      "destination": "/resources.html",
-      "permanent": false
-    },
-    {
       "source": "/outreach-email-builder",
-      "destination": "/resources.html",
+      "destination": "/outreach-email-builder.html",
       "permanent": false
     },
     {
