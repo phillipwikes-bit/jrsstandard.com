@@ -115,6 +115,10 @@ assert.ok(read('investigator-guides.html').includes('36</span> reviewers complet
 assert.ok(read('manifest.html').includes('This reference page does not establish their equivalence or technical compatibility.') &&
  read('manifest.html').includes('It does not offer a machine-readable service, record submission, assessment output, or production artifact.'),
  'Manifest reference must preserve version uncertainty and non-operational status');
+assert.ok(read('resources.html').includes('The former machine-readable schema files are not part of the current public release.') &&
+ !read('resources.html').includes('The current Manifest schema 1.0.1 accepts') &&
+ !read('resources.html').includes('Review the public schema'),
+ 'Resources must not advertise a retired machine-readable Manifest specification');
 assert.ok(read('training.html').includes('id="en-transfer"') &&
  read('training.html').includes('privacy-notice.html#training-enrollment'),
  'training must have optional separate transfer consent and working privacy route');
