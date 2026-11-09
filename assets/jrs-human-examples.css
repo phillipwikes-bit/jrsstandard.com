@@ -15,10 +15,7 @@
 .jrs-scenario[open] > summary::after{content:"−"}
 .jrs-scenario > summary:hover{background:#27241d}
 .jrs-scenario-body{border-top:1px solid #494337;padding:18px}
-.jrs-story-top{display:grid;grid-template-columns:minmax(0,230px) minmax(0,1fr);gap:21px;align-items:center}
-.jrs-story-art{margin:0}
-.jrs-story-art img{display:block;width:100%;height:auto;aspect-ratio:7/4;object-fit:contain;border-radius:9px;background:#171714}
-.jrs-story-art figcaption{font-size:12px;line-height:1.5;color:#c5bbab;margin-top:7px}
+.jrs-story-top{display:block}
 .jrs-story-quote{font-family:Georgia,serif;font-size:clamp(22px,3vw,29px);line-height:1.27;color:#f5f0e6;margin:6px 0 9px;overflow-wrap:anywhere}
 .jrs-story-question{font-size:16px;color:#e8ddc9;line-height:1.55}
 .jrs-story-facts{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin:18px 0 0}
@@ -40,8 +37,6 @@
 .jrs-proof-levels p{font-size:14px;line-height:1.55;margin:0 0 8px}
 .jrs-proof-levels a{color:#deb576}
 @media(max-width:760px){
- .jrs-story-top{grid-template-columns:1fr;gap:12px}
- .jrs-story-art{max-width:450px}
  .jrs-story-facts,.jrs-proof-levels{grid-template-columns:1fr}
  .jrs-human-stories{margin:22px 0 28px}
  .jrs-scenario-body{padding:15px}
