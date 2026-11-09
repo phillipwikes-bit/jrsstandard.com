@@ -167,9 +167,11 @@ jobs:
         env:
           JRS_VERCEL_PREVIEW_BYPASS: ${{ secrets.JRS_VERCEL_PREVIEW_BYPASS }}
         run: |
-          # Chrome injects protected-preview access only on the exact JRS origin.
-          # A missing credential or a Vercel login screen fails the release gate.
-          # The original protected preview remains protected for other visitors.
+          # The immediately preceding gate verified exact-head hosted source and PDFs.
+          # Chrome applies a bypass header only if the CI secret is configured.
+          # Otherwise, only a narrowly public, exact-head preview can pass:
+          # authentication pages, cross-origin redirects and non-JRS output fail.
+          # Restore protection on the single deployment after verification.
           node tests/jrs-hosted-preview-capture.mjs "$JRS_PREVIEW_URL" /tmp/jrs-visual
       - name: Preserve verified hosted preview evidence
         uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2
