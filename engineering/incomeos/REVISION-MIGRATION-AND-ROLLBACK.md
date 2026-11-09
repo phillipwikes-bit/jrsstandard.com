@@ -26,6 +26,8 @@ Run the repository's disposable PostgreSQL fixture in CI, not on this target: it
 
 The complete non-production exercise must include two competing revision-zero writers, stale revision rejection, interrupted response after commit, fresh-session readback, wrong passphrases, tamper refusal and owner-confirmed reconciliation. One stale writer must not result in two accepted revision-one rows. Verify retrieval and decryption independently before classifying a save as recoverable.
 
+For a lost acknowledgement in the same authenticated tab, use **Verify interrupted save**. It reads the latest encrypted revision and confirms only the submitted revision number and checksum after successful local decryption. It issues no append. A different or unconfirmed head leaves the draft on hold. Preserve an encrypted rescue copy and compare it with the latest verified head before any explicit new save. The attempt fingerprint is held in memory for this tab and session. After a reload or a new sign-in, start with a fresh authenticated read.
+
 ## Rollback and interrupted rollout
 
 - Before client activation, an additive staging schema can remain unused. No legacy ledger or encrypted vault row needs deletion. An unapplied migration is not a completed rollout.

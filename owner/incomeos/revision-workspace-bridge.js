@@ -14,7 +14,7 @@
     if(assertOwnerSession!==undefined&&typeof assertOwnerSession!=="function")
       throw Error("Owner session assertion must be an authenticated callback");
     function verifySession(){if(assertOwnerSession)assertOwnerSession();}
-    var busy=false,openedRevision=null,openedCiphertext=null,openedSha256=null;
+    var busy=false,openedRevision=null,openedCiphertext=null,openedSha256=null,pendingAppend=null;
     function ensureIdle(){if(busy)throw Error("Workspace bridge operation already in progress");}
     async function open(passphrase){
       ensureIdle();verifySession();busy=true;openedRevision=null;openedCiphertext=null;openedSha256=null;
@@ -31,6 +31,7 @@
         openedRevision=remote.revision;
         openedCiphertext=remote.text;
         openedSha256=remote.sha256||null;
+        pendingAppend=null;
         return Object.freeze({revision:remote.revision,workspace:doc,
           requiresOwnerConfirmation:remote.requiresOwnerConfirmation===true});
       }finally{busy=false;}
@@ -41,7 +42,7 @@
         throw Error("Open and verify the current server workspace before saving");
       if(revisions.requiresOwnerConfirmation())
         throw Error("Owner must review and confirm newer server workspace before saving");
-      busy=true;
+      busy=true;pendingAppend=null;
       try{
         // Bind Save to the submitted snapshot before passphrase verification
         // yields. A caller may continue editing its object while crypto runs.
@@ -58,16 +59,39 @@
         verifySession();
         var checksum=await integrity.sha256(ciphertext);
         verifySession();
+        pendingAppend={revision:openedRevision+1,sha256:checksum};
         var result=await revisions.append(ciphertext,checksum);
         verifySession();
         openedRevision=result.revision;
         openedCiphertext=ciphertext;
         openedSha256=checksum;
+        pendingAppend=null;
         return Object.freeze({revision:result.revision,encrypted:true});
       }catch(e){
         // An uncertain append must never leave a cached revision authorized.
         openedRevision=null;openedCiphertext=null;openedSha256=null;
         throw e;
+      }finally{busy=false;}
+    }
+    async function verifyInterruptedSave(passphrase){
+      ensureIdle();verifySession();
+      if(!pendingAppend)return Object.freeze({confirmed:false});
+      busy=true;
+      try{
+        var remote=await revisions.refresh();
+        verifySession();
+        if(remote.revision!==pendingAppend.revision||remote.sha256!==pendingAppend.sha256){
+          revisions.suspend();
+          return Object.freeze({confirmed:false,latestRevision:remote.revision});
+        }
+        // An explicit readback can resolve only this exact submitted save.
+        // Verify both ciphertext integrity and decryption before clearing the hold.
+        workspace.validate(await workspace.decrypt(passphrase,remote.text));
+        verifySession();
+        if(remote.requiresOwnerConfirmation)revisions.confirmRevision(remote.revision);
+        openedRevision=remote.revision;openedCiphertext=remote.text;openedSha256=remote.sha256;
+        pendingAppend=null;
+        return Object.freeze({confirmed:true,revision:remote.revision});
       }finally{busy=false;}
     }
     function confirmOpenedRevision(revision){
@@ -107,9 +131,9 @@
       }finally{busy=false;}
     }
     function close(){
-      ensureIdle();openedRevision=null;openedCiphertext=null;openedSha256=null;revisions.suspend();
+      ensureIdle();openedRevision=null;openedCiphertext=null;openedSha256=null;pendingAppend=null;revisions.suspend();
     }
-    return Object.freeze({open:open,save:save,encryptedBackup:encryptedBackup,inspectEncryptedBackup:inspectEncryptedBackup,confirmOpenedRevision:confirmOpenedRevision,
+    return Object.freeze({open:open,save:save,verifyInterruptedSave:verifyInterruptedSave,encryptedBackup:encryptedBackup,inspectEncryptedBackup:inspectEncryptedBackup,confirmOpenedRevision:confirmOpenedRevision,
       assertSession:verifySession,
       close:close,status:function(){return Object.freeze({
         openedRevision:openedRevision,requiresOwnerConfirmation:revisions.requiresOwnerConfirmation()

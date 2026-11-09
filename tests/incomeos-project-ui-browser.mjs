@@ -294,14 +294,17 @@ await page.goto(base);
 for(const script of ["workspace-revision-protocol.js","revision-store.js","revision-workspace-bridge.js","revision-accounting-coordinator.js","revision-runtime-staging.js"])
   await page.addScriptTag({url:new URL(script,base).href});
 await page.evaluate(async()=>{
-  let remote=null,writes=0,holdNext=false,releaseAppend=null;
-  window.__revisionTest={writes:()=>writes,holdNext:()=>{holdNext=true;},held:()=>releaseAppend!==null,release:()=>releaseAppend()};
+  let remote=null,writes=0,holdNext=false,releaseAppend=null,loseAck=false;
+  window.__revisionTest={writes:()=>writes,holdNext:()=>{holdNext=true;},held:()=>releaseAppend!==null,
+    release:()=>releaseAppend(),loseAck:()=>{loseAck=true;}};
   window.IncomeOSVaultCloud={signedIn:()=>true,createRevisionTransport:()=>({assertSession:()=>true,
     latest:async()=>remote,append:async r=>{
       if(holdNext){holdNext=false;await new Promise(resolve=>{releaseAppend=resolve;});releaseAppend=null;}
       if(r.expected_revision!==(remote?remote.revision:0))throw Error("Synthetic stale revision");
       if(r.encrypted_payload.includes("SYNTHETIC HOST ENTRY"))throw Error("Plaintext transmission");
-      writes++;remote={revision:writes,ciphertext:r.encrypted_payload,ciphertext_sha256:r.payload_sha256};return writes;
+      writes++;remote={revision:writes,ciphertext:r.encrypted_payload,ciphertext_sha256:r.payload_sha256};
+      if(loseAck){loseAck=false;throw Error("Synthetic acknowledgement lost");}
+      return writes;
     }})};
   window.__coordinator=IncomeOSRevisionRuntime.createAccountingRuntime({stagingOnly:true});
   window.__binding=IncomeOSRevisionDeskHost.attach(window.__coordinator,{stagingOnly:true});
@@ -370,8 +373,16 @@ await page.locator('#revision-recovery-controls input[value="note"]').check();
 await page.getByRole("button",{name:"Apply selected sections as unsaved edit",exact:true}).click();
 assert.equal(await page.evaluate(()=>window.__coordinator.pendingDraft().note),"Synthetic reviewed recovery note");
 assert.equal(await page.evaluate(()=>window.__revisionTest.writes()),2,"Recovery review and application cannot autosave");
+await page.evaluate(()=>window.__revisionTest.loseAck());
 await page.locator("#briefing-save").click();
-await page.waitForFunction(()=>document.getElementById("briefing-status").textContent==="Encrypted revision saved.");
+await page.waitForFunction(()=>/Revision not confirmed:.*acknowledgement lost/.test(document.getElementById("briefing-status").textContent));
+assert.equal(await page.evaluate(()=>window.__coordinator.status().dirty),true);
+assert.equal(await page.evaluate(()=>window.__revisionTest.writes()),3);
+await page.getByRole("button",{name:"Verify interrupted save",exact:true}).click();
+await page.waitForFunction(()=>/Interrupted save verified as revision 3/.test(document.getElementById("revision-recovery-status").textContent));
+assert.equal(await page.evaluate(()=>window.__revisionTest.writes()),3,"Readback cannot retry the committed write");
+assert.equal(await page.evaluate(()=>window.__coordinator.status().dirty),false);
+assert.equal(await page.evaluate(()=>window.__coordinator.workspaceSnapshot().note),"Synthetic reviewed recovery note");
 // Populate private panel state through the existing workspace engines. Closing
 // the verified host must clear every subscriber, not just the accounting form.
 await page.evaluate(()=>{
@@ -387,6 +398,15 @@ await page.locator("#briefing-save").click();
 await page.waitForFunction(()=>document.getElementById("briefing-status").textContent==="Encrypted revision saved.");
 assert.match(await page.locator("#passive-kept").textContent(),/Synthetic private close finding/);
 assert.match(await page.locator("#radar-results").textContent(),/Synthetic private close study/);
+await page.locator("#briefing-passphrase").fill("incorrect synthetic reopen passphrase");
+await page.getByRole("button",{name:"Open latest revision",exact:true}).click();
+await page.waitForFunction(()=>/Wrong passphrase/.test(document.getElementById("revision-recovery-status").textContent));
+assert.doesNotMatch(await page.locator("#passive-kept").textContent(),/Synthetic private close finding/);
+assert.doesNotMatch(await page.locator("#radar-results").textContent(),/Synthetic private close study/);
+await page.locator("#briefing-passphrase").fill("synthetic shared host passphrase");
+await page.getByRole("button",{name:"Open latest revision",exact:true}).click();
+await page.waitForFunction(()=>/Opened revision 4/.test(document.getElementById("revision-recovery-status").textContent));
+assert.match(await page.locator("#passive-kept").textContent(),/Synthetic private close finding/);
 const [revisionBackupDownload]=await Promise.all([page.waitForEvent("download"),page.getByRole("button",{name:"Download verified encrypted backup",exact:true}).click()]);
 assert.equal(revisionBackupDownload.suggestedFilename(),"incomeos-revision-backup.encrypted.json");
 await page.getByRole("button",{name:"Close private workspace",exact:true}).click();

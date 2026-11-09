@@ -244,6 +244,18 @@
         throw e;
       }finally{busy=false;}
     }
+    async function verifyInterruptedSave(passphrase){
+      ensureIdle();verifySession();
+      if(!dirty||!working||!needsRecovery||typeof bridge.verifyInterruptedSave!=="function")
+        throw Error("An interrupted revision save is required for verification");
+      busy=true;
+      try{
+        var result=await bridge.verifyInterruptedSave(passphrase);
+        verifySession();
+        if(result.confirmed){opened=true;dirty=false;needsReview=false;needsRecovery=false;}
+        return result;
+      }finally{busy=false;}
+    }
     function confirmOpenedRevision(revision){
       ensureIdle();verifySession();
       if(!opened||dirty||!needsReview)throw Error("A verified newer owner workspace must be reviewed");
@@ -299,7 +311,7 @@
       bridge.close();working=null;recoveryCandidate=null;opened=false;needsReview=false;needsRecovery=false;
     }
     return Object.freeze({open:open,initializeNew:initializeNew,replaceLedger:replaceLedger,updateProgram:updateProgram,editWorkspace:editWorkspace,reverseEdit:reverseEdit,prepareWorkspaceRecovery:prepareWorkspaceRecovery,applyWorkspaceRecovery:applyWorkspaceRecovery,restoreLedgerBackup:restoreLedgerBackup,
-      save:save,confirmOpenedRevision:confirmOpenedRevision,pendingDraft:pendingDraft,
+      save:save,verifyInterruptedSave:verifyInterruptedSave,confirmOpenedRevision:confirmOpenedRevision,pendingDraft:pendingDraft,
       workspaceSnapshot:workspaceSnapshot,
       exportPendingDraftEncrypted:exportPendingDraftEncrypted,
       discardDraft:discardDraft,encryptedBackup:encryptedBackup,close:close,

@@ -26,7 +26,7 @@
       async function run(fn){try{if(revisionDesk!==desk)throw Error("Revision editor is no longer attached");await fn();}catch(e){feedback.textContent="Not completed: "+e.message;}}
       var reviewedRevision=null;
       btn(box,"Open latest revision",function(){run(async function(){
-        reviewedRevision=null;var r=await desk.open(passInput.value);if(r.hasWorkspace)installRevision();reviewedRevision=r.revision;
+        reviewedRevision=null;var r=await openRevision(desk,passInput.value);reviewedRevision=r.revision;
         feedback.textContent="Opened revision "+r.revision+(r.requiresOwnerConfirmation?". Review the workspace, then confirm this revision.":".");
       });});
       btn(box,"Confirm reviewed revision",function(){run(function(){
@@ -36,12 +36,23 @@
       btn(box,"Download verified encrypted backup",function(){run(function(){
         download(JSON.stringify(desk.encryptedBackup()),"incomeos-revision-backup.encrypted.json");feedback.textContent="Verified encrypted backup downloaded.";
       });});
+      if(typeof desk.verifyInterruptedSave==="function"){
+        var verifySave=btn(box,"Verify interrupted save",function(){run(async function(){
+          verifySave.disabled=true;feedback.textContent="Checking the latest encrypted revision…";
+          try{
+            var result=await desk.verifyInterruptedSave(passInput.value);
+            if(!result.confirmed){feedback.textContent="The interrupted save could not be confirmed. Preserve an encrypted draft and review the latest server revision before editing.";return;}
+            installRevision();document.dispatchEvent(new CustomEvent("incomeos:workspace-saved",{detail:{encrypted:true}}));
+            feedback.textContent="Interrupted save verified as revision "+result.revision+". The encrypted revision was read back without another write.";
+          }finally{verifySave.disabled=false;}
+        });});
+      }
       btn(box,"Rescue unsaved draft encrypted",function(){run(async function(){
         var r=await desk.exportPendingDraftEncrypted(passInput.value);download(r.ciphertext,"incomeos-unsaved-draft.encrypted.json");feedback.textContent="Encrypted draft downloaded. It is not saved to the server.";
       });});
       btn(box,"Discard unsaved draft",function(){run(function(){
         if(!confirm("Discard the unsaved revision draft? Preserve an encrypted rescue copy first."))return;
-        desk.discardDraft();state.ws=null;state.dirty=false;state.history=[];choices.replaceChildren();render();announce();feedback.textContent="Draft discarded. Open the latest revision before editing.";
+        desk.discardDraft();choices.replaceChildren();clearRevisionDisplay();feedback.textContent="Draft discarded. Open the latest revision before editing.";
       });});
       var label=el(box,"label","Encrypted revision backup file");label.htmlFor="revision-recovery-file";
       var file=el(box,"input");file.id="revision-recovery-file";file.type="file";file.accept=".json,application/json";
@@ -67,13 +78,32 @@
       revisionDesk.close();revisionDesk=null;
       if(passInput)passInput.value="";
       if(revisionControls){var selectedFile=revisionControls.querySelector('input[type="file"]');if(selectedFile)selectedFile.value="";revisionControls.remove();}
-      revisionControls=null;state.ws=null;state.dirty=false;state.history=[];render();announce();
+      revisionControls=null;clearRevisionDisplay();
+    }
+    function clearRevisionDisplay(){
+      state.ws=null;state.dirty=false;state.history=[];render();announce();
     }
     function installRevision(){
       var s=revisionDesk.status();
       state.ws=s.opened&&s.ledgerCount!==undefined?revisionDesk.workspaceSnapshot():null;
       state.dirty=s.dirty;state.history=[];render();announce();
       if(s.dirty)document.dispatchEvent(new CustomEvent("incomeos:workspace-changed",{detail:state.ws}));
+    }
+    async function openRevision(desk,passphrase){
+      try{
+        var result=await desk.open(passphrase);
+        if(revisionDesk===desk){
+          if(result.hasWorkspace)installRevision();else clearRevisionDisplay();
+        }
+        return result;
+      }catch(error){
+        if(revisionDesk===desk&&!desk.status().dirty){
+          // A failed clean reopen invalidates the editor's displayed copy.
+          // A rejected reopen must still preserve any unsaved recovery draft.
+          clearRevisionDisplay();
+        }
+        throw error;
+      }
     }
     // Explicit staging attachment only. No scripts, login or RPC are loaded
     // automatically, and a local workspace cannot be silently replaced.
@@ -88,13 +118,13 @@
       mountRevisionControls();
       function bound(){if(revisionDesk!==coordinator)throw Error("Revision editor is no longer attached");}
       return Object.freeze({
-        open:async function(pass){bound();var r=await coordinator.open(pass);if(r.hasWorkspace)installRevision();return r;},
+        open:function(pass){bound();return openRevision(coordinator,pass);},
         confirm:function(revision){bound();coordinator.confirmOpenedRevision(revision);installRevision();},
         rescue:function(pass){bound();return coordinator.exportPendingDraftEncrypted(pass);},
         prepareRecovery:function(backup,pass){bound();return coordinator.prepareWorkspaceRecovery(backup,pass);},
         applyRecovery:function(sections,on){bound();var r=coordinator.applyWorkspaceRecovery(sections,on);installRevision();return r;},
         restore:async function(backup,pass,on){bound();var r=await coordinator.restoreLedgerBackup(backup,pass,on);installRevision();return r;},
-        discard:function(){bound();coordinator.discardDraft();state.ws=null;state.dirty=false;state.history=[];render();announce();},
+        discard:function(){bound();coordinator.discardDraft();clearRevisionDisplay();},
         close:function(){bound();closeRevisionHost();}
       });
     }});

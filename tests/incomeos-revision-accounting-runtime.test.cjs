@@ -80,6 +80,9 @@ const expense=(id,amount)=>({id,kind:"outflow",date,label:"SYNTHETIC PRIVATE ACC
   await assert.rejects(b.save(passphrase),/Stale workspace revision/);
   assert.equal(b.status().needsRecovery,true);
   assert.equal(b.pendingDraft().ledger.length,2,"Uncommitted draft must survive a conflict");
+  assert.deepEqual(await b.verifyInterruptedSave(passphrase),{confirmed:false,latestRevision:2});
+  assert.equal(b.status().dirty,true,"A different writer's ciphertext must not confirm the draft");
+  await assert.rejects(b.save(passphrase),/verified unsaved/);
   const beforeRescue=writes;
   const rescued=await b.exportPendingDraftEncrypted(passphrase);
   assert.equal(rescued.serverSaved,false);
@@ -102,6 +105,16 @@ const expense=(id,amount)=>({id,kind:"outflow",date,label:"SYNTHETIC PRIVATE ACC
   assert.equal(backup.serverSaved,false);
   assert.equal((await workspace.decrypt(passphrase,backup.ciphertext)).ledger[0].amountUsd,45);
   assert.equal(writes,4,"Commit-then-timeout produced one server revision, never two");
+  await assert.rejects(b.verifyInterruptedSave("incorrect synthetic recovery passphrase"),/Wrong passphrase/);
+  assert.equal(b.status().dirty,true,"A matching checksum without decryption cannot confirm a save");
+  const beforeVerification=reads;
+  assert.deepEqual(await b.verifyInterruptedSave(passphrase),{confirmed:true,revision:4});
+  assert.equal(reads,beforeVerification+1,"Recovery uses one verified readback");
+  assert.equal(writes,4,"Verified readback must not retry the interrupted append");
+  assert.equal(b.status().dirty,false);
+  assert.equal(b.status().needsRecovery,false);
+  assert.equal(b.encryptedBackup().revision,4);
+  assert.equal(b.workspaceSnapshot().ledger[0].amountUsd,45);
   const c=createAccountingRuntime({stagingOnly:true});
   assert.equal((await c.open(passphrase)).revision,4);
   assert.equal(c.status().dirty,false);

@@ -88,13 +88,14 @@
         "tests/incomeos-vault-concurrency.test.cjs",
         "tests/incomeos-revision-backup-restore.test.cjs",
         "tests/incomeos-revision-workspace-bridge.test.cjs",
+        "tests/incomeos-revision-accounting-runtime.test.cjs",
         "tests/incomeos-revision-store.test.cjs",
         "tests/incomeos-revision-supabase-transport.test.cjs",
         "tests/incomeos-workspace-panel-cleanup.test.cjs",
         "tests/incomeos-project-ui-browser.mjs",
         "tests/incomeos-workspace-file-operations.test.cjs"
       ],
-      "limitation": "Owner-held encrypted workspace files and the existing append-only encrypted vault are separate from the staged server-authoritative revision runtime. Synthetic accounting/revision integration is tested. Live owner-authenticated recovery, cross-device revision integration and a durable rollback trust anchor remain unverified; the staged runtime is not loaded in the live Owner Desk. Synthetic asynchronous-mutation checks bind a staged save to its submitted document, a trusted read to the checksum-verified response values and an RPC dispatch to its submitted request."
+      "limitation": "Owner-held encrypted files and the legacy vault remain separate from the staged revision runtime. Synthetic tests cover submission snapshots and interrupted-save readback. A readback clears an unsaved draft only if the exact submitted revision and checksum match and the payload decrypts successfully. No write is retried. Failed clean reopens remove the displayed copy. The fingerprint lasts for the authenticated tab session. The live Owner Desk does not load the staged runtime. Live owner recovery, cross-device revision integration and a durable rollback trust anchor remain unverified."
     },
     {
       "id": "A07",
@@ -157,7 +158,8 @@
       "requirement": "iPhone-compatible controls and display",
       "status": "SOURCE TESTED",
       "evidence": [
-        "tests/incomeos-accounting-editor-browser.mjs"
+        "tests/incomeos-accounting-editor-browser.mjs",
+        "tests/incomeos-project-ui-browser.mjs"
       ],
       "limitation": "Simulated in Chromium at 320, 375, 390 and 430 px; the hosted app has rendered on the owner's physical iPhone in Safari (screenshots, 2026-11-04), but form entry on the device has not been observed"
     },
