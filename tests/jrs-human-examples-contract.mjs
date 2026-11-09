@@ -1,4 +1,4 @@
-// JRS illustrated decision examples and ethical influence contract (source-level).
+// JRS text-first decision examples and ethical influence contract (source-level).
 // Not a substitute for a mobile browser, assistive-technology or hosted check.
 import assert from 'node:assert/strict';
 import {readFileSync,existsSync} from 'node:fs';
@@ -19,19 +19,21 @@ for(const [name,source] of [['home',home],['rights',rights],['professional',pro]
  assert.equal((source.match(/<section\b/g)||[]).length,(source.match(/<\/section>/g)||[]).length,name+' section imbalance');
  assert.ok(source.includes('/assets/jrs-human-examples.css'),name+' missing shared stylesheet');
 }
-assert.ok(home.indexOf('id="everyday-decisions"')<home.indexOf('id="public-initiatives"'), 'illustrations must precede both campaigns');
+assert.ok(home.indexOf('id="everyday-decisions"')<home.indexOf('id="public-initiatives"'), 'fictional decision examples must precede both campaigns');
 assert.ok(home.includes('A decision can change someone\'s life. Can the record explain why?'));
-assert.equal((home.match(/<details class="jrs-scenario"/g)||[]).length,5,'exactly five illustrated scenarios');
+assert.equal((home.match(/<details class="jrs-scenario"/g)||[]).length,5,'exactly five text-first scenarios');
 assert.equal((home.match(/<details class="jrs-scenario"[^>]* open>/g)||[]).length,1,'one default open scenario');
 assert.equal((home.match(/<details\b/g)||[]).length,(home.match(/<\/details>/g)||[]).length,'home disclosures balanced');
 for(const type of types){
  assert.ok(home.includes('id="scenario-'+type+'"'),type+' anchor missing');
- const file='assets/jrs-scenario-'+type+'.svg';
- assert.ok(existsSync(join(root,file)),file+' missing');
- const img=read(file);
- assert.match(img,/^<svg[\s\S]*<\/svg>$/);
- assert.ok(img.includes('aria-label='),file+' needs accessible illustration title');
- assert.ok(home.includes('src="/'+file+'"'),type+' image not referenced');
+ assert.ok(!existsSync(join(root,'assets/jrs-scenario-'+type+'.svg')),
+  'retired abstract illustration must be removed: '+type);
+}
+for(const [name,page] of [['homepage',home],['public campaign',rights],['professional campaign',pro]]){
+ assert.doesNotMatch(page,/jrs-scenario-(?:hiring|termination|benefits|medical|ai)\.svg/,
+  name+' must not reference retired illustrations');
+ assert.doesNotMatch(page,/<figure class="jrs-story-art"/,
+  name+' must not render retired abstract art');
 }
 for(const text of ['What is missing? (DRR)','Why could it matter?','What would JRS flag?',
  'The decision may be right. It may be wrong.',
@@ -43,7 +45,7 @@ assert.ok(home.includes('right-to-know-why.html#constructed-example'));
 assert.ok(home.includes('decisions-you-can-defend.html#constructed-example'));
 for(const page of [rights,pro]){
  assert.ok(page.includes('index.html#everyday-decisions'),'campaign examples must link to all scenarios');
- assert.ok(page.includes('jrs-scenario-hiring.svg'),'campaign needs coherent hiring illustration');
+ assert.ok(!page.includes('jrs-scenario-hiring.svg'),'campaign must not show discarded illustration');
  assert.ok(page.includes('id="constructed-example"'),'campaign original anchor must remain');
  assert.ok(page.includes('id="support-the-principle"'),'original optional support remains');
  assert.ok(page.includes('method="post" action="/api/support?'),'original POST-only support route must remain');
@@ -60,13 +62,13 @@ assert.ok(research.includes('384 graded reads'));
 assert.ok(research.includes('Verified use and endorsement'));
 assert.ok(research.includes('Not established here:'));
 for(const cssToken of [
- 'grid-template-columns:minmax(0,230px) minmax(0,1fr)',
+ '.jrs-story-top{display:block}',
  '@media(max-width:760px)',
  '@media(max-width:380px)',
  'min-height:54px',
  'summary:focus-visible',
  'prefers-reduced-motion',
- '.jrs-story-art img{display:block;width:100%;height:auto'
+ 'JRS homepage editorial legibility repair, 2026-11-08.'
 ])assert.ok(css.includes(cssToken),'responsive/accessible CSS lost: '+cssToken);
 for(const token of ['fetch(', 'sendBeacon(', 'localStorage', 'sessionStorage'])assert.ok(!css.includes(token),'CSS must not contain tracking '+token);
-console.log('PASS: five fictional illustrated scenarios, mobile CSS, two original campaign routes, POST support, research limits and source integrity.');
+console.log('PASS: five fictional text-first scenarios, mobile CSS, two original campaign routes, POST support, research limits and source integrity.');
