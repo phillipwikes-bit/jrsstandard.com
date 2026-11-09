@@ -24,7 +24,7 @@ except (ValueError,TypeError) as exc:
 # Compare actual measurements to the complete, independently source-guarded
 # sitewide inventory; a retired Review Engine page is not a valid sample.
 source = Path("tests/jrs-sitewide-mobile-browser-audit.html").read_text(encoding="utf-8")
-inv = re.search(r"const paths=(\\[[^\\n;]*\\]);", source)
+inv = re.search(r"const paths=(\[[^\n;]*\]);", source)
 if not inv:
     raise SystemExit("FAIL: rendered audit's source inventory is unavailable")
 routes = json.loads(inv.group(1))
