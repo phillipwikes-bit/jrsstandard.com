@@ -1,9 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="560" height="320" viewBox="0 0 560 320" role="img" aria-label="Illustration of a patient reading a treatment authorization decision that lacks its clinical explanation">
-<defs><linearGradient id="paper" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#fffdf6"/><stop offset="1" stop-color="#e6e0d2"/></linearGradient><linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#23221e"/><stop offset="1" stop-color="#111211"/></linearGradient></defs>
-<rect width="560" height="320" rx="22" fill="url(#bg)"/><circle cx="44" cy="42" r="112" fill="#c89c4d" opacity=".10"/><circle cx="535" cy="285" r="120" fill="#c89c4d" opacity=".08"/><path d="M38 284H522" stroke="#494135" stroke-width="2"/>
-<g font-family="Arial,Helvetica,sans-serif"><circle cx="118" cy="103" r="43" fill="#704632"/><path d="M75 89q4-55 68-36 24 11 18 35-39-18-86 1Z" fill="#24211f"/><path d="M39 257c0-57 33-91 80-91 45 0 79 33 79 91" fill="#7d879b"/>
-<rect x="234" y="38" width="252" height="230" rx="10" fill="url(#paper)"/><path d="M255 70h188" stroke="#a8a093" stroke-width="7" stroke-linecap="round"/>
-<text x="254" y="114" font-size="19" font-weight="bold" fill="#403a32">TREATMENT</text><text x="254" y="138" font-size="19" font-weight="bold" fill="#403a32">AUTHORIZATION</text>
-<rect x="253" y="155" width="209" height="40" rx="5" fill="#efddb9"/><text x="265" y="181" font-size="17" font-weight="bold" fill="#765119">NOT APPROVED</text>
-<path d="M254 218h177m-177 18h125" stroke="#bab3a7" stroke-width="7" stroke-linecap="round"/>
-<circle cx="474" cy="53" r="30" fill="#c89c4d"/><text x="474" y="65" text-anchor="middle" font-size="36" font-weight="bold" fill="#1b1710">?</text></g></svg>
