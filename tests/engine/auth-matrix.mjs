@@ -1,35 +1,45 @@
-let pass = 0, fail = 0;
-const test = (name, ok) => {
-  ok ? pass++ : fail++;
-  console.log((ok ? 'PASS  ' : 'FAIL  ') + name);
-};
+// Public review boundary guard after retirement of the public Engine endpoints.
+// Tests source and routing absence. They do not claim that a deleted API
+// responds with a particular HTTP status in production.
+import { existsSync, readFileSync } from 'node:fs';
+import { join } from 'node:path';
 
-async function check(route, apiVersion) {
-  const originalFetch = globalThis.fetch;
-  let networkCalls = 0;
-  globalThis.fetch = async () => { networkCalls++; throw new Error('network access is prohibited'); };
-  try {
-    const module = await import('../../' + route + '?case=' + Math.random());
-    const response = await module.default(new Request('https://example.test/' + route, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ text: 'A sufficiently long record must still be refused by the controlled public boundary.' })
-    }));
-    const body = await response.json();
-    test(route + ' refuses input', response.status === 503 && body.error === 'controlled_review_unavailable');
-    const getResponse = await module.default(new Request('https://example.test/' + route));
-    const getBody = await getResponse.json();
-    test(route + ' does not invite closed-service submissions', getResponse.status === 405 && getBody.error === 'method_not_allowed' && /closed to public submissions/.test(getBody.detail) && !/Use POST/.test(getBody.detail));
-    test(route + ' has no outbound call', networkCalls === 0);
-    test(route + ' declares the expected API version', apiVersion ? body.api_version === 'v1' : !('api_version' in body));
-    test(route + ' identifies the controlled boundary', body.implementation_status === 'controlled_local_development' && body.public_access === false && body.record_submission_accepted === false && body.human_review_required === true);
-    test(route + ' identifies every release gate', Array.isArray(body.release_gates) && body.release_gates.length === 5 && body.release_gates.includes('independent_labeled_and_adjudicated_holdout_evaluation') && body.release_gates.includes('operator_control_evidence') && body.release_gates.includes('counsel_review_of_real_data_flows_and_claims') && body.release_gates.includes('recorded_owner_release_authorization') && body.release_gates.includes('independent_production_quality_assurance'));
-  } finally {
-    globalThis.fetch = originalFetch;
-  }
+const root=process.cwd();
+const read=(name)=>readFileSync(join(root,name),'utf8');
+let pass=0, fail=0;
+function test(name,ok){
+  if(ok){pass++;console.log('PASS  '+name);}
+  else{fail++;console.error('FAIL  '+name);}
 }
 
-await check('api/review-engine.js', false);
-await check('api/v1/review-engine.js', true);
-console.log('\n' + (pass + fail) + ' checks, ' + fail + ' failed');
-process.exit(fail ? 1 : 0);
+for(const path of [
+ 'api/review.js','api/review-engine.js','api/v1/review-engine.js',
+ 'review-engine.html'
+]){
+ test('retired public record-review entrypoint stays absent: '+path,
+  !existsSync(join(root,path)));
+}
+const vercel=JSON.parse(read('vercel.json'));
+const routes=[...(vercel.redirects||[]),...(vercel.rewrites||[])];
+const retired=['/api/review','/api/review-engine','/api/v1/review-engine','/review-engine.html'];
+test('Vercel does not route requests into retired Engine destinations',
+ routes.every(rule=>!retired.includes(String(rule.destination||'').split('?')[0])));
+for(const page of ['index.html','resources.html','training.html','jrsstandard.html']){
+ const html=read(page).replace(/<!--[\s\S]*?-->/g,'');
+ test('no public navigation to retired Engine: '+page,
+  !/href=["'][^"']*(?:review-engine\.html|\/api\/review(?:-engine)?(?:\?|["']))/i.test(html));
+}
+const handoff=read('docs/architecture/CURRENT_ENGINE_HANDOFF_2026-10-05.md');
+test('public record submission remains expressly prohibited',
+ handoff.includes('Public review routes must refuse submissions.'));
+for(const phrase of [
+ 'Independent labeled and adjudicated holdout evaluation.',
+ 'Actual operator-control evidence',
+ 'Counsel review of real data flows',
+ 'Recorded owner release authorization.',
+ 'Independent production QA'
+]){
+ test('pending release requirement retained: '+phrase, handoff.includes(phrase));
+}
+console.log('\n'+(pass+fail)+' checks, '+fail+' failed');
+process.exitCode=fail?1:0;

@@ -55,8 +55,11 @@ assert.ok(!redirects.some(r=>r.source==='/openapi'),
  'retired OpenAPI shortcut must not be reintroduced as an active public route');
 assert.equal(redirects.find(r=>r.source==='/submit-record.html')?.destination,'/resources.html');
 assert.equal(redirects.find(r=>r.source==='/sandbox')?.destination,'/resources.html');
-assert.ok(read('manifest.html').includes('jrs-decision-reconstruction-manifest-v1.0.1.schema.json'),
- 'technical specification did not survive as direct public reference');
+const manifest=read('manifest.html');
+assert.ok(manifest.includes('<strong>Publication scope.</strong>') &&
+ manifest.includes('This page is a conceptual reference for documentation traceability.') &&
+ manifest.includes('It does not offer a machine-readable service, record submission, assessment output, or production artifact.'),
+ 'the public Manifest reference must disclose its conceptual, non-operational scope');
 assert.ok(!existsSync(new URL('../review-engine.html',import.meta.url)),
  'retired public Review Engine page must remain absent');
 assert.doesNotMatch(read('sitemap.xml'),/\/(?:review-engine|pilot|platform-evaluation-001)\.html/);
