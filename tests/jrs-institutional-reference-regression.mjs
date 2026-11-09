@@ -215,7 +215,7 @@ for(const page of [...pages,...additionalPages]){
 const main=read('index.html');
 for(const token of [
  '01 · Start here','02 · Use the method','03 · Examine the evidence','04 · Learn and practice',
- 'Can the record explain the decision after its author is gone?',
+ '<h1 id="jrs-main-heading">Can the record explain the decision?</h1>',
  'Evidence must remain distinguishable from assurance.',
  'href="jrsstandard.html"','href="resources.html"','href="training.html"','href="research.html"',
  'href="investigator-guides.html"','href="manifest.html"'

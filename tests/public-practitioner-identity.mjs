@@ -51,7 +51,8 @@ for(const direct of ['/manifest.html','/security.html','/platform-evaluation-001
 for(const r of redirects){
  assert.doesNotMatch(String(r.destination),/review-engine\.html/,'obsolete route promotes unavailable software: '+r.source);
 }
-assert.equal(redirects.find(r=>r.source==='/openapi')?.destination,'/manifest.html');
+assert.ok(!redirects.some(r=>r.source==='/openapi'),
+ 'retired OpenAPI shortcut must not be reintroduced as an active public route');
 assert.equal(redirects.find(r=>r.source==='/submit-record.html')?.destination,'/resources.html');
 assert.equal(redirects.find(r=>r.source==='/sandbox')?.destination,'/resources.html');
 assert.ok(read('manifest.html').includes('jrs-decision-reconstruction-manifest-v1.0.1.schema.json'),
