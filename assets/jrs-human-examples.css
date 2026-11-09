@@ -15,10 +15,7 @@
 .jrs-scenario[open] > summary::after{content:"−"}
 .jrs-scenario > summary:hover{background:#27241d}
 .jrs-scenario-body{border-top:1px solid #494337;padding:18px}
-.jrs-story-top{display:grid;grid-template-columns:minmax(0,230px) minmax(0,1fr);gap:21px;align-items:center}
-.jrs-story-art{margin:0}
-.jrs-story-art img{display:block;width:100%;height:auto;aspect-ratio:7/4;object-fit:contain;border-radius:9px;background:#171714}
-.jrs-story-art figcaption{font-size:12px;line-height:1.5;color:#c5bbab;margin-top:7px}
+.jrs-story-top{display:block}
 .jrs-story-quote{font-family:Georgia,serif;font-size:clamp(22px,3vw,29px);line-height:1.27;color:#f5f0e6;margin:6px 0 9px;overflow-wrap:anywhere}
 .jrs-story-question{font-size:16px;color:#e8ddc9;line-height:1.55}
 .jrs-story-facts{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin:18px 0 0}
@@ -40,8 +37,6 @@
 .jrs-proof-levels p{font-size:14px;line-height:1.55;margin:0 0 8px}
 .jrs-proof-levels a{color:#deb576}
 @media(max-width:760px){
- .jrs-story-top{grid-template-columns:1fr;gap:12px}
- .jrs-story-art{max-width:450px}
  .jrs-story-facts,.jrs-proof-levels{grid-template-columns:1fr}
  .jrs-human-stories{margin:22px 0 28px}
  .jrs-scenario-body{padding:15px}
@@ -80,4 +75,174 @@
  body.jrs-institutional.jrs-home .jr-hero{padding-top:10px!important}
  body.jrs-institutional.jrs-home .jr-hero h1{font-size:30px!important}
  body.jrs-institutional.jrs-home .jr-firstline{font-size:15px!important;line-height:1.43!important}
+}
+
+
+/* JRS homepage editorial legibility repair, 2026-11-08. */
+/* Scope this repair to the public homepage. Preserve JRS methods, case text,
+   research claims, privacy boundaries and all existing review interactions. */
+body.jrs-institutional.jrs-home .site-header .header-meta {
+  color:#f8fbfd!important;
+  opacity:1!important;
+  font-weight:600!important;
+  font-size:14px!important;
+}
+body.jrs-institutional.jrs-home .site-header-inner > .jrs-header-motto {
+  color:#ffffff!important;
+  opacity:1!important;
+}
+body.jrs-institutional.jrs-home .site-header-inner > .jrs-header-motto strong {
+  color:#ffde97!important;
+}
+body.jrs-institutional.jrs-home .utility-bar .utility-inner,
+body.jrs-institutional.jrs-home .utility-bar .utility-inner strong,
+body.jrs-institutional.jrs-home .utility-bar .utility-inner a {
+  color:#183e56!important;
+  opacity:1!important;
+  font-size:14px!important;
+  line-height:1.5!important;
+}
+body.jrs-institutional.jrs-home .jr-overline {
+  color:#694719!important;
+  opacity:1!important;
+  font-size:13px!important;
+  letter-spacing:.045em!important;
+  line-height:1.5!important;
+}
+body.jrs-institutional.jrs-home .jr-firstline,
+body.jrs-institutional.jrs-home .jr-intro,
+body.jrs-institutional.jrs-home .jr-expert-evidence,
+body.jrs-institutional.jrs-home .jr-hero-note,
+body.jrs-institutional.jrs-home .jr-section-header p {
+  color:#253f54!important;
+  opacity:1!important;
+}
+body.jrs-institutional.jrs-home .jr-platform-promise {
+  color:#19384d!important;
+}
+
+/* Remove the unused split-column arrangement after illustration removal.
+   Use an editorial text layout with clear visual hierarchy instead. */
+body.jrs-institutional.jrs-home .jrs-human-stories .jrs-story-top {
+  display:block!important;
+}
+body.jrs-institutional.jrs-home .jrs-human-stories .jrs-human-intro {
+  color:#304c60!important;
+  font-size:16px!important;
+  line-height:1.65!important;
+}
+body.jrs-institutional.jrs-home .jrs-human-stories .jrs-scenario {
+  background:#ffffff!important;
+  border:1px solid #beced9!important;
+  border-radius:7px!important;
+  box-shadow:none!important;
+  color:#1b354b!important;
+}
+body.jrs-institutional.jrs-home .jrs-human-stories .jrs-scenario[open] {
+  border-color:#688ba5!important;
+}
+body.jrs-institutional.jrs-home .jrs-human-stories .jrs-scenario > summary {
+  background:#f5f8fa!important;
+  color:#183950!important;
+  font-size:17px!important;
+  font-weight:700!important;
+  min-height:54px!important;
+}
+body.jrs-institutional.jrs-home .jrs-human-stories .jrs-scenario[open] > summary {
+  background:#eaf1f5!important;
+}
+body.jrs-institutional.jrs-home .jrs-human-stories .jrs-scenario > summary::after {
+  color:#174767!important;
+}
+body.jrs-institutional.jrs-home .jrs-human-stories .jrs-scenario > summary:hover {
+  background:#e4edf3!important;
+}
+body.jrs-institutional.jrs-home .jrs-human-stories .jrs-scenario-body {
+  background:#ffffff!important;
+  border-top:1px solid #c7d5dd!important;
+}
+body.jrs-institutional.jrs-home .jrs-human-stories .jrs-human-kicker {
+  color:#76511e!important;
+  font-size:13px!important;
+  font-weight:750!important;
+}
+body.jrs-institutional.jrs-home .jrs-human-stories .jrs-story-quote {
+  color:#18384f!important;
+  font-size:clamp(22px,3vw,28px)!important;
+  line-height:1.34!important;
+}
+body.jrs-institutional.jrs-home .jrs-human-stories .jrs-story-question {
+  color:#264b61!important;
+  font-size:16px!important;
+}
+body.jrs-institutional.jrs-home .jrs-human-stories .jrs-story-fact {
+  background:#f5f8fa!important;
+  border:1px solid #ccd9e2!important;
+  border-radius:6px!important;
+}
+body.jrs-institutional.jrs-home .jrs-human-stories .jrs-story-fact h3 {
+  color:#173d57!important;
+  font-size:16px!important;
+}
+body.jrs-institutional.jrs-home .jrs-human-stories .jrs-story-fact p {
+  color:#304d61!important;
+  font-size:15px!important;
+}
+body.jrs-institutional.jrs-home .jrs-human-stories .jrs-story-paths a {
+  background:#173d5b!important;
+  border-color:#173d5b!important;
+  color:#ffffff!important;
+  font-size:15px!important;
+  min-height:46px!important;
+}
+body.jrs-institutional.jrs-home .jrs-human-stories .jrs-story-paths a:hover {
+  background:#245578!important;
+}
+body.jrs-institutional.jrs-home .jrs-human-stories .jrs-story-note {
+  color:#405b6c!important;
+  font-size:15px!important;
+}
+body.jrs-institutional.jrs-home .jrs-human-stories .jrs-human-outro {
+  color:#1b3c54!important;
+}
+body.jrs-institutional.jrs-home .jrs-human-stories :is(summary,a):focus-visible {
+  outline:3px solid #0b679c!important;
+  outline-offset:3px!important;
+}
+@media(max-width:650px) {
+  body.jrs-institutional.jrs-home .jr-overline {
+    font-size:13px!important;
+  }
+  body.jrs-institutional.jrs-home .jr-firstline,
+  body.jrs-institutional.jrs-home .jr-intro {
+    font-size:16px!important;
+    line-height:1.6!important;
+  }
+  body.jrs-institutional.jrs-home .jr-expert-evidence,
+  body.jrs-institutional.jrs-home .jr-hero-note {
+    font-size:15px!important;
+    line-height:1.6!important;
+  }
+  body.jrs-institutional.jrs-home .jrs-human-stories .jrs-scenario-body {
+    padding:17px!important;
+  }
+  body.jrs-institutional.jrs-home .jrs-human-stories .jrs-scenario > summary {
+    font-size:16px!important;
+  }
+  body.jrs-institutional.jrs-home .jrs-human-stories .jrs-story-facts {
+    grid-template-columns:1fr!important;
+  }
+}
+@media(forced-colors:active) {
+  body.jrs-institutional.jrs-home .jrs-human-stories .jrs-scenario,
+  body.jrs-institutional.jrs-home .jrs-human-stories .jrs-story-fact {
+    background:Canvas!important;
+    color:CanvasText!important;
+    border-color:CanvasText!important;
+  }
+  body.jrs-institutional.jrs-home .jrs-human-stories .jrs-story-paths a {
+    background:ButtonFace!important;
+    color:ButtonText!important;
+    border-color:ButtonText!important;
+  }
 }
