@@ -20,7 +20,8 @@
 # A separately protected IncomeOS project must use owner/incomeos as its root
 # with its own project-level .vercelignore. Authentication and encryption remain
 # independent release prerequisites, not properties of this exclusion.
-owner/incomeos/
+# TEMPORARY INCOMEOS RELEASE BRANCH EXCEPTION: owner/incomeos is included only so the separately authenticated IncomeOS Vercel project can build its root. DO NOT merge this branch into public JRS main; restore the exclusion before any JRS production release.
+# owner/incomeos/
 
 # ---- internal documentation and working notes -------------------------------
 *.md
