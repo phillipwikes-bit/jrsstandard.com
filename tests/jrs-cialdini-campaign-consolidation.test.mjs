@@ -17,6 +17,16 @@ const sitemap=read('sitemap.xml');
 const config=JSON.parse(read('vercel.json'));
 const campaigns=[['public interest',rights],['professional',professional]];
 
+test('campaigns are included in the complete rendered mobile audit',()=>{
+  const source=read('tests/jrs-sitewide-mobile-browser-audit.html');
+  const match=source.match(/const paths=(\[[^\n;]*\]);/);
+  assert.ok(match,'audited route array missing');
+  const paths=JSON.parse(match[1]);
+  for(const page of ['right-to-know-why.html','decisions-you-can-defend.html']){
+    assert.equal(paths.filter(path=>path===page).length,1,'missing or duplicated campaign browser route: '+page);
+  }
+});
+
 test('one website maintains two named and different educational campaigns',()=>{
   assert.match(home,/The Right to Know Why/);
   assert.match(home,/The Decisions You Can Defend/);
