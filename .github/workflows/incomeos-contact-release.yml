@@ -1,0 +1,28 @@
+name: IncomeOS encrypted contact release checks
+on:
+  push:
+    branches:
+      - chatgpt/incomeos-contact-first-vercel-20261110
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  encrypted-contact:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout exact release branch
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+        with:
+          persist-credentials: false
+      - name: Verify JavaScript syntax and application integration
+        run: |
+          node --check owner/incomeos/contact-profile.js
+          grep -q 'src="./contact-profile.js"' owner/incomeos/index.html
+      - name: Run encrypted contact profile security and persistence tests
+        run: node --test tests/incomeos-contact-profile.mjs
+      - name: Verify files were not added to the public JRS page
+        run: |
+          test -f owner/incomeos/contact-profile.js
+          ! grep -q 'contact-profile.js' index.html
