@@ -7,7 +7,7 @@ const bridge=load('assets/jrs-legacy-public-alignment.css');
 const shared=load('assets/jrs-institutional-reference.css');
 const legacy=[
  'access.html','reviewer/evaluation.html','reviewer/completion.html',
- 'recheck.html','security.html','review-engine.html',
+ 'recheck.html','security.html',
  'coauthor.html','honor.html','ai-records-arm-b.html','404.html','people.html'
 ];
 const requiredMobileNav=[
@@ -134,4 +134,4 @@ assert.ok(researchSummary.includes('/api/dl?e=accuracy&amp;src=research-summary'
  'research PDF routes missing');
 assert.ok(standard.includes('/api/dl?f=JRS_Investigator_Field_Guide.pdf&amp;src=jrsstandard'),
  'legacy general investigator guide route missing');
-console.log('PASS: 11 public/retained legacy routes, 6 principal pages, 17 reference pages, 9 linked PDF assets and locally generated training completion PNG guarded. PDF harmonization remains a separate controlled publication task.');
+console.log('PASS: 10 public/retained legacy routes, 6 principal pages, 17 reference pages, 9 linked PDF assets and locally generated training completion PNG guarded. PDF harmonization remains a separate controlled publication task.');
