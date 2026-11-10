@@ -4,7 +4,7 @@ import { webcrypto } from "node:crypto";
 import { createRequire } from "node:module";
 
 const require = createRequire(import.meta.url);
-globalThis.crypto = webcrypto;
+Object.defineProperty(globalThis, "crypto", { value:webcrypto, configurable:true });
 
 const values = new Map();
 globalThis.localStorage = {
