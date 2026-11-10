@@ -17,6 +17,13 @@ const sitemap=read('sitemap.xml');
 const config=JSON.parse(read('vercel.json'));
 const campaigns=[['public interest',rights],['professional',professional]];
 
+test('shared resource directory describes current illustration-free fictional examples',()=>{
+  assert.match(resources,/Examine five fictional everyday decision examples/);
+  assert.doesNotMatch(resources,/five illustrated everyday decision examples/i);
+  assert.match(home,/id="everyday-decisions"/);
+  assert.match(resources,/href="index\.html#everyday-decisions"/);
+});
+
 test('campaigns are included in the complete rendered mobile audit',()=>{
   const source=read('tests/jrs-sitewide-mobile-browser-audit.html');
   const match=source.match(/const paths=(\[[^\n;]*\]);/);
