@@ -26,7 +26,7 @@ for(const anchor of ['id="training-modules"','id="simulator"','id="practice-guid
 for(const bad of ['id="pa-input"','record-review-workspace','runAssessment(','/api/review'])
  assert.ok(!training.includes(bad),'unavailable record-upload interface remains: '+bad);
 assert.ok(training.includes('Practice with constructed records'));
-assert.ok(read('api/review.js').includes('unavailable(req, res)'),'unreleased API boundary altered');
+assert.ok(!existsSync(new URL('../api/review.js',import.meta.url)),'retired public review API must remain absent');
 const simulations=read('simulations.html');
 assert.ok(simulations.includes('Open the manual review check'));
 assert.ok(!simulations.includes('Open AI-Assisted Record Reviewer'));
@@ -47,13 +47,12 @@ for(const direct of ['/manifest.html','/security.html','/platform-evaluation-001
 for(const r of redirects){
  assert.doesNotMatch(String(r.destination),/review-engine\.html/,'obsolete route promotes unavailable software: '+r.source);
 }
-assert.equal(redirects.find(r=>r.source==='/openapi')?.destination,'/manifest.html');
+assert.ok(!redirects.some(r=>r.source==='/openapi'), 'removed OpenAPI shortcut must not be restored');
 assert.equal(redirects.find(r=>r.source==='/submit-record.html')?.destination,'/resources.html');
 assert.equal(redirects.find(r=>r.source==='/sandbox')?.destination,'/resources.html');
-assert.ok(read('manifest.html').includes('jrs-decision-reconstruction-manifest-v1.0.1.schema.json'),
- 'technical specification did not survive as direct public reference');
-assert.ok(existsSync(new URL('../review-engine.html',import.meta.url)),'archival technical evidence removed');
-assert.match(read('review-engine.html'),/name="robots" content="noindex,nofollow,noarchive"/);
+assert.match(read('manifest.html'),/conceptual reference for documentation traceability/, 'retained Manifest must be documented as conceptual only');
+assert.ok(!existsSync(new URL('../jrs-decision-reconstruction-manifest-v1.0.1.schema.json',import.meta.url)), 'retired schema must not be republished without approval');
+assert.ok(!existsSync(new URL('../review-engine.html',import.meta.url)), 'retired public Engine page must remain absent');
 assert.doesNotMatch(read('sitemap.xml'),/\/(?:review-engine|pilot|platform-evaluation-001)\.html/);
 for(const path of ['security.html','engagement.html']){
  assert.match(read(path),/name="robots" content="noindex,nofollow"/,'historical page indexed: '+path);
