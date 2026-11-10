@@ -515,6 +515,14 @@ body.focus-mode #training-modules{border-top:none;padding-top:34px}
 <link rel="stylesheet" href="/assets/jrs-institutional-reference.css">
 <link rel="stylesheet" href="/assets/jrs-practitioner-journey.css">
 <link rel="stylesheet" href="/assets/jrs-a-pathways.css">
+<style id="jrs-training-mobile-first-action-20261110">
+/* Keep the first module within the existing mobile first-use acceptance viewport.
+   The context and edition disclosures remain available below the primary action. */
+@media (max-width:760px){
+  .hero-section{padding-top:44px!important;padding-bottom:32px!important}
+  .hero-inner .hero-ctas{margin-bottom:12px!important}
+}
+</style>
 </head>
 <body class="jrs-institutional jrs-longform jrs-training-page">
 <script>(function(){try{var q=new URLSearchParams(location.search);if(q.get('focus')==='1'||q.get('focus')==='true'){document.body.classList.add('focus-mode');}}catch(e){}})();</script>
