@@ -1,0 +1,248 @@
+/* JRS everyday decisions: mobile-first, educational, no data collection.
+   Native disclosure elements retain content when scripts are unavailable. */
+.jrs-human-stories{margin:28px 0 36px;scroll-margin-top:20px}
+.jrs-human-stories .jr-section-header{margin-bottom:18px}
+.jrs-human-kicker{font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:#d6af6f}
+.jrs-human-intro{max-width:74ch;color:#d7d1c6;line-height:1.7}
+.jrs-human-stories a:focus-visible,.jrs-human-stories summary:focus-visible,
+.jrs-campaign-example-links a:focus-visible,.jrs-proof-levels a:focus-visible{outline:3px solid #f4d18b;outline-offset:4px}
+.jrs-scenario-list{display:grid;gap:10px;margin:18px 0 16px}
+.jrs-scenario{border:1px solid #585143;border-radius:10px;background:#171714;overflow:hidden;min-width:0}
+.jrs-scenario[open]{border-color:#cfad72;background:#1b1a17}
+.jrs-scenario > summary{cursor:pointer;display:flex;align-items:center;justify-content:space-between;gap:14px;min-height:54px;padding:15px 18px;color:#f5f1e7;font-weight:700;font-size:16px;line-height:1.35;list-style:none}
+.jrs-scenario > summary::-webkit-details-marker{display:none}
+.jrs-scenario > summary::after{content:"+";font-weight:400;color:#e4c589;font-size:23px;flex-shrink:0}
+.jrs-scenario[open] > summary::after{content:"−"}
+.jrs-scenario > summary:hover{background:#27241d}
+.jrs-scenario-body{border-top:1px solid #494337;padding:18px}
+.jrs-story-top{display:block}
+.jrs-story-quote{font-family:Georgia,serif;font-size:clamp(22px,3vw,29px);line-height:1.27;color:#f5f0e6;margin:6px 0 9px;overflow-wrap:anywhere}
+.jrs-story-question{font-size:16px;color:#e8ddc9;line-height:1.55}
+.jrs-story-facts{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin:18px 0 0}
+.jrs-story-fact{border:1px solid #484237;border-radius:7px;padding:15px;min-width:0}
+.jrs-story-fact h3{font-family:inherit;font-size:14px;line-height:1.35;font-weight:700;color:#e6bf80;margin:0 0 7px}
+.jrs-story-fact p{font-size:14px;line-height:1.62;color:#e8e1d5;margin:0;overflow-wrap:anywhere}
+.jrs-story-paths{display:flex;flex-wrap:wrap;gap:9px;margin-top:14px}
+.jrs-story-paths a{display:inline-flex;align-items:center;justify-content:center;min-height:44px;padding:10px 13px;border:1px solid #c9a66d;border-radius:5px;color:#f4ddac;font-size:14px;font-weight:700;text-decoration:none;line-height:1.35}
+.jrs-story-paths a:hover{background:#342a1a}
+.jrs-story-note{font-size:13px;line-height:1.6;color:#c9c2b7;margin:13px 0 0}
+.jrs-human-outro{font-weight:700;color:#f6e9cf;margin:20px 0 6px}
+.jrs-campaign-example-links{border:1px solid #565044;border-radius:6px;background:#171714;padding:18px 20px;margin:20px 0}
+.jrs-campaign-example-links h2{font-family:Georgia,serif;font-size:23px;margin:0 0 9px}
+.jrs-campaign-example-links p{margin:0 0 10px}
+.jrs-campaign-example-links a{color:#deb576}
+.jrs-proof-levels{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin:19px 0}
+.jrs-proof-levels article{border:1px solid #403d36;border-radius:6px;padding:16px;background:#171714;min-width:0}
+.jrs-proof-levels h3{font-family:Georgia,serif;font-size:20px;margin:0 0 8px;line-height:1.3}
+.jrs-proof-levels p{font-size:14px;line-height:1.55;margin:0 0 8px}
+.jrs-proof-levels a{color:#deb576}
+@media(max-width:760px){
+ .jrs-story-facts,.jrs-proof-levels{grid-template-columns:1fr}
+ .jrs-human-stories{margin:22px 0 28px}
+ .jrs-scenario-body{padding:15px}
+ .jrs-scenario > summary{padding:15px;min-height:52px}
+ .jrs-story-paths{flex-direction:column;align-items:stretch}
+ .jrs-story-paths a{width:100%}
+}
+@media(max-width:380px){
+ .jrs-scenario > summary{font-size:15px;padding:12px}
+ .jrs-story-quote{font-size:23px}
+ .jrs-story-fact{padding:13px}
+}
+@media(prefers-reduced-motion:reduce){
+ .jrs-scenario,.jrs-story-paths a{transition:none!important}
+}
+@media print{
+ .jrs-scenario{break-inside:avoid}
+ .jrs-scenario:not([open]){display:none}
+ .jrs-story-paths{display:none}
+}
+/* Homepage first-action priority. Scoped to mobile and limited to the hero.
+   Keeps the original primary seven-point action before secondary explanation. */
+@media(max-width:650px){
+ body.jrs-institutional.jrs-home .jr-hero{padding-top:16px!important}
+ body.jrs-institutional.jrs-home .jr-hero-grid{gap:14px!important}
+ body.jrs-institutional.jrs-home .jr-hero h1{font-size:clamp(31px,8vw,37px)!important;line-height:1.11!important;margin-bottom:10px!important}
+ body.jrs-institutional.jrs-home .jr-firstline{font-size:15.5px!important;line-height:1.46!important;margin-bottom:10px!important}
+ body.jrs-institutional.jrs-home .jr-actions{margin-top:12px!important;margin-bottom:12px!important;gap:8px!important}
+ body.jrs-institutional.jrs-home .jr-actions a{min-height:46px!important}
+ body.jrs-institutional.jrs-home .jr-intro{font-size:14.5px!important;line-height:1.5!important}
+ body.jrs-institutional.jrs-home .jr-platform-promise{margin-top:10px!important}
+ .jrs-human-stories{margin-top:16px}
+ .jrs-human-stories .jr-section-header h2{font-size:clamp(25px,6vw,32px)!important}
+}
+@media(max-width:360px){
+ body.jrs-institutional.jrs-home .jr-hero{padding-top:10px!important}
+ body.jrs-institutional.jrs-home .jr-hero h1{font-size:30px!important}
+ body.jrs-institutional.jrs-home .jr-firstline{font-size:15px!important;line-height:1.43!important}
+}
+
+
+/* JRS homepage editorial legibility repair, 2026-11-08. */
+/* Scope this repair to the public homepage. Preserve JRS methods, case text,
+   research claims, privacy boundaries and all existing review interactions. */
+body.jrs-institutional.jrs-home .site-header .header-meta {
+  color:#f8fbfd!important;
+  opacity:1!important;
+  font-weight:600!important;
+  font-size:14px!important;
+}
+body.jrs-institutional.jrs-home .site-header-inner > .jrs-header-motto {
+  color:#ffffff!important;
+  opacity:1!important;
+}
+body.jrs-institutional.jrs-home .site-header-inner > .jrs-header-motto strong {
+  color:#ffde97!important;
+}
+body.jrs-institutional.jrs-home .utility-bar .utility-inner,
+body.jrs-institutional.jrs-home .utility-bar .utility-inner strong,
+body.jrs-institutional.jrs-home .utility-bar .utility-inner a {
+  color:#183e56!important;
+  opacity:1!important;
+  font-size:14px!important;
+  line-height:1.5!important;
+}
+body.jrs-institutional.jrs-home .jr-overline {
+  color:#694719!important;
+  opacity:1!important;
+  font-size:13px!important;
+  letter-spacing:.045em!important;
+  line-height:1.5!important;
+}
+body.jrs-institutional.jrs-home .jr-firstline,
+body.jrs-institutional.jrs-home .jr-intro,
+body.jrs-institutional.jrs-home .jr-expert-evidence,
+body.jrs-institutional.jrs-home .jr-hero-note,
+body.jrs-institutional.jrs-home .jr-section-header p {
+  color:#253f54!important;
+  opacity:1!important;
+}
+body.jrs-institutional.jrs-home .jr-platform-promise {
+  color:#19384d!important;
+}
+
+/* Remove the unused split-column arrangement after illustration removal.
+   Use an editorial text layout with clear visual hierarchy instead. */
+body.jrs-institutional.jrs-home .jrs-human-stories .jrs-story-top {
+  display:block!important;
+}
+body.jrs-institutional.jrs-home .jrs-human-stories .jrs-human-intro {
+  color:#304c60!important;
+  font-size:16px!important;
+  line-height:1.65!important;
+}
+body.jrs-institutional.jrs-home .jrs-human-stories .jrs-scenario {
+  background:#ffffff!important;
+  border:1px solid #beced9!important;
+  border-radius:7px!important;
+  box-shadow:none!important;
+  color:#1b354b!important;
+}
+body.jrs-institutional.jrs-home .jrs-human-stories .jrs-scenario[open] {
+  border-color:#688ba5!important;
+}
+body.jrs-institutional.jrs-home .jrs-human-stories .jrs-scenario > summary {
+  background:#f5f8fa!important;
+  color:#183950!important;
+  font-size:17px!important;
+  font-weight:700!important;
+  min-height:54px!important;
+}
+body.jrs-institutional.jrs-home .jrs-human-stories .jrs-scenario[open] > summary {
+  background:#eaf1f5!important;
+}
+body.jrs-institutional.jrs-home .jrs-human-stories .jrs-scenario > summary::after {
+  color:#174767!important;
+}
+body.jrs-institutional.jrs-home .jrs-human-stories .jrs-scenario > summary:hover {
+  background:#e4edf3!important;
+}
+body.jrs-institutional.jrs-home .jrs-human-stories .jrs-scenario-body {
+  background:#ffffff!important;
+  border-top:1px solid #c7d5dd!important;
+}
+body.jrs-institutional.jrs-home .jrs-human-stories .jrs-human-kicker {
+  color:#76511e!important;
+  font-size:13px!important;
+  font-weight:750!important;
+}
+body.jrs-institutional.jrs-home .jrs-human-stories .jrs-story-quote {
+  color:#18384f!important;
+  font-size:clamp(22px,3vw,28px)!important;
+  line-height:1.34!important;
+}
+body.jrs-institutional.jrs-home .jrs-human-stories .jrs-story-question {
+  color:#264b61!important;
+  font-size:16px!important;
+}
+body.jrs-institutional.jrs-home .jrs-human-stories .jrs-story-fact {
+  background:#f5f8fa!important;
+  border:1px solid #ccd9e2!important;
+  border-radius:6px!important;
+}
+body.jrs-institutional.jrs-home .jrs-human-stories .jrs-story-fact h3 {
+  color:#173d57!important;
+  font-size:16px!important;
+}
+body.jrs-institutional.jrs-home .jrs-human-stories .jrs-story-fact p {
+  color:#304d61!important;
+  font-size:15px!important;
+}
+body.jrs-institutional.jrs-home .jrs-human-stories .jrs-story-paths a {
+  background:#173d5b!important;
+  border-color:#173d5b!important;
+  color:#ffffff!important;
+  font-size:15px!important;
+  min-height:46px!important;
+}
+body.jrs-institutional.jrs-home .jrs-human-stories .jrs-story-paths a:hover {
+  background:#245578!important;
+}
+body.jrs-institutional.jrs-home .jrs-human-stories .jrs-story-note {
+  color:#405b6c!important;
+  font-size:15px!important;
+}
+body.jrs-institutional.jrs-home .jrs-human-stories .jrs-human-outro {
+  color:#1b3c54!important;
+}
+body.jrs-institutional.jrs-home .jrs-human-stories :is(summary,a):focus-visible {
+  outline:3px solid #0b679c!important;
+  outline-offset:3px!important;
+}
+@media(max-width:650px) {
+  body.jrs-institutional.jrs-home .jr-overline {
+    font-size:13px!important;
+  }
+  body.jrs-institutional.jrs-home .jr-firstline,
+  body.jrs-institutional.jrs-home .jr-intro {
+    font-size:16px!important;
+    line-height:1.6!important;
+  }
+  body.jrs-institutional.jrs-home .jr-expert-evidence,
+  body.jrs-institutional.jrs-home .jr-hero-note {
+    font-size:15px!important;
+    line-height:1.6!important;
+  }
+  body.jrs-institutional.jrs-home .jrs-human-stories .jrs-scenario-body {
+    padding:17px!important;
+  }
+  body.jrs-institutional.jrs-home .jrs-human-stories .jrs-scenario > summary {
+    font-size:16px!important;
+  }
+  body.jrs-institutional.jrs-home .jrs-human-stories .jrs-story-facts {
+    grid-template-columns:1fr!important;
+  }
+}
+@media(forced-colors:active) {
+  body.jrs-institutional.jrs-home .jrs-human-stories .jrs-scenario,
+  body.jrs-institutional.jrs-home .jrs-human-stories .jrs-story-fact {
+    background:Canvas!important;
+    color:CanvasText!important;
+    border-color:CanvasText!important;
+  }
+  body.jrs-institutional.jrs-home .jrs-human-stories .jrs-story-paths a {
+    background:ButtonFace!important;
+    color:ButtonText!important;
+    border-color:ButtonText!important;
+  }
+}

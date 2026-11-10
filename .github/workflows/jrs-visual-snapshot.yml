@@ -49,7 +49,7 @@ jobs:
         run: |
           "$JRS_BROWSER" --headless=new --no-sandbox --disable-gpu --disable-dev-shm-usage --virtual-time-budget=45000 --window-size=1440,1200 --dump-dom 'http://127.0.0.1:8791/tests/jrs-public-palette-browser-audit.html' > /tmp/jrs-public-palette-audit.html 2> /tmp/jrs-public-palette-errors.log
           python3 tests/jrs-public-palette-check.py /tmp/jrs-public-palette-audit.html
-      - name: Audit 58 public routes at 320px, 390px, 768px and 1440px
+      - name: Audit 57 current routes at 320px, 390px, 768px and 1440px
         run: |
           "$JRS_BROWSER" --headless=new --no-sandbox --disable-gpu --disable-dev-shm-usage --virtual-time-budget=120000 --window-size=1440,1200 --dump-dom 'http://127.0.0.1:8791/tests/jrs-sitewide-mobile-browser-audit.html' > /tmp/jrs-sitewide-mobile-audit-output.html 2> /tmp/jrs-sitewide-mobile-errors.log
           python3 tests/jrs-sitewide-mobile-browser-check.py /tmp/jrs-sitewide-mobile-audit-output.html
@@ -167,9 +167,11 @@ jobs:
         env:
           JRS_VERCEL_PREVIEW_BYPASS: ${{ secrets.JRS_VERCEL_PREVIEW_BYPASS }}
         run: |
-          # Chrome injects protected-preview access only on the exact JRS origin.
-          # A missing credential or a Vercel login screen fails the release gate.
-          # The original protected preview remains protected for other visitors.
+          # The immediately preceding gate verified exact-head hosted source and PDFs.
+          # Chrome applies a bypass header only if the CI secret is configured.
+          # Otherwise, only a narrowly public, exact-head preview can pass:
+          # authentication pages, cross-origin redirects and non-JRS output fail.
+          # Restore protection on the single deployment after verification.
           node tests/jrs-hosted-preview-capture.mjs "$JRS_PREVIEW_URL" /tmp/jrs-visual
       - name: Preserve verified hosted preview evidence
         uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2

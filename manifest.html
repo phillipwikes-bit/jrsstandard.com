@@ -1,10 +1,12 @@
 <!doctype html>
 <html lang="en">
 <head>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-NVYHJ7BJ92"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-NVYHJ7BJ92');</script>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Decision Reconstruction Manifest | JRS™</title>
-<meta name="description" content="Public specification package for the JRS Decision Reconstruction Manifest, including schema, field definitions, integrity limits, and current implementation boundary.">
+<meta name="description" content="JRS reference guidance on evidence-artifact traceability, field definitions, integrity limitations, and human review.">
 <meta name="robots" content="index,follow">
 <link rel="canonical" href="https://www.jrsstandard.com/manifest.html">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -31,13 +33,12 @@
 </nav>
 <!-- /JRS SITE NAV v1 -->
 <main id="main-content" class="wrap">
- <div class="eyebrow">Public Specification Package · Manifest 1.0 · Schema revision 1.0.1</div>
+ <div class="eyebrow">Documentation traceability · Conceptual reference</div>
  <h1>Decision Reconstruction Manifest</h1>
- <p class="lede">The Manifest is a portable, machine-readable specification for documenting one JRS evaluation. It defines the version, vocabulary, integrity metadata, and human-review status that a future artifact would need to preserve.</p>
- <div class="status"><strong>Current status.</strong> The Manifest 1.0 schema revision 1.0.1 and a controlled implementation library exist and have passed repository conformance and integrity tests. The specification, linked schema, and constructed example are available for reference within existing professional workflows. Publication does not establish real-world effectiveness or authorize submission of confidential records.</div>
- <div class="actions"><a class="btn primary" href="jrs-decision-reconstruction-manifest-v1.0.1.schema.json">Open current JSON Schema</a><a class="btn" href="jrs-decision-reconstruction-manifest-v1.0.schema.json">Earlier schema v1.0</a><a class="btn" href="jrs-decision-reconstruction-manifest-example-v1.0.json">View constructed example</a><a class="btn" href="research.html">Read the research and limitations</a></div>
-
- <div class="note"><strong>Schema revision 1.0.1.</strong> The Manifest format remains 1.0. The current schema accepts JRS Standard 1.0 and Codebook 1.0 identifiers and rejects unsupported identifiers. The separately published JRS Standard PDF carries a Version 2.0 label; this schema is not established as compatible with that edition and must not be relabeled without a validated schema revision. The earlier v1.0 schema remains available for historical interpretation. A valid hash demonstrates internal consistency, not that a claimed version exists or that an unsigned artifact is authentic.</div>
+ <p class="lede">The Decision Reconstruction Manifest describes the information a separately governed record-review artifact would need to preserve: source identity, review conditions, chronology, provenance, integrity metadata and human-review status.</p>
+ <div class="status"><strong>Publication scope.</strong> This page is a conceptual reference for documentation traceability. It does not offer a machine-readable service, record submission, assessment output, or production artifact. No confidential records should be provided through this website.</div>
+ <div class="actions"><a class="btn primary" href="resources.html">Use practitioner resources</a><a class="btn" href="research.html">Research and limitations</a><a class="btn" href="editions.html">Publication editions</a></div>
+ <div class="note"><strong>Edition boundary.</strong> The separately published Standard PDF (Version 2.0) and online methodology (Version 1.0) retain distinct publication identities. This reference page does not establish their equivalence or technical compatibility.</div>
 
  <h2>What the Manifest does</h2>
  <div class="grid">
@@ -47,14 +48,8 @@
   <div class="card"><h3>Describes a future storage boundary</h3><p>A future authorized implementation would require a separately approved storage, retention, and access design. JRS is not presented as a public repository for records.</p></div>
  </div>
 
- <h2>Public specification and controlled development</h2>
- <div class="table-wrap"><table><thead><tr><th>Element</th><th>Public position</th><th>Controlled development position</th></tr></thead><tbody>
-  <tr><td>Controlled assessment output</td><td>No public review request, evaluation, or Manifest output is available.</td><td>The local candidate is not a production or external-use service.</td></tr>
-  <tr><td>Manifest generator</td><td>The schema, constructed example, and integrity limits are published.</td><td>A controlled implementation library has schema validation, canonicalization, hashing, refusal tests, and frozen fixtures.</td></tr>
-  <tr><td>Record handling</td><td>The public site must not receive record text, personal information, confidential information, credentials, or privileged information.</td><td>Any future data flow requires separate operational controls and counsel review before authorization.</td></tr>
-  <tr><td>Evidence storage</td><td>The public site is not an evidence repository and provides no record retention service.</td><td>Any future storage design requires separate approval for access, retention, recovery, and auditability.</td></tr>
-  <tr><td>Signature</td><td>The published schema explains integrity metadata and its limits.</td><td>Signing, key custody, and verification are not represented as deployed or authorized.</td></tr>
- </tbody></table></div>
+ <h2>Record-review information model</h2>
+ <p class="lede">A reconstructable review record would identify the reviewed material, the applicable method, the evidence considered, the disposition of each condition, and the responsible human reviewer. This description is not a report of an operational deployment or a public assessment service.</p>
 
  <h2>Minimum field groups</h2>
  <div class="table-wrap"><table><thead><tr><th>Group</th><th>Purpose</th></tr></thead><tbody>
@@ -84,11 +79,11 @@
   <div class="card"><h3>No legal conclusion</h3><p>The Manifest does not establish admissibility, legal sufficiency, compliance, certification, or defensibility in law.</p></div>
   <div class="card"><h3>No autonomous decision</h3><p>The Manifest preserves a review result. The responsible human or organization retains authority over the consequential decision.</p></div>
   <div class="card"><h3>Derived content may remain sensitive</h3><p>Condition notes and remediation text can paraphrase the evaluated record. The content class must identify that risk.</p></div>
-  <div class="card"><h3>Vocabulary remains explicit</h3><p>The schema does not silently relabel technical output fields as Codebook conditions. Any mapping must be documented and versioned.</p></div>
+  <div class="card"><h3>Vocabulary remains explicit</h3><p>Review-condition terminology must be explicitly identified and kept consistent with the publication actually applied. Unverified mappings must not be treated as authoritative.</p></div>
  </div>
 
  <h2>Publication boundary</h2>
- <p class="lede">Publication permits inspection of the schema. It does not grant source-code, implementation, derivative, trademark, commercial embedding, exclusivity, or transfer rights. It does not authorize submission of confidential records to this website.</p>
+ <p class="lede">This explanatory page does not grant software, derivative, trademark, commercial embedding, exclusivity, or transfer rights. It does not authorize submission of confidential records to this website.</p>
  <div class="actions"><a class="btn primary" href="resources.html">Return to practitioner resources</a><a class="btn" href="research.html">Research and limitations</a></div>
 </main>
 <footer class="site-footer" role="contentinfo"><div class="site-footer-inner">JRS&#8482; and Justification Review Standard&#8482; are marks used by Phillip Wikes. Registration and transfer status are not represented by this notice. &nbsp;·&nbsp; <a href="privacy.html">Privacy</a> &nbsp;·&nbsp; <a href="jrsstandard.html">Method information</a></div></footer>

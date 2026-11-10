@@ -29,8 +29,12 @@ function selfTest(){
 }
 async function capture(input,output,bypass,browser){
   const host=origin(input);
-  if(!bypass||bypass.length<32||bypass.length>256||/[\r\n]/.test(bypass))
-    hold('dedicated GitHub CI bypass secret missing or invalid');
+  // A protected preview requires a CI secret. A narrowly exempted immutable
+  // deployment may be captured anonymously, but only after the preceding
+  // byte-for-byte hosted-source/PDF gate and the same-origin browser checks.
+  // An authentication page or cross-origin redirect still fails closed.
+  if(bypass && (bypass.length<32||bypass.length>256||/[\r\n]/.test(bypass)))
+    hold('dedicated GitHub CI bypass secret invalid');
   await mkdir(output,{recursive:true});
   const profile=await mkdtemp(path.join(tmpdir(),'jrs-cdp-'));
   let child,ws,seq=0,interceptError=null,documentStatus=null;
@@ -73,6 +77,10 @@ async function capture(input,output,bypass,browser){
           const req=m.params.request;
           if(!sameOrigin(req.url,host)){
             await send('Fetch.continueRequest',{requestId:m.params.requestId},m.sessionId);return;
+          }
+          if(!bypass){
+            await send('Fetch.continueRequest',{requestId:m.params.requestId},m.sessionId);
+            return;
           }
           const headers=Object.entries(req.headers||{})
             .filter(([n])=>n.toLowerCase()!=='x-vercel-protection-bypass')

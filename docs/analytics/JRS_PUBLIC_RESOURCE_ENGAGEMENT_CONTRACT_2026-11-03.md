@@ -52,3 +52,39 @@ All reports must include the date range and time zone, source, exact query and f
 7. Separate source tests, hosted verification, third-party analytics verification and independent production QA. Unmet checks remain a release hold.
 
 No current conversion rate, adoption result, repeat visitor estimate, measurement gain, performance result, accessibility certification or commercial-readiness claim is asserted.
+
+## Initiative campaign activation and endorsement boundaries (5 November 2026)
+
+The two established initiatives have separate public pages and exactly one explicit browser form button each. A button sends a POST to the existing /api/support ledger with fixed c=rtkw or c=defend and src=campaign_page. The endpoint must never assert a successful write merely because fetch resolved: only an HTTP-successful database response or an existing counted-browser marker supports the confirmation state. Unavailable storage reports an unconfirmed action, never a false endorsement.
+
+No new database or parallel dashboard is authorized. The existing /api/support-stats report supplies counts by initiative, day, country and source. This does not identify a person or prove organizational authorization. Browser marker deduplication began 13 August 2026; earlier historical events are raw clicks. Repeated support from different browsers may still count more than once. The owner dashboard retains the historical campaign-screen-arrival metric, which is distinct from GA4 page views of the dedicated initiative pages. Do not combine the two as one denominator.
+
+One-click support is different from recipient awareness, confirmed resource review, resource redistribution, practical tool application and verified field effectiveness. The private outreach register and Gmail drafts maintain verified contact and review/reply evidence without leaking recipient information to public analytics. Reaching a campaign page or clicking its button is not a proxy for an organization's endorsement or JRS adoption.
+
+The two LinkedIn campaign narratives may use “Different Minds. Fewer Blind Spots. Stronger Evidence.” as an aspirational editorial statement only. Multiple professional, cultural or investigative perspectives can expose questions, but do not themselves establish stronger evidentiary support or validated JRS results.
+
+Acceptance checks: (1) no anonymous GET campaign-page endorsement links; (2) both forms POST with explicit source and canonical initiative; (3) cross-site requests and link-preview/prefetch traffic cannot record the new button action; (4) server response distinguishes recorded, previously marked and unavailable; (5) no separate ledger, confidential form or new identifier; (6) private dashboard unchanged in access control and telemetry; (7) existing Gmail drafts, outreach approval and no-sending behavior preserved; (8) hosted validation must not manufacture real endorsement rows. Never test a live production endorsement button using a real source label merely to verify it.
+
+## Campaign resource-navigation measurement extension (5 November 2026)
+
+The two public campaign pages already have Google Analytics 4 page-view configuration. The existing `assets/jrs-engagement.js` allowlisted navigation dispatcher additionally supports:
+
+| GA4 event | `resource_id` | Allowed source surface | Meaning |
+|---|---|---|---|
+| `jrs_campaign_entry` | `rights_initiative` or `professional_initiative` | `home` | A click on an initiative link from the homepage, not arrival or endorsement |
+| `jrs_campaign_example_open` | `constructed_example` | `campaign_rights` or `campaign_professional` | A click to jump to the constructed example, not verified reading/comprehension |
+| `jrs_campaign_drr_open` | `drr_explainer` | `campaign_rights` or `campaign_professional` | A navigation click to the public DRR explanation, not demonstrated learning |
+| `jrs_tool_open` (existing) | `record_check` | `campaign_professional` | A link click to the seven-point check, not completion or real-world use |
+
+The event contract is unchanged: only fixed `resource_id` and `source_surface` values, no recipient data, case details, query strings, complete URLs, new identifiers or separate tracking transport. Event counts are click events, not unique users. Link opening and actual resource consumption are distinct.
+
+The existing `/api/support` POST initiated from a campaign page remains the only canonical voluntary support write, with prior cookie/state guards and its historical `/api/support-stats` owner-dashboard reporting. It must not also be represented as an endorsement through GA4, nor added to guide/training/pilot adoption statistics. No changes are made to the existing owner dashboard or one-click support implementation by this extension.
+
+This update also changes page order so a constructed example precedes free resource invitations on both initiative pages. The public-interest and professional messages remain distinct. The “Different Minds. Fewer Blind Spots. Stronger Evidence.” narrative is an educational prompt and not an observed improvement.
+
+### Verification still required
+
+- In a browser and non-sensitive GA4 DebugView fixture, verify homepage initiative clicks, campaign example links, DRR links and the seven-point check link report only allowlisted parameters.
+- Verify the existing POST endorsement form's server-rendered status without creating real production data during testing. Use isolated mocked requests for response codes, origin guards, deduplication and crawler handling.
+- Confirm both pages' keyboard, responsive and screen-reader presentation and actual production routes.
+- Do not claim operational adoption, unique professional visitors, audience comprehension, email send/delivery or validated JRS outcomes from these metrics.

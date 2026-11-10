@@ -8,6 +8,16 @@
   "crons": [],
   "redirects": [
     {
+      "source": "/outreach-email-builder.html",
+      "destination": "/resources.html",
+      "permanent": false
+    },
+    {
+      "source": "/outreach-email-builder",
+      "destination": "/resources.html",
+      "permanent": false
+    },
+    {
       "source": "/programme-status-9872fb93cc94l.html",
       "destination": "/programme-status-9872fb93cc94.html",
       "permanent": false
@@ -118,11 +128,6 @@
       "permanent": false
     },
     {
-      "source": "/engine-activity.html",
-      "destination": "/research.html",
-      "permanent": false
-    },
-    {
       "source": "/acquisition-9f3c2a7d4b.html",
       "destination": "/resources.html",
       "permanent": false
@@ -135,11 +140,6 @@
     {
       "source": "/submit-validation.html",
       "destination": "/research.html",
-      "permanent": false
-    },
-    {
-      "source": "/openapi.json",
-      "destination": "/manifest.html",
       "permanent": false
     },
     {
@@ -230,11 +230,6 @@
     {
       "source": "/decision-reconstruction-risk",
       "destination": "/decision-reconstruction-risk.html",
-      "permanent": false
-    },
-    {
-      "source": "/engine-activity",
-      "destination": "/research.html",
       "permanent": false
     },
     {
@@ -478,16 +473,6 @@
       "permanent": false
     },
     {
-      "source": "/openapi",
-      "destination": "/manifest.html",
-      "permanent": false
-    },
-    {
-      "source": "/openapi-review-engine.json",
-      "destination": "/manifest.html",
-      "permanent": true
-    },
-    {
       "source": "/sandbox",
       "destination": "/resources.html",
       "permanent": false
@@ -504,6 +489,18 @@
     }
   ],
   "rewrites": [
+    {
+      "source": "/jrs-decision-reconstruction-manifest-v1.0.1.schema.json",
+      "destination": "/api/not-found"
+    },
+    {
+      "source": "/jrs-decision-reconstruction-manifest-v1.0.schema.json",
+      "destination": "/api/not-found"
+    },
+    {
+      "source": "/jrs-decision-reconstruction-manifest-example-v1.0.json",
+      "destination": "/api/not-found"
+    },
     {
       "source": "/:path*.md",
       "destination": "/api/not-found"
