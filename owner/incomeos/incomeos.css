@@ -128,3 +128,16 @@ textarea{display:block;width:100%;min-height:60px;resize:vertical;background:whi
 .field-error{color:#8d3a2c;font-size:12px;font-weight:700;margin:5px 0 0}.form-errors{background:#fff3e5;border:1px solid #efdeba;color:#7a3e22;border-radius:10px;padding:10px 12px;font-size:12px;margin:14px 0 0}input[aria-invalid=true],select[aria-invalid=true],textarea[aria-invalid=true]{border-color:#b5513f!important;box-shadow:0 0 0 1px #b5513f}
 #passive-radar-panel .panelrow{flex-wrap:wrap;gap:8px;justify-content:flex-start}.passive-finding .cardalt a{font-size:12px;font-weight:700}
 .vault-panel{margin-top:12px;border-top:1px solid var(--border);padding-top:10px}.vault-panel summary{font-weight:700;font-size:13px;cursor:pointer;min-height:44px;display:flex;align-items:center}.vault-buttons{flex-wrap:wrap;gap:8px;justify-content:flex-start;margin-top:10px}
+
+
+/* P0 contact profile: prevent horizontal scrolling at 320–430px iPhone widths. */
+#incomeos-contact-panel {min-width:0; overflow-wrap:anywhere}
+#incomeos-contact-panel .formgrid {grid-template-columns:repeat(2,minmax(0,1fr))}
+#incomeos-contact-panel .formgrid > div {min-width:0}
+#incomeos-contact-panel input,
+#incomeos-contact-panel textarea {width:100%;min-width:0;max-width:100%;box-sizing:border-box}
+#incomeos-contact-panel .reportactions .smallbtn {min-width:0;white-space:normal;overflow-wrap:anywhere}
+@media(max-width:440px){
+  #incomeos-contact-panel .formgrid {grid-template-columns:minmax(0,1fr)}
+  #incomeos-contact-panel .reportactions .smallbtn {flex:1 1 100%}
+}
