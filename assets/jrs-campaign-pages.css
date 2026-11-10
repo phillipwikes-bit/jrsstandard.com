@@ -1,0 +1,15 @@
+/* Bring the three campaign routes into the existing public reference system. */
+body.jrs-campaign-page .button{display:inline-flex;align-items:center;justify-content:center;min-height:44px;border-color:#235478;color:#193148;background:#fff;text-align:center;line-height:1.5}
+body.jrs-campaign-page .button.primary{background:#193e58;color:#fff;border-color:#193e58}
+body.jrs-campaign-page .button:hover{background:#edf3f6;color:#144366}
+body.jrs-campaign-page .button.primary:hover{background:#102d43;color:#fff}
+body.jrs-campaign-page :is(input,select,textarea){font:inherit;min-height:44px;color:#193148;background:#fff;border:1px solid #63798a}
+body.jrs-campaign-page .jrs-reconstruction-step,
+body.jrs-campaign-page .jrs-reconstruction-step[open] > summary,
+body.jrs-campaign-page .jrs-source{border-color:#a2b3bf}
+body.jrs-campaign-page .jrs-campaign-example-links{background:#edf3f6;border-color:#b7c8d3}
+body.jrs-campaign-page .jrs-campaign-example-links a{color:#235478}
+@media(max-width:650px){
+ body.jrs-campaign-page .actions{flex-direction:column;align-items:stretch}
+ body.jrs-campaign-page main{padding-right:18px;padding-left:18px}
+}
