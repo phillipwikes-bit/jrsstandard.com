@@ -1,0 +1,38 @@
+{
+  "expected_format_version": "jrs-assurance-expected/0.1.0",
+  "fixture_id": "SAE-023",
+  "label_status": "engineering_authored_expected_result_not_adjudicated",
+  "execution_mode": "local_mocked",
+  "gate_decision": "proceed",
+  "expected_refusal_codes": [],
+  "conditions": {
+    "basis_identification": {
+      "outcome": "review_required",
+      "outcome_basis": "no_source_anchor_supplied",
+      "span_quotes": []
+    },
+    "reasoning_traceability": {
+      "outcome": "review_required",
+      "outcome_basis": "no_source_anchor_supplied",
+      "span_quotes": []
+    },
+    "cold_reviewer_clarity": {
+      "outcome": "review_required",
+      "outcome_basis": "no_source_anchor_supplied",
+      "span_quotes": []
+    },
+    "accountability_support": {
+      "outcome": "review_required",
+      "outcome_basis": "no_source_anchor_supplied",
+      "span_quotes": []
+    },
+    "temporal_reconstructability": {
+      "outcome": "review_required",
+      "outcome_basis": "no_source_anchor_supplied",
+      "span_quotes": []
+    }
+  },
+  "record_controls": [],
+  "manifest_produced": false,
+  "provider_invocations": 1
+}

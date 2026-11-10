@@ -1,0 +1,2235 @@
+{
+  "generated": "2026-10-13T00:00:00Z",
+  "statement": "11 test classes catalogued. No plan states that a change is safe.",
+  "plans": {
+    "R-01": {
+      "proposal_id": "CP-78fb7dd056",
+      "selected": [
+        {
+          "test": "baseline_fixtures",
+          "command": "node tools/engine-evidence-graph-replay.mjs --no-write",
+          "reason": "applies to every behavioural or fixture change",
+          "protects_against": "unintended change to any v0.3 fixture outcome"
+        },
+        {
+          "test": "v0.3_graph",
+          "command": "node tests/engine-evidence-graph/run.mjs",
+          "reason": "applies to every behavioural or fixture change",
+          "protects_against": "graph rule, traversal, identity and edge-meaning regressions"
+        },
+        {
+          "test": "refusal",
+          "command": "node tests/engine-adaptive-reliability/run.mjs --only refusal",
+          "reason": "covers affected component(s): scope",
+          "protects_against": "an excluded-domain or instruction record that stops being refused or quarantined"
+        },
+        {
+          "test": "mutation",
+          "command": "node tests/engine-adaptive-reliability/run.mjs --only mutation",
+          "reason": "applies to every behavioural or fixture change",
+          "protects_against": "a guard that can be removed without any test failing"
+        },
+        {
+          "test": "stability",
+          "command": "node tests/engine-adaptive-reliability/run.mjs --only stability",
+          "reason": "covers affected component(s): scope",
+          "protects_against": "irrelevant record edits changing outcomes, or meaningful edits leaving no trace"
+        },
+        {
+          "test": "drift",
+          "command": "node tests/engine-adaptive-reliability/run.mjs --only drift",
+          "reason": "applies to every behavioural or fixture change",
+          "protects_against": "an unexplained or unsafe output change between versions"
+        }
+      ],
+      "excluded": [
+        {
+          "test": "v0.1_compatibility",
+          "reason": "no affected component is covered by this test class and no impact flag requires it"
+        },
+        {
+          "test": "v0.2_contract",
+          "reason": "no affected component is covered by this test class and no impact flag requires it"
+        },
+        {
+          "test": "claim_guard",
+          "reason": "no affected component is covered by this test class and no impact flag requires it"
+        },
+        {
+          "test": "workbench_rendering",
+          "reason": "no affected component is covered by this test class and no impact flag requires it"
+        },
+        {
+          "test": "evaluation_separation",
+          "reason": "no affected component is covered by this test class and no impact flag requires it"
+        }
+      ],
+      "insufficient_coverage": false,
+      "coverage_gaps": [],
+      "full_suite_mandatory": true,
+      "full_suite_reason": "any behavioural change requires every suite listed in REGRESSION_SELECTION_POLICY.md before a human decision",
+      "statement": "This output identifies required evidence before a human decision. It does not decide that a change is safe, correct, or authorised."
+    },
+    "R-02": {
+      "proposal_id": "CP-c5952e86ff",
+      "selected": [
+        {
+          "test": "baseline_fixtures",
+          "command": "node tools/engine-evidence-graph-replay.mjs --no-write",
+          "reason": "applies to every behavioural or fixture change",
+          "protects_against": "unintended change to any v0.3 fixture outcome"
+        },
+        {
+          "test": "v0.3_graph",
+          "command": "node tests/engine-evidence-graph/run.mjs",
+          "reason": "applies to every behavioural or fixture change",
+          "protects_against": "graph rule, traversal, identity and edge-meaning regressions"
+        },
+        {
+          "test": "mutation",
+          "command": "node tests/engine-adaptive-reliability/run.mjs --only mutation",
+          "reason": "applies to every behavioural or fixture change",
+          "protects_against": "a guard that can be removed without any test failing"
+        },
+        {
+          "test": "stability",
+          "command": "node tests/engine-adaptive-reliability/run.mjs --only stability",
+          "reason": "covers affected component(s): contradictions",
+          "protects_against": "irrelevant record edits changing outcomes, or meaningful edits leaving no trace"
+        },
+        {
+          "test": "drift",
+          "command": "node tests/engine-adaptive-reliability/run.mjs --only drift",
+          "reason": "applies to every behavioural or fixture change",
+          "protects_against": "an unexplained or unsafe output change between versions"
+        }
+      ],
+      "excluded": [
+        {
+          "test": "v0.1_compatibility",
+          "reason": "no affected component is covered by this test class and no impact flag requires it"
+        },
+        {
+          "test": "v0.2_contract",
+          "reason": "no affected component is covered by this test class and no impact flag requires it"
+        },
+        {
+          "test": "refusal",
+          "reason": "no affected component is covered by this test class and no impact flag requires it"
+        },
+        {
+          "test": "claim_guard",
+          "reason": "no affected component is covered by this test class and no impact flag requires it"
+        },
+        {
+          "test": "workbench_rendering",
+          "reason": "no affected component is covered by this test class and no impact flag requires it"
+        },
+        {
+          "test": "evaluation_separation",
+          "reason": "no affected component is covered by this test class and no impact flag requires it"
+        }
+      ],
+      "insufficient_coverage": false,
+      "coverage_gaps": [],
+      "full_suite_mandatory": true,
+      "full_suite_reason": "any behavioural change requires every suite listed in REGRESSION_SELECTION_POLICY.md before a human decision",
+      "statement": "This output identifies required evidence before a human decision. It does not decide that a change is safe, correct, or authorised."
+    },
+    "R-03": {
+      "proposal_id": "CP-340cae31dc",
+      "selected": [
+        {
+          "test": "baseline_fixtures",
+          "command": "node tools/engine-evidence-graph-replay.mjs --no-write",
+          "reason": "applies to every behavioural or fixture change",
+          "protects_against": "unintended change to any v0.3 fixture outcome"
+        },
+        {
+          "test": "v0.3_graph",
+          "command": "node tests/engine-evidence-graph/run.mjs",
+          "reason": "applies to every behavioural or fixture change",
+          "protects_against": "graph rule, traversal, identity and edge-meaning regressions"
+        },
+        {
+          "test": "refusal",
+          "command": "node tests/engine-adaptive-reliability/run.mjs --only refusal",
+          "reason": "refusal behaviour would become not_assessed",
+          "protects_against": "an excluded-domain or instruction record that stops being refused or quarantined"
+        },
+        {
+          "test": "mutation",
+          "command": "node tests/engine-adaptive-reliability/run.mjs --only mutation",
+          "reason": "applies to every behavioural or fixture change",
+          "protects_against": "a guard that can be removed without any test failing"
+        },
+        {
+          "test": "stability",
+          "command": "node tests/engine-adaptive-reliability/run.mjs --only stability",
+          "reason": "covers affected component(s): contradictions",
+          "protects_against": "irrelevant record edits changing outcomes, or meaningful edits leaving no trace"
+        },
+        {
+          "test": "drift",
+          "command": "node tests/engine-adaptive-reliability/run.mjs --only drift",
+          "reason": "applies to every behavioural or fixture change",
+          "protects_against": "an unexplained or unsafe output change between versions"
+        },
+        {
+          "test": "claim_guard",
+          "command": "node tests/engine-adaptive-reliability/run.mjs --only claims",
+          "reason": "a limitation could be weakened",
+          "protects_against": "proof, validation or readiness language entering outputs or documents"
+        }
+      ],
+      "excluded": [
+        {
+          "test": "v0.1_compatibility",
+          "reason": "no affected component is covered by this test class and no impact flag requires it"
+        },
+        {
+          "test": "v0.2_contract",
+          "reason": "no affected component is covered by this test class and no impact flag requires it"
+        },
+        {
+          "test": "workbench_rendering",
+          "reason": "no affected component is covered by this test class and no impact flag requires it"
+        },
+        {
+          "test": "evaluation_separation",
+          "reason": "no affected component is covered by this test class and no impact flag requires it"
+        }
+      ],
+      "insufficient_coverage": false,
+      "coverage_gaps": [],
+      "full_suite_mandatory": true,
+      "full_suite_reason": "any behavioural change requires every suite listed in REGRESSION_SELECTION_POLICY.md before a human decision",
+      "statement": "This output identifies required evidence before a human decision. It does not decide that a change is safe, correct, or authorised."
+    },
+    "R-04": {
+      "proposal_id": "CP-020ab7ef8f",
+      "selected": [
+        {
+          "test": "baseline_fixtures",
+          "command": "node tools/engine-evidence-graph-replay.mjs --no-write",
+          "reason": "applies to every behavioural or fixture change",
+          "protects_against": "unintended change to any v0.3 fixture outcome"
+        },
+        {
+          "test": "v0.3_graph",
+          "command": "node tests/engine-evidence-graph/run.mjs",
+          "reason": "applies to every behavioural or fixture change",
+          "protects_against": "graph rule, traversal, identity and edge-meaning regressions"
+        },
+        {
+          "test": "refusal",
+          "command": "node tests/engine-adaptive-reliability/run.mjs --only refusal",
+          "reason": "refusal behaviour would become not_assessed",
+          "protects_against": "an excluded-domain or instruction record that stops being refused or quarantined"
+        },
+        {
+          "test": "mutation",
+          "command": "node tests/engine-adaptive-reliability/run.mjs --only mutation",
+          "reason": "applies to every behavioural or fixture change",
+          "protects_against": "a guard that can be removed without any test failing"
+        },
+        {
+          "test": "stability",
+          "command": "node tests/engine-adaptive-reliability/run.mjs --only stability",
+          "reason": "covers affected component(s): assertions",
+          "protects_against": "irrelevant record edits changing outcomes, or meaningful edits leaving no trace"
+        },
+        {
+          "test": "drift",
+          "command": "node tests/engine-adaptive-reliability/run.mjs --only drift",
+          "reason": "applies to every behavioural or fixture change",
+          "protects_against": "an unexplained or unsafe output change between versions"
+        },
+        {
+          "test": "claim_guard",
+          "command": "node tests/engine-adaptive-reliability/run.mjs --only claims",
+          "reason": "covers affected component(s): assertions",
+          "protects_against": "proof, validation or readiness language entering outputs or documents"
+        }
+      ],
+      "excluded": [
+        {
+          "test": "v0.1_compatibility",
+          "reason": "no affected component is covered by this test class and no impact flag requires it"
+        },
+        {
+          "test": "v0.2_contract",
+          "reason": "no affected component is covered by this test class and no impact flag requires it"
+        },
+        {
+          "test": "workbench_rendering",
+          "reason": "no affected component is covered by this test class and no impact flag requires it"
+        },
+        {
+          "test": "evaluation_separation",
+          "reason": "no affected component is covered by this test class and no impact flag requires it"
+        }
+      ],
+      "insufficient_coverage": false,
+      "coverage_gaps": [],
+      "full_suite_mandatory": true,
+      "full_suite_reason": "any behavioural change requires every suite listed in REGRESSION_SELECTION_POLICY.md before a human decision",
+      "statement": "This output identifies required evidence before a human decision. It does not decide that a change is safe, correct, or authorised."
+    },
+    "R-05": {
+      "proposal_id": "CP-5d9ebeb0f8",
+      "selected": [
+        {
+          "test": "claim_guard",
+          "command": "node tests/engine-adaptive-reliability/run.mjs --only claims",
+          "reason": "covers affected component(s): documentation",
+          "protects_against": "proof, validation or readiness language entering outputs or documents"
+        },
+        {
+          "test": "workbench_rendering",
+          "command": "node tests/engine-adaptive-reliability/run.mjs --only console",
+          "reason": "covers affected component(s): documentation",
+          "protects_against": "a static page gaining scripts, forms, network access or approval controls"
+        }
+      ],
+      "excluded": [
+        {
+          "test": "baseline_fixtures",
+          "reason": "no affected component is covered by this test class and no impact flag requires it"
+        },
+        {
+          "test": "v0.1_compatibility",
+          "reason": "no affected component is covered by this test class and no impact flag requires it"
+        },
+        {
+          "test": "v0.2_contract",
+          "reason": "no affected component is covered by this test class and no impact flag requires it"
+        },
+        {
+          "test": "v0.3_graph",
+          "reason": "no affected component is covered by this test class and no impact flag requires it"
+        },
+        {
+          "test": "refusal",
+          "reason": "no affected component is covered by this test class and no impact flag requires it"
+        },
+        {
+          "test": "mutation",
+          "reason": "no affected component is covered by this test class and no impact flag requires it"
+        },
+        {
+          "test": "stability",
+          "reason": "no affected component is covered by this test class and no impact flag requires it"
+        },
+        {
+          "test": "drift",
+          "reason": "no affected component is covered by this test class and no impact flag requires it"
+        },
+        {
+          "test": "evaluation_separation",
+          "reason": "no affected component is covered by this test class and no impact flag requires it"
+        }
+      ],
+      "insufficient_coverage": false,
+      "coverage_gaps": [],
+      "full_suite_mandatory": false,
+      "full_suite_reason": "not required for a fixture, test or documentation-only change; the owner may still require it",
+      "statement": "This output identifies required evidence before a human decision. It does not decide that a change is safe, correct, or authorised."
+    },
+    "R-06": {
+      "proposal_id": "CP-494cd8e1cd",
+      "selected": [
+        {
+          "test": "baseline_fixtures",
+          "command": "node tools/engine-evidence-graph-replay.mjs --no-write",
+          "reason": "applies to every behavioural or fixture change",
+          "protects_against": "unintended change to any v0.3 fixture outcome"
+        },
+        {
+          "test": "v0.3_graph",
+          "command": "node tests/engine-evidence-graph/run.mjs",
+          "reason": "applies to every behavioural or fixture change",
+          "protects_against": "graph rule, traversal, identity and edge-meaning regressions"
+        },
+        {
+          "test": "mutation",
+          "command": "node tests/engine-adaptive-reliability/run.mjs --only mutation",
+          "reason": "applies to every behavioural or fixture change",
+          "protects_against": "a guard that can be removed without any test failing"
+        },
+        {
+          "test": "drift",
+          "command": "node tests/engine-adaptive-reliability/run.mjs --only drift",
+          "reason": "applies to every behavioural or fixture change",
+          "protects_against": "an unexplained or unsafe output change between versions"
+        },
+        {
+          "test": "evaluation_separation",
+          "command": "node tests/engine-evidence-graph/run.mjs (section F)",
+          "reason": "covers affected component(s): fixtures",
+          "protects_against": "local or synthetic material passing a separation check"
+        }
+      ],
+      "excluded": [
+        {
+          "test": "v0.1_compatibility",
+          "reason": "no affected component is covered by this test class and no impact flag requires it"
+        },
+        {
+          "test": "v0.2_contract",
+          "reason": "no affected component is covered by this test class and no impact flag requires it"
+        },
+        {
+          "test": "refusal",
+          "reason": "no affected component is covered by this test class and no impact flag requires it"
+        },
+        {
+          "test": "stability",
+          "reason": "no affected component is covered by this test class and no impact flag requires it"
+        },
+        {
+          "test": "claim_guard",
+          "reason": "no affected component is covered by this test class and no impact flag requires it"
+        },
+        {
+          "test": "workbench_rendering",
+          "reason": "no affected component is covered by this test class and no impact flag requires it"
+        }
+      ],
+      "insufficient_coverage": false,
+      "coverage_gaps": [],
+      "full_suite_mandatory": false,
+      "full_suite_reason": "not required for a fixture, test or documentation-only change; the owner may still require it",
+      "statement": "This output identifies required evidence before a human decision. It does not decide that a change is safe, correct, or authorised."
+    },
+    "R-07": {
+      "proposal_id": "CP-f735717e19",
+      "selected": [
+        {
+          "test": "baseline_fixtures",
+          "command": "node tools/engine-evidence-graph-replay.mjs --no-write",
+          "reason": "applies to every behavioural or fixture change",
+          "protects_against": "unintended change to any v0.3 fixture outcome"
+        },
+        {
+          "test": "v0.3_graph",
+          "command": "node tests/engine-evidence-graph/run.mjs",
+          "reason": "applies to every behavioural or fixture change",
+          "protects_against": "graph rule, traversal, identity and edge-meaning regressions"
+        },
+        {
+          "test": "mutation",
+          "command": "node tests/engine-adaptive-reliability/run.mjs --only mutation",
+          "reason": "applies to every behavioural or fixture change",
+          "protects_against": "a guard that can be removed without any test failing"
+        },
+        {
+          "test": "drift",
+          "command": "node tests/engine-adaptive-reliability/run.mjs --only drift",
+          "reason": "applies to every behavioural or fixture change",
+          "protects_against": "an unexplained or unsafe output change between versions"
+        }
+      ],
+      "excluded": [
+        {
+          "test": "v0.1_compatibility",
+          "reason": "no affected component is covered by this test class and no impact flag requires it"
+        },
+        {
+          "test": "v0.2_contract",
+          "reason": "no affected component is covered by this test class and no impact flag requires it"
+        },
+        {
+          "test": "refusal",
+          "reason": "no affected component is covered by this test class and no impact flag requires it"
+        },
+        {
+          "test": "stability",
+          "reason": "no affected component is covered by this test class and no impact flag requires it"
+        },
+        {
+          "test": "claim_guard",
+          "reason": "no affected component is covered by this test class and no impact flag requires it"
+        },
+        {
+          "test": "workbench_rendering",
+          "reason": "no affected component is covered by this test class and no impact flag requires it"
+        },
+        {
+          "test": "evaluation_separation",
+          "reason": "no affected component is covered by this test class and no impact flag requires it"
+        }
+      ],
+      "insufficient_coverage": false,
+      "coverage_gaps": [],
+      "full_suite_mandatory": false,
+      "full_suite_reason": "not required for a fixture, test or documentation-only change; the owner may still require it",
+      "statement": "This output identifies required evidence before a human decision. It does not decide that a change is safe, correct, or authorised."
+    },
+    "R-08": {
+      "proposal_id": "CP-54f7b631d9",
+      "selected": [
+        {
+          "test": "claim_guard",
+          "command": "node tests/engine-adaptive-reliability/run.mjs --only claims",
+          "reason": "covers affected component(s): documentation",
+          "protects_against": "proof, validation or readiness language entering outputs or documents"
+        },
+        {
+          "test": "workbench_rendering",
+          "command": "node tests/engine-adaptive-reliability/run.mjs --only console",
+          "reason": "covers affected component(s): documentation",
+          "protects_against": "a static page gaining scripts, forms, network access or approval controls"
+        }
+      ],
+      "excluded": [
+        {
+          "test": "baseline_fixtures",
+          "reason": "no affected component is covered by this test class and no impact flag requires it"
+        },
+        {
+          "test": "v0.1_compatibility",
+          "reason": "no affected component is covered by this test class and no impact flag requires it"
+        },
+        {
+          "test": "v0.2_contract",
+          "reason": "no affected component is covered by this test class and no impact flag requires it"
+        },
+        {
+          "test": "v0.3_graph",
+          "reason": "no affected component is covered by this test class and no impact flag requires it"
+        },
+        {
+          "test": "refusal",
+          "reason": "no affected component is covered by this test class and no impact flag requires it"
+        },
+        {
+          "test": "mutation",
+          "reason": "no affected component is covered by this test class and no impact flag requires it"
+        },
+        {
+          "test": "stability",
+          "reason": "no affected component is covered by this test class and no impact flag requires it"
+        },
+        {
+          "test": "drift",
+          "reason": "no affected component is covered by this test class and no impact flag requires it"
+        },
+        {
+          "test": "evaluation_separation",
+          "reason": "no affected component is covered by this test class and no impact flag requires it"
+        }
+      ],
+      "insufficient_coverage": false,
+      "coverage_gaps": [],
+      "full_suite_mandatory": false,
+      "full_suite_reason": "not required for a fixture, test or documentation-only change; the owner may still require it",
+      "statement": "This output identifies required evidence before a human decision. It does not decide that a change is safe, correct, or authorised."
+    },
+    "R-09": {
+      "proposal_id": "CP-73a3047c2a",
+      "selected": [
+        {
+          "test": "baseline_fixtures",
+          "command": "node tools/engine-evidence-graph-replay.mjs --no-write",
+          "reason": "applies to every behavioural or fixture change",
+          "protects_against": "unintended change to any v0.3 fixture outcome"
+        },
+        {
+          "test": "v0.2_contract",
+          "command": "node tests/engine-evidence-contract/run.mjs",
+          "reason": "covers affected component(s): controls",
+          "protects_against": "accidental edits to the frozen v0.2 contract and its bridge"
+        },
+        {
+          "test": "v0.3_graph",
+          "command": "node tests/engine-evidence-graph/run.mjs",
+          "reason": "applies to every behavioural or fixture change",
+          "protects_against": "graph rule, traversal, identity and edge-meaning regressions"
+        },
+        {
+          "test": "refusal",
+          "command": "node tests/engine-adaptive-reliability/run.mjs --only refusal",
+          "reason": "refusal behaviour would become not_assessed",
+          "protects_against": "an excluded-domain or instruction record that stops being refused or quarantined"
+        },
+        {
+          "test": "mutation",
+          "command": "node tests/engine-adaptive-reliability/run.mjs --only mutation",
+          "reason": "applies to every behavioural or fixture change",
+          "protects_against": "a guard that can be removed without any test failing"
+        },
+        {
+          "test": "stability",
+          "command": "node tests/engine-adaptive-reliability/run.mjs --only stability",
+          "reason": "a condition could become more favourable",
+          "protects_against": "irrelevant record edits changing outcomes, or meaningful edits leaving no trace"
+        },
+        {
+          "test": "drift",
+          "command": "node tests/engine-adaptive-reliability/run.mjs --only drift",
+          "reason": "applies to every behavioural or fixture change",
+          "protects_against": "an unexplained or unsafe output change between versions"
+        },
+        {
+          "test": "claim_guard",
+          "command": "node tests/engine-adaptive-reliability/run.mjs --only claims",
+          "reason": "covers affected component(s): controls",
+          "protects_against": "proof, validation or readiness language entering outputs or documents"
+        },
+        {
+          "test": "workbench_rendering",
+          "command": "node tests/engine-adaptive-reliability/run.mjs --only console",
+          "reason": "covers affected component(s): controls",
+          "protects_against": "a static page gaining scripts, forms, network access or approval controls"
+        }
+      ],
+      "excluded": [
+        {
+          "test": "v0.1_compatibility",
+          "reason": "no affected component is covered by this test class and no impact flag requires it"
+        },
+        {
+          "test": "evaluation_separation",
+          "reason": "no affected component is covered by this test class and no impact flag requires it"
+        }
+      ],
+      "insufficient_coverage": false,
+      "coverage_gaps": [],
+      "full_suite_mandatory": true,
+      "full_suite_reason": "any behavioural change requires every suite listed in REGRESSION_SELECTION_POLICY.md before a human decision",
+      "statement": "This output identifies required evidence before a human decision. It does not decide that a change is safe, correct, or authorised."
+    },
+    "R-10": {
+      "proposal_id": "CP-2b2bf273e7",
+      "selected": [
+        {
+          "test": "baseline_fixtures",
+          "command": "node tools/engine-evidence-graph-replay.mjs --no-write",
+          "reason": "applies to every behavioural or fixture change",
+          "protects_against": "unintended change to any v0.3 fixture outcome"
+        },
+        {
+          "test": "v0.1_compatibility",
+          "command": "node tests/engine-assurance/run.mjs",
+          "reason": "covers affected component(s): codebook_mapping",
+          "protects_against": "accidental edits to the frozen v0.1 assurance package"
+        },
+        {
+          "test": "v0.2_contract",
+          "command": "node tests/engine-evidence-contract/run.mjs",
+          "reason": "covers affected component(s): codebook_mapping",
+          "protects_against": "accidental edits to the frozen v0.2 contract and its bridge"
+        },
+        {
+          "test": "v0.3_graph",
+          "command": "node tests/engine-evidence-graph/run.mjs",
+          "reason": "applies to every behavioural or fixture change",
+          "protects_against": "graph rule, traversal, identity and edge-meaning regressions"
+        },
+        {
+          "test": "refusal",
+          "command": "node tests/engine-adaptive-reliability/run.mjs --only refusal",
+          "reason": "refusal behaviour would become not_assessed",
+          "protects_against": "an excluded-domain or instruction record that stops being refused or quarantined"
+        },
+        {
+          "test": "mutation",
+          "command": "node tests/engine-adaptive-reliability/run.mjs --only mutation",
+          "reason": "applies to every behavioural or fixture change",
+          "protects_against": "a guard that can be removed without any test failing"
+        },
+        {
+          "test": "stability",
+          "command": "node tests/engine-adaptive-reliability/run.mjs --only stability",
+          "reason": "a condition could become more favourable",
+          "protects_against": "irrelevant record edits changing outcomes, or meaningful edits leaving no trace"
+        },
+        {
+          "test": "drift",
+          "command": "node tests/engine-adaptive-reliability/run.mjs --only drift",
+          "reason": "applies to every behavioural or fixture change",
+          "protects_against": "an unexplained or unsafe output change between versions"
+        },
+        {
+          "test": "claim_guard",
+          "command": "node tests/engine-adaptive-reliability/run.mjs --only claims",
+          "reason": "a limitation could be weakened",
+          "protects_against": "proof, validation or readiness language entering outputs or documents"
+        }
+      ],
+      "excluded": [
+        {
+          "test": "workbench_rendering",
+          "reason": "no affected component is covered by this test class and no impact flag requires it"
+        },
+        {
+          "test": "evaluation_separation",
+          "reason": "no affected component is covered by this test class and no impact flag requires it"
+        }
+      ],
+      "insufficient_coverage": true,
+      "coverage_gaps": [
+        "behavioural change names no new synthetic fixture"
+      ],
+      "full_suite_mandatory": true,
+      "full_suite_reason": "any behavioural change requires every suite listed in REGRESSION_SELECTION_POLICY.md before a human decision",
+      "statement": "This output identifies required evidence before a human decision. It does not decide that a change is safe, correct, or authorised."
+    },
+    "X-01": {
+      "proposal_id": "CP-677581db61",
+      "selected": [
+        {
+          "test": "baseline_fixtures",
+          "command": "node tools/engine-evidence-graph-replay.mjs --no-write",
+          "reason": "applies to every behavioural or fixture change",
+          "protects_against": "unintended change to any v0.3 fixture outcome"
+        },
+        {
+          "test": "v0.3_graph",
+          "command": "node tests/engine-evidence-graph/run.mjs",
+          "reason": "applies to every behavioural or fixture change",
+          "protects_against": "graph rule, traversal, identity and edge-meaning regressions"
+        },
+        {
+          "test": "refusal",
+          "command": "node tests/engine-adaptive-reliability/run.mjs --only refusal",
+          "reason": "covers affected component(s): scope",
+          "protects_against": "an excluded-domain or instruction record that stops being refused or quarantined"
+        },
+        {
+          "test": "mutation",
+          "command": "node tests/engine-adaptive-reliability/run.mjs --only mutation",
+          "reason": "applies to every behavioural or fixture change",
+          "protects_against": "a guard that can be removed without any test failing"
+        },
+        {
+          "test": "stability",
+          "command": "node tests/engine-adaptive-reliability/run.mjs --only stability",
+          "reason": "covers affected component(s): scope",
+          "protects_against": "irrelevant record edits changing outcomes, or meaningful edits leaving no trace"
+        },
+        {
+          "test": "drift",
+          "command": "node tests/engine-adaptive-reliability/run.mjs --only drift",
+          "reason": "applies to every behavioural or fixture change",
+          "protects_against": "an unexplained or unsafe output change between versions"
+        },
+        {
+          "test": "claim_guard",
+          "command": "node tests/engine-adaptive-reliability/run.mjs --only claims",
+          "reason": "a limitation could be weakened",
+          "protects_against": "proof, validation or readiness language entering outputs or documents"
+        }
+      ],
+      "excluded": [
+        {
+          "test": "v0.1_compatibility",
+          "reason": "no affected component is covered by this test class and no impact flag requires it"
+        },
+        {
+          "test": "v0.2_contract",
+          "reason": "no affected component is covered by this test class and no impact flag requires it"
+        },
+        {
+          "test": "workbench_rendering",
+          "reason": "no affected component is covered by this test class and no impact flag requires it"
+        },
+        {
+          "test": "evaluation_separation",
+          "reason": "no affected component is covered by this test class and no impact flag requires it"
+        }
+      ],
+      "insufficient_coverage": true,
+      "coverage_gaps": [
+        "behavioural change names no new synthetic fixture"
+      ],
+      "full_suite_mandatory": true,
+      "full_suite_reason": "any behavioural change requires every suite listed in REGRESSION_SELECTION_POLICY.md before a human decision",
+      "statement": "This output identifies required evidence before a human decision. It does not decide that a change is safe, correct, or authorised."
+    },
+    "X-02": {
+      "proposal_id": "CP-ba17ba3341",
+      "selected": [
+        {
+          "test": "baseline_fixtures",
+          "command": "node tools/engine-evidence-graph-replay.mjs --no-write",
+          "reason": "applies to every behavioural or fixture change",
+          "protects_against": "unintended change to any v0.3 fixture outcome"
+        },
+        {
+          "test": "v0.3_graph",
+          "command": "node tests/engine-evidence-graph/run.mjs",
+          "reason": "applies to every behavioural or fixture change",
+          "protects_against": "graph rule, traversal, identity and edge-meaning regressions"
+        },
+        {
+          "test": "refusal",
+          "command": "node tests/engine-adaptive-reliability/run.mjs --only refusal",
+          "reason": "covers affected component(s): scope",
+          "protects_against": "an excluded-domain or instruction record that stops being refused or quarantined"
+        },
+        {
+          "test": "mutation",
+          "command": "node tests/engine-adaptive-reliability/run.mjs --only mutation",
+          "reason": "applies to every behavioural or fixture change",
+          "protects_against": "a guard that can be removed without any test failing"
+        },
+        {
+          "test": "stability",
+          "command": "node tests/engine-adaptive-reliability/run.mjs --only stability",
+          "reason": "covers affected component(s): scope",
+          "protects_against": "irrelevant record edits changing outcomes, or meaningful edits leaving no trace"
+        },
+        {
+          "test": "drift",
+          "command": "node tests/engine-adaptive-reliability/run.mjs --only drift",
+          "reason": "applies to every behavioural or fixture change",
+          "protects_against": "an unexplained or unsafe output change between versions"
+        },
+        {
+          "test": "claim_guard",
+          "command": "node tests/engine-adaptive-reliability/run.mjs --only claims",
+          "reason": "a limitation could be weakened",
+          "protects_against": "proof, validation or readiness language entering outputs or documents"
+        }
+      ],
+      "excluded": [
+        {
+          "test": "v0.1_compatibility",
+          "reason": "no affected component is covered by this test class and no impact flag requires it"
+        },
+        {
+          "test": "v0.2_contract",
+          "reason": "no affected component is covered by this test class and no impact flag requires it"
+        },
+        {
+          "test": "workbench_rendering",
+          "reason": "no affected component is covered by this test class and no impact flag requires it"
+        },
+        {
+          "test": "evaluation_separation",
+          "reason": "no affected component is covered by this test class and no impact flag requires it"
+        }
+      ],
+      "insufficient_coverage": true,
+      "coverage_gaps": [
+        "behavioural change names no new synthetic fixture"
+      ],
+      "full_suite_mandatory": true,
+      "full_suite_reason": "any behavioural change requires every suite listed in REGRESSION_SELECTION_POLICY.md before a human decision",
+      "statement": "This output identifies required evidence before a human decision. It does not decide that a change is safe, correct, or authorised."
+    },
+    "X-03": {
+      "proposal_id": "CP-6d15e8c604",
+      "selected": [
+        {
+          "test": "baseline_fixtures",
+          "command": "node tools/engine-evidence-graph-replay.mjs --no-write",
+          "reason": "applies to every behavioural or fixture change",
+          "protects_against": "unintended change to any v0.3 fixture outcome"
+        },
+        {
+          "test": "v0.3_graph",
+          "command": "node tests/engine-evidence-graph/run.mjs",
+          "reason": "applies to every behavioural or fixture change",
+          "protects_against": "graph rule, traversal, identity and edge-meaning regressions"
+        },
+        {
+          "test": "refusal",
+          "command": "node tests/engine-adaptive-reliability/run.mjs --only refusal",
+          "reason": "refusal behaviour would become not_assessed",
+          "protects_against": "an excluded-domain or instruction record that stops being refused or quarantined"
+        },
+        {
+          "test": "mutation",
+          "command": "node tests/engine-adaptive-reliability/run.mjs --only mutation",
+          "reason": "applies to every behavioural or fixture change",
+          "protects_against": "a guard that can be removed without any test failing"
+        },
+        {
+          "test": "stability",
+          "command": "node tests/engine-adaptive-reliability/run.mjs --only stability",
+          "reason": "covers affected component(s): quote_resolution",
+          "protects_against": "irrelevant record edits changing outcomes, or meaningful edits leaving no trace"
+        },
+        {
+          "test": "drift",
+          "command": "node tests/engine-adaptive-reliability/run.mjs --only drift",
+          "reason": "applies to every behavioural or fixture change",
+          "protects_against": "an unexplained or unsafe output change between versions"
+        },
+        {
+          "test": "claim_guard",
+          "command": "node tests/engine-adaptive-reliability/run.mjs --only claims",
+          "reason": "a limitation could be weakened",
+          "protects_against": "proof, validation or readiness language entering outputs or documents"
+        }
+      ],
+      "excluded": [
+        {
+          "test": "v0.1_compatibility",
+          "reason": "no affected component is covered by this test class and no impact flag requires it"
+        },
+        {
+          "test": "v0.2_contract",
+          "reason": "no affected component is covered by this test class and no impact flag requires it"
+        },
+        {
+          "test": "workbench_rendering",
+          "reason": "no affected component is covered by this test class and no impact flag requires it"
+        },
+        {
+          "test": "evaluation_separation",
+          "reason": "no affected component is covered by this test class and no impact flag requires it"
+        }
+      ],
+      "insufficient_coverage": true,
+      "coverage_gaps": [
+        "behavioural change names no new synthetic fixture"
+      ],
+      "full_suite_mandatory": true,
+      "full_suite_reason": "any behavioural change requires every suite listed in REGRESSION_SELECTION_POLICY.md before a human decision",
+      "statement": "This output identifies required evidence before a human decision. It does not decide that a change is safe, correct, or authorised."
+    },
+    "X-04": {
+      "proposal_id": "CP-5d87564610",
+      "selected": [
+        {
+          "test": "baseline_fixtures",
+          "command": "node tools/engine-evidence-graph-replay.mjs --no-write",
+          "reason": "applies to every behavioural or fixture change",
+          "protects_against": "unintended change to any v0.3 fixture outcome"
+        },
+        {
+          "test": "v0.1_compatibility",
+          "command": "node tests/engine-assurance/run.mjs",
+          "reason": "covers affected component(s): prompt_contract",
+          "protects_against": "accidental edits to the frozen v0.1 assurance package"
+        },
+        {
+          "test": "v0.2_contract",
+          "command": "node tests/engine-evidence-contract/run.mjs",
+          "reason": "covers affected component(s): prompt_contract",
+          "protects_against": "accidental edits to the frozen v0.2 contract and its bridge"
+        },
+        {
+          "test": "v0.3_graph",
+          "command": "node tests/engine-evidence-graph/run.mjs",
+          "reason": "applies to every behavioural or fixture change",
+          "protects_against": "graph rule, traversal, identity and edge-meaning regressions"
+        },
+        {
+          "test": "refusal",
+          "command": "node tests/engine-adaptive-reliability/run.mjs --only refusal",
+          "reason": "covers affected component(s): prompt_contract",
+          "protects_against": "an excluded-domain or instruction record that stops being refused or quarantined"
+        },
+        {
+          "test": "mutation",
+          "command": "node tests/engine-adaptive-reliability/run.mjs --only mutation",
+          "reason": "applies to every behavioural or fixture change",
+          "protects_against": "a guard that can be removed without any test failing"
+        },
+        {
+          "test": "stability",
+          "command": "node tests/engine-adaptive-reliability/run.mjs --only stability",
+          "reason": "a condition could become more favourable",
+          "protects_against": "irrelevant record edits changing outcomes, or meaningful edits leaving no trace"
+        },
+        {
+          "test": "drift",
+          "command": "node tests/engine-adaptive-reliability/run.mjs --only drift",
+          "reason": "applies to every behavioural or fixture change",
+          "protects_against": "an unexplained or unsafe output change between versions"
+        },
+        {
+          "test": "claim_guard",
+          "command": "node tests/engine-adaptive-reliability/run.mjs --only claims",
+          "reason": "a limitation could be weakened",
+          "protects_against": "proof, validation or readiness language entering outputs or documents"
+        }
+      ],
+      "excluded": [
+        {
+          "test": "workbench_rendering",
+          "reason": "no affected component is covered by this test class and no impact flag requires it"
+        },
+        {
+          "test": "evaluation_separation",
+          "reason": "no affected component is covered by this test class and no impact flag requires it"
+        }
+      ],
+      "insufficient_coverage": true,
+      "coverage_gaps": [
+        "behavioural change names no new synthetic fixture",
+        "behavioural change names no mutation test"
+      ],
+      "full_suite_mandatory": true,
+      "full_suite_reason": "any behavioural change requires every suite listed in REGRESSION_SELECTION_POLICY.md before a human decision",
+      "statement": "This output identifies required evidence before a human decision. It does not decide that a change is safe, correct, or authorised."
+    },
+    "X-05": {
+      "proposal_id": "CP-94946512e5",
+      "selected": [
+        {
+          "test": "baseline_fixtures",
+          "command": "node tools/engine-evidence-graph-replay.mjs --no-write",
+          "reason": "applies to every behavioural or fixture change",
+          "protects_against": "unintended change to any v0.3 fixture outcome"
+        },
+        {
+          "test": "v0.3_graph",
+          "command": "node tests/engine-evidence-graph/run.mjs",
+          "reason": "applies to every behavioural or fixture change",
+          "protects_against": "graph rule, traversal, identity and edge-meaning regressions"
+        },
+        {
+          "test": "mutation",
+          "command": "node tests/engine-adaptive-reliability/run.mjs --only mutation",
+          "reason": "applies to every behavioural or fixture change",
+          "protects_against": "a guard that can be removed without any test failing"
+        },
+        {
+          "test": "drift",
+          "command": "node tests/engine-adaptive-reliability/run.mjs --only drift",
+          "reason": "applies to every behavioural or fixture change",
+          "protects_against": "an unexplained or unsafe output change between versions"
+        }
+      ],
+      "excluded": [
+        {
+          "test": "v0.1_compatibility",
+          "reason": "no affected component is covered by this test class and no impact flag requires it"
+        },
+        {
+          "test": "v0.2_contract",
+          "reason": "no affected component is covered by this test class and no impact flag requires it"
+        },
+        {
+          "test": "refusal",
+          "reason": "no affected component is covered by this test class and no impact flag requires it"
+        },
+        {
+          "test": "stability",
+          "reason": "no affected component is covered by this test class and no impact flag requires it"
+        },
+        {
+          "test": "claim_guard",
+          "reason": "no affected component is covered by this test class and no impact flag requires it"
+        },
+        {
+          "test": "workbench_rendering",
+          "reason": "no affected component is covered by this test class and no impact flag requires it"
+        },
+        {
+          "test": "evaluation_separation",
+          "reason": "no affected component is covered by this test class and no impact flag requires it"
+        }
+      ],
+      "insufficient_coverage": false,
+      "coverage_gaps": [],
+      "full_suite_mandatory": false,
+      "full_suite_reason": "not required for a fixture, test or documentation-only change; the owner may still require it",
+      "statement": "This output identifies required evidence before a human decision. It does not decide that a change is safe, correct, or authorised."
+    },
+    "X-06": {
+      "proposal_id": "CP-ee1cbd32f8",
+      "selected": [
+        {
+          "test": "baseline_fixtures",
+          "command": "node tools/engine-evidence-graph-replay.mjs --no-write",
+          "reason": "applies to every behavioural or fixture change",
+          "protects_against": "unintended change to any v0.3 fixture outcome"
+        },
+        {
+          "test": "v0.3_graph",
+          "command": "node tests/engine-evidence-graph/run.mjs",
+          "reason": "applies to every behavioural or fixture change",
+          "protects_against": "graph rule, traversal, identity and edge-meaning regressions"
+        },
+        {
+          "test": "refusal",
+          "command": "node tests/engine-adaptive-reliability/run.mjs --only refusal",
+          "reason": "covers affected component(s): scope",
+          "protects_against": "an excluded-domain or instruction record that stops being refused or quarantined"
+        },
+        {
+          "test": "mutation",
+          "command": "node tests/engine-adaptive-reliability/run.mjs --only mutation",
+          "reason": "applies to every behavioural or fixture change",
+          "protects_against": "a guard that can be removed without any test failing"
+        },
+        {
+          "test": "stability",
+          "command": "node tests/engine-adaptive-reliability/run.mjs --only stability",
+          "reason": "covers affected component(s): scope",
+          "protects_against": "irrelevant record edits changing outcomes, or meaningful edits leaving no trace"
+        },
+        {
+          "test": "drift",
+          "command": "node tests/engine-adaptive-reliability/run.mjs --only drift",
+          "reason": "applies to every behavioural or fixture change",
+          "protects_against": "an unexplained or unsafe output change between versions"
+        },
+        {
+          "test": "claim_guard",
+          "command": "node tests/engine-adaptive-reliability/run.mjs --only claims",
+          "reason": "a limitation could be weakened",
+          "protects_against": "proof, validation or readiness language entering outputs or documents"
+        }
+      ],
+      "excluded": [
+        {
+          "test": "v0.1_compatibility",
+          "reason": "no affected component is covered by this test class and no impact flag requires it"
+        },
+        {
+          "test": "v0.2_contract",
+          "reason": "no affected component is covered by this test class and no impact flag requires it"
+        },
+        {
+          "test": "workbench_rendering",
+          "reason": "no affected component is covered by this test class and no impact flag requires it"
+        },
+        {
+          "test": "evaluation_separation",
+          "reason": "no affected component is covered by this test class and no impact flag requires it"
+        }
+      ],
+      "insufficient_coverage": true,
+      "coverage_gaps": [
+        "behavioural change names no new synthetic fixture"
+      ],
+      "full_suite_mandatory": true,
+      "full_suite_reason": "any behavioural change requires every suite listed in REGRESSION_SELECTION_POLICY.md before a human decision",
+      "statement": "This output identifies required evidence before a human decision. It does not decide that a change is safe, correct, or authorised."
+    },
+    "X-07": {
+      "proposal_id": "CP-0a7e89031f",
+      "selected": [
+        {
+          "test": "baseline_fixtures",
+          "command": "node tools/engine-evidence-graph-replay.mjs --no-write",
+          "reason": "applies to every behavioural or fixture change",
+          "protects_against": "unintended change to any v0.3 fixture outcome"
+        },
+        {
+          "test": "v0.3_graph",
+          "command": "node tests/engine-evidence-graph/run.mjs",
+          "reason": "applies to every behavioural or fixture change",
+          "protects_against": "graph rule, traversal, identity and edge-meaning regressions"
+        },
+        {
+          "test": "refusal",
+          "command": "node tests/engine-adaptive-reliability/run.mjs --only refusal",
+          "reason": "refusal behaviour would become not_assessed",
+          "protects_against": "an excluded-domain or instruction record that stops being refused or quarantined"
+        },
+        {
+          "test": "mutation",
+          "command": "node tests/engine-adaptive-reliability/run.mjs --only mutation",
+          "reason": "applies to every behavioural or fixture change",
+          "protects_against": "a guard that can be removed without any test failing"
+        },
+        {
+          "test": "stability",
+          "command": "node tests/engine-adaptive-reliability/run.mjs --only stability",
+          "reason": "covers affected component(s): contradictions",
+          "protects_against": "irrelevant record edits changing outcomes, or meaningful edits leaving no trace"
+        },
+        {
+          "test": "drift",
+          "command": "node tests/engine-adaptive-reliability/run.mjs --only drift",
+          "reason": "applies to every behavioural or fixture change",
+          "protects_against": "an unexplained or unsafe output change between versions"
+        },
+        {
+          "test": "claim_guard",
+          "command": "node tests/engine-adaptive-reliability/run.mjs --only claims",
+          "reason": "a limitation could be weakened",
+          "protects_against": "proof, validation or readiness language entering outputs or documents"
+        }
+      ],
+      "excluded": [
+        {
+          "test": "v0.1_compatibility",
+          "reason": "no affected component is covered by this test class and no impact flag requires it"
+        },
+        {
+          "test": "v0.2_contract",
+          "reason": "no affected component is covered by this test class and no impact flag requires it"
+        },
+        {
+          "test": "workbench_rendering",
+          "reason": "no affected component is covered by this test class and no impact flag requires it"
+        },
+        {
+          "test": "evaluation_separation",
+          "reason": "no affected component is covered by this test class and no impact flag requires it"
+        }
+      ],
+      "insufficient_coverage": true,
+      "coverage_gaps": [
+        "behavioural change names no new synthetic fixture"
+      ],
+      "full_suite_mandatory": true,
+      "full_suite_reason": "any behavioural change requires every suite listed in REGRESSION_SELECTION_POLICY.md before a human decision",
+      "statement": "This output identifies required evidence before a human decision. It does not decide that a change is safe, correct, or authorised."
+    },
+    "X-08": {
+      "proposal_id": "CP-03c4aaf448",
+      "selected": [
+        {
+          "test": "baseline_fixtures",
+          "command": "node tools/engine-evidence-graph-replay.mjs --no-write",
+          "reason": "applies to every behavioural or fixture change",
+          "protects_against": "unintended change to any v0.3 fixture outcome"
+        },
+        {
+          "test": "v0.3_graph",
+          "command": "node tests/engine-evidence-graph/run.mjs",
+          "reason": "applies to every behavioural or fixture change",
+          "protects_against": "graph rule, traversal, identity and edge-meaning regressions"
+        },
+        {
+          "test": "mutation",
+          "command": "node tests/engine-adaptive-reliability/run.mjs --only mutation",
+          "reason": "applies to every behavioural or fixture change",
+          "protects_against": "a guard that can be removed without any test failing"
+        },
+        {
+          "test": "drift",
+          "command": "node tests/engine-adaptive-reliability/run.mjs --only drift",
+          "reason": "applies to every behavioural or fixture change",
+          "protects_against": "an unexplained or unsafe output change between versions"
+        },
+        {
+          "test": "evaluation_separation",
+          "command": "node tests/engine-evidence-graph/run.mjs (section F)",
+          "reason": "covers affected component(s): fixtures",
+          "protects_against": "local or synthetic material passing a separation check"
+        }
+      ],
+      "excluded": [
+        {
+          "test": "v0.1_compatibility",
+          "reason": "no affected component is covered by this test class and no impact flag requires it"
+        },
+        {
+          "test": "v0.2_contract",
+          "reason": "no affected component is covered by this test class and no impact flag requires it"
+        },
+        {
+          "test": "refusal",
+          "reason": "no affected component is covered by this test class and no impact flag requires it"
+        },
+        {
+          "test": "stability",
+          "reason": "no affected component is covered by this test class and no impact flag requires it"
+        },
+        {
+          "test": "claim_guard",
+          "reason": "no affected component is covered by this test class and no impact flag requires it"
+        },
+        {
+          "test": "workbench_rendering",
+          "reason": "no affected component is covered by this test class and no impact flag requires it"
+        }
+      ],
+      "insufficient_coverage": false,
+      "coverage_gaps": [],
+      "full_suite_mandatory": false,
+      "full_suite_reason": "not required for a fixture, test or documentation-only change; the owner may still require it",
+      "statement": "This output identifies required evidence before a human decision. It does not decide that a change is safe, correct, or authorised."
+    },
+    "X-09": {
+      "proposal_id": "CP-5ac32955b0",
+      "selected": [
+        {
+          "test": "baseline_fixtures",
+          "command": "node tools/engine-evidence-graph-replay.mjs --no-write",
+          "reason": "applies to every behavioural or fixture change",
+          "protects_against": "unintended change to any v0.3 fixture outcome"
+        },
+        {
+          "test": "v0.3_graph",
+          "command": "node tests/engine-evidence-graph/run.mjs",
+          "reason": "applies to every behavioural or fixture change",
+          "protects_against": "graph rule, traversal, identity and edge-meaning regressions"
+        },
+        {
+          "test": "refusal",
+          "command": "node tests/engine-adaptive-reliability/run.mjs --only refusal",
+          "reason": "refusal behaviour would become not_assessed",
+          "protects_against": "an excluded-domain or instruction record that stops being refused or quarantined"
+        },
+        {
+          "test": "mutation",
+          "command": "node tests/engine-adaptive-reliability/run.mjs --only mutation",
+          "reason": "applies to every behavioural or fixture change",
+          "protects_against": "a guard that can be removed without any test failing"
+        },
+        {
+          "test": "stability",
+          "command": "node tests/engine-adaptive-reliability/run.mjs --only stability",
+          "reason": "covers affected component(s): assertions",
+          "protects_against": "irrelevant record edits changing outcomes, or meaningful edits leaving no trace"
+        },
+        {
+          "test": "drift",
+          "command": "node tests/engine-adaptive-reliability/run.mjs --only drift",
+          "reason": "applies to every behavioural or fixture change",
+          "protects_against": "an unexplained or unsafe output change between versions"
+        },
+        {
+          "test": "claim_guard",
+          "command": "node tests/engine-adaptive-reliability/run.mjs --only claims",
+          "reason": "covers affected component(s): assertions",
+          "protects_against": "proof, validation or readiness language entering outputs or documents"
+        }
+      ],
+      "excluded": [
+        {
+          "test": "v0.1_compatibility",
+          "reason": "no affected component is covered by this test class and no impact flag requires it"
+        },
+        {
+          "test": "v0.2_contract",
+          "reason": "no affected component is covered by this test class and no impact flag requires it"
+        },
+        {
+          "test": "workbench_rendering",
+          "reason": "no affected component is covered by this test class and no impact flag requires it"
+        },
+        {
+          "test": "evaluation_separation",
+          "reason": "no affected component is covered by this test class and no impact flag requires it"
+        }
+      ],
+      "insufficient_coverage": true,
+      "coverage_gaps": [
+        "behavioural change names no new synthetic fixture"
+      ],
+      "full_suite_mandatory": true,
+      "full_suite_reason": "any behavioural change requires every suite listed in REGRESSION_SELECTION_POLICY.md before a human decision",
+      "statement": "This output identifies required evidence before a human decision. It does not decide that a change is safe, correct, or authorised."
+    },
+    "X-10": {
+      "proposal_id": "CP-c56822cd70",
+      "selected": [
+        {
+          "test": "baseline_fixtures",
+          "command": "node tools/engine-evidence-graph-replay.mjs --no-write",
+          "reason": "applies to every behavioural or fixture change",
+          "protects_against": "unintended change to any v0.3 fixture outcome"
+        },
+        {
+          "test": "v0.3_graph",
+          "command": "node tests/engine-evidence-graph/run.mjs",
+          "reason": "applies to every behavioural or fixture change",
+          "protects_against": "graph rule, traversal, identity and edge-meaning regressions"
+        },
+        {
+          "test": "refusal",
+          "command": "node tests/engine-adaptive-reliability/run.mjs --only refusal",
+          "reason": "refusal behaviour would become not_assessed",
+          "protects_against": "an excluded-domain or instruction record that stops being refused or quarantined"
+        },
+        {
+          "test": "mutation",
+          "command": "node tests/engine-adaptive-reliability/run.mjs --only mutation",
+          "reason": "applies to every behavioural or fixture change",
+          "protects_against": "a guard that can be removed without any test failing"
+        },
+        {
+          "test": "stability",
+          "command": "node tests/engine-adaptive-reliability/run.mjs --only stability",
+          "reason": "covers affected component(s): conditions",
+          "protects_against": "irrelevant record edits changing outcomes, or meaningful edits leaving no trace"
+        },
+        {
+          "test": "drift",
+          "command": "node tests/engine-adaptive-reliability/run.mjs --only drift",
+          "reason": "applies to every behavioural or fixture change",
+          "protects_against": "an unexplained or unsafe output change between versions"
+        },
+        {
+          "test": "claim_guard",
+          "command": "node tests/engine-adaptive-reliability/run.mjs --only claims",
+          "reason": "a limitation could be weakened",
+          "protects_against": "proof, validation or readiness language entering outputs or documents"
+        }
+      ],
+      "excluded": [
+        {
+          "test": "v0.1_compatibility",
+          "reason": "no affected component is covered by this test class and no impact flag requires it"
+        },
+        {
+          "test": "v0.2_contract",
+          "reason": "no affected component is covered by this test class and no impact flag requires it"
+        },
+        {
+          "test": "workbench_rendering",
+          "reason": "no affected component is covered by this test class and no impact flag requires it"
+        },
+        {
+          "test": "evaluation_separation",
+          "reason": "no affected component is covered by this test class and no impact flag requires it"
+        }
+      ],
+      "insufficient_coverage": true,
+      "coverage_gaps": [
+        "behavioural change names no new synthetic fixture"
+      ],
+      "full_suite_mandatory": true,
+      "full_suite_reason": "any behavioural change requires every suite listed in REGRESSION_SELECTION_POLICY.md before a human decision",
+      "statement": "This output identifies required evidence before a human decision. It does not decide that a change is safe, correct, or authorised."
+    },
+    "Y-01": {
+      "proposal_id": "CP-ead65360a6",
+      "selected": [
+        {
+          "test": "baseline_fixtures",
+          "command": "node tools/engine-evidence-graph-replay.mjs --no-write",
+          "reason": "applies to every behavioural or fixture change",
+          "protects_against": "unintended change to any v0.3 fixture outcome"
+        },
+        {
+          "test": "v0.3_graph",
+          "command": "node tests/engine-evidence-graph/run.mjs",
+          "reason": "applies to every behavioural or fixture change",
+          "protects_against": "graph rule, traversal, identity and edge-meaning regressions"
+        },
+        {
+          "test": "refusal",
+          "command": "node tests/engine-adaptive-reliability/run.mjs --only refusal",
+          "reason": "covers affected component(s): scope",
+          "protects_against": "an excluded-domain or instruction record that stops being refused or quarantined"
+        },
+        {
+          "test": "mutation",
+          "command": "node tests/engine-adaptive-reliability/run.mjs --only mutation",
+          "reason": "applies to every behavioural or fixture change",
+          "protects_against": "a guard that can be removed without any test failing"
+        },
+        {
+          "test": "stability",
+          "command": "node tests/engine-adaptive-reliability/run.mjs --only stability",
+          "reason": "covers affected component(s): scope",
+          "protects_against": "irrelevant record edits changing outcomes, or meaningful edits leaving no trace"
+        },
+        {
+          "test": "drift",
+          "command": "node tests/engine-adaptive-reliability/run.mjs --only drift",
+          "reason": "applies to every behavioural or fixture change",
+          "protects_against": "an unexplained or unsafe output change between versions"
+        },
+        {
+          "test": "claim_guard",
+          "command": "node tests/engine-adaptive-reliability/run.mjs --only claims",
+          "reason": "a limitation could be weakened",
+          "protects_against": "proof, validation or readiness language entering outputs or documents"
+        }
+      ],
+      "excluded": [
+        {
+          "test": "v0.1_compatibility",
+          "reason": "no affected component is covered by this test class and no impact flag requires it"
+        },
+        {
+          "test": "v0.2_contract",
+          "reason": "no affected component is covered by this test class and no impact flag requires it"
+        },
+        {
+          "test": "workbench_rendering",
+          "reason": "no affected component is covered by this test class and no impact flag requires it"
+        },
+        {
+          "test": "evaluation_separation",
+          "reason": "no affected component is covered by this test class and no impact flag requires it"
+        }
+      ],
+      "insufficient_coverage": true,
+      "coverage_gaps": [
+        "behavioural change names no new synthetic fixture"
+      ],
+      "full_suite_mandatory": true,
+      "full_suite_reason": "any behavioural change requires every suite listed in REGRESSION_SELECTION_POLICY.md before a human decision",
+      "statement": "This output identifies required evidence before a human decision. It does not decide that a change is safe, correct, or authorised."
+    },
+    "Y-02": {
+      "proposal_id": "CP-10b3ec3a1a",
+      "selected": [
+        {
+          "test": "baseline_fixtures",
+          "command": "node tools/engine-evidence-graph-replay.mjs --no-write",
+          "reason": "applies to every behavioural or fixture change",
+          "protects_against": "unintended change to any v0.3 fixture outcome"
+        },
+        {
+          "test": "v0.3_graph",
+          "command": "node tests/engine-evidence-graph/run.mjs",
+          "reason": "applies to every behavioural or fixture change",
+          "protects_against": "graph rule, traversal, identity and edge-meaning regressions"
+        },
+        {
+          "test": "refusal",
+          "command": "node tests/engine-adaptive-reliability/run.mjs --only refusal",
+          "reason": "covers affected component(s): scope",
+          "protects_against": "an excluded-domain or instruction record that stops being refused or quarantined"
+        },
+        {
+          "test": "mutation",
+          "command": "node tests/engine-adaptive-reliability/run.mjs --only mutation",
+          "reason": "applies to every behavioural or fixture change",
+          "protects_against": "a guard that can be removed without any test failing"
+        },
+        {
+          "test": "stability",
+          "command": "node tests/engine-adaptive-reliability/run.mjs --only stability",
+          "reason": "covers affected component(s): scope",
+          "protects_against": "irrelevant record edits changing outcomes, or meaningful edits leaving no trace"
+        },
+        {
+          "test": "drift",
+          "command": "node tests/engine-adaptive-reliability/run.mjs --only drift",
+          "reason": "applies to every behavioural or fixture change",
+          "protects_against": "an unexplained or unsafe output change between versions"
+        },
+        {
+          "test": "claim_guard",
+          "command": "node tests/engine-adaptive-reliability/run.mjs --only claims",
+          "reason": "a limitation could be weakened",
+          "protects_against": "proof, validation or readiness language entering outputs or documents"
+        }
+      ],
+      "excluded": [
+        {
+          "test": "v0.1_compatibility",
+          "reason": "no affected component is covered by this test class and no impact flag requires it"
+        },
+        {
+          "test": "v0.2_contract",
+          "reason": "no affected component is covered by this test class and no impact flag requires it"
+        },
+        {
+          "test": "workbench_rendering",
+          "reason": "no affected component is covered by this test class and no impact flag requires it"
+        },
+        {
+          "test": "evaluation_separation",
+          "reason": "no affected component is covered by this test class and no impact flag requires it"
+        }
+      ],
+      "insufficient_coverage": true,
+      "coverage_gaps": [
+        "behavioural change names no new synthetic fixture"
+      ],
+      "full_suite_mandatory": true,
+      "full_suite_reason": "any behavioural change requires every suite listed in REGRESSION_SELECTION_POLICY.md before a human decision",
+      "statement": "This output identifies required evidence before a human decision. It does not decide that a change is safe, correct, or authorised."
+    },
+    "Y-03": {
+      "proposal_id": "CP-c0a6789328",
+      "selected": [
+        {
+          "test": "baseline_fixtures",
+          "command": "node tools/engine-evidence-graph-replay.mjs --no-write",
+          "reason": "applies to every behavioural or fixture change",
+          "protects_against": "unintended change to any v0.3 fixture outcome"
+        },
+        {
+          "test": "v0.3_graph",
+          "command": "node tests/engine-evidence-graph/run.mjs",
+          "reason": "applies to every behavioural or fixture change",
+          "protects_against": "graph rule, traversal, identity and edge-meaning regressions"
+        },
+        {
+          "test": "mutation",
+          "command": "node tests/engine-adaptive-reliability/run.mjs --only mutation",
+          "reason": "applies to every behavioural or fixture change",
+          "protects_against": "a guard that can be removed without any test failing"
+        },
+        {
+          "test": "stability",
+          "command": "node tests/engine-adaptive-reliability/run.mjs --only stability",
+          "reason": "covers affected component(s): conditions",
+          "protects_against": "irrelevant record edits changing outcomes, or meaningful edits leaving no trace"
+        },
+        {
+          "test": "drift",
+          "command": "node tests/engine-adaptive-reliability/run.mjs --only drift",
+          "reason": "applies to every behavioural or fixture change",
+          "protects_against": "an unexplained or unsafe output change between versions"
+        }
+      ],
+      "excluded": [
+        {
+          "test": "v0.1_compatibility",
+          "reason": "no affected component is covered by this test class and no impact flag requires it"
+        },
+        {
+          "test": "v0.2_contract",
+          "reason": "no affected component is covered by this test class and no impact flag requires it"
+        },
+        {
+          "test": "refusal",
+          "reason": "no affected component is covered by this test class and no impact flag requires it"
+        },
+        {
+          "test": "claim_guard",
+          "reason": "no affected component is covered by this test class and no impact flag requires it"
+        },
+        {
+          "test": "workbench_rendering",
+          "reason": "no affected component is covered by this test class and no impact flag requires it"
+        },
+        {
+          "test": "evaluation_separation",
+          "reason": "no affected component is covered by this test class and no impact flag requires it"
+        }
+      ],
+      "insufficient_coverage": true,
+      "coverage_gaps": [
+        "behavioural change names no new synthetic fixture"
+      ],
+      "full_suite_mandatory": true,
+      "full_suite_reason": "any behavioural change requires every suite listed in REGRESSION_SELECTION_POLICY.md before a human decision",
+      "statement": "This output identifies required evidence before a human decision. It does not decide that a change is safe, correct, or authorised."
+    },
+    "Y-04": {
+      "proposal_id": "CP-f3d5a1c377",
+      "selected": [
+        {
+          "test": "baseline_fixtures",
+          "command": "node tools/engine-evidence-graph-replay.mjs --no-write",
+          "reason": "applies to every behavioural or fixture change",
+          "protects_against": "unintended change to any v0.3 fixture outcome"
+        },
+        {
+          "test": "v0.3_graph",
+          "command": "node tests/engine-evidence-graph/run.mjs",
+          "reason": "applies to every behavioural or fixture change",
+          "protects_against": "graph rule, traversal, identity and edge-meaning regressions"
+        },
+        {
+          "test": "refusal",
+          "command": "node tests/engine-adaptive-reliability/run.mjs --only refusal",
+          "reason": "refusal behaviour would become narrower",
+          "protects_against": "an excluded-domain or instruction record that stops being refused or quarantined"
+        },
+        {
+          "test": "mutation",
+          "command": "node tests/engine-adaptive-reliability/run.mjs --only mutation",
+          "reason": "applies to every behavioural or fixture change",
+          "protects_against": "a guard that can be removed without any test failing"
+        },
+        {
+          "test": "stability",
+          "command": "node tests/engine-adaptive-reliability/run.mjs --only stability",
+          "reason": "covers affected component(s): quote_resolution",
+          "protects_against": "irrelevant record edits changing outcomes, or meaningful edits leaving no trace"
+        },
+        {
+          "test": "drift",
+          "command": "node tests/engine-adaptive-reliability/run.mjs --only drift",
+          "reason": "applies to every behavioural or fixture change",
+          "protects_against": "an unexplained or unsafe output change between versions"
+        }
+      ],
+      "excluded": [
+        {
+          "test": "v0.1_compatibility",
+          "reason": "no affected component is covered by this test class and no impact flag requires it"
+        },
+        {
+          "test": "v0.2_contract",
+          "reason": "no affected component is covered by this test class and no impact flag requires it"
+        },
+        {
+          "test": "claim_guard",
+          "reason": "no affected component is covered by this test class and no impact flag requires it"
+        },
+        {
+          "test": "workbench_rendering",
+          "reason": "no affected component is covered by this test class and no impact flag requires it"
+        },
+        {
+          "test": "evaluation_separation",
+          "reason": "no affected component is covered by this test class and no impact flag requires it"
+        }
+      ],
+      "insufficient_coverage": true,
+      "coverage_gaps": [
+        "behavioural change names no new synthetic fixture"
+      ],
+      "full_suite_mandatory": true,
+      "full_suite_reason": "any behavioural change requires every suite listed in REGRESSION_SELECTION_POLICY.md before a human decision",
+      "statement": "This output identifies required evidence before a human decision. It does not decide that a change is safe, correct, or authorised."
+    },
+    "Y-05": {
+      "proposal_id": "CP-3d5616db48",
+      "selected": [
+        {
+          "test": "baseline_fixtures",
+          "command": "node tools/engine-evidence-graph-replay.mjs --no-write",
+          "reason": "applies to every behavioural or fixture change",
+          "protects_against": "unintended change to any v0.3 fixture outcome"
+        },
+        {
+          "test": "v0.3_graph",
+          "command": "node tests/engine-evidence-graph/run.mjs",
+          "reason": "applies to every behavioural or fixture change",
+          "protects_against": "graph rule, traversal, identity and edge-meaning regressions"
+        },
+        {
+          "test": "refusal",
+          "command": "node tests/engine-adaptive-reliability/run.mjs --only refusal",
+          "reason": "covers affected component(s): scope",
+          "protects_against": "an excluded-domain or instruction record that stops being refused or quarantined"
+        },
+        {
+          "test": "mutation",
+          "command": "node tests/engine-adaptive-reliability/run.mjs --only mutation",
+          "reason": "applies to every behavioural or fixture change",
+          "protects_against": "a guard that can be removed without any test failing"
+        },
+        {
+          "test": "stability",
+          "command": "node tests/engine-adaptive-reliability/run.mjs --only stability",
+          "reason": "covers affected component(s): scope",
+          "protects_against": "irrelevant record edits changing outcomes, or meaningful edits leaving no trace"
+        },
+        {
+          "test": "drift",
+          "command": "node tests/engine-adaptive-reliability/run.mjs --only drift",
+          "reason": "applies to every behavioural or fixture change",
+          "protects_against": "an unexplained or unsafe output change between versions"
+        }
+      ],
+      "excluded": [
+        {
+          "test": "v0.1_compatibility",
+          "reason": "no affected component is covered by this test class and no impact flag requires it"
+        },
+        {
+          "test": "v0.2_contract",
+          "reason": "no affected component is covered by this test class and no impact flag requires it"
+        },
+        {
+          "test": "claim_guard",
+          "reason": "no affected component is covered by this test class and no impact flag requires it"
+        },
+        {
+          "test": "workbench_rendering",
+          "reason": "no affected component is covered by this test class and no impact flag requires it"
+        },
+        {
+          "test": "evaluation_separation",
+          "reason": "no affected component is covered by this test class and no impact flag requires it"
+        }
+      ],
+      "insufficient_coverage": true,
+      "coverage_gaps": [
+        "behavioural change names no new synthetic fixture"
+      ],
+      "full_suite_mandatory": true,
+      "full_suite_reason": "any behavioural change requires every suite listed in REGRESSION_SELECTION_POLICY.md before a human decision",
+      "statement": "This output identifies required evidence before a human decision. It does not decide that a change is safe, correct, or authorised."
+    },
+    "Y-06": {
+      "proposal_id": "CP-177e070fdc",
+      "selected": [
+        {
+          "test": "baseline_fixtures",
+          "command": "node tools/engine-evidence-graph-replay.mjs --no-write",
+          "reason": "applies to every behavioural or fixture change",
+          "protects_against": "unintended change to any v0.3 fixture outcome"
+        },
+        {
+          "test": "v0.3_graph",
+          "command": "node tests/engine-evidence-graph/run.mjs",
+          "reason": "applies to every behavioural or fixture change",
+          "protects_against": "graph rule, traversal, identity and edge-meaning regressions"
+        },
+        {
+          "test": "refusal",
+          "command": "node tests/engine-adaptive-reliability/run.mjs --only refusal",
+          "reason": "refusal behaviour would become not_assessed",
+          "protects_against": "an excluded-domain or instruction record that stops being refused or quarantined"
+        },
+        {
+          "test": "mutation",
+          "command": "node tests/engine-adaptive-reliability/run.mjs --only mutation",
+          "reason": "applies to every behavioural or fixture change",
+          "protects_against": "a guard that can be removed without any test failing"
+        },
+        {
+          "test": "stability",
+          "command": "node tests/engine-adaptive-reliability/run.mjs --only stability",
+          "reason": "a condition could become more favourable",
+          "protects_against": "irrelevant record edits changing outcomes, or meaningful edits leaving no trace"
+        },
+        {
+          "test": "drift",
+          "command": "node tests/engine-adaptive-reliability/run.mjs --only drift",
+          "reason": "applies to every behavioural or fixture change",
+          "protects_against": "an unexplained or unsafe output change between versions"
+        },
+        {
+          "test": "claim_guard",
+          "command": "node tests/engine-adaptive-reliability/run.mjs --only claims",
+          "reason": "a limitation could be weakened",
+          "protects_against": "proof, validation or readiness language entering outputs or documents"
+        },
+        {
+          "test": "evaluation_separation",
+          "command": "node tests/engine-evidence-graph/run.mjs (section F)",
+          "reason": "covers affected component(s): evaluation_factory",
+          "protects_against": "local or synthetic material passing a separation check"
+        }
+      ],
+      "excluded": [
+        {
+          "test": "v0.1_compatibility",
+          "reason": "no affected component is covered by this test class and no impact flag requires it"
+        },
+        {
+          "test": "v0.2_contract",
+          "reason": "no affected component is covered by this test class and no impact flag requires it"
+        },
+        {
+          "test": "workbench_rendering",
+          "reason": "no affected component is covered by this test class and no impact flag requires it"
+        }
+      ],
+      "insufficient_coverage": true,
+      "coverage_gaps": [
+        "behavioural change names no new synthetic fixture"
+      ],
+      "full_suite_mandatory": true,
+      "full_suite_reason": "any behavioural change requires every suite listed in REGRESSION_SELECTION_POLICY.md before a human decision",
+      "statement": "This output identifies required evidence before a human decision. It does not decide that a change is safe, correct, or authorised."
+    },
+    "Y-07": {
+      "proposal_id": "CP-11100e17a1",
+      "selected": [
+        {
+          "test": "baseline_fixtures",
+          "command": "node tools/engine-evidence-graph-replay.mjs --no-write",
+          "reason": "applies to every behavioural or fixture change",
+          "protects_against": "unintended change to any v0.3 fixture outcome"
+        },
+        {
+          "test": "v0.3_graph",
+          "command": "node tests/engine-evidence-graph/run.mjs",
+          "reason": "applies to every behavioural or fixture change",
+          "protects_against": "graph rule, traversal, identity and edge-meaning regressions"
+        },
+        {
+          "test": "mutation",
+          "command": "node tests/engine-adaptive-reliability/run.mjs --only mutation",
+          "reason": "applies to every behavioural or fixture change",
+          "protects_against": "a guard that can be removed without any test failing"
+        },
+        {
+          "test": "drift",
+          "command": "node tests/engine-adaptive-reliability/run.mjs --only drift",
+          "reason": "applies to every behavioural or fixture change",
+          "protects_against": "an unexplained or unsafe output change between versions"
+        },
+        {
+          "test": "claim_guard",
+          "command": "node tests/engine-adaptive-reliability/run.mjs --only claims",
+          "reason": "covers affected component(s): documentation",
+          "protects_against": "proof, validation or readiness language entering outputs or documents"
+        },
+        {
+          "test": "workbench_rendering",
+          "command": "node tests/engine-adaptive-reliability/run.mjs --only console",
+          "reason": "covers affected component(s): documentation",
+          "protects_against": "a static page gaining scripts, forms, network access or approval controls"
+        }
+      ],
+      "excluded": [
+        {
+          "test": "v0.1_compatibility",
+          "reason": "no affected component is covered by this test class and no impact flag requires it"
+        },
+        {
+          "test": "v0.2_contract",
+          "reason": "no affected component is covered by this test class and no impact flag requires it"
+        },
+        {
+          "test": "refusal",
+          "reason": "no affected component is covered by this test class and no impact flag requires it"
+        },
+        {
+          "test": "stability",
+          "reason": "no affected component is covered by this test class and no impact flag requires it"
+        },
+        {
+          "test": "evaluation_separation",
+          "reason": "no affected component is covered by this test class and no impact flag requires it"
+        }
+      ],
+      "insufficient_coverage": true,
+      "coverage_gaps": [
+        "behavioural change names no new synthetic fixture"
+      ],
+      "full_suite_mandatory": true,
+      "full_suite_reason": "any behavioural change requires every suite listed in REGRESSION_SELECTION_POLICY.md before a human decision",
+      "statement": "This output identifies required evidence before a human decision. It does not decide that a change is safe, correct, or authorised."
+    },
+    "Y-08": {
+      "proposal_id": "CP-88c745a588",
+      "selected": [
+        {
+          "test": "baseline_fixtures",
+          "command": "node tools/engine-evidence-graph-replay.mjs --no-write",
+          "reason": "applies to every behavioural or fixture change",
+          "protects_against": "unintended change to any v0.3 fixture outcome"
+        },
+        {
+          "test": "v0.3_graph",
+          "command": "node tests/engine-evidence-graph/run.mjs",
+          "reason": "applies to every behavioural or fixture change",
+          "protects_against": "graph rule, traversal, identity and edge-meaning regressions"
+        },
+        {
+          "test": "refusal",
+          "command": "node tests/engine-adaptive-reliability/run.mjs --only refusal",
+          "reason": "covers affected component(s): scope",
+          "protects_against": "an excluded-domain or instruction record that stops being refused or quarantined"
+        },
+        {
+          "test": "mutation",
+          "command": "node tests/engine-adaptive-reliability/run.mjs --only mutation",
+          "reason": "applies to every behavioural or fixture change",
+          "protects_against": "a guard that can be removed without any test failing"
+        },
+        {
+          "test": "stability",
+          "command": "node tests/engine-adaptive-reliability/run.mjs --only stability",
+          "reason": "covers affected component(s): scope",
+          "protects_against": "irrelevant record edits changing outcomes, or meaningful edits leaving no trace"
+        },
+        {
+          "test": "drift",
+          "command": "node tests/engine-adaptive-reliability/run.mjs --only drift",
+          "reason": "applies to every behavioural or fixture change",
+          "protects_against": "an unexplained or unsafe output change between versions"
+        }
+      ],
+      "excluded": [
+        {
+          "test": "v0.1_compatibility",
+          "reason": "no affected component is covered by this test class and no impact flag requires it"
+        },
+        {
+          "test": "v0.2_contract",
+          "reason": "no affected component is covered by this test class and no impact flag requires it"
+        },
+        {
+          "test": "claim_guard",
+          "reason": "no affected component is covered by this test class and no impact flag requires it"
+        },
+        {
+          "test": "workbench_rendering",
+          "reason": "no affected component is covered by this test class and no impact flag requires it"
+        },
+        {
+          "test": "evaluation_separation",
+          "reason": "no affected component is covered by this test class and no impact flag requires it"
+        }
+      ],
+      "insufficient_coverage": true,
+      "coverage_gaps": [
+        "behavioural change names no new synthetic fixture"
+      ],
+      "full_suite_mandatory": true,
+      "full_suite_reason": "any behavioural change requires every suite listed in REGRESSION_SELECTION_POLICY.md before a human decision",
+      "statement": "This output identifies required evidence before a human decision. It does not decide that a change is safe, correct, or authorised."
+    },
+    "Y-09": {
+      "proposal_id": "CP-fdbbd27808",
+      "selected": [
+        {
+          "test": "baseline_fixtures",
+          "command": "node tools/engine-evidence-graph-replay.mjs --no-write",
+          "reason": "applies to every behavioural or fixture change",
+          "protects_against": "unintended change to any v0.3 fixture outcome"
+        },
+        {
+          "test": "v0.3_graph",
+          "command": "node tests/engine-evidence-graph/run.mjs",
+          "reason": "applies to every behavioural or fixture change",
+          "protects_against": "graph rule, traversal, identity and edge-meaning regressions"
+        },
+        {
+          "test": "mutation",
+          "command": "node tests/engine-adaptive-reliability/run.mjs --only mutation",
+          "reason": "applies to every behavioural or fixture change",
+          "protects_against": "a guard that can be removed without any test failing"
+        },
+        {
+          "test": "stability",
+          "command": "node tests/engine-adaptive-reliability/run.mjs --only stability",
+          "reason": "covers affected component(s): conditions",
+          "protects_against": "irrelevant record edits changing outcomes, or meaningful edits leaving no trace"
+        },
+        {
+          "test": "drift",
+          "command": "node tests/engine-adaptive-reliability/run.mjs --only drift",
+          "reason": "applies to every behavioural or fixture change",
+          "protects_against": "an unexplained or unsafe output change between versions"
+        }
+      ],
+      "excluded": [
+        {
+          "test": "v0.1_compatibility",
+          "reason": "no affected component is covered by this test class and no impact flag requires it"
+        },
+        {
+          "test": "v0.2_contract",
+          "reason": "no affected component is covered by this test class and no impact flag requires it"
+        },
+        {
+          "test": "refusal",
+          "reason": "no affected component is covered by this test class and no impact flag requires it"
+        },
+        {
+          "test": "claim_guard",
+          "reason": "no affected component is covered by this test class and no impact flag requires it"
+        },
+        {
+          "test": "workbench_rendering",
+          "reason": "no affected component is covered by this test class and no impact flag requires it"
+        },
+        {
+          "test": "evaluation_separation",
+          "reason": "no affected component is covered by this test class and no impact flag requires it"
+        }
+      ],
+      "insufficient_coverage": true,
+      "coverage_gaps": [
+        "behavioural change names no new synthetic fixture"
+      ],
+      "full_suite_mandatory": true,
+      "full_suite_reason": "any behavioural change requires every suite listed in REGRESSION_SELECTION_POLICY.md before a human decision",
+      "statement": "This output identifies required evidence before a human decision. It does not decide that a change is safe, correct, or authorised."
+    },
+    "Y-10": {
+      "proposal_id": "CP-3d5616db48",
+      "selected": [
+        {
+          "test": "baseline_fixtures",
+          "command": "node tools/engine-evidence-graph-replay.mjs --no-write",
+          "reason": "applies to every behavioural or fixture change",
+          "protects_against": "unintended change to any v0.3 fixture outcome"
+        },
+        {
+          "test": "v0.3_graph",
+          "command": "node tests/engine-evidence-graph/run.mjs",
+          "reason": "applies to every behavioural or fixture change",
+          "protects_against": "graph rule, traversal, identity and edge-meaning regressions"
+        },
+        {
+          "test": "refusal",
+          "command": "node tests/engine-adaptive-reliability/run.mjs --only refusal",
+          "reason": "covers affected component(s): scope",
+          "protects_against": "an excluded-domain or instruction record that stops being refused or quarantined"
+        },
+        {
+          "test": "mutation",
+          "command": "node tests/engine-adaptive-reliability/run.mjs --only mutation",
+          "reason": "applies to every behavioural or fixture change",
+          "protects_against": "a guard that can be removed without any test failing"
+        },
+        {
+          "test": "stability",
+          "command": "node tests/engine-adaptive-reliability/run.mjs --only stability",
+          "reason": "covers affected component(s): scope",
+          "protects_against": "irrelevant record edits changing outcomes, or meaningful edits leaving no trace"
+        },
+        {
+          "test": "drift",
+          "command": "node tests/engine-adaptive-reliability/run.mjs --only drift",
+          "reason": "applies to every behavioural or fixture change",
+          "protects_against": "an unexplained or unsafe output change between versions"
+        }
+      ],
+      "excluded": [
+        {
+          "test": "v0.1_compatibility",
+          "reason": "no affected component is covered by this test class and no impact flag requires it"
+        },
+        {
+          "test": "v0.2_contract",
+          "reason": "no affected component is covered by this test class and no impact flag requires it"
+        },
+        {
+          "test": "claim_guard",
+          "reason": "no affected component is covered by this test class and no impact flag requires it"
+        },
+        {
+          "test": "workbench_rendering",
+          "reason": "no affected component is covered by this test class and no impact flag requires it"
+        },
+        {
+          "test": "evaluation_separation",
+          "reason": "no affected component is covered by this test class and no impact flag requires it"
+        }
+      ],
+      "insufficient_coverage": true,
+      "coverage_gaps": [
+        "behavioural change names no new synthetic fixture"
+      ],
+      "full_suite_mandatory": true,
+      "full_suite_reason": "any behavioural change requires every suite listed in REGRESSION_SELECTION_POLICY.md before a human decision",
+      "statement": "This output identifies required evidence before a human decision. It does not decide that a change is safe, correct, or authorised."
+    },
+    "Y-11": {
+      "proposal_id": "CP-1583ed7b71",
+      "selected": [
+        {
+          "test": "baseline_fixtures",
+          "command": "node tools/engine-evidence-graph-replay.mjs --no-write",
+          "reason": "applies to every behavioural or fixture change",
+          "protects_against": "unintended change to any v0.3 fixture outcome"
+        },
+        {
+          "test": "v0.3_graph",
+          "command": "node tests/engine-evidence-graph/run.mjs",
+          "reason": "applies to every behavioural or fixture change",
+          "protects_against": "graph rule, traversal, identity and edge-meaning regressions"
+        },
+        {
+          "test": "refusal",
+          "command": "node tests/engine-adaptive-reliability/run.mjs --only refusal",
+          "reason": "covers affected component(s): scope",
+          "protects_against": "an excluded-domain or instruction record that stops being refused or quarantined"
+        },
+        {
+          "test": "mutation",
+          "command": "node tests/engine-adaptive-reliability/run.mjs --only mutation",
+          "reason": "applies to every behavioural or fixture change",
+          "protects_against": "a guard that can be removed without any test failing"
+        },
+        {
+          "test": "stability",
+          "command": "node tests/engine-adaptive-reliability/run.mjs --only stability",
+          "reason": "covers affected component(s): scope",
+          "protects_against": "irrelevant record edits changing outcomes, or meaningful edits leaving no trace"
+        },
+        {
+          "test": "drift",
+          "command": "node tests/engine-adaptive-reliability/run.mjs --only drift",
+          "reason": "applies to every behavioural or fixture change",
+          "protects_against": "an unexplained or unsafe output change between versions"
+        }
+      ],
+      "excluded": [
+        {
+          "test": "v0.1_compatibility",
+          "reason": "no affected component is covered by this test class and no impact flag requires it"
+        },
+        {
+          "test": "v0.2_contract",
+          "reason": "no affected component is covered by this test class and no impact flag requires it"
+        },
+        {
+          "test": "claim_guard",
+          "reason": "no affected component is covered by this test class and no impact flag requires it"
+        },
+        {
+          "test": "workbench_rendering",
+          "reason": "no affected component is covered by this test class and no impact flag requires it"
+        },
+        {
+          "test": "evaluation_separation",
+          "reason": "no affected component is covered by this test class and no impact flag requires it"
+        }
+      ],
+      "insufficient_coverage": true,
+      "coverage_gaps": [
+        "behavioural change names no new synthetic fixture"
+      ],
+      "full_suite_mandatory": true,
+      "full_suite_reason": "any behavioural change requires every suite listed in REGRESSION_SELECTION_POLICY.md before a human decision",
+      "statement": "This output identifies required evidence before a human decision. It does not decide that a change is safe, correct, or authorised."
+    },
+    "Y-12": {
+      "proposal_id": "CP-1583ed7b71",
+      "selected": [
+        {
+          "test": "baseline_fixtures",
+          "command": "node tools/engine-evidence-graph-replay.mjs --no-write",
+          "reason": "applies to every behavioural or fixture change",
+          "protects_against": "unintended change to any v0.3 fixture outcome"
+        },
+        {
+          "test": "v0.3_graph",
+          "command": "node tests/engine-evidence-graph/run.mjs",
+          "reason": "applies to every behavioural or fixture change",
+          "protects_against": "graph rule, traversal, identity and edge-meaning regressions"
+        },
+        {
+          "test": "refusal",
+          "command": "node tests/engine-adaptive-reliability/run.mjs --only refusal",
+          "reason": "covers affected component(s): scope",
+          "protects_against": "an excluded-domain or instruction record that stops being refused or quarantined"
+        },
+        {
+          "test": "mutation",
+          "command": "node tests/engine-adaptive-reliability/run.mjs --only mutation",
+          "reason": "applies to every behavioural or fixture change",
+          "protects_against": "a guard that can be removed without any test failing"
+        },
+        {
+          "test": "stability",
+          "command": "node tests/engine-adaptive-reliability/run.mjs --only stability",
+          "reason": "covers affected component(s): scope",
+          "protects_against": "irrelevant record edits changing outcomes, or meaningful edits leaving no trace"
+        },
+        {
+          "test": "drift",
+          "command": "node tests/engine-adaptive-reliability/run.mjs --only drift",
+          "reason": "applies to every behavioural or fixture change",
+          "protects_against": "an unexplained or unsafe output change between versions"
+        }
+      ],
+      "excluded": [
+        {
+          "test": "v0.1_compatibility",
+          "reason": "no affected component is covered by this test class and no impact flag requires it"
+        },
+        {
+          "test": "v0.2_contract",
+          "reason": "no affected component is covered by this test class and no impact flag requires it"
+        },
+        {
+          "test": "claim_guard",
+          "reason": "no affected component is covered by this test class and no impact flag requires it"
+        },
+        {
+          "test": "workbench_rendering",
+          "reason": "no affected component is covered by this test class and no impact flag requires it"
+        },
+        {
+          "test": "evaluation_separation",
+          "reason": "no affected component is covered by this test class and no impact flag requires it"
+        }
+      ],
+      "insufficient_coverage": true,
+      "coverage_gaps": [
+        "behavioural change names no new synthetic fixture"
+      ],
+      "full_suite_mandatory": true,
+      "full_suite_reason": "any behavioural change requires every suite listed in REGRESSION_SELECTION_POLICY.md before a human decision",
+      "statement": "This output identifies required evidence before a human decision. It does not decide that a change is safe, correct, or authorised."
+    }
+  }
+}

@@ -1,0 +1,183 @@
+{
+  "schema_version": "jrs-review-run-envelope/0.1.0",
+  "engine_version": "0.1.0-validation",
+  "codebook_version": "1.0",
+  "assurance_layer_version": "0.1.0-local",
+  "condition_vocabulary": "review_engine_keys",
+  "fixture_id": "SAE-029",
+  "fixture_content_hash": "sha256:9039c96ac7b0ceb7036a0ef9d9ec78bc7ad58d60026adc90571113ac4699af80",
+  "run_id": "run_687690d9f63d071fbcd7ed21",
+  "run_timestamp": "2026-10-10T05:53:31.046Z",
+  "execution_mode": "local_deterministic",
+  "provider_mode": "not_used",
+  "provider_invocations": 0,
+  "source_identity_status": "candidate_core_matches_git_history",
+  "source_identity": {
+    "candidate_source_path": "api/v1/review-engine.js",
+    "candidate_source_commit": "0177c5184182b5b1f51ff18c80da29f668996e49",
+    "candidate_source_blob": "baebb512e5f296e1b41da138b7868aae4b6098fc",
+    "repository_head": "97087e915245a15808f121e2263a7385a6bf5a04",
+    "working_tree": "modified_uncommitted"
+  },
+  "test_or_demo_status": "synthetic_engineering_test",
+  "release_status": "NO_GO_NOT_VERIFIED",
+  "limitations": [
+    {
+      "id": "L-01",
+      "statement": "Source-span verification establishes record presence only: the quoted text occurs in the submitted record at the stated offsets. It does not establish contextual or semantic validity, that the passage supports this finding, or that the underlying decision was justified."
+    },
+    {
+      "id": "L-02",
+      "statement": "This run used a synthetic, engineering-authored fixture. It is not independent, real-world, practitioner, buyer or holdout evidence, and it cannot establish accuracy."
+    },
+    {
+      "id": "L-03",
+      "statement": "The candidate has not been independently evaluated. Nothing in this run establishes accuracy, validation, legal compliance, security effectiveness, or production readiness."
+    },
+    {
+      "id": "L-04",
+      "statement": "Condition identifiers are the Review Engine's own keys. The Engine-to-Codebook mapping is NOT ESTABLISHED, so no finding is a Codebook condition finding."
+    },
+    {
+      "id": "L-05",
+      "statement": "Human review is required for every output. This package does not decide whether the underlying decision was correct, justified, fair, approved, or lawful, and it produces no overall pass."
+    },
+    {
+      "id": "L-06",
+      "statement": "No candidate analysis was performed in this run. Only the deterministic gate and record controls executed."
+    },
+    {
+      "id": "L-07",
+      "statement": "Record controls are lexical pattern detectors that route passages to human review. They make no statement about the person who wrote the record."
+    }
+  ],
+  "human_review_required": true,
+  "gate": {
+    "decision": "proceed",
+    "trigger_codes": []
+  },
+  "findings": {
+    "condition_findings": [
+      {
+        "condition_id": "basis_identification",
+        "condition_label": "Basis Identification (Engine key)",
+        "outcome": "not_assessed",
+        "outcome_basis": "deterministic_mode_not_assessed",
+        "candidate_status": "none",
+        "explanation": "Not assessed: no candidate analysis runs in local_deterministic mode.",
+        "explanation_content_class": "no_record_content",
+        "source_spans": [],
+        "evidence_classification": "no_verified_record_support",
+        "limitation": "Source-span verification establishes record presence only: the quoted text occurs in the submitted record at the stated offsets. It does not establish contextual or semantic validity, that the passage supports this finding, or that the underlying decision was justified. Condition identifiers are the Engine's keys, not Codebook conditions.",
+        "what_would_change_this_finding": "This condition would be assessed only in a local_mocked run that invokes the candidate."
+      },
+      {
+        "condition_id": "reasoning_traceability",
+        "condition_label": "Decision-Process Traceability (Engine key)",
+        "outcome": "not_assessed",
+        "outcome_basis": "deterministic_mode_not_assessed",
+        "candidate_status": "none",
+        "explanation": "Not assessed: no candidate analysis runs in local_deterministic mode.",
+        "explanation_content_class": "no_record_content",
+        "source_spans": [],
+        "evidence_classification": "no_verified_record_support",
+        "limitation": "Source-span verification establishes record presence only: the quoted text occurs in the submitted record at the stated offsets. It does not establish contextual or semantic validity, that the passage supports this finding, or that the underlying decision was justified. Condition identifiers are the Engine's keys, not Codebook conditions.",
+        "what_would_change_this_finding": "This condition would be assessed only in a local_mocked run that invokes the candidate."
+      },
+      {
+        "condition_id": "cold_reviewer_clarity",
+        "condition_label": "Reconstructability (Engine key)",
+        "outcome": "not_assessed",
+        "outcome_basis": "deterministic_mode_not_assessed",
+        "candidate_status": "none",
+        "explanation": "Not assessed: no candidate analysis runs in local_deterministic mode.",
+        "explanation_content_class": "no_record_content",
+        "source_spans": [],
+        "evidence_classification": "no_verified_record_support",
+        "limitation": "Source-span verification establishes record presence only: the quoted text occurs in the submitted record at the stated offsets. It does not establish contextual or semantic validity, that the passage supports this finding, or that the underlying decision was justified. Condition identifiers are the Engine's keys, not Codebook conditions.",
+        "what_would_change_this_finding": "This condition would be assessed only in a local_mocked run that invokes the candidate."
+      },
+      {
+        "condition_id": "accountability_support",
+        "condition_label": "Evidentiary Sufficiency (Engine key)",
+        "outcome": "not_assessed",
+        "outcome_basis": "deterministic_mode_not_assessed",
+        "candidate_status": "none",
+        "explanation": "Not assessed: no candidate analysis runs in local_deterministic mode.",
+        "explanation_content_class": "no_record_content",
+        "source_spans": [],
+        "evidence_classification": "no_verified_record_support",
+        "limitation": "Source-span verification establishes record presence only: the quoted text occurs in the submitted record at the stated offsets. It does not establish contextual or semantic validity, that the passage supports this finding, or that the underlying decision was justified. Condition identifiers are the Engine's keys, not Codebook conditions.",
+        "what_would_change_this_finding": "This condition would be assessed only in a local_mocked run that invokes the candidate."
+      },
+      {
+        "condition_id": "temporal_reconstructability",
+        "condition_label": "Chronology (Engine key)",
+        "outcome": "not_assessed",
+        "outcome_basis": "deterministic_mode_not_assessed",
+        "candidate_status": "none",
+        "explanation": "Not assessed: no candidate analysis runs in local_deterministic mode.",
+        "explanation_content_class": "no_record_content",
+        "source_spans": [],
+        "evidence_classification": "no_verified_record_support",
+        "limitation": "Source-span verification establishes record presence only: the quoted text occurs in the submitted record at the stated offsets. It does not establish contextual or semantic validity, that the passage supports this finding, or that the underlying decision was justified. Condition identifiers are the Engine's keys, not Codebook conditions.",
+        "what_would_change_this_finding": "This condition would be assessed only in a local_mocked run that invokes the candidate."
+      }
+    ],
+    "record_controls": [
+      {
+        "control_id": "CC-06",
+        "control_name": "Corrective action without owner or deadline",
+        "scope": "Record control only. This output describes the documentation and makes no statement about the person who wrote it.",
+        "detect": {
+          "pattern_id": "action_missing_owner_and_deadline",
+          "summary": "1 corrective or follow-up action(s) lack a documented owner and deadline or follow-up date in the same passage.",
+          "spans": [
+            {
+              "quote": "Corrective action: Gaps in supplier session logging will be remediated.",
+              "start": 1127,
+              "end": 1198,
+              "offset_unit": "utf16_code_unit",
+              "occurrence_count": 1,
+              "verification": "exact_match_record_presence_only"
+            }
+          ]
+        },
+        "reflect": "An action without an owner and a date cannot be followed up, so a later reviewer cannot tell whether it was expected to happen or did.",
+        "correct": "Name the role responsible for each action and the date by which it is due or will be checked.",
+        "learn": "Checklist candidate: \"Does every stated action have an owner and a date?\"",
+        "route": "human_review"
+      }
+    ]
+  },
+  "refusals": [],
+  "manifest_reference": {
+    "produced": false,
+    "reason": "No Manifest is produced unless the candidate ran and no condition was downgraded."
+  },
+  "artifact_hashes": {
+    "record": "sha256:2fb365f22bd941bd9a79b6962a750b17cfb2c60f038322c685098c7a94d4ba03",
+    "request": "sha256:3d2dcbb8ae7b3d7759a9e890d62e24de5dd2be53f1155fe644f95984707ac360",
+    "normalized_output": "sha256:a789f9ddd60271a29864f34f3efbc3cc42e2f5c11a0b2e63273ffef25f273ed2",
+    "code": {
+      "lib/engine-assurance/candidate-core.mjs": "sha256:cb0e1df14aea31c5a58809b36e0f91d8c951c35f75c75d7916360041b476f45d",
+      "lib/engine-assurance/cognitive-controls.mjs": "sha256:b038932dd14e7c926ede70816051badb91989e88f3f185ced08b59f718053cf4",
+      "lib/engine-assurance/content-guard.mjs": "sha256:8f0129220b4ed7384b53bb8b6b5673a7fb7070f8c88c128aaac636a4961055a4",
+      "lib/engine-assurance/envelope.mjs": "sha256:ea5d1a0d3d0ceb7a9a8f08e06643e547614d1ef8839310a88cdb80698eb5f39f",
+      "lib/engine-assurance/network-guard.mjs": "sha256:15dc96038b0f7117d5628158c6fb24283704b06ef815f1f7e0bbc7d50beef093",
+      "lib/engine-assurance/provenance.mjs": "sha256:16d6412b866c7a204a2372b7dea2005f6813bddf7c6df36a89bc44f34da9e017",
+      "lib/engine-assurance/run.mjs": "sha256:1327fc6ee5377959078a029c1800b19be3476d87924386ef8e17b8acf13975c2",
+      "lib/engine-assurance/scope-gate.mjs": "sha256:48bba831c522e5d3bedf21ec07e8aa81af0d25a0b41f5f73af9ea125d0d56535",
+      "lib/engine-assurance/span-verify.mjs": "sha256:7262e2448096833744cfe37b44ebbac42ffbdd38c872650e7b1a5f9461892c96",
+      "lib/engine-assurance/versions.mjs": "sha256:c3c48bf6a8e4983625742501ef69b9abbcb90282bc6a20b68284505a7796b940",
+      "api/_manifest/build.js": "sha256:e4e71b4f10d88d9364c2f8a9974143fabf29743d9ae96ff1d58e27b207dfdcae",
+      "api/_manifest/from-engine.js": "sha256:48640d7447ea41bb0b5ec4c74d62ded15465bff78b9441ef07fb9191e71d4091",
+      "api/_manifest/canonicalize.js": "sha256:ee060fbdfba9c6678bd6f5ac98c422a18db8f188984ad01867bbc6de378f732c",
+      "api/_manifest/hash.js": "sha256:183765176b1941c39e90c02bd052af97b5c1bde242900e8c4c1d876a27e73b53",
+      "tools/validate-manifest.js": "sha256:816a07af8936afc2ca084d01a51d819bec5dd55780b8b14b47d7d6eb6434e9f0",
+      "tools/engine-assurance-replay.mjs": "sha256:0495c82799cc47b8d8f65bbef335d08ebeb3cfc3c56ff52de0e09c131ebbafeb",
+      "schemas/jrs-decision-reconstruction-manifest.schema.json": "sha256:214b4b6f67fcc6ec7426c5005bf90a16d959ef2ec866c81448f95581fe4d5ed8",
+      "research/engine-assurance-2026-10-10/contracts/review-run-envelope.schema.json": "sha256:c3dce8796eb874a08138a9d0037c6d78a77c83840db33fe2b83be72b8c51a6c9"
+    }
+  }
+}

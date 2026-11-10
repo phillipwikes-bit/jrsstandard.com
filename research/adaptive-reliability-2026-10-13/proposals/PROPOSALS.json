@@ -1,0 +1,2155 @@
+{
+  "generated": "2026-10-13T00:00:00Z",
+  "statement": "A proposal is not an approved change. None of these has been applied to any Engine version.",
+  "proposals": {
+    "R-01": {
+      "proposal_id": "CP-78fb7dd056",
+      "compiler_version": "0.4.1-local-change-control",
+      "triggering_knowledge_ids": [
+        "RKB-019",
+        "RKB-046"
+      ],
+      "proposed_change_type": "new_refusal_pattern",
+      "affected_engine_components": [
+        "scope"
+      ],
+      "summary": "Add refusal patterns for reworded employment-outcome wording (\"contract will not be renewed\", \"keeps their job\") so such records are refused before assessment.",
+      "targets": [
+        "lib/engine-evidence-graph/scope.mjs"
+      ],
+      "change": {
+        "scope_delta": "none",
+        "refusal_delta": "broaden",
+        "evidence_delta": "none",
+        "limitation_delta": "none",
+        "favorability_delta": "none",
+        "alters_prompt": false,
+        "alters_rule": true,
+        "alters_threshold": false,
+        "alters_version": false
+      },
+      "patch_sha256": "sha256:ad1a67f4cadc1689836e41db0cc51604a94e3f0c6b11a42928ab0868a0bdf3fb",
+      "affected_conditions": [],
+      "behavioural": true,
+      "compatibility_impact": "v1, v0.1, v0.2 and v0.3 outputs are frozen and unaffected. A behavioural change would be a new version (0.3.1-local or later) with its own replay record; no prior result is migrated.",
+      "risk_of_change": "Alters local Engine behaviour; risk is classified from the observed-change record, not from declarations.",
+      "rollback_requirement": "Discard the isolated copy; the frozen v0.3 package is untouched, so no production or historical rollback is needed. A later version would be reverted by restoring the previous version identity.",
+      "required_regression_tests": [
+        "baseline_fixtures",
+        "drift",
+        "refusal",
+        "stability"
+      ],
+      "required_mutation_tests": [
+        "new mutation: remove the added pattern; AR-040 must fail"
+      ],
+      "required_fixtures": [
+        "AR-040",
+        "ST-14"
+      ],
+      "version_increment_required": true,
+      "human_review_required": true,
+      "observed_change": {
+        "record_sha256": "sha256:295d8d0ccf69a188a6cecd5deec96b4d028909469284038eac5ffcebef794fb3",
+        "run_id": "arr_3741875c7f503594945e59df",
+        "rows": 5,
+        "fixtures_changed": 1,
+        "favourable_transitions": 0,
+        "refusals_removed": 0,
+        "limitations_removed": 0,
+        "proof_edges": 0,
+        "excluded_domain_unrefused": 0,
+        "conflict_review_lost": 0,
+        "relabelled_independent": 0,
+        "fixtures_missing": 0,
+        "refusals_added": 5
+      },
+      "observed_change_problems": [],
+      "human_disposition": "not_recorded",
+      "claim_boundary": "A proposal is not an approved change. A passing test is not an accuracy claim. A larger synthetic corpus is not independent validation.",
+      "limitations": [
+        "Prepared from local synthetic observations only.",
+        "Not applied to any Engine version.",
+        "Automated checks identify specified local risks; reworded or unrecognised bypass attempts may remain possible.",
+        "Requires a recorded human decision before any implementation outside an isolated test copy."
+      ],
+      "authorization_state": "awaiting_human_review",
+      "rejection_reasons": []
+    },
+    "R-02": {
+      "proposal_id": "CP-c5952e86ff",
+      "compiler_version": "0.4.1-local-change-control",
+      "triggering_knowledge_ids": [
+        "RKB-011",
+        "RKB-041"
+      ],
+      "proposed_change_type": "new_graph_validation_rule",
+      "affected_engine_components": [
+        "contradictions"
+      ],
+      "summary": "Add the assessment-to-decision pair to the impossible-sequence check so an assessment dated after its decision lowers chronology to review.",
+      "targets": [
+        "lib/engine-evidence-graph/contradictions.mjs"
+      ],
+      "change": {
+        "scope_delta": "none",
+        "refusal_delta": "none",
+        "evidence_delta": "none",
+        "limitation_delta": "none",
+        "favorability_delta": "lower_only",
+        "alters_prompt": false,
+        "alters_rule": true,
+        "alters_threshold": false,
+        "alters_version": false
+      },
+      "patch_sha256": "sha256:96ef3b035b542c0ed69305ffe8c7fa396447b4d18e2e456a91de30c67ab4a5f8",
+      "affected_conditions": [
+        "chronology_integrity"
+      ],
+      "behavioural": true,
+      "compatibility_impact": "v1, v0.1, v0.2 and v0.3 outputs are frozen and unaffected. A behavioural change would be a new version (0.3.1-local or later) with its own replay record; no prior result is migrated.",
+      "risk_of_change": "Alters local Engine behaviour; risk is classified from the observed-change record, not from declarations.",
+      "rollback_requirement": "Discard the isolated copy; the frozen v0.3 package is untouched, so no production or historical rollback is needed. A later version would be reverted by restoring the previous version identity.",
+      "required_regression_tests": [
+        "baseline_fixtures",
+        "drift",
+        "stability",
+        "v0.3_graph"
+      ],
+      "required_mutation_tests": [
+        "new mutation: remove the added pair; AR-010 must fail"
+      ],
+      "required_fixtures": [
+        "AR-010"
+      ],
+      "version_increment_required": true,
+      "human_review_required": true,
+      "observed_change": {
+        "record_sha256": "sha256:2838c7a7883a759911382be00d5546a4ff4de3bb9831464ae66affeb0d98f752",
+        "run_id": "arr_8ef8f18a74bedb186e8297d5",
+        "rows": 5,
+        "fixtures_changed": 1,
+        "favourable_transitions": 0,
+        "refusals_removed": 0,
+        "limitations_removed": 0,
+        "proof_edges": 0,
+        "excluded_domain_unrefused": 0,
+        "conflict_review_lost": 0,
+        "relabelled_independent": 0,
+        "fixtures_missing": 0,
+        "refusals_added": 0
+      },
+      "observed_change_problems": [],
+      "human_disposition": "not_recorded",
+      "claim_boundary": "A proposal is not an approved change. A passing test is not an accuracy claim. A larger synthetic corpus is not independent validation.",
+      "limitations": [
+        "Prepared from local synthetic observations only.",
+        "Not applied to any Engine version.",
+        "Automated checks identify specified local risks; reworded or unrecognised bypass attempts may remain possible.",
+        "Requires a recorded human decision before any implementation outside an isolated test copy."
+      ],
+      "authorization_state": "awaiting_human_review",
+      "rejection_reasons": []
+    },
+    "R-03": {
+      "proposal_id": "CP-340cae31dc",
+      "compiler_version": "0.4.1-local-change-control",
+      "triggering_knowledge_ids": [
+        "RKB-042"
+      ],
+      "proposed_change_type": "new_graph_validation_rule",
+      "affected_engine_components": [
+        "contradictions"
+      ],
+      "summary": "Add a conflict kind for two distinct stated expiry dates; affected chronology routes to review.",
+      "targets": [
+        "lib/engine-evidence-graph/contradictions.mjs"
+      ],
+      "change": {
+        "scope_delta": "none",
+        "refusal_delta": "none",
+        "evidence_delta": "none",
+        "limitation_delta": "none",
+        "favorability_delta": "lower_only",
+        "alters_prompt": false,
+        "alters_rule": true,
+        "alters_threshold": false,
+        "alters_version": false
+      },
+      "patch_sha256": "none",
+      "affected_conditions": [
+        "chronology_integrity"
+      ],
+      "behavioural": true,
+      "compatibility_impact": "v1, v0.1, v0.2 and v0.3 outputs are frozen and unaffected. A behavioural change would be a new version (0.3.1-local or later) with its own replay record; no prior result is migrated.",
+      "risk_of_change": "Alters local Engine behaviour; risk is classified from the observed-change record, not from declarations.",
+      "rollback_requirement": "Discard the isolated copy; the frozen v0.3 package is untouched, so no production or historical rollback is needed. A later version would be reverted by restoring the previous version identity.",
+      "required_regression_tests": [
+        "baseline_fixtures",
+        "drift",
+        "v0.3_graph"
+      ],
+      "required_mutation_tests": [
+        "new mutation: remove the expiry comparison; AR-011 must fail"
+      ],
+      "required_fixtures": [
+        "AR-011"
+      ],
+      "version_increment_required": true,
+      "human_review_required": true,
+      "observed_change": null,
+      "observed_change_problems": [
+        "no observed-change record"
+      ],
+      "human_disposition": "not_recorded",
+      "claim_boundary": "A proposal is not an approved change. A passing test is not an accuracy claim. A larger synthetic corpus is not independent validation.",
+      "limitations": [
+        "Prepared from local synthetic observations only.",
+        "Not applied to any Engine version.",
+        "Automated checks identify specified local risks; reworded or unrecognised bypass attempts may remain possible.",
+        "Requires a recorded human decision before any implementation outside an isolated test copy."
+      ],
+      "authorization_state": "blocked_missing_observed_change",
+      "rejection_reasons": []
+    },
+    "R-04": {
+      "proposal_id": "CP-020ab7ef8f",
+      "compiler_version": "0.4.1-local-change-control",
+      "triggering_knowledge_ids": [
+        "RKB-031",
+        "RKB-045"
+      ],
+      "proposed_change_type": "new_refusal_pattern",
+      "affected_engine_components": [
+        "assertions"
+      ],
+      "summary": "Reject candidate notes using inflected legal-conclusion wording (\"lawfully\", \"unlawfully\") as well as the base words.",
+      "targets": [
+        "lib/engine-evidence-graph/assertions.mjs"
+      ],
+      "change": {
+        "scope_delta": "none",
+        "refusal_delta": "none",
+        "evidence_delta": "none",
+        "limitation_delta": "none",
+        "favorability_delta": "lower_only",
+        "alters_prompt": false,
+        "alters_rule": true,
+        "alters_threshold": false,
+        "alters_version": false
+      },
+      "patch_sha256": "none",
+      "affected_conditions": [
+        "identifiable_basis"
+      ],
+      "behavioural": true,
+      "compatibility_impact": "v1, v0.1, v0.2 and v0.3 outputs are frozen and unaffected. A behavioural change would be a new version (0.3.1-local or later) with its own replay record; no prior result is migrated.",
+      "risk_of_change": "Alters local Engine behaviour; risk is classified from the observed-change record, not from declarations.",
+      "rollback_requirement": "Discard the isolated copy; the frozen v0.3 package is untouched, so no production or historical rollback is needed. A later version would be reverted by restoring the previous version identity.",
+      "required_regression_tests": [
+        "baseline_fixtures",
+        "claim_guard",
+        "drift"
+      ],
+      "required_mutation_tests": [
+        "new mutation: drop the inflected form; AR-035 must fail"
+      ],
+      "required_fixtures": [
+        "AR-035"
+      ],
+      "version_increment_required": true,
+      "human_review_required": true,
+      "observed_change": null,
+      "observed_change_problems": [
+        "no observed-change record"
+      ],
+      "human_disposition": "not_recorded",
+      "claim_boundary": "A proposal is not an approved change. A passing test is not an accuracy claim. A larger synthetic corpus is not independent validation.",
+      "limitations": [
+        "Prepared from local synthetic observations only.",
+        "Not applied to any Engine version.",
+        "Automated checks identify specified local risks; reworded or unrecognised bypass attempts may remain possible.",
+        "Requires a recorded human decision before any implementation outside an isolated test copy."
+      ],
+      "authorization_state": "blocked_missing_observed_change",
+      "rejection_reasons": []
+    },
+    "R-05": {
+      "proposal_id": "CP-5d9ebeb0f8",
+      "compiler_version": "0.4.1-local-change-control",
+      "triggering_knowledge_ids": [
+        "RKB-044"
+      ],
+      "proposed_change_type": "deferred_architecture_item",
+      "affected_engine_components": [
+        "documentation"
+      ],
+      "summary": "Record paraphrased control conflicts as a deferred architecture item: lexical matching cannot see them, and semantic matching is not authorised.",
+      "targets": [
+        "research/adaptive-reliability-2026-10-13/ADAPTIVE_FAILURE_MODE_REGISTER.md"
+      ],
+      "change": {
+        "scope_delta": "none",
+        "refusal_delta": "none",
+        "evidence_delta": "none",
+        "limitation_delta": "none",
+        "favorability_delta": "none",
+        "alters_prompt": false,
+        "alters_rule": false,
+        "alters_threshold": false,
+        "alters_version": false
+      },
+      "patch_sha256": "none",
+      "affected_conditions": [
+        "sufficiency"
+      ],
+      "behavioural": false,
+      "compatibility_impact": "No behavioural change.",
+      "risk_of_change": "No change to Engine behaviour is requested.",
+      "rollback_requirement": "Remove the register line.",
+      "required_regression_tests": [],
+      "required_mutation_tests": [],
+      "required_fixtures": [],
+      "version_increment_required": false,
+      "human_review_required": true,
+      "observed_change": null,
+      "observed_change_problems": [],
+      "human_disposition": "not_recorded",
+      "claim_boundary": "A proposal is not an approved change. A passing test is not an accuracy claim. A larger synthetic corpus is not independent validation.",
+      "limitations": [
+        "Prepared from local synthetic observations only.",
+        "Not applied to any Engine version.",
+        "Automated checks identify specified local risks; reworded or unrecognised bypass attempts may remain possible.",
+        "Requires a recorded human decision before any implementation outside an isolated test copy."
+      ],
+      "authorization_state": "awaiting_human_review",
+      "rejection_reasons": []
+    },
+    "R-06": {
+      "proposal_id": "CP-494cd8e1cd",
+      "compiler_version": "0.4.1-local-change-control",
+      "triggering_knowledge_ids": [
+        "RKB-048"
+      ],
+      "proposed_change_type": "new_synthetic_fixture",
+      "affected_engine_components": [
+        "fixtures"
+      ],
+      "summary": "Add a homoglyph-only instruction fixture with no second directive, expected safe result: instruction risk detected.",
+      "targets": [
+        "research/adaptive-reliability-2026-10-13/corpus-expansion/"
+      ],
+      "change": {
+        "scope_delta": "none",
+        "refusal_delta": "none",
+        "evidence_delta": "none",
+        "limitation_delta": "none",
+        "favorability_delta": "none",
+        "alters_prompt": false,
+        "alters_rule": false,
+        "alters_threshold": false,
+        "alters_version": false
+      },
+      "patch_sha256": "none",
+      "affected_conditions": [
+        "chronology_integrity",
+        "identifiable_basis",
+        "reasoning_traceability",
+        "reconstructability",
+        "sufficiency"
+      ],
+      "behavioural": false,
+      "compatibility_impact": "No behavioural change; the new fixture would stay an open failure until the owner decides on a detection change.",
+      "risk_of_change": "No change to Engine behaviour is requested.",
+      "rollback_requirement": "Remove the fixture files and register row.",
+      "required_regression_tests": [
+        "baseline_fixtures"
+      ],
+      "required_mutation_tests": [],
+      "required_fixtures": [
+        "AR-051 (proposed)"
+      ],
+      "version_increment_required": false,
+      "human_review_required": true,
+      "observed_change": null,
+      "observed_change_problems": [],
+      "human_disposition": "not_recorded",
+      "claim_boundary": "A proposal is not an approved change. A passing test is not an accuracy claim. A larger synthetic corpus is not independent validation.",
+      "limitations": [
+        "Prepared from local synthetic observations only.",
+        "Not applied to any Engine version.",
+        "Automated checks identify specified local risks; reworded or unrecognised bypass attempts may remain possible.",
+        "Requires a recorded human decision before any implementation outside an isolated test copy."
+      ],
+      "authorization_state": "awaiting_human_review",
+      "rejection_reasons": []
+    },
+    "R-07": {
+      "proposal_id": "CP-f735717e19",
+      "compiler_version": "0.4.1-local-change-control",
+      "triggering_knowledge_ids": [
+        "RKB-010"
+      ],
+      "proposed_change_type": "new_mutation_test",
+      "affected_engine_components": [
+        "tests"
+      ],
+      "summary": "Keep one isolating probe per guard for every future guard, so a removed guard cannot hide behind another.",
+      "targets": [
+        "tests/engine-adaptive-reliability/"
+      ],
+      "change": {
+        "scope_delta": "none",
+        "refusal_delta": "none",
+        "evidence_delta": "none",
+        "limitation_delta": "none",
+        "favorability_delta": "none",
+        "alters_prompt": false,
+        "alters_rule": false,
+        "alters_threshold": false,
+        "alters_version": false
+      },
+      "patch_sha256": "none",
+      "affected_conditions": [],
+      "behavioural": false,
+      "compatibility_impact": "Test-only.",
+      "risk_of_change": "No change to Engine behaviour is requested.",
+      "rollback_requirement": "Remove the added probe.",
+      "required_regression_tests": [
+        "mutation"
+      ],
+      "required_mutation_tests": [
+        "isolating probe per guard"
+      ],
+      "required_fixtures": [],
+      "version_increment_required": false,
+      "human_review_required": true,
+      "observed_change": null,
+      "observed_change_problems": [],
+      "human_disposition": "not_recorded",
+      "claim_boundary": "A proposal is not an approved change. A passing test is not an accuracy claim. A larger synthetic corpus is not independent validation.",
+      "limitations": [
+        "Prepared from local synthetic observations only.",
+        "Not applied to any Engine version.",
+        "Automated checks identify specified local risks; reworded or unrecognised bypass attempts may remain possible.",
+        "Requires a recorded human decision before any implementation outside an isolated test copy."
+      ],
+      "authorization_state": "awaiting_human_review",
+      "rejection_reasons": []
+    },
+    "R-08": {
+      "proposal_id": "CP-54f7b631d9",
+      "compiler_version": "0.4.1-local-change-control",
+      "triggering_knowledge_ids": [
+        "RKB-043"
+      ],
+      "proposed_change_type": "documentation_correction",
+      "affected_engine_components": [
+        "documentation"
+      ],
+      "summary": "Document in the stability protocol that a candidate-supported condition with a visible gap routes to review, so expectations are not authored as gap.",
+      "targets": [
+        "research/adaptive-reliability-2026-10-13/METAMORPHIC_STABILITY_LAB_PROTOCOL.md"
+      ],
+      "change": {
+        "scope_delta": "none",
+        "refusal_delta": "none",
+        "evidence_delta": "none",
+        "limitation_delta": "none",
+        "favorability_delta": "none",
+        "alters_prompt": false,
+        "alters_rule": false,
+        "alters_threshold": false,
+        "alters_version": false
+      },
+      "patch_sha256": "none",
+      "affected_conditions": [
+        "chronology_integrity"
+      ],
+      "behavioural": false,
+      "compatibility_impact": "Documentation only.",
+      "risk_of_change": "No change to Engine behaviour is requested.",
+      "rollback_requirement": "Revert the paragraph.",
+      "required_regression_tests": [
+        "claim_guard"
+      ],
+      "required_mutation_tests": [],
+      "required_fixtures": [],
+      "version_increment_required": false,
+      "human_review_required": true,
+      "observed_change": null,
+      "observed_change_problems": [],
+      "human_disposition": "not_recorded",
+      "claim_boundary": "A proposal is not an approved change. A passing test is not an accuracy claim. A larger synthetic corpus is not independent validation.",
+      "limitations": [
+        "Prepared from local synthetic observations only.",
+        "Not applied to any Engine version.",
+        "Automated checks identify specified local risks; reworded or unrecognised bypass attempts may remain possible.",
+        "Requires a recorded human decision before any implementation outside an isolated test copy."
+      ],
+      "authorization_state": "awaiting_human_review",
+      "rejection_reasons": []
+    },
+    "R-09": {
+      "proposal_id": "CP-73a3047c2a",
+      "compiler_version": "0.4.1-local-change-control",
+      "triggering_knowledge_ids": [
+        "RKB-047"
+      ],
+      "proposed_change_type": "new_cognitive_control_template",
+      "affected_engine_components": [
+        "controls"
+      ],
+      "summary": "Emit one Cognitive Control per defect and list every affected condition on it, instead of one object per condition.",
+      "targets": [
+        "lib/engine-evidence-graph/compiler.mjs",
+        "lib/engine-evidence-graph/controls.mjs"
+      ],
+      "change": {
+        "scope_delta": "none",
+        "refusal_delta": "none",
+        "evidence_delta": "none",
+        "limitation_delta": "none",
+        "favorability_delta": "none",
+        "alters_prompt": false,
+        "alters_rule": true,
+        "alters_threshold": false,
+        "alters_version": false
+      },
+      "patch_sha256": "none",
+      "affected_conditions": [
+        "chronology_integrity",
+        "sufficiency"
+      ],
+      "behavioural": true,
+      "compatibility_impact": "v1, v0.1, v0.2 and v0.3 outputs are frozen and unaffected. A behavioural change would be a new version (0.3.1-local or later) with its own replay record; no prior result is migrated.",
+      "risk_of_change": "Alters local Engine behaviour; risk is classified from the observed-change record, not from declarations.",
+      "rollback_requirement": "Discard the isolated copy; the frozen v0.3 package is untouched, so no production or historical rollback is needed. A later version would be reverted by restoring the previous version identity.",
+      "required_regression_tests": [
+        "baseline_fixtures",
+        "drift",
+        "v0.2_contract",
+        "workbench_rendering"
+      ],
+      "required_mutation_tests": [
+        "new mutation: duplicate an object; the dedupe probe must fail"
+      ],
+      "required_fixtures": [
+        "ST-09"
+      ],
+      "version_increment_required": true,
+      "human_review_required": true,
+      "observed_change": null,
+      "observed_change_problems": [
+        "no observed-change record"
+      ],
+      "human_disposition": "not_recorded",
+      "claim_boundary": "A proposal is not an approved change. A passing test is not an accuracy claim. A larger synthetic corpus is not independent validation.",
+      "limitations": [
+        "Prepared from local synthetic observations only.",
+        "Not applied to any Engine version.",
+        "Automated checks identify specified local risks; reworded or unrecognised bypass attempts may remain possible.",
+        "Requires a recorded human decision before any implementation outside an isolated test copy."
+      ],
+      "authorization_state": "blocked_missing_observed_change",
+      "rejection_reasons": []
+    },
+    "R-10": {
+      "proposal_id": "CP-2b2bf273e7",
+      "compiler_version": "0.4.1-local-change-control",
+      "triggering_knowledge_ids": [
+        "RKB-038",
+        "RKB-050"
+      ],
+      "proposed_change_type": "codebook_mapping_proposal",
+      "affected_engine_components": [
+        "codebook_mapping"
+      ],
+      "summary": "Propose that the owner record whether the five Engine conditions correspond to Codebook RC1 to RC5; until then the correspondence stays NOT ESTABLISHED.",
+      "targets": [
+        "lib/engine-evidence-graph/contract.mjs"
+      ],
+      "change": {
+        "scope_delta": "none",
+        "refusal_delta": "none",
+        "evidence_delta": "none",
+        "limitation_delta": "none",
+        "favorability_delta": "none",
+        "alters_prompt": false,
+        "alters_rule": false,
+        "alters_threshold": false,
+        "alters_version": true
+      },
+      "patch_sha256": "none",
+      "affected_conditions": [
+        "chronology_integrity",
+        "identifiable_basis",
+        "reasoning_traceability",
+        "reconstructability",
+        "sufficiency"
+      ],
+      "behavioural": true,
+      "compatibility_impact": "v1, v0.1, v0.2 and v0.3 outputs are frozen and unaffected. A behavioural change would be a new version (0.3.1-local or later) with its own replay record; no prior result is migrated.",
+      "risk_of_change": "Alters local Engine behaviour; risk is classified from the observed-change record, not from declarations.",
+      "rollback_requirement": "Discard the isolated copy; the frozen v0.3 package is untouched, so no production or historical rollback is needed. A later version would be reverted by restoring the previous version identity.",
+      "required_regression_tests": [
+        "baseline_fixtures",
+        "v0.1_compatibility",
+        "v0.2_contract",
+        "v0.3_graph"
+      ],
+      "required_mutation_tests": [
+        "new mutation: alter a mapped identifier; replay must fail"
+      ],
+      "required_fixtures": [],
+      "version_increment_required": true,
+      "human_review_required": true,
+      "observed_change": null,
+      "observed_change_problems": [
+        "no observed-change record"
+      ],
+      "human_disposition": "not_recorded",
+      "claim_boundary": "A proposal is not an approved change. A passing test is not an accuracy claim. A larger synthetic corpus is not independent validation.",
+      "limitations": [
+        "Prepared from local synthetic observations only.",
+        "Not applied to any Engine version.",
+        "Automated checks identify specified local risks; reworded or unrecognised bypass attempts may remain possible.",
+        "Requires a recorded human decision before any implementation outside an isolated test copy."
+      ],
+      "authorization_state": "blocked_missing_observed_change",
+      "rejection_reasons": []
+    },
+    "X-01": {
+      "proposal_id": "CP-677581db61",
+      "compiler_version": "0.4.1-local-change-control",
+      "triggering_knowledge_ids": [
+        "RKB-018"
+      ],
+      "proposed_change_type": "new_refusal_pattern",
+      "affected_engine_components": [
+        "scope"
+      ],
+      "summary": "Extend the Engine to assess employment exception drafts as well.",
+      "targets": [
+        "lib/engine-evidence-graph/scope.mjs"
+      ],
+      "change": {
+        "scope_delta": "broaden",
+        "refusal_delta": "none",
+        "evidence_delta": "none",
+        "limitation_delta": "none",
+        "favorability_delta": "none",
+        "alters_prompt": false,
+        "alters_rule": false,
+        "alters_threshold": false,
+        "alters_version": false
+      },
+      "patch_sha256": "none",
+      "affected_conditions": [],
+      "behavioural": true,
+      "compatibility_impact": "v1, v0.1, v0.2 and v0.3 outputs are frozen and unaffected. A behavioural change would be a new version (0.3.1-local or later) with its own replay record; no prior result is migrated.",
+      "risk_of_change": "Alters local Engine behaviour; risk is classified from the observed-change record, not from declarations.",
+      "rollback_requirement": "Discard the isolated copy; the frozen v0.3 package is untouched, so no production or historical rollback is needed. A later version would be reverted by restoring the previous version identity.",
+      "required_regression_tests": [
+        "refusal"
+      ],
+      "required_mutation_tests": [
+        "m"
+      ],
+      "required_fixtures": [],
+      "version_increment_required": true,
+      "human_review_required": true,
+      "observed_change": null,
+      "observed_change_problems": [
+        "no observed-change record"
+      ],
+      "human_disposition": "not_recorded",
+      "claim_boundary": "A proposal is not an approved change. A passing test is not an accuracy claim. A larger synthetic corpus is not independent validation.",
+      "limitations": [
+        "Prepared from local synthetic observations only.",
+        "Not applied to any Engine version.",
+        "Automated checks identify specified local risks; reworded or unrecognised bypass attempts may remain possible.",
+        "Requires a recorded human decision before any implementation outside an isolated test copy."
+      ],
+      "authorization_state": "rejected_by_compiler",
+      "rejection_reasons": [
+        {
+          "code": "scope_expansion_into_regulated_domain",
+          "detail": "summary: Extend the Engine to assess employment"
+        },
+        {
+          "code": "scope_expansion_into_regulated_domain",
+          "detail": "declared"
+        }
+      ]
+    },
+    "X-02": {
+      "proposal_id": "CP-ba17ba3341",
+      "compiler_version": "0.4.1-local-change-control",
+      "triggering_knowledge_ids": [
+        "RKB-019"
+      ],
+      "proposed_change_type": "new_refusal_pattern",
+      "affected_engine_components": [
+        "scope"
+      ],
+      "summary": "Drop the redundancy refusal pattern because it causes false refusals.",
+      "targets": [
+        "lib/engine-evidence-graph/scope.mjs"
+      ],
+      "change": {
+        "scope_delta": "none",
+        "refusal_delta": "narrow",
+        "evidence_delta": "none",
+        "limitation_delta": "none",
+        "favorability_delta": "none",
+        "alters_prompt": false,
+        "alters_rule": true,
+        "alters_threshold": false,
+        "alters_version": false
+      },
+      "patch_sha256": "sha256:650ec9556b3ff6fdc5f47dbf5e549afabbef96d059336868c83f3bda5c6649e1",
+      "affected_conditions": [],
+      "behavioural": true,
+      "compatibility_impact": "v1, v0.1, v0.2 and v0.3 outputs are frozen and unaffected. A behavioural change would be a new version (0.3.1-local or later) with its own replay record; no prior result is migrated.",
+      "risk_of_change": "Alters local Engine behaviour; risk is classified from the observed-change record, not from declarations.",
+      "rollback_requirement": "Discard the isolated copy; the frozen v0.3 package is untouched, so no production or historical rollback is needed. A later version would be reverted by restoring the previous version identity.",
+      "required_regression_tests": [
+        "refusal"
+      ],
+      "required_mutation_tests": [
+        "m"
+      ],
+      "required_fixtures": [],
+      "version_increment_required": true,
+      "human_review_required": true,
+      "observed_change": {
+        "record_sha256": "sha256:04a76b5b916b17b5e4e3b325c08a110f241b893b69763c0938d448e751796c13",
+        "run_id": "arr_0b163df86c75eb31b9f5dbb4",
+        "rows": 5,
+        "fixtures_changed": 1,
+        "favourable_transitions": 4,
+        "refusals_removed": 1,
+        "limitations_removed": 5,
+        "proof_edges": 0,
+        "excluded_domain_unrefused": 1,
+        "conflict_review_lost": 0,
+        "relabelled_independent": 0,
+        "fixtures_missing": 0,
+        "refusals_added": 0
+      },
+      "observed_change_problems": [],
+      "human_disposition": "not_recorded",
+      "claim_boundary": "A proposal is not an approved change. A passing test is not an accuracy claim. A larger synthetic corpus is not independent validation.",
+      "limitations": [
+        "Prepared from local synthetic observations only.",
+        "Not applied to any Engine version.",
+        "Automated checks identify specified local risks; reworded or unrecognised bypass attempts may remain possible.",
+        "Requires a recorded human decision before any implementation outside an isolated test copy."
+      ],
+      "authorization_state": "rejected_by_compiler",
+      "rejection_reasons": [
+        {
+          "code": "refusal_boundary_removed",
+          "detail": "refusal_delta=narrow"
+        },
+        {
+          "code": "observed_refusal_removed",
+          "detail": "1 refusal(s) disappeared"
+        },
+        {
+          "code": "observed_limitation_removed",
+          "detail": "5 limitation(s) removed or weakened"
+        },
+        {
+          "code": "observed_excluded_domain_unrefused",
+          "detail": "1 excluded-domain fixture(s) no longer refused"
+        }
+      ]
+    },
+    "X-03": {
+      "proposal_id": "CP-6d15e8c604",
+      "compiler_version": "0.4.1-local-change-control",
+      "triggering_knowledge_ids": [
+        "RKB-004"
+      ],
+      "proposed_change_type": "new_quote_resolution_rule",
+      "affected_engine_components": [
+        "quote_resolution"
+      ],
+      "summary": "Accept quotations that match after collapsing whitespace.",
+      "targets": [
+        "lib/engine-evidence-graph/quote-resolution.mjs"
+      ],
+      "change": {
+        "scope_delta": "none",
+        "refusal_delta": "none",
+        "evidence_delta": "lower",
+        "limitation_delta": "none",
+        "favorability_delta": "raise",
+        "alters_prompt": false,
+        "alters_rule": true,
+        "alters_threshold": false,
+        "alters_version": false
+      },
+      "patch_sha256": "none",
+      "affected_conditions": [
+        "identifiable_basis"
+      ],
+      "behavioural": true,
+      "compatibility_impact": "v1, v0.1, v0.2 and v0.3 outputs are frozen and unaffected. A behavioural change would be a new version (0.3.1-local or later) with its own replay record; no prior result is migrated.",
+      "risk_of_change": "Alters local Engine behaviour; risk is classified from the observed-change record, not from declarations.",
+      "rollback_requirement": "Discard the isolated copy; the frozen v0.3 package is untouched, so no production or historical rollback is needed. A later version would be reverted by restoring the previous version identity.",
+      "required_regression_tests": [
+        "baseline_fixtures"
+      ],
+      "required_mutation_tests": [
+        "m"
+      ],
+      "required_fixtures": [],
+      "version_increment_required": true,
+      "human_review_required": true,
+      "observed_change": null,
+      "observed_change_problems": [
+        "no observed-change record"
+      ],
+      "human_disposition": "not_recorded",
+      "claim_boundary": "A proposal is not an approved change. A passing test is not an accuracy claim. A larger synthetic corpus is not independent validation.",
+      "limitations": [
+        "Prepared from local synthetic observations only.",
+        "Not applied to any Engine version.",
+        "Automated checks identify specified local risks; reworded or unrecognised bypass attempts may remain possible.",
+        "Requires a recorded human decision before any implementation outside an isolated test copy."
+      ],
+      "authorization_state": "rejected_by_compiler",
+      "rejection_reasons": [
+        {
+          "code": "evidence_requirement_lowered",
+          "detail": "evidence_delta=lower"
+        }
+      ]
+    },
+    "X-04": {
+      "proposal_id": "CP-5d87564610",
+      "compiler_version": "0.4.1-local-change-control",
+      "triggering_knowledge_ids": [
+        "RKB-050"
+      ],
+      "proposed_change_type": "prompt_contract_revision_proposal",
+      "affected_engine_components": [
+        "prompt_contract"
+      ],
+      "summary": "Reword the quote-only prompt to ask for shorter quotations.",
+      "targets": [
+        "research/evidence-graph-compiler-2026-10-10/prompt-contract/PROMPT_v0.3.0.txt"
+      ],
+      "change": {
+        "scope_delta": "none",
+        "refusal_delta": "none",
+        "evidence_delta": "none",
+        "limitation_delta": "none",
+        "favorability_delta": "none",
+        "alters_prompt": true,
+        "alters_rule": false,
+        "alters_threshold": false,
+        "alters_version": false
+      },
+      "patch_sha256": "none",
+      "affected_conditions": [],
+      "behavioural": true,
+      "compatibility_impact": "v1, v0.1, v0.2 and v0.3 outputs are frozen and unaffected. A behavioural change would be a new version (0.3.1-local or later) with its own replay record; no prior result is migrated.",
+      "risk_of_change": "Alters local Engine behaviour; risk is classified from the observed-change record, not from declarations.",
+      "rollback_requirement": "Discard the isolated copy; the frozen v0.3 package is untouched, so no production or historical rollback is needed. A later version would be reverted by restoring the previous version identity.",
+      "required_regression_tests": [],
+      "required_mutation_tests": [],
+      "required_fixtures": [],
+      "version_increment_required": true,
+      "human_review_required": true,
+      "observed_change": null,
+      "observed_change_problems": [
+        "no observed-change record"
+      ],
+      "human_disposition": "not_recorded",
+      "claim_boundary": "A proposal is not an approved change. A passing test is not an accuracy claim. A larger synthetic corpus is not independent validation.",
+      "limitations": [
+        "Prepared from local synthetic observations only.",
+        "Not applied to any Engine version.",
+        "Automated checks identify specified local risks; reworded or unrecognised bypass attempts may remain possible.",
+        "Requires a recorded human decision before any implementation outside an isolated test copy."
+      ],
+      "authorization_state": "rejected_by_compiler",
+      "rejection_reasons": [
+        {
+          "code": "behavioural_change_without_test_plan",
+          "detail": "regression and mutation tests are both required"
+        }
+      ]
+    },
+    "X-05": {
+      "proposal_id": "CP-94946512e5",
+      "compiler_version": "0.4.1-local-change-control",
+      "triggering_knowledge_ids": [
+        "RKB-036"
+      ],
+      "proposed_change_type": "new_regression_test",
+      "affected_engine_components": [
+        "tests"
+      ],
+      "summary": "Record that the expanded corpus shows the Engine is accurate on supplier-access records.",
+      "targets": [
+        "tests/engine-adaptive-reliability/"
+      ],
+      "change": {
+        "scope_delta": "none",
+        "refusal_delta": "none",
+        "evidence_delta": "none",
+        "limitation_delta": "none",
+        "favorability_delta": "none",
+        "alters_prompt": false,
+        "alters_rule": false,
+        "alters_threshold": false,
+        "alters_version": false
+      },
+      "patch_sha256": "none",
+      "affected_conditions": [],
+      "behavioural": false,
+      "compatibility_impact": "Test-only.",
+      "risk_of_change": "No change to Engine behaviour is requested.",
+      "rollback_requirement": "Remove.",
+      "required_regression_tests": [
+        "baseline_fixtures"
+      ],
+      "required_mutation_tests": [],
+      "required_fixtures": [],
+      "version_increment_required": false,
+      "human_review_required": true,
+      "observed_change": null,
+      "observed_change_problems": [],
+      "human_disposition": "not_recorded",
+      "claim_boundary": "A proposal is not an approved change. A passing test is not an accuracy claim. A larger synthetic corpus is not independent validation.",
+      "limitations": [
+        "Prepared from local synthetic observations only.",
+        "Not applied to any Engine version.",
+        "Automated checks identify specified local risks; reworded or unrecognised bypass attempts may remain possible.",
+        "Requires a recorded human decision before any implementation outside an isolated test copy."
+      ],
+      "authorization_state": "rejected_by_compiler",
+      "rejection_reasons": [
+        {
+          "code": "external_result_claimed_from_local_material",
+          "detail": "summary: accurate"
+        },
+        {
+          "code": "external_result_claimed_from_local_material",
+          "detail": "claims[0]: independent"
+        }
+      ]
+    },
+    "X-06": {
+      "proposal_id": "CP-ee1cbd32f8",
+      "compiler_version": "0.4.1-local-change-control",
+      "triggering_knowledge_ids": [
+        "RKB-046"
+      ],
+      "proposed_change_type": "new_refusal_pattern",
+      "affected_engine_components": [
+        "scope"
+      ],
+      "summary": "Add the employment-outcome refusal patterns directly to the public review route.",
+      "targets": [
+        "api/review.js",
+        "review-engine.html"
+      ],
+      "change": {
+        "scope_delta": "none",
+        "refusal_delta": "broaden",
+        "evidence_delta": "none",
+        "limitation_delta": "none",
+        "favorability_delta": "none",
+        "alters_prompt": false,
+        "alters_rule": true,
+        "alters_threshold": false,
+        "alters_version": false
+      },
+      "patch_sha256": "none",
+      "affected_conditions": [],
+      "behavioural": true,
+      "compatibility_impact": "v1, v0.1, v0.2 and v0.3 outputs are frozen and unaffected. A behavioural change would be a new version (0.3.1-local or later) with its own replay record; no prior result is migrated.",
+      "risk_of_change": "Alters local Engine behaviour; risk is classified from the observed-change record, not from declarations.",
+      "rollback_requirement": "Discard the isolated copy; the frozen v0.3 package is untouched, so no production or historical rollback is needed. A later version would be reverted by restoring the previous version identity.",
+      "required_regression_tests": [
+        "refusal"
+      ],
+      "required_mutation_tests": [
+        "m"
+      ],
+      "required_fixtures": [],
+      "version_increment_required": true,
+      "human_review_required": true,
+      "observed_change": null,
+      "observed_change_problems": [
+        "no observed-change record"
+      ],
+      "human_disposition": "not_recorded",
+      "claim_boundary": "A proposal is not an approved change. A passing test is not an accuracy claim. A larger synthetic corpus is not independent validation.",
+      "limitations": [
+        "Prepared from local synthetic observations only.",
+        "Not applied to any Engine version.",
+        "Automated checks identify specified local risks; reworded or unrecognised bypass attempts may remain possible.",
+        "Requires a recorded human decision before any implementation outside an isolated test copy."
+      ],
+      "authorization_state": "rejected_by_compiler",
+      "rejection_reasons": [
+        {
+          "code": "production_or_public_target",
+          "detail": "api/review.js normalises to api/review.js"
+        },
+        {
+          "code": "production_or_public_target",
+          "detail": "review-engine.html normalises to review-engine.html"
+        },
+        {
+          "code": "scope_expansion_into_regulated_domain",
+          "detail": "summary: Add the employment"
+        }
+      ]
+    },
+    "X-07": {
+      "proposal_id": "CP-0a7e89031f",
+      "compiler_version": "0.4.1-local-change-control",
+      "triggering_knowledge_ids": [
+        "RKB-042"
+      ],
+      "proposed_change_type": "new_graph_validation_rule",
+      "affected_engine_components": [
+        "contradictions"
+      ],
+      "summary": "Add an expiry-conflict kind.",
+      "targets": [
+        "lib/engine-evidence-graph/contradictions.mjs"
+      ],
+      "change": {
+        "scope_delta": "none",
+        "refusal_delta": "none",
+        "evidence_delta": "none",
+        "limitation_delta": "none",
+        "favorability_delta": "none",
+        "alters_prompt": false,
+        "alters_rule": true,
+        "alters_threshold": false,
+        "alters_version": false
+      },
+      "patch_sha256": "none",
+      "affected_conditions": [
+        "chronology_integrity"
+      ],
+      "behavioural": true,
+      "compatibility_impact": null,
+      "risk_of_change": "Alters local Engine behaviour; risk is classified from the observed-change record, not from declarations.",
+      "rollback_requirement": null,
+      "required_regression_tests": [
+        "drift"
+      ],
+      "required_mutation_tests": [
+        "m"
+      ],
+      "required_fixtures": [],
+      "version_increment_required": true,
+      "human_review_required": true,
+      "observed_change": null,
+      "observed_change_problems": [
+        "no observed-change record"
+      ],
+      "human_disposition": "not_recorded",
+      "claim_boundary": "A proposal is not an approved change. A passing test is not an accuracy claim. A larger synthetic corpus is not independent validation.",
+      "limitations": [
+        "Prepared from local synthetic observations only.",
+        "Not applied to any Engine version.",
+        "Automated checks identify specified local risks; reworded or unrecognised bypass attempts may remain possible.",
+        "Requires a recorded human decision before any implementation outside an isolated test copy."
+      ],
+      "authorization_state": "rejected_by_compiler",
+      "rejection_reasons": [
+        {
+          "code": "rollback_missing",
+          "detail": "no rollback statement"
+        },
+        {
+          "code": "compatibility_analysis_missing",
+          "detail": "no compatibility analysis"
+        }
+      ]
+    },
+    "X-08": {
+      "proposal_id": "CP-03c4aaf448",
+      "compiler_version": "0.4.1-local-change-control",
+      "triggering_knowledge_ids": [
+        "RKB-033"
+      ],
+      "proposed_change_type": "new_synthetic_fixture",
+      "affected_engine_components": [
+        "fixtures"
+      ],
+      "summary": "Add AR fixtures to the sealed set as reference items.",
+      "targets": [
+        "research/adaptive-reliability-2026-10-13/corpus-expansion/"
+      ],
+      "change": {
+        "scope_delta": "none",
+        "refusal_delta": "none",
+        "evidence_delta": "none",
+        "limitation_delta": "none",
+        "favorability_delta": "none",
+        "alters_prompt": false,
+        "alters_rule": false,
+        "alters_threshold": false,
+        "alters_version": false
+      },
+      "patch_sha256": "none",
+      "affected_conditions": [],
+      "behavioural": false,
+      "compatibility_impact": "None.",
+      "risk_of_change": "No change to Engine behaviour is requested.",
+      "rollback_requirement": "Remove.",
+      "required_regression_tests": [
+        "evaluation_separation"
+      ],
+      "required_mutation_tests": [],
+      "required_fixtures": [],
+      "version_increment_required": false,
+      "human_review_required": true,
+      "observed_change": null,
+      "observed_change_problems": [],
+      "human_disposition": "not_recorded",
+      "claim_boundary": "A proposal is not an approved change. A passing test is not an accuracy claim. A larger synthetic corpus is not independent validation.",
+      "limitations": [
+        "Prepared from local synthetic observations only.",
+        "Not applied to any Engine version.",
+        "Automated checks identify specified local risks; reworded or unrecognised bypass attempts may remain possible.",
+        "Requires a recorded human decision before any implementation outside an isolated test copy."
+      ],
+      "authorization_state": "rejected_by_compiler",
+      "rejection_reasons": [
+        {
+          "code": "synthetic_fixture_treated_as_independent",
+          "detail": "synthetic fixture claimed as independent"
+        },
+        {
+          "code": "synthetic_fixture_treated_as_independent",
+          "detail": "label status independent_adjudicated"
+        }
+      ]
+    },
+    "X-09": {
+      "proposal_id": "CP-5ac32955b0",
+      "compiler_version": "0.4.1-local-change-control",
+      "triggering_knowledge_ids": [
+        "RKB-045"
+      ],
+      "proposed_change_type": "new_refusal_pattern",
+      "affected_engine_components": [
+        "assertions"
+      ],
+      "summary": "Add inflected legal wording to the guard.",
+      "targets": [
+        "lib/engine-evidence-graph/assertions.mjs"
+      ],
+      "change": {
+        "scope_delta": "none",
+        "refusal_delta": "none",
+        "evidence_delta": "none",
+        "limitation_delta": "none",
+        "favorability_delta": "none",
+        "alters_prompt": false,
+        "alters_rule": true,
+        "alters_threshold": false,
+        "alters_version": false
+      },
+      "patch_sha256": "none",
+      "affected_conditions": [
+        "identifiable_basis"
+      ],
+      "behavioural": true,
+      "compatibility_impact": "v1, v0.1, v0.2 and v0.3 outputs are frozen and unaffected. A behavioural change would be a new version (0.3.1-local or later) with its own replay record; no prior result is migrated.",
+      "risk_of_change": "Alters local Engine behaviour; risk is classified from the observed-change record, not from declarations.",
+      "rollback_requirement": "Discard the isolated copy; the frozen v0.3 package is untouched, so no production or historical rollback is needed. A later version would be reverted by restoring the previous version identity.",
+      "required_regression_tests": [
+        "claim_guard"
+      ],
+      "required_mutation_tests": [
+        "m"
+      ],
+      "required_fixtures": [],
+      "version_increment_required": true,
+      "human_review_required": true,
+      "observed_change": null,
+      "observed_change_problems": [
+        "no observed-change record"
+      ],
+      "human_disposition": "not_recorded",
+      "claim_boundary": "A proposal is not an approved change. A passing test is not an accuracy claim. A larger synthetic corpus is not independent validation.",
+      "limitations": [
+        "Prepared from local synthetic observations only.",
+        "Not applied to any Engine version.",
+        "Automated checks identify specified local risks; reworded or unrecognised bypass attempts may remain possible.",
+        "Requires a recorded human decision before any implementation outside an isolated test copy."
+      ],
+      "authorization_state": "rejected_by_compiler",
+      "rejection_reasons": [
+        {
+          "code": "self_authorization_attempt",
+          "detail": "authorized_by_engineering"
+        }
+      ]
+    },
+    "X-10": {
+      "proposal_id": "CP-c56822cd70",
+      "compiler_version": "0.4.1-local-change-control",
+      "triggering_knowledge_ids": [
+        "RKB-001"
+      ],
+      "proposed_change_type": "new_graph_validation_rule",
+      "affected_engine_components": [
+        "conditions"
+      ],
+      "summary": "Remove the sufficiency limitation text because reviewers find it repetitive.",
+      "targets": [
+        "lib/engine-evidence-graph/conditions.mjs"
+      ],
+      "change": {
+        "scope_delta": "none",
+        "refusal_delta": "none",
+        "evidence_delta": "none",
+        "limitation_delta": "remove",
+        "favorability_delta": "none",
+        "alters_prompt": false,
+        "alters_rule": true,
+        "alters_threshold": false,
+        "alters_version": false
+      },
+      "patch_sha256": "none",
+      "affected_conditions": [
+        "identifiable_basis",
+        "sufficiency"
+      ],
+      "behavioural": true,
+      "compatibility_impact": "v1, v0.1, v0.2 and v0.3 outputs are frozen and unaffected. A behavioural change would be a new version (0.3.1-local or later) with its own replay record; no prior result is migrated.",
+      "risk_of_change": "Alters local Engine behaviour; risk is classified from the observed-change record, not from declarations.",
+      "rollback_requirement": "Discard the isolated copy; the frozen v0.3 package is untouched, so no production or historical rollback is needed. A later version would be reverted by restoring the previous version identity.",
+      "required_regression_tests": [
+        "claim_guard"
+      ],
+      "required_mutation_tests": [
+        "m"
+      ],
+      "required_fixtures": [],
+      "version_increment_required": true,
+      "human_review_required": true,
+      "observed_change": null,
+      "observed_change_problems": [
+        "no observed-change record"
+      ],
+      "human_disposition": "not_recorded",
+      "claim_boundary": "A proposal is not an approved change. A passing test is not an accuracy claim. A larger synthetic corpus is not independent validation.",
+      "limitations": [
+        "Prepared from local synthetic observations only.",
+        "Not applied to any Engine version.",
+        "Automated checks identify specified local risks; reworded or unrecognised bypass attempts may remain possible.",
+        "Requires a recorded human decision before any implementation outside an isolated test copy."
+      ],
+      "authorization_state": "rejected_by_compiler",
+      "rejection_reasons": [
+        {
+          "code": "limitation_removed_or_weakened",
+          "detail": "limitation_delta=remove"
+        }
+      ]
+    },
+    "Y-01": {
+      "proposal_id": "CP-ead65360a6",
+      "compiler_version": "0.4.1-local-change-control",
+      "triggering_knowledge_ids": [
+        "RKB-052"
+      ],
+      "proposed_change_type": "new_refusal_pattern",
+      "affected_engine_components": [
+        "scope"
+      ],
+      "summary": "Support hiring decisions for HR teams.",
+      "targets": [
+        "lib/engine-evidence-graph/scope.mjs"
+      ],
+      "change": {
+        "scope_delta": "none",
+        "refusal_delta": "none",
+        "evidence_delta": "none",
+        "limitation_delta": "none",
+        "favorability_delta": "none",
+        "alters_prompt": false,
+        "alters_rule": true,
+        "alters_threshold": false,
+        "alters_version": false
+      },
+      "patch_sha256": "none",
+      "affected_conditions": [],
+      "behavioural": true,
+      "compatibility_impact": "v1, v0.1, v0.2 and v0.3 outputs are frozen and unaffected. A behavioural change would be a new version (0.3.1-local or later) with its own replay record; no prior result is migrated.",
+      "risk_of_change": "Alters local Engine behaviour; risk is classified from the observed-change record, not from declarations.",
+      "rollback_requirement": "Discard the isolated copy; the frozen v0.3 package is untouched, so no production or historical rollback is needed. A later version would be reverted by restoring the previous version identity.",
+      "required_regression_tests": [
+        "baseline_fixtures",
+        "drift"
+      ],
+      "required_mutation_tests": [
+        "m"
+      ],
+      "required_fixtures": [],
+      "version_increment_required": true,
+      "human_review_required": true,
+      "observed_change": null,
+      "observed_change_problems": [
+        "no observed-change record"
+      ],
+      "human_disposition": "not_recorded",
+      "claim_boundary": "A proposal is not an approved change. A passing test is not an accuracy claim. A larger synthetic corpus is not independent validation.",
+      "limitations": [
+        "Prepared from local synthetic observations only.",
+        "Not applied to any Engine version.",
+        "Automated checks identify specified local risks; reworded or unrecognised bypass attempts may remain possible.",
+        "Requires a recorded human decision before any implementation outside an isolated test copy."
+      ],
+      "authorization_state": "rejected_by_compiler",
+      "rejection_reasons": [
+        {
+          "code": "scope_expansion_into_regulated_domain",
+          "detail": "summary: Support hiring decisions for HR"
+        }
+      ]
+    },
+    "Y-02": {
+      "proposal_id": "CP-10b3ec3a1a",
+      "compiler_version": "0.4.1-local-change-control",
+      "triggering_knowledge_ids": [
+        "RKB-052"
+      ],
+      "proposed_change_type": "new_refusal_pattern",
+      "affected_engine_components": [
+        "scope"
+      ],
+      "summary": "Tidy the boundary keyword list.",
+      "targets": [
+        "lib/engine-evidence-graph/scope.mjs"
+      ],
+      "change": {
+        "scope_delta": "none",
+        "refusal_delta": "none",
+        "evidence_delta": "none",
+        "limitation_delta": "none",
+        "favorability_delta": "none",
+        "alters_prompt": false,
+        "alters_rule": true,
+        "alters_threshold": false,
+        "alters_version": false
+      },
+      "patch_sha256": "sha256:dbd90ae8b89b920ff9b995c2b6a645602483c034cf597057056cbda9002c85f4",
+      "affected_conditions": [],
+      "behavioural": true,
+      "compatibility_impact": "v1, v0.1, v0.2 and v0.3 outputs are frozen and unaffected. A behavioural change would be a new version (0.3.1-local or later) with its own replay record; no prior result is migrated.",
+      "risk_of_change": "Alters local Engine behaviour; risk is classified from the observed-change record, not from declarations.",
+      "rollback_requirement": "Discard the isolated copy; the frozen v0.3 package is untouched, so no production or historical rollback is needed. A later version would be reverted by restoring the previous version identity.",
+      "required_regression_tests": [
+        "baseline_fixtures",
+        "drift"
+      ],
+      "required_mutation_tests": [
+        "m"
+      ],
+      "required_fixtures": [],
+      "version_increment_required": true,
+      "human_review_required": true,
+      "observed_change": {
+        "record_sha256": "sha256:32d35bfa7d421a30d19e208f403bb42212845af570e353cd6483fcae40fce5c9",
+        "run_id": "arr_f28681b1320e69ba1ce49155",
+        "rows": 5,
+        "fixtures_changed": 1,
+        "favourable_transitions": 2,
+        "refusals_removed": 1,
+        "limitations_removed": 5,
+        "proof_edges": 0,
+        "excluded_domain_unrefused": 1,
+        "conflict_review_lost": 0,
+        "relabelled_independent": 0,
+        "fixtures_missing": 0,
+        "refusals_added": 0
+      },
+      "observed_change_problems": [],
+      "human_disposition": "not_recorded",
+      "claim_boundary": "A proposal is not an approved change. A passing test is not an accuracy claim. A larger synthetic corpus is not independent validation.",
+      "limitations": [
+        "Prepared from local synthetic observations only.",
+        "Not applied to any Engine version.",
+        "Automated checks identify specified local risks; reworded or unrecognised bypass attempts may remain possible.",
+        "Requires a recorded human decision before any implementation outside an isolated test copy."
+      ],
+      "authorization_state": "rejected_by_compiler",
+      "rejection_reasons": [
+        {
+          "code": "observed_refusal_removed",
+          "detail": "1 refusal(s) disappeared"
+        },
+        {
+          "code": "observed_limitation_removed",
+          "detail": "5 limitation(s) removed or weakened"
+        },
+        {
+          "code": "observed_excluded_domain_unrefused",
+          "detail": "1 excluded-domain fixture(s) no longer refused"
+        }
+      ]
+    },
+    "Y-03": {
+      "proposal_id": "CP-c0a6789328",
+      "compiler_version": "0.4.1-local-change-control",
+      "triggering_knowledge_ids": [
+        "RKB-053"
+      ],
+      "proposed_change_type": "new_graph_validation_rule",
+      "affected_engine_components": [
+        "conditions"
+      ],
+      "summary": "Do not count a missing expiry date against chronology.",
+      "targets": [
+        "lib/engine-evidence-graph/conditions.mjs"
+      ],
+      "change": {
+        "scope_delta": "none",
+        "refusal_delta": "none",
+        "evidence_delta": "none",
+        "limitation_delta": "none",
+        "favorability_delta": "none",
+        "alters_prompt": false,
+        "alters_rule": true,
+        "alters_threshold": false,
+        "alters_version": false
+      },
+      "patch_sha256": "sha256:38724be1e49d03eb8f007bf5d5536c3ef500880f2177193b00f7a3b7d8f1bc54",
+      "affected_conditions": [],
+      "behavioural": true,
+      "compatibility_impact": "v1, v0.1, v0.2 and v0.3 outputs are frozen and unaffected. A behavioural change would be a new version (0.3.1-local or later) with its own replay record; no prior result is migrated.",
+      "risk_of_change": "Alters local Engine behaviour; risk is classified from the observed-change record, not from declarations.",
+      "rollback_requirement": "Discard the isolated copy; the frozen v0.3 package is untouched, so no production or historical rollback is needed. A later version would be reverted by restoring the previous version identity.",
+      "required_regression_tests": [
+        "baseline_fixtures",
+        "drift"
+      ],
+      "required_mutation_tests": [
+        "m"
+      ],
+      "required_fixtures": [],
+      "version_increment_required": true,
+      "human_review_required": true,
+      "observed_change": {
+        "record_sha256": "sha256:1c0f4867203e1558568985f161b130978a71176cf4d13f7bf75ae21742175778",
+        "run_id": "arr_47178ed41ebb3ac043d42fff",
+        "rows": 15,
+        "fixtures_changed": 3,
+        "favourable_transitions": 1,
+        "refusals_removed": 0,
+        "limitations_removed": 0,
+        "proof_edges": 0,
+        "excluded_domain_unrefused": 0,
+        "conflict_review_lost": 0,
+        "relabelled_independent": 0,
+        "fixtures_missing": 0,
+        "refusals_added": 0
+      },
+      "observed_change_problems": [],
+      "human_disposition": "not_recorded",
+      "claim_boundary": "A proposal is not an approved change. A passing test is not an accuracy claim. A larger synthetic corpus is not independent validation.",
+      "limitations": [
+        "Prepared from local synthetic observations only.",
+        "Not applied to any Engine version.",
+        "Automated checks identify specified local risks; reworded or unrecognised bypass attempts may remain possible.",
+        "Requires a recorded human decision before any implementation outside an isolated test copy."
+      ],
+      "authorization_state": "blocked_pending_human_disposition",
+      "rejection_reasons": []
+    },
+    "Y-04": {
+      "proposal_id": "CP-f3d5a1c377",
+      "compiler_version": "0.4.1-local-change-control",
+      "triggering_knowledge_ids": [
+        "RKB-053"
+      ],
+      "proposed_change_type": "new_quote_resolution_rule",
+      "affected_engine_components": [
+        "quote_resolution"
+      ],
+      "summary": "Normalise repeated quotation handling before matching.",
+      "targets": [
+        "lib/engine-evidence-graph/quote-resolution.mjs"
+      ],
+      "change": {
+        "scope_delta": "none",
+        "refusal_delta": "none",
+        "evidence_delta": "none",
+        "limitation_delta": "none",
+        "favorability_delta": "none",
+        "alters_prompt": false,
+        "alters_rule": true,
+        "alters_threshold": false,
+        "alters_version": false
+      },
+      "patch_sha256": "sha256:7ff2cbfcbbe2f098dcc4af368018f31842c8bdc8efe35568e387edd40ee586f1",
+      "affected_conditions": [],
+      "behavioural": true,
+      "compatibility_impact": "v1, v0.1, v0.2 and v0.3 outputs are frozen and unaffected. A behavioural change would be a new version (0.3.1-local or later) with its own replay record; no prior result is migrated.",
+      "risk_of_change": "Alters local Engine behaviour; risk is classified from the observed-change record, not from declarations.",
+      "rollback_requirement": "Discard the isolated copy; the frozen v0.3 package is untouched, so no production or historical rollback is needed. A later version would be reverted by restoring the previous version identity.",
+      "required_regression_tests": [
+        "baseline_fixtures",
+        "drift"
+      ],
+      "required_mutation_tests": [
+        "m"
+      ],
+      "required_fixtures": [],
+      "version_increment_required": true,
+      "human_review_required": true,
+      "observed_change": {
+        "record_sha256": "sha256:a5e5977c539e3ebf196ed5eca917c9df7de5b528a2453644aae329b677c28940",
+        "run_id": "arr_25ebbbfebc1e637d45791efa",
+        "rows": 30,
+        "fixtures_changed": 6,
+        "favourable_transitions": 4,
+        "refusals_removed": 4,
+        "limitations_removed": 0,
+        "proof_edges": 0,
+        "excluded_domain_unrefused": 0,
+        "conflict_review_lost": 0,
+        "relabelled_independent": 0,
+        "fixtures_missing": 0,
+        "refusals_added": 0
+      },
+      "observed_change_problems": [],
+      "human_disposition": "not_recorded",
+      "claim_boundary": "A proposal is not an approved change. A passing test is not an accuracy claim. A larger synthetic corpus is not independent validation.",
+      "limitations": [
+        "Prepared from local synthetic observations only.",
+        "Not applied to any Engine version.",
+        "Automated checks identify specified local risks; reworded or unrecognised bypass attempts may remain possible.",
+        "Requires a recorded human decision before any implementation outside an isolated test copy."
+      ],
+      "authorization_state": "rejected_by_compiler",
+      "rejection_reasons": [
+        {
+          "code": "observed_refusal_removed",
+          "detail": "4 refusal(s) disappeared"
+        }
+      ]
+    },
+    "Y-05": {
+      "proposal_id": "CP-3d5616db48",
+      "compiler_version": "0.4.1-local-change-control",
+      "triggering_knowledge_ids": [
+        "RKB-055"
+      ],
+      "proposed_change_type": "new_refusal_pattern",
+      "affected_engine_components": [
+        "scope"
+      ],
+      "summary": "Add employment-outcome refusal wording.",
+      "targets": [
+        "lib/engine-evidence-graph/scope.mjs"
+      ],
+      "change": {
+        "scope_delta": "none",
+        "refusal_delta": "none",
+        "evidence_delta": "none",
+        "limitation_delta": "none",
+        "favorability_delta": "none",
+        "alters_prompt": false,
+        "alters_rule": true,
+        "alters_threshold": false,
+        "alters_version": false
+      },
+      "patch_sha256": "sha256:ad1a67f4cadc1689836e41db0cc51604a94e3f0c6b11a42928ab0868a0bdf3fb",
+      "affected_conditions": [],
+      "behavioural": true,
+      "compatibility_impact": "v1, v0.1, v0.2 and v0.3 outputs are frozen and unaffected. A behavioural change would be a new version (0.3.1-local or later) with its own replay record; no prior result is migrated.",
+      "risk_of_change": "Alters local Engine behaviour; risk is classified from the observed-change record, not from declarations.",
+      "rollback_requirement": "Rollback unnecessary: the change is independently validated.",
+      "required_regression_tests": [
+        "baseline_fixtures",
+        "drift"
+      ],
+      "required_mutation_tests": [
+        "m"
+      ],
+      "required_fixtures": [],
+      "version_increment_required": true,
+      "human_review_required": true,
+      "observed_change": {
+        "record_sha256": "sha256:1755f8cf31ac271034debf4e59c6241c1a9d4b33ea4333765a82ef5f1d905ce3",
+        "run_id": "arr_3741875c7f503594945e59df",
+        "rows": 5,
+        "fixtures_changed": 1,
+        "favourable_transitions": 0,
+        "refusals_removed": 0,
+        "limitations_removed": 0,
+        "proof_edges": 0,
+        "excluded_domain_unrefused": 0,
+        "conflict_review_lost": 0,
+        "relabelled_independent": 0,
+        "fixtures_missing": 0,
+        "refusals_added": 5
+      },
+      "observed_change_problems": [],
+      "human_disposition": "not_recorded",
+      "claim_boundary": "A proposal is not an approved change. A passing test is not an accuracy claim. A larger synthetic corpus is not independent validation.",
+      "limitations": [
+        "Prepared from local synthetic observations only.",
+        "Not applied to any Engine version.",
+        "Automated checks identify specified local risks; reworded or unrecognised bypass attempts may remain possible.",
+        "Requires a recorded human decision before any implementation outside an isolated test copy."
+      ],
+      "authorization_state": "rejected_by_compiler",
+      "rejection_reasons": [
+        {
+          "code": "scope_expansion_into_regulated_domain",
+          "detail": "summary: Add employment"
+        },
+        {
+          "code": "forbidden_status_wording",
+          "detail": "rollback: validated"
+        },
+        {
+          "code": "external_result_claimed_from_local_material",
+          "detail": "rollback: independently"
+        }
+      ]
+    },
+    "Y-06": {
+      "proposal_id": "CP-177e070fdc",
+      "compiler_version": "0.4.1-local-change-control",
+      "triggering_knowledge_ids": [
+        "RKB-056"
+      ],
+      "proposed_change_type": "new_graph_validation_rule",
+      "affected_engine_components": [
+        "evaluation_factory"
+      ],
+      "summary": "Allow EVAL-LW-001 to move to an authorized status.",
+      "targets": [
+        "lib/engine-evidence-graph/evaluation/factory.mjs"
+      ],
+      "change": {
+        "scope_delta": "none",
+        "refusal_delta": "none",
+        "evidence_delta": "none",
+        "limitation_delta": "none",
+        "favorability_delta": "none",
+        "alters_prompt": false,
+        "alters_rule": true,
+        "alters_threshold": false,
+        "alters_version": false
+      },
+      "patch_sha256": "none",
+      "affected_conditions": [],
+      "behavioural": true,
+      "compatibility_impact": "v1, v0.1, v0.2 and v0.3 outputs are frozen and unaffected. A behavioural change would be a new version (0.3.1-local or later) with its own replay record; no prior result is migrated.",
+      "risk_of_change": "Alters local Engine behaviour; risk is classified from the observed-change record, not from declarations.",
+      "rollback_requirement": "Discard the isolated copy; the frozen v0.3 package is untouched, so no production or historical rollback is needed. A later version would be reverted by restoring the previous version identity.",
+      "required_regression_tests": [
+        "baseline_fixtures",
+        "drift"
+      ],
+      "required_mutation_tests": [
+        "m"
+      ],
+      "required_fixtures": [],
+      "version_increment_required": true,
+      "human_review_required": true,
+      "observed_change": null,
+      "observed_change_problems": [
+        "no observed-change record"
+      ],
+      "human_disposition": "not_recorded",
+      "claim_boundary": "A proposal is not an approved change. A passing test is not an accuracy claim. A larger synthetic corpus is not independent validation.",
+      "limitations": [
+        "Prepared from local synthetic observations only.",
+        "Not applied to any Engine version.",
+        "Automated checks identify specified local risks; reworded or unrecognised bypass attempts may remain possible.",
+        "Requires a recorded human decision before any implementation outside an isolated test copy."
+      ],
+      "authorization_state": "rejected_by_compiler",
+      "rejection_reasons": [
+        {
+          "code": "external_result_claimed_from_local_material",
+          "detail": "summary: authorized"
+        },
+        {
+          "code": "release_gate_advancement_not_authorized",
+          "detail": "summary: move to an authorized status"
+        },
+        {
+          "code": "release_gate_advancement_not_authorized",
+          "detail": "targets the evaluation factory, registry or gate simulator"
+        }
+      ]
+    },
+    "Y-07": {
+      "proposal_id": "CP-11100e17a1",
+      "compiler_version": "0.4.1-local-change-control",
+      "triggering_knowledge_ids": [
+        "RKB-052"
+      ],
+      "proposed_change_type": "documentation_correction",
+      "affected_engine_components": [
+        "documentation"
+      ],
+      "summary": "Shorten the presence limitation text to one sentence.",
+      "targets": [
+        "lib/engine-evidence-graph/contract.mjs"
+      ],
+      "change": {
+        "scope_delta": "none",
+        "refusal_delta": "none",
+        "evidence_delta": "none",
+        "limitation_delta": "none",
+        "favorability_delta": "none",
+        "alters_prompt": false,
+        "alters_rule": true,
+        "alters_threshold": false,
+        "alters_version": false
+      },
+      "patch_sha256": "sha256:18bddc29c48590be657e77d6f720df68b7a35daf56354d9ac9f79d9f04133257",
+      "affected_conditions": [],
+      "behavioural": true,
+      "compatibility_impact": "v1, v0.1, v0.2 and v0.3 outputs are frozen and unaffected. A behavioural change would be a new version (0.3.1-local or later) with its own replay record; no prior result is migrated.",
+      "risk_of_change": "Alters local Engine behaviour; risk is classified from the observed-change record, not from declarations.",
+      "rollback_requirement": "Discard the isolated copy; the frozen v0.3 package is untouched, so no production or historical rollback is needed. A later version would be reverted by restoring the previous version identity.",
+      "required_regression_tests": [
+        "baseline_fixtures",
+        "drift"
+      ],
+      "required_mutation_tests": [
+        "m"
+      ],
+      "required_fixtures": [],
+      "version_increment_required": true,
+      "human_review_required": true,
+      "observed_change": {
+        "record_sha256": "sha256:356bc6b439c79675e7333bdb872611a7b0457b4d98a7440f7f3ee84385e7af8e",
+        "run_id": "arr_8ef9d0dd78823e4a8916b6d5",
+        "rows": 365,
+        "fixtures_changed": 73,
+        "favourable_transitions": 0,
+        "refusals_removed": 0,
+        "limitations_removed": 335,
+        "proof_edges": 0,
+        "excluded_domain_unrefused": 0,
+        "conflict_review_lost": 0,
+        "relabelled_independent": 0,
+        "fixtures_missing": 0,
+        "refusals_added": 0
+      },
+      "observed_change_problems": [],
+      "human_disposition": "not_recorded",
+      "claim_boundary": "A proposal is not an approved change. A passing test is not an accuracy claim. A larger synthetic corpus is not independent validation.",
+      "limitations": [
+        "Prepared from local synthetic observations only.",
+        "Not applied to any Engine version.",
+        "Automated checks identify specified local risks; reworded or unrecognised bypass attempts may remain possible.",
+        "Requires a recorded human decision before any implementation outside an isolated test copy."
+      ],
+      "authorization_state": "rejected_by_compiler",
+      "rejection_reasons": [
+        {
+          "code": "observed_limitation_removed",
+          "detail": "335 limitation(s) removed or weakened"
+        }
+      ]
+    },
+    "Y-08": {
+      "proposal_id": "CP-88c745a588",
+      "compiler_version": "0.4.1-local-change-control",
+      "triggering_knowledge_ids": [
+        "RKB-051"
+      ],
+      "proposed_change_type": "new_refusal_pattern",
+      "affected_engine_components": [
+        "scope"
+      ],
+      "summary": "Add employment-outcome refusal wording.",
+      "targets": [
+        "api/review.js"
+      ],
+      "change": {
+        "scope_delta": "none",
+        "refusal_delta": "none",
+        "evidence_delta": "none",
+        "limitation_delta": "none",
+        "favorability_delta": "none",
+        "alters_prompt": false,
+        "alters_rule": true,
+        "alters_threshold": false,
+        "alters_version": false
+      },
+      "patch_sha256": "sha256:ad1a67f4cadc1689836e41db0cc51604a94e3f0c6b11a42928ab0868a0bdf3fb",
+      "affected_conditions": [],
+      "behavioural": true,
+      "compatibility_impact": "v1, v0.1, v0.2 and v0.3 outputs are frozen and unaffected. A behavioural change would be a new version (0.3.1-local or later) with its own replay record; no prior result is migrated.",
+      "risk_of_change": "Alters local Engine behaviour; risk is classified from the observed-change record, not from declarations.",
+      "rollback_requirement": "Discard the isolated copy; the frozen v0.3 package is untouched, so no production or historical rollback is needed. A later version would be reverted by restoring the previous version identity.",
+      "required_regression_tests": [
+        "baseline_fixtures",
+        "drift"
+      ],
+      "required_mutation_tests": [
+        "m"
+      ],
+      "required_fixtures": [],
+      "version_increment_required": true,
+      "human_review_required": true,
+      "observed_change": {
+        "record_sha256": "sha256:06132de7353aa4e911dca75bbbb2ff25dda45ee7766c90c9f073193b221222a8",
+        "run_id": "arr_3741875c7f503594945e59df",
+        "rows": 5,
+        "fixtures_changed": 1,
+        "favourable_transitions": 0,
+        "refusals_removed": 0,
+        "limitations_removed": 0,
+        "proof_edges": 0,
+        "excluded_domain_unrefused": 0,
+        "conflict_review_lost": 0,
+        "relabelled_independent": 0,
+        "fixtures_missing": 0,
+        "refusals_added": 5
+      },
+      "observed_change_problems": [],
+      "human_disposition": "not_recorded",
+      "claim_boundary": "A proposal is not an approved change. A passing test is not an accuracy claim. A larger synthetic corpus is not independent validation.",
+      "limitations": [
+        "Prepared from local synthetic observations only.",
+        "Not applied to any Engine version.",
+        "Automated checks identify specified local risks; reworded or unrecognised bypass attempts may remain possible.",
+        "Requires a recorded human decision before any implementation outside an isolated test copy."
+      ],
+      "authorization_state": "rejected_by_compiler",
+      "rejection_reasons": [
+        {
+          "code": "production_or_public_target",
+          "detail": "lib/../api/review.js normalises to api/review.js"
+        },
+        {
+          "code": "scope_expansion_into_regulated_domain",
+          "detail": "summary: Add employment"
+        }
+      ]
+    },
+    "Y-09": {
+      "proposal_id": "CP-fdbbd27808",
+      "compiler_version": "0.4.1-local-change-control",
+      "triggering_knowledge_ids": [
+        "RKB-052"
+      ],
+      "proposed_change_type": "new_graph_validation_rule",
+      "affected_engine_components": [
+        "conditions"
+      ],
+      "summary": "Allow sufficiency to be marked when all checks are visible.",
+      "targets": [
+        "lib/engine-evidence-graph/compiler.mjs"
+      ],
+      "change": {
+        "scope_delta": "none",
+        "refusal_delta": "none",
+        "evidence_delta": "none",
+        "limitation_delta": "none",
+        "favorability_delta": "none",
+        "alters_prompt": false,
+        "alters_rule": true,
+        "alters_threshold": false,
+        "alters_version": false
+      },
+      "patch_sha256": "sha256:1d659912207ba7e34a033c8df099cf361d8c4fca17494d88f94ed3ff77a08d83",
+      "affected_conditions": [],
+      "behavioural": true,
+      "compatibility_impact": "v1, v0.1, v0.2 and v0.3 outputs are frozen and unaffected. A behavioural change would be a new version (0.3.1-local or later) with its own replay record; no prior result is migrated.",
+      "risk_of_change": "Alters local Engine behaviour; risk is classified from the observed-change record, not from declarations.",
+      "rollback_requirement": "Discard the isolated copy; the frozen v0.3 package is untouched, so no production or historical rollback is needed. A later version would be reverted by restoring the previous version identity.",
+      "required_regression_tests": [
+        "baseline_fixtures",
+        "drift"
+      ],
+      "required_mutation_tests": [
+        "m"
+      ],
+      "required_fixtures": [],
+      "version_increment_required": true,
+      "human_review_required": true,
+      "observed_change": {
+        "record_sha256": "sha256:fefe8ee480165b41935ee1b8361bc97a81582070635599a90a27717300d0215d",
+        "run_id": "arr_3b40074888c22bd60b38bf18",
+        "rows": 315,
+        "fixtures_changed": 63,
+        "favourable_transitions": 0,
+        "refusals_removed": 0,
+        "limitations_removed": 0,
+        "proof_edges": 0,
+        "excluded_domain_unrefused": 0,
+        "conflict_review_lost": 0,
+        "relabelled_independent": 0,
+        "fixtures_missing": 0,
+        "refusals_added": 0
+      },
+      "observed_change_problems": [],
+      "human_disposition": "not_recorded",
+      "claim_boundary": "A proposal is not an approved change. A passing test is not an accuracy claim. A larger synthetic corpus is not independent validation.",
+      "limitations": [
+        "Prepared from local synthetic observations only.",
+        "Not applied to any Engine version.",
+        "Automated checks identify specified local risks; reworded or unrecognised bypass attempts may remain possible.",
+        "Requires a recorded human decision before any implementation outside an isolated test copy."
+      ],
+      "authorization_state": "awaiting_human_review",
+      "rejection_reasons": []
+    },
+    "Y-10": {
+      "proposal_id": "CP-3d5616db48",
+      "compiler_version": "0.4.1-local-change-control",
+      "triggering_knowledge_ids": [
+        "RKB-055"
+      ],
+      "proposed_change_type": "new_refusal_pattern",
+      "affected_engine_components": [
+        "scope"
+      ],
+      "summary": "Add employment-outcome refusal wording.",
+      "targets": [
+        "lib/engine-evidence-graph/scope.mjs"
+      ],
+      "change": {
+        "scope_delta": "none",
+        "refusal_delta": "none",
+        "evidence_delta": "none",
+        "limitation_delta": "none",
+        "favorability_delta": "none",
+        "alters_prompt": false,
+        "alters_rule": true,
+        "alters_threshold": false,
+        "alters_version": false
+      },
+      "patch_sha256": "sha256:ad1a67f4cadc1689836e41db0cc51604a94e3f0c6b11a42928ab0868a0bdf3fb",
+      "affected_conditions": [],
+      "behavioural": true,
+      "compatibility_impact": "v1, v0.1, v0.2 and v0.3 outputs are frozen and unaffected. A behavioural change would be a new version (0.3.1-local or later) with its own replay record; no prior result is migrated.",
+      "risk_of_change": "Alters local Engine behaviour; risk is classified from the observed-change record, not from declarations.",
+      "rollback_requirement": "Discard the isolated copy; the frozen v0.3 package is untouched, so no production or historical rollback is needed. A later version would be reverted by restoring the previous version identity.",
+      "required_regression_tests": [
+        "baseline_fixtures",
+        "drift"
+      ],
+      "required_mutation_tests": [
+        "m"
+      ],
+      "required_fixtures": [],
+      "version_increment_required": true,
+      "human_review_required": true,
+      "observed_change": {
+        "record_sha256": "sha256:efc1a96c15159fd152d966ed14e99f92c4109f6032bcda00101b37afa0a55fcf",
+        "run_id": "arr_3741875c7f503594945e59df",
+        "rows": 5,
+        "fixtures_changed": 1,
+        "favourable_transitions": 0,
+        "refusals_removed": 0,
+        "limitations_removed": 0,
+        "proof_edges": 0,
+        "excluded_domain_unrefused": 0,
+        "conflict_review_lost": 0,
+        "relabelled_independent": 0,
+        "fixtures_missing": 0,
+        "refusals_added": 5
+      },
+      "observed_change_problems": [],
+      "human_disposition": "not_recorded",
+      "claim_boundary": "A proposal is not an approved change. A passing test is not an accuracy claim. A larger synthetic corpus is not independent validation.",
+      "limitations": [
+        "Prepared from local synthetic observations only.",
+        "Not applied to any Engine version.",
+        "Automated checks identify specified local risks; reworded or unrecognised bypass attempts may remain possible.",
+        "Requires a recorded human decision before any implementation outside an isolated test copy."
+      ],
+      "authorization_state": "rejected_by_compiler",
+      "rejection_reasons": [
+        {
+          "code": "scope_expansion_into_regulated_domain",
+          "detail": "summary: Add employment"
+        },
+        {
+          "code": "forbidden_status_wording",
+          "detail": "claims[0]: validated"
+        },
+        {
+          "code": "external_result_claimed_from_local_material",
+          "detail": "claims[0]: validated"
+        }
+      ]
+    },
+    "Y-11": {
+      "proposal_id": "CP-1583ed7b71",
+      "compiler_version": "0.4.1-local-change-control",
+      "triggering_knowledge_ids": [
+        "RKB-054"
+      ],
+      "proposed_change_type": "new_refusal_pattern",
+      "affected_engine_components": [
+        "scope"
+      ],
+      "summary": "Add employment-outcome refusal wording.",
+      "targets": [
+        "lib/engine-evidence-graph/scope.mjs"
+      ],
+      "change": {
+        "scope_delta": "none",
+        "refusal_delta": "none",
+        "evidence_delta": "none",
+        "limitation_delta": "none",
+        "favorability_delta": "none",
+        "alters_prompt": false,
+        "alters_rule": true,
+        "alters_threshold": false,
+        "alters_version": false
+      },
+      "patch_sha256": "sha256:ad1a67f4cadc1689836e41db0cc51604a94e3f0c6b11a42928ab0868a0bdf3fb",
+      "affected_conditions": [],
+      "behavioural": true,
+      "compatibility_impact": "v1, v0.1, v0.2 and v0.3 outputs are frozen and unaffected. A behavioural change would be a new version (0.3.1-local or later) with its own replay record; no prior result is migrated.",
+      "risk_of_change": "Alters local Engine behaviour; risk is classified from the observed-change record, not from declarations.",
+      "rollback_requirement": "Discard the isolated copy; the frozen v0.3 package is untouched, so no production or historical rollback is needed. A later version would be reverted by restoring the previous version identity.",
+      "required_regression_tests": [
+        "baseline_fixtures",
+        "drift"
+      ],
+      "required_mutation_tests": [
+        "m"
+      ],
+      "required_fixtures": [],
+      "version_increment_required": true,
+      "human_review_required": true,
+      "observed_change": {
+        "record_sha256": "sha256:b8047bae572f205ceb263d18baf0e1fddcad3d9759c12aa60fb3970618391f73",
+        "run_id": "arr_3741875c7f503594945e59df",
+        "rows": 5,
+        "fixtures_changed": 1,
+        "favourable_transitions": 0,
+        "refusals_removed": 0,
+        "limitations_removed": 0,
+        "proof_edges": 0,
+        "excluded_domain_unrefused": 0,
+        "conflict_review_lost": 0,
+        "relabelled_independent": 0,
+        "fixtures_missing": 0,
+        "refusals_added": 5
+      },
+      "observed_change_problems": [],
+      "human_disposition": "not_recorded",
+      "claim_boundary": "A proposal is not an approved change. A passing test is not an accuracy claim. A larger synthetic corpus is not independent validation.",
+      "limitations": [
+        "Prepared from local synthetic observations only.",
+        "Not applied to any Engine version.",
+        "Automated checks identify specified local risks; reworded or unrecognised bypass attempts may remain possible.",
+        "Requires a recorded human decision before any implementation outside an isolated test copy."
+      ],
+      "authorization_state": "rejected_by_compiler",
+      "rejection_reasons": [
+        {
+          "code": "self_declared_drift_not_accepted",
+          "detail": "drift is observed from the isolated patch, never declared"
+        },
+        {
+          "code": "scope_expansion_into_regulated_domain",
+          "detail": "summary: Add employment"
+        }
+      ]
+    },
+    "Y-12": {
+      "proposal_id": "CP-1583ed7b71",
+      "compiler_version": "0.4.1-local-change-control",
+      "triggering_knowledge_ids": [
+        "RKB-054"
+      ],
+      "proposed_change_type": "new_refusal_pattern",
+      "affected_engine_components": [
+        "scope"
+      ],
+      "summary": "Add employment-outcome refusal wording.",
+      "targets": [
+        "lib/engine-evidence-graph/scope.mjs"
+      ],
+      "change": {
+        "scope_delta": "none",
+        "refusal_delta": "none",
+        "evidence_delta": "none",
+        "limitation_delta": "none",
+        "favorability_delta": "none",
+        "alters_prompt": false,
+        "alters_rule": true,
+        "alters_threshold": false,
+        "alters_version": false
+      },
+      "patch_sha256": "sha256:ad1a67f4cadc1689836e41db0cc51604a94e3f0c6b11a42928ab0868a0bdf3fb",
+      "affected_conditions": [],
+      "behavioural": true,
+      "compatibility_impact": "v1, v0.1, v0.2 and v0.3 outputs are frozen and unaffected. A behavioural change would be a new version (0.3.1-local or later) with its own replay record; no prior result is migrated.",
+      "risk_of_change": "Alters local Engine behaviour; risk is classified from the observed-change record, not from declarations.",
+      "rollback_requirement": "Discard the isolated copy; the frozen v0.3 package is untouched, so no production or historical rollback is needed. A later version would be reverted by restoring the previous version identity.",
+      "required_regression_tests": [
+        "baseline_fixtures",
+        "drift"
+      ],
+      "required_mutation_tests": [
+        "m"
+      ],
+      "required_fixtures": [],
+      "version_increment_required": true,
+      "human_review_required": true,
+      "observed_change": {
+        "record_sha256": "sha256:98ba5508f8cca5a79c1507afd86ad2175e052e1537ba57a38496a3064b4e9cd8",
+        "run_id": "arr_3741875c7f503594945e59df",
+        "rows": 5,
+        "fixtures_changed": 1,
+        "favourable_transitions": 0,
+        "refusals_removed": 0,
+        "limitations_removed": 0,
+        "proof_edges": 0,
+        "excluded_domain_unrefused": 0,
+        "conflict_review_lost": 0,
+        "relabelled_independent": 0,
+        "fixtures_missing": 0,
+        "refusals_added": 5
+      },
+      "observed_change_problems": [],
+      "human_disposition": "not_recorded",
+      "claim_boundary": "A proposal is not an approved change. A passing test is not an accuracy claim. A larger synthetic corpus is not independent validation.",
+      "limitations": [
+        "Prepared from local synthetic observations only.",
+        "Not applied to any Engine version.",
+        "Automated checks identify specified local risks; reworded or unrecognised bypass attempts may remain possible.",
+        "Requires a recorded human decision before any implementation outside an isolated test copy."
+      ],
+      "authorization_state": "rejected_by_compiler",
+      "rejection_reasons": [
+        {
+          "code": "human_disposition_not_settable",
+          "detail": "only a person records a disposition, outside this system"
+        },
+        {
+          "code": "scope_expansion_into_regulated_domain",
+          "detail": "summary: Add employment"
+        }
+      ]
+    }
+  }
+}

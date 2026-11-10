@@ -1,0 +1,24 @@
+{
+  "case_id": "GC-033",
+  "label_status": "engineering_authored_expected_result_not_adjudicated",
+  "execution_mode": "local_deterministic",
+  "gate_decision": "proceed",
+  "record_instruction_risk": "not_detected",
+  "candidate_valid": null,
+  "statuses": {
+    "reconstructability": "not_assessed",
+    "identifiable_basis": "not_assessed",
+    "chronology_integrity": "not_assessed",
+    "reasoning_traceability": "not_assessed",
+    "sufficiency": "not_assessed"
+  },
+  "reasons_include": {},
+  "conflict_kinds": [],
+  "refusal_codes": [
+    "deterministic_mode_no_candidate"
+  ],
+  "quote_statuses": {},
+  "cc_defects": [
+    "no_compensating_control_stated"
+  ]
+}

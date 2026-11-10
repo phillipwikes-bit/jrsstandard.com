@@ -1,0 +1,7 @@
+{
+  "id": "BR-005",
+  "purpose": "Stored v1 result whose determination conflicts with its conditions",
+  "record": "../../../engine-assurance-2026-10-10/fixtures/records/SAE-001.txt",
+  "scope_refused": false,
+  "v1_form": "stored_v1_result_object"
+}

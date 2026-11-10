@@ -1,0 +1,34 @@
+{
+  "parse_status": "valid_v1",
+  "determination_conflict": false,
+  "record_flags": [],
+  "conditions": {
+    "basis_identification": {
+      "mapping": "ambiguous",
+      "effective_v02_status": "review_required",
+      "reasons_include": []
+    },
+    "reasoning_traceability": {
+      "mapping": "exact",
+      "effective_v02_status": "review_required",
+      "reasons_include": []
+    },
+    "cold_reviewer_clarity": {
+      "mapping": "ambiguous",
+      "effective_v02_status": "review_required",
+      "reasons_include": []
+    },
+    "accountability_support": {
+      "mapping": "lossy",
+      "effective_v02_status": "review_required",
+      "reasons_include": []
+    },
+    "temporal_reconstructability": {
+      "mapping": "lossy",
+      "effective_v02_status": "review_required",
+      "reasons_include": []
+    }
+  },
+  "case_id": "BR-010",
+  "label_status": "engineering_authored_expected_result_not_adjudicated"
+}

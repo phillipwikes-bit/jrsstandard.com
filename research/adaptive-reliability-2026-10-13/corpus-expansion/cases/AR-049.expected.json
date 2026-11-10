@@ -1,0 +1,47 @@
+{
+  "case_id": "AR-049",
+  "label_status": "engineering_authored_expected_result_not_adjudicated",
+  "execution_mode": "local_mocked",
+  "gate_decision": "proceed",
+  "record_instruction_risk": "not_detected",
+  "candidate_valid": false,
+  "statuses": {
+    "reconstructability": "not_assessed",
+    "identifiable_basis": "not_assessed",
+    "chronology_integrity": "not_assessed",
+    "reasoning_traceability": "not_assessed",
+    "sufficiency": "not_assessed"
+  },
+  "reasons_include": {},
+  "conflict_kinds": [],
+  "refusal_codes": [
+    "candidate_response_invalid"
+  ],
+  "quote_statuses": {},
+  "cc_defects": [],
+  "limitations": {
+    "reconstructability": [
+      "presence"
+    ],
+    "identifiable_basis": [
+      "presence"
+    ],
+    "chronology_integrity": [
+      "presence"
+    ],
+    "reasoning_traceability": [
+      "presence"
+    ],
+    "sufficiency": [
+      "presence",
+      "sufficiency"
+    ]
+  },
+  "graph": {
+    "conflict_nodes": 0,
+    "textually_supports_edges": 0,
+    "one_limitation_per_finding": true,
+    "review_route_per_finding": true
+  },
+  "descriptive_expectations_not_executed": []
+}

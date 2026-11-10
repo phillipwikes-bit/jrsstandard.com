@@ -1,0 +1,7 @@
+{
+  "id": "BR-004",
+  "purpose": "Malformed v1 output (unknown status)",
+  "record": "../../../engine-assurance-2026-10-10/fixtures/records/SAE-001.txt",
+  "scope_refused": false,
+  "v1_form": "raw_provider_text"
+}

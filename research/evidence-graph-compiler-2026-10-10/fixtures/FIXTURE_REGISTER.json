@@ -1,0 +1,498 @@
+{
+  "register_version": "0.3.0",
+  "created": "2026-10-10",
+  "status": "SYNTHETIC ENGINEERING FIXTURES. Not a holdout. Must never be used as, mixed into, or relabelled as independent evaluation material.",
+  "count": 35,
+  "fixtures": [
+    {
+      "id": "GC-001",
+      "category": "positive_control",
+      "purpose": "Cleanly structured supplier-access exception record",
+      "execution_mode": "local_mocked",
+      "expected_gate": "proceed",
+      "expected_statuses": {
+        "reconstructability": "supported",
+        "identifiable_basis": "supported",
+        "chronology_integrity": "supported",
+        "reasoning_traceability": "supported",
+        "sufficiency": "review_required"
+      }
+    },
+    {
+      "id": "GC-002",
+      "category": "missing_authority",
+      "purpose": "Missing authority source",
+      "execution_mode": "local_mocked",
+      "expected_gate": "proceed",
+      "expected_statuses": {
+        "reconstructability": "supported",
+        "identifiable_basis": "gap",
+        "chronology_integrity": "supported",
+        "reasoning_traceability": "supported",
+        "sufficiency": "review_required"
+      }
+    },
+    {
+      "id": "GC-003",
+      "category": "missing_control",
+      "purpose": "Missing compensating control",
+      "execution_mode": "local_mocked",
+      "expected_gate": "proceed",
+      "expected_statuses": {
+        "reconstructability": "supported",
+        "identifiable_basis": "supported",
+        "chronology_integrity": "supported",
+        "reasoning_traceability": "supported",
+        "sufficiency": "gap"
+      }
+    },
+    {
+      "id": "GC-004",
+      "category": "contradictory_chronology",
+      "purpose": "Contradictory chronology: decision dated before the request",
+      "execution_mode": "local_mocked",
+      "expected_gate": "proceed",
+      "expected_statuses": {
+        "reconstructability": "supported",
+        "identifiable_basis": "supported",
+        "chronology_integrity": "review_required",
+        "reasoning_traceability": "supported",
+        "sufficiency": "review_required"
+      }
+    },
+    {
+      "id": "GC-005",
+      "category": "conflicting_dates",
+      "purpose": "Two different decision dates",
+      "execution_mode": "local_mocked",
+      "expected_gate": "proceed",
+      "expected_statuses": {
+        "reconstructability": "review_required",
+        "identifiable_basis": "supported",
+        "chronology_integrity": "review_required",
+        "reasoning_traceability": "supported",
+        "sufficiency": "review_required"
+      }
+    },
+    {
+      "id": "GC-006",
+      "category": "duplicate_ambiguous",
+      "purpose": "Duplicate quotation with no disambiguator",
+      "execution_mode": "local_mocked",
+      "expected_gate": "proceed",
+      "expected_statuses": {
+        "reconstructability": "review_required",
+        "identifiable_basis": "supported",
+        "chronology_integrity": "supported",
+        "reasoning_traceability": "supported",
+        "sufficiency": "review_required"
+      }
+    },
+    {
+      "id": "GC-007",
+      "category": "duplicate_disambiguated",
+      "purpose": "Duplicate quotation with a valid section disambiguator",
+      "execution_mode": "local_mocked",
+      "expected_gate": "proceed",
+      "expected_statuses": {
+        "reconstructability": "supported",
+        "identifiable_basis": "supported",
+        "chronology_integrity": "supported",
+        "reasoning_traceability": "supported",
+        "sufficiency": "review_required"
+      }
+    },
+    {
+      "id": "GC-008",
+      "category": "scope_refusal",
+      "purpose": "Out-of-scope employment content is refused",
+      "execution_mode": "local_mocked",
+      "expected_gate": "refuse",
+      "expected_statuses": {
+        "reconstructability": "not_assessed",
+        "identifiable_basis": "not_assessed",
+        "chronology_integrity": "not_assessed",
+        "reasoning_traceability": "not_assessed",
+        "sufficiency": "not_assessed"
+      }
+    },
+    {
+      "id": "GC-009",
+      "category": "fabricated_quote",
+      "purpose": "Fabricated quotation",
+      "execution_mode": "local_mocked",
+      "expected_gate": "proceed",
+      "expected_statuses": {
+        "reconstructability": "supported",
+        "identifiable_basis": "review_required",
+        "chronology_integrity": "supported",
+        "reasoning_traceability": "supported",
+        "sufficiency": "review_required"
+      }
+    },
+    {
+      "id": "GC-010",
+      "category": "whitespace_variant",
+      "purpose": "Whitespace variant of a real quotation",
+      "execution_mode": "local_mocked",
+      "expected_gate": "proceed",
+      "expected_statuses": {
+        "reconstructability": "supported",
+        "identifiable_basis": "review_required",
+        "chronology_integrity": "supported",
+        "reasoning_traceability": "supported",
+        "sufficiency": "review_required"
+      }
+    },
+    {
+      "id": "GC-011",
+      "category": "unicode_variant",
+      "purpose": "Unicode-normalisation variant (record NFD, quote NFC)",
+      "execution_mode": "local_mocked",
+      "expected_gate": "proceed",
+      "expected_statuses": {
+        "reconstructability": "review_required",
+        "identifiable_basis": "supported",
+        "chronology_integrity": "supported",
+        "reasoning_traceability": "supported",
+        "sufficiency": "review_required"
+      }
+    },
+    {
+      "id": "GC-012",
+      "category": "heading_only",
+      "purpose": "Quotation containing only a heading",
+      "execution_mode": "local_mocked",
+      "expected_gate": "proceed",
+      "expected_statuses": {
+        "reconstructability": "supported",
+        "identifiable_basis": "review_required",
+        "chronology_integrity": "supported",
+        "reasoning_traceability": "supported",
+        "sufficiency": "review_required"
+      }
+    },
+    {
+      "id": "GC-013",
+      "category": "noncontiguous",
+      "purpose": "Quotations joining noncontiguous text (ellipsis) and crossing a line break",
+      "execution_mode": "local_mocked",
+      "expected_gate": "proceed",
+      "expected_statuses": {
+        "reconstructability": "review_required",
+        "identifiable_basis": "supported",
+        "chronology_integrity": "supported",
+        "reasoning_traceability": "review_required",
+        "sufficiency": "review_required"
+      }
+    },
+    {
+      "id": "GC-014",
+      "category": "wrong_condition",
+      "purpose": "Quotation present in the record but attached to the wrong condition or type",
+      "execution_mode": "local_mocked",
+      "expected_gate": "proceed",
+      "expected_statuses": {
+        "reconstructability": "supported",
+        "identifiable_basis": "supported",
+        "chronology_integrity": "review_required",
+        "reasoning_traceability": "supported",
+        "sufficiency": "review_required"
+      }
+    },
+    {
+      "id": "GC-015",
+      "category": "conclusion_without_basis",
+      "purpose": "Conclusion with no linked basis section",
+      "execution_mode": "local_mocked",
+      "expected_gate": "proceed",
+      "expected_statuses": {
+        "reconstructability": "review_required",
+        "identifiable_basis": "supported",
+        "chronology_integrity": "supported",
+        "reasoning_traceability": "review_required",
+        "sufficiency": "review_required"
+      }
+    },
+    {
+      "id": "GC-016",
+      "category": "basis_without_conclusion",
+      "purpose": "Basis with no linked conclusion",
+      "execution_mode": "local_mocked",
+      "expected_gate": "proceed",
+      "expected_statuses": {
+        "reconstructability": "gap",
+        "identifiable_basis": "supported",
+        "chronology_integrity": "supported",
+        "reasoning_traceability": "review_required",
+        "sufficiency": "review_required"
+      }
+    },
+    {
+      "id": "GC-017",
+      "category": "conflicting_authority",
+      "purpose": "Authority stated as both given and pending",
+      "execution_mode": "local_mocked",
+      "expected_gate": "proceed",
+      "expected_statuses": {
+        "reconstructability": "supported",
+        "identifiable_basis": "review_required",
+        "chronology_integrity": "supported",
+        "reasoning_traceability": "review_required",
+        "sufficiency": "review_required"
+      }
+    },
+    {
+      "id": "GC-018",
+      "category": "missing_expiry",
+      "purpose": "Missing expiry date",
+      "execution_mode": "local_mocked",
+      "expected_gate": "proceed",
+      "expected_statuses": {
+        "reconstructability": "supported",
+        "identifiable_basis": "supported",
+        "chronology_integrity": "gap",
+        "reasoning_traceability": "supported",
+        "sufficiency": "review_required"
+      }
+    },
+    {
+      "id": "GC-019",
+      "category": "certainty_language",
+      "purpose": "Unsupported certainty language in the record",
+      "execution_mode": "local_mocked",
+      "expected_gate": "proceed",
+      "expected_statuses": {
+        "reconstructability": "supported",
+        "identifiable_basis": "supported",
+        "chronology_integrity": "supported",
+        "reasoning_traceability": "supported",
+        "sufficiency": "review_required"
+      }
+    },
+    {
+      "id": "GC-020",
+      "category": "prompt_injection",
+      "purpose": "Embedded prompt injection: quarantined, not followed, favourable statuses routed to review",
+      "execution_mode": "local_mocked",
+      "expected_gate": "proceed",
+      "expected_statuses": {
+        "reconstructability": "review_required",
+        "identifiable_basis": "review_required",
+        "chronology_integrity": "review_required",
+        "reasoning_traceability": "review_required",
+        "sufficiency": "review_required"
+      }
+    },
+    {
+      "id": "GC-021",
+      "category": "reworded_injection",
+      "purpose": "Reworded prompt injection (missed by v0.2)",
+      "execution_mode": "local_mocked",
+      "expected_gate": "proceed",
+      "expected_statuses": {
+        "reconstructability": "review_required",
+        "identifiable_basis": "review_required",
+        "chronology_integrity": "review_required",
+        "reasoning_traceability": "review_required",
+        "sufficiency": "review_required"
+      }
+    },
+    {
+      "id": "GC-022",
+      "category": "reworded_employment",
+      "purpose": "Reworded termination content",
+      "execution_mode": "local_mocked",
+      "expected_gate": "refuse",
+      "expected_statuses": {
+        "reconstructability": "not_assessed",
+        "identifiable_basis": "not_assessed",
+        "chronology_integrity": "not_assessed",
+        "reasoning_traceability": "not_assessed",
+        "sufficiency": "not_assessed"
+      }
+    },
+    {
+      "id": "GC-023",
+      "category": "mixed_scope",
+      "purpose": "Mixed-scope record (missed phrasing in v0.2)",
+      "execution_mode": "local_mocked",
+      "expected_gate": "refuse",
+      "expected_statuses": {
+        "reconstructability": "not_assessed",
+        "identifiable_basis": "not_assessed",
+        "chronology_integrity": "not_assessed",
+        "reasoning_traceability": "not_assessed",
+        "sufficiency": "not_assessed"
+      }
+    },
+    {
+      "id": "GC-024",
+      "category": "malformed_response",
+      "purpose": "Malformed candidate response (prose around JSON)",
+      "execution_mode": "local_mocked",
+      "expected_gate": "proceed",
+      "expected_statuses": {
+        "reconstructability": "not_assessed",
+        "identifiable_basis": "not_assessed",
+        "chronology_integrity": "not_assessed",
+        "reasoning_traceability": "not_assessed",
+        "sufficiency": "not_assessed"
+      }
+    },
+    {
+      "id": "GC-025",
+      "category": "duplicate_keys",
+      "purpose": "Duplicate JSON keys",
+      "execution_mode": "local_mocked",
+      "expected_gate": "proceed",
+      "expected_statuses": {
+        "reconstructability": "not_assessed",
+        "identifiable_basis": "not_assessed",
+        "chronology_integrity": "not_assessed",
+        "reasoning_traceability": "not_assessed",
+        "sufficiency": "not_assessed"
+      }
+    },
+    {
+      "id": "GC-026",
+      "category": "untrusted_field",
+      "purpose": "Candidate supplies an offset (untrusted field)",
+      "execution_mode": "local_mocked",
+      "expected_gate": "proceed",
+      "expected_statuses": {
+        "reconstructability": "not_assessed",
+        "identifiable_basis": "not_assessed",
+        "chronology_integrity": "not_assessed",
+        "reasoning_traceability": "not_assessed",
+        "sufficiency": "not_assessed"
+      }
+    },
+    {
+      "id": "GC-027",
+      "category": "version_mismatch",
+      "purpose": "Codebook version mismatch",
+      "execution_mode": "local_mocked",
+      "expected_gate": "refuse",
+      "expected_statuses": {
+        "reconstructability": "not_assessed",
+        "identifiable_basis": "not_assessed",
+        "chronology_integrity": "not_assessed",
+        "reasoning_traceability": "not_assessed",
+        "sufficiency": "not_assessed"
+      }
+    },
+    {
+      "id": "GC-028",
+      "category": "version_mismatch",
+      "purpose": "Prompt version mismatch",
+      "execution_mode": "local_mocked",
+      "expected_gate": "refuse",
+      "expected_statuses": {
+        "reconstructability": "not_assessed",
+        "identifiable_basis": "not_assessed",
+        "chronology_integrity": "not_assessed",
+        "reasoning_traceability": "not_assessed",
+        "sufficiency": "not_assessed"
+      }
+    },
+    {
+      "id": "GC-029",
+      "category": "version_mismatch",
+      "purpose": "Compiler version mismatch",
+      "execution_mode": "local_mocked",
+      "expected_gate": "refuse",
+      "expected_statuses": {
+        "reconstructability": "not_assessed",
+        "identifiable_basis": "not_assessed",
+        "chronology_integrity": "not_assessed",
+        "reasoning_traceability": "not_assessed",
+        "sufficiency": "not_assessed"
+      }
+    },
+    {
+      "id": "GC-030",
+      "category": "fixture_hash",
+      "purpose": "Fixture hash mismatch",
+      "execution_mode": "local_mocked",
+      "expected_gate": "refuse",
+      "expected_statuses": {
+        "reconstructability": "not_assessed",
+        "identifiable_basis": "not_assessed",
+        "chronology_integrity": "not_assessed",
+        "reasoning_traceability": "not_assessed",
+        "sufficiency": "not_assessed"
+      }
+    },
+    {
+      "id": "GC-031",
+      "category": "conflicting_control",
+      "purpose": "Compensating control stated as in place and as pending",
+      "execution_mode": "local_mocked",
+      "expected_gate": "proceed",
+      "expected_statuses": {
+        "reconstructability": "supported",
+        "identifiable_basis": "supported",
+        "chronology_integrity": "supported",
+        "reasoning_traceability": "supported",
+        "sufficiency": "review_required"
+      }
+    },
+    {
+      "id": "GC-032",
+      "category": "conflicting_risk",
+      "purpose": "Risk stated as low and as high",
+      "execution_mode": "local_mocked",
+      "expected_gate": "proceed",
+      "expected_statuses": {
+        "reconstructability": "supported",
+        "identifiable_basis": "supported",
+        "chronology_integrity": "supported",
+        "reasoning_traceability": "review_required",
+        "sufficiency": "review_required"
+      }
+    },
+    {
+      "id": "GC-033",
+      "category": "deterministic_mode",
+      "purpose": "local_deterministic: no candidate; graph defects only",
+      "execution_mode": "local_deterministic",
+      "expected_gate": "proceed",
+      "expected_statuses": {
+        "reconstructability": "not_assessed",
+        "identifiable_basis": "not_assessed",
+        "chronology_integrity": "not_assessed",
+        "reasoning_traceability": "not_assessed",
+        "sufficiency": "not_assessed"
+      }
+    },
+    {
+      "id": "GC-034",
+      "category": "cited_evidence_conflict",
+      "purpose": "Two quotations cited for the same assertion state incompatible facts",
+      "execution_mode": "local_mocked",
+      "expected_gate": "proceed",
+      "expected_statuses": {
+        "reconstructability": "review_required",
+        "identifiable_basis": "supported",
+        "chronology_integrity": "supported",
+        "reasoning_traceability": "supported",
+        "sufficiency": "review_required"
+      }
+    },
+    {
+      "id": "GC-035",
+      "category": "prohibited_inference",
+      "purpose": "Prohibited inference (intent) in a candidate note",
+      "execution_mode": "local_mocked",
+      "expected_gate": "proceed",
+      "expected_statuses": {
+        "reconstructability": "supported",
+        "identifiable_basis": "review_required",
+        "chronology_integrity": "supported",
+        "reasoning_traceability": "supported",
+        "sufficiency": "review_required"
+      }
+    }
+  ]
+}

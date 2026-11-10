@@ -1,0 +1,86 @@
+{
+  "generated": "2026-10-13T00:00:00Z",
+  "statement": "Presence of a local artifact does not satisfy an external release gate.",
+  "categories": {
+    "version_identity": {
+      "state": "present_local_artifact",
+      "evidence": "version-lineage/VERSION_BOUNDARY_MANIFEST.json"
+    },
+    "fixture_integrity": {
+      "state": "present_local_artifact",
+      "evidence": "fixture registers and admission results"
+    },
+    "prompt_identity": {
+      "state": "present_local_artifact",
+      "evidence": "PROMPT_MANIFEST.json"
+    },
+    "contract_identity": {
+      "state": "present_local_artifact",
+      "evidence": "contract.mjs version constants"
+    },
+    "graph_integrity": {
+      "state": "present_local_artifact",
+      "evidence": "v0.3 execution record (GV-01 to GV-14)"
+    },
+    "failure_mode_record": {
+      "state": "present_local_artifact",
+      "evidence": "ADAPTIVE_FAILURE_MODE_REGISTER.md"
+    },
+    "change_impact_analysis": {
+      "state": "present_local_artifact",
+      "evidence": "proposals/IMPACT_ANALYSES.json"
+    },
+    "regression_coverage": {
+      "state": "present_local_artifact",
+      "evidence": "proposals/REGRESSION_PLANS.json"
+    },
+    "mutation_coverage": {
+      "state": "present_local_artifact",
+      "evidence": "execution-record/MUTATION_EVIDENCE.json"
+    },
+    "drift_record": {
+      "state": "present_local_artifact",
+      "evidence": "drift-ledger/DRIFT_LEDGER.json"
+    },
+    "evaluation_separation_controls": {
+      "state": "present_local_artifact",
+      "evidence": "SEPARATION_CHECK_RESULTS.json"
+    },
+    "operator_control_evidence": {
+      "state": "present_local_artifact",
+      "evidence": "operator-console/rendered/"
+    },
+    "counsel_review": {
+      "state": "external_evidence_required",
+      "evidence": null,
+      "note": "Cannot be produced or satisfied by local engineering."
+    },
+    "independent_holdout": {
+      "state": "external_evidence_required",
+      "evidence": null,
+      "note": "Cannot be produced or satisfied by local engineering."
+    },
+    "independent_labeling": {
+      "state": "external_evidence_required",
+      "evidence": null,
+      "note": "Cannot be produced or satisfied by local engineering."
+    },
+    "adjudication": {
+      "state": "external_evidence_required",
+      "evidence": null,
+      "note": "Cannot be produced or satisfied by local engineering."
+    },
+    "production_qa": {
+      "state": "external_evidence_required",
+      "evidence": null,
+      "note": "Cannot be produced or satisfied by local engineering."
+    },
+    "owner_release_authorization": {
+      "state": "not_authorized",
+      "evidence": null,
+      "note": "Only the owner can record a release authorization. None exists."
+    }
+  },
+  "non_authorizing": true,
+  "production_status": "NO_GO_NOT_VERIFIED"
+}

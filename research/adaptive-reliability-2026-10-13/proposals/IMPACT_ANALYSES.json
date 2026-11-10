@@ -1,0 +1,980 @@
+{
+  "generated": "2026-10-13T00:00:00Z",
+  "impacts": {
+    "R-01": {
+      "proposal_id": "CP-78fb7dd056",
+      "impact_class": "local_behavioral_change",
+      "reasons": [
+        "change type, flag or target alters Engine behaviour",
+        "observed: 5 drift row(s) across 1 fixture(s)",
+        "could make a finding more favourable, weaken a limitation, or alter a refusal rule"
+      ],
+      "classified_from": "observed_change_record",
+      "historical_outputs_change": {
+        "v1": "no: frozen as git blob baebb512",
+        "v0.1": "no: frozen package",
+        "v0.2": "no: frozen package",
+        "v0.3": "yes: a behavioural change would be a new version, and v0.3 outputs would no longer be reproduced by it"
+      },
+      "fixtures_requiring_replay": [
+        "fixture_hash",
+        "mixed_scope",
+        "prompt_injection",
+        "reworded_employment",
+        "reworded_injection",
+        "scope_refusal",
+        "version_mismatch"
+      ],
+      "graph_rules_affected": [
+        "GV-07",
+        "GV-10"
+      ],
+      "cognitive_controls_affected": [],
+      "refusal_behavior": "broader",
+      "condition_can_become_more_favorable": false,
+      "limitation_removed_or_weakened": false,
+      "documentation_must_change": true,
+      "new_version_identity_required": true,
+      "independent_evaluation_protocol_update_required": true,
+      "human_review_required": true
+    },
+    "R-02": {
+      "proposal_id": "CP-c5952e86ff",
+      "impact_class": "local_behavioral_change",
+      "reasons": [
+        "change type, flag or target alters Engine behaviour",
+        "observed: 5 drift row(s) across 1 fixture(s)"
+      ],
+      "classified_from": "observed_change_record",
+      "historical_outputs_change": {
+        "v1": "no: frozen as git blob baebb512",
+        "v0.1": "no: frozen package",
+        "v0.2": "no: frozen package",
+        "v0.3": "yes: a behavioural change would be a new version, and v0.3 outputs would no longer be reproduced by it"
+      },
+      "fixtures_requiring_replay": [
+        "cited_evidence_conflict",
+        "conflicting_authority",
+        "conflicting_control",
+        "conflicting_dates",
+        "conflicting_risk",
+        "contradictory_chronology"
+      ],
+      "graph_rules_affected": [
+        "GV-07",
+        "GV-09"
+      ],
+      "cognitive_controls_affected": [
+        "authority_state_conflict",
+        "cited_evidence_conflict",
+        "control_state_conflict",
+        "decision_date_conflict",
+        "impossible_sequence",
+        "risk_state_conflict"
+      ],
+      "refusal_behavior": "unchanged",
+      "condition_can_become_more_favorable": false,
+      "limitation_removed_or_weakened": false,
+      "documentation_must_change": true,
+      "new_version_identity_required": true,
+      "independent_evaluation_protocol_update_required": true,
+      "human_review_required": true
+    },
+    "R-03": {
+      "proposal_id": "CP-340cae31dc",
+      "impact_class": "not_assessed",
+      "reasons": [
+        "behavioural proposal without a verified observed-change record"
+      ],
+      "historical_outputs_change": {
+        "v1": "no: frozen as git blob baebb512",
+        "v0.1": "no: frozen package",
+        "v0.2": "no: frozen package",
+        "v0.3": "not assessed"
+      },
+      "fixtures_requiring_replay": [
+        "*"
+      ],
+      "graph_rules_affected": [],
+      "cognitive_controls_affected": [],
+      "refusal_behavior": "not_assessed",
+      "condition_can_become_more_favorable": "not_assessed",
+      "limitation_removed_or_weakened": "not_assessed",
+      "documentation_must_change": true,
+      "new_version_identity_required": true,
+      "independent_evaluation_protocol_update_required": true,
+      "human_review_required": true
+    },
+    "R-04": {
+      "proposal_id": "CP-020ab7ef8f",
+      "impact_class": "not_assessed",
+      "reasons": [
+        "behavioural proposal without a verified observed-change record"
+      ],
+      "historical_outputs_change": {
+        "v1": "no: frozen as git blob baebb512",
+        "v0.1": "no: frozen package",
+        "v0.2": "no: frozen package",
+        "v0.3": "not assessed"
+      },
+      "fixtures_requiring_replay": [
+        "*"
+      ],
+      "graph_rules_affected": [],
+      "cognitive_controls_affected": [],
+      "refusal_behavior": "not_assessed",
+      "condition_can_become_more_favorable": "not_assessed",
+      "limitation_removed_or_weakened": "not_assessed",
+      "documentation_must_change": true,
+      "new_version_identity_required": true,
+      "independent_evaluation_protocol_update_required": true,
+      "human_review_required": true
+    },
+    "R-05": {
+      "proposal_id": "CP-5d9ebeb0f8",
+      "impact_class": "no_behavioral_change",
+      "reasons": [
+        "fixture, test or documentation change only"
+      ],
+      "classified_from": "declared_non_behavioural_change",
+      "historical_outputs_change": {
+        "v1": "no: frozen as git blob baebb512",
+        "v0.1": "no: frozen package",
+        "v0.2": "no: frozen package",
+        "v0.3": "no"
+      },
+      "fixtures_requiring_replay": [],
+      "graph_rules_affected": [],
+      "cognitive_controls_affected": [],
+      "refusal_behavior": "unchanged",
+      "condition_can_become_more_favorable": false,
+      "limitation_removed_or_weakened": false,
+      "documentation_must_change": false,
+      "new_version_identity_required": false,
+      "independent_evaluation_protocol_update_required": false,
+      "human_review_required": true
+    },
+    "R-06": {
+      "proposal_id": "CP-494cd8e1cd",
+      "impact_class": "no_behavioral_change",
+      "reasons": [
+        "fixture, test or documentation change only"
+      ],
+      "classified_from": "declared_non_behavioural_change",
+      "historical_outputs_change": {
+        "v1": "no: frozen as git blob baebb512",
+        "v0.1": "no: frozen package",
+        "v0.2": "no: frozen package",
+        "v0.3": "no"
+      },
+      "fixtures_requiring_replay": [],
+      "graph_rules_affected": [],
+      "cognitive_controls_affected": [],
+      "refusal_behavior": "unchanged",
+      "condition_can_become_more_favorable": false,
+      "limitation_removed_or_weakened": false,
+      "documentation_must_change": false,
+      "new_version_identity_required": false,
+      "independent_evaluation_protocol_update_required": false,
+      "human_review_required": true
+    },
+    "R-07": {
+      "proposal_id": "CP-f735717e19",
+      "impact_class": "no_behavioral_change",
+      "reasons": [
+        "fixture, test or documentation change only"
+      ],
+      "classified_from": "declared_non_behavioural_change",
+      "historical_outputs_change": {
+        "v1": "no: frozen as git blob baebb512",
+        "v0.1": "no: frozen package",
+        "v0.2": "no: frozen package",
+        "v0.3": "no"
+      },
+      "fixtures_requiring_replay": [],
+      "graph_rules_affected": [],
+      "cognitive_controls_affected": [],
+      "refusal_behavior": "unchanged",
+      "condition_can_become_more_favorable": false,
+      "limitation_removed_or_weakened": false,
+      "documentation_must_change": false,
+      "new_version_identity_required": false,
+      "independent_evaluation_protocol_update_required": false,
+      "human_review_required": true
+    },
+    "R-08": {
+      "proposal_id": "CP-54f7b631d9",
+      "impact_class": "no_behavioral_change",
+      "reasons": [
+        "fixture, test or documentation change only"
+      ],
+      "classified_from": "declared_non_behavioural_change",
+      "historical_outputs_change": {
+        "v1": "no: frozen as git blob baebb512",
+        "v0.1": "no: frozen package",
+        "v0.2": "no: frozen package",
+        "v0.3": "no"
+      },
+      "fixtures_requiring_replay": [],
+      "graph_rules_affected": [],
+      "cognitive_controls_affected": [],
+      "refusal_behavior": "unchanged",
+      "condition_can_become_more_favorable": false,
+      "limitation_removed_or_weakened": false,
+      "documentation_must_change": true,
+      "new_version_identity_required": false,
+      "independent_evaluation_protocol_update_required": false,
+      "human_review_required": true
+    },
+    "R-09": {
+      "proposal_id": "CP-73a3047c2a",
+      "impact_class": "not_assessed",
+      "reasons": [
+        "behavioural proposal without a verified observed-change record"
+      ],
+      "historical_outputs_change": {
+        "v1": "no: frozen as git blob baebb512",
+        "v0.1": "no: frozen package",
+        "v0.2": "no: frozen package",
+        "v0.3": "not assessed"
+      },
+      "fixtures_requiring_replay": [
+        "*"
+      ],
+      "graph_rules_affected": [],
+      "cognitive_controls_affected": [],
+      "refusal_behavior": "not_assessed",
+      "condition_can_become_more_favorable": "not_assessed",
+      "limitation_removed_or_weakened": "not_assessed",
+      "documentation_must_change": true,
+      "new_version_identity_required": true,
+      "independent_evaluation_protocol_update_required": true,
+      "human_review_required": true
+    },
+    "R-10": {
+      "proposal_id": "CP-2b2bf273e7",
+      "impact_class": "not_assessed",
+      "reasons": [
+        "behavioural proposal without a verified observed-change record"
+      ],
+      "historical_outputs_change": {
+        "v1": "no: frozen as git blob baebb512",
+        "v0.1": "no: frozen package",
+        "v0.2": "no: frozen package",
+        "v0.3": "not assessed"
+      },
+      "fixtures_requiring_replay": [
+        "*"
+      ],
+      "graph_rules_affected": [],
+      "cognitive_controls_affected": [],
+      "refusal_behavior": "not_assessed",
+      "condition_can_become_more_favorable": "not_assessed",
+      "limitation_removed_or_weakened": "not_assessed",
+      "documentation_must_change": true,
+      "new_version_identity_required": true,
+      "independent_evaluation_protocol_update_required": true,
+      "human_review_required": true
+    },
+    "X-01": {
+      "proposal_id": "CP-677581db61",
+      "impact_class": "not_assessed",
+      "reasons": [
+        "behavioural proposal without a verified observed-change record"
+      ],
+      "historical_outputs_change": {
+        "v1": "no: frozen as git blob baebb512",
+        "v0.1": "no: frozen package",
+        "v0.2": "no: frozen package",
+        "v0.3": "not assessed"
+      },
+      "fixtures_requiring_replay": [
+        "*"
+      ],
+      "graph_rules_affected": [],
+      "cognitive_controls_affected": [],
+      "refusal_behavior": "not_assessed",
+      "condition_can_become_more_favorable": "not_assessed",
+      "limitation_removed_or_weakened": "not_assessed",
+      "documentation_must_change": true,
+      "new_version_identity_required": true,
+      "independent_evaluation_protocol_update_required": true,
+      "human_review_required": true
+    },
+    "X-02": {
+      "proposal_id": "CP-ba17ba3341",
+      "impact_class": "scope_boundary_change",
+      "reasons": [
+        "change type, flag or target alters Engine behaviour",
+        "observed: 5 drift row(s) across 1 fixture(s)",
+        "could make a finding more favourable, weaken a limitation, or alter a refusal rule",
+        "observed favourable transitions: 4",
+        "observed excluded-domain fixtures no longer refused"
+      ],
+      "classified_from": "observed_change_record",
+      "historical_outputs_change": {
+        "v1": "no: frozen as git blob baebb512",
+        "v0.1": "no: frozen package",
+        "v0.2": "no: frozen package",
+        "v0.3": "yes: a behavioural change would be a new version, and v0.3 outputs would no longer be reproduced by it"
+      },
+      "fixtures_requiring_replay": [
+        "fixture_hash",
+        "mixed_scope",
+        "prompt_injection",
+        "reworded_employment",
+        "reworded_injection",
+        "scope_refusal",
+        "version_mismatch"
+      ],
+      "graph_rules_affected": [
+        "GV-07",
+        "GV-10"
+      ],
+      "cognitive_controls_affected": [],
+      "refusal_behavior": "narrower",
+      "condition_can_become_more_favorable": true,
+      "limitation_removed_or_weakened": true,
+      "documentation_must_change": true,
+      "new_version_identity_required": true,
+      "independent_evaluation_protocol_update_required": true,
+      "human_review_required": true
+    },
+    "X-03": {
+      "proposal_id": "CP-6d15e8c604",
+      "impact_class": "not_assessed",
+      "reasons": [
+        "behavioural proposal without a verified observed-change record"
+      ],
+      "historical_outputs_change": {
+        "v1": "no: frozen as git blob baebb512",
+        "v0.1": "no: frozen package",
+        "v0.2": "no: frozen package",
+        "v0.3": "not assessed"
+      },
+      "fixtures_requiring_replay": [
+        "*"
+      ],
+      "graph_rules_affected": [],
+      "cognitive_controls_affected": [],
+      "refusal_behavior": "not_assessed",
+      "condition_can_become_more_favorable": "not_assessed",
+      "limitation_removed_or_weakened": "not_assessed",
+      "documentation_must_change": true,
+      "new_version_identity_required": true,
+      "independent_evaluation_protocol_update_required": true,
+      "human_review_required": true
+    },
+    "X-04": {
+      "proposal_id": "CP-5d87564610",
+      "impact_class": "not_assessed",
+      "reasons": [
+        "behavioural proposal without a verified observed-change record"
+      ],
+      "historical_outputs_change": {
+        "v1": "no: frozen as git blob baebb512",
+        "v0.1": "no: frozen package",
+        "v0.2": "no: frozen package",
+        "v0.3": "not assessed"
+      },
+      "fixtures_requiring_replay": [
+        "*"
+      ],
+      "graph_rules_affected": [],
+      "cognitive_controls_affected": [],
+      "refusal_behavior": "not_assessed",
+      "condition_can_become_more_favorable": "not_assessed",
+      "limitation_removed_or_weakened": "not_assessed",
+      "documentation_must_change": true,
+      "new_version_identity_required": true,
+      "independent_evaluation_protocol_update_required": true,
+      "human_review_required": true
+    },
+    "X-05": {
+      "proposal_id": "CP-94946512e5",
+      "impact_class": "no_behavioral_change",
+      "reasons": [
+        "fixture, test or documentation change only"
+      ],
+      "classified_from": "declared_non_behavioural_change",
+      "historical_outputs_change": {
+        "v1": "no: frozen as git blob baebb512",
+        "v0.1": "no: frozen package",
+        "v0.2": "no: frozen package",
+        "v0.3": "no"
+      },
+      "fixtures_requiring_replay": [],
+      "graph_rules_affected": [],
+      "cognitive_controls_affected": [],
+      "refusal_behavior": "unchanged",
+      "condition_can_become_more_favorable": false,
+      "limitation_removed_or_weakened": false,
+      "documentation_must_change": false,
+      "new_version_identity_required": false,
+      "independent_evaluation_protocol_update_required": false,
+      "human_review_required": true
+    },
+    "X-06": {
+      "proposal_id": "CP-ee1cbd32f8",
+      "impact_class": "not_assessed",
+      "reasons": [
+        "behavioural proposal without a verified observed-change record"
+      ],
+      "historical_outputs_change": {
+        "v1": "no: frozen as git blob baebb512",
+        "v0.1": "no: frozen package",
+        "v0.2": "no: frozen package",
+        "v0.3": "not assessed"
+      },
+      "fixtures_requiring_replay": [
+        "*"
+      ],
+      "graph_rules_affected": [],
+      "cognitive_controls_affected": [],
+      "refusal_behavior": "not_assessed",
+      "condition_can_become_more_favorable": "not_assessed",
+      "limitation_removed_or_weakened": "not_assessed",
+      "documentation_must_change": true,
+      "new_version_identity_required": true,
+      "independent_evaluation_protocol_update_required": true,
+      "human_review_required": true
+    },
+    "X-07": {
+      "proposal_id": "CP-0a7e89031f",
+      "impact_class": "not_assessed",
+      "reasons": [
+        "behavioural proposal without a verified observed-change record"
+      ],
+      "historical_outputs_change": {
+        "v1": "no: frozen as git blob baebb512",
+        "v0.1": "no: frozen package",
+        "v0.2": "no: frozen package",
+        "v0.3": "not assessed"
+      },
+      "fixtures_requiring_replay": [
+        "*"
+      ],
+      "graph_rules_affected": [],
+      "cognitive_controls_affected": [],
+      "refusal_behavior": "not_assessed",
+      "condition_can_become_more_favorable": "not_assessed",
+      "limitation_removed_or_weakened": "not_assessed",
+      "documentation_must_change": true,
+      "new_version_identity_required": true,
+      "independent_evaluation_protocol_update_required": true,
+      "human_review_required": true
+    },
+    "X-08": {
+      "proposal_id": "CP-03c4aaf448",
+      "impact_class": "no_behavioral_change",
+      "reasons": [
+        "fixture, test or documentation change only"
+      ],
+      "classified_from": "declared_non_behavioural_change",
+      "historical_outputs_change": {
+        "v1": "no: frozen as git blob baebb512",
+        "v0.1": "no: frozen package",
+        "v0.2": "no: frozen package",
+        "v0.3": "no"
+      },
+      "fixtures_requiring_replay": [],
+      "graph_rules_affected": [],
+      "cognitive_controls_affected": [],
+      "refusal_behavior": "unchanged",
+      "condition_can_become_more_favorable": false,
+      "limitation_removed_or_weakened": false,
+      "documentation_must_change": false,
+      "new_version_identity_required": false,
+      "independent_evaluation_protocol_update_required": false,
+      "human_review_required": true
+    },
+    "X-09": {
+      "proposal_id": "CP-5ac32955b0",
+      "impact_class": "not_assessed",
+      "reasons": [
+        "behavioural proposal without a verified observed-change record"
+      ],
+      "historical_outputs_change": {
+        "v1": "no: frozen as git blob baebb512",
+        "v0.1": "no: frozen package",
+        "v0.2": "no: frozen package",
+        "v0.3": "not assessed"
+      },
+      "fixtures_requiring_replay": [
+        "*"
+      ],
+      "graph_rules_affected": [],
+      "cognitive_controls_affected": [],
+      "refusal_behavior": "not_assessed",
+      "condition_can_become_more_favorable": "not_assessed",
+      "limitation_removed_or_weakened": "not_assessed",
+      "documentation_must_change": true,
+      "new_version_identity_required": true,
+      "independent_evaluation_protocol_update_required": true,
+      "human_review_required": true
+    },
+    "X-10": {
+      "proposal_id": "CP-c56822cd70",
+      "impact_class": "not_assessed",
+      "reasons": [
+        "behavioural proposal without a verified observed-change record"
+      ],
+      "historical_outputs_change": {
+        "v1": "no: frozen as git blob baebb512",
+        "v0.1": "no: frozen package",
+        "v0.2": "no: frozen package",
+        "v0.3": "not assessed"
+      },
+      "fixtures_requiring_replay": [
+        "*"
+      ],
+      "graph_rules_affected": [],
+      "cognitive_controls_affected": [],
+      "refusal_behavior": "not_assessed",
+      "condition_can_become_more_favorable": "not_assessed",
+      "limitation_removed_or_weakened": "not_assessed",
+      "documentation_must_change": true,
+      "new_version_identity_required": true,
+      "independent_evaluation_protocol_update_required": true,
+      "human_review_required": true
+    },
+    "Y-01": {
+      "proposal_id": "CP-ead65360a6",
+      "impact_class": "not_assessed",
+      "reasons": [
+        "behavioural proposal without a verified observed-change record"
+      ],
+      "historical_outputs_change": {
+        "v1": "no: frozen as git blob baebb512",
+        "v0.1": "no: frozen package",
+        "v0.2": "no: frozen package",
+        "v0.3": "not assessed"
+      },
+      "fixtures_requiring_replay": [
+        "*"
+      ],
+      "graph_rules_affected": [],
+      "cognitive_controls_affected": [],
+      "refusal_behavior": "not_assessed",
+      "condition_can_become_more_favorable": "not_assessed",
+      "limitation_removed_or_weakened": "not_assessed",
+      "documentation_must_change": true,
+      "new_version_identity_required": true,
+      "independent_evaluation_protocol_update_required": true,
+      "human_review_required": true
+    },
+    "Y-02": {
+      "proposal_id": "CP-10b3ec3a1a",
+      "impact_class": "scope_boundary_change",
+      "reasons": [
+        "change type, flag or target alters Engine behaviour",
+        "observed: 5 drift row(s) across 1 fixture(s)",
+        "could make a finding more favourable, weaken a limitation, or alter a refusal rule",
+        "observed favourable transitions: 2",
+        "observed excluded-domain fixtures no longer refused"
+      ],
+      "classified_from": "observed_change_record",
+      "historical_outputs_change": {
+        "v1": "no: frozen as git blob baebb512",
+        "v0.1": "no: frozen package",
+        "v0.2": "no: frozen package",
+        "v0.3": "yes: a behavioural change would be a new version, and v0.3 outputs would no longer be reproduced by it"
+      },
+      "fixtures_requiring_replay": [
+        "fixture_hash",
+        "mixed_scope",
+        "prompt_injection",
+        "reworded_employment",
+        "reworded_injection",
+        "scope_refusal",
+        "version_mismatch"
+      ],
+      "graph_rules_affected": [
+        "GV-07",
+        "GV-10"
+      ],
+      "cognitive_controls_affected": [],
+      "refusal_behavior": "narrower",
+      "condition_can_become_more_favorable": true,
+      "limitation_removed_or_weakened": true,
+      "documentation_must_change": true,
+      "new_version_identity_required": true,
+      "independent_evaluation_protocol_update_required": true,
+      "human_review_required": true
+    },
+    "Y-03": {
+      "proposal_id": "CP-c0a6789328",
+      "impact_class": "evidence_standard_change",
+      "reasons": [
+        "change type, flag or target alters Engine behaviour",
+        "observed: 15 drift row(s) across 3 fixture(s)",
+        "could make a finding more favourable, weaken a limitation, or alter a refusal rule",
+        "observed favourable transitions: 1"
+      ],
+      "classified_from": "observed_change_record",
+      "historical_outputs_change": {
+        "v1": "no: frozen as git blob baebb512",
+        "v0.1": "no: frozen package",
+        "v0.2": "no: frozen package",
+        "v0.3": "yes: a behavioural change would be a new version, and v0.3 outputs would no longer be reproduced by it"
+      },
+      "fixtures_requiring_replay": [
+        "basis_without_conclusion",
+        "conclusion_without_basis",
+        "missing_authority",
+        "missing_control",
+        "missing_expiry",
+        "positive_control"
+      ],
+      "graph_rules_affected": [
+        "GV-06",
+        "GV-07",
+        "GV-08"
+      ],
+      "cognitive_controls_affected": [
+        "authority_source_not_identified",
+        "basis_states_no_reason_or_source",
+        "basis_without_conclusion",
+        "conclusion_without_basis",
+        "conclusion_without_traceable_basis",
+        "no_authority_section",
+        "no_compensating_control_stated",
+        "no_explicit_dates",
+        "no_locatable_conclusion",
+        "no_stated_expiry_date"
+      ],
+      "refusal_behavior": "unchanged",
+      "condition_can_become_more_favorable": true,
+      "limitation_removed_or_weakened": false,
+      "documentation_must_change": true,
+      "new_version_identity_required": true,
+      "independent_evaluation_protocol_update_required": true,
+      "human_review_required": true
+    },
+    "Y-04": {
+      "proposal_id": "CP-f3d5a1c377",
+      "impact_class": "evidence_standard_change",
+      "reasons": [
+        "change type, flag or target alters Engine behaviour",
+        "observed: 30 drift row(s) across 6 fixture(s)",
+        "could make a finding more favourable, weaken a limitation, or alter a refusal rule",
+        "observed favourable transitions: 4"
+      ],
+      "classified_from": "observed_change_record",
+      "historical_outputs_change": {
+        "v1": "no: frozen as git blob baebb512",
+        "v0.1": "no: frozen package",
+        "v0.2": "no: frozen package",
+        "v0.3": "yes: a behavioural change would be a new version, and v0.3 outputs would no longer be reproduced by it"
+      },
+      "fixtures_requiring_replay": [
+        "duplicate_ambiguous",
+        "duplicate_disambiguated",
+        "fabricated_quote",
+        "heading_only",
+        "noncontiguous",
+        "unicode_variant",
+        "whitespace_variant"
+      ],
+      "graph_rules_affected": [
+        "GV-04",
+        "GV-05",
+        "GV-07"
+      ],
+      "cognitive_controls_affected": [
+        "absent_quotation",
+        "ambiguous_quotation"
+      ],
+      "refusal_behavior": "narrower",
+      "condition_can_become_more_favorable": true,
+      "limitation_removed_or_weakened": false,
+      "documentation_must_change": true,
+      "new_version_identity_required": true,
+      "independent_evaluation_protocol_update_required": true,
+      "human_review_required": true
+    },
+    "Y-05": {
+      "proposal_id": "CP-3d5616db48",
+      "impact_class": "local_behavioral_change",
+      "reasons": [
+        "change type, flag or target alters Engine behaviour",
+        "observed: 5 drift row(s) across 1 fixture(s)",
+        "could make a finding more favourable, weaken a limitation, or alter a refusal rule"
+      ],
+      "classified_from": "observed_change_record",
+      "historical_outputs_change": {
+        "v1": "no: frozen as git blob baebb512",
+        "v0.1": "no: frozen package",
+        "v0.2": "no: frozen package",
+        "v0.3": "yes: a behavioural change would be a new version, and v0.3 outputs would no longer be reproduced by it"
+      },
+      "fixtures_requiring_replay": [
+        "fixture_hash",
+        "mixed_scope",
+        "prompt_injection",
+        "reworded_employment",
+        "reworded_injection",
+        "scope_refusal",
+        "version_mismatch"
+      ],
+      "graph_rules_affected": [
+        "GV-07",
+        "GV-10"
+      ],
+      "cognitive_controls_affected": [],
+      "refusal_behavior": "broader",
+      "condition_can_become_more_favorable": false,
+      "limitation_removed_or_weakened": false,
+      "documentation_must_change": true,
+      "new_version_identity_required": true,
+      "independent_evaluation_protocol_update_required": true,
+      "human_review_required": true
+    },
+    "Y-06": {
+      "proposal_id": "CP-177e070fdc",
+      "impact_class": "not_assessed",
+      "reasons": [
+        "behavioural proposal without a verified observed-change record"
+      ],
+      "historical_outputs_change": {
+        "v1": "no: frozen as git blob baebb512",
+        "v0.1": "no: frozen package",
+        "v0.2": "no: frozen package",
+        "v0.3": "not assessed"
+      },
+      "fixtures_requiring_replay": [
+        "*"
+      ],
+      "graph_rules_affected": [],
+      "cognitive_controls_affected": [],
+      "refusal_behavior": "not_assessed",
+      "condition_can_become_more_favorable": "not_assessed",
+      "limitation_removed_or_weakened": "not_assessed",
+      "documentation_must_change": true,
+      "new_version_identity_required": true,
+      "independent_evaluation_protocol_update_required": true,
+      "human_review_required": true
+    },
+    "Y-07": {
+      "proposal_id": "CP-11100e17a1",
+      "impact_class": "local_behavioral_change",
+      "reasons": [
+        "change type, flag or target alters Engine behaviour",
+        "observed: 365 drift row(s) across 73 fixture(s)",
+        "could make a finding more favourable, weaken a limitation, or alter a refusal rule"
+      ],
+      "classified_from": "observed_change_record",
+      "historical_outputs_change": {
+        "v1": "no: frozen as git blob baebb512",
+        "v0.1": "no: frozen package",
+        "v0.2": "no: frozen package",
+        "v0.3": "yes: a behavioural change would be a new version, and v0.3 outputs would no longer be reproduced by it"
+      },
+      "fixtures_requiring_replay": [],
+      "graph_rules_affected": [],
+      "cognitive_controls_affected": [],
+      "refusal_behavior": "unchanged",
+      "condition_can_become_more_favorable": false,
+      "limitation_removed_or_weakened": true,
+      "documentation_must_change": true,
+      "new_version_identity_required": true,
+      "independent_evaluation_protocol_update_required": false,
+      "human_review_required": true
+    },
+    "Y-08": {
+      "proposal_id": "CP-88c745a588",
+      "impact_class": "local_behavioral_change",
+      "reasons": [
+        "change type, flag or target alters Engine behaviour",
+        "observed: 5 drift row(s) across 1 fixture(s)",
+        "could make a finding more favourable, weaken a limitation, or alter a refusal rule"
+      ],
+      "classified_from": "observed_change_record",
+      "historical_outputs_change": {
+        "v1": "no: frozen as git blob baebb512",
+        "v0.1": "no: frozen package",
+        "v0.2": "no: frozen package",
+        "v0.3": "yes: a behavioural change would be a new version, and v0.3 outputs would no longer be reproduced by it"
+      },
+      "fixtures_requiring_replay": [
+        "fixture_hash",
+        "mixed_scope",
+        "prompt_injection",
+        "reworded_employment",
+        "reworded_injection",
+        "scope_refusal",
+        "version_mismatch"
+      ],
+      "graph_rules_affected": [
+        "GV-07",
+        "GV-10"
+      ],
+      "cognitive_controls_affected": [],
+      "refusal_behavior": "broader",
+      "condition_can_become_more_favorable": false,
+      "limitation_removed_or_weakened": false,
+      "documentation_must_change": true,
+      "new_version_identity_required": true,
+      "independent_evaluation_protocol_update_required": true,
+      "human_review_required": true
+    },
+    "Y-09": {
+      "proposal_id": "CP-fdbbd27808",
+      "impact_class": "local_behavioral_change",
+      "reasons": [
+        "change type, flag or target alters Engine behaviour",
+        "observed: 315 drift row(s) across 63 fixture(s)"
+      ],
+      "classified_from": "observed_change_record",
+      "historical_outputs_change": {
+        "v1": "no: frozen as git blob baebb512",
+        "v0.1": "no: frozen package",
+        "v0.2": "no: frozen package",
+        "v0.3": "yes: a behavioural change would be a new version, and v0.3 outputs would no longer be reproduced by it"
+      },
+      "fixtures_requiring_replay": [
+        "basis_without_conclusion",
+        "conclusion_without_basis",
+        "missing_authority",
+        "missing_control",
+        "missing_expiry",
+        "positive_control"
+      ],
+      "graph_rules_affected": [
+        "GV-06",
+        "GV-07",
+        "GV-08"
+      ],
+      "cognitive_controls_affected": [
+        "authority_source_not_identified",
+        "basis_states_no_reason_or_source",
+        "basis_without_conclusion",
+        "conclusion_without_basis",
+        "conclusion_without_traceable_basis",
+        "no_authority_section",
+        "no_compensating_control_stated",
+        "no_explicit_dates",
+        "no_locatable_conclusion",
+        "no_stated_expiry_date"
+      ],
+      "refusal_behavior": "unchanged",
+      "condition_can_become_more_favorable": false,
+      "limitation_removed_or_weakened": false,
+      "documentation_must_change": true,
+      "new_version_identity_required": true,
+      "independent_evaluation_protocol_update_required": true,
+      "human_review_required": true
+    },
+    "Y-10": {
+      "proposal_id": "CP-3d5616db48",
+      "impact_class": "local_behavioral_change",
+      "reasons": [
+        "change type, flag or target alters Engine behaviour",
+        "observed: 5 drift row(s) across 1 fixture(s)",
+        "could make a finding more favourable, weaken a limitation, or alter a refusal rule"
+      ],
+      "classified_from": "observed_change_record",
+      "historical_outputs_change": {
+        "v1": "no: frozen as git blob baebb512",
+        "v0.1": "no: frozen package",
+        "v0.2": "no: frozen package",
+        "v0.3": "yes: a behavioural change would be a new version, and v0.3 outputs would no longer be reproduced by it"
+      },
+      "fixtures_requiring_replay": [
+        "fixture_hash",
+        "mixed_scope",
+        "prompt_injection",
+        "reworded_employment",
+        "reworded_injection",
+        "scope_refusal",
+        "version_mismatch"
+      ],
+      "graph_rules_affected": [
+        "GV-07",
+        "GV-10"
+      ],
+      "cognitive_controls_affected": [],
+      "refusal_behavior": "broader",
+      "condition_can_become_more_favorable": false,
+      "limitation_removed_or_weakened": false,
+      "documentation_must_change": true,
+      "new_version_identity_required": true,
+      "independent_evaluation_protocol_update_required": true,
+      "human_review_required": true
+    },
+    "Y-11": {
+      "proposal_id": "CP-1583ed7b71",
+      "impact_class": "local_behavioral_change",
+      "reasons": [
+        "change type, flag or target alters Engine behaviour",
+        "observed: 5 drift row(s) across 1 fixture(s)",
+        "could make a finding more favourable, weaken a limitation, or alter a refusal rule"
+      ],
+      "classified_from": "observed_change_record",
+      "historical_outputs_change": {
+        "v1": "no: frozen as git blob baebb512",
+        "v0.1": "no: frozen package",
+        "v0.2": "no: frozen package",
+        "v0.3": "yes: a behavioural change would be a new version, and v0.3 outputs would no longer be reproduced by it"
+      },
+      "fixtures_requiring_replay": [
+        "fixture_hash",
+        "mixed_scope",
+        "prompt_injection",
+        "reworded_employment",
+        "reworded_injection",
+        "scope_refusal",
+        "version_mismatch"
+      ],
+      "graph_rules_affected": [
+        "GV-07",
+        "GV-10"
+      ],
+      "cognitive_controls_affected": [],
+      "refusal_behavior": "broader",
+      "condition_can_become_more_favorable": false,
+      "limitation_removed_or_weakened": false,
+      "documentation_must_change": true,
+      "new_version_identity_required": true,
+      "independent_evaluation_protocol_update_required": true,
+      "human_review_required": true
+    },
+    "Y-12": {
+      "proposal_id": "CP-1583ed7b71",
+      "impact_class": "local_behavioral_change",
+      "reasons": [
+        "change type, flag or target alters Engine behaviour",
+        "observed: 5 drift row(s) across 1 fixture(s)",
+        "could make a finding more favourable, weaken a limitation, or alter a refusal rule"
+      ],
+      "classified_from": "observed_change_record",
+      "historical_outputs_change": {
+        "v1": "no: frozen as git blob baebb512",
+        "v0.1": "no: frozen package",
+        "v0.2": "no: frozen package",
+        "v0.3": "yes: a behavioural change would be a new version, and v0.3 outputs would no longer be reproduced by it"
+      },
+      "fixtures_requiring_replay": [
+        "fixture_hash",
+        "mixed_scope",
+        "prompt_injection",
+        "reworded_employment",
+        "reworded_injection",
+        "scope_refusal",
+        "version_mismatch"
+      ],
+      "graph_rules_affected": [
+        "GV-07",
+        "GV-10"
+      ],
+      "cognitive_controls_affected": [],
+      "refusal_behavior": "broader",
+      "condition_can_become_more_favorable": false,
+      "limitation_removed_or_weakened": false,
+      "documentation_must_change": true,
+      "new_version_identity_required": true,
+      "independent_evaluation_protocol_update_required": true,
+      "human_review_required": true
+    }
+  }
+}

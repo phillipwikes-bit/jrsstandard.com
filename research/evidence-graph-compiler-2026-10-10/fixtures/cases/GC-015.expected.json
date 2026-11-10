@@ -1,0 +1,30 @@
+{
+  "case_id": "GC-015",
+  "label_status": "engineering_authored_expected_result_not_adjudicated",
+  "execution_mode": "local_mocked",
+  "gate_decision": "proceed",
+  "record_instruction_risk": "not_detected",
+  "candidate_valid": true,
+  "statuses": {
+    "reconstructability": "review_required",
+    "identifiable_basis": "supported",
+    "chronology_integrity": "supported",
+    "reasoning_traceability": "review_required",
+    "sufficiency": "review_required"
+  },
+  "reasons_include": {
+    "reconstructability": [
+      "rule:conclusion_without_traceable_basis"
+    ],
+    "reasoning_traceability": [
+      "rule:conclusion_without_basis"
+    ]
+  },
+  "conflict_kinds": [],
+  "refusal_codes": [],
+  "quote_statuses": {},
+  "cc_defects": [
+    "conclusion_without_basis",
+    "conclusion_without_traceable_basis"
+  ]
+}
