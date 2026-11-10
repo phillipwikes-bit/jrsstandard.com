@@ -40,7 +40,8 @@ const activeInventory=[...inventoryMatch[1].matchAll(/'([^']+)'/g)].map(x=>x[1])
 const browserInventory=JSON.parse(auditMatch[1]);
 assert.equal(new Set(browserInventory).size,browserInventory.length,
  'sitewide browser audit must not duplicate routes');
-assert.deepEqual([...browserInventory].sort(),[...new Set([...activeInventory,...legacy])].sort(),
+const campaignRoutes=['right-to-know-why.html','decisions-you-can-defend.html'];
+assert.deepEqual([...browserInventory].sort(),[...new Set([...activeInventory,...legacy,...campaignRoutes])].sort(),
  'sitewide browser audit does not cover the current public and legacy route inventories');
 
 for(const path of legacy){
