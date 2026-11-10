@@ -33,10 +33,10 @@ test('both campaigns make the reader examine fictional sources before interpreta
     assert.equal((source.match(/class="jrs-reconstruction-step"/g)||[]).length,3,label);
     assert.ok(source.indexOf('Examine the retained sources')>=0,label);
     assert.ok(source.indexOf('Examine the retained sources')<source.indexOf('Compare your interpretation'),label);
-    assert.equal((source.match(/<details\\b/g)||[]).length,(source.match(/<\\/details>/g)||[]).length,label+' nested details');
+    assert.equal((source.match(/<details\b/g)||[]).length,(source.match(/<\/details>/g)||[]).length,label+' nested details');
     assert.match(source,/fictional/i,label);
     assert.match(source,/has not been independently validated/i,label);
-    assert.doesNotMatch(source,/jrs-scenario-(?:hiring|termination|benefits|medical|ai)\\.svg/,label);
+    assert.doesNotMatch(source,/jrs-scenario-(?:hiring|termination|benefits|medical|ai)\.svg/,label);
   }
 });
 
@@ -51,9 +51,9 @@ test('truthful relevant professional authority with no institutional endorsement
 
 test('free-first access is not conditional on supporting either campaign',()=>{
   for(const [label,source] of campaigns){
-    assert.match(source,/href="resources\\.html"/,label);
+    assert.match(source,/href="resources\.html"/,label);
     assert.match(source,/No account, payment, response or expression of support is required/,label);
-    assert.match(source,/method="post" action="\\/api\\/support\\?c=(?:rtkw|defend)&amp;src=campaign_page&amp;next=confirmation"/,label);
+    assert.match(source,/method="post" action="\/api\/support\?c=(?:rtkw|defend)&amp;src=campaign_page&amp;next=confirmation"/,label);
     assert.match(source,/not an institutional endorsement|not proof of organizational authorization/i,label);
   }
   for(const path of ['investigator-guides.html','training.html','check.html']){
