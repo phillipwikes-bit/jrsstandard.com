@@ -22,6 +22,21 @@ jobs:
           grep -q 'src="./contact-profile.js"' owner/incomeos/index.html
       - name: Run encrypted contact profile security and persistence tests
         run: node --test tests/incomeos-contact-profile.mjs
+      - name: Locate Chromium for phone-width browser acceptance
+        run: |
+          for cmd in google-chrome google-chrome-stable chromium chromium-browser; do
+            if command -v "$cmd" >/dev/null 2>&1; then
+              echo "INCOMEOS_BROWSER=$(command -v "$cmd")" >> "$GITHUB_ENV"
+              exit 0
+            fi
+          done
+          exit 1
+      - name: Install pinned browser testing driver
+        run: npm install --no-save --no-package-lock --ignore-scripts --no-audit --no-fund playwright-core@1.63.0
+      - name: Run phone-width contact save and unlock browser acceptance
+        run: node tests/incomeos-contact-profile-browser.mjs
+        env:
+          CI: "true"
       - name: Verify files were not added to the public JRS page
         run: |
           test -f owner/incomeos/contact-profile.js
