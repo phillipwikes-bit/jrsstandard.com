@@ -2,8 +2,8 @@
    query strings, personal data, search terms or independent telemetry endpoint. */
 (function(){
   'use strict';
-  var events=new Set(['tool_open','guide_open','training_entry','training_start','edition_compare','organization_info','campaign_entry','campaign_example_open','campaign_drr_open']);
-  var resources=new Set(['record_check','investigator_guides','reviewer_training','module_0','module_1','module_2','module_3','module_4','module_5','edition_guide','organization_path','rights_initiative','professional_initiative','constructed_example','drr_explainer']);
+  var events=new Set(['tool_open','guide_open','training_entry','training_start','edition_compare','organization_info','campaign_entry','campaign_example_open','campaign_drr_open','draft_builder_open']);
+  var resources=new Set(['record_check','investigator_guides','reviewer_training','module_0','module_1','module_2','module_3','module_4','module_5','edition_guide','organization_path','rights_initiative','professional_initiative','constructed_example','drr_explainer','draft_builder']);
   var surfaces={'/':'home','/index.html':'home','/resources.html':'resources','/training.html':'training','/editions.html':'editions','/organization.html':'organization','/right-to-know-why.html':'campaign_rights','/decisions-you-can-defend.html':'campaign_professional'};
   var surface=surfaces[location.pathname];
   if(!surface)return;
@@ -17,7 +17,8 @@
     var link;try{link=new URL(a.getAttribute('href'),location.href)}catch{return}
     if(link.origin!==location.origin)return;
     if(a.dataset.jrsEvent){emit(a.dataset.jrsEvent,a.dataset.jrsResource);return}
-    if(link.pathname==='/check.html')emit('tool_open','record_check');
+    if(link.pathname==='/outreach-email-builder.html')emit('draft_builder_open','draft_builder');
+    else if(link.pathname==='/check.html')emit('tool_open','record_check');
     else if(link.pathname==='/investigator-guides.html')emit('guide_open','investigator_guides');
     else if(link.pathname==='/training.html')emit('training_entry','reviewer_training');
     else if(link.pathname==='/editions.html')emit('edition_compare','edition_guide');
