@@ -5,7 +5,7 @@
 .jrs-human-kicker{font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:#d6af6f}
 .jrs-human-intro{max-width:74ch;color:#d7d1c6;line-height:1.7}
 .jrs-human-stories a:focus-visible,.jrs-human-stories summary:focus-visible,
-.jrs-campaign-example-links a:focus-visible,.jrs-proof-levels a:focus-visible{outline:3px solid #f4d18b;outline-offset:4px}
+.jrs-campaign-example-links a:focus-visible{outline:3px solid #f4d18b;outline-offset:4px}
 .jrs-scenario-list{display:grid;gap:10px;margin:18px 0 16px}
 .jrs-scenario{border:1px solid #585143;border-radius:10px;background:#171714;overflow:hidden;min-width:0}
 .jrs-scenario[open]{border-color:#cfad72;background:#1b1a17}
@@ -32,10 +32,10 @@
 .jrs-campaign-example-links p{margin:0 0 10px}
 .jrs-campaign-example-links a{color:#deb576}
 .jrs-proof-levels{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin:19px 0}
-.jrs-proof-levels article{border:1px solid #403d36;border-radius:6px;padding:16px;background:#171714;min-width:0}
+.jrs-proof-levels article{border:1px solid var(--rule);border-radius:6px;padding:16px;background:var(--surface);min-width:0}
 .jrs-proof-levels h3{font-family:Georgia,serif;font-size:20px;margin:0 0 8px;line-height:1.3}
 .jrs-proof-levels p{font-size:14px;line-height:1.55;margin:0 0 8px}
-.jrs-proof-levels a{color:#deb576}
+.jrs-proof-levels a{color:#235478;text-decoration:underline;text-underline-offset:.17em}
 @media(max-width:760px){
  .jrs-story-facts,.jrs-proof-levels{grid-template-columns:1fr}
  .jrs-human-stories{margin:22px 0 28px}
