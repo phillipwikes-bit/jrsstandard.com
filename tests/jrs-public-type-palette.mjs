@@ -1,7 +1,7 @@
 // Source-level guard for presentation alignment across JRS's public routes.
 // Does not assert screen-reader certification, rendered PDF styling, or form outcomes.
 import assert from 'node:assert/strict';
-import {readFileSync} from 'node:fs';
+import {readFileSync,existsSync} from 'node:fs';
 const load=path=>readFileSync(new URL('../'+path,import.meta.url),'utf8');
 const bridge=load('assets/jrs-legacy-public-alignment.css');
 const shared=load('assets/jrs-institutional-reference.css');
