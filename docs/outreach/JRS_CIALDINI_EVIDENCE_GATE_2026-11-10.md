@@ -1,6 +1,6 @@
 # JRS public campaigns: Cialdini evidence gate
 Date: 2026-11-10
-Status: RESEARCH REVIEW COMPLETE / COPY ALIGNMENT NOT ACCEPTED / PUBLIC RELEASE HOLD
+Status: RESEARCH REVIEW COMPLETE / SOURCE CORRECTIONS PROPOSED / RENDERED AND PRODUCTION ACCEPTANCE PENDING / PUBLIC RELEASE HOLD
 Branch: chatgpt/jrs-single-site-two-campaigns-consolidated-20261110
 Purpose: assess two existing public JRS campaigns. This record is an editorial/behavioral-science review, NOT evidence that the JRS site has been shown to change behavior.
 
@@ -16,25 +16,35 @@ Purpose: assess two existing public JRS campaigns. This record is an editorial/b
 
 ## Evidence review and required editorial disposition
 1. **Reciprocity**: Providing free resources is consistent with giving first. It does NOT establish that an unrequested resource will influence use or compel any return. Preserve unrestricted free access and no-response-required outreach. Cite Cialdini (2001) and the Cialdini Institute reciprocity guide.
-2. **Authority**: Only accurate, directly relevant professional experience may be stated. The homepage describes the creator's civil-rights review experience; neither campaign page presently repeats it. Consider a precisely sourced, restrained explanation rather than an implied government endorsement. Cite Cialdini (2001), authority guide.
+2. **Authority**: Only accurate, directly relevant professional experience may be stated. The homepage and both consolidated campaign pages identify the founder's prior civil-rights review role. The campaign pages expressly distinguish professional experience from former-employer endorsement. Treat this as factual source positioning, not independently measured influence. Cite Cialdini (2001), authority guide.
 3. **Unity**: The professional audience and affected-person audience are distinct. Identify genuinely shared professional responsibilities without claiming membership in an organization or institutional approval. Cite Cialdini Institute unity guide, Cialdini (2021, expanded Influence).
 4. **Commitment and consistency**: An optional self-check is an educational interaction, not measured commitment. A voluntary explicit 'support' POST can represent assent to the clearly specified principle only, not use, endorsement, or adoption. Never convert passive GET navigation into a support count. Cite Cialdini (2001) and commitment guide. Source: vercel.json and api/support.js, PR #59.
 5. **Social proof**: No practitioner or organizational adoption claim is authorized by browser support counts, reviewer-study participation, click counts, or unsent outreach drafts. Do not invent peer endorsements or generalized prevalence claims. Peer field findings are context-dependent; the hotel and environmental studies are not JRS effect studies. Cite Goldstein et al. (2008); Cialdini et al. (2006); Schultz et al. (2007).
 6. **Liking**: Respectful tone is acceptable. Do not manufacture common background, flattery, or personal connections. Cite Cialdini (2001), Cialdini Institute liking guide.
 7. **Scarcity**: JRS is permanently free for eligible public resources. No fabricated deadlines, limited seats, access threats or artificial exclusivity. Cite Cialdini Institute scarcity guide and JRS program Issue 3.6.
 8. **Pre-suasion**: A clearly stated real documentation problem before the example is research-consistent editorial framing; no JRS engagement improvement is established by this choice. Cite Cialdini, Pre-Suasion (2016); https://cialdini.com/glossary/pre-suasion
-9. **Email builder**: PR #185 is the implementation source. No reviewed Cialdini study demonstrates that this specific widget benefits these campaigns. Public builder is NOT a requirement of Cialdini's framework. Remove it from this consolidation unless the owner explicitly directs a separate utility requirement, in which case it must be justified and tested as UX/functionality rather than behavioral-science efficacy. Preserve separate, controlled private outreach, no automatic sending. Source: PR #185; JRS O1/Issue 3.6.
+9. **Email builder**: PR #185 is the implementation source. No reviewed Cialdini study demonstrates that this specific widget benefits these campaigns. Public builder is NOT a requirement of Cialdini's framework. The public tool has been removed from the consolidation branch. Both historical URL forms redirect to the canonical free Resources page. Separate private controlled outreach remains outside this public-site release. Preserve separate, controlled private outreach, no automatic sending. Source: PR #185; JRS O1/Issue 3.6.
 10. **Ethics and measurement**: The Cialdini Institute's published code requires truth, no manipulation of persons/facts, and informed agreement. A convincing-looking page is not evidence of effectiveness. Never label an observational GA4 click, browser support, or synthetic exercise as measured influence, comprehension, independent adoption or validation. Source: https://cialdini.com/about ; Cialdini & Goldstein (2004); PR #185 measurement protocol.
 
 ## Release gate (not yet passed)
-- [ ] Remove or separately authorize public email-builder feature and reconcile campaign links, builder-related privacy/analytics text, redirects and sitemap.
+- [x] SOURCE VERIFIED: Remove the public email builder from the branch and reconcile the campaign links, privacy disclosure, analytics fields, redirects and sitemap. Hosted route behavior still requires independent verification.
 - [ ] Preserve both separate named initiatives; independently verify all fictional sources, statements, and scope boundaries.
-- [ ] Review authority wording against actual creator biography; eliminate unsupported association or endorsement.
+- [x] SOURCE VERIFIED: State the documented founder role on both campaign pages and disclaim former-employer endorsement. Independent audience response is untested.
 - [ ] Keep support POST voluntary and explicit; verify all four campaign short links route to education without a support write.
 - [ ] Remove all invented counts, artificial scarcity, unverified social proof, claims of increased engagement/understanding/adoption.
-- [ ] Verify one clear, freely available resource path for each intended audience; no forced email, consent, enrollment or sales funnel.
+- [x] SOURCE VERIFIED: Each campaign now links directly to relevant free resources and discloses no payment, account, reply or expression-of-support prerequisite. Anonymous deployed final-file availability remains a separate acceptance gate.
 - [ ] Pass the applicable original JRS PI-0 through PI-8 release gates, source checks, actual mobile tests and protected-data negative tests.
 - [ ] Record owner approval of exact source SHA/deployment target, plus deployment and rollback evidence. No address-specific outbound outreach without O1 approval.
 - [ ] Do not call this 'scientifically proven for JRS' until a fit-for-purpose independent evaluation provides evidence.
 
 Decision: KEEP IN DRAFT. Research-consistent editorial choices are possible; empirical effectiveness for the specific JRS campaigns has NOT been established. The content of this record alone is not authority to merge, publish or contact anyone.
+
+## Integration evidence receipt, November 10, 2026
+- Consolidation pull request: https://github.com/phillipwikes-bit/jrsstandard.com/pull/189 (DRAFT, unmerged).
+- Two distinct constructed exercises retained: H-118 (affected-person hiring decision), TR-204 (professional termination approval). These are fictional and have not been independently comprehension-tested.
+- Both pages now disclose real former civil-rights review experience and provide direct free first-use links, without asserting institutional endorsement.
+- Public email builder removed from branch; old URL variants route to /resources.html, with sitemap, analytics and privacy references reconciled. No public mail sending is provided or authorized.
+- Four educational short-link aliases route to campaign HTML rather than the historical GET support writer; explicit voluntary POST support is retained. Live non-write confirmation is pending.
+- New automated contract tests/jrs-cialdini-campaign-consolidation.test.mjs and GitHub workflow jrs-consolidated-campaigns.yml passed together with the older five-examples source contract at branch commit 7586bc81c012d0860388928f1e5e539691a2e93f. Later commits require their own rerun.
+- Source-level retirement regressions were reconciled without restoring public Review Engine/API/Manifest schema. Exact CI and mobile browser outcomes on the latest head must be consulted rather than inferred from previous branches.
+- Research boundary: Cialdini's principles inform accurate communication. The website change has no evidence of a causal effect on clicks, comprehension, adoption or correctness.
