@@ -1,18 +1,25 @@
 import assert from "node:assert/strict";
 import { test } from "node:test";
 import { webcrypto } from "node:crypto";
-import { createRequire } from "node:module";
-
-const require = createRequire(import.meta.url);
-Object.defineProperty(globalThis, "crypto", { value:webcrypto, configurable:true });
+import { readFileSync } from "node:fs";
+import vm from "node:vm";
 
 const values = new Map();
-globalThis.localStorage = {
-  getItem(k) { return values.has(k) ? values.get(k) : null; },
-  setItem(k, v) { values.set(String(k), String(v)); },
-  removeItem(k) { values.delete(k); }
+const env = {
+  crypto: webcrypto,
+  Uint8Array, TextEncoder, TextDecoder, btoa, atob,
+  localStorage: {
+    getItem(k) { return values.has(k) ? values.get(k) : null; },
+    setItem(k, v) { values.set(String(k), String(v)); },
+    removeItem(k) { values.delete(k); }
+  },
+  module: { exports: {} }
 };
-const c = require("../owner/incomeos/contact-profile.js");
+vm.runInNewContext(
+  readFileSync(new URL("../owner/incomeos/contact-profile.js", import.meta.url), "utf8"),
+  env, { filename: "contact-profile.js" }
+);
+const c = env.module.exports;
 const fake = {
   fullName: "Test Person", email: "test@example.invalid",
   phone: "555-0100", cityState: "Testville, MD",
@@ -32,7 +39,7 @@ test("explicit encrypted storage survives reload of contact module", async () =>
   assert.ok(!stored.includes(fake.phone));
   assert.ok(!stored.includes(pw));
   const restored = await c.unlock(pw);
-  assert.deepEqual(restored, fake);
+  assert.deepEqual(JSON.parse(JSON.stringify(restored)), fake);
 });
 
 test("wrong passphrase fails without destroying saved profile", async () => {
