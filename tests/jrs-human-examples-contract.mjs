@@ -53,7 +53,7 @@ for(const page of [rights,pro]){
  assert.equal((page.match(/<details\b/g)||[]).length,(page.match(/<\/details>/g)||[]).length,'self-check nested details balanced');
 }
 assert.ok(rights.includes('does not establish discrimination'));
-assert.ok(pro.includes('does not determine whether hiring discrimination occurred'));
+assert.ok(pro.includes('JRS does not determine whether the termination was discriminatory'), 'professional constructed termination exercise must preserve limits');
 assert.ok(research.includes('Different Minds. Fewer Blind Spots. Stronger Evidence.'));
 assert.ok(research.includes('The pre-registered two-part criterion was <strong>not met</strong>'));
 assert.ok(research.includes('Separate reviewer-agreement sample'));
