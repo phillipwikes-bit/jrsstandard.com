@@ -57,7 +57,14 @@ try {
       assert.match(await card.locator('.cognitive-reflection').textContent(), /Reframe/);
       assert.match(await card.locator('.cognitive-reflection').textContent(), /Recalibrate/);
       assert.match(await card.locator('.cognitive-reflection').textContent(), /Release/);
-      assert.equal(await page.textContent('#statusbox'), before);
+      // Wording check (directive 8.4): closure stated while critical findings are open; read-only.
+      const closure = page.locator('#cogbody .cognitive-observation[data-kind="premature_closure"]');
+      assert.equal(await closure.count(), 1, 'one premature-closure wording check');
+      await closure.locator('summary').click();
+      assert.match(await closure.textContent(), /can proceed to finalisation/);
+      assert.match(await closure.textContent(), /What information remains necessary before this conclusion can be finalized\?/);
+      assert.doesNotMatch(await closure.textContent(), /\byou (were|are)\b|\bbiased\b/i);
+      assert.equal(await page.textContent('#statusbox'), before, 'wording check does not change the status');
       assert.equal(await page.textContent('#sumbody'), summary);
       await page.selectOption('#mode', 'pro');
       assert.equal(await page.textContent('#statusbox'), before);

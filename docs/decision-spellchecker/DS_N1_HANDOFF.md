@@ -27,6 +27,7 @@ A run that exits 0 with `"identical": true` means your clone reproduced the reco
 | Command | What it checks |
 |---|---|
 | `node --test tests/ds-n1/ds-n1.test.mjs` | 35 unit, transition and adversarial tests |
+| `node --test tests/ds-n1/cognitive-*.test.mjs tests/ds-n1/reflective-guidance.test.mjs` | 27 SP-07, SP-13 and SP-14 tests (read-only prompts and wording checks) |
 | `node tests/ds-n1/eval.mjs --no-write` | 24 base records against pre-registered expectations |
 | `node tests/ds-n1/eval-stress.mjs --split dev --no-write` | 10 stress records; 0 critical false-ready required |
 | `node tests/ds-n1/ui.browser.mjs` | 20 Chromium checks, desktop and iPhone 13 emulation |
@@ -65,4 +66,4 @@ A run that exits 0 with `"identical": true` means your clone reproduced the reco
 * All labels are the developer's own; nothing is independently verified.
 * The rules are lexical. A passage can pass every check and still not support a claim.
 * Not tested on a real iPhone or with assistive technology.
-* SP-07, SP-13 and SP-14 are not implemented. SP-18 (bounded) since 0.3.0; SP-15 PDF since 0.6.0 (PDF bytes not reproducible; text is). PDF accessibility not validated.
+* SP-07, SP-13 and SP-14 are not implemented. *(Superseded 2026-11-10: read-only SP-07, SP-13 and SP-14 candidates now exist, developer verified only. See section 5 of `SP01-18_CANDIDATE_RECONCILIATION_2026-11-05.md`. Original acceptance is still NOT_ACCEPTED.)* SP-18 (bounded) since 0.3.0; SP-15 PDF since 0.6.0 (PDF bytes not reproducible; text is). PDF accessibility not validated.
