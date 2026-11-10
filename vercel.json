@@ -3,13 +3,8 @@
   "crons": [],
   "redirects": [
     {
-      "source": "/outreach-email-builder.html",
-      "destination": "/resources.html",
-      "permanent": false
-    },
-    {
       "source": "/outreach-email-builder",
-      "destination": "/resources.html",
+      "destination": "/outreach-email-builder.html",
       "permanent": false
     },
     {
@@ -399,22 +394,22 @@
     },
     {
       "source": "/right-to-know-why",
-      "destination": "/api/support?c=rtkw",
+      "destination": "/right-to-know-why.html",
       "permanent": false
     },
     {
       "source": "/rtkw",
-      "destination": "/api/support?c=rtkw",
+      "destination": "/right-to-know-why.html",
       "permanent": false
     },
     {
       "source": "/decisions-you-can-defend",
-      "destination": "/api/support?c=defend",
+      "destination": "/decisions-you-can-defend.html",
       "permanent": false
     },
     {
       "source": "/defend",
-      "destination": "/api/support?c=defend",
+      "destination": "/decisions-you-can-defend.html",
       "permanent": false
     },
     {
