@@ -1743,3 +1743,20 @@ body.jrs-institutional .site-header-inner > .jrs-header-motto strong{
   padding-top:30px!important;
  }
 }
+
+/* 2026-11-09 mobile first-use correction. Preserve legible copy and the
+   published edition distinctions while reducing unnecessary pre-tool spacing.
+   These rules follow the earlier institutional breakpoints deliberately. */
+@media(max-width:760px){
+ body.jrs-institutional.jrs-training-page:not(.focus-mode) #training-modules{
+  padding-top:10px!important
+ }
+ body.jrs-institutional.jrs-training-page .progress-block{
+  margin-bottom:8px!important
+ }
+}
+@media(max-width:360px){
+ body.jrs-institutional.jrs-resource-page .hero{padding-top:8px!important}
+ body.jrs-institutional.jrs-resource-page .hero .eyebrow{margin-bottom:6px!important}
+ body.jrs-institutional.jrs-resource-page .hero h1{margin-bottom:8px!important}
+}

@@ -68,11 +68,11 @@ assert.ok(!vercel.redirects.some(x=>x.source==='/manifest.html'),'Manifest schem
 assert.ok(!vercel.redirects.some(x=>x.destination==='/review-engine.html'),'legacy routing must not promote Engine page');
 const sitemap=read('sitemap.xml');
 assert.doesNotMatch(sitemap,/review-engine\.html|platform-evaluation-001\.html/);
-const history=read('review-engine.html');
-assert.match(history,/<meta name="robots" content="noindex,nofollow,noarchive">/);
-assert.match(history,/Historical route/);
-assert.match(history,/No online record processing/);
-assert.ok(existsSync(join(root,'jrs-decision-reconstruction-manifest-v1.0.1.schema.json')));
+// 2026-11-05: review-engine.html and the Manifest schema files were removed from main in 374d98e
+// ("Remove retired technical product traces"). The retired page must now stay absent rather than be a
+// noindexed historical route. The schema-file assertion is removed with it; restoring the schema would
+// be a separate owner decision.
+assert.ok(!existsSync(join(root,'review-engine.html')),'the retired Engine page must stay removed');
 assert.ok(read('contact.html').includes('https://formspree.io/f/mreddwdg'));
 const research=read('research.html');
 for(const p of ['research-summary.html','methodology.html','evidence-ledger.html','questions.html','research-register.html']){
@@ -80,4 +80,4 @@ for(const p of ['research-summary.html','methodology.html','evidence-ledger.html
 }
 const guide=read('investigator-guides.html');
 for(const f of ['JRS_Investigator_Field_Guide_Employment.pdf','JRS_Investigator_Field_Guide_FairHousing.pdf','JRS_Investigator_Field_Guide_International.pdf'])assert.ok(guide.includes(f));
-console.log('PASS: '+publicPages.length+' public pages screened, '+checked+' training scripts parsed; no Engine promotion, no record-entry assessor, Manifest route restored, evidence/download/contact preserved.');
+console.log('PASS: '+publicPages.length+' public pages screened, '+checked+' training scripts parsed; no Engine promotion, retired Engine page absent, no record-entry assessor, evidence/download/contact preserved.');

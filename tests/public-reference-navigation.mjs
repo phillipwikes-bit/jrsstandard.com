@@ -40,6 +40,6 @@ for (const target of ['research-summary.html', 'methodology.html', 'evidence-led
   assert.ok(evidence.includes('href="' + target + '"'), 'research traceability link lost: ' + target);
 }
 assert.ok(contact.includes('action="https://formspree.io/f/mreddwdg"'), 'existing inquiry workflow must remain unchanged');
-assert.ok(file('review-engine.html').includes('No online record processing.'), 'technical no-processing boundary removed');
-assert.ok(file('review-engine.html').includes('noindex,nofollow,noarchive'), 'archived technical page must not be indexed');
+assert.ok(!existsSync(new URL('../review-engine.html', import.meta.url)), 'retired technical page must stay absent');
+assert.ok(!existsSync(new URL('../api/review.js', import.meta.url)), 'retired public record-processing endpoint must stay absent');
 console.log('JRS public navigation: 4 routes, 5 resource sections, research traceability and preserved integrations verified.');

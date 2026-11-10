@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Check sitewide source-rendered mobile presentation evidence.
 
-This validates only 58 institutional route sources at 320px, 390px, 768px and 1440px.
+This validates the 57 currently retained institutional route sources at 320px, 390px, 768px and 1440px.
 It is NOT WCAG certification, PDF accessibility, VoiceOver testing or a live
 submission/consent acceptance test. Preserve small-control observations
 for manual investigation without implying all targets have been certified.
@@ -21,13 +21,27 @@ try:
     rows=json.loads(html.unescape(match.group(1)))
 except (ValueError,TypeError) as exc:
     raise SystemExit(f"FAIL: invalid sitewide browser JSON ({exc})")
-if len(rows)!=232:
-    raise SystemExit(f"FAIL: expected 232 route-viewport samples; received {len(rows)}")
-pairs={(r.get("path"),r.get("width")) for r in rows}
-pages={r.get("path") for r in rows}
-if len(pairs)!=232 or len(pages)!=58:
-    raise SystemExit("FAIL: missing or duplicate page/viewport samples")
-if Counter(r.get("width") for r in rows)!={320:58,390:58,768:58,1440:58}:
+# Compare actual measurements to the complete, independently source-guarded
+# sitewide inventory; a retired Review Engine page is not a valid sample.
+source = Path("tests/jrs-sitewide-mobile-browser-audit.html").read_text(encoding="utf-8")
+inv = re.search(r"const paths=(\[[^\n;]*\]);", source)
+if not inv:
+    raise SystemExit("FAIL: rendered audit's source inventory is unavailable")
+routes = json.loads(inv.group(1))
+if len(routes) != 57 or len(set(routes)) != 57:
+    raise SystemExit("FAIL: current public and legacy audit inventory must contain 57 unique routes")
+widths = (320, 390, 768, 1440)
+expected = {(route, width) for route in routes for width in widths}
+actual = [(r.get("path"), r.get("width")) for r in rows]
+pairs = set(actual)
+pages = {r.get("path") for r in rows}
+if len(actual) != len(expected) or pairs != expected:
+    raise SystemExit(
+        f"FAIL: incomplete/duplicate source-rendered coverage; expected {len(expected)} "
+        f"unique route-viewport samples, got {len(actual)}. "
+        f"Missing={sorted(expected-pairs)} extra={sorted(pairs-expected)}"
+    )
+if Counter(r.get("width") for r in rows) != {width: len(routes) for width in widths}:
     raise SystemExit("FAIL: unexpected viewport coverage")
 failed=[r for r in rows if not r.get("pass")]
 small=[r for r in rows if r.get("undersizedControls")]
