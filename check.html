@@ -104,10 +104,7 @@ h2{font-family:'Bodoni Moda',serif;font-size:22px;font-weight:500;color:var(--te
 
 /* RESULT BLOCK, BOARD OUTPUT AND PRINT. Added 2026-09-13.
    Design tokens only, no hardcoded hex, per the house rule. */
-.sa-bench{margin-top:18px;padding:14px 16px;border:1px solid var(--rule);
-  border-left:3px solid var(--accent);background:var(--surface2);
-  border-radius:4px;font-size:13.5px;line-height:1.65;color:var(--muted)}
-.sa-src{margin-top:9px;font-family:'JetBrains Mono',monospace;font-size:10.5px;color:var(--muted-soft)}
+#sa-out b{color:var(--text)}
 .sa-stamp{margin-top:14px;padding-top:11px;border-top:1px solid var(--rule);
   font-family:'JetBrains Mono',monospace;font-size:10.5px;line-height:1.6;color:var(--muted-soft)}
 .sa-actions{margin-top:16px;display:flex;gap:10px;flex-wrap:wrap}
@@ -122,17 +119,15 @@ h2{font-family:'Bodoni Moda',serif;font-size:22px;font-weight:500;color:var(--te
 .sa-adopt:hover{border-color:var(--accent);color:var(--accent)}
 .sa-actions #sa-copy:hover{color:var(--bg);opacity:.9}
 
-/* PRINT: the summary is the page. Everything that is not the result is
-   furniture, and a board paper should not carry navigation or buttons. */
+/* Print the generated note when a reviewer has selected items. */
 @media print{
   body{background:#fff !important;color:#000 !important}
   header,footer,nav,.primary-nav,.no-print,.sa-actions,button{display:none !important}
-  .sa-bench{background:#fff !important;border:1px solid #999 !important;
-    border-left:3px solid #555 !important;color:#000 !important}
-  .sa-bench b,.sa-stamp,.sa-src{color:#000 !important}
+  article:has(> #sa-out #sa-summary) > :not(#sa-out){display:none !important}
+  #sa-out{page-break-inside:avoid;background:#fff !important;color:#000 !important}
+  #sa-out b,.sa-stamp{color:#000 !important}
   a{color:#000 !important;text-decoration:underline}
   a[href^="http"]:after{content:" (" attr(href) ")";font-size:10px}
-  #sa-out{page-break-inside:avoid}
 }
 </style>
 <link rel="stylesheet" href="/assets/jrs-professional-accessibility.css">
@@ -164,20 +159,24 @@ h2{font-family:'Bodoni Moda',serif;font-size:22px;font-weight:500;color:var(--te
   <div class="kicker">Decision Reconstruction Risk</div>
   <h1 class="lede">A record can look complete and still fail.</h1>
 
+  <p>Use this check to see whether a later reader can trace the record’s evidence and reasoning.</p>
+
+  <h2 id="check-one-record">Check one record now</h2>
+
+  <p>Use one closed record. Tick each question you would answer <strong>no</strong> or <strong>unsure</strong>. Your selections stay in this browser. <a href="privacy.html">How this site handles data</a>.</p>
+
+<label class="chk"><input type="checkbox" class="sa" data-mode="Fluent groundlessness"><span>Point to the sentence that states the conclusion. Now point to the evidence it rests on. Can you?</span></label>
+<label class="chk"><input type="checkbox" class="sa" data-mode="Basis substitution"><span>Where the record says what a document or witness said, can a reader reach the document itself?</span></label>
+<label class="chk"><input type="checkbox" class="sa" data-mode="Chronology collapse"><span>Can you put the events in order from the record alone, with dates?</span></label>
+<label class="chk"><input type="checkbox" class="sa" data-mode="Reasoning elision"><span>Between the evidence and the finding, is the reasoning written down or assumed?</span></label>
+<label class="chk"><input type="checkbox" class="sa" data-mode="Confident underspecification"><span>Strike every confident adjective. Is there anything specific left?</span></label>
+<label class="chk"><input type="checkbox" class="sa" data-mode="Evidentiary overreach"><span>Does the evidence support the finding as written, or only a weaker version of it?</span></label>
+<label class="chk"><input type="checkbox" class="sa" data-mode="Untraceable authority"><span>Take one cited authority. Could a stranger find it from what the record says?</span></label>
+
+  <div id="sa-out">Tick the boxes that apply to the record in front of you.</div>
+  <p>This check does not score your record. There is no registration, no account, no upload.</p>
+
   <p>A decision can be correct and its record still unable to explain why it was reached. Months later, when someone challenges it, the file is what answers: not the reasoning that happened in the room. <strong>Decision Reconstruction Risk is the gap between the two</strong>, and AI-assisted drafting widens it, because a generated draft reads as finished long before it is defensible.</p>
-
-  <p>Below are seven named ways that failure shows up in writing, each with the question that detects it. <strong>Nothing you tick is sent anywhere.</strong> There is no registration, no account, no upload, and no form. Open five of your own closed matters and read them against this page.</p>
-
-  <div class="evidence-strip">
-    <div class="ev-lead">The measurements below come from two different samples. They are shown separately so detection performance is not mistaken for inter-rater reliability.</div>
-    <div class="ev-grid">
-      <div><b>83.9%</b><span>detection accuracy on the 24-record constructed corpus</span></div>
-      <div><b>72.7 to 95.1</b><span>95% confidence interval across reviewer-level accuracy scores</span></div>
-      <div><b>384</b><span>graded judgments by <span data-panel="completers_detection">16</span> detection-panel reviewers across <span data-panel="countries_detection">11</span> countries</span></div>
-      <div><b>0.739 / 0.623</b><span>Gwet's AC1 in a separate reliability sample: invited / open-enrolment. The pre-registered two-part criterion was not met because neither lower confidence bound reached 0.41.</span></div>
-    </div>
-    <div class="ev-note"><b>Separate reliability result:</b> both AC1 point estimates exceeded the 0.61 floor, but the pre-registered two-part criterion was <b>not met</b> because neither lower confidence bound reached 0.41. The seven failure modes below are a practitioner translation of documentation-risk patterns; they are not themselves the unit of those statistical tests.</div>
-  </div>
 
   <h2>The seven failure modes</h2>
 
@@ -189,19 +188,17 @@ h2{font-family:'Bodoni Moda',serif;font-size:22px;font-weight:500;color:var(--te
 <div class="fm"><div class="fm-head"><span class="fm-n">06</span><span class="fm-name">Evidentiary overreach</span></div><p class="fm-def">The cited evidence does not actually support the strength of the stated conclusion.</p><p class="fm-q"><span class="fm-q-label">Detection question</span>Does the evidence support the finding as written, or only a weaker version of it?</p></div>
 <div class="fm"><div class="fm-head"><span class="fm-n">07</span><span class="fm-name">Untraceable authority</span></div><p class="fm-def">The record cites a rule, precedent, or source that cannot be located or checked from the record itself.</p><p class="fm-q"><span class="fm-q-label">Detection question</span>Take one cited authority. Could a stranger find it from what the record says?</p></div>
 
-  <h2>Check one record now</h2>
-
-  <p>Take a single closed record. Read it once, then answer the seven questions. <strong>Tick a box only where the answer is no or you are unsure.</strong> Your assessment answers stay entirely in your browser. They are never sent, stored, or seen by anyone. Like every page on this site, this one counts anonymous visits and link clicks, and none of that measurement includes anything you tick here. <a href="privacy.html">How this site handles data</a>.</p>
-
-<label class="chk"><input type="checkbox" class="sa" data-mode="Fluent groundlessness"><span>Point to the sentence that states the conclusion. Now point to the evidence it rests on. Can you?</span></label>
-<label class="chk"><input type="checkbox" class="sa" data-mode="Basis substitution"><span>Where the record says what a document or witness said, can a reader reach the document itself?</span></label>
-<label class="chk"><input type="checkbox" class="sa" data-mode="Chronology collapse"><span>Can you put the events in order from the record alone, with dates?</span></label>
-<label class="chk"><input type="checkbox" class="sa" data-mode="Reasoning elision"><span>Between the evidence and the finding, is the reasoning written down or assumed?</span></label>
-<label class="chk"><input type="checkbox" class="sa" data-mode="Confident underspecification"><span>Strike every confident adjective. Is there anything specific left?</span></label>
-<label class="chk"><input type="checkbox" class="sa" data-mode="Evidentiary overreach"><span>Does the evidence support the finding as written, or only a weaker version of it?</span></label>
-<label class="chk"><input type="checkbox" class="sa" data-mode="Untraceable authority"><span>Take one cited authority. Could a stranger find it from what the record says?</span></label>
-
-  <div id="sa-out">Tick the boxes that apply to the record in front of you.</div>
+  <h2>Research evidence</h2>
+  <div class="evidence-strip">
+    <div class="ev-lead">The measurements below come from two different samples. They are shown separately so detection performance is not mistaken for inter-rater reliability.</div>
+    <div class="ev-grid">
+      <div><b>83.9%</b><span>detection accuracy on the 24-record constructed corpus</span></div>
+      <div><b>72.7 to 95.1</b><span>95% confidence interval across reviewer-level accuracy scores</span></div>
+      <div><b>384</b><span>graded judgments by <span data-panel="completers_detection">16</span> detection-panel reviewers across <span data-panel="countries_detection">11</span> countries</span></div>
+      <div><b>0.739 / 0.623</b><span>Gwet's AC1 in a separate reliability sample: invited / open-enrolment. The pre-registered two-part criterion was not met because neither lower confidence bound reached 0.41.</span></div>
+    </div>
+    <div class="ev-note"><b>Separate reliability result:</b> both AC1 point estimates exceeded the 0.61 floor, but the pre-registered two-part criterion was <b>not met</b> because neither lower confidence bound reached 0.41. The seven failure modes are a practitioner translation of documentation-risk patterns; they are not themselves the unit of those statistical tests.</div>
+  </div>
 
   <div class="status-strip">
     <strong>Where this stands, stated plainly.</strong> JRS is under operational validation. Constructed-corpus detection accuracy has been measured. Inter-rater reliability has been measured on a separate sample, and its pre-registered two-part criterion was not met. The cross-vendor study reports raw consistency, but its pre-registered reproducibility criterion is not established because the required chance-corrected AC1 was not computed. Controlled comparison and real-case criterion validity are still accruing. <strong>Commercial demand has not yet been established.</strong> Nothing on this page claims validated effectiveness.
@@ -290,70 +287,46 @@ h2{font-family:'Bodoni Moda',serif;font-size:22px;font-weight:500;color:var(--te
       out.innerHTML = 'Tick the boxes that apply to the record in front of you.';
       return;
     }
-    var list = '<b style="color:var(--text)">' + hit.join('</b>, <b style="color:var(--text)">') + '</b>';
-    var head;
-    if (hit.length === 1) {
-      head = 'One mode shows up in this record: ' + list + '.';
-    } else {
-      head = hit.length + ' modes show up in this record: ' + list + '.';
-    }
-    var tail;
-    if (hit.length === 1) {
-      tail = ' A single mode is worth a second look, not an alarm. Read the same question against four more closed files before drawing any conclusion about your process.';
-    } else {
-      tail = ' <span style="color:var(--review-text)">Two or more modes in one file is the pattern that matters.</span> A record like this is likely to struggle to explain its own decision when challenged. Check four more files before concluding anything about the process rather than this record.';
-    }
-    // BENCHMARK FRAMING (R-4). Added 2026-09-13. A result with no reference
-    // point does not tell a reader what it means. The comparison below is the
-    // study's own published result and nothing else. NO DEFICIT RATE IS STATED,
-    // because none exists in the evidence base: the only 70% figure this
-    // programme publishes is the pre-registered threshold that was CLEARED.
-    //
-    // Rendering only. Nothing here transmits, which keeps the page's own
-    // "Nothing is transmitted; this runs entirely in your browser" line true.
-    var bench = '<div class="sa-bench"><b>What trained reviewers found.</b> '
-      + 'Sixteen independent experts across eleven countries and five continents read a '
-      + 'balanced 24-record corpus cold, blind to the answer key and to one another, '
-      + 'returning <b>384 graded reads</b>. Mean reviewer accuracy was <b>83.9%</b> '
-      + '(95% CI 72.7 to 95.1, n&nbsp;=&nbsp;16), sensitivity 87.0%, specificity 80.7%, '
-      + 'against a threshold of 70% fixed before any data were seen. '
-      + '<b>Reviewer accuracy ranged from 37.5% to 100%, and the pre-registered '
-      + 'reliability criterion was not met.</b> Both are reported as findings. '
-      + 'Group-level detectability does not license individual-level reliance, and this '
-      + 'page is a prompt for human review of one record, not a determination about it.'
-      + '<div class="sa-src">Detection study, data lock 15 August 2026. Method and limits: '
-      + '<a href="research.html">research.html</a>.</div></div>';
+    var list = '<b>' + hit.join('</b>, <b>') + '</b>';
+    var guidance = '<p>Check each item against the original source. Record what you can confirm, '
+      + 'what is missing, and what remains uncertain. Follow the escalation rules for your review workflow.</p>';
 
-    // BOARD-READY OUTPUT (R-6). Clipboard and print, never a script-driven
-    // download: a sandboxed or embedded context blocks downloads while copy
-    // and print keep working.
     var stamp = '<div class="sa-stamp">Seven-Point Record Defensibility Check &middot; '
       + 'jrsstandard.com &middot; generated ' + new Date().toISOString().slice(0, 10)
       + '<br>Not certification, not accreditation, not a credential. '
       + 'A prompt for human review of a single record.</div>';
 
-    // The step after a result is adoption, not another tool. This is the only
-    // navigation the result block offers, and it goes to language a policy team
-    // can lift directly.
     var actions = '<div class="sa-actions no-print">'
       + '<button type="button" id="sa-copy">Copy summary</button> '
       + '<button type="button" id="sa-print">Print or save as PDF</button>'
-      + '<a href="compliance.html" class="sa-adopt">Make this a policy &rarr;</a></div>';
+      + '<a href="compliance.html" class="sa-adopt">Review policy guidance &rarr;</a></div>';
 
-    out.innerHTML = head + tail + bench + stamp + actions;
+    out.innerHTML = '<div id="sa-summary"><b>Items to verify</b><br>' + list + guidance
+      + stamp + '</div>' + actions;
 
     var cp = document.getElementById('sa-copy');
     if (cp) cp.addEventListener('click', function(){
-      var txt = (out.innerText || out.textContent || '').replace(/\n{3,}/g, '\n\n').trim();
+      var summary = document.getElementById('sa-summary');
+      var txt = (summary.innerText || summary.textContent || '').replace(/\n{3,}/g, '\n\n').trim();
       function done(){ cp.textContent = 'Copied'; setTimeout(function(){ cp.textContent = 'Copy summary'; }, 2000); }
       function fallback(){
+        var restoreFocus = document.activeElement === cp;
+        var ta = document.createElement('textarea');
+        ta.value = txt;
+        ta.setAttribute('readonly', '');
+        ta.style.position = 'fixed';
+        ta.style.opacity = '0';
+        document.body.appendChild(ta);
         try {
-          var ta = document.createElement('textarea');
-          ta.value = txt; ta.setAttribute('readonly', '');
-          ta.style.position = 'fixed'; ta.style.opacity = '0';
-          document.body.appendChild(ta); ta.select(); document.execCommand('copy');
-          document.body.removeChild(ta); done();
-        } catch (e) { cp.textContent = 'Select the text above to copy'; }
+          ta.select();
+          if (document.execCommand('copy')) done();
+          else cp.textContent = 'Select the text above to copy';
+        } catch (e) {
+          cp.textContent = 'Select the text above to copy';
+        } finally {
+          ta.remove();
+          if (restoreFocus) cp.focus({preventScroll:true});
+        }
       }
       if (navigator.clipboard && navigator.clipboard.writeText) {
         navigator.clipboard.writeText(txt).then(done).catch(fallback);
