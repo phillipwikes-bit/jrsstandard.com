@@ -40,6 +40,8 @@ for (const target of ['research-summary.html', 'methodology.html', 'evidence-led
   assert.ok(evidence.includes('href="' + target + '"'), 'research traceability link lost: ' + target);
 }
 assert.ok(contact.includes('action="https://formspree.io/f/mreddwdg"'), 'existing inquiry workflow must remain unchanged');
-assert.ok(file('review-engine.html').includes('No online record processing.'), 'technical no-processing boundary removed');
-assert.ok(file('review-engine.html').includes('noindex,nofollow,noarchive'), 'archived technical page must not be indexed');
+// Retired public Engine was removed; source-level tests must prohibit reintroduction.
+assert.ok(!existsSync(new URL('../review-engine.html', import.meta.url)), 'retired Engine page must not be republished');
+const routing=JSON.parse(file('vercel.json'));
+assert.ok(!routing.redirects.some(r=>r.destination==='/review-engine.html'), 'no redirect may promote retired Engine');
 console.log('JRS public navigation: 4 routes, 5 resource sections, research traceability and preserved integrations verified.');
