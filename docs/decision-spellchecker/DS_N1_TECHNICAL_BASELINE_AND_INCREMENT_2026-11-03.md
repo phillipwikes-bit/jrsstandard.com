@@ -596,3 +596,36 @@ This closes **operability gap 1**, identified on 2026-11-03: records, claims and
 **Remaining operability gaps** (from the 2026-11-03 assessment): local only; no saving except by download; constructed records only; nothing independently validated.
 
 **Limits.** Usability is untested with anyone other than the developer. Real-device and assistive-technology testing are not done. Claims must be single contiguous selections, and a revised record text that no longer contains a marked claim shows `CLAIM_NOT_IN_RECORD` in the live check rather than being repaired automatically.
+
+## 19. Verification of merged SP-07/13/14 candidate work (appended 2026-11-10)
+
+The branch received commits not made by this development session:
+* `fc2ce573` to `e345475c`, authored by the owner account on 2026-11-05 on branch `chatgpt/ds-n1-sp07-contained-20261105` (draft PR #128);
+* a merge (`c2654c00`) and "closure and certainty checks" (`f9cb3ccb`) by another Claude session on 2026-11-10.
+
+History was not rewritten: `f8c7a2ad` remains an ancestor. This session fast-forwarded to `f9cb3ccb` and **changed none of that work**. In particular, `SP01-18_CANDIDATE_RECONCILIATION_2026-11-05.md` is the owner's document and is left as written.
+
+**Executed at `f9cb3ccb`, Node v22.23.4 (developer verification only):**
+
+| Suite | Result |
+|---|---|
+| Core unit | 35/35 |
+| `cognitive-controls` | 6/6 |
+| `cognitive-observations` | 6/6 |
+| `cognitive-source-trace` | 9/9 |
+| `reflective-guidance` | 6/6 |
+| Base harness | PASS |
+| Stress dev | PASS, 0 critical false-ready |
+| Isolation | 12/12 |
+| HOLDOUT-1 and HOLDOUT-2 | both still refuse; no HOLDOUT-2 result exists |
+| **Reviewer browser** | **24/24**, including the 4 SP-07/13/14 checks added by the merged work |
+| Authoring browser | 18/18 |
+| PDF | 9/9 |
+| Fresh-clone reproduction | identical on 52/52 report hashes against the `96586f45` baseline, so the merged modules change no engine report output |
+| Deployment exclusion | 124/124 DS-N1 files match `.vercelignore` |
+
+* **Reconciliation correction (evidence for the owner's table, not an edit to it).** The 2026-11-05 reconciliation says the SP-07 browser test was "authored but not executed". It has now been **executed, and it passes** in Chromium on desktop and with iPhone 13 emulation. That is developer verification only; SP-07 original acceptance remains NOT_ACCEPTED, as the owner's table states.
+* **Safety audit of the merged code.**
+  * No `innerHTML`, `outerHTML`, `insertAdjacentHTML`, `eval`, `new Function` or `document.write` anywhere in `lib/ds-n1`.
+  * No `fetch`, environment, `localStorage`, `sessionStorage` or IndexedDB use in the new modules.
+* **Base.** `main` moved from `40989da6` to `4d0d41ee` (96 commits). The branch still merges cleanly, so no merge was made.
