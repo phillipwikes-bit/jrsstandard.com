@@ -1743,3 +1743,25 @@ body.jrs-institutional .site-header-inner > .jrs-header-motto strong{
   padding-top:30px!important;
  }
 }
+
+body.jrs-institutional.jrs-reference-page :is(.crumb,.note) a,
+body.jrs-institutional.jrs-compliance-page main p a,
+body.jrs-institutional .jrs-method-links a{
+  text-decoration:underline!important;text-underline-offset:.17em;
+}
+body.jrs-institutional .jrs-method-links{
+  display:flex;flex-wrap:wrap;gap:4px 20px;margin:26px auto 0;
+  padding:10px 0;border-top:1px solid var(--rule);
+}
+body.jrs-institutional .jrs-method-links a{
+  display:inline-flex;align-items:center;min-height:44px;
+}
+body.jrs-institutional.jrs-campaign-page .jrs-campaign-example-links{
+  background:var(--surface);border-color:var(--rule);
+}
+body.jrs-institutional.jrs-campaign-page .jrs-campaign-example-links a{color:#235478}
+body.jrs-institutional.jrs-campaign-page .button:hover{background:#e7eef3;color:#17364f}
+body.jrs-institutional.jrs-campaign-page .button.primary,
+body.jrs-institutional.jrs-campaign-page .button.primary:hover{
+  background:#17364f;color:#fff;border-color:#17364f;
+}
