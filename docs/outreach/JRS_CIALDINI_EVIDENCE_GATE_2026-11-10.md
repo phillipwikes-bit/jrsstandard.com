@@ -1,4 +1,7 @@
-# JRS public campaigns: Cialdini evidence gate
+# JRS public campaigns: historical Cialdini evidence record
+
+> **SUPERSEDED EDITORIAL PLAN. Historical evidence record only.** As of November 10, 2026, the sole controlling JRS public website and outreach specification is [JRS Unified Resource-First Website and Outreach Specification](JRS_UNIFIED_RESOURCE_FIRST_PLAN_2026-11-10.md). The fictional-example campaign directions, example-first placement, and links to retired campaign-exercise anchors in this historical record are expressly withdrawn. They must not be reused as new website content, email instructions, automation prompts, acceptance tests, or release requirements. The retained underlying research citations and historical audit observations are preserved only as dated evidence. Free JRS/DRR reference distribution and professional resources are the current initiatives. No historical language in this record authorizes sending or publication.
+
 Date: 2026-11-10
 Status: RESEARCH REVIEW COMPLETE / SOURCE CORRECTIONS PROPOSED / RENDERED AND PRODUCTION ACCEPTANCE PENDING / PUBLIC RELEASE HOLD
 Branch: chatgpt/jrs-single-site-two-campaigns-consolidated-20261110
