@@ -1,0 +1,38 @@
+name: IncomeOS free test environment
+# A throwaway Supabase stack (sign-in service, API, database) is started on
+# the GitHub runner, checked with made-up accounts, and deleted. No account,
+# no secret, no cost. It never contacts the live IncomeOS project.
+on:
+  pull_request:
+    paths:
+      - '.github/workflows/incomeos-test-environment.yml'
+      - 'engineering/incomeos/test-environment/**'
+      - 'engineering/incomeos/workspace-revision-staging.sql'
+      - 'engineering/incomeos/workspace-revision-rpc-staging.sql'
+      - 'owner/incomeos/revision-supabase-transport.js'
+      - 'tests/incomeos-browser-script-loader.cjs'
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: incomeos-test-environment-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  throwaway-supabase-stack:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
+        with:
+          node-version: '22'
+      - name: Ensure PostgreSQL client is available
+        run: |
+          if ! command -v psql >/dev/null 2>&1; then
+            sudo apt-get update -qq
+            sudo apt-get install -y -qq postgresql-client
+          fi
+      - name: Start the throwaway stack and run the checks
+        run: bash engineering/incomeos/test-environment/run.sh
