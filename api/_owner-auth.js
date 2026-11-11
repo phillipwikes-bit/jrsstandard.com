@@ -43,14 +43,19 @@ export async function ownerSecretMatches(given){
   const b=new Uint8Array(await crypto.subtle.digest('SHA-256',encoder.encode(secret)));
   let bad=given.length===secret.length?0:1;
   for(let i=0;i<a.length;i++)bad|=a[i]^b[i];
-  return bad===0;
+  return bad===0 && envSecret()===secret;
 }
-export async function createOwnerCookie(){
+export async function createOwnerCookie(expectedSecret){
   const secret=envSecret();
   if(secret.length<32)throw Error('owner_secret_unconfigured');
+  // Token login must issue under the same credential it authenticated.
+  if(expectedSecret!==undefined && expectedSecret!==secret)throw Error('owner_session_changed_during_signin');
   const nonce=new Uint8Array(16);crypto.getRandomValues(nonce);
-  const payload='v1.'+Math.floor(Date.now()/1000+MAX_AGE)+'.'+bytesToUrl(nonce);
+  const expiry=Math.floor(Date.now()/1000+MAX_AGE);
+  const payload='v1.'+expiry+'.'+bytesToUrl(nonce);
   const signature=bytesToUrl(new Uint8Array(await crypto.subtle.sign('HMAC',await key(secret),encoder.encode(payload))));
+  const now=Math.floor(Date.now()/1000);
+  if(envSecret()!==secret||expiry<=now||expiry-now>MAX_AGE)throw Error('owner_session_changed_during_signin');
   return COOKIE+'='+payload+'.'+signature+'; Path=/; Max-Age='+MAX_AGE+
     '; HttpOnly; Secure; SameSite=Strict';
 }
@@ -71,15 +76,21 @@ async function validCookie(value,secret){
   if(!Number.isSafeInteger(expiry) || expiry<=now || expiry-now>MAX_AGE)return false;
   const signature=urlToBytes(m[3]);
   if(!signature||signature.length!==32)return false;
-  return crypto.subtle.verify('HMAC',await key(secret),signature,encoder.encode(m[1]));
+  const verified=await crypto.subtle.verify('HMAC',await key(secret),signature,encoder.encode(m[1]));
+  // Cryptographic verification yields. Expiry or key rotation during it
+  // cannot authorize a response using the earlier session decision.
+  const finished=Math.floor(Date.now()/1000);
+  return verified && expiry>finished && expiry-finished<=MAX_AGE && envSecret()===secret;
 }
 export async function ownerAccess(req){
   const secret=envSecret();
   if(secret.length<32)return denied('owner_access_unavailable',503);
-  const authorization=req.headers.get('authorization')||'';
-  if(/^Bearer [^\s]+$/i.test(authorization) && await ownerSecretMatches(authorization.slice(7)))return null;
-  if(await validCookie(cookieValue(req),secret))return null;
-  return denied('unauthorized',401);
+  try{
+    const authorization=req.headers.get('authorization')||'';
+    if(/^Bearer [^\s]+$/i.test(authorization) && await ownerSecretMatches(authorization.slice(7)))return null;
+    if(await validCookie(cookieValue(req),secret))return null;
+    return denied('unauthorized',401);
+  }catch{return denied('owner_access_unavailable',503);}
 }
 export function revokeOwnerCookie(){
   return COOKIE+'=; Path=/; Max-Age=0; HttpOnly; Secure; SameSite=Strict';

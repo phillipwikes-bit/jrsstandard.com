@@ -23,16 +23,17 @@ const calls=[];let rows=[];let owner=true;
 async function fakeFetch(url,opt){
   calls.push({url,opt});const u=new URL(url);assert.equal(u.origin,ORIGIN);assert.equal(opt.headers.apikey.startsWith("sb_publishable_"),true);
   const ok=(d,s=200)=>({ok:s<300,status:s,text:async()=>JSON.stringify(d)});
-  if(u.pathname==="/auth/v1/token"){const b=JSON.parse(opt.body);return b.password==="right password 12"?ok({access_token:"tok-1",user:{id:"u-1",email:b.email}}):ok({error_description:"Invalid login credentials"},400);}
+  if(u.pathname==="/auth/v1/token"){const b=JSON.parse(opt.body);return b.password==="right password 12"?ok({access_token:"tok-1",expires_in:3600,user:{id:"u-1",email:b.email}}):ok({error_description:"Invalid login credentials"},400);}
   if(u.pathname==="/auth/v1/signup")return ok({id:"u-1"});
   if(u.pathname==="/rest/v1/incomeos_vault"){
+    if(opt.method!=="POST")assert.equal(u.searchParams.get("order"),"saved_at.desc,id.desc","latest recovery must break same-timestamp ties by immutable id");
     assert.equal(opt.headers.Authorization,"Bearer tok-1");
     if(!owner)return opt.method==="POST"?ok({message:"new row violates row-level security policy"},403):ok([]);
     if(opt.method==="POST"){rows.unshift({id:rows.length+1,...JSON.parse(opt.body),saved_at:"2026-11-05T12:00:00Z"});return ok("",201);}
     return ok(rows.slice(0,1));}
   return ok({},404);
 }
-const ctx={window:{crypto:webcrypto,fetch:fakeFetch},TextEncoder,JSON,URL,Promise,Error,setTimeout};
+const ctx={window:{crypto:webcrypto,fetch:fakeFetch},TextEncoder,JSON,URL,Promise,Error,setTimeout,clearTimeout,AbortController};
 vm.runInNewContext(src,ctx);const V=ctx.window.IncomeOSVaultCloud;
 const envelope=JSON.stringify({format:"incomeos-workspace",version:1,kdf:"PBKDF2-SHA256",iterations:600000,cipher:"AES-256-GCM",salt:"AAAAAAAAAAAAAAAAAAAAAA==",iv:"AAAAAAAAAAAAAAAA",data:"ZW5jcnlwdGVkLWJ5dGVz"});
 const plain=JSON.stringify({schema:"incomeos.workspace.v1",ledger:[{label:"Synthetic salary"}]});
@@ -56,9 +57,9 @@ assert.equal(V.signedIn(),true);
 // A delayed authentication response must never reopen a session after explicit sign-out.
 let releaseLogin;
 const delayedFetch=(url,opt)=>url.includes("/auth/v1/token")?
-  new Promise(resolve=>{releaseLogin=()=>resolve({ok:true,status:200,text:async()=>JSON.stringify({access_token:"delayed-token",user:{id:"u-1",email:"owner@example.org"}})});}):
+  new Promise(resolve=>{releaseLogin=()=>resolve({ok:true,status:200,text:async()=>JSON.stringify({access_token:"delayed-token",expires_in:3600,user:{id:"u-1",email:"owner@example.org"}})});}):
   fakeFetch(url,opt);
-const delayedCtx={window:{crypto:webcrypto,fetch:delayedFetch},TextEncoder,JSON,URL,Promise,Error,setTimeout};
+const delayedCtx={window:{crypto:webcrypto,fetch:delayedFetch},TextEncoder,JSON,URL,Promise,Error,setTimeout,clearTimeout,AbortController};
 vm.runInNewContext(src,delayedCtx);
 const delayedVault=delayedCtx.window.IncomeOSVaultCloud;
 const pendingLogin=delayedVault.signIn("owner@example.org","right password 12");
@@ -71,7 +72,7 @@ let releaseRead;
 const delayedReadFetch=(url,opt)=>url.includes("/rest/v1/incomeos_vault")?
   new Promise(resolve=>{releaseRead=()=>resolve({ok:true,status:200,text:async()=>JSON.stringify([{id:9,ciphertext:envelope,sha256:createHash("sha256").update(envelope).digest("hex"),saved_at:"2026-11-06T00:00:00Z"}])});}):
   fakeFetch(url,opt);
-const readCtx={window:{crypto:webcrypto,fetch:delayedReadFetch},TextEncoder,JSON,URL,Promise,Error,setTimeout};
+const readCtx={window:{crypto:webcrypto,fetch:delayedReadFetch},TextEncoder,JSON,URL,Promise,Error,setTimeout,clearTimeout,AbortController};
 vm.runInNewContext(src,readCtx);
 const readVault=readCtx.window.IncomeOSVaultCloud;
 await readVault.signIn("owner@example.org","right password 12");
@@ -80,6 +81,62 @@ readVault.signOut();
 releaseRead();
 await assert.rejects(pendingRead,/session changed/);
 assert.equal(readVault.signedIn(),false);
+// Sign-out during restore integrity hashing must not return an encrypted workspace.
+let releaseRestoreDigest;
+const restoreCrypto={subtle:{digest:async(...args)=>new Promise(resolve=>{
+  releaseRestoreDigest=async()=>resolve(await webcrypto.subtle.digest(...args));
+})}};
+const restoreCtx={window:{crypto:restoreCrypto,fetch:async(url,opt)=>{
+  if(url.includes("/rest/v1/incomeos_vault")&&opt.method==="GET")
+    return {ok:true,status:200,text:async()=>JSON.stringify([{id:9,ciphertext:envelope,sha256:createHash("sha256").update(envelope).digest("hex"),saved_at:"2026-11-06T00:00:00Z"}])};
+  return fakeFetch(url,opt);
+}},TextEncoder,JSON,URL,Promise,Error,setTimeout,clearTimeout,AbortController};
+vm.runInNewContext(src,restoreCtx);
+const restoreVault=restoreCtx.window.IncomeOSVaultCloud;
+await restoreVault.signIn("owner@example.org","right password 12");
+const pendingRestore=restoreVault.latest();
+for(let i=0;i<100&&!releaseRestoreDigest;i++)await new Promise(resolve=>setTimeout(resolve,1));
+assert.equal(typeof releaseRestoreDigest,"function","restore must calculate integrity hash");
+restoreVault.signOut();
+await releaseRestoreDigest();
+await assert.rejects(pendingRestore,/session changed/);
+assert.equal(restoreVault.signedIn(),false);
+// Signing out while the hash is pending must prevent any authenticated POST.
+let releaseDigest,prePostCount=0;
+const pausedCrypto={subtle:{digest:async(...args)=>new Promise(resolve=>{
+  releaseDigest=async()=>resolve(await webcrypto.subtle.digest(...args));
+})}};
+const hashCtx={window:{crypto:pausedCrypto,fetch:async(url,opt)=>{
+  if(url.includes("/rest/v1/incomeos_vault")&&opt.method==="POST")prePostCount++;
+  return fakeFetch(url,opt);
+}},TextEncoder,JSON,URL,Promise,Error,setTimeout,clearTimeout,AbortController};
+vm.runInNewContext(src,hashCtx);
+const hashVault=hashCtx.window.IncomeOSVaultCloud;
+await hashVault.signIn("owner@example.org","right password 12");
+const pendingHashSave=hashVault.save(envelope);
+assert.equal(typeof releaseDigest,"function","save must calculate integrity hash");
+hashVault.signOut();
+await releaseDigest();
+await assert.rejects(pendingHashSave,/session changed/);
+assert.equal(prePostCount,0,"sign-out during hashing must prevent vault upload");
+assert.equal(hashVault.signedIn(),false);
+// A save already in flight must not report success after the owner signs out.
+let releaseSave;
+const delayedSaveFetch=(url,opt)=>url.includes("/rest/v1/incomeos_vault")&&opt.method==="POST"?
+  new Promise(resolve=>{releaseSave=()=>resolve({ok:true,status:201,text:async()=>""});}):
+  fakeFetch(url,opt);
+const saveCtx={window:{crypto:webcrypto,fetch:delayedSaveFetch},TextEncoder,JSON,URL,Promise,Error,setTimeout,clearTimeout,AbortController};
+vm.runInNewContext(src,saveCtx);
+const saveVault=saveCtx.window.IncomeOSVaultCloud;
+await saveVault.signIn("owner@example.org","right password 12");
+const pendingSave=saveVault.save(envelope);
+// SHA-256 is asynchronous, so wait until the mocked authenticated POST starts.
+for(let i=0;i<100&&!releaseSave;i++)await new Promise(resolve=>setTimeout(resolve,1));
+assert.equal(typeof releaseSave,"function","encrypted save must reach the mocked vault");
+saveVault.signOut();
+releaseSave();
+await assert.rejects(pendingSave,/session changed/);
+assert.equal(saveVault.signedIn(),false,"late save response cannot reinstate authentication");
 // Save sends only the envelope, its format tag and hash.
 await V.save(envelope);
 const post=calls.find(c=>c.opt.method==="POST"&&c.url.endsWith("/rest/v1/incomeos_vault"));

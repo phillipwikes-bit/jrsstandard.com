@@ -13,7 +13,12 @@ export default async function handler(req){
    if(gate)return gate;
    return json({authenticated:true});
  }
- if(req.method==='DELETE')return json({signed_out:true},200,{'Set-Cookie':revokeOwnerCookie()});
+ if(req.method==='DELETE'){
+   const origin=req.headers.get('origin');
+   if((origin&&origin!==new URL(req.url).origin)||req.headers.get('sec-fetch-site')==='cross-site')
+     return json({error:'origin_not_allowed'},403);
+   return json({signed_out:true},200,{'Set-Cookie':revokeOwnerCookie()});
+ }
  if(req.method!=='POST')return json({error:'method_not_allowed'},405);
  const origin=req.headers.get('origin');
  if(!origin || origin!==new URL(req.url).origin)return json({error:'origin_not_allowed'},403);
@@ -27,7 +32,11 @@ export default async function handler(req){
  }catch{return json({error:'bad_input'},400)}
  if(!body || typeof body!=='object' || Array.isArray(body))return json({error:'bad_input'},400);
  const secret=typeof body.token==='string'?body.token:'';
- if(!await ownerSecretMatches(secret))return json({error:'unauthorized'},401);
- const cookie=await createOwnerCookie();
+ let cookie;
+ try{
+   if(!await ownerSecretMatches(secret))return json({error:'unauthorized'},401);
+   cookie=await createOwnerCookie(secret);
+ }
+ catch{return json({error:'owner_access_unavailable'},503);}
  return json({authenticated:true},200,{'Set-Cookie':cookie});
 }

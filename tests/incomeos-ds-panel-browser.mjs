@@ -24,7 +24,7 @@ await new Promise(done=>server.once('listening',done));
 const browser = await chromium.launch({ executablePath: process.env.INCOMEOS_BROWSER, args:['--no-sandbox']});
 try {
   for (const width of [320,375,430]) {
-    const ctx=await browser.newContext({viewport:{width,height:812},isMobile:true,hasTouch:true});
+    const ctx=await browser.newContext({viewport:{width,height:812},isMobile:true,hasTouch:true,reducedMotion:'reduce'});
     const page=await ctx.newPage(), errors=[];
     page.on('pageerror',e=>errors.push(String(e)));
     await page.goto('http://127.0.0.1:'+server.address().port+'/owner/incomeos/index.html');
@@ -37,32 +37,68 @@ try {
     await page.locator('#ds-start').click();
     await page.waitForFunction(()=>document.querySelector('#ds-product-runtime')?.textContent?.includes('DS-N1'));
     const t=await page.locator('#ds-product-runtime').textContent();
-    assert.match(t,/DS-N1 0\.7\.0-dev/);
+    assert.match(t,/DS-N1 NOT_LOADED_IN_OWNER_DESK/, 'Hosted Owner Desk must not claim the unbundled DS-N1 engine is active');
     assert.match(t,/Original SP acceptance0 of 18/);
     assert.match(t,/AUTHENTIC_SOURCE_NOT_RECOVERED/);
-    assert.match(t,/INTEGRATION_IN_PROGRESS/);
+    assert.match(t,/READ_ONLY_SOURCE_NOT_PACKAGED/);
     assert.match(t,/Live GitHub CI connectionNOT_CONNECTED/);
     assert.match(t,/Recorded study runs, synthetic \/ independent0 \/ 0/);
     assert.match(t,/NOT_AUTHORIZED/);
-    assert.match(t,/Product revenue and costs/);
+    assert.match(t,/Inspect product revenue and costs/);
     assert.match(t,/Product-tagged ledger rows0/);
     assert.match(t,/Recorded operating costs \(owner ledger\)\$0\.00/);
+    const layout=await page.evaluate(()=>({pageWidth:document.documentElement.scrollWidth,
+      layoutViewport:innerWidth,visualViewport:window.visualViewport?.width}));
+    assert.ok(layout.pageWidth<=width+1&&layout.layoutViewport<=width+1,
+      'Product content must not enlarge the configured mobile viewport: '+JSON.stringify({width,...layout}));
     // Every original acceptance status is visible on demand, without
     // disclosing case/source contents or treating DS-N1 results as DS-A.
-    const spDetails = page.locator('#ds-product-runtime details');
-    assert.equal(await spDetails.count(),1);
+    const spDetails = page.locator('#ds-product-runtime details').first();
+    assert.equal(await page.locator('#ds-product-runtime details').count(),3,
+      'SP acceptance, engineering provenance, and finance are separate disclosures');
     // The disclosure is near the top of the product card, clear of the
     // fixed bottom navigation, and has a mobile-sized native summary target.
     const spSummary = spDetails.locator('summary');
     assert.ok(await spSummary.evaluate(el => el.getBoundingClientRect().height >= 44),
       'SP disclosure must have a 44px tap target at '+width+'px');
-    await spSummary.click();
+    // Scroll the actual touch target clear of fixed navigation, verify its
+    // center is unobstructed, then send a real emulated touch. Never force it.
+    await spSummary.evaluate(el=>el.scrollIntoView({block:'center',inline:'nearest',behavior:'instant'}));
+    const target=await spSummary.evaluate(el=>{
+      window.__spTouchEvidence=[];
+      for(const name of ['pointerdown','pointerup','touchstart','touchend','click','toggle']){
+        document.addEventListener(name,event=>{
+          if(window.__spTouchEvidence.length<20)window.__spTouchEvidence.push({event:name,
+            tag:event.target?.tagName,id:event.target?.id||null,scrollY:window.scrollY});
+        },{capture:true});
+      }
+      const r=el.getBoundingClientRect();
+      const x=r.left+r.width/2,y=r.top+r.height/2;
+      const hit=document.elementFromPoint(x,y);
+      return {x,y,receivesPointer:hit===el||el.contains(hit)};
+    });
+    assert.equal(target.receivesPointer,true,'SP disclosure center must receive pointer events at '+width+'px');
+    // Exercise normal locator touch after validating the real viewport.
+    // No force, DOM click, synthetic event or keyboard substitute is used.
+    await spSummary.tap();
+    try{
+      await page.waitForFunction(()=>document.querySelector('#ds-product-runtime details')?.open===true,null,{timeout:3000});
+    }catch(error){
+      const observed=await spSummary.evaluate(el=>({events:window.__spTouchEvidence,
+        rect:el.getBoundingClientRect().toJSON(),scrollY:window.scrollY,
+        viewport:{width:innerWidth,height:innerHeight,scale:visualViewport?.scale,
+          offsetTop:visualViewport?.offsetTop,pageTop:visualViewport?.pageTop},
+        open:el.parentElement.open}));
+      console.error('SP native touch failure geometry',JSON.stringify({width,target,observed}));
+      throw error;
+    }
     assert.equal(await spDetails.evaluate(el => el.open),true);
     const spRows = spDetails.locator('li');
     assert.equal(await spRows.count(),18);
     assert.match(await spRows.first().textContent(),/SP-01: NOT_ACCEPTED/);
     assert.match(await spRows.first().textContent(),/source: not available in repository/);
     assert.match(await spRows.first().textContent(),/linked evidence records: 0/);
+    assert.match(await spRows.first().textContent(),/Verification blocked/);
     assert.match(await spRows.last().textContent(),/SP-18: NOT_ACCEPTED/);
     assert.equal(await spDetails.evaluate(el => el.open),true);
     await spDetails.locator('summary').focus();
@@ -72,7 +108,7 @@ try {
     await page.keyboard.press('Enter');
     assert.equal(await spDetails.evaluate(el => el.open),true,
       'keyboard Enter should reopen the disclosure');
-    assert.ok(await page.evaluate(()=>document.documentElement.scrollWidth<=window.innerWidth+1),
+    assert.ok(await page.evaluate(w=>document.documentElement.scrollWidth<=w+1,width),
       'SP acceptance detail must not overflow at '+width+'px');
     assert.equal(await page.locator('#ds-product-runtime button').isDisabled(),true);
     // Owner product finance uses the SAME workspace ledger, never the reviewer.
@@ -82,7 +118,7 @@ try {
       w.dsProgram = D.newProgram('2026-11-05');
       w = W.addRecord(w, 'ledger', {
         kind:'outflow',date:'2026-11-05',payer:'PRIVATE-VENDOR-DO-NOT-RENDER',
-        amountUsd:'29.50',category:'software',dsDimension:'software_api'
+        amountUsd:'29.50',category:'software',dsDimension:'software_api',paymentStatus:'paid'
       }, '2026-11-05');
       w = W.addRecord(w, 'ledger', {
         kind:'outflow',date:'2026-11-05',payer:'PRIVATE-UNPAID-DO-NOT-RENDER',
@@ -100,7 +136,7 @@ try {
       }, '2026-11-05');
       document.dispatchEvent(new CustomEvent('incomeos:workspace-changed',{detail:w}));
     });
-    const financial=page.locator('#ds-product-runtime section[aria-label="Decision Spellchecker product finance"]');
+    const financial=page.locator('#ds-product-runtime details[aria-label="Decision Spellchecker product finance"]');
     const financialText=await financial.textContent();
     assert.match(financialText,/Product-tagged ledger rows4/);
     assert.match(financialText,/Recorded operating costs \(owner ledger\)\$29\.50/);
@@ -130,7 +166,8 @@ try {
         id:'TASK-SYN-01',title:'Inspect synthetic evidence reference',
         module:'engineering',dependsOn:[],value:5,cost:1,risk:1
       },'2026-11-05');
-      document.dispatchEvent(new CustomEvent('incomeos:workspace-changed',{detail:{dsProgram:p}}));
+      const ws=window.IncomeOSWorkspace.newWorkspace('2026-11-05');
+      document.dispatchEvent(new CustomEvent('incomeos:workspace-changed',{detail:{...ws,dsProgram:p}}));
     });
     const updated=await page.locator('#ds-product-runtime').textContent();
     assert.match(updated,/BUG-SYN-01: Constructed source mismatch/);
@@ -139,12 +176,13 @@ try {
     await page.evaluate(() => {
       let p = window.IncomeOSDSProgram.newProgram('2026-11-05');
       p.acceptance[0].status='ACCEPTED';
-      document.dispatchEvent(new CustomEvent('incomeos:workspace-changed',{detail:{dsProgram:p}}));
+      const ws=window.IncomeOSWorkspace.newWorkspace('2026-11-05');
+      document.dispatchEvent(new CustomEvent('incomeos:workspace-changed',{detail:{...ws,dsProgram:p}}));
     });
     assert.match(await page.locator('#ds-product-runtime').textContent(),/Programme record cannot be verified/);
 
     assert.deepEqual(errors,[], 'page errors at '+width+'px');
-    assert.ok(await page.evaluate(()=>document.documentElement.scrollWidth<=window.innerWidth+1),'no horizontal overflow at '+width+'px');
+    assert.ok(await page.evaluate(w=>document.documentElement.scrollWidth<=w+1,width),'no horizontal overflow at '+width+'px');
     await ctx.close();
   }
   console.log('PASS: IncomeOS imported product source and fail-closed reviewer boundary at 320, 375, 430px');

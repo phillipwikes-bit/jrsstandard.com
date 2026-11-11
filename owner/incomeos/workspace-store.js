@@ -53,8 +53,23 @@
       if(x.kind!=="income"&&x.kind!=="outflow")throw Error("Choose income or expense");
       if(!isDate(x.date))throw Error("Date required");
       var cats=x.kind==="income"?INCOME_CATS:COST_CATS,cat=cats.indexOf(x.category)>=0?x.category:"other";
-      rec={id:"m-"+x.date+"-"+slug(x.payer)+"-"+(list.length+1),kind:x.kind,date:x.date,payer:text(x.payer,100,"Payer or vendor"),label:text(x.label||x.payer,100,"Description"),category:cat,evidenceStatus:"missing",source:"manual"};
-      if(x.kind==="income"){rec.grossUsd=money(x.amountUsd);rec.feesUsd="0.00";}else{rec.type="expense";rec.amountUsd=money(x.amountUsd);}
+      var stem="m-"+x.date+"-"+slug(x.payer)+"-",suffix=list.length+1;
+      var existingIds=new Set(list.map(function(row){return row&&typeof row.id==="string"?row.id.trim():null;}));
+      while(existingIds.has(stem+suffix))suffix++;
+      rec={id:stem+suffix,kind:x.kind,date:x.date,payer:text(x.payer,100,"Payer or vendor"),label:text(x.label||x.payer,100,"Description"),category:cat,evidenceStatus:"missing",source:"manual"};
+      // Every entry path shares the accountant's schema. Missing payment
+      // evidence is not permission to treat an expected amount as paid.
+      if(x.kind==="income"){
+        rec.grossUsd=money(x.amountUsd);rec.feesUsd="0.00";rec.scope="income";
+        rec.status=x.status===undefined?"expected":x.status;
+        if(["paid","pending","expected","invoiced","disputed","refunded","cancelled"].indexOf(rec.status)<0)
+          throw Error("Unsupported payment status");
+      }else{
+        rec.type="expense";rec.amountUsd=money(x.amountUsd);rec.businessUse=null;
+        rec.paymentStatus=x.paymentStatus===undefined?"scheduled":x.paymentStatus;
+        if(["paid","scheduled","disputed","refunded"].indexOf(rec.paymentStatus)<0)
+          throw Error("Unsupported payment status");
+      }
       // Optional Decision Spellchecker accounting dimension: links the row to the program's financial engine.
       if(x.dsDimension){
         var DS=dep("IncomeOSDSProgram","./ds-program.js");if(!DS)throw Error("Decision Spellchecker engine unavailable");
@@ -72,7 +87,10 @@
       var apy=Number(x.apyPct);if(!(apy>=0&&apy<25))throw Error("Enter the APY in percent");
       var url;try{url=new URL(x.sourceUrl);}catch(e){throw Error("Paste the provider's https page");}
       if(url.protocol!=="https:")throw Error("Paste the provider's https page");
-      rec={id:"offer-"+slug(x.provider)+"-"+(list.length+1),provider:text(x.provider,80,"Provider"),product:x.product,apyPct:apy,insurance:x.insurance||"FDIC",sourceUrl:url.href,checkedOn:on};
+      var offerStem="offer-"+slug(x.provider)+"-",offerSuffix=list.length+1;
+      var offerIds=new Set(list.map(function(offer){return offer&&typeof offer.id==="string"?offer.id.trim():null;}));
+      while(offerIds.has(offerStem+offerSuffix))offerSuffix++;
+      rec={id:offerStem+offerSuffix,provider:text(x.provider,80,"Provider"),product:x.product,apyPct:apy,insurance:x.insurance||"FDIC",sourceUrl:url.href,checkedOn:on};
       if(x.termMonths)rec.termMonths=Math.round(Number(x.termMonths));
       if(x.earlyPenaltyMonths!==""&&x.earlyPenaltyMonths!=null)rec.earlyPenaltyMonths=Number(x.earlyPenaltyMonths);
     }else throw Error("Unknown section");

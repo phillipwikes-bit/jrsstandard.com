@@ -21,7 +21,7 @@ const read=name=>readFileSync(resolve(directory,name),"utf8");
       tokenNumber++;
       const body=JSON.parse(options.body);
       assert.match(body.email,/@example\.org$/);
-      return reply({access_token:"synthetic-owner-token-"+tokenNumber,
+      return reply({access_token:"synthetic-owner-token-"+tokenNumber,expires_in:3600,
         user:{id:"synthetic-owner-"+tokenNumber,email:body.email}});
     }
     if(url.includes("/rest/v1/rpc/incomeos_")){
@@ -36,7 +36,7 @@ const read=name=>readFileSync(resolve(directory,name),"utf8");
     }
     throw Error("Unexpected request "+url);
   }
-  const context={window:{crypto:webcrypto,fetch:fakeFetch},JSON,Promise,TextEncoder,Error,URL};
+  const context={window:{crypto:webcrypto,fetch:fakeFetch},JSON,Promise,TextEncoder,Error,URL,setTimeout,clearTimeout,AbortController};
   runInNewContext(read("revision-supabase-transport.js"),context);
   runInNewContext(read("vault-cloud.js"),context);
   const vault=context.window.IncomeOSVaultCloud;
@@ -45,6 +45,7 @@ const read=name=>readFileSync(resolve(directory,name),"utf8");
   assert.throws(()=>vault.createRevisionTransport(),/Sign in/);
   await vault.signIn("owner@example.org","a synthetic password 12");
   const first=vault.createRevisionTransport();
+  assert.equal(first.assertSession(),true,"Session-bound transport checks remain token-free");
   assert.equal(await first.latest(),null);
   assert.equal(await first.append({expected_revision:0,encrypted_payload:"synthetic",payload_sha256:"a".repeat(64)}),1);
   assert.ok(Object.isFrozen(first));
@@ -53,14 +54,29 @@ const read=name=>readFileSync(resolve(directory,name),"utf8");
   for(let i=0;i<20&&releaseDelayed===null;i++)await Promise.resolve();
   assert.equal(typeof releaseDelayed,"function","Expected an in-flight authenticated revision read");
   vault.signOut();
+  assert.throws(()=>first.assertSession(),/Vault session changed/);
   releaseDelayed();
   await assert.rejects(pending,/Vault session changed/);
   await assert.rejects(first.latest(),/Vault session changed/);
   await vault.signIn("owner@example.org","a synthetic password 12");
   await assert.rejects(first.latest(),/Vault session changed/,"Previous session must never be reused after reauthentication");
   const second=vault.createRevisionTransport();
+  assert.equal(second.assertSession(),true);
+  assert.throws(()=>first.assertSession(),/Vault session changed/,
+    "A new sign-in cannot reactivate the previous session assertion");
   assert.equal(await second.latest(),null);
   assert.equal(tokenNumber,2);
+  for(const operation of ["latest","append"]){
+    const bound=vault.createRevisionTransport();
+    const beforeDispatch=calls.filter(x=>x.url.includes("/rest/v1/rpc/")).length;
+    const attempt=operation==="latest"?bound.latest():bound.append({expected_revision:0});
+    // getToken has returned but its awaited promise has not resumed dispatch.
+    vault.signOut();
+    await assert.rejects(attempt,/Vault session changed/);
+    assert.equal(calls.filter(x=>x.url.includes("/rest/v1/rpc/")).length,beforeDispatch,
+      "Sign-out during the token microtask cannot dispatch an authenticated "+operation);
+    await vault.signIn("owner@example.org","a synthetic password 12");
+  }
   assert.ok(calls.some(x=>x.url.endsWith("/rest/v1/rpc/incomeos_latest_workspace_revision")));
   assert.ok(calls.some(x=>x.url.endsWith("/rest/v1/rpc/incomeos_append_workspace_revision")));
   console.log("PASS: staged RPC transport is bound to owner vault session and rejects sign-out races");

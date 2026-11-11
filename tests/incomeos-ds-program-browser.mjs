@@ -41,7 +41,12 @@ await page.locator("#ds-start").tap();
 await page.waitForFunction(()=>document.querySelectorAll("#view-ds details.ds-form").length>=6);
 // Record evidence and a task through the forms.
 const ev=page.locator("details.ds-form",{hasText:"Evidence"}).first();
-await ev.locator("summary").tap();
+await ev.locator(":scope > summary").tap();
+const original=ev.getByText("Original DS-A verification evidence (optional)",{exact:true});
+await original.tap();
+assert.equal(await ev.getByLabel("Role",{exact:true}).inputValue(),"","General evidence stays outside original acceptance by default");
+assert.equal(await ev.getByLabel("Independence of the evidence").inputValue(),"","Independence needs an explicit record");
+await original.tap();
 await ev.getByLabel("Identifier",{exact:true}).fill("E-UI-001");await ev.getByLabel("Title").fill("Synthetic DS-C unit run");
 await ev.getByLabel("Evidence level").selectOption("2");await ev.getByLabel("Source (file, URL or document)").fill("tests run");
 await ev.getByLabel("Date",{exact:true}).fill("2026-11-01");await ev.getByLabel("Assumptions").fill("Synthetic");await ev.getByLabel("Contradictory evidence").fill("none found");
@@ -65,10 +70,14 @@ const cost=page.locator("details.ds-form",{hasText:"Program cost"}).first();
 await cost.locator("summary").tap();
 await cost.getByLabel("Date",{exact:true}).fill("2026-10-15");await cost.getByLabel("Vendor").fill("API provider");await cost.getByLabel("Amount (USD)").fill("40.00");
 await cost.getByLabel("Dimension").selectOption("software_api");
+assert.equal(await cost.getByLabel("Payment status").inputValue(),"scheduled","Program costs cannot default to paid");
+await cost.getByLabel("Payment status").selectOption("paid");
 await cost.getByRole("button",{name:"Add cost"}).tap();
 await page.locator("#ds-output").getByRole("button",{name:"Run cycle"}).tap();
 text=await page.locator("#ds-output").textContent();
 assert.match(text,/Total recorded program cost\$40\.00/);
+assert.doesNotMatch(await page.locator("#ledger-mode").textContent(),/QUARANTINED/,
+  "A programme cost must remain editable through the existing accountant");
 assert.match(text,/Last cycle CYCLE-\d+/);
 // R8-6: Start becomes Done; Done without linked evidence is refused and says so; after linking it completes.
 await page.locator("#ds-output .entry",{hasText:"T-UI-1"}).getByRole("button",{name:"Start"}).tap();

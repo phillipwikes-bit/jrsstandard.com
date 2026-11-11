@@ -4,6 +4,7 @@ import assert from "node:assert/strict";
 import {createServer} from "node:http";
 import {readFileSync} from "node:fs";
 import {createRequire} from "node:module";
+import {verifyRevisionPreview} from "./incomeos-revision-preview-browser.mjs";
 const require=createRequire(import.meta.url);
 let chromium;
 try {({chromium}=require("playwright-core"));}
@@ -11,7 +12,7 @@ catch {if(process.env.CI)throw Error("playwright-core must be installed for brow
 const scripts=new Set([
   "workspace-store.js","workspace-revision-protocol.js",
   "revision-store.js","revision-workspace-bridge.js",
-  "revision-runtime-staging.js"
+  "revision-runtime-staging.js","revision-accounting-coordinator.js","accountant.js","ds-program.js"
 ]);
 const base=new URL("../owner/incomeos/",import.meta.url);
 const server=createServer((req,res)=>{
@@ -27,9 +28,10 @@ const server=createServer((req,res)=>{
 });
 await new Promise(resolve=>server.listen(0,"127.0.0.1",resolve));
 let browser;
+const launchOptions=process.env.INCOMEOS_BROWSER?
+  {executablePath:process.env.INCOMEOS_BROWSER,args:["--no-sandbox"]}:{headless:true};
 try {
-  browser=await chromium.launch(process.env.INCOMEOS_BROWSER?
-    {executablePath:process.env.INCOMEOS_BROWSER,args:["--no-sandbox"]}:{headless:true});
+  browser=await chromium.launch(launchOptions);
   const context=await browser.newContext({viewport:{width:375,height:812},isMobile:true,hasTouch:true});
   const page=await context.newPage();
   const errors=[];
@@ -100,7 +102,11 @@ try {
     assert(absent,"Missing vault session must block runtime construction");
     window.IncomeOSVaultCloud={
       signedIn:()=>true,
-      createRevisionTransport:()=>transport
+      createRevisionTransport:()=>Object.freeze({
+        latest:transport.latest,
+        append:transport.append,
+        assertSession:()=>true
+      })
     };
     absent=false;
     try{runtime.createRuntime({});}catch(e){absent=String(e).includes("Explicit staging-only");}
@@ -111,13 +117,52 @@ try {
       "Composed authenticated runtime must decrypt the latest owner workspace");
     assert(writes===3,"Runtime construction/open must not silently save");
     composed.close();
-    return {writes,reads,finalRevision:untampered.revision,viewport:innerWidth};
+    const accounting=runtime.createAccountingRuntime({stagingOnly:true});
+    assert((await accounting.open(password)).revision===3,"Accounting runtime opens the same workspace");
+    const row={id:"synthetic-browser-restore",kind:"outflow",date:"2026-11-08",
+      label:"Synthetic browser backup expense",category:"software",type:"expense",
+      amountUsd:10,businessUse:null,paymentStatus:"paid",source:"synthetic"};
+    accounting.replaceLedger([row],"2026-11-08");
+    assert((await accounting.save(password)).revision===4,"Explicit initial accounting save");
+    const backup=accounting.encryptedBackup();
+    const programme=window.IncomeOSDSProgram.add(window.IncomeOSDSProgram.newProgram("2026-11-08"),"tasks",{
+      id:"T-BROWSER-SHARED",title:"Synthetic programme task",module:"engineering"
+    },"2026-11-08");
+    accounting.updateProgram(programme,"2026-11-08");
+    accounting.replaceLedger([{...row,amountUsd:20}],"2026-11-08");
+    assert((await accounting.save(password)).revision===5,"Current revision advances after backup");
+    const history=accounting.workspaceSnapshot().changeLog;
+    await rejects(()=>accounting.restoreLedgerBackup({...backup,sha256:"0".repeat(64)},password,"2026-11-08"),"checksum mismatch");
+    assert(accounting.workspaceSnapshot().ledger[0].amountUsd===20,"Tamper cannot change current ledger");
+    const counts={writes,reads};
+    const restoration=await accounting.restoreLedgerBackup(backup,password,"2026-11-08");
+    assert(restoration.unsaved&&restoration.serverSaved===false,"Restore requires an explicit new save");
+    assert(writes===counts.writes&&reads===counts.reads,"Backup restoration must be entirely local");
+    const restored=accounting.pendingDraft();
+    assert(restored.ledger[0].amountUsd===10&&restored.note===updated.note,"Restore preserves current nonfinancial workspace");
+    assert(JSON.stringify(restored.changeLog.slice(0,history.length))===JSON.stringify(history),"Restore preserves current history");
+    assert((await accounting.save(password)).revision===6,"Restoration appends against current head, never revision 4");
+    assert((await ws.decrypt(password,latest.ciphertext)).ledger[0].amountUsd===10,"Saved restoration decrypts exactly");
+    assert((await ws.decrypt(password,latest.ciphertext)).dsProgram.tasks.some(t=>t.id==="T-BROWSER-SHARED"),
+      "The same encrypted revision retains programme management changes after ledger recovery");
+    const recoveryDocument=await ws.decrypt(password,backup.ciphertext);
+    recoveryDocument.accounts=[{id:"synthetic-browser-account",name:"Synthetic recovered account",type:"checking"}];
+    const recoveryText=await ws.encrypt(password,recoveryDocument);
+    const review=await accounting.prepareWorkspaceRecovery({revision:backup.revision,ciphertext:recoveryText,sha256:await sha256(recoveryText)},password);
+    assert(review.sections.includes("accounts")&&!review.sections.includes("dsProgram"),"Recovery must expose section review without programme replacement");
+    accounting.applyWorkspaceRecovery(["accounts"],"2026-11-08");
+    assert(writes===6,"Workspace recovery cannot autosave");
+    assert((await accounting.save(password)).revision===7,"Selected recovery appends a new revision");
+    const reconciled=await ws.decrypt(password,latest.ciphertext);
+    assert(reconciled.accounts[0].id==="synthetic-browser-account"&&reconciled.dsProgram.tasks.some(t=>t.id==="T-BROWSER-SHARED"),"Section recovery retains current programme");
+    return {writes,reads,finalRevision:latest.revision,viewport:innerWidth};
   });
   assert.deepEqual(errors,[],"No page errors or external requests");
-  assert.equal(result.writes,3);
-  assert.equal(result.finalRevision,3);
-  console.log("PASS: Chromium 375px real AES-GCM staging bridge, two clients, CAS and fail-closed recovery");
+  assert.equal(result.writes,7);
+  assert.equal(result.finalRevision,7);
+  console.log("PASS: Chromium 375px real AES-GCM staging accounting, CAS, fail-closed recovery and explicit ledger-backup restoration");
 }finally{
   if(browser)await browser.close();
   await new Promise(resolve=>server.close(resolve));
 }
+await verifyRevisionPreview(chromium,launchOptions);

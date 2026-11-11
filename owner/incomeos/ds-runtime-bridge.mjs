@@ -3,6 +3,7 @@
 // client-side flag nor a local source build is proof of owner authentication.
 // The one authoritative program remains the IncomeOS workspace's dsProgram.
 import './ds-program.js';
+import {checkProgram, inspectOwnerProduct} from './ds-owner-inspection.mjs';
 import {
   CANDIDATE, RECORD_SCHEMA, validateRecord, openReview, deriveState,
   applyAction, buildReport, verifyChain,
@@ -41,71 +42,18 @@ function requireSyntheticSession(program, session) {
   }
 }
 
-function checkProgram(program) {
-  if (!program || program.schema !== 'incomeos.ds-program.v1' ||
-      !Array.isArray(program.acceptance) || program.acceptance.length !== 18 ||
-      !Array.isArray(program.gates)) {
-    throw new TypeError('A validated IncomeOS dsProgram v1 is required');
-  }
-  for (let i = 1; i <= 18; i++) {
-    const id = 'SP-' + String(i).padStart(2, '0');
-    const item = program.acceptance.find(x => x?.id === id);
-    if (!item || item.identity !== 'DS-A' ||
-        !['NOT_ACCEPTED', 'ACCEPTED'].includes(item.status)) {
-      throw new TypeError('Missing or malformed original acceptance item ' + id);
-    }
-  }
-  // The structural check above is not acceptance verification. Apply the
-  // existing authoritative programme validator before reading any status.
-  // This refuses forged ACCEPTED checks, unsupported gate approvals, broken
-  // evidence links and malformed rights records even if the shape looks valid.
-  const owner = globalThis.IncomeOSDSProgram;
-  if (!owner || typeof owner.validate !== 'function' || owner.SCHEMA !== program.schema) {
-    throw new TypeError('Authoritative IncomeOS programme validator unavailable');
-  }
-  owner.validate(program);
-  return program;
-}
-
-// A filtered snapshot, not a new source-of-truth or a GitHub status poll.
+// Development harness enriches the same read-only projection with versions
+// obtained from the real imported DS-N1 modules. The hosted Owner Desk cannot
+// import those modules from outside its static deployment root.
 export function inspectProduct(program) {
-  const p = checkProgram(program);
-  const accepted = p.acceptance.filter(x => x.status === 'ACCEPTED').length;
-  // The owner programme remains the only mutable source for defects, tasks,
-  // research evidence and experimental study run records.
-  const ranked = globalThis.IncomeOSDSProgram.prioritize(p);
-  const ready = ranked.find(x => x.module === 'engineering' && x.state === 'READY');
-  const openDefects = p.defects.filter(x => x.status === 'OPEN')
-    .map(x => ({ id: x.id, title: x.title, severity: x.severity, identity: x.identity }));
-  const studyRuns = {
-    synthetic: p.runs.filter(x => x.kind === 'synthetic').length,
-    independent: p.runs.filter(x => x.kind === 'independent').length,
-  };
-  return Object.freeze({
+  return inspectOwnerProduct(program, {
     contract: CONTRACT_VERSION,
     integration: INTEGRATION_STATUS,
-    ownerRecordSchema: p.schema,
     candidate: CANDIDATE.candidate_id,
     candidateVersion: CANDIDATE.version,
     rulesVersion: CANDIDATE.rule_version,
     cognitiveVersion: COGNITIVE_CONTROL_VERSION,
     reflectiveVersion: REFLECTIVE_GUIDANCE_VERSION,
-    originalSource: 'AUTHENTIC_SOURCE_NOT_RECOVERED',
-    originalAcceptance: { accepted, total: 18 },
-    openGates: p.gates.filter(x => !x.approval).map(x => x.id),
-    // Programme counts are not a GitHub CI query or independent acceptance.
-    programmeEvidenceEntries: p.evidence.length,
-    programmeRequirementsRecorded: p.requirements.length,
-    programmeStudyRuns: studyRuns,
-    openDefects,
-    unresolvedEngineeringTasks: ranked.filter(x => x.module === 'engineering').length,
-    nextExecutableEngineeringTask: ready
-      ? { id: ready.id, title: ready.title, evidenceLinked: ready.evidence > 0 }
-      : null,
-    githubCIStatus: 'NOT_CONNECTED',
-    release: 'NOT_AUTHORIZED',
-    customerAccess: 'NOT_AUTHORIZED',
-    scope: 'DEVELOPMENT_ONLY_CONSTRUCTED_FICTIONAL',
   });
 }
 

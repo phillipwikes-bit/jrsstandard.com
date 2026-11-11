@@ -21,14 +21,14 @@ const origin=`http://127.0.0.1:${server.address().port}`,VAULT="https://pmvqxdgv
 const browser=await chromium.launch(launchOptions);
 const ctx=await browser.newContext({...devices["iPhone SE"]});
 const sent=[],rows=[],external=[];
-let holdNextUpload=false,releaseHeldUpload=null;
+let holdNextUpload=false,releaseHeldUpload=null,holdNextRead=false,releaseHeldRead=null;
 const cors={"access-control-allow-origin":origin,"access-control-allow-headers":"apikey,authorization,content-type,prefer","access-control-allow-methods":"GET,POST,OPTIONS","content-type":"application/json"};
 await ctx.route(VAULT+"/**",async route=>{
   const r=route.request(),u=new URL(r.url());
   if(r.method()==="OPTIONS")return route.fulfill({status:204,headers:cors});
   sent.push({path:u.pathname,body:r.postData()||""});
   if(u.pathname==="/auth/v1/token"){const b=JSON.parse(r.postData());
-    return route.fulfill({status:b.password==="synthetic vault pw"?200:400,headers:cors,body:JSON.stringify(b.password==="synthetic vault pw"?{access_token:"tok",user:{id:"u-1",email:b.email}}:{error_description:"Invalid login credentials"})});}
+    return route.fulfill({status:b.password==="synthetic vault pw"?200:400,headers:cors,body:JSON.stringify(b.password==="synthetic vault pw"?{access_token:"tok",expires_in:3600,user:{id:"u-1",email:b.email}}:{error_description:"Invalid login credentials"})});}
   if(u.pathname==="/rest/v1/incomeos_vault"){
     if(r.method()==="POST"){
       rows.unshift({id:rows.length+1,...JSON.parse(r.postData()),saved_at:"2026-11-05T12:00:00Z"});
@@ -38,6 +38,11 @@ await ctx.route(VAULT+"/**",async route=>{
         return;
       }
       return route.fulfill({status:201,headers:cors,body:""});
+    }
+    if(holdNextRead){
+      holdNextRead=false;
+      releaseHeldRead=()=>route.fulfill({status:200,headers:cors,body:JSON.stringify(rows.slice(0,1))});
+      return;
     }
     return route.fulfill({status:200,headers:cors,body:JSON.stringify(rows.slice(0,1))});}
   return route.fulfill({status:404,headers:cors,body:"{}"});
@@ -56,6 +61,8 @@ assert.ok(await page.locator("#cloud-vault-save").isDisabled(),"save needs sign-
 await page.locator("#cloud-vault-email").fill("owner@example.org");await page.locator("#cloud-vault-password").fill("wrong password 99");
 await page.locator("#cloud-vault-signin").tap();
 await page.waitForFunction(()=>/Invalid login credentials/.test(document.getElementById("cloud-vault-status").textContent));
+assert.equal(await page.locator("#cloud-vault-password").inputValue(),"","Rejected sign-in clears the entered password");
+assert.equal(await page.locator("#briefing-passphrase").inputValue(),"","Authentication changes clear the previous workspace passphrase");
 await page.locator("#cloud-vault-password").fill("synthetic vault pw");await page.locator("#cloud-vault-signin").tap();
 await page.waitForFunction(()=>/Signed in/.test(document.getElementById("cloud-vault-status").textContent));
 assert.equal(await page.locator("#cloud-vault-password").inputValue(),"","password cleared after sign-in");
@@ -80,6 +87,7 @@ await page.waitForFunction(()=>/Saving encrypted copy/.test(document.getElementB
 for(let i=0;i<60&&!releaseHeldUpload;i++)await new Promise(resolve=>setTimeout(resolve,100));
 assert.ok(releaseHeldUpload,"the fake vault upload is paused after encryption");
 assert.equal(await page.locator("#cloud-vault-save").isDisabled(),true,"overlapping vault uploads must be disabled");
+assert.equal(await page.locator("#cloud-vault-restore").isDisabled(),true,"restore cannot overtake a pending upload");
 await nav("research");
 await page.locator("#briefing-new").tap();
 assert.match(await page.locator("#briefing-status").textContent(),/New empty workspace/);
@@ -99,8 +107,22 @@ assert.ok(await page.locator("#cloud-vault-restore").isDisabled(),"signed out af
 await page.locator("#cloud-vault-email").fill("owner@example.org");await page.locator("#cloud-vault-password").fill("synthetic vault pw");await page.locator("#cloud-vault-signin").tap();
 await page.waitForFunction(()=>/Signed in/.test(document.getElementById("cloud-vault-status").textContent));
 await page.locator("#briefing-passphrase").fill("synthetic passphrase for tests");
+// An in-flight vault GET must exclude both local save and a second restore.
+holdNextRead=true;
 await page.locator("#cloud-vault-restore").tap();
+for(let i=0;i<50&&!releaseHeldRead;i++)await new Promise(resolve=>setTimeout(resolve,30));
+assert.ok(releaseHeldRead,"controlled vault restore request did not start");
+assert.equal(await page.locator("#cloud-vault-save").isDisabled(),true,
+  "an in-flight restore must block encrypted saves");
+assert.equal(await page.locator("#cloud-vault-restore").isDisabled(),true,
+  "a second restore must not overtake the first");
+const writesBeforeRestore=sent.filter(x=>x.path==="/rest/v1/incomeos_vault"&&x.body).length;
+await releaseHeldRead();
 await page.waitForFunction(()=>/Opened the vault copy saved 2026-11-05 12:00/.test(document.getElementById("cloud-vault-status").textContent),null,{timeout:30000});
+assert.equal(sent.filter(x=>x.path==="/rest/v1/incomeos_vault"&&x.body).length,writesBeforeRestore,
+  "opening a vault cannot trigger a save");
+assert.equal(await page.locator("#cloud-vault-save").isDisabled(),false,
+  "save is reenabled after successful restore");
 await nav("ledger");await page.locator("#report-year").fill("2026");await page.locator("#report-year").dispatchEvent("change");
 assert.match(await page.locator("#ledger-list").textContent(),/Synthetic vault payout/,"record restored from the vault");
 // A pending encrypted restore must never replace an owner workspace created
@@ -120,6 +142,106 @@ assert.doesNotMatch(await page.locator("#ledger-list").textContent(),/Synthetic 
   "new workspace must not be overwritten by a stale decrypted vault copy");
 assert.match(await page.locator("#briefing-status").textContent(),/New empty workspace/);
 
+// Logout during local PBKDF2/AES restoration must not install a decrypted
+// workspace or report success, even though the encrypted GET has completed.
+// A second listener signs out synchronously after the workspace listener has
+// started its asynchronous decryption. No fake service or real account is used.
+await vault();
+await page.evaluate(()=>document.addEventListener("incomeos:vault-open",
+  ()=>window.IncomeOSVaultCloud.signOut(),{once:true}));
+await page.locator("#cloud-vault-restore").tap();
+await page.waitForFunction(()=>/Vault session changed during workspace operation/.test(
+  document.getElementById("cloud-vault-status").textContent),null,{timeout:30000});
+await nav("ledger");
+assert.doesNotMatch(await page.locator("#ledger-list").textContent(),/Synthetic vault payout/,
+  "Owner sign-out during decryption cannot restore a stale plaintext workspace");
+assert.equal(await page.evaluate(()=>window.IncomeOSVaultCloud.signedIn()),false);
+assert.equal(await page.locator("#briefing-passphrase").inputValue(),"",
+  "Vault logout must clear the retained local encryption passphrase");
+await vault();
+await page.locator("#cloud-vault-email").fill("owner@example.org");
+await page.locator("#cloud-vault-password").fill("synthetic vault pw");
+await page.locator("#cloud-vault-signin").tap();
+await page.waitForFunction(()=>/Signed in/.test(document.getElementById("cloud-vault-status").textContent));
+// Logout during local AES encryption must prevent the browser-to-vault POST.
+await page.locator("#briefing-passphrase").fill("synthetic passphrase for tests");
+const beforeLogoutUpload=sent.filter(x=>x.path==="/rest/v1/incomeos_vault"&&x.body).length;
+await page.evaluate(()=>document.addEventListener("incomeos:vault-encrypt",
+  ()=>window.IncomeOSVaultCloud.signOut(),{once:true}));
+await page.locator("#cloud-vault-save").tap();
+await page.waitForFunction(()=>/Vault session changed during workspace operation/.test(
+  document.getElementById("cloud-vault-status").textContent),null,{timeout:30000});
+assert.equal(sent.filter(x=>x.path==="/rest/v1/incomeos_vault"&&x.body).length,beforeLogoutUpload,
+  "Owner sign-out during encryption cannot submit a vault copy");
+await page.locator("#cloud-vault-email").fill("owner@example.org");
+await page.locator("#cloud-vault-password").fill("synthetic vault pw");
+await page.locator("#cloud-vault-signin").tap();
+await page.waitForFunction(()=>/Signed in/.test(document.getElementById("cloud-vault-status").textContent));
+
+// Fast, deterministic simulation of a local crypto operation that completes
+// AFTER the browser vault's handoff deadline. No 15-second wall-clock sleep is
+// required: only the local test's 15,000 ms deadline is accelerated.
+const holdLocalCrypto=async()=>{
+  await page.evaluate(()=>{
+    const nativeDerive=SubtleCrypto.prototype.deriveKey;
+    const nativeTimer=window.setTimeout;
+    const marker={started:false,completed:false,release:null,restore:null};
+    window.__incomeosHeldCrypto=marker;
+    SubtleCrypto.prototype.deriveKey=function(...args){
+      marker.started=true;
+      const subtle=this;
+      return new Promise((resolve,reject)=>{
+        marker.release=()=>{
+          nativeDerive.apply(subtle,args).then(resolve,reject).finally(()=>{marker.completed=true;});
+        };
+      });
+    };
+    marker.restore=()=>{
+      SubtleCrypto.prototype.deriveKey=nativeDerive;
+      window.setTimeout=nativeTimer;
+    };
+    window.setTimeout=function(fn,ms,...args){
+      return nativeTimer(fn,ms===15000?80:ms,...args);
+    };
+  });
+};
+const releaseLocalCrypto=async()=>{
+  const started=await page.evaluate(()=>window.__incomeosHeldCrypto?.started===true);
+  assert.equal(started,true,"Local AES key derivation must actually be held");
+  await page.evaluate(()=>{
+    const marker=window.__incomeosHeldCrypto;
+    marker.restore();
+    marker.release();
+  });
+  await page.waitForFunction(()=>window.__incomeosHeldCrypto?.completed===true,null,{timeout:30000});
+  await page.waitForTimeout(50);
+};
+await vault();
+await page.locator("#briefing-passphrase").fill("synthetic passphrase for tests");
+await holdLocalCrypto();
+await page.locator("#cloud-vault-restore").tap();
+await page.waitForFunction(()=>/Workspace handoff timed out/.test(
+  document.getElementById("cloud-vault-status").textContent),null,{timeout:10000});
+await releaseLocalCrypto();
+await nav("ledger");
+assert.doesNotMatch(await page.locator("#ledger-list").textContent(),/Synthetic vault payout/,
+  "A late decrypt cannot replace a newer owner workspace after the handoff times out");
+await vault();
+// Clear the previous restore error so this assertion cannot match a stale
+// status before the second, independent timeout has actually fired.
+await page.evaluate(()=>{document.getElementById("cloud-vault-status").textContent="Synthetic save deadline test initialized";});
+const beforeExpiredSave=sent.filter(x=>x.path==="/rest/v1/incomeos_vault"&&x.body).length;
+await holdLocalCrypto();
+await page.locator("#cloud-vault-save").tap();
+await page.waitForFunction(()=>window.__incomeosHeldCrypto?.started===true);
+await page.waitForFunction(()=>/Workspace handoff timed out/.test(
+  document.getElementById("cloud-vault-status").textContent),null,{timeout:10000});
+await releaseLocalCrypto();
+assert.equal(sent.filter(x=>x.path==="/rest/v1/incomeos_vault"&&x.body).length,beforeExpiredSave,
+  "A late encrypted workspace handoff must never upload after its deadline");
+assert.equal(await page.evaluate(()=>localStorage.length+sessionStorage.length),0,
+  "Expired cryptographic operations must not fall back to browser storage");
+
 // A hostile or corrupted hosted response larger than the accepted encrypted-workspace limit
 // must be refused before hashing, decrypting, or replacing the current workspace.
 rows[0].ciphertext="x".repeat(5000001);
@@ -134,6 +256,27 @@ rows[0].ciphertext=JSON.parse(up.body).ciphertext;
 rows[0].ciphertext=rows[0].ciphertext.replace(/"data":"(.)/,(m,c)=>'"data":"'+(c==="A"?"B":"A"));
 await vault();await page.locator("#cloud-vault-restore").tap();
 await page.waitForFunction(()=>/integrity check/.test(document.getElementById("cloud-vault-status").textContent));
+// Commit-then-timeout: the fake service accepts exactly one ciphertext but
+// withholds its ACK. The UI must quarantine save, retain recovery and make no
+// automatic retry. Only the 30-second HTTP deadline is accelerated here.
+rows[0]={id:99,...JSON.parse(up.body),saved_at:"2026-11-05T12:00:00Z"};
+await page.locator("#briefing-passphrase").fill("synthetic passphrase for tests");
+await page.evaluate(()=>{
+  window.__incomeosNativeNetworkTimer=window.setTimeout;
+  window.setTimeout=(fn,ms,...args)=>window.__incomeosNativeNetworkTimer(fn,ms===30000?120:ms,...args);
+});
+holdNextUpload=true;
+const beforeLostAck=sent.filter(x=>x.path==="/rest/v1/incomeos_vault"&&x.body).length;
+await page.locator("#cloud-vault-save").tap();
+await page.waitForFunction(()=>/Save outcome is uncertain/.test(document.getElementById("cloud-vault-status").textContent));
+await page.evaluate(()=>{window.setTimeout=window.__incomeosNativeNetworkTimer;delete window.__incomeosNativeNetworkTimer;});
+assert.equal(sent.filter(x=>x.path==="/rest/v1/incomeos_vault"&&x.body).length,beforeLostAck+1);
+assert.equal(await page.locator("#cloud-vault-save").isDisabled(),true,"Uncertain commit must disable further saves");
+assert.equal(await page.locator("#cloud-vault-restore").isDisabled(),false,"Read-only recovery must remain available");
+await page.locator("#cloud-vault-restore").tap();
+await page.waitForFunction(()=>/Opened the vault copy saved/.test(document.getElementById("cloud-vault-status").textContent));
+assert.equal(await page.locator("#cloud-vault-save").isDisabled(),false,"Verified recovery permits another explicit save");
+assert.equal(sent.filter(x=>x.path==="/rest/v1/incomeos_vault"&&x.body).length,beforeLostAck+1,"Recovery must not repeat the write");
 assert.ok(await page.evaluate(w=>document.documentElement.scrollWidth<=w,page.viewportSize().width),"no horizontal overflow");
 assert.equal(await page.evaluate(()=>localStorage.length+sessionStorage.length),0);
 assert.deepEqual(external,[]);assert.deepEqual(errors,[]);

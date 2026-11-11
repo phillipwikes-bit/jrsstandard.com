@@ -27,6 +27,9 @@
     function integer(n){return Number.isSafeInteger(n)&&n>=0&&n<Number.MAX_SAFE_INTEGER;}
     async function parseLatest(row){
       if(row===null)return {revision:0,text:null,sha256:null};
+      // Detach primitive response values before digest verification yields.
+      // Trust must describe the checked bytes, not a later transport mutation.
+      if(row)row={revision:row.revision,ciphertext:row.ciphertext,ciphertext_sha256:row.ciphertext_sha256};
       if(!row||!integer(row.revision)||row.revision===0||typeof row.ciphertext!=="string"||
          typeof row.ciphertext_sha256!=="string"||!/^[0-9a-f]{64}$/.test(row.ciphertext_sha256))
         throw Error("Invalid server revision response");
@@ -81,13 +84,23 @@
         throw e;
       }finally{busy=false;}
     }
-    function reset(){if(busy)throw Error("Cannot reset an in-flight revision operation");revision=null;highWaterRevision=null;highWaterSha=null;confirmationRequired=false;}
+    // Closing the editor revokes read/write authorization without erasing the
+    // last trusted server revision or any outstanding owner-review hold.
+    // This detects replay/rollback when the same signed-in owner reopens the
+    // workspace. No revision or plaintext is persisted to browser storage.
+    function suspend(){
+      if(busy)throw Error("Cannot suspend an in-flight revision operation");
+      revision=null;
+    }
+    // A session-bound revision store has no public history-reset operation.
+    // Re-authentication creates a new store; closing within a session must
+    // never erase the rollback evidence or owner-review hold.
     function confirmRevision(value){
       if(busy)throw Error("Cannot confirm an in-flight revision operation");
       if(revision===null||!integer(value)||value!==revision)throw Error("Revision confirmation mismatch");
       confirmationRequired=false;
     }
-    return Object.freeze({refresh:refresh,append:append,reset:reset,confirmRevision:confirmRevision,requiresOwnerConfirmation:function(){return confirmationRequired;},currentRevision:function(){return revision;},highestObservedRevision:function(){return highWaterRevision;}});
+    return Object.freeze({refresh:refresh,append:append,suspend:suspend,confirmRevision:confirmRevision,requiresOwnerConfirmation:function(){return confirmationRequired;},currentRevision:function(){return revision;},highestObservedRevision:function(){return highWaterRevision;}});
   }
   if(root)root.IncomeOSRevisionStore=Object.freeze({createRevisionStore:createRevisionStore});
   if(typeof module!=="undefined"&&module.exports)module.exports={createRevisionStore:createRevisionStore};

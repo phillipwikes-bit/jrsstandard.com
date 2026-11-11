@@ -21,12 +21,14 @@
       "evidence": [
         ".github/workflows/incomeos-anonymous-access-probe.yml"
       ],
-      "limitation": "The owner reached the app while signed in to Vercel (iPhone Safari screenshot, 2026-11-04); sign-in is Vercel account login. Owner confirmation that only the owner's Vercel account has access is pending",
+      "limitation": "Vercel team membership independently checked 2026-11-08: one confirmed OWNER member. Vercel project incomeos-opportunity-desk reports SSO protection enabled for all deployments. This does not independently verify project-specific access grants, bypass tokens, the owner's Supabase vault identity, or authenticated live recovery; owner acceptance remains pending.",
       "deploymentEvidence": {
         "commit": "43651b9086640406ce2fe58cdfc12fe1c5d86434",
         "url": "https://incomeos-opportunity-desk.vercel.app",
         "probe": "GitHub Actions run 41917521403 (workflow incomeos-anonymous-access-probe.yml, commit 9ae99b1): /, /index.html, /accountant.js and /manifest.webmanifest each returned HTTP 302 to vercel.com/sso-api with no app content",
-        "date": "2026-11-04"
+        "date": "2026-11-04",
+        "teamMembershipVerification": "2026-11-08: Vercel list_team_members for team_Q2KvghlnRA3ePBm4zAiYzbIf returned totalCount=1, one confirmed OWNER; no additional members listed. No email or credential stored in this record.",
+        "currentProtectionVerification": "2026-11-08: Vercel get_project for incomeos-opportunity-desk returned ssoProtection.enabled=true, deploymentType=all."
       }
     },
     {
@@ -36,13 +38,13 @@
       "evidence": [
         ".github/workflows/incomeos-anonymous-access-probe.yml"
       ],
-      "limitation": "Vercel Authentication (All Deployments) on the separate incomeos-opportunity-desk project denies anonymous visitors. Access control is Vercel's team login, not an app-level owner account; anyone added to the Vercel team could open it; follow-up seven-path SSO probe passed 2026-11-06, but exclusive owner team membership remains unverified",
+      "limitation": "Vercel project SSO is enabled for all deployments; 2026-11-08 Vercel team membership returned one confirmed OWNER. Existing anonymous denial probes passed. Project-specific access grants and bypass exceptions have not been independently enumerated; exclusive effective access and live owner vault recovery are not production verified.",
       "deploymentEvidence": {
         "commit": "43651b9086640406ce2fe58cdfc12fe1c5d86434",
         "url": "https://incomeos-opportunity-desk.vercel.app",
         "probe": "GitHub Actions run 41917521403 (workflow incomeos-anonymous-access-probe.yml, commit 9ae99b1): /, /index.html, /accountant.js and /manifest.webmanifest each returned HTTP 302 to vercel.com/sso-api with no app content",
         "date": "2026-11-04",
-        "followupProbe": "2026-11-06: GitHub Actions run 42233563487 passed anonymous Vercel SSO checks on seven canonical-host paths, including workspace-store.js, vault-cloud.js and active-vault.js. Vercel project metadata reports ssoProtection.enabled=true, deploymentType=all. This does not establish exclusive owner team membership or authenticated restore."
+        "followupProbe": "2026-11-09: the protected preview at commit 0827109e0121aba368a90d1b5fe14f8f61d3939a returned HTTP 302 to Vercel SSO on the root, accountant script, vault script and manifest. An authorized hosting request returned the Owner Desk HTML. Exclusive access and application-level owner recovery remain unverified."
       }
     },
     {
@@ -51,7 +53,8 @@
       "status": "SOURCE TESTED",
       "evidence": [
         "tests/incomeos-accounting-editor-browser.mjs",
-        "tests/incomeos-accountant-fixes.mjs"
+        "tests/incomeos-accountant-fixes.mjs",
+        "tests/incomeos-workspace-accountant-compatibility.test.cjs"
       ]
     },
     {
@@ -60,7 +63,8 @@
       "status": "SOURCE TESTED",
       "evidence": [
         "tests/incomeos-accounting-editor-browser.mjs",
-        "tests/incomeos-accountant-fixes.mjs"
+        "tests/incomeos-accountant-fixes.mjs",
+        "tests/incomeos-workspace-accountant-compatibility.test.cjs"
       ]
     },
     {
@@ -68,7 +72,9 @@
       "requirement": "Correct editing and deletion behavior",
       "status": "SOURCE TESTED",
       "evidence": [
-        "tests/incomeos-accounting-editor-browser.mjs"
+        "tests/incomeos-accounting-editor-browser.mjs",
+        "tests/incomeos-workspace-accountant-compatibility.test.cjs",
+        "tests/incomeos-workspace-file-operations.test.cjs"
       ],
       "limitation": "Edits keep a correction history (earlier values and source); browser-tested with synthetic records"
     },
@@ -78,9 +84,18 @@
       "status": "SOURCE TESTED",
       "evidence": [
         "tests/incomeos-accounting-editor-browser.mjs",
-        "tests/incomeos-controls.mjs"
+        "tests/incomeos-controls.mjs",
+        "tests/incomeos-vault-concurrency.test.cjs",
+        "tests/incomeos-revision-backup-restore.test.cjs",
+        "tests/incomeos-revision-workspace-bridge.test.cjs",
+        "tests/incomeos-revision-accounting-runtime.test.cjs",
+        "tests/incomeos-revision-store.test.cjs",
+        "tests/incomeos-revision-supabase-transport.test.cjs",
+        "tests/incomeos-workspace-panel-cleanup.test.cjs",
+        "tests/incomeos-project-ui-browser.mjs",
+        "tests/incomeos-workspace-file-operations.test.cjs"
       ],
-      "limitation": "Preservation is the owner-saved workspace file; there is no hosted persistence or cross-device sync A separately staged accounting coordinator now tests owner-workspace ledger saves against synthetic encrypted server revisions, including conflict preservation and owner review; it is not loaded into the live accounting editor."
+      "limitation": "Owner-held encrypted files and the legacy vault remain separate from the staged revision runtime. Synthetic tests cover submission snapshots and interrupted-save readback. A readback clears an unsaved draft only if the exact submitted revision and checksum match and the payload decrypts successfully. No write is retried. Failed clean reopens remove the displayed copy. The fingerprint lasts for the authenticated tab session. The live Owner Desk does not load the staged runtime. Live owner recovery, cross-device revision integration and a durable rollback trust anchor remain unverified."
     },
     {
       "id": "A07",
@@ -89,9 +104,12 @@
       "evidence": [
         "tests/incomeos-accounting-editor-browser.mjs",
         "tests/incomeos-accounting-backup-browser.mjs",
-        "tests/incomeos-accountant-fixes.mjs"
+        "tests/incomeos-accountant-fixes.mjs",
+        "tests/incomeos-vault-concurrency.test.cjs",
+        "tests/incomeos-revision-backup-restore.test.cjs",
+        "tests/incomeos-workspace-file-operations.test.cjs"
       ],
-      "limitation": "Encrypted workspace save and reopen, and JSON backup download, reload and restore through the page, are tested end to end with synthetic records in simulated Chromium; tampered backups are refused without changing the ledger"
+      "limitation": "Encrypted workspace save, download, reload and restore were browser-tested with synthetic records. Tampered backups are refused. Staged encrypted revision backups support selected accounting sections and separately validated claim histories. Claim recovery preserves existing records and refuses divergent histories and reused payment references. A payment reference is an owner record and requires independent verification. Recovery creates an unsaved edit against the current verified head and preserves the Decision Spellchecker programme and server history. Other specialized evidence remains outside this recovery procedure. Owner recovery and backup provenance remain unverified."
     },
     {
       "id": "A08",
@@ -110,7 +128,8 @@
       "evidence": [
         "tests/incomeos-accountant-fixes.mjs",
         "tests/incomeos-accounting-controls.mjs",
-        "tests/incomeos-accounting-editor-browser.mjs"
+        "tests/incomeos-accounting-editor-browser.mjs",
+        "tests/incomeos-workspace-accountant-compatibility.test.cjs"
       ],
       "limitation": "CSV import skips duplicates; a manual entry matching an existing record's kind, date, amount and payer asks first, and unconfirmed repeats are reported as a completeness gap. Duplicates across different payees or amounts are not detected"
     },
@@ -139,9 +158,11 @@
       "requirement": "iPhone-compatible controls and display",
       "status": "SOURCE TESTED",
       "evidence": [
-        "tests/incomeos-accounting-editor-browser.mjs"
+        "tests/incomeos-accounting-editor-browser.mjs",
+        "tests/incomeos-project-ui-browser.mjs",
+        "tests/incomeos-revision-preview-browser.mjs"
       ],
-      "limitation": "Simulated in Chromium at 320, 375, 390 and 430 px; the hosted app has rendered on the owner's physical iPhone in Safari (screenshots, 2026-11-04), but form entry on the device has not been observed"
+      "limitation": "Chromium emulates mobile layouts at 320, 375, 390 and 430 px. The prepared staging fixture exercises native sign-in and accounting controls at 375 px. The owner previously observed the hosted page on a physical iPhone, but form entry on the device has not been observed. Physical-device save and recovery remain unverified."
     },
     {
       "id": "A13",
@@ -149,9 +170,17 @@
       "status": "SOURCE TESTED",
       "evidence": [
         "tests/incomeos-controls.mjs",
-        "tests/incomeos-staging-privacy.mjs"
+        "tests/incomeos-staging-privacy.mjs",
+        "tests/incomeos-vault-cloud.mjs",
+        "tests/incomeos-vault-expiry.test.cjs",
+        "tests/incomeos-vault-network.test.cjs",
+        "tests/incomeos-vault-revision-session.test.cjs",
+        "tests/incomeos-revision-supabase-transport.test.cjs",
+        "tests/incomeos-revision-preview-browser.mjs",
+        "tests/incomeos-workspace-panel-cleanup.test.cjs",
+        "tests/incomeos-project-ui-browser.mjs"
       ],
-      "limitation": "Source has no outbound network call and CSP connect-src is self; hosted response headers not yet verified"
+      "limitation": "The legacy vault and staged revision transport refuse HTTP redirects. Authentication requests are limited to the configured HTTPS Supabase origin. Workspace passphrases and plaintext records stay on the device. Tokens remain in page memory. Authenticated responses and local cryptographic handoffs are session-bound. The staged transport snapshots validated configuration, bounds token retrieval and sanitizes provider errors. Hosted response headers and exclusive live owner access remain unverified."
     },
     {
       "id": "A14",
@@ -170,10 +199,23 @@
         ".github/workflows/incomeos-security-verification.yml",
         "owner/incomeos/revision-accounting-coordinator.js",
         "tests/incomeos-revision-accounting-coordinator.test.cjs",
-        "tests/incomeos-revision-release-gate.test.cjs"
+        "tests/incomeos-revision-release-gate.test.cjs",
+        "owner/incomeos/revision-runtime-staging.js",
+        "engineering/incomeos/prepare-revision-preview.mjs",
+        "tests/incomeos-revision-preview-browser.mjs",
+        "tests/incomeos-revision-accounting-runtime.test.cjs",
+        "tests/incomeos-vault-revision-session.test.cjs",
+        "tests/incomeos-revision-reliability-soak.test.cjs",
+        "tests/incomeos-revision-store.test.cjs",
+        "tests/incomeos-vault-expiry.test.cjs",
+        "tests/incomeos-revision-supabase-transport.test.cjs",
+        "tests/incomeos-vault-network.test.cjs",
+        "engineering/incomeos/REVISION-MIGRATION-AND-ROLLBACK.md",
+        "tests/incomeos-vault-concurrency.test.cjs",
+        "tests/incomeos-revision-backup-restore.test.cjs"
       ],
-      "blockedBy": "Owner vault account not yet created and allow-listed; the hosted save-and-restore round trip has not been performed",
-      "limitation": "Superseded 2026-11-05: earlier text said server-side storage was a prepared, unapplied schema. Now: a separate free Supabase project (incomeos-private) holds only device-encrypted workspaces, append-only, readable only by an allow-listed owner; access rules verified in the database with anonymous and non-owner roles; client round trip tested against a fake service only. Free plan pauses after a week unused and has no automatic backups; the owner keeps file saves as backup Separate from that existing append-only vault, a server-authoritative compare-and-swap revision service is under development on an isolated branch. Its SQL has passed disposable PostgreSQL tests, and the encrypted workspace bridge has passed synthetic, real-crypto integration tests. It has not been migrated to the live database, enabled in the Owner Desk, or accepted through a real owner save-and-restore round trip. The staged accounting coordinator reuses the existing accountant's record validator and the authoritative workspace change log; synthetic tests verify conflicts, retained drafts, encrypted backups and explicit review. This evidence does not establish live hosted persistence, real owner authentication or owner acceptance."
+      "blockedBy": "The guarded staging entry passed a synthetic browser exercise. Live staging requires an approved isolated Supabase project, scoped migration access and operator-provisioned test identities. Actual owner-authenticated storage and recovery remain pending. The protected branch preview uses the default Owner Desk entry.",
+      "limitation": "Superseded 2026-11-05: earlier text said server-side storage was a prepared, unapplied schema. Now: a separate free Supabase project (incomeos-private) holds only device-encrypted workspaces, append-only, readable only by an allow-listed owner; access rules verified in the database with anonymous and non-owner roles; client round trip tested against a fake service only. Free plan pauses after a week unused and has no automatic backups; the owner keeps file saves as backup Separate from that existing append-only vault, a server-authoritative compare-and-swap revision service is under development on an isolated branch. Its SQL has passed disposable PostgreSQL tests, and the encrypted workspace bridge has passed synthetic, real-crypto integration tests. It has not been migrated to the live database, enabled in the Owner Desk, or accepted through a real owner save-and-restore round trip. The staged accounting coordinator reuses the existing accountant's record validator and the authoritative workspace change log; synthetic tests verify conflicts, retained drafts, encrypted backups and explicit review. This evidence does not establish live hosted persistence, real owner authentication or owner acceptance. Staging-only runtime composition now uses the existing accountant, encrypted owner workspace and session-bound revision transport. Synthetic end-to-end tests cover concurrent edits, encrypted draft rescue, commit-then-timeout, sign-out during local encryption/decryption, and no unrequested writes. These results are not an authenticated production round trip or authorization to enable revision writes. The staged revision reliability soak exercises 120 deterministic concurrent-owner write races, denies 120 stale writes, checks commit-then-timeout recovery, ciphertext equivocation, rollback rejection, and no automatic writes. The browser vault now binds local encryption and decryption handoffs to the initiating owner session; sign-out revokes them and clears the entered passphrase, but an already loaded local workspace may remain visible until the page is closed or reloaded. These simulations do not replace real owner recovery, physical device acceptance, or a live server-authoritative revision migration. Same-session revision close now suspends editing authority without discarding the high-water revision, checksum history or an outstanding owner-review hold. Disposable PostgreSQL concurrency verification is rerun when revision clients change. The in-memory high-water protection does not persist across page reloads or a new device and is not an independent server audit. The owner acceptance protocol is documented in owner/incomeos/OWNER-ACCEPTANCE-PROTOCOL.md; it is a prospective test procedure, not completed acceptance evidence. Additional synthetic verification on 2026-11-08 covers finite session expiry, revocation on HTTP 401, expiry during hashing/requests, local draft revocation, bounded staged RPC response-body deadlines and sanitized service errors. In-memory preservation of an already loaded workspace is not secure tab erasure or independently verified owner recovery. Legacy vault HTTP deadlines and an uncertain-save hold now require an integrity-verified new read before another same-page save. This hold is memory-only and cannot replace the staged server CAS across page reloads or devices. No approved non-production Supabase management/database credential was available for migration in this session."
     },
     {
       "id": "A15",
@@ -194,7 +236,7 @@
         ],
         "date": "2026-11-04"
       },
-      "limitation": "Exact deployed commit is provider-reported and earlier Ready deployments are available for Instant Rollback; rollback has not been exercised. The app keeps no server data, so a code rollback cannot affect records"
+      "limitation": "The recorded protected deployment and rollback targets predate the current draft head. Rollback has not been exercised. The existing append-only encrypted vault and any future revision migration have independent data-retention and schema compatibility requirements; a code rollback must not delete encrypted records or reverse an applied schema without a separately reviewed recovery procedure. Current-head protected preview validation remains pending."
     },
     {
       "id": "A16",

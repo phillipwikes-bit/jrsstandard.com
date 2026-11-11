@@ -11,6 +11,11 @@ on:
       - 'tests/incomeos-vault-cloud-browser.mjs'
       - 'lib/ds-n1/**'
       - 'tests/ds-n1/author.browser.mjs'
+      - 'tests/incomeos-ds-panel-browser.mjs'
+  pull_request:
+    branches:
+      - chatgpt/incomeos-vault-envelope-validation-20261107
+      - verification/incomeos-accounting-ci-20261108
   workflow_dispatch:
 permissions:
   contents: read
@@ -42,3 +47,4 @@ jobs:
           timeout --signal=TERM --kill-after=10s 120s node tests/incomeos-accounting-backup-browser.mjs
           timeout --signal=TERM --kill-after=10s 120s node tests/incomeos-vault-cloud-browser.mjs
           timeout --signal=TERM --kill-after=10s 120s node tests/ds-n1/author.browser.mjs
+          timeout --signal=TERM --kill-after=10s 120s node tests/incomeos-ds-panel-browser.mjs

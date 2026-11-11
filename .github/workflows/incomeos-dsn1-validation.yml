@@ -3,9 +3,18 @@ on:
   push:
     branches:
       - chatgpt/incomeos-v25-synthetic-review-sequence-20261106
+      - verification/incomeos-dsn1-cli-20261108
     paths:
       - '.github/workflows/incomeos-dsn1-validation.yml'
       - 'owner/incomeos/**'
+      - 'lib/ds-n1/**'
+      - 'tests/incomeos-ds-*.mjs'
+      - 'tests/ds-n1/**'
+  pull_request:
+    paths:
+      - '.github/workflows/incomeos-dsn1-validation.yml'
+      - 'owner/incomeos/ds-*.mjs'
+      - 'owner/incomeos/ds-program.js'
       - 'lib/ds-n1/**'
       - 'tests/incomeos-ds-*.mjs'
       - 'tests/ds-n1/**'
@@ -18,8 +27,12 @@ jobs:
     timeout-minutes: 10
     steps:
       - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+        with:
+          persist-credentials: false
       - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
         with:
           node-version: '22'
       - name: Run DS-N1 runtime bridge and local security boundary tests
         run: node --test tests/incomeos-ds-runtime-bridge.mjs tests/incomeos-ds-local-server-boundary.mjs tests/incomeos-ds-evidence-export.mjs
+      - name: Run native DS-N1 synthetic engine and cognitive regressions
+        run: node --test tests/ds-n1/ds-n1.test.mjs tests/ds-n1/cognitive-controls.test.mjs tests/ds-n1/cognitive-source-trace.test.mjs tests/ds-n1/reflective-guidance.test.mjs

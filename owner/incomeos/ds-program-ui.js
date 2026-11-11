@@ -30,16 +30,22 @@
     send(next,label);
   }
   // Compact form builder: fields [name,label,type,options].
-  function form(parent,title,fields,submit,label){
+  function form(parent,title,fields,submit,label,originalFields){
     var d=el(parent,"details",null,"ds-form"),s=el(d,"summary",title),f=el(d,"form");f.noValidate=true;
     var inputs={};
-    fields.forEach(function(x){
-      var id="ds-"+title.replace(/[^a-z]+/gi,"-").toLowerCase()+"-"+x[0],l=el(f,"label",x[1]);l.htmlFor=id;
+    function addField(parent,x){
+      var id="ds-"+title.replace(/[^a-z]+/gi,"-").toLowerCase()+"-"+x[0],l=el(parent,"label",x[1]);l.htmlFor=id;
       var i;
-      if(x[2]==="select"){i=el(f,"select");x[3].forEach(function(o){var op=el(i,"option",o[1]);op.value=o[0];});}
-      else{i=el(f,"input");i.type=x[2]||"text";}
+      if(x[2]==="select"){i=el(parent,"select");x[3].forEach(function(o){var op=el(i,"option",o[1]);op.value=o[0];});}
+      else if(x[2]==="textarea")i=el(parent,"textarea");
+      else{i=el(parent,"input");i.type=x[2]||"text";}
       i.id=id;inputs[x[0]]=i;
-    });
+    }
+    fields.forEach(function(x){addField(f,x);});
+    if(originalFields){
+      var additional=el(f,"details");el(additional,"summary","Original DS-A verification evidence (optional)");
+      originalFields.forEach(function(x){addField(additional,x);});
+    }
     var b=el(f,"button",label||"Add","mainbtn");b.type="submit";
     f.addEventListener("submit",function(ev){ev.preventDefault();var v={};Object.keys(inputs).forEach(function(k){v[k]=inputs[k].value;});submit(v,f);});
     return f;
@@ -127,7 +133,33 @@
     form(s,"Evidence",[["id","Identifier","text"],["title","Title","text"],["level","Evidence level","select",levels],["source","Source (file, URL or document)","text"],["date","Date","date"],
       ["confidence","Confidence","select",conf],["assumptions","Assumptions","text"],["contradictions","Contradictory evidence","text"],["informs","Decision it informs","text"],
       ["subject","About product identity (optional)","select",[["","None"],["DS-A","DS-A"],["DS-B","DS-B"],["DS-C","DS-C"]]]],
-      function(v){attempt(function(x){return DS.add(x,"evidence",{id:v.id,title:v.title,level:Number(v.level),source:v.source,date:v.date,confidence:v.confidence,assumptions:v.assumptions,contradictions:v.contradictions,informs:v.informs,subject:v.subject||undefined},asOf);},"Evidence added");});
+      function(v){attempt(function(x){
+        var record={id:v.id,title:v.title,level:Number(v.level),source:v.source,date:v.date,confidence:v.confidence,
+          assumptions:v.assumptions,contradictions:v.contradictions,informs:v.informs,subject:v.subject||undefined};
+        if(v.proofKind){
+          record.independent=v.independence==="documented";
+          record.originalProof={kind:v.proofKind,sourceSha256:v.sourceSha256.trim(),artifactSha256:v.artifactSha256.trim()};
+          if(v.proofKind==="source"||v.proofKind==="codebook")record.originalProof.version=v.proofVersion;
+          if(v.proofKind==="reproduction"||v.proofKind==="execution")record.originalProof.buildSha256=v.buildSha256.trim();
+          if(v.proofKind==="rights")record.originalProof.scope=v.proofScope;
+          if(v.proofKind==="reproduction"||v.proofKind==="rights"||v.proofKind==="execution")record.originalProof.outcome=v.outcome;
+          if(v.proofKind==="clause")Object.assign(record.originalProof,{checkId:v.checkId,clause:v.clause});
+          if(v.proofKind==="execution")Object.assign(record.originalProof,{checkId:v.checkId,criterionEvidenceId:v.criterionEvidenceId.trim(),criterionSha256:v.criterionSha256.trim()});
+        }
+        return DS.add(x,"evidence",record,asOf);
+      },"Evidence added");},"Add",[
+        ["proofKind","Role","select",[["","General evidence"],["source","Source custody"],["codebook","Original Codebook"],
+          ["reproduction","Clean build reproduction"],["rights","Rights and scope"],["clause","Exact original SP clause"],["execution","Independent SP result"]]],
+        ["independence","Independence of the evidence","select",[["","Select if documented"],["documented","Independence is documented in the source"]]],
+        ["sourceSha256","Original source SHA-256","text"],["artifactSha256","Evidence artifact SHA-256","text"],
+        ["proofVersion","Original source or Codebook version","text"],["buildSha256","Reproduced executable SHA-256","text"],
+        ["proofScope","Authorized scope documented in the rights evidence","text"],
+        ["checkId","Original SP check","select",[["","None"]].concat(p.acceptance.map(function(a){return [a.id,a.id];}))],
+        ["clause","Exact original clause text","textarea"],["criterionEvidenceId","Clause evidence identifier for the executed result","text"],
+        ["criterionSha256","Clause evidence artifact SHA-256 for the executed result","text"],
+        ["outcome","Documented outcome","select",[["","None"],["REPRODUCED","Clean build reproduced"],
+          ["VERIFICATION_AUTHORIZED","Verification authorized"],["PASS","Pass"],["FAIL","Fail"],["INCONCLUSIVE","Inconclusive"]]]
+      ]);
     form(s,"Research finding",[["id","Identifier","text"],["question","Question","text"],["answer","Finding","text"],["evidenceIds","Evidence identifiers (comma separated)","text"],
       ["segmentId","Segment","select",[["","None"]].concat(p.segments.map(function(g){return [g.id,g.title];}))],["confidence","Confidence","select",conf],
       ["assumptions","Assumptions","text"],["contradictions","Contradictory evidence","text"],["informs","Decision it informs","text"],["quantity","Quantity, if any (needs sourced evidence)","text"]],
@@ -148,8 +180,9 @@
     form(s,"Pipeline prospect",[["id","Identifier","text"],["organization","Organization","text"]],
       function(v){attempt(function(x){return DS.add(x,"pipeline",v,asOf);},"Prospect identified");});
     var costDims=DS.COST_DIMS.map(function(d){return [d,d.replace(/_/g," ")];});
-    form(s,"Program cost (adds a ledger row)",[["date","Date","date"],["payer","Vendor","text"],["amountUsd","Amount (USD)","text"],["dsDimension","Dimension","select",costDims]],
-      function(v){dispatch("incomeos:ds-ledger",{entry:{kind:"outflow",date:v.date,payer:v.payer,amountUsd:v.amountUsd,category:"software",dsDimension:v.dsDimension}},"Program cost added to the workspace ledger");},"Add cost");
+    form(s,"Program cost (adds a ledger row)",[["date","Date","date"],["payer","Vendor","text"],["amountUsd","Amount (USD)","text"],["dsDimension","Dimension","select",costDims],
+      ["paymentStatus","Payment status","select",[["scheduled","Scheduled, not paid"],["paid","Paid (owner-recorded)"],["disputed","Disputed, not counted"]]]],
+      function(v){dispatch("incomeos:ds-ledger",{entry:{kind:"outflow",date:v.date,payer:v.payer,amountUsd:v.amountUsd,category:"software",dsDimension:v.dsDimension,paymentStatus:v.paymentStatus}},"Program cost added to the workspace ledger");},"Add cost");
     actions(out,p,asOf);
   }
   // Phase 3 and 4 records and the owner's own controlled actions. Each goes through the engine's rules.
@@ -191,14 +224,31 @@
       function(v){attempt(function(x){return DS.authorize(x,v.action,{grantedBy:"OWNER",ref:v.ref,scope:v.scope},asOf);},"Authorization recorded");},"Record");
     form(o,"Gate approval",[["gate","Gate","select",p.gates.map(function(g){return [g.id,g.id+" · approved by "+g.approver.toLowerCase()];})],["ref","Approval record reference","text"]],
       function(v){attempt(function(x){var g=x.gates.filter(function(y){return y.id===v.gate;})[0];return DS.approveGate(x,v.gate,{by:g&&g.approver,ref:v.ref},asOf);},"Gate approval recorded");},"Record");
+    var clauses=p.evidence.filter(function(e){return e&&e.originalProof&&e.originalProof.kind==="clause";});
+    if(clauses.length)form(o,"Record exact original SP clause",[["evidenceId","Original clause evidence","select",clauses.map(function(e){return [e.id,e.originalProof.checkId+" · "+e.id];})]],
+      function(v){attempt(function(x){
+        var e=x.evidence.find(function(y){return y.id===v.evidenceId;});
+        return DS.recordOriginalCriterion(x,e.originalProof.checkId,{text:e.originalProof.clause,source:e.source,evidenceIds:[e.id]},asOf);
+      },"Original clause recorded");},"Record");
+    var eligible=DS.originalVerificationPlan(p).checks.filter(function(a){return a.recordedResultReady&&a.acceptance==="NOT_ACCEPTED";});
+    if(eligible.length)form(o,"Record independent original SP acceptance",[["checkId","Original SP check","select",eligible.map(function(a){return [a.id,a.id];})]],
+      function(v){attempt(function(x){return DS.acceptCheck(x,v.checkId,asOf);},"Original acceptance recorded");},"Record");
     form(o,"Program phase",[["phase","Phase","select",DS.PHASES.map(function(x){return [x,x.replace(/_/g," ").toLowerCase()];})]],function(v){attempt(function(x){return DS.setPhase(x,v.phase,asOf);},"Phase set");},"Set");
   }
   function init(){
     if(!DS||!$("ds-output"))return;
     var start=$("ds-start");
     if(start)start.addEventListener("click",function(){if(!state.ws)return;send(DS.newProgram(today()),"Decision Spellchecker program record started");msg("Program record started. Save the workspace to keep it.");});
+    // Fail closed when a workspace is closed, replaced or malformed. Holding
+    // the preceding programme open after an invalid event misstates which
+    // owner record the controls would operate on.
+    function verifiedWorkspace(value){
+      var WS=window.IncomeOSWorkspace;
+      if(!value||typeof value!=="object"||Array.isArray(value)||!WS||typeof WS.validate!=="function")return null;
+      try{WS.validate(value);return value;}catch(e){return null;}
+    }
     ["incomeos:workspace-loaded","incomeos:workspace-changed","incomeos:workspace-restored"].forEach(function(n){
-      document.addEventListener(n,function(ev){if(ev.detail&&typeof ev.detail==="object")state.ws=ev.detail;render();});
+      document.addEventListener(n,function(ev){state.ws=verifiedWorkspace(ev.detail);render();});
     });
     render();
   }

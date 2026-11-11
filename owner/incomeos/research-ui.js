@@ -27,12 +27,21 @@
   function persist(){if(window.IncomeOSFinancialReadOnly===true){$("radar-status").textContent="Personal study tracking is disabled in unapproved staging.";return false;}try{localStorage.setItem(KEY,JSON.stringify(db));return true;}catch(e){$("radar-status").textContent="Research changes could not be saved to local storage.";return false;}}
   // Owner-entered time components, held in page memory only (never stored).
   // They fill gaps the source did not publish; a source value is never overwritten silently.
-  var timeOverrides={},profileForNotes=null,wsOpen=false,received={},receivedSig="";
+  var timeOverrides={},profileForNotes=null,wsOpen=false,received={},receivedSig="",workspaceEpoch=0;
+  function verifiedWorkspace(value){
+    var WS=window.IncomeOSWorkspace;
+    if(!value||typeof value!=="object"||Array.isArray(value)||!WS||typeof WS.validate!=="function")return null;
+    try{return WS.validate(value);}catch(e){return null;}
+  }
+  function clearWorkspace(){
+    workspaceEpoch++;wsOpen=false;db.leads=[];db.progress={};timeOverrides={};syncReceived(null);
+    if(latest)view();
+  }
   // Amounts actually received for studies, from income records in the open workspace that carry the study reference.
   function receivedFrom(ws){var out={};(ws&&Array.isArray(ws.ledger)?ws.ledger:[]).forEach(function(e){
     if(e&&e.kind==="income"&&e.scope==="income"&&e.status==="paid"&&typeof e.reference==="string"&&e.reference.indexOf("study:")===0){var id=e.reference.slice(6),g=Number(e.grossUsd);if(Number.isFinite(g)&&g>0)out[id]=Math.round(((out[id]||0)+g)*100)/100;}});return out;}
   function syncReceived(ws){var r=receivedFrom(ws),sig=JSON.stringify(r);received=r;if(sig!==receivedSig){receivedSig=sig;return true;}return false;}
-  document.addEventListener("incomeos:workspace-changed",function(ev){if(ev.detail&&typeof ev.detail==="object"&&syncReceived(ev.detail)&&latest)view();});
+  document.addEventListener("incomeos:workspace-changed",function(ev){var ws=verifiedWorkspace(ev.detail);if(!ws){clearWorkspace();return;}if(syncReceived(ws)&&latest)view();});
   // Study progress lives in the owner's workspace file when one is open (browser storage is blocked in staging).
   function progressFrom(ws){var out={},p=ws&&ws.researchProgress;if(p&&typeof p==="object"&&!Array.isArray(p))Object.keys(p).forEach(function(id){var st=p[id]&&p[id].status;if(statuses.includes(st))out[id]=st;});return out;}
   document.addEventListener("incomeos:profile",function(ev){profileForNotes=ev.detail||null;if(latest)view();});
@@ -43,16 +52,20 @@
     return out;
   }
   // Undo: the cards mirror the restored workspace exactly.
-  document.addEventListener("incomeos:workspace-restored",function(ev){db.leads=studiesFrom(ev.detail);timeOverrides=fromWorkspace(ev.detail);db.progress=progressFrom(ev.detail);syncReceived(ev.detail);if(latest)view();});
+  document.addEventListener("incomeos:workspace-restored",function(ev){var ws=verifiedWorkspace(ev.detail);if(!ws){clearWorkspace();return;}workspaceEpoch++;wsOpen=true;db.leads=studiesFrom(ws);timeOverrides=fromWorkspace(ws);db.progress=progressFrom(ws);syncReceived(ws);if(latest)view();});
   document.addEventListener("incomeos:workspace-loaded",function(ev){
-    wsOpen=true;syncReceived(ev.detail);
-    var saved=studiesFrom(ev.detail),unsaved=db.leads.filter(function(x){return !saved.some(function(s){return s.id===x.id;});});
+    var ws=verifiedWorkspace(ev.detail);if(!ws){clearWorkspace();return;}
+    var wasOpen=wsOpen,epoch=++workspaceEpoch;
+    wsOpen=true;syncReceived(ws);
+    // Only initial pre-workspace entries may be offered to the first file.
+    // Replacing or closing a workspace cannot copy another file's private data.
+    var saved=studiesFrom(ws),unsaved=wasOpen?[]:db.leads.filter(function(x){return !saved.some(function(s){return s.id===x.id;});});
     db.leads=saved.concat(unsaved).slice(0,200);
-    if(unsaved.length)setTimeout(keepStudies,0);
+    if(unsaved.length)setTimeout(function(){if(wsOpen&&workspaceEpoch===epoch)keepStudies();},0);
     // Progress marked before the workspace was opened is kept and recorded in it, not discarded.
-    var priorProgress=db.progress||{},fromWs=progressFrom(ev.detail);db.progress=fromWs;
+    var priorProgress=wasOpen?{}:(db.progress||{}),fromWs=progressFrom(ws);db.progress=fromWs;
     Object.keys(priorProgress).forEach(function(id){if(!fromWs[id]&&statuses.includes(priorProgress[id])&&priorProgress[id]!=="New"){db.progress[id]=priorProgress[id];emit("incomeos:research-progress",{id:id,status:priorProgress[id]});}});
-    var t=ev.detail&&ev.detail.researchTimes,prior=timeOverrides;timeOverrides={};
+    var t=ws.researchTimes,prior=wasOpen?{}:timeOverrides;timeOverrides={};
     if(t&&typeof t==="object")Object.keys(t).forEach(function(id){var o=t[id];if(o&&typeof o==="object")timeOverrides[id]={screenMinutes:o.screenMinutes,prepMinutes:o.prepMinutes,adminMinutes:o.adminMinutes,timeConfidence:o.timeConfidence==="verified"?"verified":"estimated"};});
     // Times entered before this workspace was opened are kept and recorded in it, not discarded.
     var carried=Object.keys(prior).filter(function(id){return !timeOverrides[id];});

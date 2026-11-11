@@ -1,6 +1,6 @@
 // Read-only view inside the EXISTING IncomeOS Decision Spellchecker programme.
 // This does not create another store, another dashboard or customer access.
-import { inspectProduct } from './ds-runtime-bridge.mjs';
+import { inspectOwnerProduct as inspectProduct } from './ds-owner-inspection.mjs';
 
 function add(parent, tag, value, className) {
   const el = document.createElement(tag);
@@ -29,9 +29,11 @@ function ownerProductFinance(workspace, program) {
   return projection;
 }
 function renderProductFinance(root, workspace, program) {
-  const finance = add(root, 'section');
+  const finance = add(root, 'details');
   finance.setAttribute('aria-label', 'Decision Spellchecker product finance');
-  add(finance, 'h4', 'Product revenue and costs');
+  const financeSummary = add(finance, 'summary', 'Inspect product revenue and costs');
+  financeSummary.style.minHeight = '44px';
+  financeSummary.style.padding = '10px 0';
   let report;
   try { report = ownerProductFinance(workspace, program); }
   catch (_) { report = null; }
@@ -103,8 +105,19 @@ function init() {
         ? 'not available in repository' : 'reference recorded, not authenticated by this view';
       add(line, 'p', 'Original clause: ' + clause + '; source: ' + source +
         '; linked evidence records: ' + item.evidenceIds.length, 'muted');
+      const check = view.originalVerification.checks.find(entry => entry.id === id);
+      add(line, 'p', check.blockedBy.length
+        ? 'Verification blocked. Authenticate the original source, Codebook and criterion evidence before testing.'
+        : 'Recorded prerequisites available for controlled verification. This view has executed no acceptance test.', 'muted');
     }
-    const list = add(root, 'dl');
+    // Detailed provenance is available on demand rather than rendering a
+    // long unbroken source table over the fixed iPhone navigation surface.
+    const provenance = add(root, 'details');
+    const provenanceSummary = add(provenance, 'summary', 'Inspect source versions, evidence and release controls');
+    provenanceSummary.style.minHeight = '44px';
+    provenanceSummary.style.padding = '10px 0';
+    add(root, 'p', 'Original SP acceptance: ' + view.originalAcceptance.accepted + ' of ' + view.originalAcceptance.total + '; customer access and release: NOT AUTHORIZED.', 'muted');
+    const list = add(provenance, 'dl');
     for (const [label, value] of [
       ['Candidate source', view.candidate + ' ' + view.candidateVersion],
       ['Rules', view.rulesVersion],
@@ -139,16 +152,26 @@ function init() {
       }
       if (view.openDefects.length > 5) add(section, 'p', (view.openDefects.length - 5) + ' additional defect records are in the programme.', 'muted');
     }
-    add(root, 'p', 'Version identity is read from the imported DS-N1 source. Defects, tasks, evidence counts, study-run counts and gate status are read from the same IncomeOS programme record. A recorded study run is not a CI pass or independent acceptance. Live GitHub CI, browser validation and deployment status are not connected.', 'muted');
+    add(root, 'p', 'The experimental DS-N1 review engine is not packaged or executable in this Owner Desk preview. Version identifiers are withheld unless verified by the separate source-linked engineering harness. Defects, tasks, evidence counts, study-run counts and gate status are read from the same IncomeOS programme record. A recorded study run is not a CI pass or independent acceptance. Live GitHub CI, browser validation and deployment status are not connected.', 'muted');
     renderProductFinance(root, workspace, workspace.dsProgram);
     const blocked = add(root, 'button', 'Synthetic reviewer unavailable until server-enforced owner access and isolated product delivery are verified.', 'smallbtn');
     blocked.type = 'button';
     blocked.disabled = true;
     blocked.setAttribute('aria-disabled', 'true');
   }
+  // Replacements, closures and malformed workspace events must revoke the
+  // prior programme view. Never keep showing a previous owner's programme
+  // because the next event has an absent or invalid payload.
+  function verifiedWorkspace(candidate) {
+    const WS = window.IncomeOSWorkspace;
+    if (!candidate || typeof candidate !== 'object' || Array.isArray(candidate) ||
+        !WS || typeof WS.validate !== 'function') return null;
+    try { WS.validate(candidate); return candidate; }
+    catch (_) { return null; }
+  }
   for (const eventName of ['incomeos:workspace-loaded','incomeos:workspace-changed','incomeos:workspace-restored']) {
     document.addEventListener(eventName, ev => {
-      if (ev.detail && typeof ev.detail === 'object') workspace = ev.detail;
+      workspace = verifiedWorkspace(ev.detail);
       render();
     });
   }

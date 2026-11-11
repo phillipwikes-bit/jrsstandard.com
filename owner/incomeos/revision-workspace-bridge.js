@@ -4,51 +4,68 @@
    itself. A host must explicitly supply an authenticated revision store.
    No plaintext is persisted by this module. */
 (function(root){
-  function createWorkspaceBridge(revisions,workspace,integrity){
+  function createWorkspaceBridge(revisions,workspace,integrity,assertOwnerSession){
     if(!revisions||typeof revisions.refresh!=="function"||typeof revisions.append!=="function"||
        typeof revisions.currentRevision!=="function"||typeof revisions.requiresOwnerConfirmation!=="function"||
-       typeof revisions.confirmRevision!=="function"||typeof revisions.reset!=="function"||
+       typeof revisions.confirmRevision!=="function"||typeof revisions.suspend!=="function"||
        !workspace||typeof workspace.validate!=="function"||typeof workspace.encrypt!=="function"||
        typeof workspace.decrypt!=="function"||!integrity||typeof integrity.sha256!=="function")
       throw Error("Workspace bridge requires verified staging dependencies");
-    var busy=false,openedRevision=null,openedCiphertext=null,openedSha256=null;
+    if(assertOwnerSession!==undefined&&typeof assertOwnerSession!=="function")
+      throw Error("Owner session assertion must be an authenticated callback");
+    function verifySession(){if(assertOwnerSession)assertOwnerSession();}
+    var busy=false,openedRevision=null,openedCiphertext=null,openedSha256=null,pendingAppend=null;
     function ensureIdle(){if(busy)throw Error("Workspace bridge operation already in progress");}
     async function open(passphrase){
-      ensureIdle();busy=true;openedRevision=null;openedCiphertext=null;openedSha256=null;
+      ensureIdle();verifySession();busy=true;openedRevision=null;openedCiphertext=null;openedSha256=null;
       try{
         var remote=await revisions.refresh();
+        verifySession();
         var doc=null;
         if(remote.text!==null){
           // A checksum match alone cannot prove decryption or workspace schema.
           doc=workspace.validate(await workspace.decrypt(passphrase,remote.text));
+          verifySession();
         }
+        verifySession();
         openedRevision=remote.revision;
         openedCiphertext=remote.text;
         openedSha256=remote.sha256||null;
+        pendingAppend=null;
         return Object.freeze({revision:remote.revision,workspace:doc,
           requiresOwnerConfirmation:remote.requiresOwnerConfirmation===true});
       }finally{busy=false;}
     }
     async function save(document,passphrase){
-      ensureIdle();
+      ensureIdle();verifySession();
       if(openedRevision===null||openedRevision!==revisions.currentRevision())
         throw Error("Open and verify the current server workspace before saving");
       if(revisions.requiresOwnerConfirmation())
         throw Error("Owner must review and confirm newer server workspace before saving");
-      busy=true;
+      busy=true;pendingAppend=null;
       try{
-        workspace.validate(document);
+        // Bind Save to the submitted snapshot before passphrase verification
+        // yields. A caller may continue editing its object while crypto runs.
+        var snapshot=JSON.parse(JSON.stringify(workspace.validate(document)));
+        workspace.validate(snapshot);
         // On an existing vault, require the save passphrase to unlock the last
         // verified encrypted snapshot. Otherwise a typo silently rotates the
         // encryption key and can permanently lock out the owner.
-        if(openedCiphertext!==null)
+        if(openedCiphertext!==null){
           workspace.validate(await workspace.decrypt(passphrase,openedCiphertext));
-        var ciphertext=await workspace.encrypt(passphrase,document);
+          verifySession();
+        }
+        var ciphertext=await workspace.encrypt(passphrase,snapshot);
+        verifySession();
         var checksum=await integrity.sha256(ciphertext);
+        verifySession();
+        pendingAppend={revision:openedRevision+1,sha256:checksum};
         var result=await revisions.append(ciphertext,checksum);
+        verifySession();
         openedRevision=result.revision;
         openedCiphertext=ciphertext;
         openedSha256=checksum;
+        pendingAppend=null;
         return Object.freeze({revision:result.revision,encrypted:true});
       }catch(e){
         // An uncertain append must never leave a cached revision authorized.
@@ -56,24 +73,68 @@
         throw e;
       }finally{busy=false;}
     }
+    async function verifyInterruptedSave(passphrase){
+      ensureIdle();verifySession();
+      if(!pendingAppend)return Object.freeze({confirmed:false});
+      busy=true;
+      try{
+        var remote=await revisions.refresh();
+        verifySession();
+        if(remote.revision!==pendingAppend.revision||remote.sha256!==pendingAppend.sha256){
+          revisions.suspend();
+          return Object.freeze({confirmed:false,latestRevision:remote.revision});
+        }
+        // An explicit readback can resolve only this exact submitted save.
+        // Verify both ciphertext integrity and decryption before clearing the hold.
+        workspace.validate(await workspace.decrypt(passphrase,remote.text));
+        verifySession();
+        if(remote.requiresOwnerConfirmation)revisions.confirmRevision(remote.revision);
+        openedRevision=remote.revision;openedCiphertext=remote.text;openedSha256=remote.sha256;
+        pendingAppend=null;
+        return Object.freeze({confirmed:true,revision:remote.revision});
+      }finally{busy=false;}
+    }
     function confirmOpenedRevision(revision){
-      ensureIdle();
+      ensureIdle();verifySession();
       if(openedRevision===null||openedRevision!==revision||
          revisions.currentRevision()!==revision)
         throw Error("Open the exact newer server workspace before owner confirmation");
       revisions.confirmRevision(revision);
     }
     function encryptedBackup(){
-      ensureIdle();
+      ensureIdle();verifySession();
       if(openedRevision===null||openedRevision!==revisions.currentRevision()||
          typeof openedCiphertext!=="string"||!openedSha256||revisions.requiresOwnerConfirmation())
         throw Error("Verified current encrypted workspace required for backup export");
       return Object.freeze({revision:openedRevision,ciphertext:openedCiphertext,sha256:openedSha256});
     }
-    function close(){
-      ensureIdle();openedRevision=null;openedCiphertext=null;openedSha256=null;revisions.reset();
+    async function inspectEncryptedBackup(backup,passphrase){
+      ensureIdle();verifySession();
+      if(!backup||typeof backup!=="object"||Array.isArray(backup)||
+         !Number.isSafeInteger(backup.revision)||backup.revision<1||backup.revision>=Number.MAX_SAFE_INTEGER||
+         typeof backup.ciphertext!=="string"||!backup.ciphertext||
+         new TextEncoder().encode(backup.ciphertext).length>5000000||
+         typeof backup.sha256!=="string"||!/^[a-f0-9]{64}$/.test(backup.sha256))
+        throw Error("Invalid encrypted revision backup");
+      // Copy the supplied bytes before hashing. Caller mutation cannot swap
+      // ciphertext or provenance between asynchronous verification steps.
+      var text=backup.ciphertext,checksum=backup.sha256,revision=backup.revision;
+      busy=true;
+      try{
+        if(await integrity.sha256(text)!==checksum)throw Error("Encrypted backup checksum mismatch");
+        verifySession();
+        var restored=workspace.validate(await workspace.decrypt(passphrase,text));
+        verifySession();
+        // This inspection does not move the trusted server revision, release
+        // an owner-review hold, replace a workspace or perform any RPC.
+        return Object.freeze({workspace:restored,revision:revision,sha256:checksum});
+      }finally{busy=false;}
     }
-    return Object.freeze({open:open,save:save,encryptedBackup:encryptedBackup,confirmOpenedRevision:confirmOpenedRevision,
+    function close(){
+      ensureIdle();openedRevision=null;openedCiphertext=null;openedSha256=null;pendingAppend=null;revisions.suspend();
+    }
+    return Object.freeze({open:open,save:save,verifyInterruptedSave:verifyInterruptedSave,encryptedBackup:encryptedBackup,inspectEncryptedBackup:inspectEncryptedBackup,confirmOpenedRevision:confirmOpenedRevision,
+      assertSession:verifySession,
       close:close,status:function(){return Object.freeze({
         openedRevision:openedRevision,requiresOwnerConfirmation:revisions.requiresOwnerConfirmation()
       });}});

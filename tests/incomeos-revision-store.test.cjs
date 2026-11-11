@@ -20,6 +20,9 @@ const integrity={sha256};
   };
   assert.throws(()=>createRevisionStore(transport,protocol),/Independent SHA-256 verifier required/);
   const store=createRevisionStore(transport,protocol,integrity);
+  assert.equal(store.reset,undefined,
+    "An owner session cannot manually erase trusted revision history or pending review");
+  assert.equal(typeof store.suspend,"function");
   await assert.rejects(store.append(envelope,digest),/Read server revision/);
   assert.equal((await store.refresh()).revision,0);
   assert.equal((await store.append(envelope,digest)).revision,1);
@@ -91,5 +94,53 @@ const integrity={sha256};
   const neverWritten=createRevisionStore({latest:async()=>null,append:transport.append},protocol,integrity);
   assert.equal((await neverWritten.refresh()).revision,0);
   assert.equal((await neverWritten.refresh()).revision,0);
+  // Closing the workspace must revoke edit authorization while retaining
+  // the trusted high-water mark. The same owner may reopen within this session.
+  let observed={revision:8,ciphertext:envelope,ciphertext_sha256:digest};
+  const suspended=createRevisionStore({latest:async()=>observed,append:async()=>{
+    throw Error("No write expected");
+  }},protocol,integrity);
+  assert.equal((await suspended.refresh()).revision,8);
+  suspended.suspend();
+  assert.equal(suspended.currentRevision(),null,"Close revokes the open revision");
+  assert.equal(suspended.highestObservedRevision(),8,"Close retains rollback history");
+  await assert.rejects(suspended.append(envelope,digest),/Read server revision/);
+  observed={...observed,revision:7};
+  await assert.rejects(suspended.refresh(),/refuse overwrite/,
+    "Reopen cannot launder a server rollback after a close");
+  assert.equal(suspended.highestObservedRevision(),8);
+  observed={revision:8,ciphertext:envelope,ciphertext_sha256:digest};
+  assert.equal((await suspended.refresh()).revision,8);
+  suspended.suspend();
+  observed={revision:8,ciphertext:alternateEnvelope,
+    ciphertext_sha256:createHash("sha256").update(alternateEnvelope,"utf8").digest("hex")};
+  await assert.rejects(suspended.refresh(),/different ciphertext/,
+    "Reopen cannot launder same-revision ciphertext substitution");
+  observed={revision:9,ciphertext:envelope,ciphertext_sha256:digest};
+  assert.equal((await suspended.refresh()).requiresOwnerConfirmation,true);
+  suspended.suspend();
+  assert.equal((await suspended.refresh()).requiresOwnerConfirmation,true,
+    "Closing before owner review cannot silently clear a confirmation hold");
+  assert.throws(()=>suspended.confirmRevision(8),/confirmation mismatch/);
+  suspended.confirmRevision(9);
+  assert.equal(suspended.requiresOwnerConfirmation(),false);
+  // A transport may retain a reference to its response object. The values
+  // returned as trusted must be the exact values checked before digest yields.
+  {
+    let signal,release;
+    const started=new Promise(resolve=>{signal=resolve;});
+    const blocked=new Promise(resolve=>{release=resolve;});
+    const mutable={revision:1,ciphertext:envelope,ciphertext_sha256:digest};
+    const pinned=createRevisionStore({latest:async()=>mutable,append:async()=>{throw Error("No writes expected");}},protocol,{
+      sha256:async text=>{signal();await blocked;return sha256(text);}
+    });
+    const read=pinned.refresh();await started;
+    mutable.revision=42;mutable.ciphertext="synthetic unverified plaintext";mutable.ciphertext_sha256="b".repeat(64);
+    release();const result=await read;
+    assert.equal(result.revision,1,"Response mutation cannot advance the verified revision");
+    assert.equal(result.text,envelope,"Response mutation cannot substitute bytes after checksum verification");
+    assert.equal(result.sha256,digest);
+    assert.equal(pinned.highestObservedRevision(),1);
+  }
   console.log("PASS: revision adapter conflict, integrity, equivocation, uncertain write, recovery rollback");
 })().catch(e=>{console.error(e);process.exitCode=1;});

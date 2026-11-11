@@ -13,7 +13,7 @@ catch{try{({chromium,devices}=require("playwright-core"));}
   catch{if(process.env.CI){console.error("playwright-core is required in CI");process.exit(1);}console.log("SKIPPED: playwright not installed");process.exit(0);}}
 const launchOptions=process.env.INCOMEOS_BROWSER?{executablePath:process.env.INCOMEOS_BROWSER,args:["--no-sandbox"]}:{};
 const root=new URL("../owner/incomeos/",import.meta.url).pathname;
-const types={".html":"text/html",".js":"text/javascript",".css":"text/css",".json":"application/json",".svg":"image/svg+xml",".webmanifest":"application/manifest+json"};
+const types={".html":"text/html",".js":"text/javascript",".mjs":"text/javascript",".css":"text/css",".json":"application/json",".svg":"image/svg+xml",".webmanifest":"application/manifest+json"};
 const server=createServer((req,res)=>{const p=join(root,decodeURIComponent(req.url.split("?")[0]).replace(/^\/+/,"")||"index.html");
   if(!p.startsWith(root)||!existsSync(p)){res.writeHead(404);res.end();return;}
   res.writeHead(200,{"content-type":types[extname(p)]||"application/octet-stream"});res.end(readFileSync(p));}).listen(0,"127.0.0.1");
@@ -23,7 +23,19 @@ const ctx=await browser.newContext({...devices["iPhone 13"],acceptDownloads:true
 const page=await ctx.newPage();const errors=[];page.on("pageerror",e=>errors.push(String(e)));
 const dialogs=[];page.on("dialog",d=>{dialogs.push(d.message());d.accept();});
 await page.goto(`http://127.0.0.1:${server.address().port}/index.html`);
-const nav=v=>page.locator(`.bottomnav button[data-view="${v}"]`).click();
+const nav=async v=>{
+  // A fixed iPhone navigation bar must be directly touchable. Locator.tap()
+  // auto-scrolls the document first and can displace fixed elements in mobile
+  // emulation, so test the viewport hit target and send a real touch there.
+  const button=page.locator(`.bottomnav button[data-view="${v}"]`);
+  const point=await button.evaluate(el=>{
+    const r=el.getBoundingClientRect();
+    const x=r.left+r.width/2,y=r.top+r.height/2;
+    return {x,y,hit:el.contains(document.elementFromPoint(x,y))};
+  });
+  assert.ok(point.hit,"Mobile navigation must be the topmost touch target: "+v);
+  await page.touchscreen.tap(point.x,point.y);
+};
 // Without a workspace the editor stays locked by the staging interlock.
 await nav("ledger");
 assert.ok(await page.locator("#financial-staging-interlock").isVisible());
@@ -40,6 +52,35 @@ assert.ok(await page.locator("#view-ledger").isVisible(),"stays on the Income sc
 assert.equal(await page.evaluate(()=>document.activeElement.id),"receipt-label","ready to type the first record");
 assert.ok(!(await page.locator("#financial-staging-interlock").isVisible()));
 assert.match(await page.locator("#ledger-mode").textContent(),/Editing the ledger in your open workspace/);
+// Decision Spellchecker must be part of this same owner workspace, not a
+// second dashboard or ledger. Starting the programme uses the existing
+// workspace update event, with no customer reviewer or payment action.
+await nav("ds");
+assert.ok(await page.locator("#ds-start").isVisible(),"programme start is available with the owner workspace");
+await page.locator("#ds-start").click();
+await page.waitForFunction(()=>document.querySelector("#ds-product-runtime")?.textContent.includes("Candidate source"));
+const dsView=await page.locator("#ds-product-runtime").textContent();
+assert.match(dsView,/DS-N1/,"integrated panel identifies the synthetic development candidate");
+assert.match(dsView,/Original SP acceptance/,"original DS-A acceptance stays visible and separate");
+assert.match(dsView,/NOT_AUTHORIZED/,"product access and release remain blocked");
+assert.ok(await page.locator("#ds-product-runtime button").isDisabled(),"synthetic reviewer is not exposed as a customer control");
+// Diagnose mobile fixed-navigation hit testing after the expanded DS view.
+const dsNavHit=await page.evaluate(()=>{
+  const b=document.querySelector('.bottomnav button[data-view="ledger"]');
+  const n=b.closest('.bottomnav');
+  const r=b.getBoundingClientRect();
+  const hit=document.elementFromPoint(r.left+r.width/2,r.top+r.height/2);
+  const cs=getComputedStyle(n);
+  return {nav:{top:r.top,bottom:r.bottom,left:r.left,right:r.right},
+    hit:hit?.tagName,hitInsideButton:b.contains(hit),hitInsideNav:n.contains(hit),
+    position:cs.position,zIndex:cs.zIndex,display:cs.display,
+    scrollY:window.scrollY,viewport:window.innerHeight,layoutWidth:document.documentElement.clientWidth};
+});
+assert.ok(dsNavHit.nav.right<=dsNavHit.layoutWidth+1,
+  "Fixed mobile navigation must fit viewport after Decision Spellchecker renders: "+JSON.stringify(dsNavHit));
+assert.ok(dsNavHit.hitInsideNav,
+  "A mobile navigation button must be the actual touch target: "+JSON.stringify(dsNavHit));
+await nav("ledger");
 // Add a received research payment and an expense with unknown business use.
 await page.locator("#receipt-label").fill("Synthetic study payout");await page.locator("#receipt-payer").fill("Synthetic Recruiter");
 await page.locator("#receipt-amount").fill("150");await page.locator("#receipt-date").fill("2026-10-15");
@@ -313,6 +354,22 @@ assert.ok(await page.locator("#financial-staging-interlock").isHidden(),"Valid w
 assert.equal(await page.locator("#receipt-label").inputValue(),"","Quarantined income draft does not reappear after recovery");
 assert.equal(await page.locator("#cost-label").inputValue(),"","Quarantined expense draft does not reappear after recovery");
 
+// A missing or malformed workspace replacement must immediately clear the
+// previous programme and finance projection, including the editing controls.
+await page.evaluate(()=>document.dispatchEvent(new CustomEvent("incomeos:workspace-loaded",{
+  detail:{...window.IncomeOSWorkspace.newWorkspace("2026-11-08"),
+    dsProgram:window.IncomeOSDSProgram.newProgram("2026-11-08")}
+})));
+assert.match(await page.locator("#ds-product-runtime").textContent(),/Candidate source/);
+await page.evaluate(()=>document.dispatchEvent(new CustomEvent("incomeos:workspace-restored",{
+  detail:{dsProgram:window.IncomeOSDSProgram.newProgram("2026-11-08")}
+})));
+assert.match(await page.locator("#ds-product-runtime").textContent(),/Load an IncomeOS owner workspace/,
+  "malformed workspace replacement must revoke the prior programme view");
+assert.ok(await page.locator("#ds-start").isHidden(),"invalid workspace cannot retain DS editor controls");
+await page.evaluate(()=>document.dispatchEvent(new CustomEvent("incomeos:workspace-loaded",{detail:null})));
+assert.match(await page.locator("#ds-product-runtime").textContent(),/Load an IncomeOS owner workspace/,
+  "closing a workspace must not leave a stale programme visible");
 assert.equal(await page.evaluate(()=>localStorage.length+sessionStorage.length),0);
 assert.deepEqual(errors,[]);
 await browser.close();server.close();

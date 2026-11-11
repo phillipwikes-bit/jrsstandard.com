@@ -3,6 +3,8 @@ on:
   pull_request:
     paths:
       - 'owner/incomeos/vault-cloud.js'
+      - 'owner/incomeos/ds-program.js'
+      - 'tests/incomeos-ds-original-verification.mjs'
       - 'owner/incomeos/workspace-revision-protocol.js'
       - 'owner/incomeos/revision-store.js'
       - 'owner/incomeos/revision-supabase-transport.js'
@@ -20,10 +22,22 @@ on:
       - 'tests/incomeos-revision-workspace-bridge.test.cjs'
       - 'owner/incomeos/revision-accounting-coordinator.js'
       - 'owner/incomeos/workspace-store.js'
+      - 'owner/incomeos/briefing-ui.js'
+      - 'tests/incomeos-workspace-file-operations.test.cjs'
+      - 'owner/incomeos/research-ui.js'
+      - 'owner/incomeos/passive-radar-ui.js'
+      - 'tests/incomeos-workspace-panel-cleanup.test.cjs'
       - 'owner/incomeos/accountant.js'
       - 'tests/incomeos-revision-accounting-coordinator.test.cjs'
+      - 'tests/incomeos-revision-backup-restore.test.cjs'
+      - 'tests/incomeos-workspace-accountant-compatibility.test.cjs'
+      - 'tests/incomeos-revision-accounting-runtime.test.cjs'
+      - 'tests/incomeos-revision-reliability-soak.test.cjs'
       - 'tests/incomeos-revision-release-gate.test.cjs'
       - 'tests/incomeos-vault-revision-session.test.cjs'
+      - 'tests/incomeos-vault-expiry.test.cjs'
+      - 'tests/incomeos-vault-network.test.cjs'
+      - 'tests/incomeos-vault-concurrency.test.cjs'
       - 'owner/incomeos/ACCOUNTING-EDITOR-ACCEPTANCE.json'
       - '.github/workflows/incomeos-security-verification.yml'
   workflow_dispatch:
@@ -43,6 +57,7 @@ jobs:
       - name: Syntax check
         run: |
           node --check owner/incomeos/vault-cloud.js
+          node --check owner/incomeos/ds-program.js
           node --check owner/incomeos/workspace-revision-protocol.js
           node --check owner/incomeos/revision-store.js
           node --check owner/incomeos/revision-supabase-transport.js
@@ -50,9 +65,14 @@ jobs:
           node --check owner/incomeos/revision-runtime-staging.js
           node --check owner/incomeos/revision-accounting-coordinator.js
           node --check owner/incomeos/workspace-store.js
+          node --check owner/incomeos/briefing-ui.js
+          node --check owner/incomeos/research-ui.js
+          node --check owner/incomeos/passive-radar-ui.js
           node --check tests/incomeos-browser-script-loader.cjs
       - name: Synthetic regression tests
         run: |
+          node --test tests/incomeos-workspace-file-operations.test.cjs
+          node --test tests/incomeos-workspace-panel-cleanup.test.cjs
           node tests/incomeos-vault-envelope.test.cjs
           node tests/incomeos-workspace-revision-protocol.test.cjs
           node tests/incomeos-revision-store.test.cjs
@@ -60,6 +80,14 @@ jobs:
           node tests/incomeos-revision-rpc-integration.test.cjs
           node tests/incomeos-revision-workspace-bridge.test.cjs
           node tests/incomeos-revision-accounting-coordinator.test.cjs
+          node --test tests/incomeos-revision-backup-restore.test.cjs
+          node --test tests/incomeos-workspace-accountant-compatibility.test.cjs
+          node tests/incomeos-revision-accounting-runtime.test.cjs
+          node tests/incomeos-revision-reliability-soak.test.cjs
           node tests/incomeos-revision-release-gate.test.cjs
           node tests/incomeos-vault-revision-session.test.cjs
+          node tests/incomeos-vault-expiry.test.cjs
+          node tests/incomeos-vault-network.test.cjs
+          node --test tests/incomeos-vault-concurrency.test.cjs
+          node tests/incomeos-ds-original-verification.mjs
           node tests/incomeos-revision-staging-sql.test.cjs

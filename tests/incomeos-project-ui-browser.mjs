@@ -197,6 +197,11 @@ assert.match(await page.locator("#briefing-status").textContent(),/Not changed: 
 await page.locator("#add-amount").fill("85.00");
 await page.locator("#briefing-output").getByRole("button",{name:"Add entry"}).click();
 assert.match(await page.locator("#briefing-status").textContent(),/Entry added/);
+assert.doesNotMatch(await page.locator("#ledger-mode").textContent(),/QUARANTINED/,
+  "This week creates an accountant-compatible expense in the same workspace");
+const createdExpense=await page.evaluate(()=>window.IncomeOSAccountant.entriesForAnalysis()[0]);
+assert.equal(createdExpense.paymentStatus,"scheduled");
+assert.equal(createdExpense.businessUse,null);
 // Category choices follow the type; a half-typed field survives a background refresh.
 await page.locator("#add-kind").selectOption("income");
 const cats=await page.$$eval("#add-cat option",o=>o.map(x=>x.value));
@@ -206,6 +211,15 @@ await page.evaluate(()=>document.dispatchEvent(new CustomEvent("incomeos:researc
 assert.equal(await page.locator("#add-payer").inputValue(),"Half typed vendor","typed text survives a re-render");
 assert.equal(await page.locator("#add-kind").inputValue(),"income");
 assert.ok((await page.$$eval("#add-cat option",o=>o.map(x=>x.value))).includes("research"),"category options still match income after re-render");
+await page.locator("#add-amount").fill("35.00");
+await page.locator("#add-cat").selectOption("research");
+await page.locator("#briefing-output").getByRole("button",{name:"Add entry"}).click();
+const createdIncome=await page.evaluate(()=>window.IncomeOSAccountant.entriesForAnalysis().find(e=>e.kind==="income"));
+assert.equal(createdIncome.status,"expected");
+assert.equal(createdIncome.scope,"income");
+assert.equal(createdIncome.evidenceStatus,"missing");
+assert.doesNotMatch(await page.locator("#ledger-mode").textContent(),/QUARANTINED/,
+  "This week creates an accountant-compatible income record without inventing receipt");
 // The checklist does not count a fresh workspace as saved.
 await page.locator("#briefing-new").click();
 assert.ok(!(await page.$$eval("#start-here-steps li",els=>els[4].textContent)).startsWith("Done:"),"new workspace is not saved");
@@ -223,5 +237,202 @@ const unlabeled=await page.evaluate(()=>[...document.querySelectorAll("#briefing
 assert.deepEqual(unlabeled,[],"every control in the owner panels has a label");
 assert.deepEqual(errors,[]);
 if(process.env.INCOMEOS_BRIEFING_SCREENSHOT)await page.locator("#briefing-panel").screenshot({path:process.env.INCOMEOS_BRIEFING_SCREENSHOT});
+// ---------- Interrupted local file operations preserve the current draft ----------
+await page.locator('.bottomnav button[data-view="research"]').click();
+await page.evaluate(()=>{
+  window.__fileBoundary={latest:null,started:false,release:null,read:File.prototype.text};
+  ["incomeos:workspace-loaded","incomeos:workspace-changed","incomeos:workspace-restored"].forEach(type=>document.addEventListener(type,event=>{
+    window.__fileBoundary.latest=event.detail;
+  }));
+  File.prototype.text=function(){
+    if(this.name!=="synthetic-held-workspace.json")return window.__fileBoundary.read.call(this);
+    const file=this;window.__fileBoundary.started=true;
+    return new Promise(resolve=>{window.__fileBoundary.release=async()=>resolve(await window.__fileBoundary.read.call(file));});
+  };
+});
+const oldLocal=await page.evaluate(()=>{const w=IncomeOSWorkspace.newWorkspace("2026-11-08");w.note="Synthetic superseded local file";return w;});
+await page.locator("#briefing-file").setInputFiles({name:"synthetic-held-workspace.json",mimeType:"application/json",buffer:Buffer.from(JSON.stringify(oldLocal))});
+await page.locator("#briefing-load").click();await page.waitForFunction(()=>window.__fileBoundary.started);
+await page.locator("#briefing-new").click();
+await page.evaluate(()=>window.__fileBoundary.release());
+await page.waitForFunction(()=>/changed during file read/.test(document.getElementById("briefing-status").textContent));
+assert.notEqual(await page.evaluate(()=>window.__fileBoundary.latest.note),oldLocal.note);
+assert.equal(await page.evaluate(()=>{const e=new Event("beforeunload",{cancelable:true});window.dispatchEvent(e);return e.defaultPrevented;}),true,"A stale file read cannot remove the newer draft's unload warning");
+await page.evaluate(()=>{
+  File.prototype.text=window.__fileBoundary.read;
+  document.addEventListener("incomeos:workspace-loaded",function editOnLoad(event){
+    if(event.detail?.note!=="Synthetic subscriber-edited file")return;
+    document.removeEventListener("incomeos:workspace-loaded",editOnLoad);
+    document.dispatchEvent(new CustomEvent("incomeos:research-progress",{detail:{id:"synthetic-file-subscriber",status:"Applied"}}));
+  });
+});
+const subscriberFile={...oldLocal,note:"Synthetic subscriber-edited file"};
+await page.locator("#briefing-file").setInputFiles({name:"synthetic-subscriber.json",mimeType:"application/json",buffer:Buffer.from(JSON.stringify(subscriberFile))});
+await page.locator("#briefing-load").click();
+await page.waitForFunction(()=>window.__fileBoundary.latest?.researchProgress?.["synthetic-file-subscriber"]?.status==="Applied");
+assert.match(await page.locator("#briefing-status").textContent(),/Unsaved changes/);
+assert.equal(await page.locator("#briefing-undo").isVisible(),true);
+await page.locator("#briefing-undo").click();
+assert.equal(await page.evaluate(()=>window.__fileBoundary.latest.researchProgress["synthetic-file-subscriber"]),undefined);
+await page.locator("#briefing-passphrase").fill("synthetic local file passphrase");
+await page.evaluate(()=>{
+  const original=crypto.subtle.deriveKey;
+  let release;const gate=new Promise(resolve=>{release=resolve;});
+  window.__localSaveHold={started:false,release:()=>{crypto.subtle.deriveKey=original;release();}};
+  crypto.subtle.deriveKey=async function(...args){window.__localSaveHold.started=true;await gate;return original.apply(this,args);};
+});
+await page.locator("#briefing-save").click();await page.waitForFunction(()=>window.__localSaveHold.started);
+assert.match(await page.locator("#briefing-status").textContent(),/Preparing workspace download/);
+assert.equal(await page.locator("#briefing-save").isDisabled(),true);
+const [localSnapshot]=await Promise.all([page.waitForEvent("download"),page.evaluate(()=>window.__localSaveHold.release())]);
+await page.waitForFunction(()=>/^Encrypted workspace saved/.test(document.getElementById("briefing-status").textContent));
+assert.equal(await page.locator("#briefing-save").isEnabled(),true);
+assert.match(localSnapshot.suggestedFilename(),/encrypted\.json$/);
+assert.doesNotMatch(readFileSync(await localSnapshot.path(),"utf8"),/Synthetic subscriber-edited file/);
+page.once("dialog",dialog=>dialog.accept()); // accept a warning if this synthetic scenario has unsaved edits
+await page.goto(base);
+for(const script of ["workspace-revision-protocol.js","revision-store.js","revision-workspace-bridge.js","revision-accounting-coordinator.js","revision-runtime-staging.js"])
+  await page.addScriptTag({url:new URL(script,base).href});
+await page.evaluate(async()=>{
+  let remote=null,writes=0,holdNext=false,releaseAppend=null,loseAck=false;
+  window.__revisionTest={writes:()=>writes,holdNext:()=>{holdNext=true;},held:()=>releaseAppend!==null,
+    release:()=>releaseAppend(),loseAck:()=>{loseAck=true;}};
+  window.IncomeOSVaultCloud={signedIn:()=>true,createRevisionTransport:()=>({assertSession:()=>true,
+    latest:async()=>remote,append:async r=>{
+      if(holdNext){holdNext=false;await new Promise(resolve=>{releaseAppend=resolve;});releaseAppend=null;}
+      if(r.expected_revision!==(remote?remote.revision:0))throw Error("Synthetic stale revision");
+      if(r.encrypted_payload.includes("SYNTHETIC HOST ENTRY"))throw Error("Plaintext transmission");
+      writes++;remote={revision:writes,ciphertext:r.encrypted_payload,ciphertext_sha256:r.payload_sha256};
+      if(loseAck){loseAck=false;throw Error("Synthetic acknowledgement lost");}
+      return writes;
+    }})};
+  window.__coordinator=IncomeOSRevisionRuntime.createAccountingRuntime({stagingOnly:true});
+  window.__binding=IncomeOSRevisionDeskHost.attach(window.__coordinator,{stagingOnly:true});
+  await window.__binding.open("synthetic shared host passphrase");
+});
+await page.locator('.bottomnav button[data-view="research"]').click();
+await page.locator("#briefing-new").click();
+const edit=()=>page.evaluate(()=>new Promise(resolve=>document.dispatchEvent(new CustomEvent("incomeos:ledger-replace",{detail:{
+  entries:[{id:"syn-host",kind:"outflow",date:"2026-11-08",label:"SYNTHETIC HOST ENTRY",category:"software",type:"expense",amountUsd:10,businessUse:null,paymentStatus:"paid"}],done:resolve
+}}))));
+assert.equal((await edit()).ok,true);
+await page.locator("#add-acct-name").fill("Synthetic staged account");
+await page.locator("#briefing-output").getByRole("button",{name:"Add account",exact:true}).click();
+assert.equal(await page.evaluate(()=>window.__coordinator.workspaceSnapshot().accounts[0].name),"Synthetic staged account");
+assert.equal(await page.evaluate(()=>new Promise(resolve=>document.dispatchEvent(new CustomEvent("incomeos:ds-ledger",{detail:{
+  entry:{kind:"outflow",date:"2026-11-08",payer:"Synthetic programme cost",amountUsd:"8",category:"software",dsDimension:"software_api"},done:resolve
+}})))).then(r=>r.ok),true);
+await page.locator("#briefing-undo").click();
+assert.equal(await page.evaluate(()=>window.__coordinator.workspaceSnapshot().changeLog.at(-1).action),"WORKSPACE_EDIT_REVERSED");
+assert.equal(await page.evaluate(()=>window.__coordinator.workspaceSnapshot().ledger.length),1);
+assert.equal(await page.evaluate(()=>window.__revisionTest.writes()),0);
+await page.locator("#briefing-passphrase").fill("synthetic shared host passphrase");
+await page.evaluate(()=>window.__revisionTest.holdNext());
+await page.locator("#briefing-save").click();
+await page.waitForFunction(()=>window.__revisionTest.held());
+assert.match(await page.locator("#briefing-status").textContent(),/Saving encrypted revision/);
+assert.equal(await page.locator("#briefing-save").isDisabled(),true,"An in-flight save cannot retain a success claim or accept a second native Save");
+assert.equal(await page.evaluate(()=>window.__revisionTest.writes()),0);
+await page.evaluate(()=>window.__revisionTest.release());
+await page.waitForFunction(()=>document.getElementById("briefing-status").textContent==="Encrypted revision saved.");
+assert.equal(await page.locator("#briefing-save").isEnabled(),true);
+assert.equal(await page.evaluate(()=>window.__revisionTest.writes()),1);
+await page.evaluate(async()=>{
+  const other=IncomeOSRevisionRuntime.createAccountingRuntime({stagingOnly:true});
+  await other.open("synthetic shared host passphrase");
+  other.replaceLedger([],"2026-11-08");await other.save("synthetic shared host passphrase");
+});
+assert.equal((await edit()).ok,true);
+await page.locator("#briefing-save").click();
+await page.waitForFunction(()=>/Revision not confirmed:.*stale/.test(document.getElementById("briefing-status").textContent));
+assert.equal((await edit()).ok,false,"Conflicted editor cannot accept further edits");
+assert.equal(await page.evaluate(()=>window.__revisionTest.writes()),2,"Conflict never retries");
+assert.equal(await page.evaluate(async()=>{
+  const r=await window.__binding.rescue("synthetic shared host passphrase");
+  window.__binding.discard();const opened=await window.__binding.open("synthetic shared host passphrase");
+  if(!opened.requiresOwnerConfirmation)throw Error("Missing conflict review");
+  window.__binding.confirm(opened.revision);return r.serverSaved;
+}),false);
+await page.locator("#revision-recovery-controls summary").click();
+for(const width of [320,375,430]){
+  await page.setViewportSize({width,height:812});
+  assert.ok(await page.evaluate(w=>document.documentElement.scrollWidth<=w+1&&innerWidth<=w+1,width),"Recovery controls must fit the configured mobile viewport");
+}
+const fileBackup=await page.evaluate(async()=>{
+  const backup=window.__coordinator.encryptedBackup(),W=IncomeOSWorkspace;
+  const doc=await W.decrypt("synthetic shared host passphrase",backup.ciphertext);doc.note="Synthetic reviewed recovery note";
+  const ciphertext=await W.encrypt("synthetic shared host passphrase",doc);
+  const digest=await crypto.subtle.digest("SHA-256",new TextEncoder().encode(ciphertext));
+  return JSON.stringify({revision:backup.revision,ciphertext,sha256:Array.from(new Uint8Array(digest),b=>b.toString(16).padStart(2,"0")).join("")});
+});
+await page.locator("#revision-recovery-file").setInputFiles({name:"synthetic-revision.encrypted.json",mimeType:"application/json",buffer:Buffer.from(fileBackup)});
+await page.getByRole("button",{name:"Review backup sections",exact:true}).click();
+await page.locator('#revision-recovery-controls input[value="note"]').waitFor();
+assert.equal(await page.locator('#revision-recovery-controls input[value="note"]').isChecked(),false,"Recovery selections begin blank");
+await page.locator('#revision-recovery-controls input[value="note"]').check();
+await page.getByRole("button",{name:"Apply selected sections as unsaved edit",exact:true}).click();
+assert.equal(await page.evaluate(()=>window.__coordinator.pendingDraft().note),"Synthetic reviewed recovery note");
+assert.equal(await page.evaluate(()=>window.__revisionTest.writes()),2,"Recovery review and application cannot autosave");
+await page.evaluate(()=>window.__revisionTest.loseAck());
+await page.locator("#briefing-save").click();
+await page.waitForFunction(()=>/Revision not confirmed:.*acknowledgement lost/.test(document.getElementById("briefing-status").textContent));
+assert.equal(await page.evaluate(()=>window.__coordinator.status().dirty),true);
+assert.equal(await page.evaluate(()=>window.__revisionTest.writes()),3);
+await page.getByRole("button",{name:"Verify interrupted save",exact:true}).click();
+await page.waitForFunction(()=>/Interrupted save verified as revision 3/.test(document.getElementById("revision-recovery-status").textContent));
+assert.equal(await page.evaluate(()=>window.__revisionTest.writes()),3,"Readback cannot retry the committed write");
+assert.equal(await page.evaluate(()=>window.__coordinator.status().dirty),false);
+assert.equal(await page.evaluate(()=>window.__coordinator.workspaceSnapshot().note),"Synthetic reviewed recovery note");
+// Populate private panel state through the existing workspace engines. Closing
+// the verified host must clear every subscriber, not just the accounting form.
+await page.evaluate(()=>{
+  const W=window.IncomeOSWorkspace,on="2026-11-08",id="synthetic-close-study";
+  window.__coordinator.editWorkspace(w=>{
+    w=W.setResearchStudies(w,[{id,title:"Synthetic private close study",provider:"Synthetic Recruiter",paymentUsd:100,minutes:30,screenMinutes:5,mode:"online",reviewed:on,eventEnd:null,url:"https://example.org/a/close",sourceUrl:"https://example.org/s/close",status:"Open"}],on);
+    w=W.setResearchProgress(w,id,"Applied",on);
+    w=W.setResearchTime(w,id,{screenMinutes:7,prepMinutes:0,adminMinutes:0,timeConfidence:"estimated"},on);
+    return W.setPassiveFinding(w,{id:"synthetic-close-finding",title:"Synthetic private close finding",valueType:"savings",sourceName:"Synthetic",sourceUrl:"https://example.org/s",directUrl:"https://example.gov/d",foundOn:on,amountUsd:40,amountBasis:"stated"},"Pursuing",on);
+  },on);
+});
+await page.locator("#briefing-save").click();
+await page.waitForFunction(()=>document.getElementById("briefing-status").textContent==="Encrypted revision saved.");
+assert.match(await page.locator("#passive-kept").textContent(),/Synthetic private close finding/);
+assert.match(await page.locator("#radar-results").textContent(),/Synthetic private close study/);
+await page.locator("#briefing-passphrase").fill("incorrect synthetic reopen passphrase");
+await page.getByRole("button",{name:"Open latest revision",exact:true}).click();
+await page.waitForFunction(()=>/Wrong passphrase/.test(document.getElementById("revision-recovery-status").textContent));
+assert.doesNotMatch(await page.locator("#passive-kept").textContent(),/Synthetic private close finding/);
+assert.doesNotMatch(await page.locator("#radar-results").textContent(),/Synthetic private close study/);
+await page.locator("#briefing-passphrase").fill("synthetic shared host passphrase");
+await page.getByRole("button",{name:"Open latest revision",exact:true}).click();
+await page.waitForFunction(()=>/Opened revision 4/.test(document.getElementById("revision-recovery-status").textContent));
+assert.match(await page.locator("#passive-kept").textContent(),/Synthetic private close finding/);
+const [revisionBackupDownload]=await Promise.all([page.waitForEvent("download"),page.getByRole("button",{name:"Download verified encrypted backup",exact:true}).click()]);
+assert.equal(revisionBackupDownload.suggestedFilename(),"incomeos-revision-backup.encrypted.json");
+await page.getByRole("button",{name:"Close private workspace",exact:true}).click();
+assert.equal(await page.locator("#briefing-passphrase").inputValue(),"","Explicit close clears the workspace passphrase");
+assert.equal(await page.locator("#revision-recovery-controls").count(),0);
+assert.doesNotMatch(await page.locator("#passive-kept").textContent(),/Synthetic private close finding/);
+assert.match(await page.locator("#passive-kept").textContent(),/Open your workspace/);
+assert.doesNotMatch(await page.locator("#radar-results").textContent(),/Synthetic private close study/);
+assert.equal(await page.$$eval('#radar-results select[aria-label^="Owner progress"]',els=>els.every(el=>el.disabled)),true,"Closed workspace cannot retain active research tracking controls");
+
+assert.equal(await page.evaluate(async()=>{
+  const next=IncomeOSRevisionRuntime.createAccountingRuntime({stagingOnly:true});
+  const current=IncomeOSRevisionDeskHost.attach(next,{stagingOnly:true});
+  let refused=false;try{window.__binding.close();}catch(e){refused=/no longer attached/.test(e.message);}
+  if(!document.getElementById("revision-recovery-controls"))throw Error("Old handle closed the newer host");
+  current.close();return refused;
+}),true,"Detached handles cannot close a later attachment");
+await page.evaluate(()=>{
+  ["incomeos:workspace-loaded","incomeos:workspace-changed"].forEach(name=>document.addEventListener(name,event=>{window.__replacementWorkspace=event.detail;}));
+});
+await page.locator("#briefing-new").click();
+await page.evaluate(()=>new Promise(resolve=>setTimeout(resolve,0)));
+assert.deepEqual(await page.evaluate(()=>{
+  const w=window.__replacementWorkspace;
+  return {studies:w.researchStudies,progress:w.researchProgress,times:w.researchTimes,findings:w.passiveFindings};
+}),{studies:[],progress:{},times:{},findings:{}},"A new workspace cannot inherit the closed workspace's private panel state");
+assert.deepEqual(errors,[]);
 await browser.close();server.close();
 console.log("IncomeOS project UI browser QA passed (iPhone 13 emulation, synthetic data): confirm-gated eligibility, inert injection, HTTPS apply link, no overflow, no storage writes");

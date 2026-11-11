@@ -122,7 +122,16 @@
     var u=URL.createObjectURL(new Blob([JSON.stringify(window.IncomeOSPassiveRadar.template(today()),null,2)],{type:"application/json"}));
     var a=document.createElement("a");a.href=u;a.download="incomeos-passive-findings-sample.json";document.body.appendChild(a);a.click();a.remove();setTimeout(function(){URL.revokeObjectURL(u);},1000);
   }
-  function onWs(ev){if(ev.detail&&typeof ev.detail==="object"&&ev.detail.schema==="incomeos.workspace.v1"){state.ws=ev.detail;render();}}
+  function onWs(ev){
+    state.ws=null;
+    var value=ev.detail,WS=window.IncomeOSWorkspace;
+    if(value&&typeof value==="object"&&!Array.isArray(value)&&WS&&typeof WS.validate==="function"){
+      try{state.ws=WS.validate(value);}catch(e){}
+    }
+    // Closed or invalid workspaces must remove the prior owner's kept records
+    // and disable controls, rather than silently retaining the earlier object.
+    render();
+  }
   function init(){
     if(!$("passive-radar-panel")||!window.IncomeOSPassiveRadar)return;
     $("passive-import").addEventListener("click",importFile);
