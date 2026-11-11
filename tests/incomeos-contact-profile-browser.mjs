@@ -59,8 +59,24 @@ try{
   await page.locator("#contact-unlock").click();
   await page.waitForFunction(()=>document.getElementById("contact-fullName").value==="Test Contact",null,{timeout:30000});
   assert.equal(await page.locator("#contact-phone").inputValue(),"555-0102");
-  const study=page.locator("#research-cards article.card").first();
-  await study.waitFor();
+  // The local CI server has no external study feed. Add a constructed card so
+  // this test verifies button decoration without relying on live opportunities.
+  await page.evaluate(() => {
+    const list=document.getElementById("research-cards");
+    const card=document.createElement("article");
+    card.className="card";
+    card.dataset.contactTest="1";
+    const region=document.createElement("div");
+    region.className="cardalt";
+    const link=document.createElement("a");
+    link.href="https://example.invalid/synthetic-study";
+    link.textContent="Fictional test study";
+    region.appendChild(link);
+    card.appendChild(region);
+    list.appendChild(card);
+  });
+  const study=page.locator('#research-cards article.card[data-contact-test="1"]');
+  await study.getByRole("button",{name:"Prepare contact details"}).waitFor();
   assert.equal(await study.getByRole("button",{name:"Prepare contact details"}).count(),1);
   const direct=await study.locator('a[href^="http"]').first().getAttribute("href");
   assert.match(direct,/^https?:\/\//);
