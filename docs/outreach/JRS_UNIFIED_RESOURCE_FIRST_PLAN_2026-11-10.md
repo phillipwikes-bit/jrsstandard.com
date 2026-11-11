@@ -88,7 +88,7 @@ Public GitHub must not reproduce the private contact addresses, full private ema
 
 ## F.1 Mandatory current email wording (owner correction, November 10, 2026)
 - Every outbound draft explicitly names the correct JRS initiative: **The Right to Know Why** for public-interest audiences or **Decisions You Can Defend** for professional audiences, without replacing the direct free-resource link.
-- Founder background language: **civil rights review and cognitive-behavioral programming**. Avoid describing the founder's background as 'supervisory review.'
+- Founder background language: **Use this exact approved first-person sentence in every new outreach email without paraphrase: "I developed JRS, drawing on my background in civil rights review and cognitive-behavioral program development."** Do not use 'supervisory review' or 'cognitive-behavioral programming'.
 - Remove the sentence 'The instrument remains in operational validation' and equivalent routine validation boilerplate from outreach emails. The original research publication continues to carry accurate methodological disclosure and evidentiary limitations; those historical research records remain intact.
 - Do not turn first-contact emails into a research report. If a specific research statistic is included in a tailored international message, use only the accurately identified study sample, and never imply endorsement or performance in live organizational records.
 - Existing nine Gmail drafts were revised in place in accordance with these instructions. All remain UNSENT. After revisions, draft message identifiers may change and must be reconciled with the private register before subsequent outreach.
