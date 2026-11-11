@@ -1,0 +1,53 @@
+name: IncomeOS encrypted contact integration checks
+on:
+  pull_request:
+    branches:
+      - verification/incomeos-accounting-ci-20261108
+    paths:
+      - 'owner/incomeos/contact-profile.js'
+      - 'owner/incomeos/index.html'
+      - 'owner/incomeos/incomeos.css'
+      - 'tests/incomeos-contact-profile.mjs'
+      - 'tests/incomeos-contact-profile-browser.mjs'
+      - '.github/workflows/incomeos-contact-release.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  encrypted-contact:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - name: Checkout exact pull request source
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+        with:
+          persist-credentials: false
+      - name: Set up Node 22
+        uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4.4.0
+        with:
+          node-version: '22'
+      - name: Check JavaScript syntax and existing Owner Desk integration
+        run: |
+          node --check owner/incomeos/contact-profile.js
+          grep -q 'src="./contact-profile.js"' owner/incomeos/index.html
+      - name: Verify synthetic encrypted contact behavior and public boundary
+        run: |
+          node --test tests/incomeos-contact-profile.mjs
+          node tests/incomeos-source-boundary.mjs
+          ! grep -q 'contact-profile.js' index.html
+      - name: Locate Chromium for iPhone-width emulation
+        run: |
+          for cmd in google-chrome google-chrome-stable chromium chromium-browser; do
+            if command -v "$cmd" >/dev/null 2>&1; then
+              echo "INCOMEOS_BROWSER=$(command -v "$cmd")" >> "$GITHUB_ENV"
+              exit 0
+            fi
+          done
+          echo "Chromium not found" >&2
+          exit 1
+      - name: Install pinned browser driver
+        run: npm install --no-save --no-package-lock --ignore-scripts --no-audit --no-fund playwright-core@1.63.0
+      - name: Verify encrypted save, reload, unlock, refusal and phone-width layout
+        env:
+          CI: "true"
+        run: node tests/incomeos-contact-profile-browser.mjs

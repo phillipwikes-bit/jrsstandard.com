@@ -50,3 +50,22 @@ Hosted, Supabase and Vercel operations were not attempted.
 ## Outstanding for DS-N1 acceptance
 
 Development-only Owner Desk access behind a verified private owner backend. The bridge still states that no browser route is registered. Reviewer actions and disposition retention inside the Owner Desk view. Independent CI results for this revision. Original SP-01 to SP-18 acceptance remains 0 of 18. Release and customer access remain not authorized.
+
+
+## ChatGPT accounting lane: encrypted contact profile reapplication (2026-11-11)
+
+Task: recover the existing P0 encrypted research-application contact profile from draft #187 without importing the obsolete prototype branch into the authoritative IncomeOS integration branch.
+
+Verified starting source: integration branch `verification/incomeos-accounting-ci-20261108` at `c6a65fff02b0ca09414b72455b49dc32a9813898`; original contact branch `chatgpt/incomeos-contact-first-vercel-20261110` at `2c841abd65de657988f3447e5a3aa9de21cf1f99`. GitHub comparison reported 15 original-branch commits not contained in integration and 407 integration commits not contained in the original branch. The existing profile is not yet in the integration branch.
+
+Bounded change: carry over `owner/incomeos/contact-profile.js`, two synthetic tests, its script reference in `owner/incomeos/index.html`, responsive CSS and a PR-scoped test workflow. No existing accounting, DS-N1, ledger, security boundary, pricing, commercial integration or public JRS source was changed. Reused the existing research workspace. A dedicated PR-scoped workflow replaces the two original feature-branch-only workflows; it tests encryption, persistence on browser refresh, incorrect-passphrase denial, deletion, source isolation and iPhone-width browser emulation.
+
+Execution evidence in this session: GitHub repository metadata, full master directive, current handoff, source files and PR metadata were fetched; branch comparison and exact starting revision were verified. Node 22.16.0 exists in the local execution environment, but a complete source checkout was not possible because direct GitHub DNS resolution failed. No local Node unit or browser test was executed. GitHub Actions on the new draft PR are the independent shared execution record; their outcome must be checked and recorded separately. Chromium emulation does not establish physical iPhone acceptance.
+
+Source status: integration proposed, not owner accepted, not merged, not deployed. No real owner contact information, credentials, commercial outreach, financial transactions, customer release or external recruiter submission was used. The contact profile is passphrase-encrypted local browser persistence only, not a server-backed identity service. Pushing the task branch can cause an automatically triggered protected IncomeOS preview build, which is not a production-release authorization.
+
+### CI failure and targeted test correction, 2026-11-11
+
+At source head `e03e813d525f474f9fc4c1412a5ed37c0ebc6778`, PR #193 workflow run [42991776640](https://github.com/phillipwikes-bit/jrsstandard.com/actions/runs/42991776640) failed during the browser test. Six of six encrypted-contact unit tests and the public-source boundary test passed. Chromium was installed and launched. The browser test timed out after 30 seconds waiting for `#research-cards article.card` at line 63. The local source server does not supply external study opportunities, so the prior test incorrectly relied on a nonempty live study feed. This is a test fixture/environment assumption, not evidence that encryption failed.
+
+Correction: add one constructed, fictional research card within the browser test and wait for the real contact-preparation button to be added to that card by the existing MutationObserver. The live contact module, application URLs, encryption and release boundaries are unchanged. The corrected test and other suites require a new exact-head GitHub Actions run; no pass is claimed before that result.
