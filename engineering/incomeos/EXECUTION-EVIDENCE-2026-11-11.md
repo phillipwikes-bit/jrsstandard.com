@@ -50,3 +50,24 @@ Hosted, Supabase and Vercel operations were not attempted.
 ## Outstanding for DS-N1 acceptance
 
 Development-only Owner Desk access behind a verified private owner backend. The bridge still states that no browser route is registered. Reviewer actions and disposition retention inside the Owner Desk view. Independent CI results for this revision. Original SP-01 to SP-18 acceptance remains 0 of 18. Release and customer access remain not authorized.
+
+## Free throwaway Supabase test environment (owner instruction, same day)
+
+The owner asked for a free and simple alternative to a third hosted Supabase project. The organization is on the free plan and already holds two active projects, which is that plan's limit.
+
+Added `engineering/incomeos/test-environment/` (`run.sh`, `check.cjs`, `README.md`) and the workflow `incomeos-test-environment.yml`. Each run starts a local Supabase stack with Supabase CLI 2.122.1 (Auth, REST API, Postgres), installs `workspace-revision-staging.sql` and `workspace-revision-rpc-staging.sql` unchanged, creates two synthetic identities through the Auth admin API, allowlists one of them in the database, and drives the unmodified `revision-supabase-transport.js` against the stack. The transport's `https://<ref>.supabase.co` rule is left intact: the harness supplies a fetch that delivers a placeholder host to the local stack only. The harness refuses any API or database address that is not on the same machine.
+
+Executed result: GitHub Actions run 43027245483, job `throwaway-supabase-stack`, commit `5922d4dd`, passed. All 15 checks passed on the first run:
+
+- Wrong password refused (HTTP 400). Anonymous read and save refused (HTTP 401).
+- Signed-in identity that is not allowlisted refused for read and save (HTTP 403), before and after the owner stored data.
+- Allowlisted owner: empty start, first append becomes revision 1, readback equals the stored ciphertext and checksum.
+- Stale append refused and state unchanged. Damaged checksum refused (HTTP 400) and state unchanged.
+- Lost acknowledgement: the request was delivered once, the client saw a failure with no status, readback showed revision 2 with the submitted checksum, and a repeat of the same append was refused.
+- Direct table access refused for the owner's own token: HTTP 404 on the default schema and HTTP 406 on `incomeos_private`, for GET and DELETE.
+
+Observation, not changed here: a stale append reaches the client as HTTP 500, because the SQL raises SQLSTATE 40001 and the REST layer does not map it to a conflict status. The staged client does not branch on status and treats every failed save as uncertain until readback, so behaviour is safe. A distinct conflict status would let the client tell "someone saved first" from "the server failed". That is a design question for the accounting lane.
+
+Not run in this session: the same script locally, because no Docker daemon is available here. The GitHub run is the executed evidence.
+
+Limits: local stack, synthetic identities and data. This is not the isolated hosted revision target named by accounting requirement A14, not actual owner recovery, and not owner acceptance. `ACCOUNTING-EDITOR-ACCEPTANCE.json` is unchanged and A14 stays BLOCKED. Whether this environment is accepted in place of a hosted nonproduction project is the owner's decision. This work is in the accounting lane and was done by Claude Code on the owner's direct instruction.

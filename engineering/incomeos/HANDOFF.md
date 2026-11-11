@@ -14,6 +14,7 @@ Last updated: 2026-11-11, with pull request #190.
 | Owner Desk and ledger | `owner/incomeos/` |
 | DS-N1 reviewer | `lib/ds-n1/`, bridge `owner/incomeos/ds-runtime-bridge.mjs`, CLI `owner/incomeos/ds-local-review.mjs`, programme `owner/incomeos/ds-program.js` |
 | Tests | `tests/incomeos-*.mjs`, `tests/incomeos-*.test.cjs`, `tests/ds-n1/` |
+| Free test environment | `engineering/incomeos/test-environment/` and `.github/workflows/incomeos-test-environment.yml` |
 | Dated evidence records | `engineering/incomeos/EXECUTION-EVIDENCE-YYYY-MM-DD.md` |
 | Accounting acceptance register | `owner/incomeos/ACCOUNTING-EDITOR-ACCEPTANCE.json` |
 
@@ -118,6 +119,8 @@ Original SP-01 to SP-18 acceptance: 0 of 18. DS-A source: not recovered.
 Accounting editor: eleven requirements SOURCE TESTED, A02 and A15 PROTECTED PREVIEW VERIFIED, A01 OWNER ACCEPTANCE PENDING, A14 and A16 BLOCKED. See `EXECUTION-EVIDENCE-2026-11-09.md`.
 
 ## 6. Blocked on the owner
+
+A free throwaway Supabase test environment now exists (`engineering/incomeos/test-environment/`, see its README). It runs on pull requests, needs no account, and passed 15 of 15 checks on 2026-11-11. It covers sign-in, allowlist denial, append, readback, stale and damaged saves and lost-acknowledgement recovery against a real local Supabase stack. It is not a hosted project. The owner has not yet said whether it replaces items 1 to 3 below for acceptance purposes.
 
 These stop both the remaining DS-N1 criteria and accounting A14:
 
