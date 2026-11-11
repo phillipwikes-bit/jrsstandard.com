@@ -86,6 +86,13 @@ The contemporary framework consists of **reciprocity, scarcity, authority, commi
 
 Public GitHub must not reproduce the private contact addresses, full private email bodies or any purported recipient response. Gmail is the source of truth for exact saved wording.
 
+## F.1 Mandatory current email wording (owner correction, November 10, 2026)
+- Every outbound draft explicitly names the correct JRS initiative: **The Right to Know Why** for public-interest audiences or **Decisions You Can Defend** for professional audiences, without replacing the direct free-resource link.
+- Founder background language: **civil rights review and cognitive-behavioral programming**. Avoid describing the founder's background as 'supervisory review.'
+- Remove the sentence 'The instrument remains in operational validation' and equivalent routine validation boilerplate from outreach emails. The original research publication continues to carry accurate methodological disclosure and evidentiary limitations; those historical research records remain intact.
+- Do not turn first-contact emails into a research report. If a specific research statistic is included in a tailored international message, use only the accurately identified study sample, and never imply endorsement or performance in live organizational records.
+- Existing nine Gmail drafts were revised in place in accordance with these instructions. All remain UNSENT. After revisions, draft message identifiers may change and must be reconciled with the private register before subsequent outreach.
+
 ## G. Controlled release and outreach acceptance
 1. **Source:** Current PR branch must preserve page hierarchy, four resources on each page, direct links, no retired case-example anchors, no invented influence data; the CI tests must explicitly prevent reintroduction.
 2. **Technical:** At the exact eventual commit SHA, verify all required workflows, mobile render, actual links and final PDFs, support POST semantics, privacy/security negative paths and staging deployment identity. Earlier snapshots and checks from a different SHA are insufficient.
