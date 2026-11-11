@@ -117,6 +117,13 @@ Original SP-01 to SP-18 acceptance: 0 of 18. DS-A source: not recovered.
 
 Accounting editor: eleven requirements SOURCE TESTED, A02 and A15 PROTECTED PREVIEW VERIFIED, A01 OWNER ACCEPTANCE PENDING, A14 and A16 BLOCKED. See `EXECUTION-EVIDENCE-2026-11-09.md`.
 
+
+### Accounting-lane contact-profile source reapplication, 2026-11-11
+
+The original encrypted contact-profile implementation is in draft #187, whose branch diverged from the integration branch by 407 commits as of the recovery check. The bounded reapplication is prepared on `chatgpt/incomeos-contact-integration-20261111`, branched from integration commit `c6a65fff02b0ca09414b72455b49dc32a9813898`. It carries the existing contact module, the synthetic Node and browser tests, one existing Owner Desk script reference, scoped phone-width CSS and a dedicated PR-scoped CI workflow. The two older, feature-branch-only workflows from #187 are not copied because the new workflow supplies both unit and browser checks on integration pull requests. No unrelated prototype branch history is ported.
+
+Status: IN PROGRESS, SOURCE REAPPLIED; verification on the new draft pull request must be inspected before any acceptance claim. This does not establish protected preview behavior, physical iPhone acceptance, cloud synchronization, release authorization or production persistence. No real owner contact details are committed. GitHub branch publication can trigger an IncomeOS protected preview build; a build is not an authorized release.
+
 ## 6. Blocked on the owner
 
 These stop both the remaining DS-N1 criteria and accounting A14:
@@ -133,6 +140,6 @@ Owner-only, later: physical iPhone and separate-session recovery acceptance, ori
 With the items in section 6 still missing, the eligible source-level work is:
 
 1. DS-N1 lane: decide with the owner whether `cognitive-observations.mjs` from #119 belongs in the integration branch, then port it with its test in one pull request.
-2. Accounting lane: rebase or re-apply the contact profile from #187 onto the integration branch and resolve its two conflicts.
+2. Accounting lane: verify the bounded contact-profile port on `chatgpt/incomeos-contact-integration-20261111` using the exact-head GitHub Actions, correct any observed failures in that branch, and obtain the owner-controlled merge decision. Protected browser/device acceptance and production release remain separately gated.
 
 Once section 6 items 1 to 3 exist: scoped migration preflight, two-identity hosted denial and append tests, interruption recovery, non-destructive rollback rehearsal, then the Owner Desk reviewer view behind that backend.

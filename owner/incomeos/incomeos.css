@@ -147,3 +147,11 @@ textarea{display:block;width:100%;min-height:60px;resize:vertical;background:whi
 #revision-recovery-controls fieldset{min-width:0;max-width:100%}
 #revision-recovery-controls label{display:block}
 #revision-recovery-controls input[type="file"]{width:100%;max-width:100%}
+
+/* Encrypted application contact profile, scoped to the existing research view. */
+#incomeos-contact-panel{min-width:0;overflow-wrap:anywhere}
+#incomeos-contact-panel .formgrid{grid-template-columns:repeat(2,minmax(0,1fr))}
+#incomeos-contact-panel .formgrid>div{min-width:0}
+#incomeos-contact-panel input,#incomeos-contact-panel textarea{width:100%;min-width:0;max-width:100%;box-sizing:border-box}
+#incomeos-contact-panel .reportactions .smallbtn{min-width:0;white-space:normal;overflow-wrap:anywhere}
+@media(max-width:440px){#incomeos-contact-panel .formgrid{grid-template-columns:minmax(0,1fr)}#incomeos-contact-panel .reportactions .smallbtn{flex:1 1 100%}}
