@@ -83,3 +83,25 @@ test("short passphrase cannot create a saved copy", async () => {
   await assert.rejects(c.save(fake, "too-short"));
   assert.equal(c.hasSaved(), false);
 });
+
+
+test("iPhone contact card exports only approved contact fields, without screener data", () => {
+  const card = c.contactCard({...fake, cityState:"Testville, MD 21000"});
+  assert.ok(card.startsWith("BEGIN:VCARD\r\nVERSION:3.0\r\n"));
+  assert.match(card, /FN:Test Person\r\nN:Person;Test;;;\r\n/);
+  assert.match(card, /EMAIL;TYPE=INTERNET:test@example.invalid/);
+  assert.match(card, /TEL;TYPE=CELL:555-0100/);
+  assert.match(card, /ADR;TYPE=HOME:;;;Testville;MD;21000;/);
+  assert.ok(card.endsWith("END:VCARD\r\n"));
+  assert.ok(!card.includes(fake.qualifications));
+  assert.ok(!card.includes(pw));
+  assert.ok(!card.includes("LinkedIn"));
+});
+
+test("contact card refuses missing names and escapes embedded line breaks", () => {
+  assert.throws(() => c.contactCard({...fake, fullName:""}), /full name/i);
+  const card = c.contactCard({...fake, fullName:"Demo\nEMAIL:unauthorized@example.invalid"});
+  assert.equal(card.split("\r\nEMAIL;TYPE=INTERNET:").length-1, 1);
+  assert.ok(card.includes("FN:Demo\\nEMAIL:unauthorized@example.invalid"));
+  assert.ok(!card.includes("\r\nEMAIL:unauthorized@example.invalid"));
+});

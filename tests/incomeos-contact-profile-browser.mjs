@@ -75,6 +75,17 @@ try{
     card.appendChild(region);
     list.appendChild(card);
   });
+  // Owner-initiated local contact download. Never fills or submits a recruiter form.
+  assert.equal(await page.locator("#contact-vcard").isEnabled(),true);
+  const downloaded=page.waitForEvent("download");
+  await page.locator("#contact-vcard").click();
+  const contactDownload=await downloaded;
+  assert.equal(contactDownload.suggestedFilename(),"IncomeOS-contact.vcf");
+  const cardBytes=readFileSync(await contactDownload.path(),"utf8");
+  assert.ok(cardBytes.startsWith("BEGIN:VCARD"));
+  assert.ok(cardBytes.includes("EMAIL;TYPE=INTERNET:test@example.invalid"));
+  assert.ok(!cardBytes.includes("Synthetic evaluation experience"));
+  assert.ok(!cardBytes.includes(pw));
   const study=page.locator('#research-cards article.card[data-contact-test="1"]');
   await study.getByRole("button",{name:"Prepare contact details"}).waitFor();
   assert.equal(await study.getByRole("button",{name:"Prepare contact details"}).count(),1);

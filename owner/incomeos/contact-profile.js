@@ -35,6 +35,34 @@
       return f[1] + ": " + (s[f[0]] || "(not provided)");
     })).join("\n");
   }
+  // Explicit local export for Apple's Contacts/Safari AutoFill. This does not
+  // read other websites, fill a recruiter form, or submit screening answers.
+  function escapeCard(value) {
+    return value.replace(/\r\n|\r|\n/g, "\n")
+      .replace(/\\/g, "\\\\").replace(/\n/g, "\\n")
+      .replace(/;/g, "\\;").replace(/,/g, "\\,");
+  }
+  function contactCard(input) {
+    var p = clean(input);
+    if (!p.fullName) throw Error("Enter a full name before preparing an iPhone contact card.");
+    var nameParts = p.fullName.split(/\s+/);
+    var family = nameParts.length > 1 ? nameParts.pop() : "";
+    var given = nameParts.join(" ") || p.fullName;
+    var lines = [
+      "BEGIN:VCARD", "VERSION:3.0",
+      "FN:" + escapeCard(p.fullName),
+      "N:" + escapeCard(family) + ";" + escapeCard(given) + ";;;"
+    ];
+    if (p.email) lines.push("EMAIL;TYPE=INTERNET:" + escapeCard(p.email));
+    if (p.phone) lines.push("TEL;TYPE=CELL:" + escapeCard(p.phone));
+    // City / State is the only address field the present profile holds.
+    // Never invent a street, ZIP code, or country from a partial address.
+    var match = p.cityState.match(/^([^,]+),\s*([A-Za-z]{2})(?:\s+(\d{5}(?:-\d{4})?))?$/);
+    if (match) lines.push("ADR;TYPE=HOME:;;;" + escapeCard(match[1].trim()) +
+      ";" + match[2].toUpperCase() + ";" + (match[3] || "") + ";");
+    lines.push("END:VCARD");
+    return lines.join("\r\n") + "\r\n";
+  }
   function storage() {
     try {
       if (!root.localStorage) throw Error("No browser storage");
@@ -118,7 +146,7 @@
 
   var api = Object.freeze({
     STORAGE_KEY:STORAGE_KEY, FIELDS:FIELDS, empty:empty, clean:clean,
-    formatContact:info, hasSaved:hasSaved, seal:seal, open:open,
+    formatContact:info, contactCard:contactCard, hasSaved:hasSaved, seal:seal, open:open,
     save:save, unlock:unlock, remove:remove
   });
   if (typeof module !== "undefined" && module.exports) module.exports = api;
@@ -137,12 +165,14 @@
       '<h3 id="incomeos-contact-title">Contact information for research applications</h3>' +
       '<p class="muted">Enter your contact details once. Use Save encrypted to keep them on this iPhone after closing the tab. Unlock them on return. Nothing is automatically sent to recruiters.</p>' +
       '<p class="muted">Device and browser only. No cloud sync or recovery if browser data is cleared or the passphrase is lost. Do not enter screener answers here.</p>' +
+      '<p class="muted">For Safari AutoFill, you can download a contact card and add it to iPhone Contacts. The downloaded .vcf file is NOT encrypted. Review it before saving to Contacts. Add your street address separately in your contact card. Safari may not fill every form field.</p>' +
       '<div id="incomeos-contact-fields" class="formgrid"></div>' +
       '<div class="formgrid"><div><label for="contact-password">Encryption passphrase (16 characters minimum)</label><input id="contact-password" type="password" autocomplete="off" minlength="16"></div>' +
       '<div><label for="contact-confirm">Confirm passphrase when saving</label><input id="contact-confirm" type="password" autocomplete="off" minlength="16"></div></div>' +
       '<div class="reportactions"><button type="button" class="smallbtn" id="contact-save">Save encrypted on this device</button>' +
       '<button type="button" class="smallbtn" id="contact-unlock">Unlock saved details</button>' +
       '<button type="button" class="smallbtn" id="contact-copy">Copy contact information</button>' +
+      '<button type="button" class="smallbtn" id="contact-vcard">Prepare iPhone AutoFill card (.vcf)</button>' +
       '<button type="button" class="smallbtn" id="contact-delete">Delete encrypted copy</button></div>' +
       '<p class="muted">Screening responses must be completed personally. PRC Global Market Research prohibits AI use in its screening and study participation.</p>' +
       '<p role="status" aria-live="polite" id="contact-status" class="muted"></p>';
@@ -167,6 +197,7 @@
     function sync() {
       panel.querySelector("#contact-unlock").disabled = !locked || busy;
       panel.querySelector("#contact-save").disabled = locked || busy;
+      panel.querySelector("#contact-vcard").disabled = locked || busy;
       panel.querySelector("#contact-delete").disabled = !hasSaved() || busy;
     }
     notice(locked ? "Encrypted contact details found. Enter your passphrase and tap Unlock." :
@@ -198,6 +229,28 @@
       try { await navigator.clipboard.writeText(info(p)); notice("Contact information copied. Paste it into the recruiter's official form yourself."); }
       catch (_e) { notice("Clipboard is unavailable in this browser. Select and copy the individual fields."); }
     });
+    panel.querySelector("#contact-vcard").addEventListener("click", function () {
+      if (locked || busy) return;
+      var content;
+      try { content = contactCard(read()); }
+      catch (e) { notice(e.message); return; }
+      if (!root.confirm("This downloads an UNENCRYPTED contact card containing your name, email, phone and any recognized city/state. Anyone with the file can read it. Continue?")) {
+        notice("Contact card not downloaded."); return;
+      }
+      var url;
+      try {
+        var blob = new Blob([content], {type:"text/vcard;charset=utf-8"});
+        url = root.URL.createObjectURL(blob);
+        var a = document.createElement("a");
+        a.href = url; a.download = "IncomeOS-contact.vcf"; a.hidden = true;
+        document.body.appendChild(a); a.click(); a.remove();
+        root.setTimeout(function () { root.URL.revokeObjectURL(url); }, 10000);
+        notice("Contact card downloaded. Open it, review, and add it to Contacts. In iPhone Settings > Apps > Safari > AutoFill, enable Use Contact Info and choose your card under My Info. Remove the unencrypted download when finished.");
+      } catch (_e) {
+        if (url) root.URL.revokeObjectURL(url);
+        notice("The contact card could not be downloaded in this browser. Use Copy contact information instead.");
+      }
+    });
     panel.querySelector("#contact-delete").addEventListener("click", function () {
       if (!root.confirm("Delete this browser's encrypted contact profile? This cannot be undone.")) return;
       try { remove(); fill(empty()); locked = false; eraseSecrets(); notice("Encrypted profile deleted from this browser."); }
@@ -210,7 +263,7 @@
       if (tab && view.hidden) tab.click();
       panel.scrollIntoView({behavior:"smooth", block:"start"});
       notice(locked ? "Unlock saved details to prepare your application. No information has been submitted." :
-        "Review your contact details, then copy them. Open and complete the official recruiter screener yourself.");
+        "Review your contact details, then copy them or prepare an iPhone AutoFill card. Complete the official recruiter screener yourself.");
     }
     function decorate() {
       document.querySelectorAll("#research-cards article.card, #radar-results article.radar-card").forEach(function (card) {

@@ -124,6 +124,16 @@ The original encrypted contact-profile implementation is in draft #187, whose br
 
 Status: IN PROGRESS, SOURCE REAPPLIED; draft PR #193. Initial exact-head CI on `e03e813d` passed six contact unit tests and source isolation, but its contact browser test failed waiting for an absent external study card. A fictional-card test fixture has been added for a second exact-head CI run; the final result must be inspected before any acceptance claim. This does not establish protected preview behavior, physical iPhone acceptance, cloud synchronization, release authorization or production persistence. No real owner contact details are committed. GitHub branch publication can trigger an IncomeOS protected preview build; a build is not an authorized release.
 
+### Owner-controlled iPhone Safari contact AutoFill handoff, 2026-11-11
+
+Draft stacked PR #194 branches from contact-profile PR #193 without modifying that source branch. It adds a user-triggered `.vcf` export to the existing Research contact panel, so the owner can import ordinary contact fields into iPhone Contacts and use Safari's own AutoFill Contact on third-party forms that support it. Explicit warning/confirmation precedes download of an unencrypted local file. It exports only owner-entered name, email, telephone, and recognizable city/state/postal components. No invented address fields, employer-screening answers, third-party form automation, credentials, network submission, cloud-sync or Supabase access.
+
+Source and test commits through `599754ef67dd37dffb11d0dd713b6684da619f5b`: eight of eight constructed Node contact tests passed; the scoped Chrome iPhone-viewport workflow passed a real browser download assertion, encryption, reload/unlock, wrong-passphrase denial, deletion, source isolation and mobile reflow, in GitHub Actions run 43019553933. The mobile viewport audit run 43019553785, owner-data anonymous probe 43019553814 and private prototype check 43019554040 also passed on the source commit. Vercel automatically created a READY protected preview at `dpl_3tCZ8HL7AwVCJmtBC2vTTerkXXak`; build readiness is not release approval.
+
+**Status:** SOURCE/BROWSER TESTED; DRAFT; NOT MERGED OR RELEASE-AUTHORIZED. No real contact data was entered. Physical iPhone Safari, contact import into Apple Contacts, SurveyMonkey field-level compatibility, hosted authorized/anonymous access matrix, and owner's release decision remain unverified. The direct no-code path for the owner is Settings > Apps > Safari > AutoFill > Use Contact Info and select My Info. The project cannot write into another site's form directly.
+
+**Next action:** Owner-controlled review of stacked PR #194 and underlying #193, then physical iPhone and protected-preview acceptance before any routine personal-data use or release.
+
 ## 6. Blocked on the owner
 
 These stop both the remaining DS-N1 criteria and accounting A14:
