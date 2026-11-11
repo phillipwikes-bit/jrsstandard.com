@@ -7,6 +7,7 @@ on:
   pull_request:
     branches:
       - chatgpt/incomeos-v23-product-integration-20261105
+      - verification/incomeos-accounting-ci-20261108
   workflow_dispatch:
 permissions:
   contents: read

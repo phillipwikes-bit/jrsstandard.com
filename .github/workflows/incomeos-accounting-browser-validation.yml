@@ -15,6 +15,7 @@ on:
   pull_request:
     branches:
       - chatgpt/incomeos-vault-envelope-validation-20261107
+      - verification/incomeos-accounting-ci-20261108
   workflow_dispatch:
 permissions:
   contents: read
