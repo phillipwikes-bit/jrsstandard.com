@@ -3,6 +3,7 @@ on:
   pull_request:
     branches:
       - verification/incomeos-accounting-ci-20261108
+      - chatgpt/incomeos-contact-integration-20261111
     paths:
       - 'owner/incomeos/contact-profile.js'
       - 'owner/incomeos/index.html'
