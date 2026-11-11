@@ -52,3 +52,82 @@ test('CLI executes the fictional reviewer, writes a verifiable export once, and 
     rmSync(dir, { recursive:true, force:true });
   }
 });
+
+test('CLI replays recorded human reviewer actions into a verifiable export and refuses re-dated or anonymous actions', async () => {
+  const { mkdtempSync, writeFileSync, readFileSync: read, rmSync, existsSync } = await import('node:fs');
+  const { tmpdir } = await import('node:os');
+  const { resolve } = await import('node:path');
+  const { spawnSync } = await import('node:child_process');
+  const { startSyntheticReview, reviewerSnapshot } = await import('../owner/incomeos/ds-runtime-bridge.mjs');
+  const dir = mkdtempSync(resolve(tmpdir(), 'incomeos-dsn1-cli-actions-'));
+  try {
+    const program = globalThis.IncomeOSDSProgram.newProgram('2026-11-05');
+    const finding = reviewerSnapshot(program, startSyntheticReview(program, fixture, at).session)
+      .findings.find(x => x.code === 'UNSUPPORTED_CLAIM');
+    assert.ok(finding);
+    const reviewer = { reviewer_id:'rev-test-01', name:'Fictional Test Reviewer' };
+    const recorded = [
+      { type:'request_evidence', finding_id:finding.finding_id, at:'2026-11-05T13:31:00Z', reviewer,
+        request:'Please provide the missing source record before treating the claim as supported.' },
+      { type:'final_disposition', disposition:'returned_to_author', at:'2026-11-05T13:35:00Z', reviewer,
+        note:'Returned: the claim has no supporting source in the fictional record.' },
+    ];
+    const programPath = resolve(dir, 'programme.json');
+    const fixturePath = resolve(dir, 'fictional.json');
+    const actionsPath = resolve(dir, 'actions.json');
+    writeFileSync(programPath, JSON.stringify(program));
+    writeFileSync(fixturePath, JSON.stringify(fixture));
+    const entry = resolve(base, '../owner/incomeos/ds-local-review.mjs');
+    let n = 0;
+    const run = actions => {
+      const exportPath = resolve(dir, 'evidence-' + (++n) + '.json');
+      writeFileSync(actionsPath, JSON.stringify(actions));
+      const out = spawnSync(process.execPath, [entry, fixturePath, programPath, actionsPath, exportPath], { encoding:'utf8' });
+      return { ...out, exportPath };
+    };
+
+    const ok = run({ opened_at:at, actions:recorded });
+    assert.equal(ok.status, 0, ok.stderr);
+    const summary = JSON.parse(ok.stdout);
+    assert.equal(summary.eventCount, 3);
+    assert.equal(summary.disposition, 'returned_to_author');
+    assert.notEqual(summary.status, 'READY');
+    assert.doesNotMatch(ok.stdout, /Fictional Test Reviewer|missing source record/, 'summary must not echo review content');
+    const bundle = JSON.parse(read(ok.exportPath, 'utf8'));
+    assert.equal(verifyExport(bundle).verdict, VERDICT.CONSISTENT);
+    assert.equal(bundle.events[0].at, at, 'review opening time is the operator-recorded one');
+    // Human actions are retained verbatim: same order, time, reviewer and words.
+    assert.deepEqual(bundle.events.slice(1).map(e => [e.type, e.at, e.reviewer.reviewer_id]),
+      recorded.map(a => [a.type, a.at, reviewer.reviewer_id]));
+    assert.equal(bundle.events[1].request, recorded[0].request);
+    assert.equal(bundle.events[2].disposition, 'returned_to_author');
+    assert.equal(bundle.events[2].note, recorded[1].note);
+    assert.ok(Date.parse(bundle.report.generated_at) >= Date.parse(recorded[1].at));
+    // An edited retained disposition is detected by the internal consistency check.
+    const edited = structuredClone(bundle);
+    edited.events[2].disposition = 'accepted_for_finalization';
+    assert.notEqual(verifyExport(edited).verdict, VERDICT.CONSISTENT);
+
+    // The array form opens the review at run time, so it cannot carry earlier actions.
+    const refusals = [
+      [recorded, /TIMESTAMP_REGRESSION/],
+      [{ opened_at:'2026-11-05T13:32:00Z', actions:recorded }, /TIMESTAMP_REGRESSION/],
+      [{ opened_at:'2999-01-01T00:00:00Z', actions:[] }, /later than this run/],
+      [{ opened_at:at, actions:[{ ...recorded[0], at:'2999-01-01T00:00:00Z' }] }, /later than this run/],
+      [{ opened_at:'2026-11-05 13:30', actions:recorded }, /ISO-8601/],
+      [{ actions:recorded }, /ISO-8601/],
+      [{ opened_at:at, actions:recorded, generated_at:at }, /Unsupported human-actions field/],
+      [{ opened_at:at, actions:'none' }, /must be an array/],
+      [{ opened_at:at, actions:[{ ...recorded[0], reviewer:undefined }] }, /REVIEWER_REQUIRED/],
+      [{ opened_at:at, actions:[{ type:'final_disposition', disposition:'accepted_for_finalization', at:'2026-11-05T13:31:00Z', reviewer, note:'Accept.' }] }, /NOT_READY/],
+    ];
+    for (const [actions, reason] of refusals) {
+      const denied = run(actions);
+      assert.notEqual(denied.status, 0, 'expected refusal: ' + reason);
+      assert.match(denied.stderr, reason);
+      assert.equal(existsSync(denied.exportPath), false, 'a refused review must not leave an export: ' + reason);
+    }
+  } finally {
+    rmSync(dir, { recursive:true, force:true });
+  }
+});
