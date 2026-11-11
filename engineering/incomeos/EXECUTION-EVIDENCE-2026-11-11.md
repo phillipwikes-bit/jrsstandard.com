@@ -41,7 +41,11 @@ These are local results on constructed fictional fixtures. They are not independ
 
 ## Not executed
 
-Browser suites (`incomeos-ds-panel-browser`, `incomeos-ds-program-browser`) were not run in this session. Hosted, Supabase and Vercel operations were not attempted.
+Hosted, Supabase and Vercel operations were not attempted.
+
+## Browser suites (run after the change, at `1b42e630`)
+
+`tests/incomeos-ds-panel-browser.mjs` passed: imported product source and fail-closed reviewer boundary at 320, 375 and 430 px. `tests/incomeos-ds-program-browser.mjs` passed. Both ran locally against the container's preinstalled Chromium and Playwright, which is a different Playwright version from the 1.63.0 the workflows pin. The change does not touch any file these suites load.
 
 ## Outstanding for DS-N1 acceptance
 
