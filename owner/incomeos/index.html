@@ -69,6 +69,8 @@
 <script defer src="./getting-started.js"></script>
 <script defer src="./vault-ui.js"></script>
 <script defer src="./ds-program-ui.js"></script>
+<script defer src="./ds-source-adapter.js"></script>
+<script defer src="./ds-source-ui.js"></script>
 </head>
 <body>
 <a class="skip" href="#main">Skip to dashboard</a>
@@ -99,6 +101,7 @@
     <p id="ds-status" class="status" role="status" aria-live="polite">Program record shown from memory only.</p>
     <button id="ds-start" class="smallbtn" type="button" hidden>Start the program record in this workspace</button>
     <div id="ds-output"></div>
+    <section class="panel" aria-labelledby="ds-source-heading"><h3 id="ds-source-heading">Development source evidence</h3><p class="muted">Read-only inspection of a versioned source evidence JSON file. The file is not uploaded, stored, or accepted as authenticated proof. No release status changes.</p><label for="ds-source-file">Source evidence JSON (100 KB maximum)</label><input id="ds-source-file" type="file" accept=".json,application/json"><pre id="ds-source-result" role="status" aria-live="polite">No source evidence verified.</pre></section>
   </section>
   <section id="view-research" class="view" aria-labelledby="research-heading" hidden>
     <section id="start-here" class="panel" aria-labelledby="start-here-heading">

@@ -1,0 +1,10 @@
+"use strict";
+const test=require("node:test"),assert=require("node:assert/strict"),a=require("./ds-source-adapter.js");
+const input={schema:a.SCHEMA,identity:"DS-N1",repository:"phillipwikes-bit/jrsstandard.com",branch:"claude/decision-spellchecker-ds-n1-2026-11-03",commit:"f8c7a2ad5fa81e7922401b7937530161ec97e61f",tests:[{id:"unit",status:"NOT_EXECUTED"}],requirements:[{id:"SP-07",originalAccepted:false,candidateStatus:"EXPERIMENTAL"}]};
+const program={schema:"incomeos.ds-program.v1",programId:"DSP"};
+test("does not claim acceptance, integration or release",()=>{const s=a.summarize(input,program);assert.equal(s.originalAccepted,0);assert.equal(s.tests.notExecuted,1);assert.equal(s.integrationStatus,"INTEGRATION_IN_PROGRESS");assert.equal(s.customerAccess,false);});
+test("rejects abbreviated commit",()=>assert.throws(()=>a.validate({...input,commit:"short"})));
+test("rejects unsupported pass without execution evidence",()=>assert.throws(()=>a.validate({...input,tests:[{id:"unit",status:"PASSED"}]})));
+test("rejects original acceptance claims",()=>assert.throws(()=>a.validate({...input,requirements:[{id:"SP-07",originalAccepted:true,candidateStatus:"DONE"}]})));
+test("rejects wrong programme",()=>assert.throws(()=>a.summarize(input,{schema:"other",programId:"DSP"})));
+test("rejects unknown source identity",()=>assert.throws(()=>a.validate({...input,identity:"DS-C"})));
