@@ -126,6 +126,20 @@ The 31 messages sent on November 12 cannot be retroactively edited. They did not
 - **Cialdini alignment:** Use true reciprocity through free resources, actual professional authority, verified relevance, respectful tone and a voluntary low-friction read. Unity requires genuine shared professional purpose, not invented affiliation. Only use social proof if independently documented and accurately scoped; no invented scarcity. Do not claim measured persuasion, response or adoption from this drafting exercise.
 - **Cross-border controls:** A published mailbox does not guarantee permission, consent or delivery. Before any sending, apply destination-appropriate privacy/direct-marketing requirements, suppression, purpose/identity/disclosures where applicable, and exact owner approval. No automatic sends, follow-ups or revised-address retries.
 
+## F.5 Recipient importance opening in every future email (owner direction, November 12, 2026)
+
+The opening one or two substantive sentences of **each new JRS outreach message**, whether to a U.S. or international stakeholder, must acknowledge the **exceptional importance of that particular organization's actual documented work**. Name the organization and its specific role, and say why that role matters to the community, people or professional function it serves. This is a genuine, evidence-grounded expression of respect, not promotional flattery.
+
+Use natural, recipient-specific wording, such as:
+- For a verified equality body: "Equinet's work connecting equality bodies is especially important because it helps practitioners confront discrimination concerns across jurisdictions."
+- For a verified investigator association: "AWI's attention to how workplace investigations are conducted is extremely important to the quality and fairness of investigative practice."
+
+These are **style examples only**, not instructions to recontact already-sent recipients or fixed text to repeat. Verify the actual mission and activities on official sources before using any individual claim. Do not use a uniform flattering opener, invent achievements, overstate authority, claim a partnership, or suggest institutional support for JRS. If the organization-specific rationale cannot be substantiated, research further or omit the prospect.
+
+The opening is followed by an accurate explanation of the relevant JRS initiative and DRR, the required *16 experts, 11 countries, five continents, 384 constructed-record reviews* sentence as prescribed in F.4, the exact approved professional-background sentence, the relevant free resource, clear no-registration/no-purchase/no-commercial-commitment language, and the website-only signature. Keep the message concise and natural.
+
+The prior JRS messages were sent by the owner and cannot be rewritten. No duplicate correction or unsolicited follow-up should be sent merely to apply this editorial improvement.
+
 ## G. Controlled release and outreach acceptance
 1. **Source:** Current PR branch must preserve page hierarchy, four resources on each page, direct links, no retired case-example anchors, no invented influence data; the CI tests must explicitly prevent reintroduction.
 2. **Technical:** At the exact eventual commit SHA, verify all required workflows, mobile render, actual links and final PDFs, support POST semantics, privacy/security negative paths and staging deployment identity. Earlier snapshots and checks from a different SHA are insufficient.
