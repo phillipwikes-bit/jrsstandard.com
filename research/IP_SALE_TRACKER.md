@@ -16,7 +16,7 @@
 |---|---|
 | **Created** | 2026-08-13 |
 | **Last revised** | 2026-09-22 (rev 36) |
-| **Revisions** | 39 |
+| **Revisions** | 40 |
 | **Current stage** | **Zero buyer conversations held, because I advised waiting. Gate withdrawn 2026-08-13** |
 | **Sale probability, as-is** | **5 to 10%** over ~12 months (owner's own anchor, `Path_to_Sale_Action_Plan.md`, unchanged) |
 
@@ -179,6 +179,7 @@ GRC / compliance software vendors · E-discovery and legal-tech · HR-tech and p
 
 | # | Date | Change |
 |---|---|---|
+| 40 | 2026-11-12 | **Three publication packages drafted for the source-check method; none submitted.** AWI Journal article and abstract, CCI Press book proposal, SCCE worksheet with a note to the CEP editor. **Bears on the estate:** the same method is expressed in all three, AWI's past issues state the association holds copyright in its articles, and a book contract would add a further grant. Each venue's terms need reading before more than one is placed. Co-author clearance for the research the book would discuss is not done. Files: `research/Publication_Versions_2026-11-12/` |
 | 39 | 2026-11-12 | **Publication route for the ROI source-check piece recommended; nothing submitted.** Sole-authored procedure-only article, first to the AWI Journal by abstract, fallback Corporate Compliance Insights, then the published link to Broida as a give. **Rights point for the estate:** AWI's past issues state the association holds copyright in its articles, so the terms need reading before submission. Owner decision pending |
 | 38 | 2026-11-12 | **Fit of the manuscript for Dewey examined. The subject fits; the positioning does not.** Dewey publishes authored, case-law-based federal-sector titles; the manual's author is Deryn Sumner, so placement is her decision. As drafted the piece carries JRS and DRR branding and unpublished research, and printing it would amount to the endorsement Broida declined. Recommended an unbranded procedure-only version offered for the author to use or cite, or sending the CEP article alone. Owner decision pending. Detail in `research/Broida_Manuscript_Offer_2026-11-12/REVIEW_NOTES.md` |
 | 37 | 2026-11-12 | **A manuscript offer to Peter Broida was drafted for the first contact since 15 July. It is not sent.** Proposed companion piece for Dewey's EEO Counselors' and Investigators' Manual, offered at no charge with no reply requested, consistent with the standing rule that the next contact be a give. The email no longer calls his July mentions a recommendation. **Open before sending:** co-author sign-off for Hossain, Young and Pokhriyal, since the piece reports their study results to a publisher and a no-charge contribution may involve a grant of rights; three external citations unverified; one contradiction between the manuscript and two public pages on whether the reliability criterion was pre-registered. Files: `research/Broida_Manuscript_Offer_2026-11-12/` |

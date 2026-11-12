@@ -1,0 +1,64 @@
+# Cover notes and abstract
+
+**Status:** DRAFTS for Phillip to send. Nothing sent or submitted. Read `SUBMISSION_NOTES.md` first.
+
+---
+
+## 1. AWI Journal
+
+**To:** the AWI Journal editorial address (confirm on awi.org)
+**Subject:** Article proposal: checking an investigation report against its own file
+
+Dear Editors,
+
+I would like to propose an article for the AWI Journal. The abstract is below and a full draft of about 1,200 words is attached.
+
+**Abstract.** An investigation report is read by people who were not in the interviews, sometimes years later and without the investigator to explain it. This article describes a source check to run before a report is issued. The reviewer takes each finding and the factual statements it depends on, identifies what kind of statement each one is, opens the cited source, and asks whether the passage supports the sentence as written. The check looks closely at words of frequency, certainty and scope, at quotations, at the difference between the date of an event and the date of an account, and at how conflicting accounts are handled. Each gap is given a recorded outcome. The article covers who should do the check, how it applies to reports drafted with AI tools, and what can and cannot be claimed for it. A short file note is included.
+
+The piece has not been published or submitted elsewhere. I served as Lead Civil Rights Officer at the Maryland Commission on Civil Rights from 2012 to 2025 and developed the Justification Review Standard, a documentation-review method.
+
+I would be glad to revise it to the Journal's length and style.
+
+Sincerely,
+Phillip Wikes, MS
+info@jrsstandard.com
+
+---
+
+## 2. CCI Press
+
+**To:** the CCI Press proposals address (confirm on the CCI Press page)
+**Subject:** Book proposal: The Record Has to Stand Alone
+
+Hello,
+
+I am writing to propose a book for CCI Press. Corporate Compliance Insights published "That AI-Drafted Termination Memo Could Become Evidence," which I wrote with Hekim Colpan, on September 29, 2026.
+
+The proposed book, The Record Has to Stand Alone, is a practice guide for compliance, HR and investigations professionals. It deals with one question: whether a decision record can show its own basis to a reader who took no part in the decision, especially when part of it was drafted with an AI tool. The attached proposal sets out the readership, a chapter outline, the material that already exists, and the limits of the research behind it.
+
+I can send a full outline and a sample chapter if the idea is of interest.
+
+Thank you for considering it.
+
+Phillip Wikes, MS
+info@jrsstandard.com
+https://www.jrsstandard.com
+
+---
+
+## 3. SCCE (to the CEP Magazine editor)
+
+**To:** Bill Anholzer
+**Subject:** A worksheet for the Manual or the forms library?
+
+Bill,
+
+Thank you for running "When the Record Cannot Speak for Itself" in the November issue.
+
+I have turned the review step that article argues for into a two-page worksheet, attached. An investigator or reviewer uses it to check that each key statement in a report can be traced to the file before the report is finalized.
+
+Does SCCE take outside tools for The Complete Compliance and Ethics Manual or for the forms and tools library? If so, I would like to offer this one. If someone else handles those, I would be grateful for a name.
+
+Best regards,
+Phillip Wikes, MS
+info@jrsstandard.com
