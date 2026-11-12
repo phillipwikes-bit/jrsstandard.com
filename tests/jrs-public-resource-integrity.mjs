@@ -21,7 +21,11 @@ const pages=['index.html','resources.html','research.html','investigator-guides.
 'reference/reviewer-worksheet/index.html','reference/second-line-review-model/index.html',
 'reference/traveler-test/index.html','reference/unsupported-generalization/index.html',
 'reviewer/index.html','ai-governance-record.html','compliance.html','datasets.html',
-'finding.html','results.html','why-good-decisions-fail.html','privacy-notice.html'];
+'finding.html','results.html','why-good-decisions-fail.html','privacy-notice.html',
+'editions.html','organization.html','practitioner-questions.html','cite-jrs.html',
+'field-evidence-status.html','investigation-report-evidence-check.html',
+'ai-drafted-record-source-verification.html','decision-record-chronology-review.html',
+'supplier-access-exception-documentation.html'];
 const redirs=new Map(JSON.parse(read('vercel.json')).redirects.map(x=>[x.source,x.destination]));
 const docs={employment:'JRS_Investigator_Field_Guide_Employment.pdf',
 fairhousing:'JRS_Investigator_Field_Guide_FairHousing.pdf',

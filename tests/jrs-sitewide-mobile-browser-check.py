@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Check sitewide source-rendered mobile presentation evidence.
 
-This validates the 59 currently retained institutional route sources at 320px, 390px, 768px and 1440px.
+This validates the 68 retained public and historical route sources at 320px, 390px, 768px and 1440px.
 It is NOT WCAG certification, PDF accessibility, VoiceOver testing or a live
 submission/consent acceptance test. Preserve small-control observations
 for manual investigation without implying all targets have been certified.
@@ -28,8 +28,8 @@ inv = re.search(r"const paths=(\[[^\n;]*\]);", source)
 if not inv:
     raise SystemExit("FAIL: rendered audit's source inventory is unavailable")
 routes = json.loads(inv.group(1))
-if len(routes) != 59 or len(set(routes)) != 59:
-    raise SystemExit("FAIL: current public and legacy audit inventory must contain 59 unique routes")
+if len(routes) != 68 or len(set(routes)) != 68:
+    raise SystemExit("FAIL: current public and legacy audit inventory must contain 68 unique routes")
 widths = (320, 390, 768, 1440)
 expected = {(route, width) for route in routes for width in widths}
 actual = [(r.get("path"), r.get("width")) for r in rows]

@@ -198,18 +198,8 @@
       "permanent": false
     },
     {
-      "source": "/bench-admin",
-      "destination": "/bench-admin.html",
-      "permanent": false
-    },
-    {
       "source": "/bench-results",
       "destination": "/research.html",
-      "permanent": false
-    },
-    {
-      "source": "/bench-review",
-      "destination": "/bench-review.html",
       "permanent": false
     },
     {
@@ -293,11 +283,6 @@
       "permanent": false
     },
     {
-      "source": "/org-pilot",
-      "destination": "/org-pilot.html",
-      "permanent": false
-    },
-    {
       "source": "/people",
       "destination": "/people.html",
       "permanent": false
@@ -333,11 +318,6 @@
       "permanent": false
     },
     {
-      "source": "/review-status",
-      "destination": "/review-status.html",
-      "permanent": false
-    },
-    {
       "source": "/simulations",
       "destination": "/simulations.html",
       "permanent": false
@@ -348,11 +328,6 @@
       "permanent": false
     },
     {
-      "source": "/submit-validation",
-      "destination": "/submit-validation.html",
-      "permanent": false
-    },
-    {
       "source": "/supported",
       "destination": "/supported.html",
       "permanent": false
@@ -360,11 +335,6 @@
     {
       "source": "/training",
       "destination": "/training.html",
-      "permanent": false
-    },
-    {
-      "source": "/vp-7c1f9a4e8d2b6035",
-      "destination": "/vp-7c1f9a4e8d2b6035.html",
       "permanent": false
     },
     {

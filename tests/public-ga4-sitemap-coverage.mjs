@@ -9,7 +9,7 @@ const root = process.cwd();
 const read = (relative) => readFileSync(join(root, relative), 'utf8');
 const sitemap = read('sitemap.xml');
 const urls = [...sitemap.matchAll(/<loc>([^<]+)<\/loc>/g)].map(match => match[1]);
-assert.equal(urls.length, 55, 'audit-controlled public sitemap must contain 55 entries');
+assert.equal(urls.length, 53, 'current public sitemap excludes two historical simulations');
 assert.equal(new Set(urls).size, urls.length, 'sitemap URLs must be unique');
 
 const redirects = new Set(JSON.parse(read('vercel.json')).redirects.map(rule => rule.source));
@@ -36,4 +36,4 @@ assert.deepEqual(invalid, [], 'public sitemap pages must exist, avoid redirects 
 assert.deepEqual(absent, [], 'all indexed public pages should carry the existing GA4 ID');
 const privatePage = read('programme-status-9872fb93cc94.html');
 assert.ok(!privatePage.includes('googletagmanager.com/gtag/js?id=' + id), 'owner-private surface must remain without a GA4 loader');
-console.log('PASS: 55 public sitemap pages have source-level GA4 placement, self-canonicals and no redirected sitemap entries; owner page is untracked.');
+console.log('PASS: '+urls.length+' current public sitemap pages have source-level GA4 placement, self-canonicals and no redirected sitemap entries; owner page is untracked.');

@@ -31,7 +31,7 @@ for (const original of [
   '/api/dl?e=card&amp;src=resources',
   'investigator-guides.html',
   'training.html',
-  'simulations.html',
+  'ai-drafted-record-source-verification.html',
   'reference/',
   'research.html',
   'manifest.html'
@@ -39,6 +39,9 @@ for (const original of [
 for (const target of ['research-summary.html', 'methodology.html', 'evidence-ledger.html', 'questions.html', 'research-register.html']) {
   assert.ok(evidence.includes('href="' + target + '"'), 'research traceability link lost: ' + target);
 }
+assert.ok(existsSync(new URL('../simulations.html',import.meta.url)),'historical simulation source must remain auditable');
+assert.match(file('simulations.html'),/name="robots" content="noindex,follow"/,'historical simulation page must not be indexed');
+assert.doesNotMatch(tools,/href="simulations\.html"/,'current resource directory must not promote historical exercises');
 assert.ok(contact.includes('action="https://formspree.io/f/mreddwdg"'), 'existing inquiry workflow must remain unchanged');
 assert.ok(!existsSync(new URL('../review-engine.html', import.meta.url)), 'retired technical page must stay absent');
 assert.ok(!existsSync(new URL('../api/review.js', import.meta.url)), 'retired public record-processing endpoint must stay absent');

@@ -60,7 +60,7 @@ p{max-width:780px;color:var(--muted)}.card{background:var(--panel);border:1px so
  <p>Questions about the Justification Review Standard, corrections to published materials, accessibility concerns and voluntary professional feedback are welcome. The investigator guides, training and reviewer references remain free without registration or contact.</p>
  <section class="card" aria-labelledby="inquiry-title">
   <h2 id="inquiry-title">Send an inquiry</h2>
-  <p>Complete the fields and select Submit inquiry. JRS uses its existing Formspree submission service to receive the message and send a notification to the designated JRS Gmail inbox. No email application is required. Do not include case records, confidential documents or personal information about other people.</p>
+  <p>Complete the fields and select Submit inquiry. JRS uses Formspree to receive inquiries. Service acceptance does not establish that an email notification reached the JRS mailbox. No separate email application is required. Do not include case records, confidential documents or personal information about other people.</p>
   <p class="small">For an accessible-format request, select the accessibility category and identify the document title, edition and format needed. This is a request for assistance, not a representation that any PDF has passed an accessibility audit or that a replacement format is already available.</p>
   <form id="jrs-inquiry" action="https://formspree.io/f/mreddwdg" method="POST">
    <div class="form-fields">
@@ -87,7 +87,7 @@ p{max-width:780px;color:var(--muted)}.card{background:var(--panel);border:1px so
    <button class="button submit" id="contact-submit" type="submit">Submit inquiry</button>
    <p class="small" id="contact-status" role="status" aria-live="polite">After submission, a receipt will appear when the inquiry service accepts the message. A receipt does not establish that a particular email arrived in the inbox.</p>
   </form>
-  <p class="small">Prefer email? You can also write directly to <a href="mailto:phillipwikes@gmail.com?subject=JRS%20professional%20inquiry">phillipwikes@gmail.com</a>.</p>
+  <p class="small">Prefer email? You can also write directly to <a href="mailto:info@jrsstandard.com?subject=JRS%20professional%20inquiry">info@jrsstandard.com</a>.</p>
   <noscript><p class="small">JavaScript is optional. Submit the form normally and Formspree will display the confirmation page.</p></noscript>
  </section>
  <p><strong>Privacy and scope.</strong> Do not email case files, confidential employment or housing records, credentials, privileged material or identifying information about third parties. An inquiry does not create research enrollment, a software license, a commercial commitment or consent to marketing.</p>
@@ -127,7 +127,7 @@ p{max-width:780px;color:var(--muted)}.card{background:var(--panel);border:1px so
       const outcome=await response.json();
       if(!response.ok||outcome.accepted!==true)throw new Error('unconfirmed');
       f.reset();
-      say('Inquiry accepted. JRS receives submissions through Formspree, with an email notification to the owner. You do not need to send a separate email.');
+      say('Inquiry accepted by Formspree. This confirms service receipt, not successful email notification or a response. You do not need to resubmit.');
     }catch{
       say('Submission could not be confirmed. Please do not submit repeatedly. You may contact JRS using the direct email link below.',true);
     }finally{sending=false;button.disabled=false}
