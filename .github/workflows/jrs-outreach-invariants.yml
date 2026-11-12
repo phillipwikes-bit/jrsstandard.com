@@ -1,0 +1,36 @@
+name: JRS outreach safety and measurement invariants
+on:
+  pull_request:
+    paths:
+      - "outreach-email-builder.html"
+      - "vercel.json"
+      - "check.html"
+      - "decisions-you-can-defend.html"
+      - "right-to-know-why.html"
+      - "privacy-notice.html"
+      - "assets/jrs-engagement.js"
+      - "docs/outreach/**"
+      - "tests/outreach/**"
+      - ".github/workflows/jrs-outreach-invariants.yml"
+  push:
+    branches: [main]
+    paths:
+      - "outreach-email-builder.html"
+      - "vercel.json"
+      - "check.html"
+      - "decisions-you-can-defend.html"
+      - "right-to-know-why.html"
+      - "privacy-notice.html"
+      - "assets/jrs-engagement.js"
+      - "docs/outreach/**"
+      - "tests/outreach/**"
+permissions:
+  contents: read
+jobs:
+  outreach-invariants:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - name: Verify local-only drafting and non-causal claims
+        run: node --test tests/outreach/public-outreach-invariants.test.mjs
