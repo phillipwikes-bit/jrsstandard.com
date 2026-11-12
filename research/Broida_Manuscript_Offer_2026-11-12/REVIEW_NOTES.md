@@ -47,3 +47,35 @@ The session's network policy blocked `eeoc.gov`, `deweypub.com` and `corporateco
 1. **Co-author sign-off.** The manuscript names Ubayet Hossain, Stacyann Young and Tanvi Pokhriyal and reports study results to a publisher. The contributor map records no executed instrument for Hossain, whose stated condition was review of the specific text, and "co-author instrument not confirmed" for Young and Pokhriyal. Offering the piece to Dewey "at no charge" may involve a grant of rights. That is a question for the co-authors and, if Dewey accepts, for counsel.
 2. **Contradiction to resolve.** The manuscript says most reliability ratings preceded documentation of the criterion. `check.html` and `research-summary.html` call the same criterion "pre-registered." Both cannot stand. The manuscript keeps the more conservative statement. The public pages were not changed.
 3. **Sending.** External communication. Phillip sends, or not.
+
+---
+
+# Fit for Dewey Publications (added 2026-11-12)
+
+## Evidence
+
+- FACT (web search result for Dewey's store listing, 2026-11-12; page itself not fetched): Dewey describes itself as a small Arlington publisher of federal civil service law whose "authors are prominent practitioners in their respective fields of practice." The 2023 manual is listed as the 3rd edition, by Deryn Sumner with the late Ernest Hadley as founding author. This partly closes UNVERIFIED item 2 above. The "§ 6, Report of Investigation" section number is still unchecked.
+- FACT (`research/Broida_Interaction_Summary_2026-09-06.md`): Broida forwarded the JRS site to the investigation-book authors on 10 July 2026. No response from those authors is recorded. He disclaimed endorsement on air. Dewey's stated business is publishing.
+- NOT ESTABLISHED: whether Dewey accepts outside contributions to an authored title, or publishes guest material in any form. No submissions page was found.
+
+## Assessment (INFERENCE)
+
+| Dimension | Fit | Reason |
+|---|---|---|
+| Subject | Strong | The federal-sector ROI is the manual's own topic, and the piece is anchored to 29 C.F.R. § 1614.108 and MD-110 Chapter 6 |
+| Channel | Better than July | July offered training to a publisher. This offers text |
+| Decision-maker | Weak | The manual is an authored work. Whether anything is added is Deryn Sumner's call, and the authors already received the site in July without a recorded reply |
+| Form | Weak | A named outside section inside a single-author manual is unusual for a practitioner treatise. A standalone piece the author may cite or draw on is the realistic outcome |
+| Legal content | Weak | The piece cites no EEOC decisions. Dewey titles are built on case law. A federal-sector reader will expect decisions on inadequate investigations and supplemental-investigation remands. None are supplied here and none should be added without checking each one |
+| Branding | Weak | JRS, DRR, the five named conditions and four jrsstandard.com links make it read as a proprietary framework. Printing it would be the endorsement Broida declined twice |
+| Research section | Weak | About a fifth of the text reports unpublished, non-federal studies and their limits. A practice manual has little use for it |
+| Author profile | Partial | State civil rights enforcement experience is relevant. Federal-sector EEO practice is NOT ESTABLISHED in the repository, and Dewey's stated standard is prominent practitioners in the field |
+| Rights | Open | Co-author sign-off, and the effect of a grant to Dewey on the estate, are unresolved. REQUIRES HUMAN REVIEW |
+
+## Options (PROPOSAL)
+
+1. **Send the CEP article alone, as the give the standing rule called for**, with one line saying a short ROI piece exists if he or the authors want to see it. Lowest risk to the relationship.
+2. **Send a Dewey-shaped version of the manuscript**: the four-step check and the case-file note only, JRS named once in the author line, the research cut to two sentences, the AI section kept, offered as material Ms. Sumner may use or cite as she sees fit. This removes the endorsement problem and most of the rights problem.
+3. **Send the current revised manuscript.** Usable, but it asks a law publisher to carry a branded method and unpublished research.
+
+Recommendation: option 2 if the aim is use by Dewey, option 1 if the aim is to keep the relationship warm. Option 3 is the weakest of the three.
