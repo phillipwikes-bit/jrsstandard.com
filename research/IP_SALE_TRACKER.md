@@ -16,7 +16,7 @@
 |---|---|
 | **Created** | 2026-08-13 |
 | **Last revised** | 2026-09-22 (rev 36) |
-| **Revisions** | 40 |
+| **Revisions** | 41 |
 | **Current stage** | **Zero buyer conversations held, because I advised waiting. Gate withdrawn 2026-08-13** |
 | **Sale probability, as-is** | **5 to 10%** over ~12 months (owner's own anchor, `Path_to_Sale_Action_Plan.md`, unchanged) |
 
@@ -171,7 +171,7 @@ GRC / compliance software vendors · E-discovery and legal-tech · HR-tech and p
 | 5 | One paying pilot | Phillip | 0 |
 | 6 | Payment mechanism on the site | unassigned | **None exists.** It is not required for an evaluation, licensing, or acquisition conversation; any binding transaction requires a written agreement and established rights |
 | 7 | Chain of title: co-author assignments | Phillip | Partial. 12 rows carry transfer consent |
-| 8 | Next Broida contact | Phillip | CEP article published 2026-11-01. Manuscript offer drafted 2026-11-12, not sent; see `research/Broida_Manuscript_Offer_2026-11-12/REVIEW_NOTES.md` |
+| 8 | Next Broida contact | Phillip | Drafted 2026-11-12: CEP link plus one-page ROI checklist, no reply asked. Not sent. See `research/Publication_Versions_2026-11-12/Cover_Notes_and_Abstract.md` item 4 |
 
 ---
 
@@ -179,6 +179,7 @@ GRC / compliance software vendors · E-discovery and legal-tech · HR-tech and p
 
 | # | Date | Change |
 |---|---|---|
+| 41 | 2026-11-12 | **Dewey route narrowed to a one-page checklist for the manual's reference materials; the manuscript offer is superseded.** The checklist is unbranded and offered with permission to edit, which avoids the endorsement problem and most of the co-author problem. **Bears on the estate:** the method now exists in four expressions (AWI article, SCCE worksheet, Dewey checklist, book chapters), each offered to a different publisher; each should be told of the others and each grant read before acceptance. Next Broida contact drafted, not sent |
 | 40 | 2026-11-12 | **Three publication packages drafted for the source-check method; none submitted.** AWI Journal article and abstract, CCI Press book proposal, SCCE worksheet with a note to the CEP editor. **Bears on the estate:** the same method is expressed in all three, AWI's past issues state the association holds copyright in its articles, and a book contract would add a further grant. Each venue's terms need reading before more than one is placed. Co-author clearance for the research the book would discuss is not done. Files: `research/Publication_Versions_2026-11-12/` |
 | 39 | 2026-11-12 | **Publication route for the ROI source-check piece recommended; nothing submitted.** Sole-authored procedure-only article, first to the AWI Journal by abstract, fallback Corporate Compliance Insights, then the published link to Broida as a give. **Rights point for the estate:** AWI's past issues state the association holds copyright in its articles, so the terms need reading before submission. Owner decision pending |
 | 38 | 2026-11-12 | **Fit of the manuscript for Dewey examined. The subject fits; the positioning does not.** Dewey publishes authored, case-law-based federal-sector titles; the manual's author is Deryn Sumner, so placement is her decision. As drafted the piece carries JRS and DRR branding and unpublished research, and printing it would amount to the endorsement Broida declined. Recommended an unbranded procedure-only version offered for the author to use or cite, or sending the CEP article alone. Owner decision pending. Detail in `research/Broida_Manuscript_Offer_2026-11-12/REVIEW_NOTES.md` |

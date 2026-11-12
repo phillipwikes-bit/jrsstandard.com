@@ -1,6 +1,6 @@
 # Message to Peter Broida, manuscript offer
 
-**Status:** DRAFT for Phillip to send. Not sent. Not deployed (`research/` never ships).
+**Status:** SUPERSEDED 2026-11-12 by item 4 in `research/Publication_Versions_2026-11-12/Cover_Notes_and_Abstract.md`, which offers a one-page checklist in place of the manuscript. Kept as the record. Not sent. Not deployed (`research/` never ships).
 **Attachment:** `Wikes_Independent_Reconstruction_of_the_Investigative_Record.docx` (this folder).
 **Open items before sending:** see `REVIEW_NOTES.md`.
 

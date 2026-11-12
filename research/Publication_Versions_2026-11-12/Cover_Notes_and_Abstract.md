@@ -62,3 +62,32 @@ Does SCCE take outside tools for The Complete Compliance and Ethics Manual or fo
 Best regards,
 Phillip Wikes, MS
 info@jrsstandard.com
+
+---
+
+## 4. Dewey Publications (to Peter Broida)
+
+This replaces `research/Broida_Manuscript_Offer_2026-11-12/Message_to_Peter_Broida.md`.
+**Attachment:** `Dewey_ROI_Source_Check_Checklist_Wikes.docx`
+
+**Subject:** A one-page ROI checklist, if it is useful
+
+Peter,
+
+In July you mentioned the JRS site and the Investigator Field Guide on the podcast and in News and Case Alert, and you sent my work on to Dewey's investigation-book authors. You also told me I had something to offer the civil service world. I have kept at it since.
+
+CEP Magazine ran my article "When the Record Cannot Speak for Itself" on November 1:
+https://www.corporatecompliance.org/news-and-insights/cep-magazine/when-record-cannot-speak-itself
+
+I have also put the review step that article argues for into a one-page checklist for the federal-sector Report of Investigation, attached. An investigator runs it on the drafted summary before the ROI goes out, to confirm that each material statement can be traced to an exhibit. It stays inside 29 C.F.R. § 1614.108 and MD-110 Chapter 6 and adds nothing to them.
+
+If Ms. Sumner would find it useful for the reference materials that accompany the EEO Counselors' and Investigators' Manual, or in any other form, she is welcome to it at no charge and may edit it as she sees fit. If it doesn't fit, that's fine, and you don't owe me a reply.
+
+Thank you again for July.
+
+Best regards,
+
+Phillip Wikes, MS
+Founder & Principal
+Justification Review Standard (JRS)
+https://www.jrsstandard.com
