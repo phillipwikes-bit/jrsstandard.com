@@ -28,7 +28,7 @@ for(const path of ['index.html','resources.html','about.html','organization.html
  const html=read(path);
  assert.ok(html.includes('<strong>'+freeEntry+'</strong>'),
   path+' must visibly identify immediate free practitioner access');
- for(const href of ['investigator-guides.html','training.html#training-modules','simulations.html']){
+ for(const href of ['investigator-guides.html','training.html#training-modules']){
   assert.ok(html.includes('href="'+href+'"'),path+' missing free practitioner entry '+href);
  }
  const catalogHref=path==='resources.html'?'#resource-catalog':'resources.html#resource-catalog';

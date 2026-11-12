@@ -246,3 +246,26 @@ body.jrs-institutional.jrs-home .jrs-human-stories :is(summary,a):focus-visible 
     border-color:ButtonText!important;
   }
 }
+
+/* Reconstruction exercise styles retained from PR #174; original approved illustration-free styles preserved above. */
+.jrs-reconstruction{scroll-margin-top:24px}
+.jrs-reconstruction .jrs-record{margin:20px 0}
+.jrs-record-quote{margin:12px 0 20px;padding:16px 18px;border-left:3px solid currentColor;font:400 clamp(20px,4vw,26px)/1.4 Georgia,serif;overflow-wrap:anywhere}
+.jrs-reconstruction-step{margin:16px 0;border:1px solid #70634e;border-radius:5px;min-width:0}
+.jrs-reconstruction-step > summary{cursor:pointer;padding:16px;min-height:54px;font-weight:600;line-height:1.5}
+.jrs-reconstruction-step > summary:focus-visible{outline:3px solid currentColor;outline-offset:3px}
+.jrs-reconstruction-step[open] > summary{border-bottom:1px solid #70634e}
+.jrs-reconstruction-body{padding:18px;overflow-wrap:anywhere}
+.jrs-reconstruction-body > :last-child{margin-bottom:0}
+.jrs-source{padding:0 0 14px;margin:0 0 18px;border-bottom:1px solid #70634e}
+.jrs-source h3{font-size:20px;line-height:1.4}
+.jrs-reflection{margin:24px 0 12px;font-size:20px;line-height:1.5}
+@media(max-width:380px){
+ .jrs-reconstruction-body{padding:12px}
+ .jrs-reconstruction-step > summary{padding:14px 12px}
+ .jrs-reconstruction .jrs-record{padding:16px}
+}
+@media print{
+ .jrs-reconstruction-step::details-content{content-visibility:visible}
+ .jrs-reconstruction-step > summary{font-weight:700}
+}

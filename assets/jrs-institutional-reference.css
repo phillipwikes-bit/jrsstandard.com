@@ -4,6 +4,7 @@
  Presentation only. Does not change evidence, owner APIs, privacy controls, workflow
  logic, research outcomes or policy claims.
 */
+html{background:#f5f7f8}
 body.jrs-institutional{
   color-scheme:light;
   --bg:#f5f7f8;--surface:#ffffff;--surface2:#edf2f5;--surface3:#e7eef3;
@@ -27,7 +28,7 @@ body.jrs-institutional :where(a,button,input,textarea,select,[role="button"],[ta
 }
 body.jrs-institutional :where(.site-header){
  background:#162f46!important;border-bottom:3px solid #a27a39!important;
- color:#ffffff!important;backdrop-filter:none!important;
+ color:#ffffff!important;backdrop-filter:none!important;-webkit-backdrop-filter:none!important;
 }
 body.jrs-institutional :where(.site-header-inner){
  max-width:1200px!important;margin:auto!important;
@@ -1742,6 +1743,28 @@ body.jrs-institutional .site-header-inner > .jrs-header-motto strong{
  body.jrs-institutional.jrs-training-page #training-modules{
   padding-top:30px!important;
  }
+}
+
+body.jrs-institutional.jrs-reference-page :is(.crumb,.note) a,
+body.jrs-institutional.jrs-compliance-page main p a,
+body.jrs-institutional .jrs-method-links a{
+  text-decoration:underline!important;text-underline-offset:.17em;
+}
+body.jrs-institutional .jrs-method-links{
+  display:flex;flex-wrap:wrap;gap:4px 20px;margin:26px auto 0;
+  padding:10px 0;border-top:1px solid var(--rule);
+}
+body.jrs-institutional .jrs-method-links a{
+  display:inline-flex;align-items:center;min-height:44px;
+}
+body.jrs-institutional.jrs-campaign-page .jrs-campaign-example-links{
+  background:var(--surface);border-color:var(--rule);
+}
+body.jrs-institutional.jrs-campaign-page .jrs-campaign-example-links a{color:#235478}
+body.jrs-institutional.jrs-campaign-page .button:hover{background:#e7eef3;color:#17364f}
+body.jrs-institutional.jrs-campaign-page .button.primary,
+body.jrs-institutional.jrs-campaign-page .button.primary:hover{
+  background:#17364f;color:#fff;border-color:#17364f;
 }
 
 /* 2026-11-09 mobile first-use correction. Preserve legible copy and the

@@ -152,13 +152,12 @@ body.jrs-institutional.jrs-legacy-public.jrs-study-route .wm{
 body.jrs-institutional.jrs-legacy-public.jrs-study-route .hd .meta{
   color:#dae5eb!important;
 }
-/* The retained 404 and opaque retired-person routes stay dead ends, but no
-   longer appear to belong to a different organization. Their text and
-   destination links are not altered. */
+/* Keep public recovery links together at narrow viewport widths. */
 body.jrs-institutional.jrs-legacy-public.jrs-error-route{
   min-height:100vh!important;
-  display:flex!important;align-items:center!important;justify-content:center!important;
-  text-align:center!important;padding:24px!important;
+  display:flex!important;flex-direction:column!important;align-items:center!important;
+  justify-content:flex-start!important;text-align:center!important;padding:24px!important;
+  gap:24px;
 }
 body.jrs-institutional.jrs-legacy-public.jrs-error-route .wrap{
   box-sizing:border-box!important;width:100%!important;min-width:0!important;
@@ -175,4 +174,13 @@ body.jrs-institutional.jrs-legacy-public.jrs-error-route .wrap a{
   background:#193e58!important;color:#fff!important;
   border-radius:4px!important;text-decoration:none!important;
   font:700 14px/1.5 Inter,system-ui,sans-serif!important;
+}
+
+body.jrs-institutional.jrs-error-route .recovery-links{
+  display:flex;flex-wrap:wrap;justify-content:center;gap:4px 20px;padding:0 12px;
+}
+body.jrs-institutional.jrs-error-route .recovery-links a{
+  display:inline-flex;align-items:center;min-height:44px;
+  padding:0;background:transparent;color:#235478!important;
+  text-decoration:underline!important;
 }
