@@ -1790,6 +1790,11 @@ body.jrs-institutional.jrs-campaign-page .button.primary:hover{
    No new screen content, scripts, overlay controls or desktop styling. */
 @supports (-webkit-touch-callout: none){
  @media screen and (max-width:1024px){
+  /* Maintain a modest, pale gap between iOS system chrome and the navy
+     site banner; padding is in normal flow and cannot collapse like a margin. */
+  body.jrs-institutional:is(.jrs-home,.jrs-campaign-page){
+   padding-top:14px!important;
+  }
   body.jrs-institutional > .jrs-ios-status-surface{
    position:fixed!important;top:0!important;left:0!important;
    width:100%!important;height:10px!important;

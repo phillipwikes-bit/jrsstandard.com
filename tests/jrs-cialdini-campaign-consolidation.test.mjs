@@ -47,6 +47,8 @@ test('iOS 27 Safari solid status chrome appears at initial paint on homepage and
  assert.match(css,/height:10px!important/);
  assert.match(css,/background:#f5f7f8!important/);
  assert.match(css,/-webkit-backdrop-filter:none!important/);
+ // Add normal-flow spacing under the iPhone status-bar region without changing its blur fix.
+ assert.match(css,/body\.jrs-institutional:is\(\.jrs-home,\.jrs-campaign-page\)\s*\{\s*padding-top:14px!important;/);
  for(const [page,html] of [['index.html',home],['right-to-know-why.html',rights],['decisions-you-can-defend.html',professional]]){
   assert.match(html,/<body class="jrs-institutional[^"]*">\s*<div class="jrs-ios-status-surface" aria-hidden="true"><\/div>/,page+' must have a first-paint real element');
   assert.ok(html.includes('jrs-institutional-reference.css'),page+' must load matching CSS');
