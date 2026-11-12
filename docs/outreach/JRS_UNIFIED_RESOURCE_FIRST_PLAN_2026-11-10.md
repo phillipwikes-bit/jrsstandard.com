@@ -178,6 +178,14 @@ In the paragraph introducing Decision Reconstruction Risk (DRR), include natural
 
 The single-copy, initiative-specific subject lines and all previously approved outreach controls remain mandatory. Earlier sent messages are not amended or resent. Existing unsent drafts may be edited in place, with current message links reconciled in the private register and no sending action.
 
+## F.10 Single resource-library link in every JRS outreach email (November 12, 2026)
+
+Every outreach message, under either **The Right to Know Why** or **Decisions You Can Defend**, must direct its readers to **https://www.jrsstandard.com/resources.html** as the **only linked resource destination**. This owner direction supersedes prior references to linking directly to the seven-point check, investigator guides or DRR explanatory page in outbound email. Describe the link as the free resource library or collection of reviewer and public-interest materials, not as a direct individual guide URL.
+
+Maintain the separate required home-page address, **https://www.jrsstandard.com**, in the website-only Founder & Principal signature. These are the only two JRS web URLs expected in any outbound body. Verify the body has exactly one resources-page link and one unchanged signature URL.
+
+For existing unsent Gmail drafts, replace their current resource destination **in place**, preserving recipients, approved subject lines, the recipient-specific opening, the DRR/AI-drafting explanation, the international expert-review statement, background statement, no-commercial-commitment assurance and genuine thank-you. Reconcile any changed Gmail message IDs with the single private outreach register. Do not automatically send, resend, delete or merge drafts. Previously sent messages remain unchanged.
+
 ## G. Controlled release and outreach acceptance
 1. **Source:** Current PR branch must preserve page hierarchy, four resources on each page, direct links, no retired case-example anchors, no invented influence data; the CI tests must explicitly prevent reintroduction.
 2. **Technical:** At the exact eventual commit SHA, verify all required workflows, mobile render, actual links and final PDFs, support POST semantics, privacy/security negative paths and staging deployment identity. Earlier snapshots and checks from a different SHA are insufficient.
