@@ -167,11 +167,11 @@ jobs:
           request = Request(url, headers={"Authorization": "Bearer " + request_token})
           with urlopen(request, timeout=15) as response:
               token = json.load(response).get("value", "")
-          if len(token) > 16000 or not re.fullmatch(r"[A-Za-z0-9_-]+\\.[A-Za-z0-9_-]+\\.[A-Za-z0-9_-]+", token):
+          if len(token) > 16000 or not re.fullmatch(r"[A-Za-z0-9_-]+\.[A-Za-z0-9_-]+\.[A-Za-z0-9_-]+", token):
               raise SystemExit("RELEASE HOLD: invalid GitHub OIDC JWT")
           print("::add-mask::" + token)
           with open(os.environ["GITHUB_ENV"], "a", encoding="utf-8") as env:
-              env.write("JRS_VERCEL_TRUSTED_OIDC=" + token + "\\n")
+              env.write("JRS_VERCEL_TRUSTED_OIDC=" + token + "\n")
           print("PASS: GitHub OIDC identity acquired without publishing the token")
           PY
 
