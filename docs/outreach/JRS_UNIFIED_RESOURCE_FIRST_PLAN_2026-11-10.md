@@ -143,6 +143,18 @@ Preserve every approved factual control: the correct initiative name; JRS and De
 
 The owner has already sent the earlier cohort. Do not resend merely to repair style. Existing suppression, contact verification, legal review and owner approval requirements remain mandatory.
 
+## F.6 Evidence-conscious, ethical subject-line standard (November 12, 2026)
+
+Each new subject must describe the **actual linked resource or precise documentation issue** in plain, natural professional language, with wording selected for the recipient's verified responsibilities and **one** of the two JRS initiatives.
+
+- **The Right to Know Why** subjects address reasons recorded in consequential decisions, civil/human rights, rights education, and evidence that an affected person can understand. **Decisions You Can Defend** subjects address investigator field guides, the seven-point check, evidence traceability, chronology, EEO/HR/compliance or ombuds and audit review. Never collapse both initiatives into generic advertising.
+- Prefer a succinct, substantive subject, often around five to nine words and roughly 60 characters or fewer when that preserves clarity. This is writing guidance, **not** a proven performance threshold. Accuracy and recipient relevance outrank mechanical word/character rules.
+- Apply Cialdini ethically: reciprocity only for resources that genuinely are free; unity only for a verified shared professional concern; authority only for real JRS experience or research, without claimed endorsements. Express respect in the body through factual recognition of recipient duties. Do not fabricate social proof, scarcity, promises, familiarity or urgency.
+- Avoid repetitive mailing-template openings and duplicates across a batch, including routine "A note on", "A resource on", or "A free reference on" unless clearly warranted. Write each line as an actual practitioner would, not a campaign optimizer. No exaggerated superlatives, clickbait, deceptive RE:/FWD: prefixes, ambiguous mystery hooks or unrelated personalization. Preserve the banned-word and punctuation rules.
+- Every subject must be truthful relative to its actual email body and link. Do not imply an invitation, training arrangement, endorsement, official partnership, certification, legal requirement, or prior communication absent evidence. Review relevant commercial-email and cross-border contact requirements before sending.
+- Do not report a measured benefit or superiority of any variant without an authorized empirical comparison. Email opens are not equivalent to recipient engagement.
+- On changes to an existing Gmail draft subject, retain the full body and recipient, verify DRAFT status, then refresh the current message ID/Gmail link in the **one private outreach register**. Previously sent messages cannot be edited, and no correction or sending is authorized by an editorial revision.
+
 ## G. Controlled release and outreach acceptance
 1. **Source:** Current PR branch must preserve page hierarchy, four resources on each page, direct links, no retired case-example anchors, no invented influence data; the CI tests must explicitly prevent reintroduction.
 2. **Technical:** At the exact eventual commit SHA, verify all required workflows, mobile render, actual links and final PDFs, support POST semantics, privacy/security negative paths and staging deployment identity. Earlier snapshots and checks from a different SHA are insufficient.
