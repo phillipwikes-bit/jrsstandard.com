@@ -65,6 +65,47 @@ test('campaigns are included in complete rendered mobile audit',()=>{
   assert.equal(paths.filter(path=>path===page).length,1,page+' must have one browser route');
 });
 
+test('resource-first public entry routes do not promote historical simulations',()=>{
+ for(const page of ['index.html','resources.html','about.html','organization.html']){
+  const s=read(page);
+  assert.doesNotMatch(s,/href="simulations\.html"/,page);
+ }
+ assert.match(resources,/ai-drafted-record-source-verification\.html/);
+ assert.match(resources,/Which tool\?/);
+ assert.match(home,/The seven-point check is a quick screen/);
+ assert.equal((resources.match(/class="jrs-resource-entry"/g)||[]).length,16);
+});
+
+test('exercise archives are preserved but excluded from public sitemap and indexing',()=>{
+ for(const p of ['simulations.html','implementation-scenarios.html']){
+  const s=read(p);
+  assert.match(s,/name="robots" content="noindex,follow"/,p);
+  assert.match(s,/Historical archive\./,p);
+  assert.ok(!sitemap.includes('/'+p),'archived sitemap route '+p);
+ }
+ for(const redirect of ['/bench-admin','/bench-review','/org-pilot','/review-status','/submit-validation','/vp-7c1f9a4e8d2b6035'])
+  assert.ok(!config.redirects.some(r=>r.source===redirect),'stale redirect '+redirect);
+});
+
+test('mobile audit covers newly published indexed references',()=>{
+ const s=read('tests/jrs-sitewide-mobile-browser-audit.html');
+ const match=s.match(/const paths=(\[[^\n;]*\]);/);
+ assert.ok(match);
+ const paths=JSON.parse(match[1]);
+ assert.equal(paths.length,68);
+ assert.equal(new Set(paths).size,68);
+ for(const p of ['editions.html','organization.html','practitioner-questions.html','cite-jrs.html','field-evidence-status.html',
+ 'investigation-report-evidence-check.html','ai-drafted-record-source-verification.html','decision-record-chronology-review.html','supplier-access-exception-documentation.html'])
+  assert.ok(paths.includes(p),'missing mobile audit route '+p);
+});
+
+test('current contact receipt never asserts successful owner mailbox delivery',()=>{
+ const c=read('contact.html');
+ assert.match(c,/Service acceptance does not establish that an email notification reached/);
+ assert.match(c,/Inquiry accepted by Formspree/);
+ assert.doesNotMatch(c,/mailto:phillipwikes@gmail\.com/);
+});
+
 test('public-interest campaign gives resources and defines DRR without claiming new legal rights',()=>{
  assert.match(rights,/The Right to Know Why/);
  assert.match(rights,/id="free-resources"/);
