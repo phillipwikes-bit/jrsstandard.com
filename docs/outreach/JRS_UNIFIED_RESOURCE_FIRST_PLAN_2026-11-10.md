@@ -126,19 +126,22 @@ The 31 messages sent on November 12 cannot be retroactively edited. They did not
 - **Cialdini alignment:** Use true reciprocity through free resources, actual professional authority, verified relevance, respectful tone and a voluntary low-friction read. Unity requires genuine shared professional purpose, not invented affiliation. Only use social proof if independently documented and accurately scoped; no invented scarcity. Do not claim measured persuasion, response or adoption from this drafting exercise.
 - **Cross-border controls:** A published mailbox does not guarantee permission, consent or delivery. Before any sending, apply destination-appropriate privacy/direct-marketing requirements, suppression, purpose/identity/disclosures where applicable, and exact owner approval. No automatic sends, follow-ups or revised-address retries.
 
-## F.5 Recipient importance opening in every future email (owner direction, November 12, 2026)
+## F.5 Natural, recipient-specific, initiative-based correspondence (owner correction, November 12, 2026)
 
-The opening one or two substantive sentences of **each new JRS outreach message**, whether to a U.S. or international stakeholder, must acknowledge the **exceptional importance of that particular organization's actual documented work**. Name the organization and its specific role, and say why that role matters to the community, people or professional function it serves. This is a genuine, evidence-grounded expression of respect, not promotional flattery.
+Every JRS outreach message must be grounded in **one established initiative** before drafting begins:
 
-Use natural, recipient-specific wording, such as:
-- For a verified equality body: "Equinet's work connecting equality bodies is especially important because it helps practitioners confront discrimination concerns across jurisdictions."
-- For a verified investigator association: "AWI's attention to how workplace investigations are conducted is extremely important to the quality and fairness of investigative practice."
+- **The Right to Know Why:** civil rights and human-rights organizations, community and public-interest education, people affected by consequential decisions, and digital-rights/accountability networks. Explain the initiative's purpose in public-facing terms and provide a free resource that helps people understand missing evidence, chronology or reasons in a retained decision record.
+- **Decisions You Can Defend:** investigators, HR/EEO, compliance, audit, legal review and professional educators. Explain the initiative's practical use within existing documentation-review workflows and link the most pertinent free field guide, seven-point check or practitioner reference.
 
-These are **style examples only**, not instructions to recontact already-sent recipients or fixed text to repeat. Verify the actual mission and activities on official sources before using any individual claim. Do not use a uniform flattering opener, invent achievements, overstate authority, claim a partnership, or suggest institutional support for JRS. If the organization-specific rationale cannot be substantiated, research further or omit the prospect.
+The first substantive paragraph names the organization, describes a specific documented responsibility and explains concretely why that responsibility matters. Respect is expressed through accurate observations, not flattery or generic compliments. The opening must lead naturally into the selected initiative rather than a general pitch for JRS. Use current official evidence for organization-specific claims. If relevance cannot be verified, do not draft.
 
-The opening is followed by an accurate explanation of the relevant JRS initiative and DRR, the required *16 experts, 11 countries, five continents, 384 constructed-record reviews* sentence as prescribed in F.4, the exact approved professional-background sentence, the relevant free resource, clear no-registration/no-purchase/no-commercial-commitment language, and the website-only signature. Keep the message concise and natural.
+**Strict editorial exclusion:** The adverb spelled e-s-p-e-c-i-a-l-l-y (letters joined) must never appear in any future JRS email subject or body. No vacuous claims that the recipient's work is 'extremely important', 'vital', 'exceptional', 'outstanding', 'transformative' or 'leading'. Avoid identical praise lines across recipients, repetitive hooks, tidy-but-robotic paragraph patterns, artificial transitions, exaggerated certainty and promotional phrasing.
 
-The prior JRS messages were sent by the owner and cannot be rewritten. No duplicate correction or unsolicited follow-up should be sent merely to apply this editorial improvement.
+**Natural voice acceptance check:** Each email must read as a personal, concise message from an experienced practitioner, not a mail-merge campaign or AI-generated template. Vary the structure, length, diction and rhythm appropriately. Check the actual subject and complete body sentence by sentence; rewrite mechanical wording before saving. Do not make up a relationship, credential, recipient motivation, endorsement, or outcome.
+
+Preserve every approved factual control: the correct initiative name; JRS and Decision Reconstruction Risk (DRR); the exact international research participation sentence required by F.4; the exact founder-background sentence; the most relevant free-resource URL; clear no-registration/no-purchase/no-commercial-commitment language; and the website-only Founder & Principal signature. No unnecessary research caveat paragraph, but never imply expert endorsement or field-tested efficacy.
+
+The owner has already sent the earlier cohort. Do not resend merely to repair style. Existing suppression, contact verification, legal review and owner approval requirements remain mandatory.
 
 ## G. Controlled release and outreach acceptance
 1. **Source:** Current PR branch must preserve page hierarchy, four resources on each page, direct links, no retired case-example anchors, no invented influence data; the CI tests must explicitly prevent reintroduction.
