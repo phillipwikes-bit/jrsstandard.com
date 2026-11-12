@@ -40,6 +40,20 @@ test('homepage provides a solid Safari header treatment and no simulation-led CT
  // Source checks do not establish physical iPhone Safari or scrolling acceptance.
 });
 
+test('iOS 27 Safari solid status chrome appears at initial paint on homepage and both initiatives',()=>{
+ const css=read('assets/jrs-institutional-reference.css');
+ assert.match(css,/@supports\s*\(-webkit-touch-callout:\s*none\)/);
+ assert.match(css,/\.jrs-ios-status-surface\s*\{[\s\S]*?position:fixed!important;top:0!important;left:0!important;/);
+ assert.match(css,/height:10px!important/);
+ assert.match(css,/background:#f5f7f8!important/);
+ assert.match(css,/-webkit-backdrop-filter:none!important/);
+ for(const [page,html] of [['index.html',home],['right-to-know-why.html',rights],['decisions-you-can-defend.html',professional]]){
+  assert.match(html,/<body class="jrs-institutional[^"]*">\s*<div class="jrs-ios-status-surface" aria-hidden="true"><\/div>/,page+' must have a first-paint real element');
+  assert.ok(html.includes('jrs-institutional-reference.css'),page+' must load matching CSS');
+ }
+ // A source test cannot certify Safari or installed Home Screen rendering.
+});
+
 test('campaigns are included in complete rendered mobile audit',()=>{
  const source=read('tests/jrs-sitewide-mobile-browser-audit.html');
  const match=source.match(/const paths=(\[[^\n;]*\]);/);

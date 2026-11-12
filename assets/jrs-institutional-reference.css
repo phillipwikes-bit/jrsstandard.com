@@ -1783,3 +1783,21 @@ body.jrs-institutional.jrs-campaign-page .button.primary:hover{
  body.jrs-institutional.jrs-resource-page .hero .eyebrow{margin-bottom:6px!important}
  body.jrs-institutional.jrs-resource-page .hero h1{margin-bottom:8px!important}
 }
+
+/* iOS 27 Safari/Home Screen status-bar rendering:
+   Safari samples an actual, solid, viewport-fixed element at the top edge.
+   Previous changes to theme-color and header backdrop-filter were insufficient.
+   No new screen content, scripts, overlay controls or desktop styling. */
+@supports (-webkit-touch-callout: none){
+ @media screen and (max-width:1024px){
+  body.jrs-institutional > .jrs-ios-status-surface{
+   position:fixed!important;top:0!important;left:0!important;
+   width:100%!important;height:10px!important;
+   display:block!important;background:#f5f7f8!important;
+   pointer-events:none!important;border:0!important;
+   z-index:2147483646!important;
+   filter:none!important;backdrop-filter:none!important;
+   -webkit-backdrop-filter:none!important;
+  }
+ }
+}
