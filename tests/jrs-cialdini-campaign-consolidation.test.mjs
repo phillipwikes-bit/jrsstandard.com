@@ -48,12 +48,24 @@ test('iOS 27 Safari solid status chrome appears at initial paint on homepage and
  assert.match(css,/background:#f5f7f8!important/);
  assert.match(css,/-webkit-backdrop-filter:none!important/);
  // Add normal-flow spacing under the iPhone status-bar region without changing its blur fix.
- assert.match(css,/body\.jrs-institutional:is\(\.jrs-home,\.jrs-campaign-page\)\s*\{\s*padding-top:14px!important;/);
+ assert.match(css,/body\.jrs-institutional\s*\{\s*padding-top:14px!important;/);
  for(const [page,html] of [['index.html',home],['right-to-know-why.html',rights],['decisions-you-can-defend.html',professional]]){
   assert.match(html,/<body class="jrs-institutional[^"]*">\s*<div class="jrs-ios-status-surface" aria-hidden="true"><\/div>/,page+' must have a first-paint real element');
   assert.ok(html.includes('jrs-institutional-reference.css'),page+' must load matching CSS');
  }
  // A source test cannot certify Safari or installed Home Screen rendering.
+});
+
+test('all principal institutional entry routes have a solid first-paint iOS top edge',()=>{
+ const css=read('assets/jrs-institutional-reference.css');
+ assert.match(css,/html:has\\(> body\\.jrs-institutional\\):not\\(:has\\(> body > \\.jrs-ios-status-surface\\)\\)::before/);
+ assert.match(css,/body\\.jrs-institutional\\s*\\{\\s*padding-top:14px!important;/);
+ for(const page of ["resources.html","training.html","investigator-guides.html","check.html","about.html","research.html","contact.html","jrsstandard.html","organization.html","practitioner-questions.html","decision-reconstruction-risk.html","reference/index.html","cite-jrs.html"]){
+  const html=read(page);
+  assert.match(html,/<body\\b[^>]*>\\s*<div class="jrs-ios-status-surface" aria-hidden="true"><\\/div>/,page);
+  assert.match(html,/<meta name="theme-color" content="#f5f7f8">/,page);
+ }
+ // Source-level protection only: Safari status-bar behavior must be tested on-device.
 });
 
 test('campaigns are included in complete rendered mobile audit',()=>{
