@@ -30,6 +30,16 @@ test('public site introduces both initiatives as free-resource paths, not as cas
  assert.doesNotMatch(resources,/#everyday-decisions|#worked-record/);
 });
 
+test('homepage provides a solid Safari header treatment and no simulation-led CTA',()=>{
+ const css=read('assets/jrs-institutional-reference.css');
+ assert.ok(home.includes('<meta name="theme-color" content="#f5f7f8">'));
+ assert.ok(home.includes('.site-header{background:#162f46;backdrop-filter:none;-webkit-backdrop-filter:none}'));
+ assert.ok(css.includes('html{background:#f5f7f8}'));
+ assert.ok(css.includes('backdrop-filter:none!important;-webkit-backdrop-filter:none!important'));
+ assert.doesNotMatch(home,/See five fictional decision examples|Reviewer training and simulations|\.site-header\{background:rgba\(7,7,6,\.88\);backdrop-filter:blur\(12px\)/);
+ // Source checks do not establish physical iPhone Safari or scrolling acceptance.
+});
+
 test('campaigns are included in complete rendered mobile audit',()=>{
  const source=read('tests/jrs-sitewide-mobile-browser-audit.html');
  const match=source.match(/const paths=(\[[^\n;]*\]);/);
