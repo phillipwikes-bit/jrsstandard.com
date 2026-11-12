@@ -102,6 +102,18 @@ Public GitHub must not reproduce the private contact addresses, full private ema
 - Ethical accuracy remains mandatory. No invented relationships or authority, implied institutional endorsement, unverified research or performance claims, manufactured scarcity, pressure, or unauthorized message sending.
 - Evaluate every future draft aloud as a natural message from a real practitioner. Rewrite generic or overstructured wording before saving. No forced word count.
 
+## F.4 Required expert-participation sentence in all future outreach (owner direction, November 12, 2026)
+
+**Insert exactly once into EVERY future JRS outreach email, domestic or international, without paraphrase:**
+
+> JRS research has included 16 independent international experts from 11 countries across five continents, who completed 384 reviews of constructed decision records.
+
+The supporting public record is `https://www.jrsstandard.com/research-summary.html`: a defined detection panel of 16 independent international experts spanning 11 countries and five continents, with 24 constructed-record reads per person, producing 384 graded reads. Do **not** confuse this sample with the 36 full-set completers from 16 countries or 58 participants across three studies. These are constructed decision records, not real case files. Participation is neither an endorsement of JRS by experts/their institutions nor evidence of established operational field effectiveness. Do not claim those outcomes.
+
+Integrate the sentence naturally with the existing personal background sentence, JRS/DRR explanation, relevant free-resource link, both initiative names as appropriate, and no registration/purchase/commercial-commitment language. Maintain the founder's website-only signature. Avoid a repetitive standalone research disclaimer; retain factual precision and do not imply more than participation.
+
+The 31 messages sent on November 12 cannot be retroactively edited. They did not contain this sentence. No automatic correction blasts or follow-ups, and no recreation of sent-message drafts. Preserve Gmail sent copies and bounce evidence, and apply this rule prospectively to each newly created draft.
+
 ## F.3 November 12 outreach dispatch, international targeting and corrected-address control
 
 **Single private source of truth:** The existing Gmail SENT/DRAFT records and JRS Private Outreach Control Register. Do not publish contact addresses, the full email bodies or private message links in GitHub.
