@@ -155,6 +155,15 @@ Each new subject must describe the **actual linked resource or precise documenta
 - Do not report a measured benefit or superiority of any variant without an authorized empirical comparison. Email opens are not equivalent to recipient engagement.
 - On changes to an existing Gmail draft subject, retain the full body and recipient, verify DRAFT status, then refresh the current message ID/Gmail link in the **one private outreach register**. Previously sent messages cannot be edited, and no correction or sending is authorized by an editorial revision.
 
+## F.7 Initiative identification when using a Through-opening (November 12, 2026)
+
+When a message begins a sentence with "Through The Right to Know Why" or "Through Decisions You Can Defend", **identify the named program as an initiative within that same sentence**, while keeping the language natural. For instance:
+
+- "Through The Right to Know Why, a JRS initiative, I share a resource on Decision Reconstruction Risk (DRR)."
+- "Through its Decisions You Can Defend initiative, JRS offers a field guide for documentation reviewers."
+
+Use the exact initiative title **Decisions You Can Defend**, not the shortened phrase "Decisions to Defend". Also identify the initiative clearly when the title is introduced after "through" elsewhere in a sentence. Do not begin every email with the same structure or repeat the word mechanically. Keep all prior audience-routing, natural-writing, source, research, signature, no-commitment, subject-line and sending controls unchanged.
+
 ## G. Controlled release and outreach acceptance
 1. **Source:** Current PR branch must preserve page hierarchy, four resources on each page, direct links, no retired case-example anchors, no invented influence data; the CI tests must explicitly prevent reintroduction.
 2. **Technical:** At the exact eventual commit SHA, verify all required workflows, mobile render, actual links and final PDFs, support POST semantics, privacy/security negative paths and staging deployment identity. Earlier snapshots and checks from a different SHA are insufficient.
