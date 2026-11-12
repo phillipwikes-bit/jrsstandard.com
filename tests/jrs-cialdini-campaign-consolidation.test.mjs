@@ -58,14 +58,16 @@ test('iOS 27 Safari solid status chrome appears at initial paint on homepage and
 
 test('all principal institutional entry routes have a solid first-paint iOS top edge',()=>{
  const css=read('assets/jrs-institutional-reference.css');
- assert.match(css,/html:has\\(> body\\.jrs-institutional\\):not\\(:has\\(> body > \\.jrs-ios-status-surface\\)\\)::before/);
- assert.match(css,/body\\.jrs-institutional\\s*\\{\\s*padding-top:14px!important;/);
+ assert.ok(css.includes('html:has(> body.jrs-institutional):not(:has(> body > .jrs-ios-status-surface))::before'));
+ assert.ok(css.includes('body.jrs-institutional{\\n   padding-top:14px!important;'.replace('\\n','\n')));
  for(const page of ["resources.html","training.html","investigator-guides.html","check.html","about.html","research.html","contact.html","jrsstandard.html","organization.html","practitioner-questions.html","decision-reconstruction-risk.html","reference/index.html","cite-jrs.html"]){
   const html=read(page);
-  assert.match(html,/<body\\b[^>]*>\\s*<div class="jrs-ios-status-surface" aria-hidden="true"><\\/div>/,page);
-  assert.match(html,/<meta name="theme-color" content="#f5f7f8">/,page);
+  const body=html.match(/<body[^>]*>/i);
+  assert.ok(body,page+' body missing');
+  assert.ok(html.slice(body.index+body[0].length).trimStart().startsWith('<div class="jrs-ios-status-surface" aria-hidden="true"></div>'),page+' first-paint surface missing');
+  assert.ok(html.includes('<meta name="theme-color" content="#f5f7f8">'),page+' pale theme missing');
  }
- // Source-level protection only: Safari status-bar behavior must be tested on-device.
+ // Physical Safari acceptance remains separate from source-level protection.
 });
 
 test('campaigns are included in complete rendered mobile audit',()=>{
