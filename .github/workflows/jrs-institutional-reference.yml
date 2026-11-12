@@ -18,6 +18,8 @@ jobs:
         run: node --version
       - name: Run institutional reference source gate
         run: node tests/jrs-institutional-reference-regression.mjs
+      - name: Guard solid iPhone top edge across all 68 institutional pages
+        run: node tests/jrs-ios-status-surface-sitewide.test.mjs
       - name: Enforce closed Review Engine, safe GET wording and independent production QA gate
         run: node tests/engine/auth-matrix.mjs
       - name: Verify sitewide institutional palette, typography and legacy public routes
