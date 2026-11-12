@@ -11,6 +11,7 @@ on:
 permissions:
   contents: read
   deployments: read
+  id-token: write # short-lived GitHub Actions OIDC for scoped Vercel Trusted Sources
 jobs:
   visual-snapshots:
     runs-on: ubuntu-latest
@@ -154,6 +155,26 @@ jobs:
         run: |
           python3 tests/jrs-resolve-preview.py "$GITHUB_ENV"
 
+      - name: Obtain short-lived GitHub OIDC identity for approved Vercel Trusted Sources
+        run: |
+          python3 - <<'PY'
+          import json, os, re
+          from urllib.request import Request, urlopen
+          url = os.environ.get("ACTIONS_ID_TOKEN_REQUEST_URL", "")
+          request_token = os.environ.get("ACTIONS_ID_TOKEN_REQUEST_TOKEN", "")
+          if not url.startswith("https://") or not request_token:
+              raise SystemExit("RELEASE HOLD: GitHub OIDC unavailable")
+          request = Request(url, headers={"Authorization": "Bearer " + request_token})
+          with urlopen(request, timeout=15) as response:
+              token = json.load(response).get("value", "")
+          if len(token) > 16000 or not re.fullmatch(r"[A-Za-z0-9_-]+\\.[A-Za-z0-9_-]+\\.[A-Za-z0-9_-]+", token):
+              raise SystemExit("RELEASE HOLD: invalid GitHub OIDC JWT")
+          print("::add-mask::" + token)
+          with open(os.environ["GITHUB_ENV"], "a", encoding="utf-8") as env:
+              env.write("JRS_VERCEL_TRUSTED_OIDC=" + token + "\\n")
+          print("PASS: GitHub OIDC identity acquired without publishing the token")
+          PY
+
       - name: Verify preview source identity before any release certification
         env:
           JRS_EXPECTED_HEAD: ${{ github.event.pull_request.head.sha || github.sha }}
@@ -168,10 +189,8 @@ jobs:
           JRS_VERCEL_PREVIEW_BYPASS: ${{ secrets.JRS_VERCEL_PREVIEW_BYPASS }}
         run: |
           # The immediately preceding gate verified exact-head hosted source and PDFs.
-          # Chrome applies a bypass header only if the CI secret is configured.
-          # Otherwise, only a narrowly public, exact-head preview can pass:
-          # authentication pages, cross-origin redirects and non-JRS output fail.
-          # Restore protection on the single deployment after verification.
+          # Chrome uses only origin-scoped short-lived OIDC or an existing dedicated
+          # bypass credential. Cross-origin redirects and non-JRS output fail closed.
           node tests/jrs-hosted-preview-capture.mjs "$JRS_PREVIEW_URL" /tmp/jrs-visual
       - name: Preserve verified hosted preview evidence
         uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2
