@@ -164,6 +164,20 @@ When a message begins a sentence with "Through The Right to Know Why" or "Throug
 
 Use the exact initiative title **Decisions You Can Defend**, not the shortened phrase "Decisions to Defend". Also identify the initiative clearly when the title is introduced after "through" elsewhere in a sentence. Do not begin every email with the same structure or repeat the word mechanically. Keep all prior audience-routing, natural-writing, source, research, signature, no-commitment, subject-line and sending controls unchanged.
 
+## F.8 First-sentence importance and personal thank-you (November 12, 2026)
+
+Every future JRS email must begin, following the salutation, with a concrete statement naming the recipient organization and explaining why its documented responsibilities matter to identifiable people, sound decision-making or professional review. Substantiate that assessment from the organization's actual public work, without fabricated accomplishments, generic superlatives or a repeated pattern of praise. The first sentence is about the recipient, not JRS.
+
+Immediately above the three-line Founder & Principal website signature, include a brief, sincere thank-you for the recipient's actual work. Vary the sentence by organization and purpose. Never thank them for reading, replying, endorsing, adopting the materials or agreeing to a commitment that has not occurred.
+
+Apply this to existing unsent drafts where editing has been authorized. Preserve the prior subject, recipients, initiatives, approved founder background, research participation, free-resource link, no-commercial-commitment assurance, and the prohibition on sending during editorial revision.
+
+## F.9 AI-assisted drafting in the DRR explanation (November 12, 2026)
+
+In the paragraph introducing Decision Reconstruction Risk (DRR), include naturally integrated language explaining that **AI-assisted drafting or an AI-drafted narrative can make a decision record appear complete without repairing missing evidence, chronology or reasoning**. The observation should explain why traceability matters in the selected initiative. It must not claim that AI use automatically makes a record deficient, that JRS detects AI authorship, or that the research proved real-world field performance. Use plain English, vary the wording across recipients, and do not add a repetitive separate AI promotional paragraph.
+
+The single-copy, initiative-specific subject lines and all previously approved outreach controls remain mandatory. Earlier sent messages are not amended or resent. Existing unsent drafts may be edited in place, with current message links reconciled in the private register and no sending action.
+
 ## G. Controlled release and outreach acceptance
 1. **Source:** Current PR branch must preserve page hierarchy, four resources on each page, direct links, no retired case-example anchors, no invented influence data; the CI tests must explicitly prevent reintroduction.
 2. **Technical:** At the exact eventual commit SHA, verify all required workflows, mobile render, actual links and final PDFs, support POST semantics, privacy/security negative paths and staging deployment identity. Earlier snapshots and checks from a different SHA are insufficient.
