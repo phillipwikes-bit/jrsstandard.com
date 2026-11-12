@@ -16,7 +16,7 @@
 |---|---|
 | **Created** | 2026-08-13 |
 | **Last revised** | 2026-09-22 (rev 36) |
-| **Revisions** | 36 |
+| **Revisions** | 37 |
 | **Current stage** | **Zero buyer conversations held, because I advised waiting. Gate withdrawn 2026-08-13** |
 | **Sale probability, as-is** | **5 to 10%** over ~12 months (owner's own anchor, `Path_to_Sale_Action_Plan.md`, unchanged) |
 
@@ -171,7 +171,7 @@ GRC / compliance software vendors · E-discovery and legal-tech · HR-tech and p
 | 5 | One paying pilot | Phillip | 0 |
 | 6 | Payment mechanism on the site | unassigned | **None exists.** It is not required for an evaluation, licensing, or acquisition conversation; any binding transaction requires a written agreement and established rights |
 | 7 | Chain of title: co-author assignments | Phillip | Partial. 12 rows carry transfer consent |
-| 8 | Next Broida contact | Phillip | Hold to November CEP publication. Must be a give |
+| 8 | Next Broida contact | Phillip | CEP article published 2026-11-01. Manuscript offer drafted 2026-11-12, not sent; see `research/Broida_Manuscript_Offer_2026-11-12/REVIEW_NOTES.md` |
 
 ---
 
@@ -179,6 +179,7 @@ GRC / compliance software vendors · E-discovery and legal-tech · HR-tech and p
 
 | # | Date | Change |
 |---|---|---|
+| 37 | 2026-11-12 | **A manuscript offer to Peter Broida was drafted for the first contact since 15 July. It is not sent.** Proposed companion piece for Dewey's EEO Counselors' and Investigators' Manual, offered at no charge with no reply requested, consistent with the standing rule that the next contact be a give. The email no longer calls his July mentions a recommendation. **Open before sending:** co-author sign-off for Hossain, Young and Pokhriyal, since the piece reports their study results to a publisher and a no-charge contribution may involve a grant of rights; three external citations unverified; one contradiction between the manuscript and two public pages on whether the reliability criterion was pre-registered. Files: `research/Broida_Manuscript_Offer_2026-11-12/` |
 | 36 | 2026-09-22 | **The exit-strategy website release is published and verified live.** GitHub `main` now contains the licensing-readiness corrections, revised homepage, expanded enterprise pathway, public Manifest package, unified API contract, preserved free resources, navigation repairs, and website-quality controls. The production homepage and the Enterprise, Manifest, and Resources pathways were inspected directly at `https://www.jrsstandard.com/`. The temporary release transport was removed from the repository. Publication improves public comprehension and transaction inquiry readiness; it does not establish buyer demand, cleared exclusive rights, an executed licence, or readiness to sign an asset purchase agreement. Counsel determinations remain open. |
 | 35 | 2026-09-22 | **The repaired website is not live because the release never reached GitHub `main`.** The files and verified commits exist only in this workspace. Git rejected the terminal push for lack of credentials; browser authentication did not transfer a Git credential to the terminal; Vercel therefore received no new commit. The failure concerns publication access only. It does not change the repaired content, test results, rights status, or exit-strategy position. |
 | 34 | 2026-09-22 | **Codespaces is not required and will not be introduced as transaction or website infrastructure.** It was considered only as a workaround for this workspace's missing Git credential. No Codespace was created and no charge was incurred. The verified website repair remains committed locally; publication requires the ordinary authenticated Git path used in earlier sessions. Commercial, rights, and transaction status remain unchanged. |
