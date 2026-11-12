@@ -93,7 +93,7 @@ assert.ok(!protectedLogin.includes('jrs-legacy-public-alignment.css') &&
  !protectedLogin.includes('class="jrs-institutional jrs-legacy-public"'),
  'private owner sign-in must not be restyled by the public legacy bridge');
 assert.ok(!existsSync(new URL('../review-engine.html',import.meta.url)),
- 'retired Engine entrypoint must remain absent');
+ 'retired public Review Engine page must stay removed');
 const standard=load('jrsstandard.html'),training=load('training.html');
 assert.ok(standard.includes('jrs-standard-page') && training.includes('jrs-training-page'),
  'Standard or Training body style scope changed');

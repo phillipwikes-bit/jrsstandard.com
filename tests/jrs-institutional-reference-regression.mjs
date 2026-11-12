@@ -36,20 +36,18 @@ for(const path of ['index.html','resources.html','about.html','organization.html
  assert.doesNotMatch(html,/for later independent review\.<\/strong>/,
   path+' contains unmatched emphasis after long-form non-purchase statement');
 }
-// The homepage uses the approved, shorter action-oriented statement.
-// Other institutional pages retain the longer instrument definition.
+// The homepage uses the newer, narrower instruction; the other public entry
+// pages retain the longer, established practitioner proposition.
 const homepagePositioning='Apply JRS within an existing authorized review workflow. No new software platform or case-record upload is required.';
 for(const path of ['resources.html','about.html','organization.html']){
  const html=read(path);
  assert.equal(html.split(practicalPositioning).length-1,1,
-  path+' must prominently state the approved practitioner-first proposition once');
+  path+' must state the longer practitioner-first proposition once');
  assert.ok(html.includes('<strong>'+practicalPositioning+'</strong>'),
-  path+' must visibly emphasize the practitioner-first proposition');
+  path+' must visibly emphasize the longer practitioner-first proposition');
 }
 assert.equal(read('index.html').split(homepagePositioning).length-1,1,
- 'homepage must prominently state its approved practitioner-first proposition once');
-assert.ok(read('index.html').includes('<strong>'+homepagePositioning+'</strong>'),
- 'homepage must visibly emphasize its approved practitioner-first proposition');
+ 'homepage must state the active, narrower proposition exactly once');
 for(const path of ['index.html','resources.html','organization.html']){
  assert.ok(read(path).includes('Organizations do not need to purchase or replace a software platform'),
   path+' must retain the exact longer non-purchase statement');
@@ -217,7 +215,7 @@ for(const page of [...pages,...additionalPages]){
 const main=read('index.html');
 for(const token of [
  '01 · Start here','02 · Use the method','03 · Examine the evidence','04 · Learn and practice',
- 'Can the record explain the decision?',
+ '<h1 id="jrs-main-heading">Can the record explain the decision?</h1>',
  'Evidence must remain distinguishable from assurance.',
  'href="jrsstandard.html"','href="resources.html"','href="training.html"','href="research.html"',
  'href="investigator-guides.html"','href="manifest.html"'

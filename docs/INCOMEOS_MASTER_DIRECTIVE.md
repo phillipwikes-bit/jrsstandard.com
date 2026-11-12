@@ -580,6 +580,16 @@ INTEGRATION_IN_PROGRESS
 
 Repository: phillipwikes-bit/jrsstandard.com
 
+Source-recovery pointer revised 2026-11-11. The Version 10.3 requirements are unchanged.
+
+Current integration branch: verification/incomeos-accounting-ci-20261108
+
+IncomeOS source is not on main. This directive is on main only.
+
+Shared engineering handoff: engineering/incomeos/HANDOFF.md on the integration branch. It records the current checkpoint, agent lanes, branch rules, test commands and owner blockers. If it conflicts with the fetched repository state, the repository governs.
+
+The historical branch and commit below are ancestors of the integration branch. They are retained as recovery references, not as a starting point.
+
 Historical branch: chatgpt/incomeos-v25-synthetic-review-sequence-20261106
 
 Historical commit: 5ec925aa5ef5b6a5f4a9c1df23ab01c180e054c0

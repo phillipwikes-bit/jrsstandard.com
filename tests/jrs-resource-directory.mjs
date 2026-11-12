@@ -120,7 +120,7 @@ for(const [all,attrs,content] of match){
 }
 assert.equal(pdfs,6);assert.equal(web,9);assert.equal(interactive,1);
 assert.ok(html.includes('does not establish equivalence or technical compatibility between the separately versioned publications') &&
- html.includes('The former machine-readable schema files are not part of the current public release.') &&
+ html.includes('former machine-readable schema files are not part of the current public release') &&
  html.includes('Version 1.1 (July 2026)') && html.includes('Version 2.0 (2026)'),
- 'edition labeling must remain in searchable resource directory');
+ 'resource directory must retain the active edition labels and retired Manifest boundary');
 console.log('PASS: 16 accessible, progressively enhanced catalog entries; 6 tracked PDF assets; 10 web/interactive targets; no personal-query transmission.');

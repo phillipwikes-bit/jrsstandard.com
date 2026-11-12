@@ -7,6 +7,7 @@ on:
       - 'vercel.json'
       - 'tests/public-method-first-release.mjs'
       - 'tests/public-reference-navigation.mjs'
+      - 'tests/public-ga4-sitemap-coverage.mjs'
       - 'tests/public-research-accessibility.test.mjs'
       - '.github/workflows/jrs-method-first-public-site.yml'
   push:
@@ -32,4 +33,5 @@ jobs:
           node-version: '22'
       - run: node tests/public-method-first-release.mjs
       - run: node tests/public-reference-navigation.mjs
+      - run: node tests/public-ga4-sitemap-coverage.mjs
       - run: node --test tests/public-research-accessibility.test.mjs

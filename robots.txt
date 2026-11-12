@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://jrsstandard.com/sitemap.xml
+Sitemap: https://www.jrsstandard.com/sitemap.xml
