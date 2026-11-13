@@ -1,0 +1,216 @@
+{
+  "warning": "DO NOT SHARE WITH THE LABELLER. Maps packet codes to fixtures.",
+  "packet": "ds-n1-labelling-2026-11-03",
+  "cases": [
+    {
+      "code": "L-01",
+      "set": "base",
+      "id": "D05",
+      "fixture_sha256": "5aa1f30c004324dcdfc67381ba42c066811b76f9f07bd01eb90459fd47978e60"
+    },
+    {
+      "code": "L-02",
+      "set": "base",
+      "id": "P01",
+      "fixture_sha256": "674914446843b7373f742787fc80f97d6490435225e1e173a2c67c80fb9fd279"
+    },
+    {
+      "code": "L-03",
+      "set": "stress",
+      "id": "X14",
+      "fixture_sha256": "23500553a56fd8515d9edec8783420dabe72f2606b713b70b27dd6cc62e21376"
+    },
+    {
+      "code": "L-04",
+      "set": "stress",
+      "id": "X11",
+      "fixture_sha256": "7ac58461495995d626a821db26512ab2beddc0885c1de958aeca372c35e702e1"
+    },
+    {
+      "code": "L-05",
+      "set": "stress",
+      "id": "X09",
+      "fixture_sha256": "0c348a9350483c75e869fd57ec26c44c8d4a6d678aa2893631de3ae9dc85b371"
+    },
+    {
+      "code": "L-06",
+      "set": "base",
+      "id": "D14",
+      "fixture_sha256": "bdef1ddfbf104d19b306dbf157f505e0cde9b1e78cff9948bfa123bf41dad1dc"
+    },
+    {
+      "code": "L-07",
+      "set": "stress",
+      "id": "X13",
+      "fixture_sha256": "504edf039259d769ae55f590d1ba6e2070662e12cfb746baa340bce2fb3fe96e"
+    },
+    {
+      "code": "L-08",
+      "set": "base",
+      "id": "P05",
+      "fixture_sha256": "f5df21dc153942ad6d9bb09250c7f2704e31023afc12cf96bf97ec8463438b69"
+    },
+    {
+      "code": "L-09",
+      "set": "stress",
+      "id": "X02",
+      "fixture_sha256": "8259992ee8b9e62354922b61842b15f93035d3f3585dd1231d451faece8d51e7"
+    },
+    {
+      "code": "L-10",
+      "set": "base",
+      "id": "P03",
+      "fixture_sha256": "71c36e9ea4b83568745d1444278e98a79235cf81ef67915828c1c6bf981290c5"
+    },
+    {
+      "code": "L-11",
+      "set": "stress",
+      "id": "X05",
+      "fixture_sha256": "d2a4f55cd4fc286bf703bdbd761ce349232cdd4f5a16789fa188e7f89651ddca"
+    },
+    {
+      "code": "L-12",
+      "set": "base",
+      "id": "D12",
+      "fixture_sha256": "81789636f47ef3f6f1c98c74c11b41e783ef4daca996bb26e0fef2cff978f45c"
+    },
+    {
+      "code": "L-13",
+      "set": "stress",
+      "id": "X06",
+      "fixture_sha256": "ff589bb1b0b127e3537c265529f723fc57e46897f793396541d6aec06653fbc0"
+    },
+    {
+      "code": "L-14",
+      "set": "base",
+      "id": "D04",
+      "fixture_sha256": "50b04858d61369e1d24412ca1d4f5ddbd65ff74345d5cc7cdd2f7ed56a362d78"
+    },
+    {
+      "code": "L-15",
+      "set": "base",
+      "id": "D11",
+      "fixture_sha256": "4204eb7f147db958e5392fc9d87277ac7c06d3f4d942508c3179975c8dc9bd75"
+    },
+    {
+      "code": "L-16",
+      "set": "stress",
+      "id": "X10",
+      "fixture_sha256": "ceed0ede03b8289ff743be51c6dc0f99f139e6d7024e1c5155ed3c6cf3efb905"
+    },
+    {
+      "code": "L-17",
+      "set": "stress",
+      "id": "X08",
+      "fixture_sha256": "c8a457668c0c477609e4a7ecfaa64ac7a3397b02ad867c36abdce40352bac47e"
+    },
+    {
+      "code": "L-18",
+      "set": "stress",
+      "id": "X12",
+      "fixture_sha256": "a0273b1ed5f2089d81f966d92cf8cbcf419b1d49746d3fd1379f54f6c3100695"
+    },
+    {
+      "code": "L-19",
+      "set": "base",
+      "id": "D07",
+      "fixture_sha256": "ea294f47034ad04abb8f43be795cc8fca74d7eca2dcba0aea17d3d09f6299b27"
+    },
+    {
+      "code": "L-20",
+      "set": "base",
+      "id": "D02",
+      "fixture_sha256": "605b4fddc8512337897cfb6a04206b7ee3f27959f4686598017323d31e17baa0"
+    },
+    {
+      "code": "L-21",
+      "set": "stress",
+      "id": "X03",
+      "fixture_sha256": "9ede1c1bf37b9159d82daeb881b43261e59b04efc43d1c8f5d8300cea40d7465"
+    },
+    {
+      "code": "L-22",
+      "set": "base",
+      "id": "D09",
+      "fixture_sha256": "0b050e50d6a00144bcd8f6be0b5c6476447f416cc86f4666ec0818f7caef86cc"
+    },
+    {
+      "code": "L-23",
+      "set": "base",
+      "id": "P02",
+      "fixture_sha256": "9a693c2276e3c95df316ef66865232d282879f5b5a46331a9c374348b674072b"
+    },
+    {
+      "code": "L-24",
+      "set": "base",
+      "id": "D01",
+      "fixture_sha256": "439d8e854372b8ba59e8a3e245112bf53f81edf53d225b41570f98b488618727"
+    },
+    {
+      "code": "L-25",
+      "set": "stress",
+      "id": "X15",
+      "fixture_sha256": "4f18cd733c1ea9846a5b0a575546bfd66fd5fde116cff753e9d6799bbd871be4"
+    },
+    {
+      "code": "L-26",
+      "set": "base",
+      "id": "D06",
+      "fixture_sha256": "9fa00f2f77ae12865ec4509da0d833651758da40f0ea75ff2532d8ea2fb25423"
+    },
+    {
+      "code": "L-27",
+      "set": "base",
+      "id": "D10",
+      "fixture_sha256": "3f545953c541cbf1b132f84006f16a44d19c39e30bc28913707b529df3bb14ee"
+    },
+    {
+      "code": "L-28",
+      "set": "base",
+      "id": "P04",
+      "fixture_sha256": "9cb566fa4fe425d0382b3c86eaf703ca90efd6907d9328c17ba94b5fcc736706"
+    },
+    {
+      "code": "L-29",
+      "set": "base",
+      "id": "D08",
+      "fixture_sha256": "ca4bedc5d4eb96ce1cfd854cfc9673c3ad719013d43a6611ff23c342cb5b958c"
+    },
+    {
+      "code": "L-30",
+      "set": "stress",
+      "id": "X07",
+      "fixture_sha256": "807f7ba4e03c07ed837307a55b596ed36e40f010b62976eeec1caf64cd64943d"
+    },
+    {
+      "code": "L-31",
+      "set": "stress",
+      "id": "X16",
+      "fixture_sha256": "d23584fa38cae3f4a99014173e1d3ad4d4d5056ae0a1833e12e3edacc11c46f9"
+    },
+    {
+      "code": "L-32",
+      "set": "stress",
+      "id": "X04",
+      "fixture_sha256": "3c4c98c47e4f283a6d334560373608e09d0380f19a239083202ff7e628b558c9"
+    },
+    {
+      "code": "L-33",
+      "set": "base",
+      "id": "D03",
+      "fixture_sha256": "4a6b113b88fed5bc9f64939ee3ed81ce14b1cfcaa2785a8f72e2f0d029d48286"
+    },
+    {
+      "code": "L-34",
+      "set": "base",
+      "id": "D13",
+      "fixture_sha256": "7ea1c95472a381d8bc30295c9163b5da3215d6cdf0a1f054d9a7ffed64b92765"
+    },
+    {
+      "code": "L-35",
+      "set": "stress",
+      "id": "X01",
+      "fixture_sha256": "53d27691d72859452a180810858cf923c9dcf2d1d9f7498f7b39cbfa217ecbc9"
+    }
+  ]
+}

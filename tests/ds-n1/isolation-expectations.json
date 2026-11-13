@@ -1,0 +1,98 @@
+{
+  "expectation_set": "ds-n1.isolation-expectations/0.1.0",
+  "registered": "2026-11-03",
+  "registered_before_first_run": true,
+  "label_type": "SPECIFICATION: the behaviour DS-N1's own rule design requires. Not a reference label of what a reviewer should conclude.",
+  "acceptance_criteria": {
+    "status": "observed status equals expected_status",
+    "isolation": "the active finding codes are exactly [rule]",
+    "decisive": "suppressing [rule] alone turns the case READY_FOR_HUMAN_FINALIZATION (so the rule alone prevents a false READY)",
+    "no_tuning": "rules stay frozen at ds-n1.rules/0.2.0 in this increment; a failing case is recorded and fixed, if at all, in a later increment"
+  },
+  "fixtures": {
+    "I01": {
+      "rule": "ACTOR_NOT_ESTABLISHED",
+      "expected_status": "REVIEW_REQUIRED",
+      "expected_codes": [
+        "ACTOR_NOT_ESTABLISHED"
+      ]
+    },
+    "I02": {
+      "rule": "CLAIM_LOCATION_AMBIGUOUS",
+      "expected_status": "REVIEW_REQUIRED",
+      "expected_codes": [
+        "CLAIM_LOCATION_AMBIGUOUS"
+      ]
+    },
+    "I03": {
+      "rule": "DATE_MISMATCH",
+      "expected_status": "HOLD",
+      "expected_codes": [
+        "DATE_MISMATCH"
+      ]
+    },
+    "I04": {
+      "rule": "DATE_NOT_ESTABLISHED",
+      "expected_status": "REVIEW_REQUIRED",
+      "expected_codes": [
+        "DATE_NOT_ESTABLISHED"
+      ]
+    },
+    "I05": {
+      "rule": "DATE_ROLE_UNVERIFIED",
+      "expected_status": "REVIEW_REQUIRED",
+      "expected_codes": [
+        "DATE_ROLE_UNVERIFIED"
+      ]
+    },
+    "I06": {
+      "rule": "EVENT_ROLE_CONFUSION",
+      "expected_status": "HOLD",
+      "expected_codes": [
+        "EVENT_ROLE_CONFUSION"
+      ]
+    },
+    "I07": {
+      "rule": "NEGATION_CONFLICT",
+      "expected_status": "HOLD",
+      "expected_codes": [
+        "NEGATION_CONFLICT"
+      ]
+    },
+    "I08": {
+      "rule": "QUOTE_NOT_FOUND",
+      "expected_status": "HOLD",
+      "expected_codes": [
+        "QUOTE_NOT_FOUND"
+      ]
+    },
+    "I09": {
+      "rule": "REASONING_NOT_TRACED",
+      "expected_status": "REVIEW_REQUIRED",
+      "expected_codes": [
+        "REASONING_NOT_TRACED"
+      ]
+    },
+    "I10": {
+      "rule": "RELEVANCE_NOT_ESTABLISHED",
+      "expected_status": "REVIEW_REQUIRED",
+      "expected_codes": [
+        "RELEVANCE_NOT_ESTABLISHED"
+      ]
+    },
+    "I11": {
+      "rule": "SOURCE_MISSING",
+      "expected_status": "HOLD",
+      "expected_codes": [
+        "SOURCE_MISSING"
+      ]
+    },
+    "I12": {
+      "rule": "UNTRACEABLE_AUTHORITY",
+      "expected_status": "HOLD",
+      "expected_codes": [
+        "UNTRACEABLE_AUTHORITY"
+      ]
+    }
+  }
+}
