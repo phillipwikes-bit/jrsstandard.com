@@ -27,14 +27,17 @@ function selfTest(){
   }
   console.log('PASS: hosted capture origin and credential isolation self-test');
 }
-async function capture(input,output,bypass,browser){
+async function capture(input,output,bypass,browser,identity){
   const host=origin(input);
-  // A protected preview requires a CI secret. A narrowly exempted immutable
-  // deployment may be captured anonymously, but only after the preceding
-  // byte-for-byte hosted-source/PDF gate and the same-origin browser checks.
-  // An authentication page or cross-origin redirect still fails closed.
+  // Protected preview checks use either an existing dedicated CI credential
+  // or ephemeral GitHub identity from an explicitly authorized Trusted Source.
+  // All credentials remain scoped to the immutable origin. Authentication
+  // pages and cross-origin redirects remain release-blocking.
   if(bypass && (bypass.length<32||bypass.length>256||/[\r\n]/.test(bypass)))
     hold('dedicated GitHub CI bypass secret invalid');
+  if(!bypass && identity && (identity.length>16000 ||
+    !/^[A-Za-z0-9_-]+\.[A-Za-z0-9_-]+\.[A-Za-z0-9_-]+$/.test(identity)))
+    hold('invalid ephemeral GitHub identity');
   await mkdir(output,{recursive:true});
   const profile=await mkdtemp(path.join(tmpdir(),'jrs-cdp-'));
   let child,ws,seq=0,interceptError=null,documentStatus=null;
@@ -78,14 +81,16 @@ async function capture(input,output,bypass,browser){
           if(!sameOrigin(req.url,host)){
             await send('Fetch.continueRequest',{requestId:m.params.requestId},m.sessionId);return;
           }
-          if(!bypass){
+          if(!bypass&&!identity){
             await send('Fetch.continueRequest',{requestId:m.params.requestId},m.sessionId);
             return;
           }
           const headers=Object.entries(req.headers||{})
-            .filter(([n])=>n.toLowerCase()!=='x-vercel-protection-bypass')
+            .filter(([n])=>!['x-vercel-protection-bypass','x-vercel-trusted-oidc-idp-token'].includes(n.toLowerCase()))
             .map(([name,value])=>({name,value:String(value)}));
-          headers.push({name:'x-vercel-protection-bypass',value:bypass});
+          headers.push(bypass?
+            {name:'x-vercel-protection-bypass',value:bypass}:
+            {name:'x-vercel-trusted-oidc-idp-token',value:identity});
           await send('Fetch.continueRequest',{requestId:m.params.requestId,headers},m.sessionId);
         })().catch(e=>{interceptError=e});
       }
@@ -149,7 +154,7 @@ try{
   if(process.argv[2]==='--self-test')selfTest();
   else{
     if(process.argv.length!==4)hold('expected PREVIEW_URL and OUTPUT_DIR');
-    await capture(process.argv[2],process.argv[3],process.env.JRS_VERCEL_PREVIEW_BYPASS,process.env.JRS_BROWSER||'google-chrome');
+    await capture(process.argv[2],process.argv[3],process.env.JRS_VERCEL_PREVIEW_BYPASS,process.env.JRS_BROWSER||'google-chrome',process.env.JRS_VERCEL_TRUSTED_OIDC);
   }
 }catch(e){
   // Error messages never include headers or credential values.

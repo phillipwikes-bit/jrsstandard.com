@@ -90,11 +90,20 @@ def verified_request(url, parsed):
         "User-Agent": "JRS-publication-preview-verifier/1.0",
         "Cache-Control": "no-cache",
     }
+    # Use the existing dedicated secret when present; otherwise authenticate
+    # via a GitHub Actions OIDC JWT, if Vercel explicitly trusts this repository.
     secret = os.environ.get("JRS_VERCEL_PREVIEW_BYPASS", "")
+    identity = os.environ.get("JRS_VERCEL_TRUSTED_OIDC", "")
     if secret:
         if not (32 <= len(secret) <= 256) or chr(13) in secret or chr(10) in secret:
             fail("invalid CI preview-bypass credential format")
         headers["x-vercel-protection-bypass"] = secret
+    elif identity:
+        if len(identity) > 16000 or not re.fullmatch(
+            r"[A-Za-z0-9_-]+\.[A-Za-z0-9_-]+\.[A-Za-z0-9_-]+", identity
+        ):
+            fail("invalid ephemeral GitHub identity format")
+        headers["x-vercel-trusted-oidc-idp-token"] = identity
     return Request(url, headers=headers)
 
 
