@@ -28,16 +28,13 @@ for (const path of institutional) {
   assert.match(html, /<body\b[^>]*\bjrs-institutional[^>]*>\s*<div class="jrs-ios-status-surface" aria-hidden="true"><\/div>/i, path + ' must paint solid status-bar element as first body child');
   assert.equal((html.match(/class="jrs-ios-status-surface"/g)||[]).length, 1, path + ' must contain one status surface');
 }
-// Safari's browser chrome must match the opaque top layer on the primary
-// public, campaign, training, reference and reviewer entry points.
-const safariThemeRoutes=[
-  'index.html','resources.html','right-to-know-why.html',
-  'decisions-you-can-defend.html','training.html','codebook.html',
-  'reference/index.html','reviewer/index.html'
-];
-for(const path of safariThemeRoutes){
- assert.match(read(path),/<meta\s+name="theme-color"\s+content="#f5f7f8">/i,
-  path+' must declare the same solid top-edge color for Safari chrome');
+// Every institutional route must declare the same opaque Safari browser-chrome
+// color as its first-paint top-edge surface, including deep reference pages.
+for(const path of institutional){
+ const html=read(path);
+ const themes=[...html.matchAll(/<meta\s+name=["']theme-color["']\s+content=["']([^"']+)["'][^>]*>/gi)];
+ assert.equal(themes.length,1,path+' must declare exactly one Safari theme-color');
+ assert.equal(themes[0][1].toLowerCase(),'#f5f7f8',
+  path+' theme-color must match the opaque iPhone top-edge background');
 }
-
 console.log('iOS top-edge source check passed across ' + institutional.length + ' JRS institutional pages');
