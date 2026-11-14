@@ -250,8 +250,11 @@ try{
   });
   for(const path of noScriptRoutes){
    const response=await page.goto('http://127.0.0.1:'+port+'/'+path,{
-    waitUntil:'domcontentloaded',timeout:20000
+    // A nav measurement taken before CSS finishes loading can mix
+    // transitional element states. Verify after the full page load instead.
+    waitUntil:'load',timeout:20000
    });
+   await page.waitForTimeout(180);
    const nav=page.locator('nav.jrs-sitenav');
    const links=nav.locator('a[href]');
    const count=await links.count();
@@ -264,8 +267,15 @@ try{
    if(count!==7)failures.push('static-navigation-link-count-'+count);
    if(!navVisible||!firstVisible||!lastVisible)failures.push('static-navigation-hidden');
    if(!noScriptToggle)failures.push('static-navigation-depends-on-script-toggle');
+   const navGeometry=failures.length&&await nav.count()
+    ? await nav.evaluate(el=>{
+       const rect=el.getBoundingClientRect(),style=getComputedStyle(el);
+       return {display:style.display,visibility:style.visibility,
+        width:Math.round(rect.width),height:Math.round(rect.height)};
+      }):null;
    const row={path,width,pass:failures.length===0,failures,count,
-    navVisible,firstVisible,lastVisible,noScriptToggle};
+    navVisible,firstVisible,lastVisible,noScriptToggle,
+    ...(navGeometry?{navGeometry}:{})};
    noScriptRows.push(row);
    console.log('WEBKIT-NOSCRIPT '+JSON.stringify(row));
   }
