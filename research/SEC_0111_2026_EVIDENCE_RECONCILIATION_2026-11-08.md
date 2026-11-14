@@ -1,0 +1,30 @@
+# Study SEC-0111-2026: source and evidence reconciliation
+
+**Record date:** 2026-11-08  
+**Status:** proposed source clarification, pending author verification and release review  
+**Purpose:** qualify public interpretation of an existing research result without changing historical data or reconstructing absent evidence.
+
+## Verified against existing repository records
+
+1. **Detection exercise.** The [locked aggregate](closed_aggregates_2026-08-15.json) reports 16 analyzed reviewers, 24 constructed records, 384 scored judgments, mean reviewer-level classification agreement 83.85%, reviewer-level 95% interval 72.66%–95.05%, sensitivity 86.98%, and specificity 80.73%. The published rounded figures of 83.9%, 72.7%–95.1%, 87.0%, and 80.7% are retained. The original underlying row-level data were not re-executed during this reconciliation.
+2. **Reference-classification provenance.** The author-fixed construction labels are in [Intended_Key_authorside.md](Intended_Key_authorside.md). [Verified_Key.md](Verified_Key.md) records agreement by **three independently run language-model raters**, each classifying 24 records, not by three independent human reference adjudicators. The original document's label “verified key” therefore does **not** establish independent human ground truth. The original 24 labels are preserved.
+3. **Execution versus plan.** [OSF_PreRegistration.md](OSF_PreRegistration.md) describes a *proposed* two-rater verification procedure and instructs that the protocol be deposited on OSF. The source audit [REFERENCE_CLASSIFICATION_SOURCE_REPORT_2026-08-18.md](REFERENCE_CLASSIFICATION_SOURCE_REPORT_2026-08-18.md) records three automated raters actually used, a July 6, 2026 reference-key commit, and detection-panel activity dating to June 28, 2026. This does not establish a public OSF registration. No retrospective registration claim is made.
+4. **Corpus generation provenance.** The source audit [CORPUS_CONSTRUCTION_LOG_VERIFICATION_2026-08-18.md](CORPUS_CONSTRUCTION_LOG_VERIFICATION_2026-08-18.md) could not establish, within its inspected repository and dataset scope, a per-record generation model, version, date, prompt, or human-edit history for R01–R24. This does **not** prove that independent files cannot exist elsewhere.
+5. **Separate reliability measurement.** The [reliability aggregate](current_reliability_2026-08-18.json) reports 113 submitted five-condition determinations, 104 retained after deduplication, 22 analyzed raters, 15 records carrying a label, and 10 records carrying at least two raters. The invited group contributed 36 retained determinations and the open-enrolment group 68. Gwet AC1 values are 0.7394 invited and 0.6228 open, with analytic 95% confidence bounds of 0.4023–1.0000 and 0.2522–0.9934 respectively. Both lower limits are below the documented 0.41 criterion. These source-reported values were not recalculated from the raw responses during this source correction. The detection and reliability exercises are distinct; their participant populations should not be described as wholly disjoint without participant-level verification.
+6. **Available CSV snapshot does not reconcile to the later aggregate.** The checked-in [construct_validity_data.csv](construct_validity_data.csv) currently has 99 data rows, 21 distinct rater codes, and 10 record IDs (99 unique rater-record pairs). The later [reliability aggregate](current_reliability_2026-08-18.json) reports 104 retained labels and 22 raters. These are **different accessible snapshots**; the 99-row CSV is not demonstrated to be the exact analysis input used to calculate the later reported coefficients. This reconciliation does not fill the missing rows, assume their identity, or treat an older snapshot as a replication package.
+7. **Measurement distinction.** The reported 83.85% is an average of participant-level agreement scores, not accuracy on real-world records or independent human validation. The reported mixed-effects model intercept-based 89.2% is a different model-based estimand, not another computation of that reviewer-level mean. [Research summary](../research-summary.html) contains both.
+
+## Required checks before journal revision or data release
+
+- Preserve the original author-designed reference and show original protocol versus executed procedures, including deviations and exploratory analyses.
+- Obtain or explicitly mark unavailable the original record-generation chronology and reference-rater model identifiers, prompts, dates, and per-rater outputs. Do not reconstruct provenance without original sources.
+- Recalculate participant-level and record-level statistics from original authorized extracts, reconcile 113 submitted versus 104 deduplicated determinations, and specify whether any condition-frequency denominator uses 113 or 104 records. Do not treat five condition codes per determination as independent determinations.
+- Verify the publication and timestamp status of any external research registration from a primary registry record before calling the study publicly preregistered.
+- Reconcile consent by participant group and document actual co-author contributions and final manuscript approval. A structured contributor consent is not, without scope analysis, blanket authorization to publish identifying response data.
+- Release only original, licensed, privacy-reviewed research materials to a repository. Document missing files as missing and obtain an actual repository DOI before citing one.
+
+## Change control
+
+This note is an interpretive supplement only. It does not alter any participant response, original 24-record reference classification, source aggregate, published study date, contributor consent, manuscript authorship, external repository, website deployment, or statistical result. The source audit reports cited above are historical documents and remain intact.
+
+**Review disposition:** source qualifications prepared; statistical re-execution, authorship/consent verification, repository publication, and external author approvals **not completed**.
