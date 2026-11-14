@@ -26,6 +26,43 @@ for(const [path,page] of [['resources.html',html],['investigator-guides.html',gu
 }
 assert.ok(html.includes('different editions and must not be treated as interchangeable'),
  'alternative formats must preserve Standard web/PDF edition distinctions');
+// Investigator guide actions must identify an edition in both the
+// visible link text and accessible link name. The same original files must
+// remain freely downloadable, and visitors must encounter the access notice
+// before the first download controls.
+const guidePairs=[
+ ['employment','Employment / EEO','JRS_Investigator_Field_Guide_Employment.pdf'],
+ ['fairhousing','Fair Housing','JRS_Investigator_Field_Guide_FairHousing.pdf'],
+ ['international','International','JRS_Investigator_Field_Guide_International.pdf']
+];
+const quickStart=guides.indexOf('<nav class="jrs-guide-quick-actions"');
+const cardsStart=guides.indexOf('<div class="cards">',quickStart);
+const firstCardDownload=guides.indexOf('class="dl dl-direct"',cardsStart);
+assert.ok(quickStart>0&&cardsStart>quickStart&&firstCardDownload>cardsStart,
+ 'the three direct-download guide controls must be present');
+const quick=guides.slice(quickStart,cardsStart);
+assert.ok(quick.includes('class="jrs-guide-quick-access" role="note"') &&
+ quick.includes('have not been independently verified for tagged reading order') &&
+ quick.includes('href="contact.html?category=accessibility"') &&
+ quick.includes('Do not include confidential case records.'),
+ 'quick-downloads require an immediately available, non-certifying access notice');
+for(const [edition,title,file] of guidePairs){
+ const accessible='aria-label="Download '+title+' Investigator Guide PDF, Version 1.1"';
+ const direct='href="/'+file+'" download="'+file+'" '+accessible;
+ assert.ok(quick.includes('data-ed="'+edition+'" '+direct),
+  edition+': quick action must preserve direct file download and name the edition');
+ assert.ok(guides.includes('class="dl dl-direct" data-ed="'+edition+'" '+direct),
+  edition+': primary download must preserve direct file download and name the edition');
+ assert.ok(guides.includes('<h2 class="gcard-title">'+title+' Edition</h2>'),
+  edition+': guide card title must be a document heading');
+ assert.ok(guides.includes('>'+('Download '+title+' PDF')+' &#8595;</a>'),
+  edition+': primary download text must identify the guide');
+}
+assert.equal((guides.match(/class="dl dl-direct"/g)||[]).length,3,
+ 'three distinct investigator download actions expected');
+assert.ok(!guides.includes('>Download PDF &#8595;</a>'),
+ 'generic, indistinguishable main guide download labels must not return');
+
 const check=read('check.html');
 assert.ok(check.includes('does not score your record') &&
  (check.includes('no registration, no account, no upload') || check.includes('There is no registration, no account, no upload')),
