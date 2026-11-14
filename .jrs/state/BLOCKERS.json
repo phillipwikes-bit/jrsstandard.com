@@ -425,6 +425,53 @@
       "note": "WHAT IS ESTABLISHED AND WHAT IS NOT. ESTABLISHED FROM REPOSITORY EVIDENCE: the promise, the grant, and the published export link all exist and contradict each other. NOT ESTABLISHED: whether any response rows exist and are actually retrievable by an anonymous caller. A direct read of the production table was attempted and correctly DENIED by the execution environment's production-read control, so the live row count is PRODUCTION VERIFICATION REQUIRED and is not inferred. The remediation does not depend on the count: a privacy promise contradicted by a grant is a defect whether or not anyone has yet typed into the box. SCOPE NOTE, so this is not over-read: interaction_events was examined in the same pass and is a WEAKER case, not this one. Its collecting pages promise 'No free text and no identifying information are collected' and 'aggregated without individual attribution', and select=* over a payload jsonb is consistent with that promise. The enforcement of 'no free text' lives in the client code that builds the payload rather than in the schema, which is a separate and lesser matter recorded as X-1 rather than folded in here.",
       "next_action_by": "OWNER",
       "next_action_basis": "The anon SELECT grant on public.finding_responses must be revoked in the production console. Nothing here can perform or verify it."
+    },
+    {
+      "blocker_id": "B-018",
+      "severity": "HIGH",
+      "category": "EVIDENCE",
+      "description": "Two of the 20 analyzed employment matters appear to fall under the same exclusion rule the study applied to FOIL-AO-19774 (forum and legal question are public records, not employment adjudication), and one also appears miscoded. (1) Matter of Gannett Co., Inc. v City of Mount Vernon Police Dept., 248 AD3d 1035, 2026 NY Slip Op 02267: the bench_outcomes record describes a FOIL request for police disciplinary records and an Article 78 fee award against the respondents, who 'failed to demonstrate a reasonable basis for denying access'; it is coded jrs_read=ready, outcome=held_up. The agency's position did not survive, so held_up is contradicted by the row's own note. (2) Matter of Kohler-Hausmann v New York City Police Dept., 133 AD3d 437 (1st Dept 2015): published as a FOIL proceeding with press amici (vLex/nycourts listing), but the row's record and note describe a supervisory instruction, an arbitrator's just-cause finding and the FLRA denying union exceptions, which is not that case. Citation and content do not match. Neither issue appears in the 2026-08-24 corpus review (MASTER_TRACKER.md:2526-2527), which checked only FOIL-AO-19774.",
+      "evidence_refs": [
+        "research/B-018_Evidence_2026-11-03.md",
+        "research/MASTER_TRACKER.md"
+      ],
+      "affected_assets": [
+        "JRS-RESEARCH",
+        "research/ComplianceToday_Testing_Employment_Files_2026-11-03.docx",
+        "Compliance Today pitch to Scott Moe (75% / 16.7% figures)"
+      ],
+      "required_action": "Owner and Tanvi Pokhriyal to read both official decisions and decide: (a) whether Gannett and Kohler-Hausmann are excluded under the FOIL-AO rule, (b) Gannett's correct outcome code, (c) which decision the Kohler-Hausmann row actually describes. Sensitivity computed, not adopted: excluding both gives 6/8 vs 2/10, Fisher p = 0.0536; excluding Gannett only gives p = 0.0237; keeping Gannett but coding it adverse gives p = 0.0648. Current figures (p = 0.0194) stand only if both rows are retained as coded. No DB row was changed.",
+      "owner": "OWNER",
+      "status": "OWNER-CONFIRMED / CLOSED BY OWNER STATEMENT 2026-11-03",
+      "created": "2026-11-03",
+      "note": "INFERENCE, not FACT: that the agency's position did not survive in Gannett rests on the row's own note; the official decision was not read in full here (nycourts.gov not reachable from this session). Do not submit the Compliance Today manuscript or send the pitch with the 75%/16.7% figures until resolved.",
+      "next_action_by": "NONE",
+      "next_action_basis": "Closed on the owner statement recorded in owner_decision; nothing further is routed. Any later change to the Gannett or Kohler-Hausmann classification is a new owner decision (see research/ComplianceToday_PreSubmission_Checklist_2026-11-03.md item 6).",
+      "owner_decision": "Owner, 2026-11-03, verbatim: \"The statistics have already been dealt with.\" Recorded as the owner retaining both rows as coded for the Compliance Today manuscript. No database row was changed. The specific Gannett outcome coding and the Kohler-Hausmann citation/content mismatch are not shown as reviewed in any repository record; that remains a documented observation, not a resolved finding."
+    },
+    {
+      "blocker_id": "B-019",
+      "severity": "HIGH",
+      "category": "EVIDENCE",
+      "description": "The outcome labels in bench_outcomes (HR / Employment) may not consistently encode the article's stated definition of an adverse finding (the employer's position did not survive review, or an adverse audit or compliance finding). In at least two rows the note describes the employer prevailing while the label is adverse. (1) U.S. Small Business Administration and AFGE Local 228, 71 FLRA No. 124 (2020): labelled failed_appeal; the note says the FLRA set aside the arbitrator's modification of the agency's penalty, which is an agency win. (2) FOP DC Lodge 1 and DoD Pentagon Force Protection Agency, 73 FLRA No. 77 (2023): labelled failed_audit; the note says the arbitrator denied the grievance and the FLRA rejected the challenges. (3) McDonnell Douglas Corp. v. Green (1973): labelled failed_appeal; the note says the Court remanded without deciding. One plausible reading is that failed_appeal records the decision under review being overturned rather than the employer losing. This is distinct from B-018 (Gannett, Kohler-Hausmann), which the owner closed.",
+      "evidence_refs": [
+        "research/B-019_Evidence_2026-11-03.md",
+        "research/MASTER_TRACKER.md"
+      ],
+      "affected_assets": [
+        "JRS-RESEARCH",
+        "research/ComplianceToday_Testing_Employment_Files_2026-11-03.docx",
+        "research/ComplianceToday_Supplement_Case_List_2026-11-03.docx",
+        "research/Pitch_Scott_Moe_ComplianceToday_2026-11-03.md"
+      ],
+      "required_action": "Owner and Tanvi Pokhriyal to confirm what each outcome label means and whether SBA, FOP and McDonnell Douglas are coded as intended. Sensitivity computed, not adopted: SBA and FOP recoded non-adverse gives 5/8 vs 1/12, p = 0.0181; adding McDonnell Douglas gives 4/8 vs 1/12, p = 0.1089; FOP alone gives p = 0.0044; SBA alone gives p = 0.0623. Reported figure as coded: p = 0.0194. No DB row was changed and no article figure was changed.",
+      "owner": "OWNER",
+      "status": "OWNER-CONFIRMED / CLOSED BY DISCLOSURE 2026-11-03",
+      "created": "2026-11-03",
+      "note": "INFERENCE, not FACT: the reading of each outcome rests on the study's own notes; the decisions were not read. The six case lessons in the article do not depend on these three rows, so only the statistical figures and the supplement would change.",
+      "next_action_by": "NONE",
+      "next_action_basis": "Closed on the owner decision recorded in owner_decision; the disclosure is guarded by scripts/verify_ct_article.py.",
+      "owner_decision": "Owner, 2026-11-03, verbatim: \"We ate not going to redo her work find an alternative.\" No recoding. Alternative applied: the manuscript now defines an adverse finding as the reviewer's code (\"coded the matter as not surviving review or as drawing an adverse audit or compliance finding\"), and endnote 6 discloses that three coded-adverse matters describe a ruling for the employer or a remand, with the resulting p range 0.0044 to 0.1089. Takeaway 2 says \"coded adverse\"."
     }
   ],
   "_decisions_recorded_2026_09_15": {
