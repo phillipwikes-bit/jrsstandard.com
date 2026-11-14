@@ -12,7 +12,7 @@ permissions:
   contents: read
   deployments: read
 jobs:
-  visual-snapshots:
+  local-visual:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout exact PR source
@@ -147,7 +147,7 @@ jobs:
 
   protected-preview:
     name: Verify protected preview and capture hosted screenshots
-    needs: visual-snapshots
+    needs: local-visual
     runs-on: ubuntu-latest
     # Configure REQUIRED REVIEWERS before adding a bypass secret. Every PR
     # commit using this credential must be explicitly approved by the owner.
@@ -217,3 +217,25 @@ jobs:
           path: /tmp/jrs-visual/verified-preview-*.png
           if-no-files-found: error
           retention-days: 14
+
+  # Retain the original required-check identity as the final fail-closed gate.
+  # A green local screenshot job must never obscure blocked hosted verification.
+  visual-snapshots:
+    name: visual-snapshots
+    needs: [local-visual, protected-preview]
+    if: always()
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - name: Require both local and protected-preview evidence
+        env:
+          JRS_LOCAL_RESULT: ${{ needs.local-visual.result }}
+          JRS_HOSTED_RESULT: ${{ needs.protected-preview.result }}
+        run: |
+          if [ "$JRS_LOCAL_RESULT" != "success" ] || [ "$JRS_HOSTED_RESULT" != "success" ]; then
+            echo "::error::RELEASE HOLD: local visual=$JRS_LOCAL_RESULT; protected preview=$JRS_HOSTED_RESULT."
+            echo "::error::Both stages must pass on this exact candidate commit. Skipped hosted verification is not approval."
+            exit 1
+          fi
+          echo "PASS: local visual and protected hosted verification both succeeded for this workflow."
