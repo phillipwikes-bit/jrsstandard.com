@@ -184,6 +184,19 @@ assert.ok(publicResearch.includes('Public Challenge Aggregates') &&
 assert.ok(publicChronology.includes('not the authoritative internal evidence register'),
  'public chronology must disclose that it is not the complete evidence ledger');
 
+// A retained security reference is not an active enterprise data-intake form.
+// The legacy /api/enterprise-inquiry endpoint has returned 410 since retirement.
+const archivedSecurity=read('security.html');
+assert.ok(archivedSecurity.includes('Archive, not an active interface.') &&
+ archivedSecurity.includes('href="contact.html?category=organization"'),
+ 'security reference must retain a clear archive boundary and non-sensitive contact path');
+assert.ok(!archivedSecurity.includes('/api/enterprise-inquiry') &&
+ !archivedSecurity.includes('form[data-cap]') &&
+ !archivedSecurity.includes('You will get the schema, the tier'),
+ 'retired enterprise capture or unsupported submission promise reintroduced');
+assert.ok(read('api/enterprise-inquiry.js').includes('status:410'),
+ 'legacy enterprise endpoint must remain unavailable');
+
 if(errors.length){
  console.error('FAIL: '+errors.length+' issues across '+pages.length+
  ' pages, '+links+' links, '+tracked+' downloads and '+fragments+' fragments.');
