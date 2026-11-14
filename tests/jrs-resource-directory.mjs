@@ -11,9 +11,11 @@ const html=read('resources.html');
 const js=read('assets/jrs-resource-catalog.js');
 const css=read('assets/jrs-institutional-reference.css');
 const homepage=read('index.html');
-assert.ok(homepage.includes('class="jr-action-main" href="check.html?src=home">Open seven-point record check</a>'),
- 'homepage primary action must open the actual free, non-scoring record check');
-assert.ok(homepage.includes('href="resources.html#resource-catalog">16-resource reference directory</a>'),
+assert.ok(homepage.includes('class="jr-action-main" href="resources.html">Browse free JRS resources</a>'),
+ 'homepage primary action must open the ungated resource library');
+assert.ok(homepage.includes('class="jr-action-alt" href="check.html?src=home">Open seven-point record check</a>'),
+ 'homepage must retain a direct, non-scoring record check');
+assert.ok(homepage.includes('href="resources.html#resource-catalog"><strong>Find a reference or PDF</strong>'),
  'the homepage must retain an explicit direct link to the searchable practitioner directory');
 const guides=read('investigator-guides.html');
 for(const [path,page] of [['resources.html',html],['investigator-guides.html',guides]]) {
@@ -28,8 +30,8 @@ const check=read('check.html');
 assert.ok(check.includes('does not score your record') &&
  (check.includes('no registration, no account, no upload') || check.includes('There is no registration, no account, no upload')),
  'the linked record check must remain non-scoring, public and upload-free');
-assert.ok(homepage.includes('href="resources.html#resource-catalog">Browse tools</a>'),
- 'homepage Browse tools must reach searchable directory');
+assert.ok(homepage.includes('<span>Search 16 resources by responsibility and format</span></a>'),
+ 'homepage searchable directory task must describe the 16-resource catalog');
 assert.ok(!homepage.includes('resources.html#quick-review'),
  'homepage must not bypass the searchable directory');
 assert.ok(css.includes('.jrs-resource-entry:focus-within') &&
