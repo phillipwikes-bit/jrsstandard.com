@@ -56,6 +56,8 @@ const server=createServer(async(req,res)=>{
 await new Promise((done,fail)=>{server.once('error',fail);server.listen(0,'127.0.0.1',done);});
 const port=server.address().port;
 const rows=[];
+const noScriptRows=[];
+const noScriptRoutes=['index.html','resources.html','reference/index.html','contact.html'];
 await mkdir(resolve(root,'.jrs-ci'),{recursive:true});
 let browser;
 try{
@@ -232,6 +234,43 @@ try{
   }
   await ctx.close();
  }
+ // Progressive enhancement contract: the seven ordinary links must remain
+ // usable when JavaScript is disabled, without relying on the injected toggle.
+ // This is separate from the 210 JavaScript-enabled viewport samples.
+ for(const width of widths){
+  const ctx=await browser.newContext({
+   viewport:{width,height:900},deviceScaleFactor:2,isMobile:true,hasTouch:true,
+   javaScriptEnabled:false,locale:'en-US',colorScheme:'light'
+  });
+  const page=await ctx.newPage();
+  await page.route(/^https?:\/\//,route=>{
+   const url=route.request().url();
+   if(url.startsWith('http://127.0.0.1:'+port+'/'))return route.continue();
+   return route.abort();
+  });
+  for(const path of noScriptRoutes){
+   const response=await page.goto('http://127.0.0.1:'+port+'/'+path,{
+    waitUntil:'domcontentloaded',timeout:20000
+   });
+   const nav=page.locator('nav.jrs-sitenav');
+   const links=nav.locator('a[href]');
+   const count=await links.count();
+   const navVisible=await nav.isVisible();
+   const firstVisible=count>0&&await links.first().isVisible();
+   const lastVisible=count>0&&await links.last().isVisible();
+   const noScriptToggle=(await page.locator('.jrs-global-nav-toggle').count())===0;
+   const failures=[];
+   if(response?.status()!==200)failures.push('page-http-'+response?.status());
+   if(count!==7)failures.push('static-navigation-link-count-'+count);
+   if(!navVisible||!firstVisible||!lastVisible)failures.push('static-navigation-hidden');
+   if(!noScriptToggle)failures.push('static-navigation-depends-on-script-toggle');
+   const row={path,width,pass:failures.length===0,failures,count,
+    navVisible,firstVisible,lastVisible,noScriptToggle};
+   noScriptRows.push(row);
+   console.log('WEBKIT-NOSCRIPT '+JSON.stringify(row));
+  }
+  await ctx.close();
+ }
 }finally{
  if(browser)await browser.close();
  await new Promise(done=>server.close(done));
@@ -240,11 +279,13 @@ const results={
  schema:'jrs-webkit-mobile-source-preflight.v1',
  engine:'Playwright WebKit on GitHub-hosted Linux; NOT branded Safari or a physical iPhone',
  source:'local exact-head checkout, not protected Vercel deployment',
- samples:rows,totals:{
+ samples:rows,noScriptSamples:noScriptRows,totals:{
   pages:routes.length,widths:widths.length,samples:rows.length,
   failures:rows.filter(x=>!x.pass).length,
   iosRuleActivatedSamples:rows.filter(x=>x.iosRuleActive).length,
-  navInteractionSamples:rows.filter(x=>x.navInteraction).length
+  navInteractionSamples:rows.filter(x=>x.navInteraction).length,
+  noScriptSamples:noScriptRows.length,
+  noScriptFailures:noScriptRows.filter(x=>!x.pass).length
  },
  incomplete:[
   'iOS system chrome and Home Screen toolbar pixels',
@@ -259,4 +300,9 @@ console.log('NOT CERTIFIED: iPhone Safari and Home Screen behavior, protected de
 assert.equal(rows.length,routes.length*widths.length,'Incomplete WebKit route/viewport coverage');
 assert.equal(results.totals.navInteractionSamples,navInteractionRoutes.size*widths.length,
  'Missing real WebKit mobile navigation interaction evidence');
+assert.equal(noScriptRows.length,noScriptRoutes.length*widths.length,
+ 'Incomplete JavaScript-disabled navigation evidence');
+assert.equal(results.totals.noScriptFailures,0,
+ 'No-JavaScript navigation defects: '+noScriptRows.filter(x=>!x.pass)
+  .map(x=>x.path+'@'+x.width+': '+x.failures.join(',')).join('; '));
 assert.equal(results.totals.failures,0,'WebKit mobile regressions: '+rows.filter(x=>!x.pass).map(x=>x.path+'@'+x.width+': '+x.failures.join(',')).join('; '));
