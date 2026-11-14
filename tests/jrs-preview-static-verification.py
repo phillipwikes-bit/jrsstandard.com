@@ -91,20 +91,10 @@ def verified_request(url, parsed):
         "Cache-Control": "no-cache",
     }
     secret = os.environ.get("JRS_VERCEL_PREVIEW_BYPASS", "")
-    oidc = os.environ.get("JRS_GITHUB_OIDC_TOKEN", "")
-    if secret and oidc:
-        fail("ambiguous CI preview authentication methods")
     if secret:
         if not (32 <= len(secret) <= 256) or chr(13) in secret or chr(10) in secret:
             fail("invalid CI preview-bypass credential format")
         headers["x-vercel-protection-bypass"] = secret
-    if oidc:
-        # GitHub-signed, short-lived identity; trusted by Vercel for JRS previews only.
-        # No redirects are followed, and the token never enters a URL or log.
-        if not (100 <= len(oidc) <= 8192 and
-                re.fullmatch(r"[A-Za-z0-9_-]+\.[A-Za-z0-9_-]+\.[A-Za-z0-9_-]+", oidc)):
-            fail("invalid GitHub OIDC credential format")
-        headers["x-vercel-trusted-oidc-idp-token"] = oidc
     return Request(url, headers=headers)
 
 
