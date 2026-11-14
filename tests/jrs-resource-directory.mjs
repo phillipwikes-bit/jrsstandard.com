@@ -125,4 +125,30 @@ assert.ok(html.includes('does not establish equivalence or technical compatibili
  /former machine-readable schema files are not part of the current public release/i.test(html) &&
  html.includes('Version 1.1 (July 2026)') && html.includes('Version 2.0 (2026)'),
  'resource directory must retain the active edition labels and retired Manifest boundary');
+
+// Publication-accessibility guard for the 16 Reviewer Reference HTML chapters.
+// A request path is not an accessibility certificate or PDF edition substitute.
+const auditSource=read('tests/jrs-sitewide-mobile-browser-audit.html');
+const routeMatch=auditSource.match(/const paths=(\[[^\n;]*\]);/);
+assert.ok(routeMatch,'the reference route inventory must remain auditable');
+const referencePages=JSON.parse(routeMatch[1]).filter(path=>
+ path.startsWith('reference/')&&path!=='reference/index.html');
+assert.equal(referencePages.length,16,'expected 16 Reviewer Reference chapters');
+for(const pagePath of referencePages){
+ const page=read(pagePath);
+ const pdfLink=page.indexOf('href="/api/dl?f=JRS-Reference-9d4f2a7c.pdf');
+ const formatNote=page.indexOf('class="note jrs-pdf-access" role="note"');
+ assert.ok(pdfLink>0&&formatNote>pdfLink&&formatNote-pdfLink<1100,
+  pagePath+': PDF access notice must follow the actual download');
+ assert.equal((page.match(/class="note jrs-pdf-access"/g)||[]).length,1,
+  pagePath+': expected one visible alternative-format notice');
+ assert.ok(page.includes('Version 1.0, May 2026')&&
+  page.includes('is untagged and has not passed a screen-reader accessibility review')&&
+  page.includes('not a verified substitute for the PDF'),
+  pagePath+': preserve edition and accessibility disclosures');
+ assert.ok(page.includes('href="/contact.html?category=accessibility"'),
+  pagePath+': provide an open request for an alternative format');
+}
+console.log('PASS: all 16 Reviewer Reference PDF entries disclose untagged status and provide an accessible-format request.');
+
 console.log('PASS: 16 accessible, progressively enhanced catalog entries; 6 tracked PDF assets; 10 web/interactive targets; no personal-query transmission.');
