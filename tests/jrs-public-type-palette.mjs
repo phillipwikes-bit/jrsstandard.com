@@ -134,6 +134,13 @@ const researchSummary=load('research-summary.html');
 assert.ok(researchSummary.includes('/api/dl?e=accuracy&amp;src=research-summary')&&
  researchSummary.includes('/api/dl?e=paper&amp;src=research-summary'),
  'research PDF routes missing');
-assert.ok(standard.includes('/api/dl?f=JRS_Investigator_Field_Guide.pdf&amp;src=jrsstandard'),
- 'legacy general investigator guide route missing');
+// Preserve the historic 001-INV PDF as a retrievable edition while not
+// promoting it as the current investigator supplement. Three v1.1 discipline-
+// specific guides are the active destination for new practitioner use.
+assert.ok(load('api/dl.js').includes("'JRS_Investigator_Field_Guide.pdf'"),
+ 'historic combined-guide download route must remain whitelisted');
+assert.ok(!standard.includes('/api/dl?f=JRS_Investigator_Field_Guide.pdf') &&
+ standard.includes('JRS Investigator Guide (Combined Overview, historical)') &&
+ standard.includes('href="investigator-guides.html"'),
+ 'online method must distinguish the historic combined edition from current v1.1 guides');
 console.log('PASS: 10 public/retained legacy routes, 6 principal pages, 17 reference pages, 9 linked PDF assets and locally generated training completion PNG guarded. PDF harmonization remains a separate controlled publication task.');
