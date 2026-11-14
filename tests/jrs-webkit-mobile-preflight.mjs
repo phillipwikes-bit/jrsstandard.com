@@ -170,7 +170,48 @@ try{
        const focusReturned=await toggle.evaluate(el=>document.activeElement===el);
        if(!closed)failures.push('mobile-navigation-escape-did-not-close');
        if(!focusReturned)failures.push('mobile-navigation-escape-focus-not-restored');
-       navInteraction={opened,closed,focusReturned,openScrollWidth};
+
+       // A button must work from the keyboard without a simulated pointer
+       // click. Moving within the menu must preserve disclosure state.
+       await toggle.focus();
+       await page.keyboard.press('Enter');
+       const keyboardOpened=await toggle.getAttribute('aria-expanded')==='true' &&
+        await links.isVisible();
+       if(!keyboardOpened)failures.push('mobile-navigation-enter-did-not-open');
+       await links.locator('a').first().focus();
+       const stayedOpenOnLinkFocus=await toggle.getAttribute('aria-expanded')==='true' &&
+        await links.getAttribute('data-open')==='true';
+       if(!stayedOpenOnLinkFocus)failures.push('mobile-navigation-link-focus-closed-menu');
+
+       // Move focus to a non-interactive part of the page. The existing
+       // focusin handler must collapse the open menu without navigating.
+       const focusLeft=await page.evaluate(()=>{
+        const main=document.querySelector('main');
+        if(!main)return false;
+        main.setAttribute('tabindex','-1');
+        main.focus();
+        return document.activeElement===main;
+       });
+       const closedOnFocusExit=await toggle.getAttribute('aria-expanded')==='false' &&
+        await links.getAttribute('data-open')==='false';
+       if(!focusLeft)failures.push('mobile-navigation-focus-exit-target-unavailable');
+       if(!closedOnFocusExit)failures.push('mobile-navigation-focus-exit-did-not-close');
+
+       // Space is an independent native keyboard activation for a button.
+       await toggle.focus();
+       await page.keyboard.press('Space');
+       const spaceOpened=await toggle.getAttribute('aria-expanded')==='true' &&
+        await links.isVisible();
+       if(!spaceOpened)failures.push('mobile-navigation-space-did-not-open');
+
+       // An actual pointer action on main, outside both the button and the
+       // navigation links, must dismiss the disclosure.
+       await page.locator('main').click({position:{x:2,y:2},timeout:4000});
+       const closedOnOutsideClick=await toggle.getAttribute('aria-expanded')==='false' &&
+        !(await links.isVisible());
+       if(!closedOnOutsideClick)failures.push('mobile-navigation-outside-click-did-not-close');
+       navInteraction={opened,closed,focusReturned,openScrollWidth,keyboardOpened,
+        stayedOpenOnLinkFocus,focusLeft,closedOnFocusExit,spaceOpened,closedOnOutsideClick};
       }
      }catch(error){
       failures.push('mobile-navigation-interaction-'+error?.name);
