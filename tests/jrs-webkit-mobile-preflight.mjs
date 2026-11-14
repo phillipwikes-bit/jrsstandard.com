@@ -26,6 +26,15 @@ for(const route of sourceRoutes){
 const routes=[...sourceRoutes,'contact.html?category=accessibility','contact.html?category=organization'];
 assert.equal(routes.length,70);
 const widths=[320,390,430];
+// Representative public, research, campaign, reference and archived routes.
+// Unlike the sitewide initial-state audit, these exercise real pointer and
+// keyboard navigation. The 68-page baseline remains independently required.
+const navInteractionRoutes=new Set([
+ 'index.html','resources.html','training.html','jrsstandard.html',
+ 'right-to-know-why.html','decisions-you-can-defend.html',
+ 'reference/index.html','reviewer/evaluation.html','security.html',
+ 'contact.html?category=organization'
+]);
 const mime={
  '.html':'text/html; charset=utf-8','.css':'text/css; charset=utf-8',
  '.js':'application/javascript; charset=utf-8','.json':'application/json',
@@ -136,7 +145,40 @@ try{
     if(details.edgeBackground!=='rgb(245, 247, 248)')failures.push('edge-not-opaque-pale');
     if(details.edgeBackdrop&&details.edgeBackdrop!=='none')failures.push('edge-backdrop-filter');
    }
+   let navInteraction=null;
+   if(navInteractionRoutes.has(path)){
+    if(!details.navPresent){
+     failures.push('interaction-nav-missing');
+    }else{
+     const toggle=page.locator('.jrs-global-nav-toggle');
+     const links=page.locator('nav.jrs-sitenav');
+     try{
+      const toggleVisible=await toggle.isVisible();
+      if(!toggleVisible)failures.push('mobile-navigation-toggle-not-visible');
+      else{
+       await toggle.click({timeout:4000});
+       const opened=await toggle.getAttribute('aria-expanded')==='true' &&
+        await links.getAttribute('data-open')==='true' && await links.isVisible() &&
+        await toggle.getAttribute('aria-label')==='Close site navigation';
+       const openScrollWidth=await page.evaluate(()=>document.documentElement.scrollWidth);
+       if(!opened)failures.push('mobile-navigation-did-not-open');
+       if(openScrollWidth>width+1)failures.push('mobile-navigation-open-overflow-'+openScrollWidth);
+       await page.keyboard.press('Escape');
+       const closed=await toggle.getAttribute('aria-expanded')==='false' &&
+        await links.getAttribute('data-open')==='false' && !(await links.isVisible()) &&
+        await toggle.getAttribute('aria-label')==='Open site navigation';
+       const focusReturned=await toggle.evaluate(el=>document.activeElement===el);
+       if(!closed)failures.push('mobile-navigation-escape-did-not-close');
+       if(!focusReturned)failures.push('mobile-navigation-escape-focus-not-restored');
+       navInteraction={opened,closed,focusReturned,openScrollWidth};
+      }
+     }catch(error){
+      failures.push('mobile-navigation-interaction-'+error?.name);
+     }
+    }
+   }
    const row={path,width,pass:failures.length===0,failures,iosRuleActive:details.iosRuleActive,
+    ...(navInteraction?{navInteraction}:{}),
     theme:details.theme,scrollWidth:details.scrollWidth,bodyPaddingTop:details.bodyPaddingTop,
     edgeBackground:details.edgeBackground,
     ...(failures.length?{overflowCandidates:details.overflowCandidates}: {})};
@@ -160,7 +202,8 @@ const results={
  samples:rows,totals:{
   pages:routes.length,widths:widths.length,samples:rows.length,
   failures:rows.filter(x=>!x.pass).length,
-  iosRuleActivatedSamples:rows.filter(x=>x.iosRuleActive).length
+  iosRuleActivatedSamples:rows.filter(x=>x.iosRuleActive).length,
+  navInteractionSamples:rows.filter(x=>x.navInteraction).length
  },
  incomplete:[
   'iOS system chrome and Home Screen toolbar pixels',
@@ -173,4 +216,6 @@ await writeFile(resolve(root,'.jrs-ci','webkit-mobile-preflight.json'),JSON.stri
 console.log('WEBKIT-TOTALS '+JSON.stringify(results.totals));
 console.log('NOT CERTIFIED: iPhone Safari and Home Screen behavior, protected deployment, WCAG or VoiceOver.');
 assert.equal(rows.length,routes.length*widths.length,'Incomplete WebKit route/viewport coverage');
+assert.equal(results.totals.navInteractionSamples,navInteractionRoutes.size*widths.length,
+ 'Missing real WebKit mobile navigation interaction evidence');
 assert.equal(results.totals.failures,0,'WebKit mobile regressions: '+rows.filter(x=>!x.pass).map(x=>x.path+'@'+x.width+': '+x.failures.join(',')).join('; '));
