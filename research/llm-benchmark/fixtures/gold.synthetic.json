@@ -1,0 +1,53 @@
+{
+  "schema": "jrs-synthetic-gold.v1",
+  "data_classification": "SYNTHETIC_ONLY",
+  "dataset_id": "JRS_SYNTHETIC_SCORER_UNIT_TEST_V1",
+  "cases": [
+    {
+      "id": "SYN001",
+      "gaps": [],
+      "source_spans": [
+        {
+          "source_id": "DOC_S1",
+          "spans": [
+            "SPAN_S1"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "SYN002",
+      "gaps": [
+        {
+          "id": "G_BASIS_1",
+          "condition": "identifiable_basis"
+        }
+      ],
+      "source_spans": [
+        {
+          "source_id": "DOC_S2",
+          "spans": [
+            "SPAN_S2"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "SYN003",
+      "gaps": [
+        {
+          "id": "G_TIME_1",
+          "condition": "chronology"
+        }
+      ],
+      "source_spans": [
+        {
+          "source_id": "DOC_S3",
+          "spans": [
+            "SPAN_S3"
+          ]
+        }
+      ]
+    }
+  ]
+}
