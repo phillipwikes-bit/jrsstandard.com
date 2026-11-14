@@ -47,6 +47,22 @@ VERCEL_LIVE_TRAILER = re.compile(
     rb'src="https://vercel\.live/_next-live/feedback/feedback\.js"></script>'
 )
 
+def preview_failure_reason(local, error):
+    # Do not suppress a protection failure or present it as a source regression.
+    # No URL, response body, preview credential or authentication cookie is logged.
+    if isinstance(error, HTTPError):
+        code = error.code
+        if code in (401, 403):
+            guidance = ("CI has no configured approved bypass credential"
+                        if not os.environ.get("JRS_VERCEL_PREVIEW_BYPASS")
+                        else "configured CI credential did not grant preview access")
+            return (local + ": preview access blocked (HTTP " + str(code) + "); " +
+                    guidance + ". Vercel Authentication must remain enabled. "
+                    "Hosted source and PDF delivery are NOT verified.")
+        return local + ": preview returned HTTP " + str(code) + "; release held."
+    return local + ": preview unavailable (" + type(error).__name__ + ")"
+
+
 def matches_release_source(received, expected, local):
     if received == expected:
         return True
@@ -73,6 +89,12 @@ def self_test():
         if matches_release_source(received, expected, local) is not wanted:
             fail("preview verifier regression: " + name)
         print("PASS: preview verifier", name)
+    for code in (401, 403):
+        reason = preview_failure_reason("index.html",
+                    HTTPError("https://protected.invalid/", code, "blocked", {}, None))
+        if "HTTP " + str(code) not in reason or "NOT verified" not in reason:
+            fail("preview verifier did not distinguish a protected-hosted gate")
+        print("PASS: protected preview HTTP", code, "still produces a release hold")
     print("PASS: narrow Vercel feedback allowance, no arbitrary source modifications.")
 
 class NoRedirect(HTTPRedirectHandler):
@@ -112,6 +134,8 @@ def verify_downloads(base, parsed):
                 status = resp.status
                 location = resp.headers.get("Location", "")
         except HTTPError as exc:
+            if exc.code in (401, 403):
+                fail(preview_failure_reason(path, exc))
             status = exc.code
             location = exc.headers.get("Location", "")
         except (URLError, TimeoutError, OSError) as error:
@@ -130,8 +154,7 @@ def verify_downloads(base, parsed):
                 data = resp.read(15_000_001)
                 kind = resp.headers.get("Content-Type", "").split(";")[0].lower().strip()
         except (HTTPError, URLError, TimeoutError, OSError) as error:
-            fail(path + ": PDF could not be downloaded (" +
-                 type(error).__name__ + ")")
+            fail(preview_failure_reason(path, error))
         if not data.startswith(b"%PDF-") or kind != "application/pdf":
             fail(path + ": download is not served as a PDF")
         expected = (ROOT / path).read_bytes()
@@ -175,7 +198,7 @@ def main():
                     fail(local + ": preview redirected or did not return HTTP 200")
                 received = response.read(3_000_001)
         except (HTTPError, URLError, TimeoutError, OSError) as error:
-            fail(local + ": preview unavailable (" + type(error).__name__ + ")")
+            fail(preview_failure_reason(local, error))
         if len(received) > 3_000_000:
             fail(local + ": unexpectedly large preview response")
         if b"Log in to Vercel" in received or b"Vercel Authentication" in received:
