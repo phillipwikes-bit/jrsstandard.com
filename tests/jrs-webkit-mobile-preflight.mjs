@@ -8,12 +8,22 @@ import {fileURLToPath} from 'node:url';
 import {webkit} from 'playwright';
 
 const root=resolve(dirname(fileURLToPath(import.meta.url)),'..');
-const routes=[
- 'index.html','resources.html','investigator-guides.html','jrsstandard.html',
- 'training.html','contact.html?category=accessibility','research-summary.html','editions.html',
- 'codebook.html','reference/index.html',
- 'reference/ai-assisted-record-failure-modes/index.html'
-];
+// Reuse the same independently-guarded route inventory as the 68-route
+// Chromium audit and protected hosted-source verifier. This avoids a small,
+// stale hand-curated WebKit sample silently passing after public routes grow.
+const audit=await readFile(resolve(root,'tests/jrs-sitewide-mobile-browser-audit.html'),'utf8');
+const match=audit.match(/const paths=(\[[^\n;]*\]);/);
+assert.ok(match,'Source route fixture missing');
+const sourceRoutes=JSON.parse(match[1]);
+assert.equal(sourceRoutes.length,68,'WebKit must cover all 68 institutional routes');
+assert.equal(new Set(sourceRoutes).size,68,'Duplicate institutional source routes');
+for(const route of sourceRoutes){
+ assert.match(route,/^(?:[a-z0-9-]+\/)*[a-z0-9-]+\.html$/,'Invalid source route '+route);
+}
+// One additional source route verifies an accessible-format request with the
+// actual category parameter. No request is submitted to the contact service.
+const routes=[...sourceRoutes,'contact.html?category=accessibility'];
+assert.equal(routes.length,69);
 const widths=[320,390,430];
 const mime={
  '.html':'text/html; charset=utf-8','.css':'text/css; charset=utf-8',
@@ -79,6 +89,8 @@ try{
      edgeBackdrop:top?.webkitBackdropFilter||null,
      navPresent:!!nav,togglePresent:!!button,
      toggleExpanded:button?.getAttribute('aria-expanded')||null,
+     navToggleControls:button?.getAttribute('aria-controls')||null,
+     navId:nav?.id||null,
      accessibilityCategory:document.querySelector('#contact-category')?.value||null,
      contactFallback:!!document.querySelector('a[href^="mailto:info@jrsstandard.com"]')
     };
@@ -92,6 +104,8 @@ try{
    if(details.theme?.toLowerCase()!=='#f5f7f8')failures.push('mismatched-browser-theme');
    if(details.firstChild!=='jrs-ios-status-surface')failures.push('first-paint-status-surface');
    if(details.scrollWidth>details.width+1)failures.push('horizontal-overflow-'+details.scrollWidth);
+   if(details.navPresent&&(!details.togglePresent||details.navToggleControls!==details.navId||
+      details.toggleExpanded!=='false'))failures.push('mobile-navigation-semantics');
    if(path==='contact.html?category=accessibility'){
     if(details.accessibilityCategory!=='accessibility')failures.push('accessible-format-category-not-prefilled');
     if(!details.contactFallback)failures.push('accessible-format-contact-fallback-missing');
