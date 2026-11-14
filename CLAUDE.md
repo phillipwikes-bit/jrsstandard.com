@@ -1,6 +1,10 @@
 # JRS CLAUDE CODE MASTER PROMPT
 ## ENTERPRISE ASSET ORCHESTRATOR
 
+<!-- CONSENT_STATUS_PRECEDENCE_2026_10_30_START -->
+> **MANDATORY CONSENT RECONCILIATION (2026-10-30).** Before reporting contributor/coauthor consent or suggesting re-consent, read `docs/enterprise-diligence/JRS_MASTER_ASSET_EVIDENCE_AND_CHAIN_OF_TITLE_REGISTER.md` (sections 8, 9, 12, 17) and `docs/enterprise-diligence/EVIDENCE_LEDGER.md` (E-002, E-003, E-005, E-006 to E-008, E-034). **Tanvi Pokhriyal is covered by executed contributor consent E-002 (2026-08-22); Stacyann Young by executed contributor consent E-003 (2026-08-27).** The separate coauthor form's dated `0 of 3` figure applies **only** to that instrument and must never be described as no consent, no confirmation overall, or an outstanding request to these two people. Ubayet Hossain's authorship approval is documented separately; commercial/successor rights are not established by silence. None of these consents constitutes a copyright assignment or unrestricted commercial grant. Preserve historical findings while applying the current controlling interpretation. The focused regression check is `node tests/consent-status-precedence.mjs`.
+<!-- CONSENT_STATUS_PRECEDENCE_2026_10_30_END -->
+
 > **CURRENT OPERATIVE OVERRIDE — 2026-10-05.** Before any Engine, public-site, deployment, privacy, evaluation, or commercial-pathway work, read `docs/architecture/CURRENT_ENGINE_HANDOFF_2026-10-05.md`. If its current-state instructions conflict with historical instructions below, the current handoff governs for that work. Preserve the historical text below; do not silently rewrite it.
 
 Justification Review Standard (JRS) · Decision Reconstruction Risk (DRR)
