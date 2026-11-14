@@ -20,10 +20,11 @@ assert.equal(new Set(sourceRoutes).size,68,'Duplicate institutional source route
 for(const route of sourceRoutes){
  assert.match(route,/^(?:[a-z0-9-]+\/)*[a-z0-9-]+\.html$/,'Invalid source route '+route);
 }
-// One additional source route verifies an accessible-format request with the
-// actual category parameter. No request is submitted to the contact service.
-const routes=[...sourceRoutes,'contact.html?category=accessibility'];
-assert.equal(routes.length,69);
+// Two additional contact routes exercise actual category preselection from
+// the public PDF accessibility and archived security-question CTAs. These
+// are read-only browser tests: no contact inquiry is submitted.
+const routes=[...sourceRoutes,'contact.html?category=accessibility','contact.html?category=organization'];
+assert.equal(routes.length,70);
 const widths=[320,390,430];
 const mime={
  '.html':'text/html; charset=utf-8','.css':'text/css; charset=utf-8',
@@ -123,6 +124,10 @@ try{
    if(path==='contact.html?category=accessibility'){
     if(details.accessibilityCategory!=='accessibility')failures.push('accessible-format-category-not-prefilled');
     if(!details.contactFallback)failures.push('accessible-format-contact-fallback-missing');
+   }
+   if(path==='contact.html?category=organization'){
+    if(details.accessibilityCategory!=='organization')failures.push('organization-inquiry-category-not-prefilled');
+    if(!details.contactFallback)failures.push('organization-inquiry-contact-fallback-missing');
    }
    if(details.iosRuleActive){
     if(details.bodyPaddingTop!=='14px')failures.push('ios-status-gap-'+details.bodyPaddingTop);
