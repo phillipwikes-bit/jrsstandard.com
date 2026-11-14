@@ -33,16 +33,18 @@ for(const path of requiredMobileNav){
 // public/retained HTML route when the source inventory changes.
 const mobileAudit=load('tests/jrs-sitewide-mobile-browser-audit.html');
 const sourceInventory=load('tests/jrs-public-resource-integrity.mjs');
-const inventoryMatch=sourceInventory.match(/const pages=\[([\s\S]*?)\];/);
 const auditMatch=mobileAudit.match(/const paths=(\[[^\n;]*\]);/);
-assert.ok(inventoryMatch&&auditMatch,'sitewide browser inventory missing');
-const activeInventory=[...inventoryMatch[1].matchAll(/'([^']+)'/g)].map(x=>x[1]);
+assert.ok(auditMatch,'sitewide browser route inventory missing');
 const browserInventory=JSON.parse(auditMatch[1]);
-assert.equal(new Set(browserInventory).size,browserInventory.length,
- 'sitewide browser audit must not duplicate routes');
-const campaignRoutes=['right-to-know-why.html','decisions-you-can-defend.html'];
-assert.deepEqual([...browserInventory].sort(),[...new Set([...activeInventory,...legacy,...campaignRoutes])].sort(),
- 'sitewide browser audit does not cover the current public and legacy route inventories');
+assert.equal(browserInventory.length,68,'sitewide browser audit must cover 68 public routes');
+assert.equal(new Set(browserInventory).size,68,'sitewide browser audit must not duplicate routes');
+// The link-integrity audit must use exactly the same inventory, rather than
+// a shorter literal collection that overlooks older, reviewer or campaign pages.
+assert.match(sourceInventory,/const pages=JSON\.parse\(routeMatch\[1\]\)/,
+ 'link-integrity audit must reuse the complete public route inventory');
+for(const required of [...legacy,'right-to-know-why.html','decisions-you-can-defend.html']){
+ assert.ok(browserInventory.includes(required),'missing retained route: '+required);
+}
 
 for(const path of legacy){
  const html=load(path);
@@ -132,6 +134,13 @@ const researchSummary=load('research-summary.html');
 assert.ok(researchSummary.includes('/api/dl?e=accuracy&amp;src=research-summary')&&
  researchSummary.includes('/api/dl?e=paper&amp;src=research-summary'),
  'research PDF routes missing');
-assert.ok(standard.includes('/api/dl?f=JRS_Investigator_Field_Guide.pdf&amp;src=jrsstandard'),
- 'legacy general investigator guide route missing');
+// Preserve the historic 001-INV PDF as a retrievable edition while not
+// promoting it as the current investigator supplement. Three v1.1 discipline-
+// specific guides are the active destination for new practitioner use.
+assert.ok(load('api/dl.js').includes("'JRS_Investigator_Field_Guide.pdf'"),
+ 'historic combined-guide download route must remain whitelisted');
+assert.ok(!standard.includes('/api/dl?f=JRS_Investigator_Field_Guide.pdf') &&
+ standard.includes('JRS Investigator Guide (Combined Overview, historical)') &&
+ standard.includes('href="investigator-guides.html"'),
+ 'online method must distinguish the historic combined edition from current v1.1 guides');
 console.log('PASS: 10 public/retained legacy routes, 6 principal pages, 17 reference pages, 9 linked PDF assets and locally generated training completion PNG guarded. PDF harmonization remains a separate controlled publication task.');

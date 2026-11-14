@@ -15,7 +15,7 @@ for(const path of mainPages){
  assert.ok(html.includes('<main') || /id=[\"']main-content[\"'][^>]*role=[\"']main[\"']/.test(html) || /role=[\"']main[\"'][^>]*id=[\"']main-content[\"']/.test(html) || html.includes('id=\"main-content\"'), 'public page missing a content landmark: '+path);
 }
 const home=read('index.html');
-for(const route of ['01 · Start here','02 · Use the method','03 · Examine the evidence','04 · Learn and practice'])
+for(const route of ['01 · Start here','02 · Use the method','03 · Examine the evidence','04 · Training and guidance'])
  assert.ok(home.includes(route),'missing practitioner path '+route);
 for(const dest of ['jrsstandard.html','resources.html','research.html','training.html'])
  assert.ok(home.includes('href="'+dest+'"'),'homepage missing route '+dest);

@@ -11,9 +11,11 @@ const html=read('resources.html');
 const js=read('assets/jrs-resource-catalog.js');
 const css=read('assets/jrs-institutional-reference.css');
 const homepage=read('index.html');
-assert.ok(homepage.includes('class="jr-action-main" href="check.html?src=home">Open seven-point record check</a>'),
- 'homepage primary action must open the actual free, non-scoring record check');
-assert.ok(homepage.includes('href="resources.html#resource-catalog">16-resource reference directory</a>'),
+assert.ok(homepage.includes('class="jr-action-main" href="resources.html">Browse free JRS resources</a>'),
+ 'homepage primary action must open the ungated resource library');
+assert.ok(homepage.includes('class="jr-action-alt" href="check.html?src=home">Open seven-point record check</a>'),
+ 'homepage must retain a direct, non-scoring record check');
+assert.ok(homepage.includes('href="resources.html#resource-catalog"><strong>Find a reference or PDF</strong>'),
  'the homepage must retain an explicit direct link to the searchable practitioner directory');
 const guides=read('investigator-guides.html');
 for(const [path,page] of [['resources.html',html],['investigator-guides.html',guides]]) {
@@ -28,8 +30,8 @@ const check=read('check.html');
 assert.ok(check.includes('does not score your record') &&
  (check.includes('no registration, no account, no upload') || check.includes('There is no registration, no account, no upload')),
  'the linked record check must remain non-scoring, public and upload-free');
-assert.ok(homepage.includes('href="resources.html#resource-catalog">Browse tools</a>'),
- 'homepage Browse tools must reach searchable directory');
+assert.ok(homepage.includes('<span>Search 16 resources by responsibility and format</span></a>'),
+ 'homepage searchable directory task must describe the 16-resource catalog');
 assert.ok(!homepage.includes('resources.html#quick-review'),
  'homepage must not bypass the searchable directory');
 assert.ok(css.includes('.jrs-resource-entry:focus-within') &&
@@ -123,4 +125,38 @@ assert.ok(html.includes('does not establish equivalence or technical compatibili
  /former machine-readable schema files are not part of the current public release/i.test(html) &&
  html.includes('Version 1.1 (July 2026)') && html.includes('Version 2.0 (2026)'),
  'resource directory must retain the active edition labels and retired Manifest boundary');
+
+// Publication-accessibility guard for the 16 Reviewer Reference HTML chapters.
+// A request path is not an accessibility certificate or PDF edition substitute.
+const auditSource=read('tests/jrs-sitewide-mobile-browser-audit.html');
+const routeMatch=auditSource.match(/const paths=(\[[^\n;]*\]);/);
+assert.ok(routeMatch,'the reference route inventory must remain auditable');
+const referencePages=JSON.parse(routeMatch[1]).filter(path=>
+ path.startsWith('reference/')&&path!=='reference/index.html');
+assert.equal(referencePages.length,16,'expected 16 Reviewer Reference chapters');
+for(const pagePath of referencePages){
+ const page=read(pagePath);
+ const pdfLink=page.indexOf('href="/api/dl?f=JRS-Reference-9d4f2a7c.pdf');
+ assert.match(page,
+  /href="\/api\/dl\?f=JRS-Reference-9d4f2a7c\.pdf&amp;src=[^"]+">Download Reviewer Reference PDF \(v1\.0\)<\/a>/,
+  pagePath+': visible PDF download must name the distinct Reviewer Reference edition');
+ const formatNote=page.indexOf('class="note jrs-pdf-access" role="note"');
+ assert.ok(pdfLink>0&&formatNote>pdfLink&&formatNote-pdfLink<1100,
+  pagePath+': PDF access notice must follow the actual download');
+ assert.equal((page.match(/class="note jrs-pdf-access"/g)||[]).length,1,
+  pagePath+': expected one visible alternative-format notice');
+ assert.ok(page.includes('Version 1.0, May 2026')&&
+  page.includes('is untagged and has not passed a screen-reader accessibility review')&&
+  page.includes('not a verified substitute for the PDF'),
+  pagePath+': preserve edition and accessibility disclosures');
+ assert.ok(page.includes('href="/contact.html?category=accessibility"'),
+  pagePath+': provide an open request for an alternative format');
+ assert.ok(page.includes('Continue with related reviewer references or use the free seven-point record check within an authorized workflow.') &&
+  page.includes('No public pilot enrollment or case-record upload is offered.'),
+  pagePath+': retain resource-first reading guidance and case-record boundary');
+ assert.ok(!page.includes('practice with free constructed examples'),
+  pagePath+': do not restore outdated practice-first call to action');
+}
+console.log('PASS: all 16 Reviewer Reference PDF entries disclose untagged status and provide an accessible-format request.');
+
 console.log('PASS: 16 accessible, progressively enhanced catalog entries; 6 tracked PDF assets; 10 web/interactive targets; no personal-query transmission.');

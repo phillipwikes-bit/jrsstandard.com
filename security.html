@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<meta name="theme-color" content="#f5f7f8">
 <meta charset="UTF-8">
 <meta name="robots" content="noindex,nofollow">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -341,7 +342,7 @@ Content-Type: application/json</pre>
  <h2 class="section-head">Questions a reviewer can send directly</h2>
  <p class="body-text">Scope, token issuance, rotation cadence, subprocessor detail and contractual terms are handled in writing. Submissions route to a private operational dashboard, not to a public queue and not to a mailing list.</p>
  <div class="btn-row">
-  <a href="enterprise.html#enterprise-inquiry" class="btn btn-primary">Send a security question &rarr;</a>
+  <a href="contact.html?category=organization" class="btn btn-primary">Send a security question &rarr;</a>
   <a href="privacy.html" class="btn btn-ghost">Privacy policy</a>
   <a href="terms.html" class="btn btn-ghost">Terms</a>
  </div>
@@ -495,43 +496,6 @@ function trackClickAndNavigate(event, targetUrl, eventMetaData) {
       trackClickAndNavigate(ev, a.href, meta);
     } catch (e) { /* a telemetry fault must never block navigation */ }
   }, true);
-})();
-</script>
-<script>
-/* Enterprise capture. Posts to /api/enterprise-inquiry, which stores the row and
-   fails loud if it cannot. Email alerts are disabled by owner directive; the row
-   is the durable record and the Commercial Inbox is where it is read. */
-(function () {
-  var f = document.querySelector('form[data-cap]');
-  if (!f) return;
-  var m = f.querySelector('.cap-m'), b = f.querySelector('button');
-  f.addEventListener('submit', function (e) {
-    e.preventDefault();
-    b.disabled = true;
-    m.style.color = 'var(--muted)';
-    m.textContent = 'Sending...';
-    var d = {};
-    new FormData(f).forEach(function (v, k) { d[k] = v; });
-    fetch('/api/enterprise-inquiry', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(d)
-    }).then(function (r) { return r.json(); }).then(function (j) {
-      if (j && j.ok) {
-        f.innerHTML = '';
-        m.style.color = 'var(--ready-text)';
-        m.textContent = 'Received. You will get the schema, the tier and a written scope by email.';
-      } else {
-        m.style.color = 'var(--stop-text)';
-        m.textContent = 'That did not save. Email info@jrsstandard.com and it will be handled.';
-        b.disabled = false;
-      }
-    }).catch(function () {
-      m.style.color = 'var(--stop-text)';
-      m.textContent = 'Network error. Email info@jrsstandard.com and it will be handled.';
-      b.disabled = false;
-    });
-  });
 })();
 </script>
 <script src="/assets/jrs-mobile-navigation.js" defer></script>

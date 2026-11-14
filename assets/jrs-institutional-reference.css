@@ -1784,6 +1784,19 @@ body.jrs-institutional.jrs-campaign-page .button.primary:hover{
  body.jrs-institutional.jrs-resource-page .hero h1{margin-bottom:8px!important}
 }
 
+/* 2026-11-14 narrow WebKit reference-page reflow.
+   Three long reference titles/labels overflowed a 320px viewport by 4-15px.
+   Permit semantic text to wrap inside the existing content width instead of
+   clipping the entire page, hiding content, or changing published wording. */
+@media(max-width:360px){
+ body.jrs-institutional.jrs-reference-page main{
+  overflow-wrap:anywhere!important;
+ }
+ body.jrs-institutional.jrs-reference-page main :is(.wrap,.related,.idx,.next){
+  min-width:0!important;
+ }
+}
+
 /* iOS 27 Safari/Home Screen status-bar rendering:
    Safari samples an actual, solid, viewport-fixed element at the top edge.
    Previous changes to theme-color and header backdrop-filter were insufficient.
