@@ -126,6 +126,42 @@ assert.ok(html.includes('does not establish equivalence or technical compatibili
  html.includes('Version 1.1 (July 2026)') && html.includes('Version 2.0 (2026)'),
  'resource directory must retain the active edition labels and retired Manifest boundary');
 
+// Training has two separately reachable Reviewer Reference download surfaces.
+// The same PDF must keep one edition date, honest accessibility status, and
+// specific download names even when the reader enters at #toolkit.
+const training=read('training.html');
+const deskStart=training.indexOf('<details class="jrs-training-desk-reference">');
+const toolkitStart=training.indexOf('<div id="toolkit"');
+const surveyStart=training.indexOf('<div class="survey-outer" id="participation-survey">');
+assert.ok(deskStart>0&&toolkitStart>deskStart&&surveyStart>toolkitStart,
+ 'training desk-reference or toolkit sections missing');
+const desk=training.slice(deskStart,toolkitStart);
+const kit=training.slice(toolkitStart,surveyStart);
+assert.ok(desk.includes('Version 1.0, May 2026') &&
+ kit.includes('REF &nbsp;|&nbsp; V1.0 &nbsp;|&nbsp; May 2026') &&
+ !kit.includes('REF &nbsp;|&nbsp; V1.0 &nbsp;|&nbsp; June 2026'),
+ 'the identical Reviewer Reference PDF must have one edition date');
+for(const label of [
+ 'Download Reviewer Reference PDF (v1.0)',
+ 'Download Rapid Review Card PDF',
+ 'Download Standard PDF (v2.0)'
+]){
+ assert.ok(kit.includes('>'+label+'</a>'),
+  'toolkit PDF download action must name its actual publication: '+label);
+}
+assert.ok(!kit.includes('class="btn-download">Download PDF</a>'),
+ 'toolkit must not restore ambiguous PDF download actions');
+for(const [name,section] of [['desk reference',desk],['toolkit',kit]]){
+ assert.ok(section.includes('is untagged and has not passed a screen-reader accessibility review') &&
+  section.includes('href="contact.html?category=accessibility"') &&
+  section.includes('Request an alternative format'),
+  name+': disclose known tagging issue and provide a clear request path');
+}
+assert.ok(kit.includes('other linked PDFs have not been independently verified') &&
+ kit.includes('A request does not establish that an accessible replacement is available.') &&
+ kit.includes('Do not submit confidential case records.'),
+ 'toolkit accessibility disclosure must not imply certification, replacement availability or intake');
+
 // Publication-accessibility guard for the 16 Reviewer Reference HTML chapters.
 // A request path is not an accessibility certificate or PDF edition substitute.
 const auditSource=read('tests/jrs-sitewide-mobile-browser-audit.html');
