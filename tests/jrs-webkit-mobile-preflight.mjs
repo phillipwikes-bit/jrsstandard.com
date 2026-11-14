@@ -10,7 +10,7 @@ import {webkit} from 'playwright';
 const root=resolve(dirname(fileURLToPath(import.meta.url)),'..');
 const routes=[
  'index.html','resources.html','investigator-guides.html','jrsstandard.html',
- 'training.html','contact.html','research-summary.html','editions.html',
+ 'training.html','contact.html?category=accessibility','research-summary.html','editions.html',
  'codebook.html','reference/index.html',
  'reference/ai-assisted-record-failure-modes/index.html'
 ];
@@ -78,7 +78,9 @@ try{
      edgeHeight:top?.height||null,edgeBackground:top?.backgroundColor||null,
      edgeBackdrop:top?.webkitBackdropFilter||null,
      navPresent:!!nav,togglePresent:!!button,
-     toggleExpanded:button?.getAttribute('aria-expanded')||null
+     toggleExpanded:button?.getAttribute('aria-expanded')||null,
+     accessibilityCategory:document.querySelector('#contact-category')?.value||null,
+     contactFallback:!!document.querySelector('a[href^="mailto:info@jrsstandard.com"]')
     };
    });
    const failures=[];
@@ -90,6 +92,10 @@ try{
    if(details.theme?.toLowerCase()!=='#f5f7f8')failures.push('mismatched-browser-theme');
    if(details.firstChild!=='jrs-ios-status-surface')failures.push('first-paint-status-surface');
    if(details.scrollWidth>details.width+1)failures.push('horizontal-overflow-'+details.scrollWidth);
+   if(path==='contact.html?category=accessibility'){
+    if(details.accessibilityCategory!=='accessibility')failures.push('accessible-format-category-not-prefilled');
+    if(!details.contactFallback)failures.push('accessible-format-contact-fallback-missing');
+   }
    if(details.iosRuleActive){
     if(details.bodyPaddingTop!=='14px')failures.push('ios-status-gap-'+details.bodyPaddingTop);
     if(details.edgePosition!=='fixed'||details.edgeTop!=='0px'||details.edgeHeight!=='10px')
