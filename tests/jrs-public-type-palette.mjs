@@ -33,14 +33,14 @@ for(const path of requiredMobileNav){
 // public/retained HTML route when the source inventory changes.
 const mobileAudit=load('tests/jrs-sitewide-mobile-browser-audit.html');
 const sourceInventory=load('tests/jrs-public-resource-integrity.mjs');
-const auditMatch=mobileAudit.match(/const paths=(\\[[^\\n;]*\\]);/);
+const auditMatch=mobileAudit.match(/const paths=(\[[^\n;]*\]);/);
 assert.ok(auditMatch,'sitewide browser route inventory missing');
 const browserInventory=JSON.parse(auditMatch[1]);
 assert.equal(browserInventory.length,68,'sitewide browser audit must cover 68 public routes');
 assert.equal(new Set(browserInventory).size,68,'sitewide browser audit must not duplicate routes');
 // The link-integrity audit must use exactly the same inventory, rather than
 // a shorter literal collection that overlooks older, reviewer or campaign pages.
-assert.match(sourceInventory,/const pages=JSON\\.parse\\(routeMatch\\[1\\]\\)/,
+assert.match(sourceInventory,/const pages=JSON\.parse\(routeMatch\[1\]\)/,
  'link-integrity audit must reuse the complete public route inventory');
 for(const required of [...legacy,'right-to-know-why.html','decisions-you-can-defend.html']){
  assert.ok(browserInventory.includes(required),'missing retained route: '+required);
