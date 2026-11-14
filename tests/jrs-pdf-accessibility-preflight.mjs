@@ -19,9 +19,8 @@ assert.equal(new Set(files).size,10,'PDF technical preflight requires ten unique
 
 const output=[];
 const get=(text,label)=>{
- const escaped=label.replace(/[.*+?^${}()|[\]\\]/g,'\\$&');
- const m=text.match(new RegExp('^'+escaped+':\\s*(.+)$','mi'));
- return m?.[1]?.trim()||null;
+ const line=text.split(/\r?\n/).find(row=>row.toLowerCase().startsWith(label.toLowerCase()+':'));
+ return line?.slice(line.indexOf(':')+1)?.trim()||null;
 };
 const run=(command,args)=>{
  try {return execFileSync(command,args,{cwd:root,encoding:'utf8',timeout:60000,maxBuffer:25_000_000});}
@@ -33,7 +32,7 @@ for(const file of files){
  const identity=manifest.assets.find(a=>a.file===file);
  if(identity){
   assert.equal(bytes.length,identity.bytes,'Published size mismatch: '+file);
-  const hash=createHash('sha1').update('blob '+bytes.length+'\\0').update(bytes).digest('hex');
+  const hash=createHash('sha1').update('blob '+bytes.length+'\0').update(bytes).digest('hex');
   assert.equal(hash,identity.blob_sha,'Controlled publication identity mismatch: '+file);
  }
  const info=run('pdfinfo',['-isodates',join(root,file)]);
@@ -44,7 +43,7 @@ for(const file of files){
  assert.ok(['yes','no'].includes(tagged),'Missing PDF tagging result from Poppler: '+file);
  assert.ok(encrypted,'Missing PDF encryption result from Poppler: '+file);
  const text=run('pdftotext',['-enc','UTF-8',join(root,file),'-']);
- const visible=text.replace(/\\s+/g,' ').trim();
+ const visible=text.replace(/\s+/g,' ').trim();
  const textExtractable=visible.length>=100;
  // Text extraction is useful evidence of selectable text, NOT reading order.
  const record={
@@ -83,7 +82,7 @@ const report={
 };
 const out=join(root,'.jrs-ci','pdf-accessibility-preflight.json');
 mkdirSync(join(root,'.jrs-ci'),{recursive:true});
-writeFileSync(out,JSON.stringify(report,null,2)+'\\n');
+writeFileSync(out,JSON.stringify(report,null,2)+'\n');
 console.log('PRECHECK INVENTORY '+JSON.stringify(report.totals));
 console.log('REPORT: .jrs-ci/pdf-accessibility-preflight.json');
 console.log('NOT CERTIFIED: PDF/UA, WCAG, Section 508, reading order, tagging quality, VoiceOver or physical iPhone Safari.');
