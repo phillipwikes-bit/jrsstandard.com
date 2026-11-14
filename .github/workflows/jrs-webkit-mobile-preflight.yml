@@ -1,0 +1,36 @@
+name: JRS WebKit Mobile Source Preflight
+on:
+  pull_request:
+    branches: [main]
+permissions:
+  contents: read
+jobs:
+  webkit-mobile:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - name: Checkout exact PR head without persisted credentials
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          persist-credentials: false
+      - name: Set up Node 24
+        uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4.4.0
+        with:
+          node-version: '24'
+      - name: Install pinned Playwright and its WebKit browser
+        run: |
+          npm install --no-save --package-lock=false --ignore-scripts --no-audit --no-fund playwright@1.65.0
+          npx playwright install --with-deps webkit
+      - name: Run WebKit mobile source checks (not iPhone Safari certification)
+        run: node tests/jrs-webkit-mobile-preflight.mjs
+      - name: Retain cross-engine measurements and source screenshots
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2
+        with:
+          name: jrs-webkit-mobile-source-${{ github.event.pull_request.head.sha || github.sha }}
+          path: |
+            .jrs-ci/webkit-mobile-preflight.json
+            .jrs-ci/webkit-*.png
+          if-no-files-found: warn
+          retention-days: 14
