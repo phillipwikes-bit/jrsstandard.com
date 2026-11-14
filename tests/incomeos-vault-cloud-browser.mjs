@@ -1,0 +1,85 @@
+// Browser round trip of the private vault against an intercepted fake Supabase (simulated Chromium, iPhone width).
+// SYNTHETIC DATA ONLY; the real project is never contacted. Checks that only ciphertext leaves the page.
+import assert from "node:assert/strict";
+import {createServer} from "node:http";
+import {readFileSync,existsSync} from "node:fs";
+import {join,extname} from "node:path";
+import {createRequire} from "node:module";
+const require=createRequire(import.meta.url);
+let chromium,devices;
+try{({chromium,devices}=require("playwright"));}
+catch{try{({chromium,devices}=require("playwright-core"));}
+  catch{if(process.env.CI){console.error("playwright-core is required in CI");process.exit(1);}console.log("SKIPPED: playwright not installed");process.exit(0);}}
+const launchOptions=process.env.INCOMEOS_BROWSER?{executablePath:process.env.INCOMEOS_BROWSER,args:["--no-sandbox"]}:{};
+const root=new URL("../owner/incomeos/",import.meta.url).pathname;
+const types={".html":"text/html",".js":"text/javascript",".css":"text/css",".json":"application/json",".svg":"image/svg+xml",".webmanifest":"application/manifest+json"};
+const server=createServer((req,res)=>{const p=join(root,decodeURIComponent(req.url.split("?")[0]).replace(/^\/+/,"")||"index.html");
+  if(!p.startsWith(root)||!existsSync(p)){res.writeHead(404);res.end();return;}
+  res.writeHead(200,{"content-type":types[extname(p)]||"application/octet-stream"});res.end(readFileSync(p));}).listen(0,"127.0.0.1");
+await new Promise(r=>server.once("listening",r));
+const origin=`http://127.0.0.1:${server.address().port}`,VAULT="https://pmvqxdgvnwhckzxojioa.supabase.co";
+const browser=await chromium.launch(launchOptions);
+const ctx=await browser.newContext({...devices["iPhone SE"]});
+const sent=[],rows=[],external=[];
+const cors={"access-control-allow-origin":origin,"access-control-allow-headers":"apikey,authorization,content-type,prefer","access-control-allow-methods":"GET,POST,OPTIONS","content-type":"application/json"};
+await ctx.route(VAULT+"/**",async route=>{
+  const r=route.request(),u=new URL(r.url());
+  if(r.method()==="OPTIONS")return route.fulfill({status:204,headers:cors});
+  sent.push({path:u.pathname,body:r.postData()||""});
+  if(u.pathname==="/auth/v1/token"){const b=JSON.parse(r.postData());
+    return route.fulfill({status:b.password==="synthetic vault pw"?200:400,headers:cors,body:JSON.stringify(b.password==="synthetic vault pw"?{access_token:"tok",user:{id:"u-1",email:b.email}}:{error_description:"Invalid login credentials"})});}
+  if(u.pathname==="/rest/v1/incomeos_vault"){
+    if(r.method()==="POST"){rows.unshift({id:rows.length+1,...JSON.parse(r.postData()),saved_at:"2026-11-05T12:00:00Z"});return route.fulfill({status:201,headers:cors,body:""});}
+    return route.fulfill({status:200,headers:cors,body:JSON.stringify(rows.slice(0,1))});}
+  return route.fulfill({status:404,headers:cors,body:"{}"});
+});
+const page=await ctx.newPage();const errors=[];page.on("pageerror",e=>errors.push(String(e)));page.on("dialog",d=>d.accept());
+page.on("request",r=>{const u=r.url();if(!u.startsWith(origin)&&!u.startsWith(VAULT)&&!u.startsWith("blob:")&&!u.startsWith("data:"))external.push(u);});
+await page.goto(origin+"/index.html");
+const nav=v=>page.locator(`.bottomnav button[data-view="${v}"]`).click();
+const vault=async()=>{await nav("research");if((await page.locator("#cloud-vault-panel").getAttribute("open"))===null)await page.locator("#cloud-vault-panel summary").tap();};
+await nav("research");await page.locator("#briefing-new").tap();
+await nav("ledger");
+await page.locator("#receipt-label").fill("Synthetic vault payout");await page.locator("#receipt-amount").fill("321");
+await page.locator("#receipt-date").fill("2026-10-20");await page.locator("#receipt-state").selectOption("paid");await page.locator("#receipt-save").tap();
+await vault();
+assert.ok(await page.locator("#cloud-vault-save").isDisabled(),"save needs sign-in");
+await page.locator("#cloud-vault-email").fill("owner@example.org");await page.locator("#cloud-vault-password").fill("wrong password 99");
+await page.locator("#cloud-vault-signin").tap();
+await page.waitForFunction(()=>/Invalid login credentials/.test(document.getElementById("cloud-vault-status").textContent));
+await page.locator("#cloud-vault-password").fill("synthetic vault pw");await page.locator("#cloud-vault-signin").tap();
+await page.waitForFunction(()=>/Signed in/.test(document.getElementById("cloud-vault-status").textContent));
+assert.equal(await page.locator("#cloud-vault-password").inputValue(),"","password cleared after sign-in");
+// Without a passphrase nothing is sent.
+const before=sent.length;
+await page.locator("#cloud-vault-save").tap();
+await page.waitForFunction(()=>/passphrase of at least 16/.test(document.getElementById("cloud-vault-status").textContent));
+assert.equal(sent.length,before,"no upload without encryption");
+await page.locator("#briefing-passphrase").fill("synthetic passphrase for tests");
+await page.locator("#cloud-vault-save").tap();
+await page.waitForFunction(()=>/saved to your private vault/.test(document.getElementById("cloud-vault-status").textContent),null,{timeout:30000});
+const up=sent.find(s=>s.path==="/rest/v1/incomeos_vault"&&s.body);
+assert.ok(up,"an upload happened");
+for(const s of sent)assert.doesNotMatch(s.body,/Synthetic vault payout|synthetic passphrase/,"no readable record or passphrase leaves the page");
+assert.deepEqual(Object.keys(JSON.parse(up.body)).sort(),["ciphertext","format","sha256"]);
+// Reload: nothing remains in the page; sign in again and restore.
+await page.reload();
+assert.equal(await page.evaluate(()=>localStorage.length+sessionStorage.length),0,"nothing in browser storage");
+await vault();
+assert.ok(await page.locator("#cloud-vault-restore").isDisabled(),"signed out after reload");
+await page.locator("#cloud-vault-email").fill("owner@example.org");await page.locator("#cloud-vault-password").fill("synthetic vault pw");await page.locator("#cloud-vault-signin").tap();
+await page.waitForFunction(()=>/Signed in/.test(document.getElementById("cloud-vault-status").textContent));
+await page.locator("#briefing-passphrase").fill("synthetic passphrase for tests");
+await page.locator("#cloud-vault-restore").tap();
+await page.waitForFunction(()=>/Opened the vault copy saved 2026-11-05 12:00/.test(document.getElementById("cloud-vault-status").textContent),null,{timeout:30000});
+await nav("ledger");await page.locator("#report-year").fill("2026");await page.locator("#report-year").dispatchEvent("change");
+assert.match(await page.locator("#ledger-list").textContent(),/Synthetic vault payout/,"record restored from the vault");
+// A tampered vault copy is refused.
+rows[0].ciphertext=rows[0].ciphertext.replace(/"data":"(.)/,(m,c)=>'"data":"'+(c==="A"?"B":"A"));
+await vault();await page.locator("#cloud-vault-restore").tap();
+await page.waitForFunction(()=>/integrity check/.test(document.getElementById("cloud-vault-status").textContent));
+assert.ok(await page.evaluate(w=>document.documentElement.scrollWidth<=w,page.viewportSize().width),"no horizontal overflow");
+assert.equal(await page.evaluate(()=>localStorage.length+sessionStorage.length),0);
+assert.deepEqual(external,[]);assert.deepEqual(errors,[]);
+await browser.close();server.close();
+console.log("IncomeOS vault browser QA passed: sign-in in memory, no upload without a passphrase, only ciphertext sent, reload then restore brings records back, tampered copy refused.");

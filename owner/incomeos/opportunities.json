@@ -1,0 +1,192 @@
+{
+  "asOf": "2026-11-01",
+  "notice": "Source-specific public listings checked November 1, 2026. Open application pages may fill without notice. No offer is guaranteed.",
+  "studies": [
+    {
+      "id": "tax-prep-1813",
+      "title": "Tax Preparation Research",
+      "provider": "Collab Research",
+      "paymentUsd": 325,
+      "paymentMethod": "Confirm with recruiter",
+      "minutes": 120,
+      "screenMinutes": 7,
+      "mode": "hybrid",
+      "eventEnd": "2026-11-06",
+      "dates": "Nov 3–6, 2026",
+      "eligibility": [
+        "Maryland, DC, or Virginia resident",
+        "Can attend one 90-minute in-person session"
+      ],
+      "status": "Screener accessible; places unconfirmed",
+      "url": "https://www.surveymonkey.com/r/CR1813",
+      "sourceUrl": "https://www.surveymonkey.com/r/CR1813",
+      "linkKind": "Direct recruiter screener",
+      "risk": [
+        "5–7 minute screener",
+        "Travel location and time unverified"
+      ],
+      "reviewed": "2026-11-01"
+    },
+    {
+      "id": "prc-voters-261138",
+      "title": "Nationwide Voter Discussion",
+      "provider": "PRC Global Market Research",
+      "paymentUsd": 150,
+      "paymentMethod": "Confirm with recruiter",
+      "minutes": 105,
+      "screenMinutes": null,
+      "mode": "online",
+      "eventEnd": "2026-11-16",
+      "dates": "Nov 16, 2026",
+      "eligibility": [
+        "United States resident, age 21 or older",
+        "Other screener qualifications apply"
+      ],
+      "status": "Screener accessible; places unconfirmed",
+      "url": "https://www.surveymonkey.com/r/NXNK5BC",
+      "sourceUrl": "https://www.surveymonkey.com/r/NXNK5BC",
+      "linkKind": "Direct recruiter screener",
+      "risk": [
+        "Researcher prohibits AI assistance in participation",
+        "Selection and compensation not guaranteed"
+      ],
+      "reviewed": "2026-11-01"
+    },
+    {
+      "id": "fgp-tech-103173",
+      "title": "Tech Decision-Maker Interview",
+      "provider": "Focus Group Placement",
+      "paymentUsd": 175,
+      "paymentMethod": "Digital gift card",
+      "minutes": 60,
+      "screenMinutes": null,
+      "mode": "online",
+      "eventEnd": "2026-11-12",
+      "dates": "Nov 3–12, 2026",
+      "eligibility": [
+        "Direct responsibility for technology purchasing or vendor decisions",
+        "Recruiter screening and login"
+      ],
+      "status": "Application requires account; places unconfirmed",
+      "url": "https://ftp.focusgroupplacement.com/register?next=%2Fstudy%2F103173%2Fpaid-interview-for-tech-decision-makers",
+      "sourceUrl": "https://ftp.focusgroupplacement.com/study/103173/paid-interview-for-tech-decision-makers",
+      "linkKind": "Study-specific registration",
+      "risk": [
+        "Role-specific participation; no presumptive match",
+        "Login required"
+      ],
+      "reviewed": "2026-11-01"
+    },
+    {
+      "id": "fgp-beverage-103023",
+      "title": "Online Beverage Study",
+      "provider": "Focus Group Placement",
+      "paymentUsd": 150,
+      "paymentMethod": "Incentive type unconfirmed",
+      "minutes": 90,
+      "screenMinutes": null,
+      "mode": "online",
+      "eventEnd": "2026-11-27",
+      "dates": "Nov 2026",
+      "eligibility": [
+        "United States resident, ages 21–54",
+        "Recruiter screening and login"
+      ],
+      "status": "Application requires account; places unconfirmed",
+      "url": "https://web.focusgroupplacement.com/register?next=%2Fstudy%2F103023%2Fonline-beverage-study-that-pays-150",
+      "sourceUrl": "https://web.focusgroupplacement.com/study/103023/online-beverage-study-that-pays-150",
+      "linkKind": "Study-specific registration",
+      "risk": [
+        "Advertised $150 title; published incentive range $100–$199",
+        "Final incentive requires confirmation"
+      ],
+      "reviewed": "2026-11-01"
+    }
+  ],
+  "assets": [
+    {
+      "id": "royalty-6961",
+      "title": "Publishing royalties: Atlanta worship catalog",
+      "type": "Music royalties",
+      "provider": "Royalty Exchange",
+      "capitalUsd": 46000,
+      "historicalUsd": 4755,
+      "historicalMonths": 12,
+      "terms": "Life of rights",
+      "payout": "Variable royalty receipts",
+      "status": "Catalog listing observed; current availability unconfirmed",
+      "sourceUrl": "https://auctions.royaltyexchange.com/orderbook/open-listings/",
+      "opportunityUrl": "https://auctions.royaltyexchange.com/orderbook/open-listings/",
+      "linkKind": "Catalog listing; individual offer link not validated",
+      "risks": [
+        "Historical royalty receipts can decline",
+        "Pricing and transfer terms require diligence",
+        "Illiquid rights; income is not assured"
+      ],
+      "reviewed": "2026-11-01"
+    },
+    {
+      "id": "royalty-6719",
+      "title": "Royalties from 'Save Me' (XXXTentacion)",
+      "type": "Music royalties",
+      "provider": "Royalty Exchange",
+      "capitalUsd": 6500,
+      "historicalUsd": 1713,
+      "historicalMonths": 12,
+      "terms": "10-year rights",
+      "payout": "Variable royalty receipts",
+      "status": "Catalog listing observed; current availability unconfirmed",
+      "sourceUrl": "https://auctions.royaltyexchange.com/orderbook/overview/?tab=the-exchange",
+      "opportunityUrl": "https://auctions.royaltyexchange.com/orderbook/overview/?tab=the-exchange",
+      "linkKind": "Catalog listing; individual offer link not validated",
+      "risks": [
+        "Prior 12-month earnings not a yield guarantee",
+        "Rights end after stated term",
+        "Acquisition fees and legal assignment must be assessed"
+      ],
+      "reviewed": "2026-11-01"
+    },
+    {
+      "id": "ark7-dallas-s8",
+      "title": "Dallas S8 rental property shares",
+      "type": "Fractional rental",
+      "provider": "Ark7",
+      "capitalUsd": 20,
+      "historicalUsd": null,
+      "historicalMonths": null,
+      "terms": "Property-level shares",
+      "payout": "Advertised monthly distributions",
+      "status": "Property advertised; availability and current documents unconfirmed",
+      "sourceUrl": "https://ark7.com/welcome",
+      "opportunityUrl": "https://ark7.com/welcome",
+      "linkKind": "Provider page; verify specific property",
+      "risks": [
+        "Illiquid secondary market",
+        "Vacancy, fees and property-level losses",
+        "Advertised dividend figures are not guaranteed"
+      ],
+      "reviewed": "2026-11-01"
+    },
+    {
+      "id": "groundfloor-loans",
+      "title": "Fractional real-estate renovation loans",
+      "type": "Project loans",
+      "provider": "Groundfloor",
+      "capitalUsd": 10,
+      "historicalUsd": null,
+      "historicalMonths": null,
+      "terms": "Project-specific term",
+      "payout": "Interest contingent on borrower repayment",
+      "status": "Asset class verified; individual open loan not verified",
+      "sourceUrl": "https://groundfloor.com/lro/",
+      "opportunityUrl": "https://groundfloor.com/lro/",
+      "linkKind": "Provider product page; not an individual deal",
+      "risks": [
+        "Loan default and extension risk",
+        "Collateral values can deteriorate",
+        "Quoted target IRR is not realized income"
+      ],
+      "reviewed": "2026-11-01"
+    }
+  ]
+}

@@ -1,0 +1,815 @@
+{
+  "schema": "incomeos.capability-inventory.v1",
+  "generatedOn": "2026-11-03",
+  "branch": "feature/incomeos-owner-prototype-2026-11-01",
+  "method": "Source inspection of every owner/incomeos module header, storage and network calls; full test run; this cycle's changes. Existence of a file or a passing synthetic test is not treated as operational readiness.",
+  "stateDefinitions": {
+    "IMPLEMENTED_AND_VERIFIED": "Implemented, and its logic verified by tests in this repository. Not a claim of live operation unless stated.",
+    "IMPLEMENTED_NOT_VERIFIED": "Implemented; verification depends on an external run not yet observed.",
+    "PARTIALLY_IMPLEMENTED": "Some acceptance criteria unmet.",
+    "SIMULATED_OR_SYNTHETIC_ONLY": "Logic exists and is tested only with synthetic data; no authenticated real source.",
+    "ABSENT": "Not implemented.",
+    "BLOCKED_BY_EXTERNAL_DEPENDENCY": "Requires a credential, authorization or external action."
+  },
+  "capabilities": [
+    {
+      "featureId": "ELIG-001",
+      "sourceFiles": [
+        "owner/incomeos/eligibility-engine.js"
+      ],
+      "purpose": "Deterministic 15-category mandatory eligibility against a private owner profile with documented-evidence rule",
+      "operationalState": "IMPLEMENTED_AND_VERIFIED",
+      "externalDependencies": [],
+      "securityClassification": "OWNER_PRIVATE_LOGIC_PUBLIC_CODE",
+      "knownDefects": [
+        "Evidence quality depends on owner-entered references; engine cannot authenticate the underlying record"
+      ],
+      "testCoverage": [
+        "tests/incomeos-opportunity-intelligence.mjs",
+        "tests/incomeos-project-radar.mjs",
+        "tests/incomeos-owner-profile.mjs"
+      ],
+      "requiredRemediation": "Owner adds documented evidence refs to the private profile",
+      "acceptanceCriteria": "0 ELIGIBLE results with any mandatory NOT_SATISFIED or NOT_ESTABLISHED requirement (verified by synthetic tests)"
+    },
+    {
+      "featureId": "ELIG-002",
+      "sourceFiles": [
+        ".incomeos-private/owner-profile.json (git-ignored, not committed)",
+        "owner/incomeos/owner-profile.template.json",
+        "owner/incomeos/profile-editor.js",
+        "owner/incomeos/profile-ui.js"
+      ],
+      "purpose": "Private owner qualification profile; in-app editor marks items documented (record location and check date required), sets work authorization, conflict review, hours, rate and focus words, reports remaining gaps, and saves the profile optionally encrypted",
+      "operationalState": "PARTIALLY_IMPLEMENTED",
+      "externalDependencies": [],
+      "securityClassification": "OWNER_PRIVATE",
+      "knownDefects": [
+        "Owner has not yet documented any item; the engine cannot authenticate the referenced records"
+      ],
+      "testCoverage": [
+        "tests/incomeos-owner-profile.mjs",
+        "tests/incomeos-profile-editor.mjs",
+        "tests/incomeos-project-ui-browser.mjs"
+      ],
+      "requiredRemediation": "Owner documents each qualification and sets conflicts, availability and work authorization",
+      "acceptanceCriteria": "Profile items carry record references; no private profile tracked by git"
+    },
+    {
+      "featureId": "REQ-001",
+      "sourceFiles": [
+        "owner/incomeos/listing-requirements.js"
+      ],
+      "purpose": "Pattern-based requirement extraction, fraud and embedded-instruction signals from untrusted listing text",
+      "operationalState": "IMPLEMENTED_AND_VERIFIED",
+      "externalDependencies": [],
+      "securityClassification": "UNTRUSTED_INPUT_HANDLER",
+      "knownDefects": [
+        "Extraction is incomplete by design; every listing needs owner confirmation of the full requirement set before eligibility"
+      ],
+      "testCoverage": [
+        "tests/incomeos-opportunity-intelligence.mjs"
+      ],
+      "requiredRemediation": "Expand patterns from observed live listings",
+      "acceptanceCriteria": "No extracted set is treated as complete; injection text never alters configuration"
+    },
+    {
+      "featureId": "COMP-001",
+      "sourceFiles": [
+        "owner/incomeos/compensation.js"
+      ],
+      "purpose": "Effective hourly compensation across hourly, fixed, per-task, interview, consultation, retainer, milestone; FX evidence; taxes separate",
+      "operationalState": "IMPLEMENTED_AND_VERIFIED",
+      "externalDependencies": [],
+      "securityClassification": "PUBLIC_LOGIC",
+      "knownDefects": [
+        "Currency rates must be supplied with source and date; no live FX feed"
+      ],
+      "testCoverage": [
+        "tests/incomeos-opportunity-intelligence.mjs"
+      ],
+      "requiredRemediation": "Optional authorized FX source",
+      "acceptanceCriteria": "Directive example $400/10h/2h = $33.33 reproduced; unknown burden returns UNVERIFIED"
+    },
+    {
+      "featureId": "OPP-001",
+      "sourceFiles": [
+        "owner/incomeos/opportunity-normalizer.js"
+      ],
+      "purpose": "Normalized opportunity record, provenance, cross-source de-duplication, conflicting-duplicate flags, version diff, freshness",
+      "operationalState": "IMPLEMENTED_AND_VERIFIED",
+      "externalDependencies": [],
+      "securityClassification": "PUBLIC_LOGIC",
+      "knownDefects": [
+        "Hashes are non-cryptographic identifiers (documented)",
+        "Fixed in this cycle: primary-source ranking treated rank 0 as falsy"
+      ],
+      "testCoverage": [
+        "tests/incomeos-opportunity-intelligence.mjs"
+      ],
+      "requiredRemediation": "None for current scope",
+      "acceptanceCriteria": "Aggregator copies never counted as independent; stale/expired/withdrawn excluded"
+    },
+    {
+      "featureId": "DISC-001",
+      "sourceFiles": [
+        "owner/incomeos/discovery-connectors.js",
+        "owner/incomeos/discovery-sources.json",
+        "scripts/incomeos/discover.mjs",
+        ".github/workflows/incomeos-discovery.yml"
+      ],
+      "purpose": "Live discovery from documented public job-board APIs (Greenhouse, Ashby, Lever) with receipts, retry/backoff, carry-forward-unverified on failure",
+      "operationalState": "IMPLEMENTED_AND_VERIFIED",
+      "externalDependencies": [
+        "boards-api.greenhouse.io",
+        "api.ashbyhq.com",
+        "api.lever.co",
+        "GitHub Actions runner egress"
+      ],
+      "securityClassification": "PUBLIC_DATA_ONLY",
+      "knownDefects": [
+        "Fixed in cd3764e: runner failed on the GitHub runner because engines loaded as ES modules",
+        "Verified on pull_request runs only; scheduled runs need the default branch",
+        "No eligible results are implied: listings are unscreened public postings"
+      ],
+      "testCoverage": [
+        "tests/incomeos-opportunity-intelligence.mjs (synthetic HTTP)"
+      ],
+      "requiredRemediation": "Inspect first live Actions receipt; disable tokens that return BOARD_NOT_FOUND",
+      "acceptanceCriteria": "At least one source returns status ok with listings in a live receipt",
+      "liveEvidence": "GitHub Actions run 41667377096, commit cd3764e, 2026-11-03T15:46Z: 5 sources ok (HTTP 200), 388 public listings, 1 BOARD_NOT_FOUND (lever-turing, now disabled), 2 disabled (USAJOBS, no key). Artifact incomeos-discovery-41667377096 (7-day retention)."
+    },
+    {
+      "featureId": "DISC-002",
+      "sourceFiles": [
+        "owner/incomeos/discovery-connectors.js (usajobs)"
+      ],
+      "purpose": "USAJOBS official API connector for federal civil-rights/EEO roles",
+      "operationalState": "BLOCKED_BY_EXTERNAL_DEPENDENCY",
+      "externalDependencies": [
+        "USAJOBS API key (free registration by owner)"
+      ],
+      "securityClassification": "CREDENTIAL_REQUIRED",
+      "knownDefects": [
+        "Disabled at run time without USAJOBS_API_KEY and USAJOBS_USER_AGENT secrets"
+      ],
+      "testCoverage": [
+        "synthetic parse test"
+      ],
+      "requiredRemediation": "Owner registers key and adds repository secrets",
+      "acceptanceCriteria": "Live receipt status ok"
+    },
+    {
+      "featureId": "DISC-003",
+      "sourceFiles": [
+        ".github/workflows/incomeos-discovery.yml"
+      ],
+      "purpose": "Scheduled discovery every 6 hours",
+      "operationalState": "BLOCKED_BY_EXTERNAL_DEPENDENCY",
+      "externalDependencies": [
+        "Workflow must exist on default branch"
+      ],
+      "securityClassification": "CI",
+      "knownDefects": [
+        "GitHub only runs schedules from the default branch; merge requires owner authorization"
+      ],
+      "testCoverage": [],
+      "requiredRemediation": "Owner authorizes merge of the workflow (or repository separation)",
+      "acceptanceCriteria": "Scheduled run receipts over 30 days"
+    },
+    {
+      "featureId": "RADAR-001",
+      "sourceFiles": [
+        "owner/incomeos/project-radar.js"
+      ],
+      "purpose": "Screening pipeline: freshness, risk, problems, engine eligibility, economics, ranking, alerts; focus-area relevance ordering with off-focus listings counted and revealable, never silently dropped",
+      "operationalState": "IMPLEMENTED_AND_VERIFIED",
+      "externalDependencies": [],
+      "securityClassification": "PUBLIC_LOGIC",
+      "knownDefects": [
+        "Fixed in this cycle: listing self-asserted eligibility:'verified' produced REVIEW (proved against pre-fix code)"
+      ],
+      "testCoverage": [
+        "tests/incomeos-project-radar.mjs",
+        "tests/incomeos-opportunity-intelligence.mjs"
+      ],
+      "requiredRemediation": "None for current scope",
+      "acceptanceCriteria": "Known ineligible, expired, risky or below-rate listings displayed: 0 in tests"
+    },
+    {
+      "featureId": "LIFE-001",
+      "sourceFiles": [
+        "owner/incomeos/opportunity-lifecycle.js"
+      ],
+      "purpose": "14-state evidence-bearing lifecycle; owner-only steps; transaction-specific application authorization; payment verified only by bank/payout evidence",
+      "operationalState": "PARTIALLY_IMPLEMENTED",
+      "externalDependencies": [],
+      "securityClassification": "OWNER_PRIVATE_LOGIC_PUBLIC_CODE",
+      "knownDefects": [
+        "Engine tested; no persistence or UI because the staging interlock blocks owner storage"
+      ],
+      "testCoverage": [
+        "tests/incomeos-opportunity-intelligence.mjs"
+      ],
+      "requiredRemediation": "Persist in protected owner backend (Phase 5)",
+      "acceptanceCriteria": "No automatic advancement; duplicate payments counted once"
+    },
+    {
+      "featureId": "ALERT-001",
+      "sourceFiles": [
+        "scripts/incomeos/discover.mjs"
+      ],
+      "purpose": "Alert de-duplication per opportunity content version; local file delivery only",
+      "operationalState": "PARTIALLY_IMPLEMENTED",
+      "externalDependencies": [],
+      "securityClassification": "OWNER_PRIVATE",
+      "knownDefects": [
+        "No external delivery provider authorized; alerts are written locally only"
+      ],
+      "testCoverage": [
+        "not yet automated beyond logic review"
+      ],
+      "requiredRemediation": "Owner selects and authorizes a delivery channel that receives no sensitive data",
+      "acceptanceCriteria": "0 duplicate alerts for an unchanged listing"
+    },
+    {
+      "featureId": "UI-001",
+      "sourceFiles": [
+        "owner/incomeos/project-ui.js",
+        "owner/incomeos/index.html",
+        "owner/incomeos/incomeos.css"
+      ],
+      "purpose": "Mobile dashboard panel: health, verified eligible, awaiting verification, excluded; memory-only",
+      "operationalState": "IMPLEMENTED_AND_VERIFIED",
+      "externalDependencies": [],
+      "securityClassification": "OWNER_PRIVATE_IN_MEMORY",
+      "knownDefects": [
+        "Not deployed anywhere; verified only on a local server with iPhone 13 emulation",
+        "Five-question executive dashboard across all modules not yet built"
+      ],
+      "testCoverage": [
+        "tests/incomeos-project-ui-browser.mjs (local Playwright)"
+      ],
+      "requiredRemediation": "Protected deployment, then real-device check",
+      "acceptanceCriteria": "No storage writes, no HTML injection, no horizontal scroll at iPhone width"
+    },
+    {
+      "featureId": "RESEARCH-001",
+      "sourceFiles": [
+        "owner/incomeos/research-radar.js",
+        "owner/incomeos/research-ui.js",
+        "owner/incomeos/opportunities.json",
+        "owner/incomeos/public-feed-adapter.js"
+      ],
+      "purpose": "Paid research study screening from a dated public snapshot",
+      "operationalState": "PARTIALLY_IMPLEMENTED",
+      "externalDependencies": [
+        "Separate Lovable/Supabase public feed (not fetched by this app)"
+      ],
+      "securityClassification": "PUBLIC_DATA",
+      "knownDefects": [
+        "opportunities.json is a dated snapshot, not a live feed",
+        "Imports blocked by staging interlock"
+      ],
+      "testCoverage": [
+        "tests/incomeos-intelligence.mjs",
+        "tests/incomeos-feed-adapter.mjs"
+      ],
+      "requiredRemediation": "Route research studies through the discovery snapshot format",
+      "acceptanceCriteria": "Live source receipts for research studies"
+    },
+    {
+      "featureId": "FIN-001",
+      "sourceFiles": [
+        "owner/incomeos/accountant.js",
+        "owner/incomeos/accounting-controls.js",
+        "owner/incomeos/double-entry.js",
+        "owner/incomeos/financial-event-journal.js",
+        "owner/incomeos/monthly-close.js",
+        "owner/incomeos/statement-close.js",
+        "owner/incomeos/period-rollforward.js",
+        "owner/incomeos/transfer-reconciliation.js",
+        "owner/incomeos/outcome-reconciliation.js",
+        "owner/incomeos/source-attestation.js",
+        "owner/incomeos/financial-value.js",
+        "owner/incomeos/economic-outcomes.js",
+        "owner/incomeos/investment-cashflow.js",
+        "owner/incomeos/research-outcomes.js",
+        "owner/incomeos/recovery-engine.js",
+        "owner/incomeos/capital-readiness.js",
+        "owner/incomeos/spend-intelligence.js",
+        "owner/incomeos/accountant-review.js"
+      ],
+      "purpose": "Accounting, reconciliation, income classification and evidence logic",
+      "operationalState": "SIMULATED_OR_SYNTHETIC_ONLY",
+      "externalDependencies": [
+        "Authenticated financial sources (none connected)"
+      ],
+      "securityClassification": "FINANCIAL",
+      "knownDefects": [
+        "All logic tested with synthetic data only",
+        "Writes blocked by unconditional staging interlock",
+        "No authenticated source; client-side flags cannot prove authenticity (release-gate.js encodes this rule; it is not yet wired into any page or service)"
+      ],
+      "testCoverage": [
+        "30 existing tests/incomeos-*.mjs suites, all passing"
+      ],
+      "requiredRemediation": "Phase 5 backend and Phase 6 authenticated sources",
+      "acceptanceCriteria": "Every realized outcome linked to authenticated evidence"
+    },
+    {
+      "featureId": "SEC-001",
+      "sourceFiles": [
+        "owner/incomeos/staging-interlock.js",
+        "owner/incomeos/vercel.json",
+        "owner/incomeos/.vercelignore",
+        ".vercelignore"
+      ],
+      "purpose": "Staging interlock, headers, deployment exclusion",
+      "operationalState": "PARTIALLY_IMPLEMENTED",
+      "externalDependencies": [
+        "Vercel"
+      ],
+      "securityClassification": "SECURITY_CONTROL",
+      "knownDefects": [
+        "Interlock is not authentication",
+        "No owner authentication exists",
+        "Hosted exclusion from JRS previews not yet proven by a fresh preview (PR #91 record)"
+      ],
+      "testCoverage": [
+        "tests/incomeos-staging-privacy.mjs",
+        "tests/incomeos-source-boundary.mjs"
+      ],
+      "requiredRemediation": "Server-side owner authentication in a separate protected project",
+      "acceptanceCriteria": "Anonymous access denied on the hosted owner app"
+    },
+    {
+      "featureId": "SEC-002",
+      "sourceFiles": [
+        "owner/incomeos/OWNER-PRIVATE-SCHEMA.sql",
+        "owner/incomeos/private-append-handler.js",
+        "owner/incomeos/encrypted-accountant-bridge.js",
+        "owner/incomeos/active-vault.js",
+        "owner/incomeos/vault.js"
+      ],
+      "purpose": "Future private backend contracts and client-side encryption",
+      "operationalState": "SIMULATED_OR_SYNTHETIC_ONLY",
+      "externalDependencies": [
+        "Supabase or equivalent (not applied)"
+      ],
+      "securityClassification": "SECURITY_CONTROL",
+      "knownDefects": [
+        "Schema not applied to any database; handler unrouted"
+      ],
+      "testCoverage": [
+        "tests/incomeos-private-append.mjs",
+        "tests/incomeos-active-vault.mjs",
+        "tests/incomeos-encrypted-accountant-bridge.mjs"
+      ],
+      "requiredRemediation": "Owner authorization for backend infrastructure",
+      "acceptanceCriteria": "Access-control and security tests pass against a deployed protected backend"
+    },
+    {
+      "featureId": "AUTH-001",
+      "sourceFiles": [],
+      "purpose": "Server-side authentication, sessions, authorization",
+      "operationalState": "ABSENT",
+      "externalDependencies": [
+        "Hosting and identity provider decision"
+      ],
+      "securityClassification": "SECURITY_CONTROL",
+      "knownDefects": [
+        "Absent"
+      ],
+      "testCoverage": [],
+      "requiredRemediation": "Phase 5",
+      "acceptanceCriteria": "Unauthorized, expired and cross-user access denied in tests"
+    },
+    {
+      "featureId": "DEPLOY-001",
+      "sourceFiles": [
+        "Vercel project incomeos-opportunity-desk"
+      ],
+      "purpose": "Separate protected IncomeOS deployment",
+      "operationalState": "BLOCKED_BY_EXTERNAL_DEPENDENCY",
+      "externalDependencies": [
+        "Vercel project not Git-connected (PR #91 record)",
+        "Owner authorization"
+      ],
+      "securityClassification": "DEPLOYMENT",
+      "knownDefects": [
+        "No deployment exists"
+      ],
+      "testCoverage": [],
+      "requiredRemediation": "Owner authorizes repository separation or project root connection",
+      "acceptanceCriteria": "Exact-commit protected preview verified by bytes"
+    },
+    {
+      "featureId": "ACCT-RULES",
+      "sourceFiles": [
+        "owner/incomeos/ledger-rules.js"
+      ],
+      "purpose": "Owner-approved categorization and split rules; proposals only; integer-cent splits; conflicts become exceptions; audited apply",
+      "operationalState": "SIMULATED_OR_SYNTHETIC_ONLY",
+      "externalDependencies": [],
+      "securityClassification": "OWNER_PRIVATE_LOGIC_PUBLIC_CODE",
+      "knownDefects": [
+        "Shown read-only in the 'This week' panel from a memory-only workspace file; no persistence until Phase 1 protected storage"
+      ],
+      "testCoverage": [
+        "tests/incomeos-owner-profile.mjs",
+        "tests/incomeos-plan-features.mjs",
+        "tests/incomeos-project-ui-browser.mjs"
+      ],
+      "requiredRemediation": "Phase 1 protected storage, then dashboard review queue",
+      "acceptanceCriteria": "No entry changed without owner acceptance; splits sum exactly"
+    },
+    {
+      "featureId": "ACCT-NETWORTH",
+      "sourceFiles": [
+        "owner/incomeos/net-worth.js"
+      ],
+      "purpose": "Balance sheet and net worth from dated, sourced balances; stale and missing accounts disclosed; unrealized gains separate",
+      "operationalState": "SIMULATED_OR_SYNTHETIC_ONLY",
+      "externalDependencies": [],
+      "securityClassification": "OWNER_PRIVATE_LOGIC_PUBLIC_CODE",
+      "knownDefects": [
+        "Balances are owner-supplied; no institution connection",
+        "Shown read-only in the 'This week' panel from a memory-only workspace file; no persistence until Phase 1 protected storage"
+      ],
+      "testCoverage": [
+        "tests/incomeos-owner-profile.mjs",
+        "tests/incomeos-plan-features.mjs",
+        "tests/incomeos-project-ui-browser.mjs"
+      ],
+      "requiredRemediation": "Authorized balance imports",
+      "acceptanceCriteria": "Report labelled PARTIAL whenever any listed account is missing or stale"
+    },
+    {
+      "featureId": "RECOVERY-CLAIMS",
+      "sourceFiles": [
+        "owner/incomeos/claims-tracker.js"
+      ],
+      "purpose": "Unclaimed property, refunds, rebates, billing errors, savings bonds, pensions: official sources, search schedule, claim lifecycle, deadlines, finder-fee warnings",
+      "operationalState": "SIMULATED_OR_SYNTHETIC_ONLY",
+      "externalDependencies": [],
+      "securityClassification": "OWNER_PRIVATE_LOGIC_PUBLIC_CODE",
+      "knownDefects": [
+        "Treasury Hunt and PBGC addresses unconfirmed (labelled)",
+        "Billing-error deadline is an estimate to confirm with the issuer",
+        "Shown read-only in the 'This week' panel from a memory-only workspace file; no persistence until Phase 1 protected storage"
+      ],
+      "testCoverage": [
+        "tests/incomeos-owner-profile.mjs",
+        "tests/incomeos-plan-features.mjs",
+        "tests/incomeos-project-ui-browser.mjs"
+      ],
+      "requiredRemediation": "Owner confirms remaining source addresses",
+      "acceptanceCriteria": "Recovered funds counted only with a bank reference, once"
+    },
+    {
+      "featureId": "SAVINGS-RENEWALS",
+      "sourceFiles": [
+        "owner/incomeos/renewal-monitor.js"
+      ],
+      "purpose": "Renewal, notice-deadline, price-increase and unused-service review on top of recurring detection; necessary services never proposed for cancellation",
+      "operationalState": "SIMULATED_OR_SYNTHETIC_ONLY",
+      "externalDependencies": [],
+      "securityClassification": "OWNER_PRIVATE_LOGIC_PUBLIC_CODE",
+      "knownDefects": [
+        "Renewal dates are estimates from payment history",
+        "Shown read-only in the 'This week' panel from a memory-only workspace file; no persistence until Phase 1 protected storage"
+      ],
+      "testCoverage": [
+        "tests/incomeos-owner-profile.mjs",
+        "tests/incomeos-plan-features.mjs",
+        "tests/incomeos-project-ui-browser.mjs"
+      ],
+      "requiredRemediation": "Owner notes per service",
+      "acceptanceCriteria": "No cancellation proposed for a service marked necessary"
+    },
+    {
+      "featureId": "RESEARCH-HISTORY",
+      "sourceFiles": [
+        "owner/incomeos/recruiter-history.js"
+      ],
+      "purpose": "Recruiter invitation and payment rates from the owner's own records, with a sample floor; pay per recorded hour from verified payments only",
+      "operationalState": "SIMULATED_OR_SYNTHETIC_ONLY",
+      "externalDependencies": [],
+      "securityClassification": "OWNER_PRIVATE_LOGIC_PUBLIC_CODE",
+      "knownDefects": [
+        "No history recorded yet",
+        "Shown read-only in the 'This week' panel from a memory-only workspace file; no persistence until Phase 1 protected storage"
+      ],
+      "testCoverage": [
+        "tests/incomeos-owner-profile.mjs",
+        "tests/incomeos-plan-features.mjs",
+        "tests/incomeos-project-ui-browser.mjs"
+      ],
+      "requiredRemediation": "Owner records application stages",
+      "acceptanceCriteria": "No rate shown below the sample floor"
+    },
+    {
+      "featureId": "CAPITAL-YIELD",
+      "sourceFiles": [
+        "owner/incomeos/yield-compare.js"
+      ],
+      "purpose": "After-tax cash, CD and Treasury comparison (state exemption for Treasuries), early-withdrawal penalties, insurance-limit flags, ladder planning",
+      "operationalState": "SIMULATED_OR_SYNTHETIC_ONLY",
+      "externalDependencies": [],
+      "securityClassification": "OWNER_PRIVATE_LOGIC_PUBLIC_CODE",
+      "knownDefects": [
+        "Offers are owner-entered; no live rate feed",
+        "Treasury market-price risk not modelled",
+        "Shown read-only in the 'This week' panel from a memory-only workspace file; no persistence until Phase 1 protected storage"
+      ],
+      "testCoverage": [
+        "tests/incomeos-owner-profile.mjs",
+        "tests/incomeos-plan-features.mjs",
+        "tests/incomeos-project-ui-browser.mjs"
+      ],
+      "requiredRemediation": "Use verified investable surplus from capital-readiness",
+      "acceptanceCriteria": "Stale or unsourced offers excluded; no purchase instruction"
+    },
+    {
+      "featureId": "OWNER-BRIEFING",
+      "sourceFiles": [
+        "owner/incomeos/weekly-briefing.js"
+      ],
+      "purpose": "Weekly one-screen briefing answering the five owner questions; notifies only when an item needs the owner",
+      "operationalState": "SIMULATED_OR_SYNTHETIC_ONLY",
+      "externalDependencies": [],
+      "securityClassification": "OWNER_PRIVATE_LOGIC_PUBLIC_CODE",
+      "knownDefects": [
+        "No delivery channel authorized",
+        "Shown read-only in the 'This week' panel from a memory-only workspace file; no persistence until Phase 1 protected storage"
+      ],
+      "testCoverage": [
+        "tests/incomeos-owner-profile.mjs",
+        "tests/incomeos-plan-features.mjs",
+        "tests/incomeos-project-ui-browser.mjs"
+      ],
+      "requiredRemediation": "Owner chooses a delivery channel",
+      "acceptanceCriteria": "Quiet weeks produce no notification; repeat items do not re-notify"
+    },
+    {
+      "featureId": "UI-002",
+      "sourceFiles": [
+        "owner/incomeos/briefing-ui.js",
+        "owner/incomeos/index.html",
+        "owner/incomeos/owner-workspace.template.json",
+        "owner/incomeos/workspace-store.js"
+      ],
+      "purpose": "'This week' panel: five owner questions, needs-you list, official searches due, net worth, renewals, yields, recruiter history, proposals, system health; memory-only workspace file; owner actions (accept categorization, record official searches, advance claims with evidence, add sourced balances, mark seen) applied to an in-memory copy and kept only when the owner saves the file, optionally AES-256-GCM encrypted; start a new workspace and add accounts, ledger entries, service notes, rate offers and comparison settings through validated forms",
+      "operationalState": "IMPLEMENTED_AND_VERIFIED",
+      "externalDependencies": [],
+      "securityClassification": "OWNER_PRIVATE_IN_MEMORY",
+      "knownDefects": [
+        "Verified locally only (Playwright, iPhone 13 emulation, synthetic workspace); not deployed",
+        "Single file, single device: no sync or conflict handling between devices until Phase 1 storage",
+        "A lost passphrase cannot be recovered"
+      ],
+      "testCoverage": [
+        "tests/incomeos-owner-profile.mjs",
+        "tests/incomeos-profile-editor.mjs",
+        "tests/incomeos-project-ui-browser.mjs",
+        "tests/incomeos-workspace-store.mjs"
+      ],
+      "requiredRemediation": "Phase 1 protected hosting and storage",
+      "acceptanceCriteria": "No storage writes, unknown workspace sections rejected, only https links rendered, no horizontal scroll"
+    },
+    {
+      "featureId": "EXPERT-001",
+      "sourceFiles": [
+        "owner/incomeos/engagement-screen.js",
+        "owner/incomeos/project-ui.js",
+        "owner/incomeos/profile-editor.js",
+        "owner/incomeos/profile-ui.js"
+      ],
+      "purpose": "Directive sections 8 and 10: classify expert consultations, project work, employment and research studies; flag confidentiality, pending-matter, protected-data, agency-prediction and former-employer risks for owner review; prepare copyable application notes from documented profile items only",
+      "operationalState": "IMPLEMENTED_AND_VERIFIED",
+      "externalDependencies": [],
+      "securityClassification": "OWNER_PRIVATE_LOGIC_PUBLIC_CODE",
+      "knownDefects": [
+        "Pattern-based classification and risk flags can miss phrasing; flags prompt review, they never clear an engagement",
+        "No expert-network connector: those platforms invite members directly; use the ChatGPT intake for invitations"
+      ],
+      "testCoverage": [
+        "tests/incomeos-engagement.mjs",
+        "tests/incomeos-project-ui-browser.mjs"
+      ],
+      "requiredRemediation": "Owner lists former employers in the private profile",
+      "acceptanceCriteria": "No ethics determination made by the software; notes contain only documented items and are never submitted"
+    },
+    {
+      "featureId": "RESEARCH-EHY",
+      "sourceFiles": [
+        "owner/incomeos/research-radar.js",
+        "owner/incomeos/research-ui.js",
+        "owner/incomeos/public-feed-adapter.js",
+        "owner/incomeos/workspace-store.js",
+        "owner/incomeos/briefing-ui.js"
+      ],
+      "purpose": "Effective hourly yield for paid research: advertised compensation over session, screener, preparation and follow-up time; EHY-first ranking with held studies last; per-component missing time named; confirmed versus unconfirmed zero; estimated versus verified time; payment form (cash, gift card, points, unknown); owner-entered times kept in the workspace file; research shown in This week",
+      "operationalState": "IMPLEMENTED_AND_VERIFIED",
+      "externalDependencies": [],
+      "securityClassification": "OWNER_PRIVATE_IN_MEMORY",
+      "knownDefects": [
+        "Committed snapshot studies publish no preparation or follow-up time, so EHY needs owner-entered times",
+        "Research imports remain disabled by the staging interlock",
+        "Not deployed"
+      ],
+      "testCoverage": [
+        "tests/incomeos-research-ehy.mjs",
+        "tests/incomeos-research-ehy-browser.mjs",
+        "tests/incomeos-workspace-store.mjs"
+      ],
+      "requiredRemediation": "Hosting decision; sources that publish full time requirements",
+      "acceptanceCriteria": "No silent zero time; held studies never outrank open ones; CSV equals cards; rates shown to the cent"
+    },
+    {
+      "featureId": "SECURE-PROFILE",
+      "sourceFiles": [
+        "owner/incomeos/OWNER-PROFILE-SCHEMA.sql",
+        "owner/incomeos/profile-store.js",
+        "scripts/incomeos/verify-profile-rls.mjs"
+      ],
+      "purpose": "Authenticated, owner-only persistent application profile (name, application email, qualifications, LinkedIn) with row-level security, emailed-code sign-in for an existing user, memory-only session, confirmed save and delete",
+      "operationalState": "BLOCKED_BY_EXTERNAL_DEPENDENCY",
+      "externalDependencies": [
+        "Separate private Supabase project (owner authorization)",
+        "Sign-ups disabled and single owner enrolled",
+        "Schema exposure after verification"
+      ],
+      "securityClassification": "SECURITY_CONTROL",
+      "knownDefects": [
+        "Migration not applied; client not wired into the page",
+        "Client tested against a simulated backend only; real row-level security unverified",
+        "The only existing Supabase project is the JRS one and must not be used"
+      ],
+      "testCoverage": [
+        "tests/incomeos-profile-store.mjs"
+      ],
+      "requiredRemediation": "Owner authorizes and provisions the private project; run verify-profile-rls.mjs; manual checks for logs, analytics, exports and refresh",
+      "acceptanceCriteria": "Anonymous and other users denied; owner read, update and delete confirmed on the real database"
+    },
+    {
+      "featureId": "UI-START-HERE",
+      "sourceFiles": [
+        "owner/incomeos/getting-started.js",
+        "owner/incomeos/index.html"
+      ],
+      "purpose": "Start here checklist tracking setup steps from in-page events and pointing to the next step",
+      "operationalState": "IMPLEMENTED_AND_VERIFIED",
+      "externalDependencies": [],
+      "securityClassification": "OWNER_PRIVATE_IN_MEMORY",
+      "knownDefects": [
+        "Progress resets on reload by design (no storage)"
+      ],
+      "testCoverage": [
+        "tests/incomeos-project-ui-browser.mjs"
+      ],
+      "requiredRemediation": "None for current scope",
+      "acceptanceCriteria": "Next step correct for draft profile and unsaved workspace"
+    },
+    {
+      "featureId": "DS-PROGRAM-ENGINE",
+      "sourceFiles": [
+        "owner/incomeos/ds-program.js",
+        "owner/incomeos/workspace-store.js"
+      ],
+      "purpose": "Decision Spellchecker program record: shared evidence, identities, SP-01 to SP-18 slots, gates, tasks, validation, contact ledger, pipeline, rights, authorizations and finance in one document",
+      "operationalState": "IMPLEMENTED_AND_VERIFIED",
+      "externalDependencies": [],
+      "securityClassification": "OWNER_PRIVATE_IN_MEMORY",
+      "knownDefects": [
+        "Controlling documents (Master Program O3, SP criteria, SAL packages, rights inventory, study designs) are not in the repository; their facts are owner assertions only",
+        "Database-enforced access not provisioned (DS-PROGRAM-SCHEMA.sql not applied)"
+      ],
+      "testCoverage": [
+        "tests/incomeos-ds-program.mjs"
+      ],
+      "requiredRemediation": "Owner supplies controlling documents; private database provisioned and verified",
+      "acceptanceCriteria": "No gate, SP check, pipeline stage or restricted action can advance without its evidence and authority; actual finance never includes projections"
+    },
+    {
+      "featureId": "UI-DS-COMMAND-CENTER",
+      "sourceFiles": [
+        "owner/incomeos/ds-program-ui.js",
+        "owner/incomeos/index.html",
+        "owner/incomeos/briefing-ui.js",
+        "owner/incomeos/incomeos.js"
+      ],
+      "purpose": "Program view: first and default IncomeOS view with status, gates, blockers, next actions, restricted actions, finance, validation claims, owner assertions, owner-run cycle and record forms",
+      "operationalState": "IMPLEMENTED_AND_VERIFIED",
+      "externalDependencies": [],
+      "securityClassification": "OWNER_PRIVATE_IN_MEMORY",
+      "knownDefects": [
+        "Changes persist only when the owner saves the workspace file"
+      ],
+      "testCoverage": [
+        "tests/incomeos-ds-program-browser.mjs"
+      ],
+      "requiredRemediation": "None for current scope",
+      "acceptanceCriteria": "Honest seeded state at load, record and save round trip, no storage, no overflow at phone width"
+    },
+    {
+      "featureId": "ACCOUNTING-EDITOR-WORKSPACE-MODE",
+      "sourceFiles": [
+        "owner/incomeos/accountant.js",
+        "owner/incomeos/workspace-store.js",
+        "owner/incomeos/briefing-ui.js",
+        "owner/incomeos/index.html"
+      ],
+      "purpose": "Income and expense entry, editing, deletion, CSV/JSON import and accountant reports on the ledger of the owner's open workspace file, which the owner saves (AES-256-GCM with a passphrase); nothing is written to browser storage",
+      "operationalState": "IMPLEMENTED_AND_VERIFIED",
+      "externalDependencies": [],
+      "securityClassification": "OWNER_PRIVATE_IN_MEMORY",
+      "knownDefects": [
+        "Hosted owner authentication not verified: the private hosting decision and owner sign-in are pending owner action",
+        "Records persist only when the owner saves the workspace file; no automatic sync across devices",
+        "Verified in simulated iPhone 13 Chromium, not on a physical iPhone"
+      ],
+      "testCoverage": [
+        "tests/incomeos-accounting-editor-browser.mjs",
+        "tests/incomeos-controls.mjs"
+      ],
+      "requiredRemediation": "Owner-authenticated private hosting (Milestone A release gate)",
+      "acceptanceCriteria": "Locked without a workspace; add, edit, delete and import in workspace mode; encrypted save; reopen restores entries; zero browser-storage writes"
+    },
+    {
+      "featureId": "ACCOUNTING-EDITOR-REPORTS",
+      "sourceFiles": [
+        "owner/incomeos/accountant.js",
+        "owner/incomeos/index.html"
+      ],
+      "purpose": "Accountant handoff reports from the owner's ledger: separated category totals, reconciliation evidence classes, receipt gaps, unclassified transactions, expense payment status, payment-account labels and questions for the accountant, on screen, in the summary and detailed CSVs and in the printed report",
+      "operationalState": "IMPLEMENTED_AND_VERIFIED",
+      "externalDependencies": [],
+      "securityClassification": "OWNER_PRIVATE_IN_MEMORY",
+      "knownDefects": [
+        "Reconciliation classes reflect owner-recorded evidence; no bank feed is connected",
+        "Not accountant-reviewed and not tax-filing ready; verified in simulated Chromium phone widths only"
+      ],
+      "testCoverage": [
+        "tests/incomeos-accountant-fixes.mjs",
+        "tests/incomeos-accounting-editor-browser.mjs",
+        "tests/incomeos-acceptance-record.mjs",
+        "tests/incomeos-accounting-backup-browser.mjs"
+      ],
+      "requiredRemediation": "Owner-authenticated private hosting (Milestone A release gate); see ACCOUNTING-EDITOR-ACCEPTANCE.json",
+      "acceptanceCriteria": "Every record in exactly one category group and one reconciliation class; refunds, unpaid bills and returned principal never counted as income or paid expense; full card or account numbers refused; reports fit 320 to 430 px"
+    },
+    {
+      "featureId": "PASSIVE-RADAR-INTAKE",
+      "sourceFiles": [
+        "owner/incomeos/passive-radar.js",
+        "owner/incomeos/passive-radar-ui.js",
+        "owner/incomeos/index.html",
+        "owner/incomeos/CHATGPT-INTAKE.md",
+        "owner/incomeos/workspace-store.js",
+        "owner/incomeos/briefing-ui.js",
+        "owner/incomeos/claims-tracker.js"
+      ],
+      "purpose": "Reviewed import of the ChatGPT Passive Opportunity Radar findings file (incomeos.passive-findings.v1): each finding shown with its source, found-on date, direct link and value type (new income, returned capital, savings, projection); section 11 terms; owner decisions kept in the workspace; returned-capital findings open a recovery claim",
+      "operationalState": "SIMULATED_OR_SYNTHETIC_ONLY",
+      "externalDependencies": [
+        "Owner's ChatGPT passive radar task producing the findings file"
+      ],
+      "securityClassification": "OWNER_PRIVATE_IN_MEMORY",
+      "knownDefects": [
+        "Tested with synthetic findings only; no real radar output has been loaded",
+        "Claim kind is inferred from the finding's wording; the owner cannot yet change it"
+      ],
+      "testCoverage": [
+        "tests/incomeos-passive-radar.mjs",
+        "tests/incomeos-passive-radar-browser.mjs",
+        "tests/incomeos-workspace-store.mjs"
+      ],
+      "requiredRemediation": "Load a real findings file from the radar task; decide whether accepted findings should open a recovery claim",
+      "acceptanceCriteria": "Missing source, date or direct link refused; projections never counted; received always zero; no fetch or browser storage; fits 320 px"
+    },
+    {
+      "featureId": "AVAILABLE-TO-COMPOUND",
+      "sourceFiles": [
+        "owner/incomeos/compound-capacity.js",
+        "owner/incomeos/compound-capacity-ui.js",
+        "owner/incomeos/index.html"
+      ],
+      "purpose": "Available-to-compound estimate from received income, paid outflows, capital returned and contributed, scheduled bills and an owner reserve, with a downside loss check; actual cash results by holding (money put in, income received, principal and proceeds back)",
+      "operationalState": "SIMULATED_OR_SYNTHETIC_ONLY",
+      "externalDependencies": [],
+      "securityClassification": "OWNER_PRIVATE_IN_MEMORY",
+      "knownDefects": [
+        "Built from recorded entries, not reconciled bank balances",
+        "Holdings are grouped by payer name; no market value or unrealised result"
+      ],
+      "testCoverage": [
+        "tests/incomeos-compound-capacity.mjs",
+        "tests/incomeos-compound-capacity-browser.mjs"
+      ],
+      "requiredRemediation": "Reconcile against statement balances; add owner-entered market values if wanted",
+      "acceptanceCriteria": "Expected income never counted; returned principal never shown as earnings; never negative; fits 320 to 430 px"
+    }
+  ]
+}

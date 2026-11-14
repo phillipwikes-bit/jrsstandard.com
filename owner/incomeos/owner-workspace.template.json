@@ -1,0 +1,29 @@
+{
+  "schema": "incomeos.workspace.v1",
+  "note": "TEMPLATE ONLY, no owner data. Keep your filled copy outside this repository (for example .incomeos-private/workspace.json or your phone's Files app). Amounts are USD strings like \"85.00\". Dates are YYYY-MM-DD.",
+  "ledger": [
+    {"id": "e-example", "kind": "outflow", "type": "expense", "date": "YYYY-MM-DD", "payer": "Vendor name", "label": "What it was", "amountUsd": "0.00", "category": "other"}
+  ],
+  "rules": [
+    {"id": "rule-example", "kind": "outflow", "match": {"vendorContains": "vendor"}, "category": "software", "businessUsePct": null, "approvedOn": "YYYY-MM-DD"}
+  ],
+  "accounts": [
+    {"id": "acct-example", "name": "Checking", "type": "checking"}
+  ],
+  "balances": [
+    {"accountId": "acct-example", "asOf": "YYYY-MM-DD", "balanceUsd": "0.00", "source": "statement", "sourceRef": "where the statement is kept"}
+  ],
+  "claims": [],
+  "livedInStates": ["MD"],
+  "searchHistory": [],
+  "serviceNotes": [
+    {"vendor": "Vendor name", "necessary": true, "cancelNoticeDays": null, "lastUsedOn": null}
+  ],
+  "offers": [],
+  "yieldParams": {"amountUsd": 0, "horizonMonths": 12, "federalRatePct": 0, "stateRatePct": 0, "needLiquidity": true},
+  "researchStages": [],
+  "recruiterOf": {},
+  "verifiedPayments": {},
+  "lifecycle": [],
+  "previousAlertIds": []
+}
