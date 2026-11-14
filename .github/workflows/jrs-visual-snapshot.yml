@@ -145,6 +145,43 @@ jobs:
           if-no-files-found: error
           retention-days: 14
 
+  protected-preview:
+    name: Verify protected preview and capture hosted screenshots
+    needs: visual-snapshots
+    runs-on: ubuntu-latest
+    # Configure REQUIRED REVIEWERS before adding a bypass secret. Every PR
+    # commit using this credential must be explicitly approved by the owner.
+    # Do not use a repository-level or organization-level bypass secret.
+    environment: jrs-protected-preview
+    permissions:
+      contents: read
+      deployments: read
+    steps:
+      - name: Checkout exact candidate head for source comparison
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          persist-credentials: false
+      - name: Select browser for hosted capture
+        run: |
+          for c in google-chrome google-chrome-stable chromium chromium-browser; do
+            if command -v "$c" >/dev/null; then echo "JRS_BROWSER=$(command -v $c)" >> "$GITHUB_ENV"; exit 0; fi
+          done
+          echo "RELEASE HOLD: Chrome not installed on runner" >&2; exit 1
+      - name: Set up Node 24 for hosted capture
+        uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4.4.0
+        with:
+          node-version: '24'
+      - name: Require owner-approved environment credential
+        env:
+          JRS_VERCEL_PREVIEW_BYPASS: ${{ secrets.JRS_VERCEL_PREVIEW_BYPASS }}
+        run: |
+          if [ -z "$JRS_VERCEL_PREVIEW_BYPASS" ]; then
+            echo "::error::RELEASE HOLD: jrs-protected-preview has no approved Vercel automation bypass credential."
+            echo "::error::Owner must configure environment required reviewers and branch rules BEFORE adding the environment secret."
+            exit 1
+          fi
+          echo "Protected-preview credential exists; value not logged."
       - name: Resolve exact-head preview through owner input or read-only GitHub deployment status
         env:
           JRS_EXPECTED_HEAD: ${{ github.event.pull_request.head.sha || github.sha }}
