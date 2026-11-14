@@ -184,6 +184,24 @@ assert.ok(publicResearch.includes('Public Challenge Aggregates') &&
 assert.ok(publicChronology.includes('not the authoritative internal evidence register'),
  'public chronology must disclose that it is not the complete evidence ledger');
 
+// Direct readers to the three current, discipline-specific investigator
+// field guides; keep the former combined overview identifiable as historical.
+const methodology=read('jrsstandard.html');
+assert.ok(!methodology.includes('href="/api/dl?f=JRS_Investigator_Field_Guide.pdf'),
+ 'online method must not promote the historical combined guide as a current download');
+for(const label of [
+ 'Open current v1.1 guides',
+ 'Choose current guides',
+ 'Open current investigator guides (v1.1)'
+]){
+ assert.ok(methodology.includes('href="investigator-guides.html"') &&
+  methodology.includes('>'+label+'</a>'),
+  'current guide navigation missing: '+label);
+}
+assert.ok(methodology.includes('JRS Investigator Guide (Combined Overview, historical)') &&
+ methodology.includes('001-INV &middot; Earlier combined edition'),
+ 'historical combined overview must remain distinguishable from the current supplements');
+
 // A retained security reference is not an active enterprise data-intake form.
 // The legacy /api/enterprise-inquiry endpoint has returned 410 since retirement.
 const archivedSecurity=read('security.html');
