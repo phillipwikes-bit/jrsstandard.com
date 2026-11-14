@@ -151,6 +151,11 @@ for(const pagePath of referencePages){
   pagePath+': preserve edition and accessibility disclosures');
  assert.ok(page.includes('href="/contact.html?category=accessibility"'),
   pagePath+': provide an open request for an alternative format');
+ assert.ok(page.includes('Continue with related reviewer references or use the free seven-point record check within an authorized workflow.') &&
+  page.includes('No public pilot enrollment or case-record upload is offered.'),
+  pagePath+': retain resource-first reading guidance and case-record boundary');
+ assert.ok(!page.includes('practice with free constructed examples'),
+  pagePath+': do not restore outdated practice-first call to action');
 }
 console.log('PASS: all 16 Reviewer Reference PDF entries disclose untagged status and provide an accessible-format request.');
 
