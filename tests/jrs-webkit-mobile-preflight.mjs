@@ -75,6 +75,20 @@ try{
     const top=el?getComputedStyle(el):null;
     const bodyStyle=body?getComputedStyle(body):null;
     const iosRuleActive=CSS.supports('(-webkit-touch-callout: none)');
+    // Capture the actual offending elements when an engine detects overflow.
+    // No content leaves CI except these bounded diagnostic descriptions.
+    const overflowCandidates=root.scrollWidth>innerWidth+1
+      ? [...document.body.querySelectorAll('*')].flatMap(el=>{
+          const rect=el.getBoundingClientRect(),style=getComputedStyle(el);
+          if(rect.width<=0||rect.left>=innerWidth||rect.right<=innerWidth+1||
+             style.display==='none'||style.visibility==='hidden')return [];
+          return [{tag:el.tagName.toLowerCase(),
+            className:String(el.className||'').slice(0,70),
+            text:(el.textContent||'').replace(/\\s+/g,' ').trim().slice(0,60),
+            left:Math.round(rect.left),right:Math.round(rect.right),
+            width:Math.round(rect.width),whiteSpace:style.whiteSpace,
+            overflowX:style.overflowX}];
+        }).slice(0,12):[];
     const nav=document.querySelector('nav.jrs-sitenav');
     const button=document.querySelector('.jrs-global-nav-toggle');
     return {
@@ -82,7 +96,7 @@ try{
      bodyInstitutional:body?.classList.contains('jrs-institutional')||false,
      theme:theme?.getAttribute('content')||null,
      firstChild:el?.className||null,
-     width:innerWidth,scrollWidth:root.scrollWidth,
+     width:innerWidth,scrollWidth:root.scrollWidth,overflowCandidates,
      iosRuleActive,bodyPaddingTop:bodyStyle?.paddingTop||null,
      edgePosition:top?.position||null,edgeTop:top?.top||null,
      edgeHeight:top?.height||null,edgeBackground:top?.backgroundColor||null,
@@ -119,7 +133,8 @@ try{
    }
    const row={path,width,pass:failures.length===0,failures,iosRuleActive:details.iosRuleActive,
     theme:details.theme,scrollWidth:details.scrollWidth,bodyPaddingTop:details.bodyPaddingTop,
-    edgeBackground:details.edgeBackground};
+    edgeBackground:details.edgeBackground,
+    ...(failures.length?{overflowCandidates:details.overflowCandidates}: {})};
    rows.push(row);
    if(width===390&&['resources.html','jrsstandard.html','reference/index.html'].includes(path)){
     const name=path.replaceAll('/','-').replace(/\.html$/,'');
