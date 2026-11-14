@@ -102,7 +102,7 @@ def verified_request(url, parsed):
         # GitHub-signed, short-lived identity; trusted by Vercel for JRS previews only.
         # No redirects are followed, and the token never enters a URL or log.
         if not (100 <= len(oidc) <= 8192 and
-                re.fullmatch(r"[A-Za-z0-9_-]+\\.[A-Za-z0-9_-]+\\.[A-Za-z0-9_-]+", oidc)):
+                re.fullmatch(r"[A-Za-z0-9_-]+\.[A-Za-z0-9_-]+\.[A-Za-z0-9_-]+", oidc)):
             fail("invalid GitHub OIDC credential format")
         headers["x-vercel-trusted-oidc-idp-token"] = oidc
     return Request(url, headers=headers)
