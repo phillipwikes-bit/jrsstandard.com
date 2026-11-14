@@ -5,17 +5,20 @@ import { readFileSync } from 'node:fs';
 // deployment branch restrictions, and the secret itself must be configured by
 // the owner and verified separately; source checks cannot certify those settings.
 const yaml = readFileSync('.github/workflows/jrs-visual-snapshot.yml', 'utf8');
-const localMarker = '\n  visual-snapshots:\n';
+const localMarker = '\n  local-visual:\n';
 const protectedMarker = '\n  protected-preview:\n';
+const aggregateMarker = '\n  visual-snapshots:\n';
 assert.equal(yaml.split(localMarker).length, 2, 'Expect exactly one local visual job');
 assert.equal(yaml.split(protectedMarker).length, 2, 'Expect exactly one protected preview job');
+assert.equal(yaml.split(aggregateMarker).length, 2, 'Expect exactly one final visual release check');
 const local = yaml.split(localMarker)[1].split(protectedMarker)[0];
-const protectedJob = yaml.split(protectedMarker)[1];
+const protectedJob = yaml.split(protectedMarker)[1].split(aggregateMarker)[0];
+const aggregate = yaml.split(aggregateMarker)[1];
 assert.match(local, /name: Preserve local screenshot inventory/, 'Keep local visual evidence independent');
 assert.doesNotMatch(local, /secrets\.JRS_VERCEL_PREVIEW_BYPASS/, 'PR local browser job must never receive the bypass secret');
 assert.doesNotMatch(local, /id-token:\s*write/, 'Local PR job must not acquire an OIDC identity token');
 assert.doesNotMatch(local, /Verify preview source identity before any release certification/, 'Hosted gate must not run in local job');
-assert.match(protectedJob, /needs:\s*visual-snapshots/, 'Protected job must depend on local evidence');
+assert.match(protectedJob, /needs:\s*local-visual/, 'Protected job must depend on local evidence');
 assert.match(protectedJob, /environment:\s*jrs-protected-preview/, 'Keep reviewable environment boundary');
 assert.match(protectedJob, /permissions:\s*\n\s+contents:\s*read\s*\n\s+deployments:\s*read/, 'Keep restricted workflow permissions');
 assert.match(protectedJob, /persist-credentials:\s*false/, 'Do not leave checkout credentials in candidate source');
@@ -29,5 +32,10 @@ assert.ok(verified > 0 && captured > verified, 'Byte and PDF verification must p
 const expectedRef = 'github.event.pull_request.head.sha || github.sha';
 assert.ok((protectedJob.match(/github\.event\.pull_request\.head\.sha \|\| github\.sha/g) || []).length >= 2,
   'Compare against the exact selected candidate commit');
-console.log('PASS: protected hosted verification stays separate, reviewed, exact-head and fail-closed.');
+assert.match(aggregate, /needs:\s*\[local-visual, protected-preview\]/, 'Final required check must depend on both jobs');
+assert.match(aggregate, /if:\s*always\(\)/, 'Final required check must fail on skipped predecessors');
+assert.match(aggregate, /JRS_HOSTED_RESULT.*needs\.protected-preview\.result/, 'Final required check must inspect hosted outcome');
+assert.match(aggregate, /JRS_LOCAL_RESULT.*needs\.local-visual\.result/, 'Final required check must inspect local outcome');
+assert.match(aggregate, /\$JRS_HOSTED_RESULT.*!=.*success/, 'Final required check must reject blocked hosted verification');
+console.log('PASS: separate local and protected jobs feed original fail-closed visual release check.');
 console.log('LIMITATION: required reviewers, branch rules and credential availability require owner-side configuration.');
