@@ -40,6 +40,14 @@ The following checks **were not completed or certified**: logical reading order;
 4. **Version-controlled release:** Publish only an authorized edition or clearly designated accessible alternative. Update its immutable identity record, download routing and citation notices as part of a reviewed release. Do not silently overwrite the established published binaries.
 5. **Disposition before release:** The publication owner must explicitly decide whether the separate accessibility work blocks the website correction release or will be scheduled and disclosed as an independent follow-up. This source-only technical preflight does not make that decision.
 
+## Editable-source provenance checkpoint
+
+The current repository includes `scripts/generate_field_guides.py`, but its own source documentation identifies the three tracked investigator guides as PDFs **without an available original authoring generator**. The script preserves the compiled guide pages and appends a routing page; it does **not** reconstruct semantic page structure or supply an authoritative tagged-PDF master. Reusing it would therefore carry the existing untagged pages forward.
+
+The repository also contains a separately versioned online methodology, `jrsstandard.html`, and several other DOCX publications, but neither fact establishes an editable, content-equivalent master for the **JRS Standard PDF v2.0** or for these specific guides. The published-identity manifest explicitly marks the Standard's authoritative master as unverified.
+
+**Disposition:** No master is designated by this audit. Controlled accessible reissue requires positive source identification and content equivalence, not text extraction from a published PDF.
+
 ## Unchanged boundaries
 
 No PDF binary, wording, research result, publication claim, private data, public contact route, preview authentication or production deployment was modified by this assessment. The iPhone Safari top-edge work in draft PR #204 remains separately subject to a protected hosted preview check and physical-device acceptance.
