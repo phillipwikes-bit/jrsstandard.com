@@ -137,6 +137,9 @@ assert.equal(referencePages.length,16,'expected 16 Reviewer Reference chapters')
 for(const pagePath of referencePages){
  const page=read(pagePath);
  const pdfLink=page.indexOf('href="/api/dl?f=JRS-Reference-9d4f2a7c.pdf');
+ assert.match(page,
+  /href="\/api\/dl\?f=JRS-Reference-9d4f2a7c\.pdf&amp;src=[^"]+">Download Reviewer Reference PDF \(v1\.0\)<\/a>/,
+  pagePath+': visible PDF download must name the distinct Reviewer Reference edition');
  const formatNote=page.indexOf('class="note jrs-pdf-access" role="note"');
  assert.ok(pdfLink>0&&formatNote>pdfLink&&formatNote-pdfLink<1100,
   pagePath+': PDF access notice must follow the actual download');
