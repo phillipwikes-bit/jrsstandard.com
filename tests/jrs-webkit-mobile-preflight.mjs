@@ -36,6 +36,7 @@ const server=createServer(async(req,res)=>{
 await new Promise((done,fail)=>{server.once('error',fail);server.listen(0,'127.0.0.1',done);});
 const port=server.address().port;
 const rows=[];
+await mkdir(resolve(root,'.jrs-ci'),{recursive:true});
 let browser;
 try{
  browser=await webkit.launch({headless:true});
