@@ -12,9 +12,14 @@ for(const p of pages){
 const home=read('index.html');
 assert.ok(home.includes("Organizations do not need to purchase or replace a software platform to begin examining whether their decision records preserve sufficient evidence, chronology and reasoning for later independent review."),
  'Primary no-platform-purchase proposition must be preserved verbatim');
-// The first visitor action opens an ungated, non-scoring manual record check.
-// Avoid routing the primary task through another catalog page.
-assert.ok(home.includes('<a class="jr-action-main" href="check.html?src=home">Open seven-point record check</a>'),'Primary action must open the free record check');
+// The approved first action opens the free resource library. The non-scoring
+// manual record check must remain a direct second action, not a gated flow.
+const resourceAction='<a class="jr-action-main" href="resources.html">Browse free JRS resources</a>';
+const recordCheckAction='<a class="jr-action-alt" href="check.html?src=home">Open seven-point record check</a>';
+assert.ok(home.includes(resourceAction),'Primary action must open the ungated free resource library');
+assert.ok(home.includes(recordCheckAction),'Record check must remain directly available from the homepage');
+assert.ok(home.indexOf(resourceAction)<home.indexOf(recordCheckAction),
+ 'Resource library must precede the record check under the approved homepage ordering');
 assert.ok(home.includes('href="right-to-know-why.html#free-resources"'), 'Public-interest initiative must lead to free resources');
 assert.ok(home.includes('href="decisions-you-can-defend.html#free-resources"'), 'Professional initiative must lead to free resources');
 assert.ok(!home.includes('href="#worked-record"'), 'Retired worked-example homepage entry must remain absent');
