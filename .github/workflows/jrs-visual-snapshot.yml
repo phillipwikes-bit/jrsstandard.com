@@ -13,10 +13,6 @@ permissions:
   deployments: read
 jobs:
   visual-snapshots:
-    permissions:
-      contents: read
-      deployments: read
-      id-token: write
     runs-on: ubuntu-latest
     steps:
       - name: Checkout exact PR source
@@ -158,24 +154,6 @@ jobs:
         run: |
           python3 tests/jrs-resolve-preview.py "$GITHUB_ENV"
 
-      - name: Obtain short-lived GitHub identity for protected JRS previews
-        run: |
-          set -euo pipefail
-          if [ -z "${ACTIONS_ID_TOKEN_REQUEST_TOKEN:-}" ] || [ -z "${ACTIONS_ID_TOKEN_REQUEST_URL:-}" ]; then
-            echo "RELEASE HOLD: GitHub identity-token permission is unavailable" >&2
-            exit 1
-          fi
-          response="$(curl --fail --silent --show-error --max-time 20 \
-            -H "Authorization: Bearer ${ACTIONS_ID_TOKEN_REQUEST_TOKEN}" \
-            "${ACTIONS_ID_TOKEN_REQUEST_URL}&audience=https%3A%2F%2Fgithub.com%2Fphillipwikes-bit")"
-          oidc="$(JRS_OIDC_RESPONSE="$response" python3 -c 'import json,os; print(json.loads(os.environ["JRS_OIDC_RESPONSE"])["value"])')"
-          if [[ "$oidc" != *.*.* ]] || [ "${#oidc}" -lt 100 ]; then
-            echo "RELEASE HOLD: GitHub identity token was not issued" >&2
-            exit 1
-          fi
-          echo "::add-mask::$oidc"
-          printf 'JRS_GITHUB_OIDC_TOKEN=%s\n' "$oidc" >> "$GITHUB_ENV"
-          echo "GitHub-signed preview identity prepared; token withheld from logs."
       - name: Verify preview source identity before any release certification
         env:
           JRS_EXPECTED_HEAD: ${{ github.event.pull_request.head.sha || github.sha }}
