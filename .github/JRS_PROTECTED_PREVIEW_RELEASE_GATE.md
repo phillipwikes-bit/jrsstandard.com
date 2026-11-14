@@ -10,9 +10,11 @@ Safari or PDF accessibility acceptance.
 - GitHub repository: `phillipwikes-bit/jrsstandard.com`
 - Vercel project: `jrsstandard-com` (the existing project only)
 - Workflow: `.github/workflows/jrs-visual-snapshot.yml`
-- Local job: `visual-snapshots`, with **no** preview bypass credential
+- Local job: `local-visual`, with **no** preview bypass credential
 - Hosted job: `protected-preview`, using the GitHub environment
   `jrs-protected-preview` and the exact PR SHA
+- Original release gate: `visual-snapshots`, which fails unless **both** jobs
+  succeeded, including when hosted verification is skipped or denied
 - Release: production remains unchanged until the hosted check and separate
   iPhone/PDF review are explicitly accepted
 
