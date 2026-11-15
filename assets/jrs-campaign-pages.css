@@ -9,6 +9,7 @@ body.jrs-campaign-page .jrs-reconstruction-step[open] > summary,
 body.jrs-campaign-page .jrs-source{border-color:#a2b3bf}
 body.jrs-campaign-page .jrs-campaign-example-links{background:#edf3f6;border-color:#b7c8d3}
 body.jrs-campaign-page .jrs-campaign-example-links a{color:#235478}
+body.jrs-campaign-page .footer a{display:inline-flex;align-items:center;min-height:28px}
 @media(max-width:650px){
  body.jrs-campaign-page .actions{flex-direction:column;align-items:stretch}
  body.jrs-campaign-page main{padding-right:18px;padding-left:18px}

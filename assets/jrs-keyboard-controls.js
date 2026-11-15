@@ -89,7 +89,11 @@
         '.role-card-title,.role-path-title,.sim-card-title,.worksheet-title,'+
         '.maturity-level-title,.visitor-orient-title,.visitor-orient-label'
       );
-      if(!el.hasAttribute('aria-label')){
+      // These cards contain headings, excerpts, and visible actions. Let the
+      // browser derive their accessible names from all visible card content.
+      // A title-only aria-label hides that text from the accessible name and
+      // violates WCAG 2.5.3 (Label in Name).
+      if(!el.hasAttribute('aria-label')&&!hasClass(el,'sim-card')&&!hasClass(el,'role-path-card')){
         var label=(preferred?preferred.textContent:el.textContent)||'';
         label=label.replace(/\s+/g,' ').trim().slice(0,140);
         if(label)set(el,'aria-label',label);
