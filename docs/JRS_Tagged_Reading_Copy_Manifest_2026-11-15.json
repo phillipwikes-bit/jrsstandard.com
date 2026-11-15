@@ -1,0 +1,28 @@
+{
+  "schema": "jrs-tagged-reading-copy-manifest.v1",
+  "date": "2026-11-15",
+  "scope": "Additional source-backed reading copies, not replacement editions",
+  "accessibility_certified": false,
+  "approved_to_replace_original_pdfs": false,
+  "status_note": "PDF tags and text extraction are technical evidence, not PDF/UA, WCAG, VoiceOver, or screen-reader certification.",
+  "copies": [
+    {
+      "original": "DRR_Article.pdf",
+      "original_blob_sha": "02c5616167e9fe7576a8f6b01fbfe2ec2d96502c",
+      "source": "research/DRR_Article.md",
+      "source_blob_sha": "15ca6bde809339881afd8605932e274e8b68fc23",
+      "reading_copy": "accessible/DRR_Article_Tagged_Reading_Copy.pdf",
+      "reading_copy_blob_sha": "cf4f8ba3719645c8fd07446cbfc298a55d3a6a3f",
+      "pages": 2
+    },
+    {
+      "original": "JRS_Research_Paper.pdf",
+      "original_blob_sha": "5c1d42450b7019e439f97d97dbf23ce960539f24",
+      "source": "research/JRS_Research_Paper.md",
+      "source_blob_sha": "638548410cb96d33fd9a873f7785c6223169158c",
+      "reading_copy": "accessible/JRS_Research_Paper_Tagged_Reading_Copy.pdf",
+      "reading_copy_blob_sha": "96cf7597289489b8f9655089e7c896ac5a30bc7e",
+      "pages": 11
+    }
+  ]
+}
