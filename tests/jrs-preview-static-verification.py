@@ -6,8 +6,10 @@ not certify visual quality, authenticated APIs, privacy execution or production.
 A Vercel sign-in page, stale preview, HTTP error or missing URL is a release HOLD.
 """
 import hashlib
+import json
 import os
 import re
+from concurrent.futures import ThreadPoolExecutor
 from pathlib import Path
 import subprocess
 import sys
@@ -16,15 +18,58 @@ from urllib.parse import urlparse
 from urllib.request import Request, urlopen, build_opener, HTTPRedirectHandler
 
 ROOT = Path(__file__).resolve().parents[1]
-CHECKS = {
+# The browser regression inventory supplies all 68 institutional route paths.
+# One declared route is intentionally redirected; never byte-compare it as HTML.
+# Keep this sourced from the independently guarded audit, not a second short
+# hand-maintained subset that can silently overlook other public pages.
+STATIC_CHECKS = {
     "/": "index.html",
-    "/jrsstandard.html": "jrsstandard.html",
-    "/resources.html": "resources.html",
-    "/training.html": "training.html",
     "/assets/jrs-institutional-reference.css": "assets/jrs-institutional-reference.css",
     "/assets/jrs-mobile-navigation.js": "assets/jrs-mobile-navigation.js",
     "/assets/jrs-resource-catalog.js": "assets/jrs-resource-catalog.js",
 }
+EXPECTED_REDIRECTS = {"/privacy.html": "/privacy-notice.html"}
+
+
+def release_inventory():
+    fixture = (ROOT / "tests/jrs-sitewide-mobile-browser-audit.html").read_text(
+        encoding="utf-8")
+    match = re.search(r"const paths=(\[[^\n;]*\]);", fixture)
+    if not match:
+        fail("missing independently guarded source route inventory")
+    try:
+        routes = json.loads(match.group(1))
+        redirects = json.loads((ROOT / "vercel.json").read_text(encoding="utf-8"))["redirects"]
+    except (ValueError, TypeError, KeyError):
+        fail("malformed published route or Vercel redirect inventory")
+    if (not isinstance(routes, list) or len(routes) != 68
+            or len(set(routes)) != 68):
+        fail("expected 68 unique institutional route paths")
+    actual_redirects = {
+        item["source"]: item["destination"]
+        for item in redirects if "/" + str(item.get("source", "")).lstrip("/") in
+        {"/" + route for route in routes}
+    }
+    if actual_redirects != EXPECTED_REDIRECTS:
+        fail("published route redirect set changed without exact-host verification review")
+    # The one source redirect must be temporary, not a silently permanent move.
+    privacy = [item for item in redirects if item.get("source") == "/privacy.html"]
+    if len(privacy) != 1 or privacy[0].get("permanent") is not False:
+        fail("privacy redirect contract changed")
+    html = {}
+    for route in routes:
+        if not isinstance(route, str) or not re.fullmatch(
+                r"(?:[a-z0-9-]+/)*[a-z0-9-]+\.html", route):
+            fail("invalid route in verified HTML source inventory")
+        local = ROOT / route
+        if not local.is_file():
+            fail("source HTML file missing from release inventory: " + route)
+        if "/" + route not in EXPECTED_REDIRECTS:
+            html["/" + route] = route
+    if len(html) != 67 or not all((ROOT / x).is_file() for x in STATIC_CHECKS.values()):
+        fail("incomplete 67-page plus four static-source exact-byte comparison scope")
+    return {**STATIC_CHECKS, **html}, EXPECTED_REDIRECTS
+
 
 # These nine public PDF routes must deliver their exact local file bytes. All
 # verification requests use src=verify to avoid contaminating download metrics.
@@ -73,6 +118,10 @@ def self_test():
         if matches_release_source(received, expected, local) is not wanted:
             fail("preview verifier regression: " + name)
         print("PASS: preview verifier", name)
+    checks, redirects = release_inventory()
+    if len(checks) != 71 or redirects != EXPECTED_REDIRECTS:
+        fail("release inventory did not cover all published route contracts")
+    print("PASS: 68 route contracts: 67 exact HTML bytes, one explicit redirect, four static assets/root checks.")
     print("PASS: narrow Vercel feedback allowance, no arbitrary source modifications.")
 
 class NoRedirect(HTTPRedirectHandler):
@@ -164,12 +213,15 @@ def main():
     if not expected_head or actual_head != expected_head:
         fail("checked-out source differs from the PR head: " + actual_head[:12])
     print("Candidate PR source:", actual_head)
-    no_redirect = build_opener(NoRedirect)
-    for route, local in CHECKS.items():
+    checks, redirects = release_inventory()
+    # Concurrency limits the complete public route review without weakening
+    # byte equality, exact origin, request timeouts or redirect rejection.
+    def verify_one(item):
+        route, local = item
         url = base + route
         try:
             req = verified_request(url, parsed)
-            with no_redirect.open(req, timeout=20) as response:
+            with build_opener(NoRedirect).open(req, timeout=20) as response:
                 final = urlparse(response.url)
                 if response.status != 200 or final.netloc != parsed.netloc:
                     fail(local + ": preview redirected or did not return HTTP 200")
@@ -185,10 +237,33 @@ def main():
             fail(local + ": hosted bytes do not match PR head (" +
                  sha(received)[:12] + " != " + sha(expected)[:12] + ")")
         if received != expected:
-            print("INFO: exact Vercel Live footer verified for", local)
-        print("PASS:", local, sha(expected)[:16])
+            return "PASS: " + route + " " + sha(expected)[:16] + " (exact platform trailer)"
+        return "PASS: " + route + " " + sha(expected)[:16]
+    with ThreadPoolExecutor(max_workers=6) as pool:
+        for evidence in pool.map(verify_one, checks.items()):
+            print(evidence)
+    for route, expected in redirects.items():
+        url = base + route
+        try:
+            with build_opener(NoRedirect).open(verified_request(url, parsed), timeout=20) as response:
+                status = response.status
+                location = response.headers.get("Location", "")
+        except HTTPError as error:
+            status = error.code
+            location = error.headers.get("Location", "")
+        except (URLError, TimeoutError, OSError) as error:
+            fail(route + ": published redirect unavailable (" +
+                 type(error).__name__ + ")")
+        target = urlparse(location)
+        from urllib.parse import urljoin
+        absolute = urlparse(urljoin(base, location))
+        if (status not in (302, 307) or absolute.scheme != "https"
+                or absolute.netloc != parsed.netloc or absolute.path != expected
+                or absolute.query or absolute.fragment):
+            fail(route + ": hosted redirect differs from approved exact destination")
+        print("PASS: published redirect", route, "to", expected)
     verify_downloads(base, parsed)
-    print("PASS: sampled hosted static source matches the exact PR head.")
+    print("PASS: 68 hosted HTML route contracts match the exact PR head, including the privacy redirect.")
     print("PASS: nine tracked PDF routes redirect and deliver identical files.")
     print("NOT CERTIFIED: screen reader testing, PDF tagging, runtime privacy, or production deployment.")
 

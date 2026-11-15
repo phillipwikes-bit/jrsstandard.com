@@ -40,7 +40,7 @@ import sys
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SKIP_DIRS = {".git", "node_modules", "research", "__pycache__", ".vercel",
-             "templates", "scripts"}
+             "templates", "scripts", "tests"}
 CANONICAL_EMAIL = "info@jrsstandard.com"
 
 findings = []

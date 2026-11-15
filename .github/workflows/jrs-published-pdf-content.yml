@@ -16,3 +16,12 @@ jobs:
         run: command -v pdftotext && command -v pdfinfo || { sudo apt-get update -qq && sudo apt-get install -y poppler-utils; }
       - name: Extract and verify public PDF document content
         run: node tests/jrs-published-pdf-content.mjs
+      - name: Inventory published PDF tagging and extractable text (not certification)
+        run: node tests/jrs-pdf-accessibility-preflight.mjs
+      - name: Preserve machine-readable PDF accessibility technical inventory
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2
+        with:
+          name: jrs-pdf-technical-preflight-${{ github.event.pull_request.head.sha || github.sha }}
+          path: .jrs-ci/pdf-accessibility-preflight.json
+          if-no-files-found: error
+          retention-days: 30

@@ -11,9 +11,11 @@ const html=read('resources.html');
 const js=read('assets/jrs-resource-catalog.js');
 const css=read('assets/jrs-institutional-reference.css');
 const homepage=read('index.html');
-assert.ok(homepage.includes('class="jr-action-main" href="check.html?src=home">Open seven-point record check</a>'),
- 'homepage primary action must open the actual free, non-scoring record check');
-assert.ok(homepage.includes('href="resources.html#resource-catalog">16-resource reference directory</a>'),
+assert.ok(homepage.includes('class="jr-action-main" href="resources.html">Browse free JRS resources</a>'),
+ 'homepage primary action must open the ungated resource library');
+assert.ok(homepage.includes('class="jr-action-alt" href="check.html?src=home">Open seven-point record check</a>'),
+ 'homepage must retain a direct, non-scoring record check');
+assert.ok(homepage.includes('href="resources.html#resource-catalog"><strong>Find a reference or PDF</strong>'),
  'the homepage must retain an explicit direct link to the searchable practitioner directory');
 const guides=read('investigator-guides.html');
 for(const [path,page] of [['resources.html',html],['investigator-guides.html',guides]]) {
@@ -24,12 +26,49 @@ for(const [path,page] of [['resources.html',html],['investigator-guides.html',gu
 }
 assert.ok(html.includes('different editions and must not be treated as interchangeable'),
  'alternative formats must preserve Standard web/PDF edition distinctions');
+// Investigator guide actions must identify an edition in both the
+// visible link text and accessible link name. The same original files must
+// remain freely downloadable, and visitors must encounter the access notice
+// before the first download controls.
+const guidePairs=[
+ ['employment','Employment / EEO','JRS_Investigator_Field_Guide_Employment.pdf'],
+ ['fairhousing','Fair Housing','JRS_Investigator_Field_Guide_FairHousing.pdf'],
+ ['international','International','JRS_Investigator_Field_Guide_International.pdf']
+];
+const quickStart=guides.indexOf('<nav class="jrs-guide-quick-actions"');
+const cardsStart=guides.indexOf('<div class="cards">',quickStart);
+const firstCardDownload=guides.indexOf('class="dl dl-direct"',cardsStart);
+assert.ok(quickStart>0&&cardsStart>quickStart&&firstCardDownload>cardsStart,
+ 'the three direct-download guide controls must be present');
+const quick=guides.slice(quickStart,cardsStart);
+assert.ok(quick.includes('class="jrs-guide-quick-access" role="note"') &&
+ quick.includes('have not been independently verified for tagged reading order') &&
+ quick.includes('href="contact.html?category=accessibility"') &&
+ quick.includes('Do not include confidential case records.'),
+ 'quick-downloads require an immediately available, non-certifying access notice');
+for(const [edition,title,file] of guidePairs){
+ const accessible='aria-label="Download '+title+' Investigator Guide PDF, Version 1.1"';
+ const direct='href="/'+file+'" download="'+file+'" '+accessible;
+ assert.ok(quick.includes('data-ed="'+edition+'" '+direct),
+  edition+': quick action must preserve direct file download and name the edition');
+ assert.ok(guides.includes('class="dl dl-direct" data-ed="'+edition+'" '+direct),
+  edition+': primary download must preserve direct file download and name the edition');
+ assert.ok(guides.includes('<h2 class="gcard-title">'+title+' Edition</h2>'),
+  edition+': guide card title must be a document heading');
+ assert.ok(guides.includes('>'+('Download '+title+' PDF')+' &#8595;</a>'),
+  edition+': primary download text must identify the guide');
+}
+assert.equal((guides.match(/class="dl dl-direct"/g)||[]).length,3,
+ 'three distinct investigator download actions expected');
+assert.ok(!guides.includes('>Download PDF &#8595;</a>'),
+ 'generic, indistinguishable main guide download labels must not return');
+
 const check=read('check.html');
 assert.ok(check.includes('does not score your record') &&
  (check.includes('no registration, no account, no upload') || check.includes('There is no registration, no account, no upload')),
  'the linked record check must remain non-scoring, public and upload-free');
-assert.ok(homepage.includes('href="resources.html#resource-catalog">Browse tools</a>'),
- 'homepage Browse tools must reach searchable directory');
+assert.ok(homepage.includes('<span>Search 16 resources by responsibility and format</span></a>'),
+ 'homepage searchable directory task must describe the 16-resource catalog');
 assert.ok(!homepage.includes('resources.html#quick-review'),
  'homepage must not bypass the searchable directory');
 assert.ok(css.includes('.jrs-resource-entry:focus-within') &&
@@ -123,4 +162,74 @@ assert.ok(html.includes('does not establish equivalence or technical compatibili
  /former machine-readable schema files are not part of the current public release/i.test(html) &&
  html.includes('Version 1.1 (July 2026)') && html.includes('Version 2.0 (2026)'),
  'resource directory must retain the active edition labels and retired Manifest boundary');
+
+// Training has two separately reachable Reviewer Reference download surfaces.
+// The same PDF must keep one edition date, honest accessibility status, and
+// specific download names even when the reader enters at #toolkit.
+const training=read('training.html');
+const deskStart=training.indexOf('<details class="jrs-training-desk-reference">');
+const toolkitStart=training.indexOf('<div id="toolkit"');
+const surveyStart=training.indexOf('<div class="survey-outer" id="participation-survey">');
+assert.ok(deskStart>0&&toolkitStart>deskStart&&surveyStart>toolkitStart,
+ 'training desk-reference or toolkit sections missing');
+const desk=training.slice(deskStart,toolkitStart);
+const kit=training.slice(toolkitStart,surveyStart);
+assert.ok(desk.includes('Version 1.0, May 2026') &&
+ kit.includes('REF &nbsp;|&nbsp; V1.0 &nbsp;|&nbsp; May 2026') &&
+ !kit.includes('REF &nbsp;|&nbsp; V1.0 &nbsp;|&nbsp; June 2026'),
+ 'the identical Reviewer Reference PDF must have one edition date');
+for(const label of [
+ 'Download Reviewer Reference PDF (v1.0)',
+ 'Download Rapid Review Card PDF',
+ 'Download Standard PDF (v2.0)'
+]){
+ assert.ok(kit.includes('>'+label+'</a>'),
+  'toolkit PDF download action must name its actual publication: '+label);
+}
+assert.ok(!kit.includes('class="btn-download">Download PDF</a>'),
+ 'toolkit must not restore ambiguous PDF download actions');
+for(const [name,section] of [['desk reference',desk],['toolkit',kit]]){
+ assert.ok(section.includes('is untagged and has not passed a screen-reader accessibility review') &&
+  section.includes('href="contact.html?category=accessibility"') &&
+  section.includes('Request an alternative format'),
+  name+': disclose known tagging issue and provide a clear request path');
+}
+assert.ok(kit.includes('other linked PDFs have not been independently verified') &&
+ kit.includes('A request does not establish that an accessible replacement is available.') &&
+ kit.includes('Do not submit confidential case records.'),
+ 'toolkit accessibility disclosure must not imply certification, replacement availability or intake');
+
+// Publication-accessibility guard for the 16 Reviewer Reference HTML chapters.
+// A request path is not an accessibility certificate or PDF edition substitute.
+const auditSource=read('tests/jrs-sitewide-mobile-browser-audit.html');
+const routeMatch=auditSource.match(/const paths=(\[[^\n;]*\]);/);
+assert.ok(routeMatch,'the reference route inventory must remain auditable');
+const referencePages=JSON.parse(routeMatch[1]).filter(path=>
+ path.startsWith('reference/')&&path!=='reference/index.html');
+assert.equal(referencePages.length,16,'expected 16 Reviewer Reference chapters');
+for(const pagePath of referencePages){
+ const page=read(pagePath);
+ const pdfLink=page.indexOf('href="/api/dl?f=JRS-Reference-9d4f2a7c.pdf');
+ assert.match(page,
+  /href="\/api\/dl\?f=JRS-Reference-9d4f2a7c\.pdf&amp;src=[^"]+">Download Reviewer Reference PDF \(v1\.0\)<\/a>/,
+  pagePath+': visible PDF download must name the distinct Reviewer Reference edition');
+ const formatNote=page.indexOf('class="note jrs-pdf-access" role="note"');
+ assert.ok(pdfLink>0&&formatNote>pdfLink&&formatNote-pdfLink<1100,
+  pagePath+': PDF access notice must follow the actual download');
+ assert.equal((page.match(/class="note jrs-pdf-access"/g)||[]).length,1,
+  pagePath+': expected one visible alternative-format notice');
+ assert.ok(page.includes('Version 1.0, May 2026')&&
+  page.includes('is untagged and has not passed a screen-reader accessibility review')&&
+  page.includes('not a verified substitute for the PDF'),
+  pagePath+': preserve edition and accessibility disclosures');
+ assert.ok(page.includes('href="/contact.html?category=accessibility"'),
+  pagePath+': provide an open request for an alternative format');
+ assert.ok(page.includes('Continue with related reviewer references or use the free seven-point record check within an authorized workflow.') &&
+  page.includes('No public pilot enrollment or case-record upload is offered.'),
+  pagePath+': retain resource-first reading guidance and case-record boundary');
+ assert.ok(!page.includes('practice with free constructed examples'),
+  pagePath+': do not restore outdated practice-first call to action');
+}
+console.log('PASS: all 16 Reviewer Reference PDF entries disclose untagged status and provide an accessible-format request.');
+
 console.log('PASS: 16 accessible, progressively enhanced catalog entries; 6 tracked PDF assets; 10 web/interactive targets; no personal-query transmission.');

@@ -11,14 +11,14 @@ const routes = [
   ['01 · Start here', 'jrsstandard.html'],
   ['02 · Use the method', 'resources.html'],
   ['03 · Examine the evidence', 'research.html'],
-  ['04 · Learn and practice', 'training.html']
+  ['04 · Training and guidance', 'training.html']
 ];
 for (const [label, target] of routes) {
   assert.ok(home.includes(label), 'homepage missing route ' + label);
   assert.ok(home.includes('href="' + target + '"'), 'homepage route missing destination ' + target);
   assert.ok(existsSync(new URL('../' + target, import.meta.url)), 'missing target ' + target);
 }
-assert.equal((home.match(/<div class="card-k">0[1-4] · (?:Start here|Use the method|Examine the evidence|Learn and practice)<\/div>/g) || []).length, 4, 'four pathways should each appear once');
+assert.equal((home.match(/<div class="card-k">0[1-4] · (?:Start here|Use the method|Examine the evidence|Training and guidance)<\/div>/g) || []).length, 4, 'four pathways should each appear once');
 for (const id of ['quick-review', 'field-guides', 'learn', 'review-references', 'supporting-detail']) {
   assert.ok(tools.includes('id="' + id + '"'), 'resources missing section ' + id);
 }

@@ -34,7 +34,7 @@ const violating=publicPages.filter(p=>promotionPattern.test(read(p).replace(/<!-
 assert.deepEqual(violating,[], 'no public page may promote the retired Engine product or direct to its URL');
 
 const home=read('index.html'),resources=read('resources.html'),training=read('training.html');
-for(const label of ['01 · Start here','02 · Use the method','03 · Examine the evidence','04 · Learn and practice']){
+for(const label of ['01 · Start here','02 · Use the method','03 · Examine the evidence','04 · Training and guidance']){
   assert.ok(home.includes(label),'missing method-first route '+label);
 }
 assert.ok(home.includes('href="training.html"'));

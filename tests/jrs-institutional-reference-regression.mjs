@@ -23,11 +23,29 @@ assert.equal(braces,0,'unbalanced CSS blocks');
 // not a platform acquisition. Preserve the approved long-form proposition as well.
 const practicalPositioning='JRS is a practical review instrument that practitioners can use within existing workflows, not a software platform they must acquire.';
 
+// The live homepage deliberately leads with the ungated resource library.
+ // Both initiatives and the non-scoring check must remain one click away.
+const currentHome=read('index.html');
+assert.ok(currentHome.includes('<strong>Choose the free resources relevant to your role:</strong>'),
+ 'homepage must visibly identify role-specific free resources');
+assert.ok(currentHome.includes('<a class="jr-action-main" href="resources.html">Browse free JRS resources</a>'),
+ 'homepage primary action must open the free resource library');
+assert.ok(currentHome.includes('<a class="jr-action-alt" href="check.html?src=home">Open seven-point record check</a>'),
+ 'homepage must retain the direct non-scoring record check');
+for(const path of ['right-to-know-why.html','decisions-you-can-defend.html']){
+ assert.ok(currentHome.includes('href="'+path+'#free-resources"'),
+  'homepage must lead into the correct initiative resource section: '+path);
+}
 const freeEntry='Free resources you can use today:';
 for(const path of ['index.html','resources.html','about.html','organization.html']){
  const html=read(path);
- assert.ok(html.includes('<strong>'+freeEntry+'</strong>'),
-  path+' must visibly identify immediate free practitioner access');
+ if(path==='index.html'){
+  assert.ok(html.includes('<strong>Choose the free resources relevant to your role:</strong>'),
+   'homepage must display the approved role-based resource invitation');
+ }else{
+  assert.ok(html.includes('<strong>'+freeEntry+'</strong>'),
+   path+' must visibly identify immediate free practitioner access');
+ }
  for(const href of ['investigator-guides.html','training.html#training-modules']){
   assert.ok(html.includes('href="'+href+'"'),path+' missing free practitioner entry '+href);
  }
@@ -214,7 +232,7 @@ for(const page of [...pages,...additionalPages]){
 
 const main=read('index.html');
 for(const token of [
- '01 · Start here','02 · Use the method','03 · Examine the evidence','04 · Learn and practice',
+ '01 · Start here','02 · Use the method','03 · Examine the evidence','04 · Training and guidance',
  '<h1 id="jrs-main-heading">Can the record explain the decision?</h1>',
  'Evidence must remain distinguishable from assurance.',
  'href="jrsstandard.html"','href="resources.html"','href="training.html"','href="research.html"',

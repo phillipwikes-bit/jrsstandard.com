@@ -5,27 +5,16 @@ import {resolve,join} from 'node:path';
 import {fileURLToPath} from 'node:url';
 const root=resolve(fileURLToPath(new URL('../',import.meta.url)));
 const read=p=>readFileSync(join(root,p),'utf8');
-const pages=['index.html','resources.html','research.html','investigator-guides.html',
-'manifest.html','about.html','contact.html','jrsstandard.html','training.html',
-'check.html','simulations.html','decision-reconstruction-risk.html',
-'research-summary.html','methodology.html','evidence-ledger.html','questions.html',
-'research-register.html','privacy.html','terms.html','codebook.html',
-'implementation-scenarios.html','operational-boundaries.html','reference/index.html',
-'reference/ai-assisted-record-failure-modes/index.html',
-'reference/ai-verification-controls/index.html','reference/decision-context-loss/index.html',
-'reference/deployment-models/index.html','reference/documentation-risk-tiers/index.html',
-'reference/escalation-triggers/index.html','reference/field-conditions/index.html',
-'reference/implementation-maturity-levels/index.html',
-'reference/later-review-failure-cascades/index.html','reference/missing-chronology/index.html',
-'reference/record-survivability/index.html','reference/reviewer-responsibility-boundaries/index.html',
-'reference/reviewer-worksheet/index.html','reference/second-line-review-model/index.html',
-'reference/traveler-test/index.html','reference/unsupported-generalization/index.html',
-'reviewer/index.html','ai-governance-record.html','compliance.html','datasets.html',
-'finding.html','results.html','why-good-decisions-fail.html','privacy-notice.html',
-'editions.html','organization.html','practitioner-questions.html','cite-jrs.html',
-'field-evidence-status.html','investigation-report-evidence-check.html',
-'ai-drafted-record-source-verification.html','decision-record-chronology-review.html',
-'supplier-access-exception-documentation.html'];
+// Share the complete, independently guarded 68-route public inventory with
+// responsive tests and exact-head hosted verification. Do not silently exclude
+// initiative, researcher, access, archived or error-handling pages.
+const audit=read('tests/jrs-sitewide-mobile-browser-audit.html');
+const routeMatch=audit.match(/const paths=(\[[^\n;]*\]);/);
+assert.ok(routeMatch,'audited public route inventory must be available');
+const pages=JSON.parse(routeMatch[1]);
+assert.equal(pages.length,68,'link integrity must cover all 68 public routes');
+assert.equal(new Set(pages).size,68,'duplicate route in public inventory');
+
 const redirs=new Map(JSON.parse(read('vercel.json')).redirects.map(x=>[x.source,x.destination]));
 const docs={employment:'JRS_Investigator_Field_Guide_Employment.pdf',
 fairhousing:'JRS_Investigator_Field_Guide_FairHousing.pdf',
@@ -194,6 +183,37 @@ assert.ok(publicResearch.includes('Public Challenge Aggregates') &&
  'research hub must distinguish aggregate exports from controlled evidence ledger');
 assert.ok(publicChronology.includes('not the authoritative internal evidence register'),
  'public chronology must disclose that it is not the complete evidence ledger');
+
+// Direct readers to the three current, discipline-specific investigator
+// field guides; keep the former combined overview identifiable as historical.
+const methodology=read('jrsstandard.html');
+assert.ok(!methodology.includes('href="/api/dl?f=JRS_Investigator_Field_Guide.pdf'),
+ 'online method must not promote the historical combined guide as a current download');
+for(const label of [
+ 'Open current v1.1 guides',
+ 'Choose current guides',
+ 'Open current investigator guides (v1.1)'
+]){
+ assert.ok(methodology.includes('href="investigator-guides.html"') &&
+  methodology.includes('>'+label+'</a>'),
+  'current guide navigation missing: '+label);
+}
+assert.ok(methodology.includes('JRS Investigator Guide (Combined Overview, historical)') &&
+ methodology.includes('001-INV &middot; Earlier combined edition'),
+ 'historical combined overview must remain distinguishable from the current supplements');
+
+// A retained security reference is not an active enterprise data-intake form.
+// The legacy /api/enterprise-inquiry endpoint has returned 410 since retirement.
+const archivedSecurity=read('security.html');
+assert.ok(archivedSecurity.includes('Archive, not an active interface.') &&
+ archivedSecurity.includes('href="contact.html?category=organization"'),
+ 'security reference must retain a clear archive boundary and non-sensitive contact path');
+assert.ok(!archivedSecurity.includes('/api/enterprise-inquiry') &&
+ !archivedSecurity.includes('form[data-cap]') &&
+ !archivedSecurity.includes('You will get the schema, the tier'),
+ 'retired enterprise capture or unsupported submission promise reintroduced');
+assert.ok(read('api/enterprise-inquiry.js').includes('status:410'),
+ 'legacy enterprise endpoint must remain unavailable');
 
 if(errors.length){
  console.error('FAIL: '+errors.length+' issues across '+pages.length+
