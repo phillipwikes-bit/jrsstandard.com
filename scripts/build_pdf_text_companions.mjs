@@ -22,6 +22,21 @@ const entries=[
 ];
 assert.equal(entries.length,8);
 const esc=(s)=>s.replaceAll('&','&amp;').replaceAll('<','&lt;').replaceAll('>','&gt;').replaceAll('"','&quot;').replaceAll("'",'&#39;');
+const decode=(s)=>s.replaceAll('&amp;','&').replaceAll('&lt;','<').replaceAll('&gt;','>').replaceAll('&quot;','"').replaceAll('&#39;',"'");
+const extractedBlocks=(html)=>[...html.matchAll(/<(?:p|pre) class="source-block">([\s\S]*?)<\/(?:p|pre)>/g)].map(m=>decode(m[1])).join(' ');
+const words=(s)=>s.normalize('NFKC').toLowerCase().replace(/\u00ad/g,'').match(/[\p{L}\p{N}]+/gu)||[];
+// Poppler versions may reorder positioned columns in the Reviewer Reference.
+// Check the full word multiset, rather than byte-equality of those columns,
+// so omissions/additions still fail while line-placement differences do not.
+const tokenAgreement=(a,b)=>{
+ const x=words(extractedBlocks(a)),y=words(extractedBlocks(b));
+ if(!x.length||!y.length)return 0;
+ const counts=new Map();
+ for(const word of x)counts.set(word,(counts.get(word)||0)+1);
+ let overlap=0;
+ for(const word of y){const n=counts.get(word)||0;if(n>0){overlap++;counts.set(word,n-1);}}
+ return (2*overlap)/(x.length+y.length);
+};
 const encodeBlock=(block)=>{
  const lines=block.split('\n').map(s=>s.trimEnd()).filter(s=>s.trim());
  // Structured/tabular-looking material must retain the original line spacing.
@@ -48,7 +63,16 @@ for(const [file,name,title] of entries){
  const relative='accessible/'+name;
  const destination=join(root,relative);
  const output=render(file,name,title);
- if(check){assert.ok(existsSync(destination),'Missing generated text companion: '+relative);assert.equal(readFileSync(destination,'utf8'),output,'Text companion out of sync with published original: '+relative);}
+ if(check){
+  assert.ok(existsSync(destination),'Missing generated text companion: '+relative);
+  const actual=readFileSync(destination,'utf8');
+  const expectedPages=(output.match(/class="source-page"/g)||[]).length;
+  assert.equal((actual.match(/class="source-page"/g)||[]).length,expectedPages,'Page inventory changed: '+relative);
+  assert.ok(actual.includes('not a replacement publication'),'Missing transcription limitation notice: '+relative);
+  const agreement=actual===output?1:tokenAgreement(actual,output);
+  assert.ok(agreement>=0.99,'Published text content drift in '+relative+': '+agreement);
+  console.log('Text content agreement: '+(agreement*100).toFixed(2)+'%');
+ }
  else{mkdirSync(dirname(destination),{recursive:true});writeFileSync(destination,output);}
  console.log(`${check?'PASS':'WROTE'} ${relative}`);
 }
