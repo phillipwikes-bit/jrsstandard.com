@@ -47,11 +47,12 @@ assert.ok(quick.includes('class="jrs-guide-quick-access" role="note"') &&
  quick.includes('Do not include confidential case records.'),
  'quick-downloads require an immediately available, non-certifying access notice');
 for(const [edition,title,file] of guidePairs){
- const accessible='aria-label="Download '+title+' Investigator Guide PDF, Version 1.1"';
- const direct='href="/'+file+'" download="'+file+'" '+accessible;
- assert.ok(quick.includes('data-ed="'+edition+'" '+direct),
+ const href='href="/'+file+'" download="'+file+'"';
+ const quickName='aria-label="'+title+' PDF, download Investigator Guide Version 1.1"';
+ const primaryName='aria-label="Download '+title+' PDF, Version 1.1"';
+ assert.ok(quick.includes('data-ed="'+edition+'" '+href+' '+quickName),
   edition+': quick action must preserve direct file download and name the edition');
- assert.ok(guides.includes('class="dl dl-direct" data-ed="'+edition+'" '+direct),
+ assert.ok(guides.includes('class="dl dl-direct" data-ed="'+edition+'" '+href+' '+primaryName),
   edition+': primary download must preserve direct file download and name the edition');
  assert.ok(guides.includes('<h2 class="gcard-title">'+title+' Edition</h2>'),
   edition+': guide card title must be a document heading');

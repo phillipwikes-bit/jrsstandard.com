@@ -335,7 +335,7 @@ assert.ok(read('training.html').indexOf('jrs-training-lead')<
 assert.ok(css.includes('jrs-standard-page .util-bar{display:none!important}'),
  'Standard must not show a third competing navigation toolbar');
 assert.ok(read('training.html').includes('jrs-training-context') &&
- read('training.html').includes('aria-label="JRS home"'),
+ read('training.html').includes('aria-label="JRS™ home"'),
  'training must retain explanation while enabling a compact header and home link');
 
 

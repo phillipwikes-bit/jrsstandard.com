@@ -20,7 +20,7 @@ jobs:
           node-version: '24'
       - name: Install pinned Playwright and its WebKit browser
         run: |
-          npm install --no-save --package-lock=false --ignore-scripts --no-audit --no-fund playwright@1.65.0
+          npm install --no-save --package-lock=false --ignore-scripts --no-audit --no-fund playwright@1.65.0 axe-core@4.14.0
           npx playwright install --with-deps webkit
       - name: Run WebKit mobile source checks (not iPhone Safari certification)
         run: node tests/jrs-webkit-mobile-preflight.mjs
@@ -34,4 +34,24 @@ jobs:
             .jrs-ci/webkit-*.png
           if-no-files-found: error
           include-hidden-files: true
+          retention-days: 14
+      - name: Select Chromium for rendered accessibility rule diagnostics
+        run: |
+          for c in google-chrome google-chrome-stable chromium chromium-browser; do
+            if command -v "$c" >/dev/null; then echo "JRS_BROWSER=$(command -v "$c")" >> "$GITHUB_ENV"; "$c" --version; exit 0; fi
+          done
+          echo 'No Chromium browser on runner' >&2; exit 1
+      - name: Serve candidate public pages for axe evaluation
+        run: |
+          nohup python3 -m http.server 8791 --bind 127.0.0.1 > /tmp/jrs-browser-a11y-server.log 2>&1 &
+          curl --retry 10 --retry-delay 1 --retry-connrefused -fIs http://127.0.0.1:8791/ | head -5
+      - name: Audit rendered public routes with axe WCAG 2.2 tags
+        run: node tests/jrs-rendered-axe-audit.mjs
+      - name: Retain criterion-linked axe findings for human review
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2
+        with:
+          name: jrs-rendered-axe-${{ github.event.pull_request.head.sha || github.sha }}
+          path: /tmp/jrs-browser-axe-report.json
+          if-no-files-found: warn
           retention-days: 14
