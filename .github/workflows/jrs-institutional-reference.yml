@@ -38,6 +38,8 @@ jobs:
         run: node tests/jrs-engagement-reconciliation.mjs
       - name: Resolve all published page links and section anchors
         run: python3 scripts/audit_all_links.py
+      - name: Match sitemap locations to canonical, indexable public pages
+        run: node tests/jrs-sitemap-canonical-consistency.mjs
       - name: Verify Standard and Training readability and disabled poll states
         run: node tests/jrs-contrast-guards.mjs
       - name: Exercise consented training-completion and retry behavior
