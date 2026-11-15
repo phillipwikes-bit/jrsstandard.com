@@ -52,11 +52,6 @@ test('shared accessibility style addresses nav, focus and motion',()=>{
  assert.match(css,/prefers-reduced-motion/);
  assert.match(css,/font-size:16px!important/);
 });
-test('institutional research evidence cards preserve readable text contrast',()=>{
- assert.match(hub,/<body[^>]*jrs-institutional jrs-research-page/);
- assert.match(evidenceCardCss,/body\\.jrs-institutional\\.jrs-research-page \\.jrs-proof-levels article\\s*\\{[^}]*background:#f5f8fa/s);
- assert.match(evidenceCardCss,/body\\.jrs-institutional\\.jrs-research-page \\.jrs-proof-levels a\\s*\\{[^}]*color:#14527a/s);
-});
 test('keyboard shim activates existing nonnative cards on enter and space',()=>{
  assert.match(keyboard,/setAttribute\('role','button'\)/);
  assert.match(keyboard,/setAttribute\('tabindex','0'\)/);
@@ -66,6 +61,11 @@ test('shared CSS installed on leading public pages',()=>{
  for(const p of ['index.html','investigator-guides.html','resources.html','research.html','training.html','jrsstandard.html','contact.html']){
   assert.ok(read(p).includes('jrs-professional-accessibility.css'),p);
  }
+});
+test('institutional research evidence cards preserve readable text contrast',()=>{
+ assert.match(hub,/<body[^>]*jrs-institutional jrs-research-page/);
+ assert.match(evidenceCardCss,/body\.jrs-institutional\.jrs-research-page \.jrs-proof-levels article\s*\{[^}]*background:#f5f8fa/s);
+ assert.match(evidenceCardCss,/body\.jrs-institutional\.jrs-research-page \.jrs-proof-levels a\s*\{[^}]*color:#14527a/s);
 });
 test('public expert designation and direct PDFs retained',()=>{
  assert.ok(guides.includes('36</span> reviewers completed')); assert.ok(guides.includes('separate constructed-record detection analysis') && guides.includes('16 independent international experts from 11 countries across five continents'));
