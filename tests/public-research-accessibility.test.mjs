@@ -67,6 +67,18 @@ test('institutional research evidence cards preserve readable text contrast',()=
  assert.match(evidenceCardCss,/body\.jrs-institutional\.jrs-research-page \.jrs-proof-levels article\s*\{[^}]*background:#f5f8fa/s);
  assert.match(evidenceCardCss,/body\.jrs-institutional\.jrs-research-page \.jrs-proof-levels a\s*\{[^}]*color:#14527a/s);
 });
+test('external publication links include their visible link text in the accessible name',()=>{
+ for(const path of ['index.html','resources.html','research.html']){
+  const html=read(path);
+  const links=[...html.matchAll(/<a\b[^>]*href="https:\/\/www\.(?:corporatecomplianceinsights|corporatecompliance)\.[^\"]+"[^>]*>([^<]+)<\/a>/g)];
+  assert.equal(links.length,2,path+': two external professional publication links expected');
+  for(const link of links){
+   const accessibleName=link[0].match(/\baria-label="([^"]+)"/)?.[1];
+   const visibleText=link[1].replace(/\s*↗\s*$/,'').trim();
+   assert.ok(accessibleName?.startsWith(visibleText),path+': accessible name must start with visible link text: '+visibleText);
+  }
+ }
+});
 test('public expert designation and direct PDFs retained',()=>{
  assert.ok(guides.includes('36</span> reviewers completed')); assert.ok(guides.includes('separate constructed-record detection analysis') && guides.includes('16 independent international experts from 11 countries across five continents'));
  for(const f of ['JRS_Investigator_Field_Guide_Employment.pdf','JRS_Investigator_Field_Guide_FairHousing.pdf','JRS_Investigator_Field_Guide_International.pdf'])assert.ok(guides.includes(f));
