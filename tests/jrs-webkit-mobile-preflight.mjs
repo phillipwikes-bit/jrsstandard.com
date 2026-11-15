@@ -161,14 +161,14 @@ try{
        await toggle.click({timeout:4000});
        const opened=await toggle.getAttribute('aria-expanded')==='true' &&
         await links.getAttribute('data-open')==='true' && await links.isVisible() &&
-        await toggle.getAttribute('aria-label')==='Close site navigation';
+        await toggle.getAttribute('aria-label')==='Close site menu';
        const openScrollWidth=await page.evaluate(()=>document.documentElement.scrollWidth);
        if(!opened)failures.push('mobile-navigation-did-not-open');
        if(openScrollWidth>width+1)failures.push('mobile-navigation-open-overflow-'+openScrollWidth);
        await page.keyboard.press('Escape');
        const closed=await toggle.getAttribute('aria-expanded')==='false' &&
         await links.getAttribute('data-open')==='false' && !(await links.isVisible()) &&
-        await toggle.getAttribute('aria-label')==='Open site navigation';
+        await toggle.getAttribute('aria-label')==='Site menu';
        const focusReturned=await toggle.evaluate(el=>document.activeElement===el);
        if(!closed)failures.push('mobile-navigation-escape-did-not-close');
        if(!focusReturned)failures.push('mobile-navigation-escape-focus-not-restored');

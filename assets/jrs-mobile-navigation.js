@@ -38,7 +38,7 @@
     button.className='jrs-global-nav-toggle';
     button.setAttribute('aria-controls','jrs-global-nav-links');
     button.setAttribute('aria-expanded','false');
-    button.setAttribute('aria-label','Open site navigation');
+    button.setAttribute('aria-label','Site menu');
     button.innerHTML='<span aria-hidden="true">&#9776;</span><span>Site menu</span>';
     nav.id='jrs-global-nav-links';
     nav.setAttribute('data-open','false');
@@ -47,7 +47,7 @@
     function setOpen(open){
       nav.setAttribute('data-open',String(open));
       button.setAttribute('aria-expanded',String(open));
-      button.setAttribute('aria-label',open?'Close site navigation':'Open site navigation');
+      button.setAttribute('aria-label',open?'Close site menu':'Site menu');
       button.innerHTML=open?'<span aria-hidden="true">&#215;</span><span>Close site menu</span>':'<span aria-hidden="true">&#9776;</span><span>Site menu</span>';
     }
     button.addEventListener('click',function(){

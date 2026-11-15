@@ -47,14 +47,23 @@ const findings=[];
 let next=0;
 async function worker(){
   const context=await browser.newContext({viewport:{width:390,height:844}});
-  const page=await context.newPage();
-  page.setDefaultTimeout(15000);
   while(next<tasks.length){
     const task=tasks[next++];
+    // Each route gets a fresh page. Redirects must not interrupt the next
+    // route's script injection or make its result appear to be a scan error.
+    const page=await context.newPage();
+    page.setDefaultTimeout(15000);
     try{
       await page.setViewportSize({width:task.width,height:900});
-      const response=await page.goto(base+task.route,{waitUntil:'domcontentloaded',timeout:15000});
+      const response=await page.goto(base+task.route,{waitUntil:'load',timeout:15000});
       if(!response?.ok())throw new Error(`HTTP ${response?.status()}`);
+      await page.waitForTimeout(150);
+      const destination=new URL(page.url()).pathname;
+      if(destination!==task.route){
+        findings.push({...task,redirect:destination});
+        console.log(`${task.width}px ${task.route}: redirects to ${destination}`);
+        continue;
+      }
       await page.addScriptTag({path:axeScript});
       const results=await page.evaluate(async()=>{
         const evaluated=await window.axe.run(document,{
@@ -74,6 +83,8 @@ async function worker(){
     }catch(error){
       findings.push({...task,error:String(error.message||error).slice(0,500)});
       console.error(`${task.width}px ${task.route}: DIAGNOSTIC ERROR ${String(error.message||error).slice(0,140)}`);
+    }finally{
+      await page.close();
     }
   }
   await context.close();
@@ -83,6 +94,7 @@ await browser.close();
 findings.sort((a,b)=>a.route.localeCompare(b.route)||a.width-b.width);
 const totals={
   routes:publicRoutes.length,evaluations:findings.length,
+  redirects:findings.filter(x=>x.redirect).length,
   errors:findings.filter(x=>x.error).length,
   violatingEvaluations:findings.filter(x=>x.violations?.length).length,
   violationNodes:findings.reduce((total,f)=>total+(f.violations||[]).reduce((sum,v)=>sum+v.nodes.length,0),0),
@@ -95,4 +107,4 @@ writeFileSync(report,JSON.stringify({
   totals,findings,
 },null,2)+'\n');
 console.log('TOTALS '+JSON.stringify(totals));
-if(totals.errors)process.exitCode=1;
+if(totals.errors||totals.violatingEvaluations)process.exitCode=1;
