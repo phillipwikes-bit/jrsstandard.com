@@ -10,6 +10,7 @@ const read = file => readFileSync(join(root, file), 'utf8');
 const sitemap = read('sitemap.xml');
 const locations = [...sitemap.matchAll(/<loc>([^<]+)<\/loc>/g)].map(m => m[1]);
 const unique = new Set(locations);
+const redirectSources = new Set(JSON.parse(read('vercel.json')).redirects.map(rule => rule.source));
 
 assert.ok(locations.length > 40, 'Unexpectedly small public sitemap');
 assert.equal(unique.size, locations.length, 'Duplicate sitemap locations');
@@ -50,6 +51,7 @@ for (const location of locations) {
   const url = new URL(location);
   assert.equal(url.origin, origin, `Wrong sitemap origin: ${location}`);
   assert.equal(url.search + url.hash, '', `Sitemap must use canonical bare URLs: ${location}`);
+  assert.equal(redirectSources.has(url.pathname), false, `Redirected URL in sitemap: ${location}`);
   const path = fileFor(location);
   assert.ok(existsSync(join(root, path)), `Sitemap destination missing from source: ${location}`);
   const html = read(path);
@@ -64,6 +66,7 @@ for (const file of publicHtmlFiles()) {
   // Archive/source fixtures without a canonical are not search landing pages.
   if (!preferred || noindex(html)) continue;
   if (!preferred.startsWith(`${origin}/`)) continue;
+  if (redirectSources.has(new URL(preferred).pathname)) continue;
   assert.ok(unique.has(preferred), `Indexable canonical page omitted from sitemap: ${file} (${preferred})`);
 }
 

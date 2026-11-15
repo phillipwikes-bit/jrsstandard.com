@@ -9,8 +9,12 @@ const root = process.cwd();
 const read = (relative) => readFileSync(join(root, relative), 'utf8');
 const sitemap = read('sitemap.xml');
 const urls = [...sitemap.matchAll(/<loc>([^<]+)<\/loc>/g)].map(match => match[1]);
-assert.equal(urls.length, 53, 'current public sitemap excludes two historical simulations');
+assert.ok(urls.length >= 53, 'public sitemap must retain the approved minimum coverage');
 assert.equal(new Set(urls).size, urls.length, 'sitemap URLs must be unique');
+for (const historical of ['simulations.html', 'implementation-scenarios.html']) {
+  assert.ok(!urls.includes(`https://www.jrsstandard.com/${historical}`),
+    `historical simulation page must remain excluded from the public sitemap: ${historical}`);
+}
 
 const redirects = new Set(JSON.parse(read('vercel.json')).redirects.map(rule => rule.source));
 const id = 'G-NVYHJ7BJ92';
