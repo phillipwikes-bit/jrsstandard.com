@@ -1,0 +1,43 @@
+name: JRS rendered accessibility audit
+on:
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  browser-a11y:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - name: Checkout candidate source
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          persist-credentials: false
+      - name: Select installed Chromium browser
+        run: |
+          for c in google-chrome google-chrome-stable chromium chromium-browser; do
+            if command -v "$c" >/dev/null; then echo "JRS_BROWSER=$(command -v "$c")" >> "$GITHUB_ENV"; "$c" --version; exit 0; fi
+          done
+          echo 'No Chromium browser on runner' >&2; exit 1
+      - name: Set up Node 24
+        uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4.4.0
+        with:
+          node-version: '24'
+      - name: Install diagnostic-only browser dependencies
+        run: npm install --no-save --package-lock=false axe-core@4.14.0 playwright-core@1.58.2
+      - name: Serve public candidate locally
+        run: |
+          nohup python3 -m http.server 8791 --bind 127.0.0.1 > /tmp/jrs-browser-a11y-server.log 2>&1 &
+          curl --retry 10 --retry-delay 1 --retry-connrefused -fIs http://127.0.0.1:8791/ | head -5
+      - name: Evaluate WCAG-tagged rules at phone and desktop widths
+        run: node tests/jrs-rendered-axe-audit.mjs
+      - name: Preserve inspectable criterion-linked findings
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2
+        with:
+          name: jrs-rendered-axe-${{ github.event.pull_request.head.sha || github.sha }}
+          path: /tmp/jrs-browser-axe-report.json
+          if-no-files-found: warn
+          retention-days: 14
