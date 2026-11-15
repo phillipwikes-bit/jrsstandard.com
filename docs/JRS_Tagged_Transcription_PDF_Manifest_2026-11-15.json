@@ -1,0 +1,92 @@
+{
+  "schema": "jrs-tagged-transcription-pdf-manifest.v1",
+  "date": "2026-11-15",
+  "scope": "Tagged PDF text-reading alternatives, not approved replacement editions",
+  "original_publication_binaries_modified": false,
+  "accessibility_certified": false,
+  "approved_to_replace_original_pdfs": false,
+  "physical_screen_reader_acceptance": false,
+  "caveat": "Tagged PDFs do not resolve lost visual material, tables, true semantic reading order, PDF/UA, or WCAG compliance.",
+  "copies": [
+    {
+      "original": "JRS-Standard.pdf",
+      "original_blob_sha": "83b0804d48491fee25773232244c632dd797a4cd",
+      "source": "accessible/standard-v2-text-reading.html",
+      "source_blob_sha": "dc6312ad8084243ebe0903d49aee357fa041391f",
+      "reading_copy": "accessible/JRS-Standard_Tagged_Text_Reading_Copy.pdf",
+      "text_token_coverage": 1.0,
+      "pdf_pages": 6,
+      "reading_copy_blob_sha": "0e0c3a5b7ce0eee68732eadf415e43e5e6f7e6cc"
+    },
+    {
+      "original": "JRS_Rapid_Review_Card.pdf",
+      "original_blob_sha": "65f94b3e444caf25831c2687c535df7c4de78d00",
+      "source": "accessible/rapid-review-card-text-reading.html",
+      "source_blob_sha": "73bbd484594a5ee5cd639c60eca2b8c005bf6c06",
+      "reading_copy": "accessible/JRS_Rapid_Review_Card_Tagged_Text_Reading_Copy.pdf",
+      "text_token_coverage": 1.0,
+      "pdf_pages": 2,
+      "reading_copy_blob_sha": "6e075f833267d70660050fe2f2f74d160ab9084a"
+    },
+    {
+      "original": "JRS_Investigator_Field_Guide_Employment.pdf",
+      "original_blob_sha": "9c058a63cae65f99628b3175a112480d7b2bc3df",
+      "source": "accessible/employment-investigator-guide-text-reading.html",
+      "source_blob_sha": "49d319b795da12c2c33f6a160f4f84f08170a260",
+      "reading_copy": "accessible/JRS_Investigator_Field_Guide_Employment_Tagged_Text_Reading_Copy.pdf",
+      "text_token_coverage": 0.99586,
+      "pdf_pages": 7,
+      "reading_copy_blob_sha": "673d9d0a458dbc500073cc61519f8bd5734a80b5"
+    },
+    {
+      "original": "JRS_Investigator_Field_Guide_FairHousing.pdf",
+      "original_blob_sha": "4cf48a778d82db3a8d91954cc0c897b71313bb87",
+      "source": "accessible/fair-housing-investigator-guide-text-reading.html",
+      "source_blob_sha": "0c5754b2498e58e0cc9b2d5cdbdb547801a2ba40",
+      "reading_copy": "accessible/JRS_Investigator_Field_Guide_FairHousing_Tagged_Text_Reading_Copy.pdf",
+      "text_token_coverage": 0.99658,
+      "pdf_pages": 7,
+      "reading_copy_blob_sha": "005fe89f63e4cfcc0e960a777415012b3d1411a0"
+    },
+    {
+      "original": "JRS_Investigator_Field_Guide_International.pdf",
+      "original_blob_sha": "1455fa544d98709cd78926939b662789795c71ae",
+      "source": "accessible/international-investigator-guide-text-reading.html",
+      "source_blob_sha": "9364c91d86d154cd825b534689732f62880ee919",
+      "reading_copy": "accessible/JRS_Investigator_Field_Guide_International_Tagged_Text_Reading_Copy.pdf",
+      "text_token_coverage": 0.99574,
+      "pdf_pages": 7,
+      "reading_copy_blob_sha": "ed270a1f6cb836002b2309b03922c750e18390ad"
+    },
+    {
+      "original": "JRS-Reference-9d4f2a7c.pdf",
+      "original_blob_sha": "944991c58392b774a040c4d364925b84860542fa",
+      "source": "accessible/reviewer-reference-text-reading.html",
+      "source_blob_sha": "30bebccedf377875a16041e271c8676d26554d4e",
+      "reading_copy": "accessible/JRS-Reference_Tagged_Text_Reading_Copy.pdf",
+      "text_token_coverage": 0.99947,
+      "pdf_pages": 22,
+      "reading_copy_blob_sha": "54f9e91054a9fcb69e812cce49a3fc6de4df7cf0"
+    },
+    {
+      "original": "JRS_Reliability_Accuracy.pdf",
+      "original_blob_sha": "44cd4242e429d4dc14cb791c6ba260acc4e53b1c",
+      "source": "accessible/reliability-accuracy-text-reading.html",
+      "source_blob_sha": "59eacf1e415c0bd645608eb675c4bb146269d6dd",
+      "reading_copy": "accessible/JRS_Reliability_Accuracy_Tagged_Text_Reading_Copy.pdf",
+      "text_token_coverage": 0.99624,
+      "pdf_pages": 4,
+      "reading_copy_blob_sha": "c71d902a06007fd6971750eac36cfecc78a09ef1"
+    },
+    {
+      "original": "JRS_Investigator_Field_Guide.pdf",
+      "original_blob_sha": "5a2543756471222fe5deb7bde97f31266b9981a0",
+      "source": "accessible/general-investigator-guide-text-reading.html",
+      "source_blob_sha": "7f91f8efc1350f68f1dfee63d1a320f179431125",
+      "reading_copy": "accessible/JRS_Investigator_Field_Guide_Tagged_Text_Reading_Copy.pdf",
+      "text_token_coverage": 0.99504,
+      "pdf_pages": 8,
+      "reading_copy_blob_sha": "05626c5e17aabd7b8090b7ecd6bf9d6ee4102c9f"
+    }
+  ]
+}
