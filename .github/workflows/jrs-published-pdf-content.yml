@@ -20,6 +20,8 @@ jobs:
         run: node tests/jrs-pdf-accessibility-preflight.mjs
       - name: Validate source-backed tagged reading copies without altering published editions
         run: node tests/jrs-tagged-reading-copies.mjs
+      - name: Validate eight tagged transcription alternatives and preserve original editions
+        run: node tests/jrs-tagged-transcription-pdfs.mjs
       - name: Verify text-reading companions remain byte-for-byte derived from the protected original PDFs
         run: node scripts/build_pdf_text_companions.mjs --check
       - name: Preserve machine-readable PDF accessibility technical inventory
