@@ -5,6 +5,7 @@ import {readFileSync} from 'node:fs';
 import vm from 'node:vm';
 const read=p=>readFileSync(new URL('../'+p,import.meta.url),'utf8');
 const home=read('index.html'),resources=read('resources.html'),training=read('training.html');
+const check=read('check.html');
 const ed=read('editions.html'),org=read('organization.html'),css=read('assets/jrs-a-pathways.css');
 const js=read('assets/jrs-engagement.js'),routes=JSON.parse(read('vercel.json')).redirects;
 for(const path of ['index.html','resources.html','training.html','jrsstandard.html','editions.html','organization.html']){
@@ -16,6 +17,11 @@ assert.match(home,/id="task-chooser"/);
 assert.match(home,/aria-label="Choose a practitioner task"/);
 assert.ok(home.indexOf('id="task-chooser"')<home.indexOf('id="professional-paths"'));
 assert.ok(home.includes('href="check.html?src=home">Open seven-point record check</a>'));
+assert.match(check,/<main id="main-content" tabindex="-1">/);
+assert.match(check,/<div id="sa-status" class="sa-announcement" role="status" aria-live="polite" aria-atomic="true"><\/div>/);
+assert.match(check,/Summary copied to clipboard\./);
+assert.match(check,/Automatic copy unavailable\. Select the summary text to copy\./);
+assert.match(check,/\bstatus\.textContent = hit\.length/);
 assert.equal((resources.match(/<article class="jrs-resource-entry"/g)||[]).length,16);
 for(const v of ['Version 2.0 (2026)','Version 1.0 (May 2026)','Version 1.1 (July 2026)'])
   assert.ok(ed.includes(v),'missing publication identity '+v);
