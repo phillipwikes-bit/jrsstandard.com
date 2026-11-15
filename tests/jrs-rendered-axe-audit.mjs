@@ -8,7 +8,7 @@ import {dirname,join} from 'node:path';
 import {createRequire} from 'node:module';
 
 const require=createRequire(import.meta.url);
-const {chromium}=require('playwright-core');
+const {chromium}=require('playwright');
 const axeScript=require.resolve('axe-core/axe.min.js');
 const browserExecutable=process.env.JRS_BROWSER;
 if(!browserExecutable)throw new Error('JRS_BROWSER is required');
