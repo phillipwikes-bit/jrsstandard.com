@@ -36,6 +36,14 @@
 .jrs-proof-levels h3{font-family:Georgia,serif;font-size:20px;margin:0 0 8px;line-height:1.3}
 .jrs-proof-levels p{font-size:14px;line-height:1.55;margin:0 0 8px}
 .jrs-proof-levels a{color:#deb576}
+/* The research page has dark institutional text. Its evidence cards must
+   therefore use a light surface, independently of the dark-theme cards. */
+body.jrs-institutional.jrs-research-page .jrs-proof-levels article{
+ background:#f5f8fa;
+ border-color:#c9d6de;
+}
+body.jrs-institutional.jrs-research-page .jrs-proof-levels a{color:#14527a}
+body.jrs-institutional.jrs-research-page .jrs-proof-levels a:focus-visible{outline-color:#14527a}
 @media(max-width:760px){
  .jrs-story-facts,.jrs-proof-levels{grid-template-columns:1fr}
  .jrs-human-stories{margin:22px 0 28px}
