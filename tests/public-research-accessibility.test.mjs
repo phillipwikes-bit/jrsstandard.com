@@ -4,6 +4,7 @@ import {readFileSync} from 'node:fs';
 const read=p=>readFileSync(new URL('../'+p,import.meta.url),'utf8');
 const hub=read('research.html'),full=read('research-register.html'),home=read('index.html');
 const css=read('assets/jrs-professional-accessibility.css');
+const evidenceCardCss=read('assets/jrs-human-examples.css');
 const keyboard=read('assets/jrs-keyboard-controls.js');
 const asset=read('api/asset-stats.js');
 const dashboard=read('programme-status-9872fb93cc94.html');
@@ -60,6 +61,11 @@ test('shared CSS installed on leading public pages',()=>{
  for(const p of ['index.html','investigator-guides.html','resources.html','research.html','training.html','jrsstandard.html','contact.html']){
   assert.ok(read(p).includes('jrs-professional-accessibility.css'),p);
  }
+});
+test('institutional research evidence cards preserve readable text contrast',()=>{
+ assert.match(hub,/<body[^>]*jrs-institutional jrs-research-page/);
+ assert.match(evidenceCardCss,/body\.jrs-institutional\.jrs-research-page \.jrs-proof-levels article\s*\{[^}]*background:#f5f8fa/s);
+ assert.match(evidenceCardCss,/body\.jrs-institutional\.jrs-research-page \.jrs-proof-levels a\s*\{[^}]*color:#14527a/s);
 });
 test('public expert designation and direct PDFs retained',()=>{
  assert.ok(guides.includes('36</span> reviewers completed')); assert.ok(guides.includes('separate constructed-record detection analysis') && guides.includes('16 independent international experts from 11 countries across five continents'));
