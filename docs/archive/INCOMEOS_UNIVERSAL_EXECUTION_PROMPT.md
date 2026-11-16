@@ -1,3 +1,5 @@
+> **ARCHIVED 2026-11-16.** Retired by the owner together with Decision Spellchecker; superseded by Sales Spellcheck. Preserved as historical record only. Do not apply.
+
 INCOMEOS UNIVERSAL EXECUTION PROMPT
 
 Compatible with ChatGPT and Claude Code
@@ -7,7 +9,7 @@ Universal Prompt Revision: November 11, 2026, Revision B (source location, share
 Operating Model: Continuous Authorized Engineering Execution, Evidence-Based Product Development, and Controlled Commercial Validation
 
 Authoritative source:
-https://github.com/phillipwikes-bit/jrsstandard.com/blob/main/docs/INCOMEOS_MASTER_DIRECTIVE.md
+https://github.com/phillipwikes-bit/jrsstandard.com/blob/main/docs/archive/INCOMEOS_MASTER_DIRECTIVE.md
 
 Integration branch (IncomeOS source; not on main):
 verification/incomeos-accounting-ci-20261108
