@@ -3030,3 +3030,4 @@ Only four line groups differ between v7 and v8.
 - 2026-11-16: further engineering work on the successor product was done in its private repository (draft PR there). No product details recorded here.
 - 2026-11-16: owner approved the first paid model run for the successor product. It is blocked on an Anthropic API key: the secure-form route does not accept keys for Anthropic's own host, and the session's built-in authentication was rejected (401). The owner was told how to add the key in the environment settings. No model output exists.
 - 2026-11-16: owner could not add an API key from a phone; a preview comparison for the successor product was run with in-session reviewers instead and stored in its private repository. No details recorded here.
+- 2026-11-16: owner has no computer; told that the official keyed model run is not needed until a pilot. A fix to the successor product's test tooling was pushed to its private repository.
