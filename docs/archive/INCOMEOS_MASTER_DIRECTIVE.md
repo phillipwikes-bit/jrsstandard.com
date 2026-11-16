@@ -1,3 +1,5 @@
+> **ARCHIVED 2026-11-16.** Retired by the owner together with Decision Spellchecker; superseded by Sales Spellcheck. Preserved as historical record only. Do not apply.
+
 INCOMEOS MASTER DIRECTIVE
 
 Version 10.3 | Integrated High-Reliability Engineering and Evidence-Based Continuation Protocol
