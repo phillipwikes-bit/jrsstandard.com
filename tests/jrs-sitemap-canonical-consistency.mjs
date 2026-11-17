@@ -11,6 +11,8 @@ const sitemap = read('sitemap.xml');
 const locations = [...sitemap.matchAll(/<loc>([^<]+)<\/loc>/g)].map(m => m[1]);
 const unique = new Set(locations);
 const redirectSources = new Set(JSON.parse(read('vercel.json')).redirects.map(rule => rule.source));
+const publicTitles = new Map();
+const publicDescriptions = new Map();
 
 assert.ok(locations.length > 40, 'Unexpectedly small public sitemap');
 assert.equal(unique.size, locations.length, 'Duplicate sitemap locations');
@@ -26,6 +28,26 @@ function noindex(html) {
     /\bname=["']robots["']/i.test(m[0]) &&
     /\bcontent=["'][^"']*\bnoindex\b/i.test(m[0])
   );
+}
+function uniqueSearchText(index, value, location, label) {
+  const normalized = value.replace(/\s+/g, ' ').trim().toLowerCase();
+  assert.ok(normalized, `Missing ${label}: ${location}`);
+  assert.equal(index.has(normalized), false,
+    `Duplicate ${label} on ${location} and ${index.get(normalized)}`);
+  index.set(normalized, location);
+}
+function checkSearchMetadata(html, location) {
+  const titleTags = [...html.matchAll(/<title\b[^>]*>([\s\S]*?)<\/title>/gi)];
+  assert.equal(titleTags.length, 1, `Expected one page title: ${location}`);
+  uniqueSearchText(publicTitles, titleTags[0][1], location, 'page title');
+
+  const descriptions = [...html.matchAll(/<meta\b[^>]*>/gi)]
+    .map(match => match[0])
+    .filter(tag => /\bname=["']description["']/i.test(tag));
+  assert.equal(descriptions.length, 1, `Expected one meta description: ${location}`);
+  const content = descriptions[0].match(/\bcontent=["']([^"']*)["']/i)?.[1] || '';
+  uniqueSearchText(publicDescriptions, content, location, 'meta description');
+  assert.match(html, /<h1\b/i, `Missing primary page heading: ${location}`);
 }
 function publicHtmlFiles(directory = root) {
   const files = [];
@@ -57,6 +79,7 @@ for (const location of locations) {
   const html = read(path);
   assert.equal(noindex(html), false, `Noindex destination in sitemap: ${location}`);
   assert.equal(canonical(html), location, `Sitemap/canonical disagreement: ${location}`);
+  checkSearchMetadata(html, location);
   covered++;
 }
 
@@ -73,4 +96,4 @@ for (const file of publicHtmlFiles()) {
 for (const campaign of ['right-to-know-why.html', 'decisions-you-can-defend.html']) {
   assert.ok(unique.has(`${origin}/${campaign}`), `Missing initiative page: ${campaign}`);
 }
-console.log(`PASS: ${covered} sitemap locations resolve to matching public canonical pages; no indexable canonical JRS pages omitted.`);
+console.log(`PASS: ${covered} sitemap locations have matching public canonicals, unique titles and descriptions, and primary headings; no indexable canonical JRS pages omitted.`);
