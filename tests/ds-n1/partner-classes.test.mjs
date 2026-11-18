@@ -38,7 +38,7 @@ test('the defective authorization record holds, with each planted defect found',
     assert.ok(codes.has(want), `expected ${want}; got ${[...codes].join(', ')}`);
   }
   const kinds = buildCognitiveObservations(st).map((o) => o.kind).sort();
-  assert.deepEqual(kinds, ['premature_closure', 'unsupported_certainty']);
+  assert.deepEqual(kinds, ['alternative_interpretation', 'premature_closure', 'unsupported_certainty']);
   const neg = buildCognitiveControls(st).find((c) => c.claim_id === 'C2' && c.category === 'evidence');
   assert.match(neg.question, /negation/);
 });

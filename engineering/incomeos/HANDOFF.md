@@ -2,7 +2,7 @@
 
 For any engineering agent: ChatGPT, Codex, Claude Code or a person. Read this before acting. It is a recovery record, not an authorization. Whoever stops work updates the "Current checkpoint" section in the same pull request as the work.
 
-Last updated: 2026-11-18, with the cognitive-observations port (`claude/ds-n1-cognitive-observations`) and the owner-authorized `ai_action_authorization` class (`claude/ds-n1-partner-record-classes`, see `EXECUTION-EVIDENCE-2026-11-18-B.md`). Next DS-N1 task: the trailing-negation limitation recorded there.
+Last updated: 2026-11-18, with the cognitive-observations port (`claude/ds-n1-cognitive-observations`) and the owner-authorized `ai_action_authorization` class (`claude/ds-n1-partner-record-classes`, see `EXECUTION-EVIDENCE-2026-11-18-B.md`). Negation-scope fix and alternative-interpretation lens on `claude/ds-n1-negation-and-alternatives` (`EXECUTION-EVIDENCE-2026-11-18-C.md`). Open: HOLDOUT-2 re-run after the negation change needs owner authorization.
 
 ## 1. Where things are
 
