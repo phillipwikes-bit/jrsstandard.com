@@ -94,3 +94,10 @@ test('an authorization with no authority statement, no dates and an undated deci
   r.claims = [{ claim_id: 'C1', kind: 'fact', quote: r.text, citations: [{ source_id: 'S1', quote: 'Ledgerline Assistant to send invoice reminder emails' }] }];
   assert.ok(names(r).has('no_explicit_dates'));
 });
+
+test('a dated approval plus an undated policy sentence is not an undated decision', () => {
+  const r = fx('fixtures-partner', 'AUTH-P01');
+  r.text += ' Approval was given under the finance automation policy.';
+  r.claims.push({ claim_id: 'C9', kind: 'authority', quote: 'Approval was given under the finance automation policy.', citations: [] });
+  assert.ok(!names(r).has('no_dated_decision'), 'found while comparing against a practitioner review record (AR-52)');
+});
