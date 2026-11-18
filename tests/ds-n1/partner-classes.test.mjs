@@ -55,6 +55,8 @@ test('excluded domains are still refused for the new class', () => {
   assert.equal(validateRecord(r).errors[0].code, 'EXCLUDED_DOMAIN_CONTENT');
   const c = fx('AUTH-P01'); c.record_class = 'legal_outcome';
   assert.equal(validateRecord(c).errors[0].code, 'EXCLUDED_RECORD_CLASS');
-  const u = fx('AUTH-P01'); u.record_class = 'discovery_production_rationale';
-  assert.equal(validateRecord(u).errors[0].code, 'UNSUPPORTED_RECORD_CLASS', 'discovery records were not authorized');
+  // Discovery rationales were authorized later the same day (evidence record D);
+  // a class the owner has never authorized is still refused.
+  const u = fx('AUTH-P01'); u.record_class = 'credit_scoring_rationale';
+  assert.equal(validateRecord(u).errors[0].code, 'UNSUPPORTED_RECORD_CLASS', 'an unauthorized class is refused');
 });

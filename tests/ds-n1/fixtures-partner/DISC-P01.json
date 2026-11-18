@@ -1,0 +1,95 @@
+{
+  "schema": "ds-n1.record/1.0",
+  "record_id": "DPR-0412-P01",
+  "record_version": "1",
+  "record_class": "discovery_production_rationale",
+  "data_classification": "constructed_fictional",
+  "title": "Production rationale for HF-000412 (fictional)",
+  "text": "Email HF-000412 was sent by Rina Castellano on 2026-03-11. Email HF-000412 asks the pricing team to hold the fuel surcharge at the current rate until the April review. Request 7 seeks documents concerning fuel surcharge pricing decisions made between 2026-01-01 and 2026-06-30. Because the email discusses a fuel surcharge pricing decision within the requested period, the reviewer marked it responsive to Request 7.",
+  "entities": [
+    {
+      "entity_id": "E1",
+      "name": "Halden Freight"
+    },
+    {
+      "entity_id": "E2",
+      "name": "Rina Castellano"
+    }
+  ],
+  "sources": [
+    {
+      "source_id": "S1",
+      "title": "Document HF-000412 (email)",
+      "version": "v1",
+      "text": "Email HF-000412 was sent by Rina Castellano on 2026-03-11. It asks the Halden Freight pricing team to hold the fuel surcharge at the current rate until the April review.",
+      "events": [
+        {
+          "role": "sent",
+          "date": "2026-03-11",
+          "actor": "E2"
+        }
+      ]
+    },
+    {
+      "source_id": "S2",
+      "title": "Request for production RFP-7",
+      "version": "v1",
+      "text": "Request 7 seeks documents concerning fuel surcharge pricing decisions made between 2026-01-01 and 2026-06-30.",
+      "events": []
+    },
+    {
+      "source_id": "S3",
+      "title": "Review protocol RP-2",
+      "version": "v1",
+      "text": "Review protocol RP-2. Documents that only schedule meetings, without discussing pricing, are not responsive to Request 7.",
+      "events": []
+    }
+  ],
+  "claims": [
+    {
+      "claim_id": "C1",
+      "kind": "chronology",
+      "quote": "Email HF-000412 was sent by Rina Castellano on 2026-03-11.",
+      "actor": "E2",
+      "event": {
+        "role": "sent",
+        "date": "2026-03-11"
+      },
+      "citations": [
+        {
+          "source_id": "S1",
+          "quote": "Email HF-000412 was sent by Rina Castellano"
+        }
+      ]
+    },
+    {
+      "claim_id": "C2",
+      "kind": "fact",
+      "quote": "Email HF-000412 asks the pricing team to hold the fuel surcharge at the current rate until the April review.",
+      "citations": [
+        {
+          "source_id": "S1",
+          "quote": "hold the fuel surcharge at the current rate until the April review"
+        }
+      ]
+    },
+    {
+      "claim_id": "C3",
+      "kind": "fact",
+      "quote": "Request 7 seeks documents concerning fuel surcharge pricing decisions made between 2026-01-01 and 2026-06-30.",
+      "citations": [
+        {
+          "source_id": "S2",
+          "quote": "Request 7 seeks documents concerning fuel surcharge pricing decisions made between 2026-01-01 and 2026-06-30."
+        }
+      ]
+    },
+    {
+      "claim_id": "C4",
+      "kind": "conclusion",
+      "quote": "Because the email discusses a fuel surcharge pricing decision within the requested period, the reviewer marked it responsive to Request 7.",
+      "reasoning": "C2 states the pricing content and C3 states the scope of Request 7.",
+      "citations": []
+    }
+  ]
+}

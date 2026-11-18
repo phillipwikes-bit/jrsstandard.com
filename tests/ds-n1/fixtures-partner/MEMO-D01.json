@@ -1,0 +1,94 @@
+{
+  "schema": "ds-n1.record/1.0",
+  "record_id": "MEMO-0031-D01",
+  "record_version": "1",
+  "record_class": "ai_drafted_legal_memo",
+  "data_classification": "constructed_fictional",
+  "title": "Memo on backup retention, defective draft (fictional)",
+  "text": "Under section 4, a controller must delete customer records within 90 days of account closure. In Arden Logistics v. Corvo Systems, the court held that retention policies always apply to archived backups. Policy DR-3 states that archived backups are retained for one year. Bexley Storage v. Marr reached the same result in 2024. This clearly settles the question, so no further review is needed.",
+  "entities": [
+    {
+      "entity_id": "E1",
+      "name": "Arden Logistics"
+    },
+    {
+      "entity_id": "E2",
+      "name": "Corvo Systems"
+    }
+  ],
+  "sources": [
+    {
+      "source_id": "S1",
+      "title": "Fictional Data Retention Act, section 4",
+      "version": "2026",
+      "text": "Section 4. A controller must delete customer records within 90 days of account closure, unless a written legal hold applies.",
+      "events": []
+    },
+    {
+      "source_id": "S2",
+      "title": "Arden Logistics v. Corvo Systems (fictional, 2025)",
+      "version": "v1",
+      "text": "In Arden Logistics v. Corvo Systems, the court held that a retention policy applied to archived backups only if the policy said so expressly.",
+      "events": []
+    },
+    {
+      "source_id": "S3",
+      "title": "Client policy DR-3",
+      "version": "v2",
+      "text": "Policy DR-3. Archived backups are retained for one year.",
+      "events": []
+    }
+  ],
+  "claims": [
+    {
+      "claim_id": "C1",
+      "kind": "fact",
+      "quote": "Under section 4, a controller must delete customer records within 90 days of account closure.",
+      "citations": [
+        {
+          "source_id": "S1",
+          "quote": "A controller must delete customer records within 90 days of account closure"
+        }
+      ]
+    },
+    {
+      "claim_id": "C2",
+      "kind": "fact",
+      "quote": "In Arden Logistics v. Corvo Systems, the court held that retention policies always apply to archived backups.",
+      "citations": [
+        {
+          "source_id": "S2",
+          "quote": "a retention policy applied to archived backups"
+        }
+      ]
+    },
+    {
+      "claim_id": "C3",
+      "kind": "fact",
+      "quote": "Policy DR-3 states that archived backups are retained for one year.",
+      "citations": [
+        {
+          "source_id": "S3",
+          "quote": "Archived backups are retained for one year."
+        }
+      ]
+    },
+    {
+      "claim_id": "C5",
+      "kind": "fact",
+      "quote": "Bexley Storage v. Marr reached the same result in 2024.",
+      "citations": [
+        {
+          "source_id": "S4",
+          "quote": "reached the same result"
+        }
+      ]
+    },
+    {
+      "claim_id": "C4",
+      "kind": "conclusion",
+      "quote": "This clearly settles the question, so no further review is needed.",
+      "citations": []
+    }
+  ]
+}
