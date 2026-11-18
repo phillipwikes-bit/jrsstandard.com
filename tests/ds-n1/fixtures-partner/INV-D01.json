@@ -1,0 +1,113 @@
+{
+  "schema": "ds-n1.record/1.0",
+  "record_id": "WIR-0208-D01",
+  "record_version": "1",
+  "record_class": "workplace_investigation_report",
+  "data_classification": "constructed_fictional",
+  "title": "Workplace investigation report CI-208, defective draft (fictional)",
+  "text": "Avery Lund reported the raised voice on 2026-08-05. Jordan Tate heard Morgan Price raise his voice. Jordan Tate heard an insult. The project meeting on 2026-07-29 was attended by Avery Lund, Morgan Price and Jordan Tate. The allegations are clearly substantiated and the investigation is closed.",
+  "entities": [
+    {
+      "entity_id": "E1",
+      "name": "Avery Lund"
+    },
+    {
+      "entity_id": "E2",
+      "name": "Morgan Price"
+    },
+    {
+      "entity_id": "E3",
+      "name": "Jordan Tate"
+    }
+  ],
+  "sources": [
+    {
+      "source_id": "S1",
+      "title": "Complaint intake CI-208",
+      "version": "v1",
+      "text": "Complaint intake CI-208. On 2026-08-03, Avery Lund reported that Morgan Price raised his voice during the project meeting.",
+      "events": [
+        {
+          "role": "report",
+          "date": "2026-08-03",
+          "actor": "E1"
+        }
+      ]
+    },
+    {
+      "source_id": "S2",
+      "title": "Witness statement WS-2",
+      "version": "v1",
+      "text": "Witness statement WS-2. Jordan Tate heard Morgan Price raise his voice, but did not hear any insult.",
+      "events": []
+    },
+    {
+      "source_id": "S3",
+      "title": "Meeting log ML-14",
+      "version": "v1",
+      "text": "Meeting log ML-14. The project meeting on 2026-07-29 was attended by Avery Lund, Morgan Price and Jordan Tate.",
+      "events": [
+        {
+          "role": "meeting",
+          "date": "2026-07-29"
+        }
+      ]
+    }
+  ],
+  "claims": [
+    {
+      "claim_id": "C1",
+      "kind": "chronology",
+      "quote": "Avery Lund reported the raised voice on 2026-08-05.",
+      "event": {
+        "role": "report",
+        "date": "2026-08-05"
+      },
+      "citations": [
+        {
+          "source_id": "S1",
+          "quote": "Avery Lund reported that Morgan Price raised his voice"
+        }
+      ]
+    },
+    {
+      "claim_id": "C2",
+      "kind": "fact",
+      "quote": "Jordan Tate heard Morgan Price raise his voice.",
+      "citations": [
+        {
+          "source_id": "S2",
+          "quote": "Jordan Tate heard Morgan Price raise his voice"
+        }
+      ]
+    },
+    {
+      "claim_id": "C5",
+      "kind": "fact",
+      "quote": "Jordan Tate heard an insult.",
+      "citations": [
+        {
+          "source_id": "S2",
+          "quote": "did not hear any insult"
+        }
+      ]
+    },
+    {
+      "claim_id": "C3",
+      "kind": "fact",
+      "quote": "The project meeting on 2026-07-29 was attended by Avery Lund, Morgan Price and Jordan Tate.",
+      "citations": [
+        {
+          "source_id": "S3",
+          "quote": "The project meeting on 2026-07-29 was attended by Avery Lund, Morgan Price and Jordan Tate."
+        }
+      ]
+    },
+    {
+      "claim_id": "C4",
+      "kind": "conclusion",
+      "quote": "The allegations are clearly substantiated and the investigation is closed.",
+      "citations": []
+    }
+  ]
+}
