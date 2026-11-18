@@ -2,7 +2,7 @@
 
 For any engineering agent: ChatGPT, Codex, Claude Code or a person. Read this before acting. It is a recovery record, not an authorization. Whoever stops work updates the "Current checkpoint" section in the same pull request as the work.
 
-Last updated: 2026-11-11, with pull request #190.
+Last updated: 2026-11-18, with the cognitive-observations port (branch `claude/ds-n1-cognitive-observations`).
 
 ## 1. Where things are
 
@@ -132,7 +132,7 @@ Owner-only, later: physical iPhone and separate-session recovery acceptance, ori
 
 With the items in section 6 still missing, the eligible source-level work is:
 
-1. DS-N1 lane: decide with the owner whether `cognitive-observations.mjs` from #119 belongs in the integration branch, then port it with its test in one pull request.
+1. DS-N1 lane: done on 2026-11-18. The owner approved the port; `cognitive-observations.mjs`, its test, its reviewer-view hunk and bridge wiring are on `claude/ds-n1-cognitive-observations` (draft pull request into this branch). Evidence: `EXECUTION-EVIDENCE-2026-11-18.md`. The rest of #119 (other UI changes, older `serve.mjs`, four documents) was not taken.
 2. Accounting lane: rebase or re-apply the contact profile from #187 onto the integration branch and resolve its two conflicts.
 
 Once section 6 items 1 to 3 exist: scoped migration preflight, two-identity hosted denial and append tests, interruption recovery, non-destructive rollback rehearsal, then the Owner Desk reviewer view behind that backend.

@@ -70,6 +70,15 @@ test('synthetic review invokes existing DS-N1 engine and optional cognitive cont
   assert.ok(view.findings.some(f => f.code === 'UNSUPPORTED_CLAIM'));
   assert.ok(view.cognitiveControls.some(x => x.finding_id));
   assert.ok(view.reflectiveGuidance.some(x => x.reflection?.[3]?.stage === 'Release'));
+  const closure = view.cognitiveObservations.filter(o => o.kind === 'premature_closure');
+  assert.equal(closure.length, 1, 'closure wording beside an unresolved critical finding is surfaced once');
+  assert.match(closure[0].passage, /can proceed/);
+  assert.ok(closure[0].related_findings.every(id => view.findings.some(f => f.finding_id === id)));
+  assert.equal(closure[0].changes_review_status, false);
+  assert.equal(view.reviewStatus, 'HOLD', 'wording checks never change the review status');
+  assert.match(view.cognitiveObservationVersion, /^ds-n1\.cognitive-observations\//);
+  const clean = reviewerSnapshot(p, startSyntheticReview(p, fixture('P01'), T0).session);
+  assert.deepEqual(clean.cognitiveObservations, [], 'a fully supported record raises no wording check');
   assert.equal(view.finalDisposition, null);
   assert.deepEqual(p, before, 'review cannot alter programme acceptance or finances');
 });
