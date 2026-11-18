@@ -9,10 +9,11 @@ Decision Spellchecker reads a written decision record, such as an authorization,
 | Part | Files |
 |---|---|
 | Engine | `lib/ds-n1/*.mjs`: record validation, deterministic checks, review session and hash-chained event log, report, export and export verifier |
-| Cognitive lenses | `cognitive-controls.mjs`, `cognitive-observations.mjs`, `reflective-guidance.mjs`, `cognitive-source-trace.mjs` |
+| Cognitive lenses and safeguards | `cognitive-controls.mjs`, `cognitive-observations.mjs`, `cognitive-safeguards.mjs`, `reflective-guidance.mjs`, `cognitive-source-trace.mjs` |
+| Detection templates | `detection-templates.mjs` (the 23 named templates) |
 | Reviewer and author pages | `lib/ds-n1/ui/` (local only, served by `serve.mjs`) |
 | Tests and fictional fixtures | `tests/ds-n1/*.test.mjs`, `tests/ds-n1/fixtures/`, `tests/ds-n1/fixtures-partner/` |
-| Integration contract | `INTEGRATION_CONTRACT.md` |
+| Integration contract and coverage | `INTEGRATION_CONTRACT.md`, `FEATURE_COVERAGE.md` |
 | Packaging | `build-bundle.mjs`, `verify-bundle.mjs`, `ASSET_MANIFEST.json` (generated) |
 
 Runtime dependencies: none (Node.js 20 or later). Playwright is optional, for PDF export and browser tests only.

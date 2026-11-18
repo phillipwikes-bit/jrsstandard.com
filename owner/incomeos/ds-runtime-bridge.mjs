@@ -11,8 +11,10 @@ import {
 import { buildCognitiveControls, COGNITIVE_CONTROL_VERSION } from '../../lib/ds-n1/cognitive-controls.mjs';
 import { buildReflectiveGuidance, REFLECTIVE_GUIDANCE_VERSION } from '../../lib/ds-n1/reflective-guidance.mjs';
 import { buildCognitiveObservations, COGNITIVE_OBSERVATION_VERSION } from '../../lib/ds-n1/cognitive-observations.mjs';
+import { buildSafeguards, SAFEGUARD_VERSION } from '../../lib/ds-n1/cognitive-safeguards.mjs';
+import { runDetectionTemplates, TEMPLATE_VERSION } from '../../lib/ds-n1/detection-templates.mjs';
 
-export const CONTRACT_VERSION = 'incomeos.ds-runtime-bridge/1.0.2-dev';
+export const CONTRACT_VERSION = 'incomeos.ds-runtime-bridge/1.0.3-dev';
 export const INTEGRATION_STATUS = 'INTEGRATION_IN_PROGRESS';
 
 // Development-only provenance guard. This ephemeral map binds each issued
@@ -93,6 +95,11 @@ export function reviewerSnapshot(program, session) {
     // a finding, the review status or the event log.
     cognitiveObservations: buildCognitiveObservations(state),
     cognitiveObservationVersion: COGNITIVE_OBSERVATION_VERSION,
+    // Lenses, CC-* safeguards and the 23 named detection templates. Read-only.
+    safeguards: buildSafeguards(state),
+    safeguardVersion: SAFEGUARD_VERSION,
+    detectionTemplates: runDetectionTemplates(state),
+    templateVersion: TEMPLATE_VERSION,
     finalDisposition: state.final_disposition,
     overrideCritical: !!state.ready_by_override_of_critical,
     authenticity: 'UNSIGNED_INTERNAL_HASH_CHAIN_ONLY',

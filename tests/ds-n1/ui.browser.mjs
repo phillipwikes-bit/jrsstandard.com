@@ -83,6 +83,19 @@ try {
       assert.equal(await page.locator('#cogbody .cognitive-observation').count(), 0, 'a supported record raises no wording check');
     });
 
+    await check(`${label}: safeguards panel routes escalation and stays read-only`, async () => {
+      await page.selectOption('#fixture', 'D06');
+      await page.waitForFunction(() => document.getElementById('statusbox').textContent === 'HOLD');
+      const esc = page.locator('#cogbody .cognitive-safeguard[data-control="CC-ESCALATE"]');
+      assert.ok(await esc.count() >= 1, 'CC-ESCALATE should be shown when closure is stated with open critical findings');
+      await esc.first().locator('summary').click();
+      assert.match(await esc.first().textContent(), /authorised reviewer/);
+      assert.equal(await page.textContent('#statusbox'), 'HOLD');
+      await page.selectOption('#fixture', 'P01');
+      await page.waitForFunction(() => document.getElementById('statusbox').textContent === 'READY_FOR_HUMAN_FINALIZATION');
+      assert.equal(await page.locator('#cogbody .cognitive-safeguard').count(), 0);
+    });
+
     await check(`${label}: cognitive source trace shows actual record passage without claiming support`, async () => {
       await page.selectOption('#fixture', 'D02');
       await page.waitForFunction(() => document.getElementById('statusbox').textContent === 'HOLD');
