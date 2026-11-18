@@ -69,6 +69,20 @@ try {
       assert.equal(await page.textContent('#statusbox'), before);
     });
 
+    await check(`${label}: wording check flags premature closure without changing the review`, async () => {
+      await page.selectOption('#fixture', 'D06');
+      await page.waitForFunction(() => document.getElementById('statusbox').textContent === 'HOLD');
+      const obs = page.locator('#cogbody .cognitive-observation[data-kind="premature_closure"]');
+      assert.ok(await obs.count() >= 1, 'closure wording beside an unresolved critical finding should be surfaced');
+      assert.match(await obs.first().textContent(), /can proceed/);
+      await obs.first().locator('summary').click();
+      await obs.first().locator('button').click();
+      assert.equal(await page.textContent('#statusbox'), 'HOLD', 'a wording check never changes the review status');
+      await page.selectOption('#fixture', 'P01');
+      await page.waitForFunction(() => document.getElementById('statusbox').textContent === 'READY_FOR_HUMAN_FINALIZATION');
+      assert.equal(await page.locator('#cogbody .cognitive-observation').count(), 0, 'a supported record raises no wording check');
+    });
+
     await check(`${label}: cognitive source trace shows actual record passage without claiming support`, async () => {
       await page.selectOption('#fixture', 'D02');
       await page.waitForFunction(() => document.getElementById('statusbox').textContent === 'HOLD');

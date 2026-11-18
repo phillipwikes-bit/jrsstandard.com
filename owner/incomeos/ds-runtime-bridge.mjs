@@ -10,8 +10,9 @@ import {
 } from '../../lib/ds-n1/index.mjs';
 import { buildCognitiveControls, COGNITIVE_CONTROL_VERSION } from '../../lib/ds-n1/cognitive-controls.mjs';
 import { buildReflectiveGuidance, REFLECTIVE_GUIDANCE_VERSION } from '../../lib/ds-n1/reflective-guidance.mjs';
+import { buildCognitiveObservations, COGNITIVE_OBSERVATION_VERSION } from '../../lib/ds-n1/cognitive-observations.mjs';
 
-export const CONTRACT_VERSION = 'incomeos.ds-runtime-bridge/1.0.1-dev';
+export const CONTRACT_VERSION = 'incomeos.ds-runtime-bridge/1.0.2-dev';
 export const INTEGRATION_STATUS = 'INTEGRATION_IN_PROGRESS';
 
 // Development-only provenance guard. This ephemeral map binds each issued
@@ -88,6 +89,10 @@ export function reviewerSnapshot(program, session) {
     findings: state.findings,
     cognitiveControls: controls,
     reflectiveGuidance: controls.map(buildReflectiveGuidance).filter(Boolean),
+    // Read-only wording checks (unsupported certainty, premature closure). They never change
+    // a finding, the review status or the event log.
+    cognitiveObservations: buildCognitiveObservations(state),
+    cognitiveObservationVersion: COGNITIVE_OBSERVATION_VERSION,
     finalDisposition: state.final_disposition,
     overrideCritical: !!state.ready_by_override_of_critical,
     authenticity: 'UNSIGNED_INTERNAL_HASH_CHAIN_ONLY',
