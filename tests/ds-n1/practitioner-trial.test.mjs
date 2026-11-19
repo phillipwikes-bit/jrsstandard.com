@@ -57,3 +57,26 @@ test('totals count partial matches separately and report a Wilson interval', () 
   assert.equal(t.full_match_rate.k, 3);
   assert.match(t.caveat, /Not an accuracy result/);
 });
+
+test('the review packet shows the record and documents, and nothing of DS-N1 output', async () => {
+  const { mkdtempSync, writeFileSync: w, readFileSync: rd } = await import('node:fs');
+  const { tmpdir } = await import('node:os');
+  const { join } = await import('node:path');
+  const { execFileSync } = await import('node:child_process');
+  const dir = mkdtempSync(join(tmpdir(), 'packet-'));
+  const recPath = join(dir, 'rec.json');
+  w(recPath, JSON.stringify(rec));
+  const script = new URL('./practitioner/build-review-packet.mjs', import.meta.url).pathname;
+  execFileSync(process.execPath, [script, recPath, dir]);
+  const html = rd(join(dir, `${rec.record_id}.packet.html`), 'utf8');
+  const txt = rd(join(dir, `${rec.record_id}.packet.txt`), 'utf8');
+  for (const s of rec.sources) assert.ok(txt.includes(s.title), s.title);
+  assert.ok(html.includes('fictional'));
+  for (const leak of ['HOLD', 'READY', 'finding', 'template', 'UNSUPPORTED', 'claim_id']) {
+    assert.ok(!html.includes(leak) && !txt.includes(leak), `packet must not reveal ${leak}`);
+  }
+  assert.ok(!/<script/i.test(html));
+  assert.throws(() => execFileSync(process.execPath, [script, recPath, dir], { stdio: 'pipe' }), 'never overwrites');
+  const real = join(dir, 'real.json'); w(real, JSON.stringify({ ...rec, data_classification: 'real' }));
+  assert.throws(() => execFileSync(process.execPath, [script, real, join(dir, 'x')], { stdio: 'pipe' }), 'refuses real records');
+});

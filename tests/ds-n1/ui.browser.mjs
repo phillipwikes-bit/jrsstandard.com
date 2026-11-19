@@ -1,4 +1,5 @@
 #!/usr/bin/env node
+import { readFileSync } from 'node:fs';
 // Browser automation check of the DS-N1 reviewer interface (Chromium via the
 // pre-installed Playwright). Emulated viewports only: this is NOT an actual
 // iPhone Safari test and NOT an assistive-technology test.
@@ -119,12 +120,17 @@ try {
     });
     await check(`${label}: defective record holds; correction flow reaches READY`, async () => {
       await page.selectOption('#fixture', 'D06');
-      await page.waitForFunction(() => document.getElementById('statusbox').textContent === 'HOLD');
+      // Wait for D06 itself: the previous record may also be HOLD, so the
+      // status alone does not show that D06 has loaded.
+      const d06 = JSON.parse(readFileSync(new URL('./fixtures/D06.json', import.meta.url), 'utf8')).text;
+      await page.waitForFunction((t) => document.getElementById('statusbox').textContent === 'HOLD' && document.getElementById('record').textContent === t, d06);
       // Keyboard selection of the C2 claim.
-      await page.focus('mark[aria-label="Claim C2"]');
+      // Wait on the findings panel itself: the claim marks re-render after the
+      // status changes, so a stale focus or an early read made this check flaky.
+      await page.locator('mark[aria-label="Claim C2"]').focus();
       await page.keyboard.press('Enter');
-      await page.waitForSelector('text=UNSUPPORTED_CLAIM');
-      assert.match(await page.textContent('#findings'), /Which identified source supports this statement\?/);
+      await page.waitForFunction(() => /Which identified source supports this statement\?/.test(document.getElementById('findings').textContent), null, { timeout: 5000 });
+      assert.match(await page.textContent('#findings'), /UNSUPPORTED_CLAIM/);
       // Action without reviewer identity is refused.
       await page.fill('#att-quote', 'completed the vendor security assessment');
       await page.selectOption('#att-src', 'S2');

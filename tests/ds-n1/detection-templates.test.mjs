@@ -12,11 +12,11 @@ const st = (r) => deriveState(openReview(r, { at: T0 }));
 const hits = (r) => runDetectionTemplates(st(r));
 const names = (r) => new Set(hits(r).map((h) => h.template));
 
-test('all 31 templates are registered in the five groups', () => {
+test('all 32 templates are registered in the five groups', () => {
   const groups = {};
   for (const t of Object.values(TEMPLATES)) groups[t.group] = (groups[t.group] || 0) + 1;
-  assert.equal(Object.keys(TEMPLATES).length, 31);
-  assert.deepEqual(groups, { authority_governance: 11, conclusion_reasoning: 5, chronology: 10, evidence_quotation: 4, certainty: 1 });
+  assert.equal(Object.keys(TEMPLATES).length, 32);
+  assert.deepEqual(groups, { authority_governance: 11, conclusion_reasoning: 5, chronology: 10, evidence_quotation: 5, certainty: 1 });
 });
 
 test('finding-based templates name the finding they rest on', () => {
@@ -251,4 +251,61 @@ test('human review that is kept, and an amount-free limit, do not trigger the AI
   const s = ar62();
   s.record_class = 'supplier_access_exception';
   for (const t of ['human_oversight_removed', 'amount_limit_without_volume_cap', 'no_stop_or_redress_path']) assert.ok(!names(s).has(t), t);
+});
+
+// Round three (2026-11-19): a hedged source stated as firm, more result and
+// limit wording. Record AR-63 is constructed for these tests only.
+function ar63() {
+  const t1 = 'On 2026-04-07, Tomas Reyes, the records manager, approved Fernhill Archiving remote access to the case archive under the third-party access standard, section 2.';
+  const t2 = 'Remote sessions are subject to session recording.';
+  const t3 = 'The security review found the exposure adequate.';
+  const t4 = 'Access lapses on 2026-06-30 unless renewed.';
+  const t5 = 'The access can therefore proceed.';
+  return {
+    schema: 'ds-n1.record/1.0', record_id: 'AR-63', record_version: '1', record_class: 'supplier_access_exception',
+    data_classification: 'constructed_fictional', title: 'Supplier access exception AR-63 (fictional)',
+    text: [t1, t2, t3, t4, t5].join(' '),
+    entities: [{ entity_id: 'E1', name: 'Fernhill Archiving' }, { entity_id: 'E2', name: 'Tomas Reyes' }],
+    sources: [
+      { source_id: 'S1', title: 'Access request RQ-63', version: 'v1', text: 'Access request RQ-63. Fernhill Archiving requests remote access to the case archive. Session recording should be enabled where possible.', events: [{ role: 'request', date: '2026-04-01' }] },
+      { source_id: 'S2', title: 'Security review SR-63', version: 'v1', text: 'Security review SR-63. The security review found the exposure adequate.', events: [{ role: 'assessment_completed', date: '2026-04-03' }] },
+      { source_id: 'S3', title: 'Approval AP-63', version: 'v1', text: `Approval AP-63. ${t1} ${t4}`, events: [{ role: 'authorization', date: '2026-04-07', actor: 'E2' }, { role: 'expiry', date: '2026-06-30' }] },
+    ],
+    claims: [
+      { claim_id: 'C1', kind: 'authority', quote: t1, actor: 'E2', event: { role: 'authorization', date: '2026-04-07' }, citations: [{ source_id: 'S3', quote: t1 }] },
+      { claim_id: 'C2', kind: 'fact', quote: t2, citations: [{ source_id: 'S1', quote: 'Session recording should be enabled' }] },
+      { claim_id: 'C3', kind: 'fact', quote: t3, citations: [{ source_id: 'S2', quote: t3 }] },
+      { claim_id: 'C4', kind: 'fact', quote: t4, event: { role: 'expiry', date: '2026-06-30' }, citations: [{ source_id: 'S3', quote: t4 }] },
+      { claim_id: 'C5', kind: 'conclusion', quote: t5, reasoning: 'C1 gives the approval, C2 the control, C3 the review and C4 the end terms.', citations: [] },
+    ],
+  };
+}
+
+test('a hedged source restated as firm is flagged, with the source wording', () => {
+  const h = hits(ar63()).find((x) => x.template === 'hedged_source_stated_firmly');
+  assert.ok(h, 'expected hedged_source_stated_firmly');
+  assert.equal(h.claim_id, 'C2');
+  assert.match(h.detail, /should be enabled/);
+  assert.equal(h.changes_review_status, false);
+  const r = ar63();
+  r.sources[0].text = 'Access request RQ-63. Fernhill Archiving requests remote access to the case archive. Session recording must be enabled.';
+  r.claims[1].citations[0].quote = 'Session recording must be enabled';
+  assert.ok(!names(r).has('hedged_source_stated_firmly'), 'a firm source stated firmly is not flagged');
+});
+
+test('"found the exposure adequate" is a bare result; "lapses on" is an end date; numeric caps are controls', () => {
+  const n = names(ar63());
+  assert.ok(n.has('conclusory_evidence_summary'));
+  assert.ok(!n.has('no_stated_expiry_date'), '"lapses on" states an end date');
+  assert.ok(!n.has('no_post_expiry_terms'), '"unless renewed" states what happens');
+  const r = ar63();
+  for (const w of ['Fernhill may open at most 3 sessions per week.', 'No more than 2 staff may connect at once.']) {
+    const x = ar63();
+    x.text = x.text.replace('Remote sessions are subject to session recording. ', '');
+    x.claims.splice(1, 1);
+    x.text += ' ' + w; x.sources[2].text += ' ' + w;
+    x.claims.push({ claim_id: 'C9', kind: 'fact', quote: w, citations: [{ source_id: 'S3', quote: w }] });
+    assert.ok(!names(x).has('no_compensating_control_stated'), w);
+  }
+  assert.ok(r);
 });

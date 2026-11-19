@@ -46,13 +46,15 @@ Fourteen lenses: observation versus inference; alternative explanations; selecti
 
 Each control lists the existing reviewer actions that fit and never changes status by itself.
 
-## 4. The 31 detection templates (`detection-templates.mjs`)
+## 4. The 32 detection templates (`detection-templates.mjs`)
 
 The 23 named templates of the October 2026 programme, plus three added on 2026-11-19 from a practitioner's blind review of a constructed record (marked †) and five added the same day after a second blind review (marked ‡).
 
 - **11 finding-based:** detected by existing DS-N1 rules, so they affect status: `authority_source_not_identified`, `authority_state_conflict`, `control_state_conflict`, `risk_state_conflict`, `conclusion_without_traceable_basis`, `conclusion_without_basis`, `basis_states_no_reason_or_source`, `decision_date_conflict`, `expiry_date_conflict`, `cited_evidence_conflict`, `absent_quotation`.
 - **1 observation-based:** `certainty_language`.
-- **19 advisory:** new checks that are reported but do not change status until validated: `no_authority_section`, `no_compensating_control_stated`, `no_locatable_conclusion`, `basis_without_conclusion`, `no_stated_expiry_date`, `no_explicit_dates`, `impossible_sequence`, `assessment_after_decision`, `duration_date_conflict`, `no_dated_decision`, `ambiguous_quotation`, `approver_role_not_stated` †, `conclusory_evidence_summary` †, `no_stop_or_redress_path` †, `no_authority_basis_cited` ‡, `human_oversight_removed` ‡, `amount_limit_without_volume_cap` ‡, `no_post_expiry_terms` ‡, `date_not_in_sources` ‡.
+- **20 advisory:** new checks that are reported but do not change status until validated: `no_authority_section`, `no_compensating_control_stated`, `no_locatable_conclusion`, `basis_without_conclusion`, `no_stated_expiry_date`, `no_explicit_dates`, `impossible_sequence`, `assessment_after_decision`, `duration_date_conflict`, `no_dated_decision`, `ambiguous_quotation`, `approver_role_not_stated` †, `conclusory_evidence_summary` †, `no_stop_or_redress_path` †, `no_authority_basis_cited` ‡, `human_oversight_removed` ‡, `amount_limit_without_volume_cap` ‡, `no_post_expiry_terms` ‡, `date_not_in_sources` ‡, `hedged_source_stated_firmly` §.
+
+§ Added 2026-11-19 with wider result, end-date and limit wording, after the developer's own pre-check of records prepared for practitioner review. Those records' predictions were recorded first and are unchanged, so the reviews still measure the earlier engine. Tested on constructed record AR-63.
 
 The three † templates were written after the practitioner's review of record AR-52, so AR-52 is not evidence that they work. They are tested on a separate constructed record (AR-61) in positive and negative form. Attribution wording is pending the practitioner's approval.
 
@@ -89,4 +91,4 @@ Not established. Public product descriptions do not show whether competitors alr
 
 ## 8. Practitioner trial kit (`practitioner-trial.mjs`)
 
-Records DS-N1's output on a constructed record before an independent practitioner sees it, then scores the practitioner's coded points against it: MATCH, PARTIAL or MISS per issue category, the categories only DS-N1 reported, and totals with a Wilson interval. Protocol: `tests/ds-n1/practitioner/PROTOCOL.md`. Records and answers are kept out of this repository. Results so far: NOT ESTABLISHED as an accuracy measure; two single-practitioner reviews exist, both on records the developer constructed.
+Records DS-N1's output on a constructed record before an independent practitioner sees it, then scores the practitioner's coded points against it: MATCH, PARTIAL or MISS per issue category, the categories only DS-N1 reported, and totals with a Wilson interval. Protocol: `tests/ds-n1/practitioner/PROTOCOL.md`. `build-review-packet.mjs` produces what the practitioner receives (printable page and plain text) with no DS-N1 output. Records and answers are kept out of this repository. Results so far: NOT ESTABLISHED as an accuracy measure; two single-practitioner reviews exist, both on records the developer constructed.

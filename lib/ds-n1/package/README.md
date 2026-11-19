@@ -10,7 +10,7 @@ Decision Spellchecker reads a written decision record, such as an authorization,
 |---|---|
 | Engine | `lib/ds-n1/*.mjs`: record validation, deterministic checks, review session and hash-chained event log, report, export and export verifier |
 | Cognitive lenses and safeguards | `cognitive-controls.mjs`, `cognitive-observations.mjs`, `cognitive-safeguards.mjs`, `reflective-guidance.mjs`, `cognitive-source-trace.mjs` |
-| Detection templates | `detection-templates.mjs` (31 named templates) |
+| Detection templates | `detection-templates.mjs` (32 named templates) |
 | Reviewer and author pages | `lib/ds-n1/ui/` (local only, served by `serve.mjs`) |
 | Tests and fictional fixtures | `tests/ds-n1/*.test.mjs`, `tests/ds-n1/fixtures/`, `tests/ds-n1/fixtures-partner/` |
 | Integration contract and coverage | `INTEGRATION_CONTRACT.md`, `FEATURE_COVERAGE.md` |
