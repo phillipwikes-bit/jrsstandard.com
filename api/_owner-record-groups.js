@@ -5,7 +5,7 @@ const PUBLIC = new Set(['guide-register','support-register','support']);
 const TRAINING = new Set(['training-enroll','training-complete']);
 const RESEARCH = new Set([
   'pilot','contributor-confirm','reviewer-eval-incentive',
-  'reviewer-cert','honor-accept'
+  'reviewer-cert','honor-accept','practitioner-review'
 ]);
 const ORGANIZATIONS = new Set(['org-pilot']);
 const COMMERCIAL_LEGACY = new Set([

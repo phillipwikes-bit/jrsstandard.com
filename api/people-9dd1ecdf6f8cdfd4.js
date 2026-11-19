@@ -42,6 +42,7 @@ const LABEL = {
   'org-pilot':           'Ran records',
   'support':             'Initiative (pre-gate)',
   'pilot':               'Pilot contact',
+  'practitioner-review': 'Practitioner review (fictional record)',
   // These three historical streams require separate owner follow-up.
   // They remain visible only inside the authenticated private directory.
   'reviewer-eval-incentive': 'Asked for a LinkedIn recommendation',
