@@ -86,3 +86,7 @@ Tooling exists for developer evaluation, stress and isolation sets, a sealed hol
 ## 7. Competitive position
 
 Not established. Public product descriptions do not show whether competitors already perform equivalent checks, and no comparative test has been run.
+
+## 8. Practitioner trial kit (`practitioner-trial.mjs`)
+
+Records DS-N1's output on a constructed record before an independent practitioner sees it, then scores the practitioner's coded points against it: MATCH, PARTIAL or MISS per issue category, the categories only DS-N1 reported, and totals with a Wilson interval. Protocol: `tests/ds-n1/practitioner/PROTOCOL.md`. Records and answers are kept out of this repository. Results so far: NOT ESTABLISHED as an accuracy measure; two single-practitioner reviews exist, both on records the developer constructed.
