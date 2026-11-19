@@ -101,7 +101,7 @@ body.jrs-institutional .respbtn:hover{background:#235478;color:#fff}
 <a href="#main-content" class="skip-link">Skip to content</a>
 <header class="site-header" role="banner">
   <div class="site-header-inner">
-    <a href="index.html" class="wordmark">JRS<span style="font-size:10px;vertical-align:super;position:relative;top:-3px;">&#8482;</span></a>
+    <a href="/" class="wordmark">JRS<span style="font-size:10px;vertical-align:super;position:relative;top:-3px;">&#8482;</span></a>
     <div class="header-meta">Justification Review Standard<br>Finding &amp; Discussion</div>
   </div>
 </header>
@@ -159,7 +159,7 @@ body.jrs-institutional .respbtn:hover{background:#235478;color:#fff}
 <footer class="site-footer" role="contentinfo">
   <div class="site-footer-inner">
     <div style="display:flex;flex-wrap:wrap;gap:16px">
-      <a href="index.html" class="footer-link">Home</a>
+      <a href="/" class="footer-link">Home</a>
       <a href="research.html" class="footer-link">Research</a>
       <a href="questions.html" class="footer-link">Questions</a>
       <a href="research.html" class="footer-link">Research and validation</a>
@@ -168,11 +168,10 @@ body.jrs-institutional .respbtn:hover{background:#235478;color:#fff}
       <a href="investigator-guides.html" class="footer-link">Investigator Guides</a>
     </div>
     <div style="width:100%;font-family:'Bodoni Moda',serif;font-size:14px;color:var(--accent);margin-bottom:8px;">JRS measures the record, not the tool that produced it.</div>
-    <div style="width:100%;font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.1em;text-transform:uppercase;margin-bottom:6px"><span style="color:var(--accent-dim)">Research participation:</span> <a href="/reviewer/evaluation.html?src=footer" style="color:var(--accent);text-decoration:none">Pressure-test the standard</a> &middot; <a href="resources.html" style="color:var(--accent);text-decoration:none">Use free resources</a></div><div class="footer-copy">&#169; 2026 JRS&#8482; &middot; Justification Review Standard &nbsp;&middot;&nbsp; Phillip Wikes, principal &middot; <a href="privacy.html" style="color:inherit">Privacy</a></div>
+    <div style="width:100%;font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.1em;text-transform:uppercase;margin-bottom:6px"><span style="color:var(--accent-dim)">Research participation:</span> <a href="/reviewer/evaluation.html?src=footer" style="color:var(--accent);text-decoration:none">Pressure-test the standard</a> &middot; <a href="resources.html" style="color:var(--accent);text-decoration:none">Use free resources</a></div><div class="footer-copy">&#169; 2026 JRS&#8482; &middot; Justification Review Standard &nbsp;&middot;&nbsp; Phillip Wikes, principal &middot; <a href="/privacy-notice.html" style="color:inherit">Privacy</a></div>
   </div>
 </footer>
 <script>
-var JRS_U='https://pjzxkeviouofdseagvpf.supabase.co';
 var JRS_K='sb_publishable_mkdtg6-NgJ44_JVr9vZf6Q_30BVgY4e';
 var JRS_HDR={'apikey':JRS_K,'Authorization':'Bearer '+JRS_K};
 var JRS_STUDY='STUDY-001';     // stable poll key (finding id changes each run)
@@ -208,7 +207,7 @@ function jrsRenderPoll(){
   }
 }
 function jrsLoadResults(){
-  fetch(JRS_U+'/rest/v1/finding_poll_votes?select=choice&study_id=eq.'+encodeURIComponent(JRS_STUDY),{headers:JRS_HDR})
+  fetch('https://pjzxkeviouofdseagvpf.supabase.co/rest/v1/finding_poll_votes?select=choice&study_id=eq.'+encodeURIComponent(JRS_STUDY),{headers:JRS_HDR})
    .then(function(r){ if(!r.ok) throw 0; return r.json(); })
    .then(function(rows){
      var box=document.getElementById('poll-results'); if(!box) return;
@@ -224,7 +223,7 @@ function jrsLoadResults(){
 }
 window.jrsVote=function(letter){
   try{ localStorage.setItem('jrs-poll-voted-'+JRS_STUDY,letter); }catch(e){}
-  fetch(JRS_U+'/rest/v1/finding_poll_votes',{method:'POST',headers:Object.assign({'Content-Type':'application/json','Prefer':'return=minimal'},JRS_HDR),body:JSON.stringify({study_id:JRS_STUDY,choice:letter})}).catch(function(){});
+  fetch('https://pjzxkeviouofdseagvpf.supabase.co/rest/v1/finding_poll_votes',{method:'POST',headers:Object.assign({'Content-Type':'application/json','Prefer':'return=minimal'},JRS_HDR),body:JSON.stringify({study_id:JRS_STUDY,choice:letter})}).catch(function(){});
   jrsRenderPoll();
 };
 window.submitResponse=function(){
@@ -234,19 +233,19 @@ window.submitResponse=function(){
   if(!val){ st.textContent='Enter a response first.'; st.style.color='var(--stop-text)'; return; }
   if(!jrsSanitizeCheck(val)) return;
   btn.disabled=true; st.textContent='Submitting...'; st.style.color='var(--muted-soft)';
-  fetch(JRS_U+'/rest/v1/finding_responses',{method:'POST',headers:Object.assign({'Content-Type':'application/json','Prefer':'return=minimal'},JRS_HDR),body:JSON.stringify({study_id:JRS_STUDY,prompt:'discussion/debate',response:val})})
+  fetch('https://pjzxkeviouofdseagvpf.supabase.co/rest/v1/finding_responses',{method:'POST',headers:Object.assign({'Content-Type':'application/json','Prefer':'return=minimal'},JRS_HDR),body:JSON.stringify({study_id:JRS_STUDY,prompt:'discussion/debate',response:val})})
    .then(function(r){ if(!r.ok) throw 0; t.value=''; st.textContent='Recorded privately. Thank you.'; st.style.color='var(--ready-text)'; btn.disabled=false; })
    .catch(function(){ st.textContent='Could not submit. Email info@jrsstandard.com.'; st.style.color='var(--stop-text)'; btn.disabled=false; });
 };
 
 (function(){
-  var U=JRS_U, hdr=JRS_HDR;
+  var hdr=JRS_HDR;
   function set(id,v){var n=document.getElementById(id);if(n)n.textContent=v;}
   var sel='select=id,study_id,headline,body,created_at,evidence_class,observation,supporting_data,research_question,discussion,debate,poll,challenge,classification,views';
   var id=(new URLSearchParams(location.search)).get('id');
-  var q='/rest/v1/findings?'+sel+'&published=eq.true&order=created_at.desc&limit=1';
-  if(id) q='/rest/v1/findings?'+sel+'&published=eq.true&id=eq.'+encodeURIComponent(id);
-  fetch(U+q,{headers:hdr})
+  var q='https://pjzxkeviouofdseagvpf.supabase.co/rest/v1/findings?'+sel+'&published=eq.true&order=created_at.desc&limit=1';
+  if(id) q='https://pjzxkeviouofdseagvpf.supabase.co/rest/v1/findings?'+sel+'&published=eq.true&id=eq.'+encodeURIComponent(id);
+  fetch(q,{headers:hdr})
    .then(function(r){ if(!r.ok) throw 0; return r.json(); })
    .then(function(rows){
      if(!rows||!rows.length){ set('f-headline','No published finding found.'); set('f-observation','Findings appear automatically once a study run completes.'); return; }
@@ -266,7 +265,7 @@ window.submitResponse=function(){
      document.getElementById('f-prompts').innerHTML=prompts;
      if(f.poll&&f.poll.question){ JRS_POLL=f.poll; jrsRenderPoll(); }
      // Count a view (best-effort; RPC is security-definer).
-     if(f.id){ fetch(U+'/rest/v1/rpc/increment_finding_views',{method:'POST',headers:Object.assign({'Content-Type':'application/json'},hdr),body:JSON.stringify({fid:f.id})}).catch(function(){}); }
+     if(f.id){ fetch('https://pjzxkeviouofdseagvpf.supabase.co/rest/v1/rpc/increment_finding_views',{method:'POST',headers:Object.assign({'Content-Type':'application/json'},hdr),body:JSON.stringify({fid:f.id})}).catch(function(){}); }
    })
    .catch(function(){ set('f-headline','Finding unavailable right now.'); set('f-observation','Please try again shortly.'); });
 })();
