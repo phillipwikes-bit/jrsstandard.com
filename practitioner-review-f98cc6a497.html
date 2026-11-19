@@ -75,6 +75,15 @@ footer{color:var(--muted-soft);font-size:13px;margin-top:40px}
 <option>Other</option>
 </select>
 
+<label for="years">Years in this kind of work <span class="hint">(optional)</span></label>
+<select id="years" name="years">
+<option value="">Prefer not to say</option>
+<option>Under 2</option>
+<option>2 to 5</option>
+<option>6 to 10</option>
+<option>Over 10</option>
+</select>
+
 <label for="name">Name <span class="hint">(optional)</span></label>
 <input type="text" id="name" name="name" autocomplete="name">
 <label for="email">Email <span class="hint">(optional, only needed for the boxes below)</span></label>
@@ -82,6 +91,7 @@ footer{color:var(--muted-soft);font-size:13px;margin-top:40px}
 
 <div class="check"><input type="checkbox" id="c_results"><label for="c_results" style="margin:0">Send me how my answer compared with the tool.</label></div>
 <div class="check"><input type="checkbox" id="c_credit"><label for="c_credit" style="margin:0">You may credit me as a practitioner who gave feedback. I will see the exact wording first, and it is never an endorsement.</label></div>
+<div class="check"><input type="checkbox" id="c_quote"><label for="c_quote" style="margin:0">You may quote my answer in an article or report, without my name.</label></div>
 <div class="check"><input type="checkbox" id="c_pilot"><label for="c_pilot" style="margin:0">I would be open to hearing about a pilot or licence for my organisation.</label></div>
 
 <div class="hp" aria-hidden="true"><label for="website">Leave this empty</label><input type="text" id="website" tabindex="-1" autocomplete="off"></div>
@@ -116,7 +126,7 @@ if(form){ form.addEventListener('submit', function(e){
   var wantsContact=chk('c_results')||chk('c_credit')||chk('c_pilot');
   if(wantsContact && (email.indexOf('@')<1 || email.indexOf('.')<0)){ if(msg) msg.textContent='Please add your email so we can reach you about the boxes you ticked.'; return; }
   if(!jrsSanitizeCheck(answer)) return;
-  var body={ record_id:RECORD_ID, answer:answer, role:val('role'), name:val('name'), email:email,
+  var body={ record_id:RECORD_ID, answer:answer, role:val('role'), years:val('years'), consent_quote:chk('c_quote'), name:val('name'), email:email,
     want_results:chk('c_results'), consent_credit:chk('c_credit'), pilot_interest:chk('c_pilot'), website:val('website') };
   if(btn) btn.disabled=true; if(msg) msg.textContent='Sending...';
   fetch('/api/practitioner-review', { method:'POST', headers:{'Content-Type':'application/json'}, body:JSON.stringify(body) })

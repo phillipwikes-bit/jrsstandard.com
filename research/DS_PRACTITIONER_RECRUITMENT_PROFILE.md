@@ -21,12 +21,20 @@ Potential buyers or licensees may take part; their answers are flagged so they c
 |---|---|---|
 | Their answer to the one question | Yes | It is the data. |
 | Field (from a short list) | Optional | Lets results be reported by field. |
+| Years in this kind of work (band) | Optional | Lets results report experience, which articles and buyers ask about. |
 | Name | Optional | Only needed for credit. |
 | Email | Only if they tick a box | To send results, confirm credit wording, or follow up on a pilot or licence. |
 | Job title and workplace | Not asked | Not needed to score answers. Asked only later, and only if the person wants to be credited, in the exact form they choose. |
 
 ## Consent rules
-- Taking part is not consent to be named, contacted for sales, or quoted. Each is a separate opt-in tick-box.
+- Taking part is not consent to be named, contacted for sales, or quoted. Each is a separate opt-in tick-box. Quoting is anonymous unless the person separately agrees to be named.
+
+## For a published article
+- Keep a private count of who was invited, when and how (email, LinkedIn), so the article can report how many answered out of how many asked.
+- Name only people who ticked the credit box and approved the exact wording, as with the first practitioner credit.
+- Quote only answers whose authors ticked the quote box, and without names.
+- Report fields, experience bands and countries as totals, never in a way that identifies one person.
+- State that the records are fictional and that the tool's output was recorded before anyone answered.
 - Credit wording is shown to the person before anything is published, and changed or removed if the tool's validation claims change.
 - People in government or regulated roles take part only in a personal capacity; no request is made of their organisation.
 
