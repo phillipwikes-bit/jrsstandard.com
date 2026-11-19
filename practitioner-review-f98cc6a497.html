@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>One record, one question &middot; JRS</title>
+<title>Decision Spellcheck: one record, one question</title>
 <meta name="robots" content="noindex,nofollow">
 <meta name="referrer" content="no-referrer">
 <meta name="description" content="A practitioner review of one short fictional decision record.">
@@ -66,10 +66,22 @@ footer{color:var(--muted-soft);font-size:13px;margin-top:40px}
 <option value="">Prefer not to say</option>
 <option>AI governance</option>
 <option>Investigations or HR</option>
+<option>Civil rights, EEO or fair housing</option>
+<option>Public records or government administration</option>
 <option>Legal or eDiscovery</option>
 <option>Audit, risk or compliance</option>
 <option>Fraud examination</option>
+<option>Organizational psychology or research</option>
 <option>Other</option>
+</select>
+
+<label for="years">Years in this kind of work <span class="hint">(optional)</span></label>
+<select id="years" name="years">
+<option value="">Prefer not to say</option>
+<option>Under 2</option>
+<option>2 to 5</option>
+<option>6 to 10</option>
+<option>Over 10</option>
 </select>
 
 <label for="name">Name <span class="hint">(optional)</span></label>
@@ -79,14 +91,16 @@ footer{color:var(--muted-soft);font-size:13px;margin-top:40px}
 
 <div class="check"><input type="checkbox" id="c_results"><label for="c_results" style="margin:0">Send me how my answer compared with the tool.</label></div>
 <div class="check"><input type="checkbox" id="c_credit"><label for="c_credit" style="margin:0">You may credit me as a practitioner who gave feedback. I will see the exact wording first, and it is never an endorsement.</label></div>
+<div class="check"><input type="checkbox" id="c_quote"><label for="c_quote" style="margin:0">You may quote my answer in an article or report, without my name.</label></div>
 <div class="check"><input type="checkbox" id="c_pilot"><label for="c_pilot" style="margin:0">I would be open to hearing about a pilot or licence for my organisation.</label></div>
 
 <div class="hp" aria-hidden="true"><label for="website">Leave this empty</label><input type="text" id="website" tabindex="-1" autocomplete="off"></div>
+<p class="hint" style="margin-top:18px">By submitting, you agree that your answer may be used, without payment, to evaluate and improve Decision Spellcheck. You keep no rights in the tool, and nothing is published under your name without your separate consent.</p>
 <button type="submit" id="go">Submit my answer</button>
 <div id="msg" role="status" aria-live="polite"></div>
 </form>
 <div id="thanks" class="done" hidden>Thank you. Your answer is in, and there is nothing more to do.</div>
-<footer>&copy; 2026 Phillip Wikes &middot; JRS&trade; &middot; <a href="mailto:info@jrsstandard.com" style="color:var(--accent)">info@jrsstandard.com</a></footer>
+<footer>Decision Spellcheck &middot; &copy; 2026 Phillip Wikes &middot; <a href="mailto:info@jrsstandard.com" style="color:var(--accent)">info@jrsstandard.com</a></footer>
 </main>
 <script>
 var RECORD_ID = 'AR-82';
@@ -112,7 +126,7 @@ if(form){ form.addEventListener('submit', function(e){
   var wantsContact=chk('c_results')||chk('c_credit')||chk('c_pilot');
   if(wantsContact && (email.indexOf('@')<1 || email.indexOf('.')<0)){ if(msg) msg.textContent='Please add your email so we can reach you about the boxes you ticked.'; return; }
   if(!jrsSanitizeCheck(answer)) return;
-  var body={ record_id:RECORD_ID, answer:answer, role:val('role'), name:val('name'), email:email,
+  var body={ record_id:RECORD_ID, answer:answer, role:val('role'), years:val('years'), consent_quote:chk('c_quote'), name:val('name'), email:email,
     want_results:chk('c_results'), consent_credit:chk('c_credit'), pilot_interest:chk('c_pilot'), website:val('website') };
   if(btn) btn.disabled=true; if(msg) msg.textContent='Sending...';
   fetch('/api/practitioner-review', { method:'POST', headers:{'Content-Type':'application/json'}, body:JSON.stringify(body) })

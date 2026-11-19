@@ -14,7 +14,8 @@ export const config = { runtime: 'edge' };
 
 const SB = 'https://pjzxkeviouofdseagvpf.supabase.co';
 const RECORDS = ['AR-82'];
-const ROLES = ['', 'AI governance', 'Investigations or HR', 'Legal or eDiscovery', 'Audit, risk or compliance', 'Fraud examination', 'Other'];
+const YEARS = ['', 'Under 2', '2 to 5', '6 to 10', 'Over 10'];
+const ROLES = ['', 'AI governance', 'Investigations or HR', 'Civil rights, EEO or fair housing', 'Public records or government administration', 'Legal or eDiscovery', 'Audit, risk or compliance', 'Fraud examination', 'Organizational psychology or research', 'Other'];
 
 function json(obj, status) {
   return new Response(JSON.stringify(obj), { status: status || 200, headers: {
@@ -41,6 +42,8 @@ export default async function handler(req) {
   if (answer.length < 20) return json({ error: 'answer_too_short' }, 400);
   const role = clean(b.role, 60);
   if (ROLES.indexOf(role) === -1) return json({ error: 'unknown_role' }, 400);
+  const years = clean(b.years, 20);
+  if (YEARS.indexOf(years) === -1) return json({ error: 'unknown_years' }, 400);
   const name = clean(b.name, 200);
   const email = clean(b.email, 200);
   const wantsResults = b.want_results === true, credit = b.consent_credit === true, pilot = b.pilot_interest === true;
@@ -53,7 +56,7 @@ export default async function handler(req) {
   const H = { 'apikey': SERVICE, 'Authorization': 'Bearer ' + SERVICE, 'Content-Type': 'application/json', 'Prefer': 'return=minimal' };
 
   const payload = {
-    kind: 'practitioner-review', record_id: record, answer: answer, role: role,
+    kind: 'practitioner-review', record_id: record, answer: answer, role: role, years: years, consent_quote: b.consent_quote === true,
     want_results: wantsResults, consent_credit: credit, pilot_interest: pilot,
     country: String(req.headers.get('x-vercel-ip-country') || '').toUpperCase().replace(/[^A-Z]/g, '').slice(0, 2) || '',
     ts: new Date().toISOString()
