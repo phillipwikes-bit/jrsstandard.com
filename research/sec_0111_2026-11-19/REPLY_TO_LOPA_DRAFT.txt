@@ -1,0 +1,65 @@
+Subject: Re: Comments of reviewers - SEC-0111-2026: two separate manuscripts, clarification
+
+Dear Ms. Lopa,
+
+Thank you for comparing the files so carefully and for asking before going further. You are right that the two documents are different studies. They are two separate manuscripts, and both were submitted to you openly, through the channel you invited me to use, and in line with the conditions you set. Somewhere along the way they came to share one number. I am sorry I did not notice this sooner and raise it myself.
+
+Below I set out what happened from the beginning, in date order. Every step is in our LinkedIn messages, and screenshots of them, unaltered and in date order, are in attachment C.
+
+How the two submissions came about
+
+18 October: You invited me on LinkedIn to submit to SocioEconomic Challenges, Volume 10, Issue 4, and said manuscripts could be sent "via private message or email" (C, screenshots 1 to 3).
+
+19 to 20 October: I asked about fit and fees. You replied that the work could be a good fit, explained the fee, and asked for the titles and abstracts of my current manuscripts (C, 4 to 6).
+
+21 October: I shared the SSRN preprint of "Can Public-Records Determinations Be Independently Reconstructed? Evidence from 32 Public Cases", co-authored with Stacyann Young, and asked whether a paper based on a preprint could be submitted. The same day you set three conditions: the authors and their order must match the preprint exactly; both the preprint and the journal manuscript must be sent; and the preprint platform must be named with a direct link. You also kindly offered a 25% discount (C, 7 to 9).
+
+22 to 23 October: I told you I had shared the revised manuscript with Ms Young for her review. On 23 October, after she had reviewed and approved it, I submitted Paper A to you through LinkedIn, meeting all three of your conditions (C, 10).
+
+26 October: I submitted a second, separate manuscript, Paper B, co-authored with Ubayet Hossain, through LinkedIn and by email, with the file attached. In that message I described it as "a second manuscript, co-authored with Ubayet Hossain" and said Ms Young's paper was already with you. Mr Hossain had approved the submission in writing beforehand. You replied the same day, thanking me for "your second manuscript, co-authored with Ubayet Hossain" and referring to "your earlier submission" (C, 11 to 14).
+
+27 October: You thanked me for the willingness of "Stacyann and Ubayet" to assist throughout the review process (C, 15).
+
+8 November: I received, under SEC-0111-2026, two referee reports and an edited manuscript file named SEC_Wikes_Hossain_Edited.docx. Both reports concern Paper B.
+
+10 November: Two days later I returned the revision of Paper B with a point-by-point response, all statistics recalculated from the original records, the study materials deposited at Zenodo, and an itemised statement on AI tools.
+
+So the revision is not a new study. It is the revision of Paper B, the paper the referees reviewed, sent back under the number those reviews carried.
+
+The two papers
+
+PAPER A: "Can Public-Records Determinations Be Independently Reconstructed? Evidence from 32 Public Cases", by Stacyann Young and Phillip Wikes. Submitted on 23 October 2026. Attached again for reference only (A1, A2). Nothing in it has changed.
+
+PAPER B: "Expert Review of Artificial Intelligence-Drafted Decision Records: Classification Agreement and Reviewer Variation in a Constructed-Record Study" (first submitted as "Socioeconomic Challenges of AI-Drafted Decision Records: Can Expert Reviewers Detect Unsupported Conclusions?"), by Phillip Wikes and Ubayet Hossain. Submitted on 26 October 2026, reviewed, and revised on 10 November (B1, B2).
+
+Your three questions
+
+1. The revised manuscript does not replace the public-records study. Paper A is a separate paper. It has not been published in any journal. It is available as a preprint on SSRN (https://papers.ssrn.com/sol3/papers.cfm?abstract_id=7591521) and was submitted to SocioEconomic Challenges on 23 October. Could you tell me its status and whether it has been sent for review?
+
+2. No author has been added, removed or reordered on either paper. Paper A has always been by Stacyann Young and Phillip Wikes, in the same order as the preprint, as you required. Paper B has always been by Phillip Wikes and Ubayet Hossain. Ms Young is named in Paper B's acknowledgements only because she took part as a rater in its reliability exercise; she has never been an author of Paper B. Ms Young and Mr Hossain will each confirm this to you in writing.
+
+3. The expert-review exercise in Paper B did not receive ethics committee approval and was not formally exempted; no institutional ethics approval was sought, and the manuscript says so plainly. Participation was voluntary. Each of the 16 detection-panel reviewers was invited individually in writing, by LinkedIn message or, in one case, by email, and I hold that correspondence. They took part through personalised links under participant codes. Open-enrolment raters responded anonymously to a public invitation that described the task and its purpose. The data-collection pages did not present a separate consent form. After data collection, coded participants were invited to complete an electronic contributor confirmation recording, separately, permission for research use and for acknowledgement by name; 18 of the 24 coded participants completed it, and all of them permitted research use. Only aggregate results are reported, and everyone named in the acknowledgements agreed to be named. The Informed Consent Statement in B1 says the same.
+
+One correction on my part
+
+The response letter I sent on 10 November still carried an internal heading reading "AUTHOR-REVIEW DRAFT. Not approved by either author. Not submitted." That line was left in by mistake from my working copy and should not have been there. B2 is the same letter with that line removed. In the same way, the page header of the revised manuscript carried an internal label, "SEC-0111-2026 | REVISED MANUSCRIPT | AUTHOR REVIEW", so I have removed the page headers from B1 altogether. Nothing else in either document has changed.
+
+My request
+
+Because both papers were submitted properly and separately, and Paper B has already been through peer review and revision, I respectfully ask that the journal correct its record rather than treat Paper B as a new submission: that Paper B, with its reviews and the 10 November revision, continue under its own manuscript number, and that SEC-0111-2026 remain Paper A. I will gladly provide anything else that would help.
+
+Attachments
+Paper A, for reference only:
+  A1_Young_Wikes_Manuscript_as_submitted_Oct2026.docx
+  A2_Young_Wikes_SSRN_Preprint.pdf
+Paper B, revision of 10 November:
+  B1_Wikes_Hossain_Revised_Manuscript_10Nov2026.docx
+  B2_Wikes_Hossain_Response_to_Editor_and_Reviewers.docx
+Correspondence:
+  C_LinkedIn_Correspondence_18-27_Oct_2026.pdf (our LinkedIn messages, 15 screenshots in date order)
+
+Thank you for your patience and for the care you have given both papers.
+
+Kind regards,
+Phillip Wikes
+Corresponding Author

@@ -20,10 +20,11 @@ wording was inaccurate; the conclusion it supported was not.
 
 | Work | Venue | Status | Evidence located | Rights position |
 |---|---|---|---|---|
-| Detection study | **AI and Ethics** | **SUBMISSION-READY** | Complete packet: cover letter, title page, blinded manuscript, generated docx | Co-author M-01 **not confirmed** on the consent instrument |
+| Detection study | **AI and Ethics** | **REJECTED 2026-10-26** (was SUBMISSION-READY; editorial decision: contribution to aims and scope unclear; record `research/aie_submission_2026-09-01/DECISION_REJECTED_2026-10-26.md`) | Complete packet: cover letter, title page, blinded manuscript, generated docx | Co-author M-01 authorship **CONFIRMED** (OLD: not confirmed on the consent instrument. NEW 2026-10-26: owner confirms prior approval; evidence 2026-07-27 byline approval, 2026-08-28 written approval with his own descriptor, direct confirmation to Springer) |
 | Evidentiary deficit article | **Corporate Compliance Insights** | **ACCEPTED** (internally recorded 2026-09-03; publication expected about a month out) | `research/cci_resubmission_2026-09-03/`; editor response PDF | **Co-author Hekim Colpan is not covered by the consent instrument.** Written terms include a prior-approval requirement over commercial use of JRS material |
 | CEP Magazine article | **CEP Magazine** | **ACCEPTED** (internally recorded) | Tracker record | Not located |
 | Records Management Journal manuscript | **RMJ** | **PREPARED**, anonymous and non-anonymous versions built | R9 and ANONYMOUS docx, with SHA-256 recorded | First author E-08 **not confirmed** |
+| Public-records study (Young & Wikes), later version | **SSRN preprint (public, abstract 7591521)**; **SocioEconomic Challenges** version prepared | **PREPRINT PUBLIC; SEC VERSION PREPARED** (recorded 2026-10-26). RMJ, JOCI and JCAS declined (branch `claude/tracker-2026-10-21`) | `research/sec_submission_2026-10-26/REVIEW_2026-10-26.md` (hashes, statistics recomputed, references checked against Crossref) | First author E-08: OLD row above says not confirmed. NEW: contributor consent executed 2026-08-27 (named, use, transfer) and manuscript approved by email the same day; **venue and manuscript approved in writing 2026-10-23** (LinkedIn; tracker branch `claude/tracker-2026-10-21`) |
 | EDPACS backup article | **EDPACS** | **DRAFT** | `Backup_Article_EDPACS_DRR_Control.docx` | Not located |
 
 ## Published with an external record
