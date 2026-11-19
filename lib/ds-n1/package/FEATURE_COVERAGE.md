@@ -46,15 +46,17 @@ Fourteen lenses: observation versus inference; alternative explanations; selecti
 
 Each control lists the existing reviewer actions that fit and never changes status by itself.
 
-## 4. The 32 detection templates (`detection-templates.mjs`)
+## 4. The 37 detection templates (`detection-templates.mjs`)
 
 The 23 named templates of the October 2026 programme, plus three added on 2026-11-19 from a practitioner's blind review of a constructed record (marked †) and five added the same day after a second blind review (marked ‡).
 
 - **11 finding-based:** detected by existing DS-N1 rules, so they affect status: `authority_source_not_identified`, `authority_state_conflict`, `control_state_conflict`, `risk_state_conflict`, `conclusion_without_traceable_basis`, `conclusion_without_basis`, `basis_states_no_reason_or_source`, `decision_date_conflict`, `expiry_date_conflict`, `cited_evidence_conflict`, `absent_quotation`.
 - **1 observation-based:** `certainty_language`.
-- **20 advisory:** new checks that are reported but do not change status until validated: `no_authority_section`, `no_compensating_control_stated`, `no_locatable_conclusion`, `basis_without_conclusion`, `no_stated_expiry_date`, `no_explicit_dates`, `impossible_sequence`, `assessment_after_decision`, `duration_date_conflict`, `no_dated_decision`, `ambiguous_quotation`, `approver_role_not_stated` †, `conclusory_evidence_summary` †, `no_stop_or_redress_path` †, `no_authority_basis_cited` ‡, `human_oversight_removed` ‡, `amount_limit_without_volume_cap` ‡, `no_post_expiry_terms` ‡, `date_not_in_sources` ‡, `hedged_source_stated_firmly` §.
+- **25 advisory:** new checks that are reported but do not change status until validated: `no_authority_section`, `no_compensating_control_stated`, `no_locatable_conclusion`, `basis_without_conclusion`, `no_stated_expiry_date`, `no_explicit_dates`, `impossible_sequence`, `assessment_after_decision`, `duration_date_conflict`, `no_dated_decision`, `ambiguous_quotation`, `approver_role_not_stated` †, `conclusory_evidence_summary` †, `no_stop_or_redress_path` †, `no_authority_basis_cited` ‡, `human_oversight_removed` ‡, `amount_limit_without_volume_cap` ‡, `no_post_expiry_terms` ‡, `date_not_in_sources` ‡, `hedged_source_stated_firmly` §, `cited_version_mismatch` ¶, `version_mismatch_between_sources` ¶, `collective_approver_unnamed` ¶, `action_before_authorization` ¶, `broad_access_without_scope` ¶.
 
 § Added 2026-11-19 with wider result, end-date and limit wording, after the developer's own pre-check of records prepared for practitioner review. Those records' predictions were recorded first and are unchanged, so the reviews still measure the earlier engine. Tested on constructed record AR-63.
+
+¶ Added 2026-11-19 (round four): a cited document version that differs from the one supplied; different system versions across documents (tested versus approved); a committee or board approving with no members, chair or quorum named; activity that started before its authorization; broad supplier access with no stated scope. Tested on constructed records AR-64 and AR-65, positive and negative.
 
 The three † templates were written after the practitioner's review of record AR-52, so AR-52 is not evidence that they work. They are tested on a separate constructed record (AR-61) in positive and negative form. Attribution wording is pending the practitioner's approval.
 
@@ -88,6 +90,10 @@ Tooling exists for developer evaluation, stress and isolation sets, a sealed hol
 ## 7. Competitive position
 
 Not established. Public product descriptions do not show whether competitors already perform equivalent checks, and no comparative test has been run.
+
+## 9. Diligence report (`package/diligence-report.mjs`)
+
+Generates a buyer and licensee report from live runs: what the engine is, template and safeguard counts, developer-record results (labelled as not independent), practitioner evidence where supplied, enterprise self-checks, stated limitations and what is not established. Tested to contain no accuracy, compliance or marketing claims.
 
 ## 8. Practitioner trial kit (`practitioner-trial.mjs`)
 

@@ -95,7 +95,7 @@ export function reviewerSnapshot(program, session) {
     // a finding, the review status or the event log.
     cognitiveObservations: buildCognitiveObservations(state),
     cognitiveObservationVersion: COGNITIVE_OBSERVATION_VERSION,
-    // Lenses, CC-* safeguards and the 32 named detection templates. Read-only.
+    // Lenses, CC-* safeguards and the 37 named detection templates. Read-only.
     safeguards: buildSafeguards(state),
     safeguardVersion: SAFEGUARD_VERSION,
     detectionTemplates: runDetectionTemplates(state),

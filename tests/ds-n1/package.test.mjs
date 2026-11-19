@@ -50,3 +50,25 @@ test('the builder refuses a non-empty or in-repository output directory', () => 
   assert.throws(() => buildBundle(new URL('../../tmp-bundle-test/', import.meta.url).pathname), /outside the repository/);
   assert.ok(!existsSync(new URL('../../tmp-bundle-test/', import.meta.url)));
 });
+
+test('the diligence report is generated live, states limits, and makes no accuracy claim', async () => {
+  const { buildDiligenceReport } = await import('../../lib/ds-n1/package/diligence-report.mjs');
+  const html = buildDiligenceReport();
+  assert.ok(!html.includes('[object Object]'));
+  assert.match(html, /Detection templates<\/th><td>\d+ \(/);
+  assert.match(html, /wrongly marked READY<\/th><td>0 of \d+/);
+  assert.match(html, /Signed audit log verifies<\/th><td>Yes/);
+  assert.match(html, /Edited log entry detected<\/th><td>Yes/);
+  assert.match(html, /Not established/);
+  assert.match(html, /No scored practitioner comparison/);
+  for (const w of ['guaranteed', 'compliant', 'eliminates', 'industry standard', 'court-proof']) assert.ok(!html.toLowerCase().includes(w), w);
+  const withP = buildDiligenceReport({ practitioner: { raised: 7, matched: 3, partial: 1, missed: 3, records: 1, reviewers: 1, full_match_rate: { rate: 3 / 7, low: 0.158, high: 0.75 }, caveat: 'Not an accuracy result.' } });
+  assert.match(withP, /7 practitioner-raised issues.*3 matched, 1 partly matched, 3 missed.*43%.*16 to 75%/s);
+});
+
+test('the bundle carries what its own tests and diligence report need', () => {
+  const list = allowlist();
+  for (const f of ['tests/ds-n1/expectations.json', 'tests/ds-n1/practitioner/build-review-packet.mjs', 'tests/ds-n1/practitioner/PROTOCOL.md', 'lib/ds-n1/package/diligence-report.mjs', 'lib/ds-n1/enterprise/store.mjs']) {
+    assert.ok(list.includes(f), f);
+  }
+});

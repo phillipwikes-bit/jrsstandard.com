@@ -12,11 +12,11 @@ const st = (r) => deriveState(openReview(r, { at: T0 }));
 const hits = (r) => runDetectionTemplates(st(r));
 const names = (r) => new Set(hits(r).map((h) => h.template));
 
-test('all 32 templates are registered in the five groups', () => {
+test('all 37 templates are registered in the five groups', () => {
   const groups = {};
   for (const t of Object.values(TEMPLATES)) groups[t.group] = (groups[t.group] || 0) + 1;
-  assert.equal(Object.keys(TEMPLATES).length, 32);
-  assert.deepEqual(groups, { authority_governance: 11, conclusion_reasoning: 5, chronology: 10, evidence_quotation: 5, certainty: 1 });
+  assert.equal(Object.keys(TEMPLATES).length, 37);
+  assert.deepEqual(groups, { authority_governance: 13, conclusion_reasoning: 5, chronology: 11, evidence_quotation: 7, certainty: 1 });
 });
 
 test('finding-based templates name the finding they rest on', () => {
@@ -308,4 +308,75 @@ test('"found the exposure adequate" is a bare result; "lapses on" is an end date
     assert.ok(!names(x).has('no_compensating_control_stated'), w);
   }
   assert.ok(r);
+});
+
+// Round four (2026-11-19): versions, collective approvers, action before
+// approval, broad access. AR-64 and AR-65 are constructed for these tests only.
+function ar64() {
+  const t1 = 'On 2026-02-16, the risk committee approved Lumen Sorter to route incoming complaints to case handlers.';
+  const t2 = 'Lumen Sorter has routed complaints since 2026-02-02.';
+  const t3 = 'It was assessed in test summary TS-40, version 3.';
+  const t4 = 'The approval covers model version 2.1 and was given under the operational AI policy, section 6.';
+  const t5 = 'Routing therefore continues under the approval.';
+  return {
+    schema: 'ds-n1.record/1.0', record_id: 'AR-64', record_version: '1', record_class: 'ai_action_authorization',
+    data_classification: 'constructed_fictional', title: 'Authorization record AR-64 (fictional)',
+    text: [t1, t2, t3, t4, t5].join(' '),
+    entities: [{ entity_id: 'E1', name: 'Lumen Sorter' }, { entity_id: 'E2', name: 'risk committee' }],
+    sources: [
+      { source_id: 'S1', title: 'Test summary TS-40', version: 'v2', text: 'Test summary TS-40. Lumen Sorter model version 2.0 was tested on 400 sample complaints.', events: [{ role: 'test_completed', date: '2026-02-05' }] },
+      { source_id: 'S2', title: 'Committee minute RC-9', version: 'v1', text: `Committee minute RC-9. ${t1} ${t4}`, events: [{ role: 'authorization', date: '2026-02-16', actor: 'E2' }] },
+    ],
+    claims: [
+      { claim_id: 'C1', kind: 'authority', quote: t1, actor: 'E2', event: { role: 'authorization', date: '2026-02-16' }, citations: [{ source_id: 'S2', quote: t1 }] },
+      { claim_id: 'C2', kind: 'fact', quote: t2, citations: [] },
+      { claim_id: 'C3', kind: 'fact', quote: t3, citations: [{ source_id: 'S1', quote: 'Lumen Sorter model version 2.0 was tested on 400 sample complaints.' }] },
+      { claim_id: 'C4', kind: 'fact', quote: t4, citations: [{ source_id: 'S2', quote: t4 }] },
+      { claim_id: 'C5', kind: 'conclusion', quote: t5, reasoning: 'C1 and C4 give the approval and its scope; C3 the test.', citations: [] },
+    ],
+  };
+}
+function ar65() {
+  const t1 = 'On 2026-05-11, Ines Moretti, head of infrastructure, granted Arclight Support administrator access to the billing servers under the vendor access standard, section 3.';
+  const t2 = 'Access is subject to multi-factor authentication and expires on 2026-06-11 unless renewed.';
+  const t3 = 'The access can therefore proceed.';
+  return {
+    schema: 'ds-n1.record/1.0', record_id: 'AR-65', record_version: '1', record_class: 'supplier_access_exception',
+    data_classification: 'constructed_fictional', title: 'Supplier access exception AR-65 (fictional)',
+    text: [t1, t2, t3].join(' '),
+    entities: [{ entity_id: 'E1', name: 'Arclight Support' }, { entity_id: 'E2', name: 'Ines Moretti' }],
+    sources: [{ source_id: 'S1', title: 'Exception EX-65', version: 'v1', text: `Exception EX-65. ${t1} ${t2}`, events: [{ role: 'authorization', date: '2026-05-11', actor: 'E2' }, { role: 'expiry', date: '2026-06-11' }] }],
+    claims: [
+      { claim_id: 'C1', kind: 'authority', quote: t1, actor: 'E2', event: { role: 'authorization', date: '2026-05-11' }, citations: [{ source_id: 'S1', quote: t1 }] },
+      { claim_id: 'C2', kind: 'fact', quote: t2, citations: [{ source_id: 'S1', quote: t2 }] },
+      { claim_id: 'C3', kind: 'conclusion', quote: t3, reasoning: 'C1 grants access; C2 limits it.', citations: [] },
+    ],
+  };
+}
+
+test('round-four templates fire on the gaps they target', () => {
+  const h = hits(ar64());
+  const get = (t) => h.find((x) => x.template === t);
+  assert.match(get('cited_version_mismatch').detail, /TS-40 version 3.*v2/);
+  assert.match(get('version_mismatch_between_sources').detail, /2\.1.*2\.0|2\.0.*2\.1/);
+  assert.equal(get('collective_approver_unnamed').claim_id, 'C1');
+  assert.match(get('action_before_authorization').detail, /2026-02-02.*2026-02-16/);
+  assert.ok(names(ar65()).has('broad_access_without_scope'));
+  for (const x of h.filter((y) => y.mode === 'advisory')) assert.equal(x.changes_review_status, false, x.template);
+});
+
+test('round-four templates stay quiet when the record covers the point', () => {
+  const r = ar64();
+  r.text = r.text.replace('version 3', 'version 2');
+  r.claims[2].quote = r.claims[2].quote.replace('version 3', 'version 2');
+  r.sources[0].text = r.sources[0].text.replace('2.0', '2.1');
+  r.text = r.text.replace('since 2026-02-02', 'since 2026-02-17'); r.claims[1].quote = r.claims[1].quote.replace('2026-02-02', '2026-02-17');
+  r.text += ' The committee met with a quorum of four members.';
+  const n = names(r);
+  for (const t of ['cited_version_mismatch', 'version_mismatch_between_sources', 'collective_approver_unnamed', 'action_before_authorization']) assert.ok(!n.has(t), t);
+  const s = ar65();
+  s.text += ' Access is limited to the billing job scheduler.';
+  assert.ok(!names(s).has('broad_access_without_scope'));
+  const ai = ar65(); ai.record_class = 'ai_action_authorization';
+  assert.ok(!names(ai).has('broad_access_without_scope'), 'scoped to supplier access');
 });

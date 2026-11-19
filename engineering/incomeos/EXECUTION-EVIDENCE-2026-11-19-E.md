@@ -1,0 +1,5 @@
+# Execution evidence: round-four checks, diligence report, bundle completeness (2026-11-19)
+
+- Five advisory templates (`detection-templates.mjs` 0.5.0-dev): `cited_version_mismatch`, `version_mismatch_between_sources`, `collective_approver_unnamed`, `action_before_authorization`, `broad_access_without_scope`. Tested on constructed records AR-64 and AR-65 with positive and negative cases; supported partner records draw no new hits. Practitioner-trial categories extended (new `version_traceability`).
+- `package/diligence-report.mjs`: buyer and licensee report computed from live runs. At build: 37 templates; developer records 24 of 24 status agreement, 0 defective records marked READY (developer-authored, not independent); signed audit log verifies and an edited entry is detected. Tested for absence of banned claim words.
+- Bundle completeness defect found and fixed: the licensing bundle omitted `tests/ds-n1/expectations.json` and the practitioner tools, so inside the bundle the diligence report crashed and 2 tests failed. After the fix the bundle runs 141/141 of its own tests, generates the report, and verifies with no problems. A test now guards the allowlist.
