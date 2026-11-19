@@ -14,7 +14,7 @@ export const config = { runtime: 'edge' };
 
 const SB = 'https://pjzxkeviouofdseagvpf.supabase.co';
 const RECORDS = ['AR-82'];
-const ROLES = ['', 'AI governance', 'Investigations or HR', 'Legal or eDiscovery', 'Audit, risk or compliance', 'Fraud examination', 'Other'];
+const ROLES = ['', 'AI governance', 'Investigations or HR', 'Legal or eDiscovery', 'Audit, risk or compliance', 'Fraud examination', 'Organizational psychology or research', 'Other'];
 
 function json(obj, status) {
   return new Response(JSON.stringify(obj), { status: status || 200, headers: {

@@ -7,6 +7,8 @@ Date: 2026-11-19. Purpose: decide, before anyone answers, who counts as a practi
 2. At least two years in that kind of work, self-reported.
 3. Answers in a personal, professional capacity, not on behalf of an employer.
 
+**Researchers (added 2026-11-19).** Organizational psychologists and other researchers who study decisions, judgment or workplace processes may take part. Their answers are reported as a separate group, not counted as practitioner answers, unless they also do the record-review work listed in item 1.
+
 ## Who does not count in the results
 - Anyone who has seen Decision Spellcheck's output, answer key or development discussion for the record they review.
 - Anyone who helped build or design the tool.
