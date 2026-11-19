@@ -1,0 +1,29 @@
+Subject: Re: Comments of reviewers - SEC-0111-2026: two separate manuscripts
+
+Dear Ms. Lopa,
+
+Thank you for raising this before the manuscript proceeds. I believe there has been a mix-up between two separate manuscripts, and I am sorry for any confusion my correspondence may have added.
+
+Since October I have sent the journal two different papers:
+
+1. "Can Public-Records Determinations Be Independently Reconstructed? Evidence from 32 Public Cases", by Stacyann Young and Phillip Wikes. This is the public-records study, based on our SSRN preprint (https://papers.ssrn.com/sol3/papers.cfm?abstract_id=7591521). I sent it on [DATE, after 23 October 2026].
+
+2. "Socioeconomic Challenges of AI-Drafted Decision Records: Can Expert Reviewers Detect Unsupported Conclusions?", by Phillip Wikes and Ubayet Hossain. This is the expert-review study with 16 reviewers. I sent it on 26 October 2026, and your reply that day referred to it as our second manuscript, co-authored with Ubayet Hossain.
+
+The referee reports and the edited file you sent on 8 November under SEC-0111-2026 (SEC_Wikes_Hossain_Edited.docx) concern the second paper, the expert-review study. Our revision of 10 November responds to those reports, so it is a revision of that study and not a new study.
+
+On your three questions:
+
+1. The revision does not replace the public-records study. That study is a separate paper. It is not published in any journal. It is available as the SSRN preprint above, and I submitted it to SocioEconomic Challenges as described. Could you tell us its manuscript number and status, or whether it needs to be resubmitted?
+
+2. Neither manuscript has had a change of authorship. The expert-review study has been by Phillip Wikes and Ubayet Hossain from its first submission. The public-records study is by Stacyann Young and Phillip Wikes, in the same order as the preprint. Ms Young is named in the acknowledgements of the expert-review study only for her contribution to that project. She is not, and never was, an author of it. Both co-authors will confirm this to you in writing.
+
+3. The expert-review exercise did not receive approval from an ethics committee, and it was not formally exempted. We are independent researchers without access to an institutional review board. Participants were professionals who volunteered and were not paid. They were invited through [HOW PARTICIPANTS WERE INVITED], were told the purpose of the study, and could stop at any time. They reviewed only synthetic records, and results are reported only in aggregate. [HOW CONSENT WAS RECORDED]. As I wrote on 10 November, written consent was not obtained from every participant. The Informed Consent Statement in the revised manuscript describes this exactly.
+
+If it would help, we would be glad for the expert-review study to carry its own manuscript number so that the public-records study can keep SEC-0111-2026, or the reverse, whichever suits the editorial office.
+
+Thank you for your patience and for your care with both papers.
+
+Kind regards,
+Phillip Wikes
+Corresponding Author
