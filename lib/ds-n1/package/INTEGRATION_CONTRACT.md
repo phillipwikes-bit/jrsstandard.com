@@ -46,7 +46,7 @@ All functions are pure and deterministic for the same inputs. A session is the r
 
 **Cognitive lenses** (read-only, never change a finding or status): observation versus inference, evidence, alternatives and state questions per finding; plus `unsupported_certainty`, `premature_closure` and `alternative_interpretation` observations.
 
-**Safeguards and templates** (read-only): `buildSafeguards(state)` from `cognitive-safeguards.mjs` returns `{ lenses, controls }`: 14 lenses and the eight CC-* controls, each with a trigger, a question, recommended reviewer actions and, for CC-ESCALATE, a route. `runDetectionTemplates(state)` from `detection-templates.mjs` returns hits for the 23 named templates, each marked `finding`, `observation` or `advisory`; advisory hits never change status. Coverage: `FEATURE_COVERAGE.md`.
+**Safeguards and templates** (read-only): `buildSafeguards(state)` from `cognitive-safeguards.mjs` returns `{ lenses, controls }`: 14 lenses and the eight CC-* controls, each with a trigger, a question, recommended reviewer actions and, for CC-ESCALATE, a route. `runDetectionTemplates(state)` from `detection-templates.mjs` returns hits for the 26 named templates, each marked `finding`, `observation` or `advisory`; advisory hits never change status. Coverage: `FEATURE_COVERAGE.md`.
 
 ## 4. Reviewer actions
 

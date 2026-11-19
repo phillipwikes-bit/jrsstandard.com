@@ -1,4 +1,5 @@
-// The 23 named detection templates (2026-11-18). Constructed records only.
+// The 23 named detection templates (2026-11-18) and three added on 2026-11-19
+// from a practitioner's blind review. Constructed records only.
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
@@ -11,11 +12,11 @@ const st = (r) => deriveState(openReview(r, { at: T0 }));
 const hits = (r) => runDetectionTemplates(st(r));
 const names = (r) => new Set(hits(r).map((h) => h.template));
 
-test('all 23 templates are registered in the five groups', () => {
+test('all 26 templates are registered in the five groups', () => {
   const groups = {};
   for (const t of Object.values(TEMPLATES)) groups[t.group] = (groups[t.group] || 0) + 1;
-  assert.equal(Object.keys(TEMPLATES).length, 23);
-  assert.deepEqual(groups, { authority_governance: 6, conclusion_reasoning: 5, chronology: 8, evidence_quotation: 3, certainty: 1 });
+  assert.equal(Object.keys(TEMPLATES).length, 26);
+  assert.deepEqual(groups, { authority_governance: 8, conclusion_reasoning: 5, chronology: 8, evidence_quotation: 4, certainty: 1 });
 });
 
 test('finding-based templates name the finding they rest on', () => {
@@ -100,4 +101,76 @@ test('a dated approval plus an undated policy sentence is not an undated decisio
   r.text += ' Approval was given under the finance automation policy.';
   r.claims.push({ claim_id: 'C9', kind: 'authority', quote: 'Approval was given under the finance automation policy.', citations: [] });
   assert.ok(!names(r).has('no_dated_decision'), 'found while comparing against a practitioner review record (AR-52)');
+});
+
+// Templates added 2026-11-19. Record AR-61 is constructed for these tests and is
+// not the record the practitioner reviewed.
+function ar61() {
+  const t1 = 'On 2026-09-03, Owen Marsh authorized Tallyway Agent to send payment confirmations to suppliers.';
+  const t2 = 'The pilot review was completed on 2026-08-28 and no material issues were identified.';
+  const t3 = 'Sending is limited to confirmed payments and requires a weekly sign-off.';
+  const t4 = 'Because the review was completed first and sending carries conditions, the authorization can proceed.';
+  return {
+    schema: 'ds-n1.record/1.0', record_id: 'AR-61', record_version: '1', record_class: 'ai_action_authorization',
+    data_classification: 'constructed_fictional', title: 'Authorization record AR-61 (fictional)',
+    text: [t1, t2, t3, t4].join(' '),
+    entities: [{ entity_id: 'E1', name: 'Tallyway Agent' }, { entity_id: 'E2', name: 'Owen Marsh' }],
+    sources: [
+      { source_id: 'S1', title: 'Pilot review PR-12', version: 'v1', text: 'Pilot review PR-12. The pilot review was completed on 2026-08-28 and no material issues were identified.', events: [{ role: 'evaluation_completed', date: '2026-08-28' }] },
+      { source_id: 'S2', title: 'Authorization memo AM-61', version: 'v1', text: `Authorization memo AM-61. ${t1} ${t3}`, events: [{ role: 'authorization', date: '2026-09-03', actor: 'E2' }] },
+    ],
+    claims: [
+      { claim_id: 'C1', kind: 'authority', quote: t1, actor: 'E2', event: { role: 'authorization', date: '2026-09-03' }, citations: [{ source_id: 'S2', quote: 'Owen Marsh authorized Tallyway Agent to send payment confirmations to suppliers' }] },
+      { claim_id: 'C2', kind: 'fact', quote: t2, event: { role: 'evaluation_completed', date: '2026-08-28' }, citations: [{ source_id: 'S1', quote: 'no material issues were identified' }] },
+      { claim_id: 'C3', kind: 'fact', quote: t3, citations: [{ source_id: 'S2', quote: t3 }] },
+      { claim_id: 'C4', kind: 'conclusion', quote: t4, reasoning: 'C2 establishes the review; C1 and C3 establish the conditional authorization.', citations: [] },
+    ],
+  };
+}
+// Adds a sentence to the record text and to memo S2, with a supported claim.
+function addStatement(r, id, sentence) {
+  r.text += ' ' + sentence;
+  r.sources[1].text += ' ' + sentence;
+  r.claims.push({ claim_id: id, kind: 'fact', quote: sentence, citations: [{ source_id: 'S2', quote: sentence }] });
+  return r;
+}
+const NEW3 = ['approver_role_not_stated', 'conclusory_evidence_summary', 'no_stop_or_redress_path'];
+
+test('the three added templates fire on a record missing role, scope and a stop route', () => {
+  const h = hits(ar61());
+  for (const t of NEW3) {
+    const x = h.find((y) => y.template === t);
+    assert.ok(x, t);
+    assert.equal(x.mode, 'advisory');
+    assert.equal(x.changes_review_status, false);
+  }
+  assert.equal(h.find((y) => y.template === 'approver_role_not_stated').claim_id, 'C1');
+  assert.equal(h.find((y) => y.template === 'conclusory_evidence_summary').claim_id, 'C2');
+  assert.equal(st(ar61()).status, 'READY_FOR_HUMAN_FINALIZATION', 'advisory hits leave the status unchanged');
+});
+
+test('a stated approver role clears approver_role_not_stated; a role for someone else does not', () => {
+  assert.ok(!names(addStatement(ar61(), 'C5', 'Owen Marsh is the accounts payable manager.')).has('approver_role_not_stated'));
+  assert.ok(names(addStatement(ar61(), 'C5', 'Lena Fox is the accounts payable manager.')).has('approver_role_not_stated'));
+});
+
+test('a stated test scope clears conclusory_evidence_summary', () => {
+  const r = addStatement(ar61(), 'C5', 'The review tested forty sample confirmations against the payment ledger.');
+  assert.ok(!names(r).has('conclusory_evidence_summary'));
+});
+
+test('a stated stop route clears no_stop_or_redress_path, and the check applies only to AI actions', () => {
+  assert.ok(!names(addStatement(ar61(), 'C5', 'Any supplier may ask for confirmations to stop, and finance can suspend sending.')).has('no_stop_or_redress_path'));
+  const r = ar61();
+  r.record_class = 'supplier_access_exception';
+  assert.ok(!names(r).has('no_stop_or_redress_path'));
+});
+
+test('with role, scope and stop route stated, none of the three fires', () => {
+  let r = ar61();
+  r = addStatement(r, 'C5', 'Owen Marsh is the accounts payable manager.');
+  r = addStatement(r, 'C6', 'The review tested forty sample confirmations against the payment ledger.');
+  r = addStatement(r, 'C7', 'Any supplier may ask for confirmations to stop, and finance can suspend sending.');
+  const n = names(r);
+  for (const t of NEW3) assert.ok(!n.has(t), t);
 });

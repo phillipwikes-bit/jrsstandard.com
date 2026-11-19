@@ -46,11 +46,15 @@ Fourteen lenses: observation versus inference; alternative explanations; selecti
 
 Each control lists the existing reviewer actions that fit and never changes status by itself.
 
-## 4. The 23 detection templates (`detection-templates.mjs`)
+## 4. The 26 detection templates (`detection-templates.mjs`)
+
+The 23 named templates of the October 2026 programme, plus three added on 2026-11-19 from a practitioner's blind review of a constructed record (marked †).
 
 - **11 finding-based:** detected by existing DS-N1 rules, so they affect status: `authority_source_not_identified`, `authority_state_conflict`, `control_state_conflict`, `risk_state_conflict`, `conclusion_without_traceable_basis`, `conclusion_without_basis`, `basis_states_no_reason_or_source`, `decision_date_conflict`, `expiry_date_conflict`, `cited_evidence_conflict`, `absent_quotation`.
 - **1 observation-based:** `certainty_language`.
-- **11 advisory:** new checks that are reported but do not change status until validated: `no_authority_section`, `no_compensating_control_stated`, `no_locatable_conclusion`, `basis_without_conclusion`, `no_stated_expiry_date`, `no_explicit_dates`, `impossible_sequence`, `assessment_after_decision`, `duration_date_conflict`, `no_dated_decision`, `ambiguous_quotation`.
+- **14 advisory:** new checks that are reported but do not change status until validated: `no_authority_section`, `no_compensating_control_stated`, `no_locatable_conclusion`, `basis_without_conclusion`, `no_stated_expiry_date`, `no_explicit_dates`, `impossible_sequence`, `assessment_after_decision`, `duration_date_conflict`, `no_dated_decision`, `ambiguous_quotation`, `approver_role_not_stated` †, `conclusory_evidence_summary` †, `no_stop_or_redress_path` †.
+
+The three † templates were written after the practitioner's review of record AR-52, so AR-52 is not evidence that they work. They are tested on a separate constructed record (AR-61) in positive and negative form. Attribution wording is pending the practitioner's approval.
 
 Tests: `detection-templates.test.mjs`. Positive and negative cases exist for each advisory template; false-warning rates have not been measured.
 
