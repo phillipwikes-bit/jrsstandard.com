@@ -69,7 +69,7 @@ const result = {
   executed_at: new Date().toISOString(),
   application: { candidate_id: CANDIDATE.candidate_id, version: CANDIDATE.version, rule_version: CANDIDATE.rule_version },
   source_commit: commit, working_tree_dirty_in_scope: dirty,
-  model: 'none (zero model calls)', provider: 'none', codebook_version: 'NOT APPLICABLE: provisional RC1-RC5 grouping, no Codebook correspondence',
+  model: 'none (zero model calls)', provider: 'none', codebook_version: 'NOT APPLICABLE: Decision Spellcheck internal RC1-RC5 grouping',
   environment: { node: process.version, platform: process.platform },
   dataset: { id: man.fixture_set, manifest_sha256: sha(manRaw), unique_records: n, classification: man.classification },
   expectations: { id: exp.expectation_set, sha256: sha(expRaw) },

@@ -1,4 +1,5 @@
 #!/usr/bin/env node
+import { readFileSync } from 'node:fs';
 // Browser automation check of the DS-N1 reviewer interface (Chromium via the
 // pre-installed Playwright). Emulated viewports only: this is NOT an actual
 // iPhone Safari test and NOT an assistive-technology test.
@@ -51,7 +52,7 @@ try {
       await card.locator('summary').first().click();
       assert.match(await card.textContent(), /Which part of the conclusion is directly established/);
       await card.locator('.cognitive-learning summary').click();
-      assert.match(await card.locator('.cognitive-learning').textContent(), /Basis identification/);
+      assert.match(await card.locator('.cognitive-learning').textContent(), /Source support/);
       await card.locator('.cognitive-reflection summary').click();
       assert.match(await card.locator('.cognitive-reflection').textContent(), /Restrain/);
       assert.match(await card.locator('.cognitive-reflection').textContent(), /Reframe/);
@@ -83,6 +84,19 @@ try {
       assert.equal(await page.locator('#cogbody .cognitive-observation').count(), 0, 'a supported record raises no wording check');
     });
 
+    await check(`${label}: safeguards panel routes escalation and stays read-only`, async () => {
+      await page.selectOption('#fixture', 'D06');
+      await page.waitForFunction(() => document.getElementById('statusbox').textContent === 'HOLD');
+      const esc = page.locator('#cogbody .cognitive-safeguard[data-control="CC-ESCALATE"]');
+      assert.ok(await esc.count() >= 1, 'CC-ESCALATE should be shown when closure is stated with open critical findings');
+      await esc.first().locator('summary').click();
+      assert.match(await esc.first().textContent(), /authorised reviewer/);
+      assert.equal(await page.textContent('#statusbox'), 'HOLD');
+      await page.selectOption('#fixture', 'P01');
+      await page.waitForFunction(() => document.getElementById('statusbox').textContent === 'READY_FOR_HUMAN_FINALIZATION');
+      assert.equal(await page.locator('#cogbody .cognitive-safeguard').count(), 0);
+    });
+
     await check(`${label}: cognitive source trace shows actual record passage without claiming support`, async () => {
       await page.selectOption('#fixture', 'D02');
       await page.waitForFunction(() => document.getElementById('statusbox').textContent === 'HOLD');
@@ -106,12 +120,17 @@ try {
     });
     await check(`${label}: defective record holds; correction flow reaches READY`, async () => {
       await page.selectOption('#fixture', 'D06');
-      await page.waitForFunction(() => document.getElementById('statusbox').textContent === 'HOLD');
+      // Wait for D06 itself: the previous record may also be HOLD, so the
+      // status alone does not show that D06 has loaded.
+      const d06 = JSON.parse(readFileSync(new URL('./fixtures/D06.json', import.meta.url), 'utf8')).text;
+      await page.waitForFunction((t) => document.getElementById('statusbox').textContent === 'HOLD' && document.getElementById('record').textContent === t, d06);
       // Keyboard selection of the C2 claim.
-      await page.focus('mark[aria-label="Claim C2"]');
+      // Wait on the findings panel itself: the claim marks re-render after the
+      // status changes, so a stale focus or an early read made this check flaky.
+      await page.locator('mark[aria-label="Claim C2"]').focus();
       await page.keyboard.press('Enter');
-      await page.waitForSelector('text=UNSUPPORTED_CLAIM');
-      assert.match(await page.textContent('#findings'), /Which identified source supports this statement\?/);
+      await page.waitForFunction(() => /Which identified source supports this statement\?/.test(document.getElementById('findings').textContent), null, { timeout: 5000 });
+      assert.match(await page.textContent('#findings'), /UNSUPPORTED_CLAIM/);
       // Action without reviewer identity is refused.
       await page.fill('#att-quote', 'completed the vendor security assessment');
       await page.selectOption('#att-src', 'S2');
