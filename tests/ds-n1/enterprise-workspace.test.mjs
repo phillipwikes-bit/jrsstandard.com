@@ -108,3 +108,32 @@ test('the local server enforces the same rules over HTTP', async () => {
     assert.equal(verifyAuditLog(audit.body.entries, key).ok, true);
   } finally { server.close(); }
 });
+
+test('state saves encrypted, reloads intact, and a wrong passphrase or altered file is refused', async () => {
+  const { saveWorkspace, loadWorkspace } = await import('../../lib/ds-n1/enterprise/store.mjs');
+  const { mkdtempSync, readFileSync: rd, writeFileSync: w } = await import('node:fs');
+  const { tmpdir } = await import('node:os');
+  const { join } = await import('node:path');
+  const { ws, a, rev, matter } = setup();
+  const { review_id } = ws.openReview(rev.token, { matter_id: matter.matter_id, record: fx('AUTH-P01') });
+  const path = join(mkdtempSync(join(tmpdir(), 'ws-')), 'store.json');
+  const pass = 'correct horse battery staple';
+  saveWorkspace(ws, path, pass);
+  const raw = rd(path, 'utf8');
+  assert.ok(!raw.includes('Ledgerline') && !raw.includes('PRIVATE KEY') && !raw.includes('Admin A'), 'nothing readable on disk');
+  const back = loadWorkspace(path, pass, { now });
+  assert.equal(back.publicKeyPem, ws.publicKeyPem, 'same signing key');
+  assert.ok(back.report(rev.token, review_id), 'tokens and reviews survive');
+  assert.ok(back.auditLog(a.admin_token).length >= ws.auditLog(a.admin_token).length - 1);
+  assert.equal(code(() => loadWorkspace(path, 'wrong passphrase entirely')), 'UNREADABLE');
+  const f = JSON.parse(raw); const b = Buffer.from(f.data, 'base64'); b[10] ^= 1; f.data = b.toString('base64'); w(path, JSON.stringify(f));
+  assert.equal(code(() => loadWorkspace(path, pass)), 'UNREADABLE');
+  assert.equal(code(() => saveWorkspace(ws, path, 'short')), 'INVALID');
+});
+
+test('a restored workspace refuses a snapshot whose audit log was edited', () => {
+  const { ws } = setup();
+  const snap = ws.snapshot();
+  snap.audit[1].detail = { roles: ['admin', 'approver'] };
+  assert.equal(code(() => createWorkspace({ restore: snap })), 'TAMPERED');
+});

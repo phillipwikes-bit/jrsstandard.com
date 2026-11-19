@@ -8,3 +8,9 @@ Owner directed that the commercial specification's enterprise requirements be bu
 - Test-first finding: the verifier initially accepted two swapped log entries; the verifier was fixed (ordering check), not the test.
 
 Not built, and why: hosting, TLS and persistent storage (need the owner's hosting account and spend); single sign-on; key custody and external log storage; processing real records (needs legal and security approval). No security certification is claimed.
+
+## Update: persistence (2026-11-19)
+- `enterprise/store.mjs`: workspace state (including the signing key and token hashes) saved to an AES-256-GCM encrypted file, key derived by scrypt from an operator passphrase; written atomically with owner-only permissions. Loading refuses a wrong passphrase or altered file, and verifies the signed audit log before accepting state.
+- `enterprise/run.mjs`: starts the server on 127.0.0.1 with the store; first run prints the admin token once; every state-changing request is saved before the reply.
+- Tests (2 more): encrypted round trip with nothing readable on disk; wrong passphrase and altered file refused; edited audit log refused on restore. Manual smoke test: create, add a matter over HTTP, restart, store verified.
+- Still not built: hosting, TLS, key management service, backups.
