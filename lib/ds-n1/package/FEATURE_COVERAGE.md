@@ -73,11 +73,11 @@ Tests: `detection-templates.test.mjs`. Positive and negative cases exist for eac
 | Quality assurance | Built: automated suites and a reproducibility baseline. Rollback of a released version: not built |
 | Accessibility | Partial: labelled sections, keyboard focus and overflow checks; no formal accessibility audit |
 | Integration interface | Built as a local library and contract (`INTEGRATION_CONTRACT.md`). No network API, by design |
-| Authentication and role-based access | **Not built.** Needs an approved private backend (owner items in `engineering/incomeos/HANDOFF.md` section 6) |
-| Matter or tenant separation | **Not built.** Same dependency |
+| Authentication and role-based access | Built as a local reference implementation (`enterprise/workspace.mjs`, `enterprise/server.mjs`): admin, reviewer, approver and auditor roles; hashed access tokens; revocation; only approvers finalise or override. Not hosted; no single sign-on |
+| Matter or tenant separation | Built in the reference implementation: organisations and matters; no review, report or log entry crosses an organisation |
 | Secure processing of real records | **Not built and not authorized.** Real records are refused |
-| Configurable retention and deletion | **Not built.** Same dependency |
-| Independent logging | **Not built.** The log is hash-chained but unsigned and self-contained |
+| Configurable retention and deletion | Built in the reference implementation: retention period per organisation; purge leaves a content-free tombstone in the signed log. State is in memory; no persistent store |
+| Independent logging | Partly built: the workspace audit log is hash-chained and every entry is signed with Ed25519; an offline verifier needs only the public key. The per-review event log remains unsigned. Key custody and external log storage are not built |
 
 ## 6. Evaluation measures
 
