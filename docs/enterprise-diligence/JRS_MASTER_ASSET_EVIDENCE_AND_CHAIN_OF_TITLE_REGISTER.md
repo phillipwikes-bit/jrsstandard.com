@@ -624,3 +624,15 @@ of the record, not evidence that the owner failed to review, direct or accept th
 ## Final assessment for this consolidation pass
 
 **CURRENT JRS FACTUAL EVIDENCE PACKAGE COMPLETE.**
+
+# ADDITION, 2026-11-19: Decision Spellcheck (DS-N1) and practitioner feedback
+
+Added under the future update protocol (section 24). Nothing above is changed. Labels as elsewhere in this register; no legal conclusion is made.
+
+| Item | Evidence | Status | Open question |
+|---|---|---|---|
+| DS-N1 code (Decision Spellcheck) | `lib/ds-n1/identity.mjs` `provenance`: developed 2026-11-03 onward by an AI development agent at the owner's direction; commits carry co-authorship trailers; work on PRs #215 to #221 | **FACT** as metadata; consistent with the E-029 owner account of AI-assisted development | Whether E-029 is extended in writing to DS-N1: **REQUIRES HUMAN REVIEW (owner)** |
+| Practitioner feedback, Dr. Rarkimm Fields | Owner-supplied screenshots of LinkedIn messages, 2026-11-18 and 2026-11-19 (held by the owner, not in this repository): permission to turn three feedback points into checks and to be credited "as a practitioner who gave feedback"; conditions: approve wording and final page before publication, no endorsement, fictional material only, update or remove credit if validation claims change | **FACT** (owner-supplied primary images); permission for use and credit | Permission is not assignment (Rule 5). Whether a short written feedback-use acknowledgement is wanted before sale: **REQUIRES HUMAN REVIEW (counsel)**. Originals should be preserved by the owner. |
+| Practitioner review page answers | `practitioner-review-f98cc6a497.html`, `api/practitioner-review.js`; opt-ins recorded per answer | **FACT** | The page states no terms on how a submitted answer may be used. A one-sentence feedback-use notice is drafted for owner and counsel review before wide circulation. |
+| Use of the 24-record study's expert judgments to evaluate DS-N1 | Contributor consent (section 8, row for 33 people) covers study publications and successor use, and **does not** cover licensing, commercial products or revenue | **FACT** (consent scope) | Using those judgments as evidence in commercial material for DS-N1: **REQUIRES HUMAN REVIEW (counsel)** before any such use. Internal research use of aggregate figures is a narrower question for the same review. |
+| Linking DS-N1 to the JRS name and method | DS-N1 applies JRS concepts (conditions, traceability); JRS rights position as recorded above, including the absence of any broad assignment instrument from contributors | **INFERENCE** | Branding DS-N1 under the JRS mark and selling them together or separately: trademark and chain-of-title questions for counsel; see `research/TRADEMARK_COST_BENEFIT_2026-08-12.md`. |
