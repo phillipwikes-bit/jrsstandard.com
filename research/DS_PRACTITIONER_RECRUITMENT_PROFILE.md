@@ -3,7 +3,7 @@
 Date: 2026-11-19. Purpose: decide, before anyone answers, who counts as a practitioner reviewer and what is recorded about them, so the results can be defended to a buyer, a journal or counsel later.
 
 ## Who qualifies
-1. Works, or has worked, in a role that reviews or relies on decision records: investigations, HR or employee relations, audit, risk or compliance, legal or eDiscovery, AI governance, fraud examination, or public-records administration.
+1. Works, or has worked, in a role that reviews or relies on decision records: investigations, HR or employee relations, civil rights, EEO or fair housing enforcement, audit, risk or compliance, legal or eDiscovery, AI governance, fraud examination, or public-records administration.
 2. At least two years in that kind of work, self-reported.
 3. Answers in a personal, professional capacity, not on behalf of an employer.
 
