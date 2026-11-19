@@ -2,27 +2,27 @@ Subject: Re: Comments of reviewers - SEC-0111-2026: two separate manuscripts
 
 Dear Ms. Lopa,
 
-Thank you for raising this before the manuscript proceeds. I believe there has been a mix-up between two separate manuscripts, and I am sorry for any confusion my correspondence may have added.
+Thank you for comparing the files so carefully, and for asking before the manuscript went any further. You are right that the two documents are different studies. I believe they have been filed under one manuscript number, and I am sorry I did not notice this sooner.
 
-Since October I have sent the journal two different papers:
+I sent the journal two separate papers:
 
-1. "Can Public-Records Determinations Be Independently Reconstructed? Evidence from 32 Public Cases", by Stacyann Young and Phillip Wikes. This is the public-records study, based on our SSRN preprint (https://papers.ssrn.com/sol3/papers.cfm?abstract_id=7591521). I sent it on [DATE, after 23 October 2026]. For reference, I attach the two files sent with it: 1_Manuscript_for_SocioEconomic_Challenges.docx and 2_Original_Preprint_SSRN.pdf. Both list the authors as Stacyann Young and Phillip Wikes, in that order.
+1. "Can Public-Records Determinations Be Independently Reconstructed? Evidence from 32 Public Cases", by Stacyann Young and Phillip Wikes. This is the study of 32 public decision records from New York and Connecticut. I sent it on [DATE] with the files 1_Manuscript_for_SocioEconomic_Challenges.docx and 2_Original_Preprint_SSRN.pdf, which I attach again. I understand this is the original SEC-0111-2026.
 
-2. "Socioeconomic Challenges of AI-Drafted Decision Records: Can Expert Reviewers Detect Unsupported Conclusions?", by Phillip Wikes and Ubayet Hossain. This is the expert-review study with 16 reviewers. I sent it on 26 October 2026, and your reply that day referred to it as our second manuscript, co-authored with Ubayet Hossain.
+2. "Socioeconomic Challenges of AI-Drafted Decision Records: Can Expert Reviewers Detect Unsupported Conclusions?", by Phillip Wikes and Ubayet Hossain. This is the study of 24 constructed records assessed by 16 reviewers. I sent it on 26 October 2026, and on the same day you kindly acknowledged it as our second manuscript, co-authored with Ubayet Hossain.
 
-The referee reports and the edited file you sent on 8 November under SEC-0111-2026 (SEC_Wikes_Hossain_Edited.docx) concern the second paper, the expert-review study. Our revision of 10 November responds to those reports, so it is a revision of that study and not a new study.
+The referee reports and the edited manuscript I received on 8 November under SEC-0111-2026 (SEC_Wikes_Hossain_Edited.docx) were for the second paper. I therefore revised that paper, under the new title "Expert Review of AI-Drafted Decision Records", and returned it under the same number. That is how the two studies came to appear as one.
 
 On your three questions:
 
-1. The revision does not replace the public-records study. That study is a separate paper. It is not published in any journal. It is available as the SSRN preprint above, and I submitted it to SocioEconomic Challenges as described. Could you tell us its manuscript number and status, or whether it needs to be resubmitted?
+1. The revised manuscript is not intended to replace the public-records study. They are two separate papers. The public-records study is not published in any journal. It is available as a preprint on SSRN (https://papers.ssrn.com/sol3/papers.cfm?abstract_id=7591521), and as far as I know it is still with SocioEconomic Challenges as SEC-0111-2026. Could you let me know whether it has been sent for review?
 
-2. Neither manuscript has had a change of authorship. The expert-review study has been by Phillip Wikes and Ubayet Hossain from its first submission. The public-records study is by Stacyann Young and Phillip Wikes, in the same order as the preprint. Ms Young is named in the acknowledgements of the expert-review study only for her contribution to that project. She is not, and never was, an author of it. Both co-authors will confirm this to you in writing.
+2. No author has been added, removed or reordered on either paper. The public-records study has always been by Stacyann Young and Phillip Wikes, in that order. The expert-review study has always been by Phillip Wikes and Ubayet Hossain. Ms Young is named in the acknowledgements of the expert-review study only for her contribution to that project, and she has never been an author of it. Both Ms Young and Mr Hossain will confirm this to you in writing.
 
-3. The expert-review exercise did not receive approval from an ethics committee, and it was not formally exempted. We are independent researchers without access to an institutional review board. Participants were professionals who volunteered and were not paid. They were invited through [HOW PARTICIPANTS WERE INVITED], were told the purpose of the study, and could stop at any time. They reviewed only synthetic records, and results are reported only in aggregate. [HOW CONSENT WAS RECORDED]. As I wrote on 10 November, written consent was not obtained from every participant. The Informed Consent Statement in the revised manuscript describes this exactly.
+3. The expert-review exercise did not receive approval from an ethics committee and was not formally exempted. We are independent researchers without access to an institutional review board. The participants were professionals who volunteered without payment. They were invited through [HOW PARTICIPANTS WERE INVITED], were told the purpose of the study, and could stop at any time. They assessed only synthetic records, and results are reported only in aggregate. [HOW CONSENT WAS RECORDED]. As I wrote on 10 November, written consent was not obtained from every participant. The Informed Consent Statement in the revised manuscript describes this.
 
-If it would help, we would be glad for the expert-review study to carry its own manuscript number so that the public-records study can keep SEC-0111-2026, or the reverse, whichever suits the editorial office.
+To keep the two studies apart, would it be possible to give the expert-review study its own manuscript number, so that the review it has already received stays with it, while SEC-0111-2026 remains the public-records study? If the journal's procedure requires it, I will of course withdraw the expert-review revision from SEC-0111-2026 and submit it as a new manuscript.
 
-Thank you for your patience and for your care with both papers.
+Thank you for your patience, and for the care you have given both papers.
 
 Kind regards,
 Phillip Wikes
