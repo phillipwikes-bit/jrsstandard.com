@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>One record, one question &middot; JRS</title>
+<meta name="robots" content="noindex,nofollow">
+<meta name="referrer" content="no-referrer">
+<meta name="description" content="A practitioner review of one short fictional decision record.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:wght@400;500&family=Inter:wght@300;400;500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#050505; --surface:#121212; --surface2:#1A1A1A;
+  --accent:#BE9447; --accent-dim:#7A5E28;
+  --muted:#B3B3B3; --muted-soft:#8A8A8A; --text:#F2F2F2;
+  --rule:#2A2A2A; --stop:#8B2020; --stop-text:#E88080; --review-text:#D4A055; --ready-text:#5DBF82;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:var(--bg);color:var(--text);font-family:'Inter',sans-serif;line-height:1.6}
+main{max-width:680px;margin:0 auto;padding:32px 16px 64px}
+.eyebrow{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--accent);margin-bottom:10px}
+h1{font-family:'Bodoni Moda',serif;font-weight:400;font-size:28px;line-height:1.25;margin-bottom:12px}
+h2{font-family:'Bodoni Moda',serif;font-weight:400;font-size:20px;margin:28px 0 10px}
+p{color:var(--muted);margin-bottom:12px}
+.record{background:var(--surface);border-left:3px solid var(--accent);padding:16px 18px;margin:12px 0;color:var(--text)}
+.doc{background:var(--surface2);border:1px solid var(--rule);padding:12px 14px;margin:10px 0}
+.doc b{display:block;font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--accent);font-weight:400;margin-bottom:4px}
+.doc span{color:var(--text)}
+label{display:block;color:var(--text);margin:18px 0 6px}
+.hint{color:var(--muted-soft);font-size:14px}
+textarea,input[type=text],input[type=email],select{width:100%;background:var(--surface);color:var(--text);border:1px solid var(--rule);padding:12px;font:inherit;border-radius:2px}
+textarea{min-height:200px}
+textarea:focus,input:focus,select:focus{outline:2px solid var(--accent);outline-offset:1px}
+.check{display:flex;gap:10px;align-items:flex-start;margin:12px 0;color:var(--text)}
+.check input{margin-top:5px;width:18px;height:18px;accent-color:var(--accent);flex:none}
+button{margin-top:24px;background:var(--accent);color:var(--bg);border:0;padding:14px 22px;font:500 16px 'Inter',sans-serif;cursor:pointer;min-height:48px;width:100%}
+button:disabled{opacity:.6;cursor:default}
+#msg{margin-top:14px;color:var(--review-text)}
+.done{background:var(--surface);border:1px solid var(--ready-text);padding:18px;margin-top:20px;color:var(--text)}
+.hp{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden}
+footer{color:var(--muted-soft);font-size:13px;margin-top:40px}
+</style>
+</head>
+<body>
+<main>
+<div class="eyebrow">Practitioner review &middot; about ten minutes</div>
+<h1>One fictional record, one question</h1>
+<p>Below is a short decision record with the documents behind it. Everything here is invented: the people, the company and the documents. There is no sign-up and nothing to download. You answer once and you are done.</p>
+
+<h2>The record</h2>
+<div class="record">On 2026-03-02, Ana Petrov, IT service manager, granted Brightledger Consulting administrator access to the payroll system. The access is subject to multi-factor authentication. The access runs until 2026-04-30. The vendor risk assessment found the risk acceptable. The exception was granted under the third-party access standard, section 5. The exception is therefore controlled and can remain in place.</div>
+
+<h2>The documents behind it</h2>
+<div class="doc"><b>Access request AR-REQ-82 (v1)</b><span>Brightledger Consulting requests administrator access to the payroll system for a migration. Multi-factor authentication is recommended.</span></div>
+<div class="doc"><b>Vendor risk assessment VRA-19 (v1)</b><span>The vendor risk assessment found the risk acceptable.</span></div>
+<div class="doc"><b>Exception approval EX-82 (v1)</b><span>On 2026-03-02, Ana Petrov, IT service manager, granted Brightledger Consulting administrator access to the payroll system. The access runs until 2026-04-30. The exception was granted under the third-party access standard, section 5.</span></div>
+
+<form id="f" novalidate>
+<label for="answer">What can't you rebuild from this record? List anything a later reviewer could not trace, confirm or rely on.</label>
+<textarea id="answer" name="answer" required></textarea>
+
+<label for="role">Your field <span class="hint">(optional)</span></label>
+<select id="role" name="role">
+<option value="">Prefer not to say</option>
+<option>AI governance</option>
+<option>Investigations or HR</option>
+<option>Legal or eDiscovery</option>
+<option>Audit, risk or compliance</option>
+<option>Fraud examination</option>
+<option>Other</option>
+</select>
+
+<label for="name">Name <span class="hint">(optional)</span></label>
+<input type="text" id="name" name="name" autocomplete="name">
+<label for="email">Email <span class="hint">(optional, only needed for the boxes below)</span></label>
+<input type="email" id="email" name="email" autocomplete="email">
+
+<div class="check"><input type="checkbox" id="c_results"><label for="c_results" style="margin:0">Send me how my answer compared with the tool.</label></div>
+<div class="check"><input type="checkbox" id="c_credit"><label for="c_credit" style="margin:0">You may credit me as a practitioner who gave feedback. I will see the exact wording first, and it is never an endorsement.</label></div>
+<div class="check"><input type="checkbox" id="c_pilot"><label for="c_pilot" style="margin:0">I would be open to hearing about a pilot or licence for my organisation.</label></div>
+
+<div class="hp" aria-hidden="true"><label for="website">Leave this empty</label><input type="text" id="website" tabindex="-1" autocomplete="off"></div>
+<button type="submit" id="go">Submit my answer</button>
+<div id="msg" role="status" aria-live="polite"></div>
+</form>
+<div id="thanks" class="done" hidden>Thank you. Your answer is in, and there is nothing more to do.</div>
+<footer>&copy; 2026 Phillip Wikes &middot; JRS&trade; &middot; <a href="mailto:info@jrsstandard.com" style="color:var(--accent)">info@jrsstandard.com</a></footer>
+</main>
+<script>
+var RECORD_ID = 'AR-82';
+function jrsSanitizeCheck(text){
+  var patterns=[
+    {re:/[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}/g, label:'email address'},
+    {re:/\b\d{3}[-.\s]?\d{3}[-.\s]?\d{4}\b/g, label:'phone number'},
+    {re:/\b\d{3}-\d{2}-\d{4}\b/g, label:'SSN'},
+    {re:/\b\d{4}[\s-]?\d{4}[\s-]?\d{4}[\s-]?\d{4}\b/g, label:'card number'}
+  ];
+  var found=[]; patterns.forEach(function(p){ if(p.re.test(text)) found.push(p.label); });
+  if(found.length){ return confirm('Potential sensitive identifier detected ('+found.join(', ')+'). Confirm there is no personal data in your answer before submitting.'); }
+  return true;
+}
+function val(id){ var el=document.getElementById(id); return el ? String(el.value||'').trim() : ''; }
+function chk(id){ var el=document.getElementById(id); return !!(el && el.checked); }
+var form=document.getElementById('f');
+if(form){ form.addEventListener('submit', function(e){
+  e.preventDefault();
+  var msg=document.getElementById('msg'), btn=document.getElementById('go');
+  var answer=val('answer'), email=val('email');
+  if(answer.length < 20){ if(msg) msg.textContent='Please write a little more about what you could not rebuild.'; return; }
+  var wantsContact=chk('c_results')||chk('c_credit')||chk('c_pilot');
+  if(wantsContact && (email.indexOf('@')<1 || email.indexOf('.')<0)){ if(msg) msg.textContent='Please add your email so we can reach you about the boxes you ticked.'; return; }
+  if(!jrsSanitizeCheck(answer)) return;
+  var body={ record_id:RECORD_ID, answer:answer, role:val('role'), name:val('name'), email:email,
+    want_results:chk('c_results'), consent_credit:chk('c_credit'), pilot_interest:chk('c_pilot'), website:val('website') };
+  if(btn) btn.disabled=true; if(msg) msg.textContent='Sending...';
+  fetch('/api/practitioner-review', { method:'POST', headers:{'Content-Type':'application/json'}, body:JSON.stringify(body) })
+    .then(function(r){ if(!r.ok) throw new Error('status '+r.status); return r.json(); })
+    .then(function(){ form.hidden=true; var t=document.getElementById('thanks'); if(t) t.hidden=false; })
+    .catch(function(){
+      // Keep the answer if the server is unreachable: save it as a file to email instead.
+      try{
+        var blob=new Blob([JSON.stringify(body,null,2)],{type:'application/json'});
+        var a=document.createElement('a'); a.href=URL.createObjectURL(blob); a.download='practitioner-review-'+RECORD_ID+'.json';
+        document.body.appendChild(a); a.click(); a.remove();
+      }catch(err){}
+      if(btn) btn.disabled=false;
+      if(msg) msg.textContent='We could not send your answer just now. A copy was saved to your device; please email it to info@jrsstandard.com.';
+    });
+}); }
+</script>
+</body>
+</html>
