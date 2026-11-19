@@ -12,11 +12,11 @@ const st = (r) => deriveState(openReview(r, { at: T0 }));
 const hits = (r) => runDetectionTemplates(st(r));
 const names = (r) => new Set(hits(r).map((h) => h.template));
 
-test('all 26 templates are registered in the five groups', () => {
+test('all 31 templates are registered in the five groups', () => {
   const groups = {};
   for (const t of Object.values(TEMPLATES)) groups[t.group] = (groups[t.group] || 0) + 1;
-  assert.equal(Object.keys(TEMPLATES).length, 26);
-  assert.deepEqual(groups, { authority_governance: 8, conclusion_reasoning: 5, chronology: 8, evidence_quotation: 4, certainty: 1 });
+  assert.equal(Object.keys(TEMPLATES).length, 31);
+  assert.deepEqual(groups, { authority_governance: 11, conclusion_reasoning: 5, chronology: 10, evidence_quotation: 4, certainty: 1 });
 });
 
 test('finding-based templates name the finding they rest on', () => {
@@ -173,4 +173,82 @@ test('with role, scope and stop route stated, none of the three fires', () => {
   r = addStatement(r, 'C7', 'Any supplier may ask for confirmations to stop, and finance can suspend sending.');
   const n = names(r);
   for (const t of NEW3) assert.ok(!n.has(t), t);
+});
+
+// Templates added 2026-11-19 (second round). Record AR-62 is constructed for
+// these tests; it is not the record whose review exposed the gaps.
+function ar62() {
+  const t1 = 'On 2026-07-10, Hana Okoye, the billing operations manager, authorized Quillon Agent to apply account credits to subscribers without human review.';
+  const t2 = 'Credits are limited to amounts under $40.';
+  const t3 = 'The authorization expires on 2026-09-30.';
+  const t4 = 'A pilot in June surfaced no problems.';
+  const t5 = 'Quillon Agent may therefore apply credits from 2026-07-12.';
+  const memo = `Authorization memo AM-62. ${t1} ${t2} ${t3} Any subscriber may ask for credits to stop, and billing can suspend the agent.`;
+  return {
+    schema: 'ds-n1.record/1.0', record_id: 'AR-62', record_version: '1', record_class: 'ai_action_authorization',
+    data_classification: 'constructed_fictional', title: 'Authorization record AR-62 (fictional)',
+    text: [t1, t2, t3, t4, t5, 'Any subscriber may ask for credits to stop, and billing can suspend the agent.'].join(' '),
+    entities: [{ entity_id: 'E1', name: 'Quillon Agent' }, { entity_id: 'E2', name: 'Hana Okoye' }],
+    sources: [
+      { source_id: 'S1', title: 'Pilot note PN-3', version: 'v1', text: 'Pilot note PN-3. A pilot in June surfaced no problems.', events: [{ role: 'evaluation_completed', date: '2026-06-30' }] },
+      { source_id: 'S2', title: 'Authorization memo AM-62', version: 'v1', text: memo, events: [{ role: 'authorization', date: '2026-07-10', actor: 'E2' }, { role: 'expiry', date: '2026-09-30' }] },
+    ],
+    claims: [
+      { claim_id: 'C1', kind: 'authority', quote: t1, actor: 'E2', event: { role: 'authorization', date: '2026-07-10' }, citations: [{ source_id: 'S2', quote: t1 }] },
+      { claim_id: 'C2', kind: 'fact', quote: t2, citations: [{ source_id: 'S2', quote: t2 }] },
+      { claim_id: 'C3', kind: 'fact', quote: t3, event: { role: 'expiry', date: '2026-09-30' }, citations: [{ source_id: 'S2', quote: t3 }] },
+      { claim_id: 'C4', kind: 'fact', quote: t4, citations: [{ source_id: 'S1', quote: t4 }] },
+      { claim_id: 'C5', kind: 'conclusion', quote: t5, reasoning: 'C1 gives the authorization; C2 and C3 set its limits; C4 gives the pilot result.', citations: [] },
+      { claim_id: 'C6', kind: 'fact', quote: 'Any subscriber may ask for credits to stop, and billing can suspend the agent.', citations: [{ source_id: 'S2', quote: 'Any subscriber may ask for credits to stop, and billing can suspend the agent.' }] },
+    ],
+  };
+}
+function add62(r, id, sentence) {
+  r.text += ' ' + sentence;
+  r.sources[1].text += ' ' + sentence;
+  r.claims.push({ claim_id: id, kind: 'fact', quote: sentence, citations: [{ source_id: 'S2', quote: sentence }] });
+  return r;
+}
+const ROUND2 = ['no_authority_basis_cited', 'human_oversight_removed', 'amount_limit_without_volume_cap', 'no_post_expiry_terms', 'date_not_in_sources', 'conclusory_evidence_summary'];
+
+test('round-two templates fire on a record with each gap, as advisories only', () => {
+  const h = hits(ar62());
+  for (const t of ROUND2) {
+    const x = h.find((y) => y.template === t);
+    assert.ok(x, t);
+    assert.equal(x.changes_review_status, false, t);
+  }
+  assert.match(h.find((y) => y.template === 'date_not_in_sources').detail, /2026-07-12/);
+  assert.equal(h.find((y) => y.template === 'human_oversight_removed').claim_id, 'C1');
+  assert.ok(!names(ar62()).has('approver_role_not_stated'), 'the role is stated, so that check stays quiet');
+  assert.ok(!names(ar62()).has('no_stop_or_redress_path'), 'a stop route is stated');
+});
+
+test('result-summary wording variants are recognised, and a stated scope clears them', () => {
+  for (const w of ['The pilot raised no concerns.', 'The trial found no issues.', 'The pilot went smoothly.', 'The pilot was satisfactory.', 'The pilot ran without incident.']) {
+    const r = ar62();
+    r.claims[3].quote = w; r.sources[0].text = `Pilot note PN-3. ${w}`; r.claims[3].citations[0].quote = w;
+    r.text = r.text.replace('A pilot in June surfaced no problems.', w);
+    assert.ok(names(r).has('conclusory_evidence_summary'), w);
+  }
+  assert.ok(!names(add62(ar62(), 'C9', 'The pilot tested 200 sample credits against the billing ledger.')).has('conclusory_evidence_summary'));
+});
+
+test('each round-two gap clears when the record states the missing element', () => {
+  assert.ok(!names(add62(ar62(), 'C9', 'The approval was given under section 2 of the billing delegation policy.')).has('no_authority_basis_cited'));
+  assert.ok(!names(add62(ar62(), 'C9', 'No more than 50 credits may be applied per day.')).has('amount_limit_without_volume_cap'));
+  assert.ok(!names(add62(ar62(), 'C9', 'The authorization lapses on that date unless re-approved.')).has('no_post_expiry_terms'));
+  const r = ar62();
+  r.sources[1].text += ' Credits may be applied from 2026-07-12.';
+  assert.ok(!names(r).has('date_not_in_sources'), 'a date the memo gives is traceable');
+});
+
+test('human review that is kept, and an amount-free limit, do not trigger the AI-action checks', () => {
+  const r = ar62();
+  r.text = r.text.replace(' without human review', ''); r.claims[0].quote = r.claims[0].quote.replace(' without human review', '');
+  r.claims[0].citations[0].quote = r.claims[0].quote; r.sources[1].text = r.sources[1].text.replace(' without human review', '');
+  assert.ok(!names(r).has('human_oversight_removed'));
+  const s = ar62();
+  s.record_class = 'supplier_access_exception';
+  for (const t of ['human_oversight_removed', 'amount_limit_without_volume_cap', 'no_stop_or_redress_path']) assert.ok(!names(s).has(t), t);
 });

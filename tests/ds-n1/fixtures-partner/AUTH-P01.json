@@ -5,7 +5,7 @@
   "record_class": "ai_action_authorization",
   "data_classification": "constructed_fictional",
   "title": "AI action authorization UR-114 (fictional)",
-  "text": "Ledgerline Assistant was proposed to send invoice reminder emails on 2026-10-01. The pilot risk evaluation of Ledgerline Assistant was completed on 2026-10-08. Priya Nandakumar authorized Ledgerline Assistant to send invoice reminder emails on 2026-10-14. Sending is limited to invoices more than thirty days overdue, and each batch requires human sign-off. Because the evaluation was completed and the authorization carries conditions, the authorization can proceed to finalisation. Priya Nandakumar is the finance director. Any customer may reply to stop reminders, and the finance director can suspend sending at any time.",
+  "text": "Ledgerline Assistant was proposed to send invoice reminder emails on 2026-10-01. The pilot risk evaluation of Ledgerline Assistant was completed on 2026-10-08. Priya Nandakumar authorized Ledgerline Assistant to send invoice reminder emails on 2026-10-14. Sending is limited to invoices more than thirty days overdue, and each batch requires human sign-off. Because the evaluation was completed and the authorization carries conditions, the authorization can proceed to finalisation. Priya Nandakumar is the finance director. Any customer may reply to stop reminders, and the finance director can suspend sending at any time. The authorization was given under section 4 of the finance automation policy, version 3.",
   "entities": [
     {
       "entity_id": "E1",
@@ -53,7 +53,7 @@
       "source_id": "S3",
       "title": "Authorization memo AM-31",
       "version": "v1",
-      "text": "Authorization memo AM-31. On 2026-10-14, Priya Nandakumar authorized Ledgerline Assistant to send invoice reminder emails. Sending is limited to invoices more than thirty days overdue, and each batch requires human sign-off. Priya Nandakumar is the finance director. Any customer may reply to stop reminders, and the finance director can suspend sending at any time.",
+      "text": "Authorization memo AM-31. On 2026-10-14, Priya Nandakumar authorized Ledgerline Assistant to send invoice reminder emails. Sending is limited to invoices more than thirty days overdue, and each batch requires human sign-off. Priya Nandakumar is the finance director. Any customer may reply to stop reminders, and the finance director can suspend sending at any time. The authorization was given under section 4 of the finance automation policy, version 3.",
       "events": [
         {
           "role": "authorization",
@@ -147,6 +147,17 @@
         {
           "source_id": "S3",
           "quote": "Any customer may reply to stop reminders, and the finance director can suspend sending at any time."
+        }
+      ]
+    },
+    {
+      "claim_id": "C8",
+      "kind": "fact",
+      "quote": "The authorization was given under section 4 of the finance automation policy, version 3.",
+      "citations": [
+        {
+          "source_id": "S3",
+          "quote": "The authorization was given under section 4 of the finance automation policy, version 3."
         }
       ]
     }
