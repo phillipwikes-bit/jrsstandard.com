@@ -52,7 +52,7 @@ try {
       await card.locator('summary').first().click();
       assert.match(await card.textContent(), /Which part of the conclusion is directly established/);
       await card.locator('.cognitive-learning summary').click();
-      assert.match(await card.locator('.cognitive-learning').textContent(), /Basis identification/);
+      assert.match(await card.locator('.cognitive-learning').textContent(), /Source support/);
       await card.locator('.cognitive-reflection summary').click();
       assert.match(await card.locator('.cognitive-reflection').textContent(), /Restrain/);
       assert.match(await card.locator('.cognitive-reflection').textContent(), /Reframe/);

@@ -16,7 +16,7 @@ Date: 18 November 2026. Every row names the code and the test that exercise it. 
 | SP-06 | Reasoned Override | Own rationale of 20+ characters; critical overrides must be acknowledged at acceptance (`session.mjs`) | Built |
 | SP-07 | Cognitive Controls Panel | Reviewer panel with questions, wording checks, CC-* safeguards and advisory notes (`ui/app.mjs`) | Built (`ui.browser.mjs`) |
 | SP-08 | Justification Change History | Every revision kept; superseded findings retained; hash-chained event log (`session.mjs`) | Built |
-| SP-09 | Decision Record Report Card | Report part 5 groups findings under five conditions (`report.mjs`). Condition mapping is PROVISIONAL, not a Codebook correspondence | Built, mapping provisional |
+| SP-09 | Decision Record Report Card | Report part 5 groups findings under five of the tool's own groups (`report.mjs`, renamed 2026-11-19 so no external standard's condition names are used) | Built |
 | SP-10 | Pre-finalization Hold | HOLD status; acceptance refused unless READY (`session.mjs`) | Built |
 | SP-11 | Source and Record Inventory | Report part 2: source, title, version, SHA-256, citing claims (`report.mjs`). No document extraction step exists | Built, extraction not applicable |
 | SP-12 | Reconstruction Trail | Claim, citation, finding, question, action and disposition linked through the log, report and export (`session.mjs`, `report.mjs`, `verify.mjs`) | Built (`incomeos-ds-evidence-export.mjs`) |
