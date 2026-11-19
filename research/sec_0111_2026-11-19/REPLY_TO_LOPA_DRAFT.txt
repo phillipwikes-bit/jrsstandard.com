@@ -1,28 +1,46 @@
-Subject: Re: Comments of reviewers - SEC-0111-2026: two separate manuscripts
+Subject: Re: Comments of reviewers - SEC-0111-2026: two separate manuscripts, clarification
 
 Dear Ms. Lopa,
 
-Thank you for comparing the files so carefully, and for asking before the manuscript went any further. You are right that the two documents are different studies. I believe they have been filed under one manuscript number, and I am sorry I did not notice this sooner.
+Thank you for comparing the files so carefully and for asking before going further. You are right that the two documents are different studies. They are two separate manuscripts that have ended up under one number, and I am sorry I did not notice this sooner and point it out myself.
 
-I sent the journal two separate papers:
+To keep them apart, I refer to them below as Paper A and Paper B, and every attachment begins with A, B or C.
 
-1. "Can Public-Records Determinations Be Independently Reconstructed? Evidence from 32 Public Cases", by Stacyann Young and Phillip Wikes. This is the study of 32 public decision records from New York and Connecticut. I sent it on [DATE] with the files 1_Manuscript_for_SocioEconomic_Challenges.docx and 2_Original_Preprint_SSRN.pdf, which I attach again. I understand this is the original SEC-0111-2026.
+PAPER A: the public-records study (the original SEC-0111-2026)
+"Can Public-Records Determinations Be Independently Reconstructed? Evidence from 32 Public Cases"
+Authors: Stacyann Young and Phillip Wikes, in that order, as in the SSRN preprint.
+Sent to the journal on [DATE] as the manuscript and the SSRN preprint. I attach both again for reference only (A1, A2). Nothing in Paper A has changed.
 
-2. "Socioeconomic Challenges of AI-Drafted Decision Records: Can Expert Reviewers Detect Unsupported Conclusions?", by Phillip Wikes and Ubayet Hossain. This is the study of 24 constructed records assessed by 16 reviewers. I sent it on 26 October 2026 by email and through our LinkedIn messages (file: Wikes_Hossain_SEC_manuscript.docx). The same day you kindly acknowledged it as "your second manuscript, co-authored with Ubayet Hossain" and noted "the connection you have drawn between this manuscript and your earlier submission". I attach screenshots of that exchange for convenience.
+PAPER B: the expert-review study (a separate manuscript)
+"Expert Review of Artificial Intelligence-Drafted Decision Records: Classification Agreement and Reviewer Variation in a Constructed-Record Study" (first submitted as "Socioeconomic Challenges of AI-Drafted Decision Records: Can Expert Reviewers Detect Unsupported Conclusions?")
+Authors: Phillip Wikes and Ubayet Hossain.
+Sent on 26 October 2026, by email and through our LinkedIn messages. The same day you kindly acknowledged it as "your second manuscript, co-authored with Ubayet Hossain" (attachment C).
 
-The referee reports and the edited manuscript I received on 8 November under SEC-0111-2026 (SEC_Wikes_Hossain_Edited.docx) were for the second paper. I therefore revised that paper, under the new title "Expert Review of AI-Drafted Decision Records", and returned it under the same number. That is how the two studies came to appear as one.
+The referee reports and the edited file I received on 8 November under SEC-0111-2026 (SEC_Wikes_Hossain_Edited.docx) concerned Paper B. My revision of 10 November answers those reports, so it is a revision of Paper B, and it is attached again as B1 and B2. That is how the two studies came to appear under one number.
 
-On your three questions:
+Your three questions:
 
-1. The revised manuscript is not intended to replace the public-records study. They are two separate papers. The public-records study is not published in any journal. It is available as a preprint on SSRN (https://papers.ssrn.com/sol3/papers.cfm?abstract_id=7591521), and as far as I know it is still with SocioEconomic Challenges as SEC-0111-2026. Could you let me know whether it has been sent for review?
+1. The revised manuscript does not replace the public-records study. Paper A is a separate paper. It has not been published in any journal. It is available as a preprint on SSRN (https://papers.ssrn.com/sol3/papers.cfm?abstract_id=7591521) and, as far as I know, is still with SocioEconomic Challenges. Could you tell me its status and whether it has been sent for review?
 
-2. No author has been added, removed or reordered on either paper. The public-records study has always been by Stacyann Young and Phillip Wikes, in that order. The expert-review study has always been by Phillip Wikes and Ubayet Hossain. Ms Young is named in the acknowledgements of the expert-review study only for her contribution to that project, and she has never been an author of it. Both Ms Young and Mr Hossain will confirm this to you in writing.
+2. No author has been added, removed or reordered on either paper. Paper A has always been by Stacyann Young and Phillip Wikes. Paper B has always been by Phillip Wikes and Ubayet Hossain. Ms Young is named in Paper B's acknowledgements only because she took part as a rater in its reliability exercise; she has never been an author of Paper B. Ms Young and Mr Hossain will each confirm this to you in writing.
 
-3. The expert-review exercise did not receive approval from an ethics committee and was not formally exempted. We are independent researchers without access to an institutional review board. The participants were professionals who volunteered without payment. They were invited through [HOW PARTICIPANTS WERE INVITED], were told the purpose of the study, and could stop at any time. They assessed only synthetic records, and results are reported only in aggregate. [HOW CONSENT WAS RECORDED]. As I wrote on 10 November, written consent was not obtained from every participant. The Informed Consent Statement in the revised manuscript describes this.
+3. The expert-review exercise in Paper B did not receive ethics committee approval and was not formally exempted; no institutional ethics approval was sought. Participation was voluntary. Each of the 16 detection-panel reviewers was invited individually in writing, by LinkedIn message or, in one case, by email, and took part through a personalised link under a participant code. Open-enrolment raters responded anonymously to a public invitation that described the task and its purpose. The data-collection pages did not present a separate consent form. After data collection, coded participants were invited to complete an electronic contributor confirmation recording, separately, permission for research use and for acknowledgement by name; 18 of the 24 coded participants completed it, and all of them permitted research use. Only aggregate results are reported. The Informed Consent Statement in B1 says the same.
 
-To keep the two studies apart, would it be possible to give the expert-review study its own manuscript number, so that the review it has already received stays with it, while SEC-0111-2026 remains the public-records study? If the journal's procedure requires it, I will of course withdraw the expert-review revision from SEC-0111-2026 and submit it as a new manuscript.
+One correction on my part: the response letter I sent on 10 November still carried an internal heading reading "AUTHOR-REVIEW DRAFT. Not approved by either author. Not submitted." That line was left in by mistake and should not have been there. B2 is the same letter with that line removed and nothing else changed in its content.
 
-Thank you for your patience, and for the care you have given both papers.
+Would it be possible to give Paper B its own manuscript number, so that the review it has received stays with it, while SEC-0111-2026 remains Paper A? If the journal's procedure requires it instead, I will withdraw Paper B from SEC-0111-2026 and submit it as a new manuscript.
+
+Attachments
+Paper A, for reference only:
+  A1_Young_Wikes_Manuscript_as_submitted_Oct2026.docx
+  A2_Young_Wikes_SSRN_Preprint.pdf
+Paper B, revision of 10 November:
+  B1_Wikes_Hossain_Revised_Manuscript_10Nov2026.docx
+  B2_Wikes_Hossain_Response_to_Editor_and_Reviewers.docx
+Correspondence:
+  C_LinkedIn_Correspondence_26-27_Oct_2026.pdf
+
+Thank you for your patience and for the care you have given both papers.
 
 Kind regards,
 Phillip Wikes
