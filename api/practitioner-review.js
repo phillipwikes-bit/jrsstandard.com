@@ -38,6 +38,11 @@ export default async function handler(req) {
 
   const record = clean(b.record_id, 20);
   if (RECORDS.indexOf(record) === -1) return json({ error: 'unknown_record' }, 400);
+
+  // Pilot or licence interest is asked only AFTER the review answer is in, on
+  // the thank-you screen, and stored as its own row so the research answer is
+  // never collected alongside a commercial question.
+  if (b.kind === 'pilot-interest') return pilotInterest(req, b, record);
   const answer = clean(b.answer, 8000);
   if (answer.length < 20) return json({ error: 'answer_too_short' }, 400);
   const role = clean(b.role, 60);
@@ -47,13 +52,8 @@ export default async function handler(req) {
   const name = clean(b.name, 200);
   const email = clean(b.email, 200);
   const wantsResults = b.want_results === true, credit = b.consent_credit === true, pilot = b.pilot_interest === true;
-  if ((wantsResults || credit || pilot) && (email.indexOf('@') < 1 || email.indexOf('.') < 0)) return json({ error: 'valid_email_required' }, 400);
-  if (email && (email.indexOf('@') < 1 || email.indexOf('.') < 0)) return json({ error: 'valid_email_required' }, 400);
-
-  const env = (typeof process !== 'undefined' && process.env) || {};
-  const SERVICE = env.SUPABASE_SERVICE_ROLE_KEY || '';
-  if (!SERVICE) return json({ error: 'service_key_missing' }, 503);
-  const H = { 'apikey': SERVICE, 'Authorization': 'Bearer ' + SERVICE, 'Content-Type': 'application/json', 'Prefer': 'return=minimal' };
+  if ((wantsResults || credit || pilot) && !validEmail(email)) return json({ error: 'valid_email_required' }, 400);
+  if (email && !validEmail(email)) return json({ error: 'valid_email_required' }, 400);
 
   const payload = {
     kind: 'practitioner-review', record_id: record, answer: answer, role: role, years: years, consent_quote: b.consent_quote === true,
@@ -62,7 +62,34 @@ export default async function handler(req) {
     ts: new Date().toISOString()
   };
   const row = { name: name, email: email, organization: '', message: JSON.stringify(payload), source: 'practitioner-review' };
+  return insertRow(row);
+}
+
+function validEmail(email) { return email.indexOf('@') > 0 && email.indexOf('.') >= 0; }
+
+function serviceHeaders() {
+  const env = (typeof process !== 'undefined' && process.env) || {};
+  const SERVICE = env.SUPABASE_SERVICE_ROLE_KEY || '';
+  if (!SERVICE) return null;
+  return { 'apikey': SERVICE, 'Authorization': 'Bearer ' + SERVICE, 'Content-Type': 'application/json', 'Prefer': 'return=minimal' };
+}
+
+async function insertRow(row) {
+  const H = serviceHeaders();
+  if (!H) return json({ error: 'service_key_missing' }, 503);
   const res = await fetch(SB + '/rest/v1/pilot_contacts', { method: 'POST', headers: H, body: JSON.stringify(row) });
   if (!res.ok) return json({ error: 'db_insert_failed', status: res.status }, 502);
   return json({ ok: true });
+}
+
+async function pilotInterest(req, b, record) {
+  const name = clean(b.name, 200);
+  const email = clean(b.email, 200);
+  if (!validEmail(email)) return json({ error: 'valid_email_required' }, 400);
+  const payload = {
+    kind: 'pilot-interest', record_id: record,
+    country: String(req.headers.get('x-vercel-ip-country') || '').toUpperCase().replace(/[^A-Z]/g, '').slice(0, 2) || '',
+    ts: new Date().toISOString()
+  };
+  return insertRow({ name: name, email: email, organization: '', message: JSON.stringify(payload), source: 'practitioner-pilot-interest' });
 }

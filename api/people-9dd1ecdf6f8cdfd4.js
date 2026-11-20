@@ -43,6 +43,7 @@ const LABEL = {
   'support':             'Initiative (pre-gate)',
   'pilot':               'Pilot contact',
   'practitioner-review': 'Practitioner review (fictional record)',
+  'practitioner-pilot-interest': 'Pilot or licence interest (after review)',
   // These three historical streams require separate owner follow-up.
   // They remain visible only inside the authenticated private directory.
   'reviewer-eval-incentive': 'Asked for a LinkedIn recommendation',
