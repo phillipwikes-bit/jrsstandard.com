@@ -9,7 +9,7 @@ const RESEARCH = new Set([
 ]);
 const ORGANIZATIONS = new Set(['org-pilot']);
 const COMMERCIAL_LEGACY = new Set([
-  'checkout-fallback','enterprise-inquiry'
+  'checkout-fallback','enterprise-inquiry','practitioner-pilot-interest'
 ]);
 export const GROUPS = Object.freeze({
   public: 'Free resources and community',
