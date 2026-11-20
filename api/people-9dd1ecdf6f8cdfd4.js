@@ -150,7 +150,8 @@ export default async function handler(req){
     const possibleTest = isTest(p.page_source) || isTest(p.src)
       || String(p.code || '') === 'TEST-00'
       || src === 'diagnostic'
-      || String(r.name || '').trim().toUpperCase() === 'DIAGNOSTIC TEST';
+      || String(r.name || '').trim().toUpperCase() === 'DIAGNOSTIC TEST'
+      || String(p.answer || '').indexOf('CLAUDE-LIVE-TEST') === 0;
     if (possibleTest) possibleTestRows++;
     // No source row is discarded on the basis of a self-declared field,
     // diagnostic source, code or free-text name. All remain owner-reviewable.
@@ -247,7 +248,16 @@ export default async function handler(req){
       honor_code: String(p.honor_code || ''),
       quote: String(p.quote || ''),
       quote_cleared_for_publication: p.quote_clearance === true,
-      byline_ok: p.byline_ok === true
+      byline_ok: p.byline_ok === true,
+      // Practitioner survey fields, owner view only. The answer is shown so the
+      // owner can read responses; anonymous quotation needs survey_quote_ok.
+      survey_answer: src === 'practitioner-review' ? String(p.answer || '') : '',
+      survey_record: (src === 'practitioner-review' || src === 'practitioner-pilot-interest') ? String(p.record_id || '') : '',
+      survey_role: src === 'practitioner-review' ? String(p.role || '') : '',
+      survey_years: src === 'practitioner-review' ? String(p.years || '') : '',
+      survey_quote_ok: src === 'practitioner-review' && p.consent_quote === true,
+      survey_wants_results: src === 'practitioner-review' && p.want_results === true,
+      survey_credit_ok: src === 'practitioner-review' && p.consent_credit === true
     });
   }
 
