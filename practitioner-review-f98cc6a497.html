@@ -37,7 +37,7 @@ textarea:focus,input:focus,select:focus{outline:2px solid var(--accent);outline-
 .check input{margin-top:5px;width:18px;height:18px;accent-color:var(--accent);flex:none}
 button{margin-top:24px;background:var(--accent);color:var(--bg);border:0;padding:14px 22px;font:500 16px 'Inter',sans-serif;cursor:pointer;min-height:48px;width:100%}
 button:disabled{opacity:.6;cursor:default}
-#msg{margin-top:14px;color:var(--review-text)}
+#msg,#pmsg{margin-top:14px;color:var(--review-text)}
 .done{background:var(--surface);border:1px solid var(--ready-text);padding:18px;margin-top:20px;color:var(--text)}
 .hp{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden}
 footer{color:var(--muted-soft);font-size:13px;margin-top:40px}
@@ -92,14 +92,22 @@ footer{color:var(--muted-soft);font-size:13px;margin-top:40px}
 <div class="check"><input type="checkbox" id="c_results"><label for="c_results" style="margin:0">Send me how my answer compared with the tool.</label></div>
 <div class="check"><input type="checkbox" id="c_credit"><label for="c_credit" style="margin:0">You may credit me as a practitioner who gave feedback. I will see the exact wording first, and it is never an endorsement.</label></div>
 <div class="check"><input type="checkbox" id="c_quote"><label for="c_quote" style="margin:0">You may quote my answer in an article or report, without my name.</label></div>
-<div class="check"><input type="checkbox" id="c_pilot"><label for="c_pilot" style="margin:0">I would be open to hearing about a pilot or licence for my organisation.</label></div>
 
 <div class="hp" aria-hidden="true"><label for="website">Leave this empty</label><input type="text" id="website" tabindex="-1" autocomplete="off"></div>
-<p class="hint" style="margin-top:18px">By submitting, you agree that your answer may be used, without payment, to evaluate and improve Decision Spellcheck. You keep no rights in the tool, and nothing is published under your name without your separate consent.</p>
+<p class="hint" style="margin-top:18px">By submitting, you agree that your answer may be used, without payment, to evaluate and improve Decision Spellcheck. Nothing is published under your name without your separate consent.</p>
 <button type="submit" id="go">Submit my answer</button>
 <div id="msg" role="status" aria-live="polite"></div>
 </form>
 <div id="thanks" class="done" hidden>Thank you. Your answer is in, and there is nothing more to do.</div>
+<div id="pilot" hidden>
+<p style="margin-top:24px">Separately, and only if it is useful to you: if your organisation might want to try this on its own records, leave an email and we will be in touch about a pilot or licence. It is not linked to your answer.</p>
+<form id="pf" novalidate>
+<label for="p_email">Email</label>
+<input type="email" id="p_email" name="p_email" autocomplete="email">
+<button type="submit" id="pgo">Contact me about a pilot</button>
+<div id="pmsg" role="status" aria-live="polite"></div>
+</form>
+</div>
 <footer>Decision Spellcheck &middot; &copy; 2026 Phillip Wikes &middot; <a href="mailto:info@jrsstandard.com" style="color:var(--accent)">info@jrsstandard.com</a></footer>
 </main>
 <script>
@@ -116,6 +124,13 @@ function jrsSanitizeCheck(text){
   return true;
 }
 function val(id){ var el=document.getElementById(id); return el ? String(el.value||'').trim() : ''; }
+function validEmail(e){ return e.indexOf('@')>0 && e.indexOf('.')>=0; }
+var REJECT={
+  answer_too_short:'Please write a little more about what you could not rebuild.',
+  valid_email_required:'Please check your email address.',
+  unknown_role:'Please choose your field again from the list.',
+  unknown_years:'Please choose your years of experience again from the list.'
+};
 function chk(id){ var el=document.getElementById(id); return !!(el && el.checked); }
 var form=document.getElementById('f');
 if(form){ form.addEventListener('submit', function(e){
@@ -123,15 +138,35 @@ if(form){ form.addEventListener('submit', function(e){
   var msg=document.getElementById('msg'), btn=document.getElementById('go');
   var answer=val('answer'), email=val('email');
   if(answer.length < 20){ if(msg) msg.textContent='Please write a little more about what you could not rebuild.'; return; }
-  var wantsContact=chk('c_results')||chk('c_credit')||chk('c_pilot');
-  if(wantsContact && (email.indexOf('@')<1 || email.indexOf('.')<0)){ if(msg) msg.textContent='Please add your email so we can reach you about the boxes you ticked.'; return; }
+  var wantsContact=chk('c_results')||chk('c_credit');
+  if(wantsContact && !validEmail(email)){ if(msg) msg.textContent='Please add your email so we can reach you about the boxes you ticked.'; return; }
+  if(email && !validEmail(email)){ if(msg) msg.textContent='Please check your email address, or leave it blank.'; return; }
   if(!jrsSanitizeCheck(answer)) return;
   var body={ record_id:RECORD_ID, answer:answer, role:val('role'), years:val('years'), consent_quote:chk('c_quote'), name:val('name'), email:email,
-    want_results:chk('c_results'), consent_credit:chk('c_credit'), pilot_interest:chk('c_pilot'), website:val('website') };
+    want_results:chk('c_results'), consent_credit:chk('c_credit'), pilot_interest:false, website:val('website') };
   if(btn) btn.disabled=true; if(msg) msg.textContent='Sending...';
   fetch('/api/practitioner-review', { method:'POST', headers:{'Content-Type':'application/json'}, body:JSON.stringify(body) })
-    .then(function(r){ if(!r.ok) throw new Error('status '+r.status); return r.json(); })
-    .then(function(){ form.hidden=true; var t=document.getElementById('thanks'); if(t) t.hidden=false; })
+    .then(function(r){
+      // A 4xx means the server read the answer and declined it: say why and let
+      // the person fix it. Only an outage or server error falls through to the
+      // save-a-copy path below.
+      if(r.status >= 400 && r.status < 500){
+        return r.json().catch(function(){ return {}; }).then(function(j){
+          if(btn) btn.disabled=false;
+          if(msg) msg.textContent=REJECT[(j && j.error) || ''] || 'Your answer could not be accepted as entered. Please check it and try again.';
+          return null;
+        });
+      }
+      if(!r.ok) throw new Error('status '+r.status);
+      return r.json();
+    })
+    .then(function(j){
+      if(!j) return;
+      form.hidden=true; var t=document.getElementById('thanks'); if(t) t.hidden=false;
+      var p=document.getElementById('pilot'), pe=document.getElementById('p_email');
+      if(pe) pe.value=email;
+      if(p) p.hidden=false;
+    })
     .catch(function(){
       // Keep the answer if the server is unreachable: save it as a file to email instead.
       try{
@@ -141,6 +176,22 @@ if(form){ form.addEventListener('submit', function(e){
       }catch(err){}
       if(btn) btn.disabled=false;
       if(msg) msg.textContent='We could not send your answer just now. A copy was saved to your device; please email it to info@jrsstandard.com.';
+    });
+}); }
+var pform=document.getElementById('pf');
+if(pform){ pform.addEventListener('submit', function(e){
+  e.preventDefault();
+  var pmsg=document.getElementById('pmsg'), pbtn=document.getElementById('pgo');
+  var pemail=val('p_email');
+  if(!validEmail(pemail)){ if(pmsg) pmsg.textContent='Please add a valid email so we can reach you.'; return; }
+  if(pbtn) pbtn.disabled=true; if(pmsg) pmsg.textContent='Sending...';
+  fetch('/api/practitioner-review', { method:'POST', headers:{'Content-Type':'application/json'},
+    body:JSON.stringify({ kind:'pilot-interest', record_id:RECORD_ID, name:val('name'), email:pemail, website:val('website') }) })
+    .then(function(r){ if(!r.ok) throw new Error('status '+r.status); return r.json(); })
+    .then(function(){ pform.hidden=true; if(pmsg){ pform.parentNode.appendChild(pmsg); pmsg.textContent='Thank you. We will be in touch.'; } })
+    .catch(function(){
+      if(pbtn) pbtn.disabled=false;
+      if(pmsg) pmsg.textContent='That did not go through. You can email info@jrsstandard.com instead.';
     });
 }); }
 </script>
