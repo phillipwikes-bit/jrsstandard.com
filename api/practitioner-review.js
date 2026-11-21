@@ -14,6 +14,7 @@ export const config = { runtime: 'edge' };
 
 const SB = 'https://pjzxkeviouofdseagvpf.supabase.co';
 const RECORDS = ['AR-82'];
+const RELY = ['', 'Yes', 'Not without more', 'No'];
 const YEARS = ['', 'Under 2', '2 to 5', '6 to 10', 'Over 10'];
 const ROLES = ['', 'AI governance', 'Investigations or HR', 'Civil rights, EEO or fair housing', 'Public records or government administration', 'Legal or eDiscovery', 'Audit, risk or compliance', 'Fraud examination', 'Organizational psychology or research', 'Other'];
 
@@ -44,7 +45,10 @@ export default async function handler(req) {
   // never collected alongside a commercial question.
   if (b.kind === 'pilot-interest') return pilotInterest(req, b, record);
   const answer = clean(b.answer, 8000);
-  if (answer.length < 20) return json({ error: 'answer_too_short' }, 400);
+  // One line is enough (2026-11-21): the page now asks for a short answer.
+  if (answer.length < 8) return json({ error: 'answer_too_short' }, 400);
+  const rely = clean(b.rely, 30);
+  if (RELY.indexOf(rely) === -1) return json({ error: 'unknown_rely' }, 400);
   const role = clean(b.role, 60);
   if (ROLES.indexOf(role) === -1) return json({ error: 'unknown_role' }, 400);
   const years = clean(b.years, 20);
@@ -56,7 +60,7 @@ export default async function handler(req) {
   if (email && !validEmail(email)) return json({ error: 'valid_email_required' }, 400);
 
   const payload = {
-    kind: 'practitioner-review', record_id: record, answer: answer, role: role, years: years, consent_quote: b.consent_quote === true,
+    kind: 'practitioner-review', record_id: record, rely: rely, answer: answer, role: role, years: years, consent_quote: b.consent_quote === true,
     want_results: wantsResults, consent_credit: credit, pilot_interest: pilot,
     country: String(req.headers.get('x-vercel-ip-country') || '').toUpperCase().replace(/[^A-Z]/g, '').slice(0, 2) || '',
     ts: new Date().toISOString()

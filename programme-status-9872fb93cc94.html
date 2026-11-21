@@ -2142,6 +2142,7 @@ function drawSurvey(rows,funnel){
     head.style.cssText='font-size:12.5px;color:var(--accent);margin-bottom:6px';
     var who=(p.name||'Anonymous')+(p.email?' · '+p.email:'');
     var bits=[String(p.date||'').slice(0,16).replace('T',' ')+' UTC', who,
+      p.survey_rely?'Would rely: '+p.survey_rely:'',
       p.survey_role||'Field not given', p.survey_years?p.survey_years+' years':'Years not given', p.country||''];
     head.textContent=bits.filter(function(x){return x;}).join(' · ');
     var text=String(p.survey_answer||'');
