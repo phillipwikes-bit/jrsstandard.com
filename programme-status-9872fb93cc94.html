@@ -2094,6 +2094,22 @@ function clearUnavailablePeople(tiles){
     var el=document.getElementById(id);if(el)el.textContent='Unavailable';
   });
 }
+// Respondents may type **bold** headings and blank-line paragraphs. Render
+// those two forms only, through text nodes, so nothing a respondent types can
+// become live HTML.
+function renderAnswer(el,text){
+  String(text).split(/\n{2,}/).forEach(function(par){
+    var pEl=document.createElement('p');
+    pEl.style.cssText='margin:0 0 8px;white-space:pre-wrap;color:var(--text)';
+    var parts=par.split(/\*\*([^*\n]+)\*\*/);
+    for(var i=0;i<parts.length;i++){
+      if(!parts[i])continue;
+      if(i%2===1){var b=document.createElement('b');b.textContent=parts[i];pEl.appendChild(b);}
+      else pEl.appendChild(document.createTextNode(parts[i]));
+    }
+    el.appendChild(pEl);
+  });
+}
 function drawSurvey(rows){
   var sum=document.getElementById('sv-summary'), list=document.getElementById('sv-list');
   if(!sum||!list)return;
@@ -2121,15 +2137,37 @@ function drawSurvey(rows){
     var bits=[String(p.date||'').slice(0,16).replace('T',' ')+' UTC', who,
       p.survey_role||'Field not given', p.survey_years?p.survey_years+' years':'Years not given', p.country||''];
     head.textContent=bits.filter(function(x){return x;}).join(' · ');
+    var text=String(p.survey_answer||'');
+    var words=text.trim()?text.trim().split(/\s+/).length:0;
+    head.textContent+=' · '+words+(words===1?' word':' words');
     var ans=document.createElement('div');
-    ans.style.cssText='white-space:pre-wrap;color:var(--text);font-size:14.5px;line-height:1.55';
-    ans.textContent=p.survey_answer||'(no answer text)';
+    ans.style.cssText='color:var(--text);font-size:14.5px;line-height:1.55;overflow:hidden';
+    renderAnswer(ans,text||'(no answer text)');
     var flags=document.createElement('div');
     flags.style.cssText='font-size:12px;color:var(--muted-soft);margin-top:6px';
     flags.textContent='Quote without name: '+(p.survey_quote_ok?'yes':'no')
+      +(p.survey_quote_ok&&p.name?' (quote without attaching "'+p.name+'")':'')
       +' · Wants results: '+(p.survey_wants_results?'yes':'no')
       +' · May credit: '+(p.survey_credit_ok?'yes':'no');
-    box.appendChild(head); box.appendChild(ans); box.appendChild(flags);
+    box.appendChild(head); box.appendChild(ans);
+    // Long answers start folded to a short preview so several responses stay
+    // scannable; one tap shows the whole answer.
+    if(text.length>600){
+      ans.style.maxHeight='9.5em';
+      var more=document.createElement('button');
+      more.type='button';
+      more.style.cssText='margin-top:8px;background:none;border:1px solid var(--accent-dim);color:var(--accent);padding:8px 12px;min-height:40px;cursor:pointer;font:inherit;font-size:13px';
+      more.textContent='Show full answer';
+      more.setAttribute('aria-expanded','false');
+      more.addEventListener('click',function(){
+        var open=more.getAttribute('aria-expanded')==='true';
+        ans.style.maxHeight=open?'9.5em':'none';
+        more.textContent=open?'Show full answer':'Show less';
+        more.setAttribute('aria-expanded',open?'false':'true');
+      });
+      box.appendChild(more);
+    }
+    box.appendChild(flags);
     list.appendChild(box);
   });
   if(pilots.length){
