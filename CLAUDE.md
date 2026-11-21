@@ -296,7 +296,7 @@ Fonts: `'Bodoni Moda', serif` (display), `'JetBrains Mono', monospace` (labels, 
 
 ## 36.5 Sanctioned browser-storage keys
 
-`jrs-training-progress` (training, with sub-keys `0`–`5`, `survey`, `role`, `channel`); `jrs_completed`, `jrs_name`; `omc-submitted`; `irc-submitted`; `jrs-poll-voted-<study>`; `bench-auto-code`, `bench-expert-<code>`, `bench-done-<code>`; `jrs-ai-pilot`; `jrs-endorsed-<campaign>`; `jrs-gate-view`; `jrs-check-view`; `jrs-training-enrolled`, `jrs-training-email`.
+`jrs-training-progress` (training, with sub-keys `0`–`5`, `survey`, `role`, `channel`); `jrs_completed`, `jrs_name`; `omc-submitted`; `irc-submitted`; `jrs-poll-voted-<study>`; `bench-auto-code`, `bench-expert-<code>`, `bench-done-<code>`; `jrs-ai-pilot`; `jrs-endorsed-<campaign>`; `jrs-gate-view`; `jrs-check-view`; `jrs-review-view`, `jrs-review-start` (practitioner review open and start counts, added 2026-11-21); `jrs-training-enrolled`, `jrs-training-email`.
 
 **Do not introduce a key beyond this list without adding it here first.** `jrs-owner-token` and `jrs-training-access` were removed and must not return; the training is ungated and `scripts/check_zero_drift.py::check_training_is_ungated` fails if the wall returns.
 

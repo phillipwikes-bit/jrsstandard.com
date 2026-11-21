@@ -40,7 +40,16 @@ try{
   assert.equal(calls,2);
   console.log('PASS interrupted data source does not return partial named list');
   calls=0;
-  globalThis.fetch=async(_url,options)=>{
+  // Survey funnel counts (2026-11-21) are HEAD requests to interaction_events.
+  // They are tallied separately so `calls` still counts participant-source pages
+  // exactly, and they return no Content-Range here, which must yield null
+  // (not available), never a false zero.
+  const funnelCalls=[];
+  globalThis.fetch=async(url,options)=>{
+    if(String(url).includes('/interaction_events')){
+      funnelCalls.push({url:String(url),method:options&&options.method});
+      return new Response(null,{status:200});
+    }
     calls++;
     return Response.json(calls===1?sample:[{
       created_at:'2026-10-31T13:00:00Z',name:'Last fixture',
@@ -69,6 +78,12 @@ try{
   assert.equal(body.people[1000].source_position,1000);
   assert.equal(body.people[1000].name,'Last fixture');
   assert.equal(calls,2);
+  assert.equal(funnelCalls.length,2);
+  assert.ok(funnelCalls.every(c=>c.method==='HEAD'&&/source=eq\.page-view/.test(c.url)));
+  assert.ok(funnelCalls.some(c=>/event=eq\.review-view/.test(c.url)));
+  assert.ok(funnelCalls.some(c=>/event=eq\.review-start/.test(c.url)));
+  assert.equal(body.survey_funnel.opened,null);
+  assert.equal(body.survey_funnel.started,null);
   console.log('PASS complete 1001-row source retains flagged historical tests and genuine contacts without suppression');
 }finally{
   globalThis.fetch=originalFetch;

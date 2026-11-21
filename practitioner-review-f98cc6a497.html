@@ -31,7 +31,10 @@ p{color:var(--muted);margin-bottom:12px}
 label{display:block;color:var(--text);margin:18px 0 6px}
 .hint{color:var(--muted-soft);font-size:14px}
 textarea,input[type=text],input[type=email],select{width:100%;background:var(--surface);color:var(--text);border:1px solid var(--rule);padding:12px;font:inherit;border-radius:2px}
-textarea{min-height:200px}
+textarea{min-height:130px}
+details.opt{margin-top:22px;border-top:1px solid var(--rule);padding-top:12px}
+details.opt summary{cursor:pointer;color:var(--accent);font-size:15px;padding:6px 0}
+details.opt summary .hint{margin-left:6px}
 textarea:focus,input:focus,select:focus{outline:2px solid var(--accent);outline-offset:1px}
 .check{display:flex;gap:10px;align-items:flex-start;margin:12px 0;color:var(--text)}
 .check input{margin-top:5px;width:18px;height:18px;accent-color:var(--accent);flex:none}
@@ -59,7 +62,11 @@ footer{color:var(--muted-soft);font-size:13px;margin-top:40px}
 
 <form id="f" novalidate>
 <label for="answer">What can't you rebuild from this record? List anything a later reviewer could not trace, confirm or rely on.</label>
-<textarea id="answer" name="answer" required></textarea>
+<p class="hint" style="margin:0 0 8px">A few lines or bullet points is plenty. There are no right or wrong answers.</p>
+<textarea id="answer" name="answer" required placeholder="A few bullet points is fine"></textarea>
+
+<details class="opt">
+<summary>About you, and credit <span class="hint">(all optional, skip if you like)</span></summary>
 
 <label for="role">Your field <span class="hint">(optional)</span></label>
 <select id="role" name="role">
@@ -92,6 +99,7 @@ footer{color:var(--muted-soft);font-size:13px;margin-top:40px}
 <div class="check"><input type="checkbox" id="c_results"><label for="c_results" style="margin:0">Send me how my answer compared with the tool.</label></div>
 <div class="check"><input type="checkbox" id="c_credit"><label for="c_credit" style="margin:0">You may credit me as a practitioner who gave feedback. I will see the exact wording first, and it is never an endorsement.</label></div>
 <div class="check"><input type="checkbox" id="c_quote"><label for="c_quote" style="margin:0">You may quote my answer in an article or report, without my name.</label></div>
+</details>
 
 <div class="hp" aria-hidden="true"><label for="website">Leave this empty</label><input type="text" id="website" tabindex="-1" autocomplete="off"></div>
 <p class="hint" style="margin-top:18px">By submitting, you agree that your answer may be used, without payment, to evaluate and improve Decision Spellcheck. Nothing is published under your name without your separate consent.</p>
@@ -194,6 +202,31 @@ if(pform){ pform.addEventListener('submit', function(e){
       if(pmsg) pmsg.textContent='That did not go through. You can email info@jrsstandard.com instead.';
     });
 }); }
+/* OPEN AND START COUNTS. Added 2026-11-21 at the owner's request, to see how many
+   people open this page and how many begin an answer, against how many submit.
+   WHAT IT SENDS: the page path and one of two literal event names,
+   'review-view' (page opened) or 'review-start' (first keystroke in the answer
+   box). Nothing typed is ever read or sent, no name, no email, no answer text.
+   Once per tab session each, via sessionStorage flags 'jrs-review-view' and
+   'jrs-review-start', so reloads do not inflate the count. */
+function jrsReviewBeacon(evt, key){
+  try{ if(sessionStorage.getItem(key)) return; }catch(e){}
+  try{
+    var src=''; try{ src=(new URLSearchParams(window.location.search).get('src')||'').slice(0,40); }catch(e){ src=''; }
+    var payload=JSON.stringify({ timestamp:new Date().toISOString(), origin_url:window.location.pathname, target_url:evt, meta:{ event:evt, src:src } });
+    var sent=false;
+    if(navigator.sendBeacon){ sent=navigator.sendBeacon('/api/telemetry', new Blob([payload],{type:'application/json'})); }
+    if(!sent && typeof fetch==='function'){ fetch('/api/telemetry',{ method:'POST', body:payload, headers:{'Content-Type':'application/json'}, keepalive:true }).catch(function(){}); }
+    try{ sessionStorage.setItem(key,'1'); }catch(e){}
+  }catch(e){ /* counting must never break the page */ }
+}
+jrsReviewBeacon('review-view','jrs-review-view');
+(function(){
+  var box=document.getElementById('answer');
+  if(!box) return;
+  function once(){ box.removeEventListener('input', once); jrsReviewBeacon('review-start','jrs-review-start'); }
+  box.addEventListener('input', once);
+})();
 </script>
 </body>
 </html>
