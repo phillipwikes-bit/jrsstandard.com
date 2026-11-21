@@ -291,8 +291,25 @@ export default async function handler(req){
   // Named, so an unresolved country is a work item rather than a silent blank.
   const peopleNoCountry = Object.keys(noCountry).sort();
 
+  // SURVEY FUNNEL (2026-11-21). How many opened the practitioner review page and
+  // how many began typing, from the anonymous page-view events the page sends
+  // through /api/telemetry. Counts only. A failed count is null, never zero, so
+  // the dashboard can say "not available" instead of showing a false 0.
+  async function countView(evt){
+    try{
+      const r=await fetch(SB+'/rest/v1/interaction_events?select=id&source=eq.page-view&payload->>event=eq.'+evt,
+        {method:'HEAD',headers:{apikey:SERVICE,Authorization:'Bearer '+SERVICE,Prefer:'count=exact'}});
+      if(!r.ok) return null;
+      const n=parseInt(String(r.headers.get('content-range')||'').split('/')[1],10);
+      return Number.isInteger(n)&&n>=0?n:null;
+    }catch(e){ return null; }
+  }
+  const surveyFunnel={ opened: await countView('review-view'), started: await countView('review-start'),
+    counting_since: '2026-11-21' };
+
   return json({
     complete: true,
+    survey_funnel: surveyFunnel,
     source_row_count: rows.length,
     retained_source_rows: out.length,
     coverage_through_utc: snapshotUtc,

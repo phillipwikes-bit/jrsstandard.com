@@ -2110,7 +2110,7 @@ function renderAnswer(el,text){
     el.appendChild(pEl);
   });
 }
-function drawSurvey(rows){
+function drawSurvey(rows,funnel){
   var sum=document.getElementById('sv-summary'), list=document.getElementById('sv-list');
   if(!sum||!list)return;
   var real=[], tests=0, pilots=[];
@@ -2119,7 +2119,14 @@ function drawSurvey(rows){
     else if(p.source==='practitioner-pilot-interest' && p.possible_test_marker!==true) pilots.push(p);
   });
   real.sort(function(a,b){return String(b.date).localeCompare(String(a.date));});
-  sum.textContent=real.length+(real.length===1?' completed survey':' completed surveys')
+  var fun='';
+  if(funnel&&Number.isInteger(funnel.opened)&&Number.isInteger(funnel.started)){
+    fun=funnel.opened+' opened the page · '
+      +funnel.started+' started an answer · ';
+  } else {
+    fun='Opens not available just now · ';
+  }
+  sum.textContent=fun+real.length+(real.length===1?' completed survey':' completed surveys')
     +' · '+pilots.length+(pilots.length===1?' pilot request':' pilot requests')
     +(tests?' · '+tests+(tests===1?' test entry':' test entries')+' not counted':'');
   while(list.firstChild)list.removeChild(list.firstChild);
@@ -2196,7 +2203,7 @@ function loadPeople(){
         return;
       }
       PPL=d.people;
-      drawSurvey(PPL);
+      drawSurvey(PPL,d.survey_funnel);
       var done={}, ctry={};
       PPL.forEach(function(p){
         var k=String(p.email||p.name||'').trim().toLowerCase();

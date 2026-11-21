@@ -37,7 +37,9 @@ const TEST_SRC = ['verify', 'test', 'selftest'];
 // count of answers, NO score and NO record text, because check.html promises
 // the reader in visible page text that the answers never leave the browser.
 // That promise is the constraint on this endpoint, not a comment about it.
-const VIEW_EVENTS = ['check-view'];
+// 'review-view' and 'review-start' (2026-11-21): the Decision Spellcheck practitioner
+// review page opened, and an answer begun. Neither carries any typed text.
+const VIEW_EVENTS = ['check-view', 'review-view', 'review-start'];
 
 // Non-browser agents do not click links. Same regex as /api/support, which was
 // added after four rounds of self-inflicted analytics pollution.
