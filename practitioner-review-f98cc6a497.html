@@ -12,13 +12,17 @@
 <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:wght@400;500&family=Inter:wght@300;400;500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
 :root{
-  --bg:#050505; --surface:#121212; --surface2:#1A1A1A;
-  --accent:#BE9447; --accent-dim:#7A5E28;
-  --muted:#B3B3B3; --muted-soft:#8A8A8A; --text:#F2F2F2;
-  --rule:#2A2A2A; --stop:#8B2020; --stop-text:#E88080; --review-text:#D4A055; --ready-text:#5DBF82;
+  /* Matches the owner's updated site palette (index.html, resources.html, security.html). */
+  --bg:#070706; --surface:#121210; --surface2:#1A1A17;
+  --accent:#D3AD64; --accent-dim:#AC823B; --accent-hover:#E0BC76; --focus:#F4D18B;
+  --muted:#BBB7AD; --muted-soft:#928D82; --text:#F5F3ED;
+  --rule:#302F2A; --header:#162F46; --glow:rgba(211,173,100,.13); --stop:#8B2020; --stop-text:#E88080; --review-text:#D4A055; --ready-text:#5DBF82;
 }
 *{margin:0;padding:0;box-sizing:border-box}
-body{background:var(--bg);color:var(--text);font-family:'Inter',sans-serif;line-height:1.6}
+body{background:radial-gradient(1050px 580px at 88% -150px,var(--glow),transparent 64%),var(--bg);color:var(--text);font-family:'Inter',sans-serif;line-height:1.6}
+.topbar{background:var(--header);border-bottom:1px solid var(--rule);padding:14px 16px}
+.topbar span{display:block;max-width:680px;margin:0 auto;font:500 20px 'Bodoni Moda',serif;color:var(--accent);letter-spacing:-.01em}
+button:focus-visible,select:focus-visible,a:focus-visible{outline:2px solid var(--focus);outline-offset:3px}
 main{max-width:680px;margin:0 auto;padding:32px 16px 64px}
 .eyebrow{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--accent);margin-bottom:10px}
 h1{font-family:'Bodoni Moda',serif;font-weight:400;font-size:28px;line-height:1.25;margin-bottom:12px}
@@ -46,16 +50,19 @@ button.tap{margin:0;background:var(--surface);color:var(--text);border:2px solid
 button.tap::after{content:'\203A';color:var(--accent);font-size:24px;line-height:1}
 button.tap.sel,button.tap:hover,button.tap:focus-visible{background:var(--accent);color:var(--bg)}
 button.tap.sel::after,button.tap:hover::after{color:var(--bg)}
+button.tap:hover{transform:translateY(-2px)}
 textarea::placeholder,input::placeholder{color:var(--muted-soft);opacity:1}
 button.back{background:none;color:var(--muted);border:0;margin-top:10px;padding:10px 0;width:auto;min-height:44px;font-size:15px}
 button.next{margin-top:16px}
 details.opt{margin-top:22px;border-top:1px solid var(--rule);padding-top:12px}
 details.opt summary{cursor:pointer;color:var(--accent);font-size:15px;padding:6px 0}
 details.opt summary .hint{margin-left:6px}
-textarea:focus,input:focus,select:focus{outline:2px solid var(--accent);outline-offset:1px}
+textarea:focus,input:focus,select:focus{outline:2px solid var(--focus);outline-offset:1px}
 .check{display:flex;gap:10px;align-items:flex-start;margin:12px 0;color:var(--text)}
 .check input{margin-top:5px;width:18px;height:18px;accent-color:var(--accent);flex:none}
 button{margin-top:24px;background:var(--accent);color:var(--bg);border:0;padding:14px 22px;font:500 16px 'Inter',sans-serif;cursor:pointer;min-height:48px;width:100%}
+button{transition:background .18s ease,transform .18s ease}
+button#go:hover,button.next:hover{background:var(--accent-hover)}
 button:disabled{opacity:.6;cursor:default}
 #msg,#pmsg{margin-top:14px;color:var(--review-text)}
 .done{background:var(--surface);border:1px solid var(--ready-text);padding:18px;margin-top:20px;color:var(--text)}
@@ -65,6 +72,7 @@ footer{color:var(--muted-soft);font-size:13px;margin-top:40px}
 <script>document.documentElement.className+=' js';</script>
 </head>
 <body>
+<div class="topbar"><span>Decision Spellcheck</span></div>
 <main>
 <div class="eyebrow">Practitioner review &middot; 3 questions &middot; about 3 minutes</div>
 <h1>Would you rely on this record?</h1>
