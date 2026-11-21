@@ -38,7 +38,7 @@ label{display:block;color:var(--text);margin:18px 0 6px}
 textarea,input[type=text],input[type=email],select{width:100%;background:var(--surface);color:var(--text);border:1px solid var(--rule);padding:12px;font:inherit;border-radius:2px}
 textarea{min-height:130px}
 .progress{height:6px;background:var(--surface2);border:1px solid var(--rule);border-radius:3px;margin:26px 0 8px;overflow:hidden}
-.progress span{display:block;height:4px;width:33%;background:var(--accent);transition:width .2s}
+.progress span{display:block;height:100%;width:50%;background:var(--accent);transition:width .2s}
 .step-count{font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.08em;color:var(--muted-soft);margin:0 0 10px}
 fieldset.step{border:0;padding:0;margin:0}
 fieldset.step legend{color:var(--text);font-size:19px;line-height:1.35;margin-bottom:12px;padding:0}
@@ -87,7 +87,7 @@ footer{color:var(--muted-soft);font-size:13px;margin-top:40px}
 
 <form id="f" novalidate>
 <div class="progress" aria-hidden="true"><span id="bar"></span></div>
-<p class="step-count" id="stepcount" aria-live="polite">Question 1 of 3</p>
+<p class="step-count" id="stepcount" aria-live="polite">Record read &middot; Question 1 of 3</p>
 
 <fieldset class="step" id="s1">
 <legend>Would you rely on this record as it stands?</legend>
@@ -189,8 +189,11 @@ function chk(id){ var el=document.getElementById(id); return !!(el && el.checked
 var RELY='';
 function showStep(n){
   for(var i=1;i<=3;i++){ var st=document.getElementById('s'+i); if(st){ if(i===n) st.classList.add('on'); else st.classList.remove('on'); } }
-  var c=document.getElementById('stepcount'); if(c) c.textContent='Question '+n+' of 3';
-  var bar=document.getElementById('bar'); if(bar) bar.style.width=Math.round(n/3*100)+'%';
+  // Reading the record is most of the work, so the bar credits it: it starts at
+  // half and moves quickly. Research on web surveys (Villar, Callegaro and Yang,
+  // 2013) found bars that start slow raise drop-off and fast-then-slow ones lower it.
+  var c=document.getElementById('stepcount'); if(c) c.textContent=(n===1?'Record read \u00B7 ':'')+'Question '+n+' of 3';
+  var bar=document.getElementById('bar'); if(bar) bar.style.width=(n===1?'50%':(n===2?'75%':'92%'));
   var m=document.getElementById('msg'); if(m) m.textContent='';
 }
 showStep(1);
