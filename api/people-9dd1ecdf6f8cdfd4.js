@@ -254,6 +254,7 @@ export default async function handler(req){
       survey_answer: src === 'practitioner-review' ? String(p.answer || '') : '',
       survey_record: (src === 'practitioner-review' || src === 'practitioner-pilot-interest') ? String(p.record_id || '') : '',
       survey_role: src === 'practitioner-review' ? String(p.role || '') : '',
+      survey_rely: src === 'practitioner-review' ? String(p.rely || '') : '',
       survey_years: src === 'practitioner-review' ? String(p.years || '') : '',
       survey_quote_ok: src === 'practitioner-review' && p.consent_quote === true,
       survey_wants_results: src === 'practitioner-review' && p.want_results === true,

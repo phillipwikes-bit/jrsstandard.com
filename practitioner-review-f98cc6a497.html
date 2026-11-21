@@ -32,6 +32,19 @@ label{display:block;color:var(--text);margin:18px 0 6px}
 .hint{color:var(--muted-soft);font-size:14px}
 textarea,input[type=text],input[type=email],select{width:100%;background:var(--surface);color:var(--text);border:1px solid var(--rule);padding:12px;font:inherit;border-radius:2px}
 textarea{min-height:130px}
+.progress{height:4px;background:var(--rule);margin:26px 0 8px}
+.progress span{display:block;height:4px;width:33%;background:var(--accent);transition:width .2s}
+.step-count{font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.08em;color:var(--muted-soft);margin:0 0 10px}
+fieldset.step{border:0;padding:0;margin:0}
+fieldset.step legend{color:var(--text);font-size:19px;line-height:1.35;margin-bottom:12px;padding:0}
+fieldset.step legend label{margin:0;font-size:19px}
+.js fieldset.step{display:none}
+.js fieldset.step.on{display:block}
+.taps{display:flex;flex-direction:column;gap:10px}
+button.tap{margin:0;background:var(--surface);color:var(--text);border:1px solid var(--accent-dim);text-align:left;padding:16px 18px;font-size:17px;min-height:56px}
+button.tap.sel,button.tap:hover{border-color:var(--accent);background:var(--surface2)}
+button.back{background:none;color:var(--muted);border:0;margin-top:10px;padding:10px 0;width:auto;min-height:44px;font-size:15px}
+button.next{margin-top:16px}
 details.opt{margin-top:22px;border-top:1px solid var(--rule);padding-top:12px}
 details.opt summary{cursor:pointer;color:var(--accent);font-size:15px;padding:6px 0}
 details.opt summary .hint{margin-left:6px}
@@ -45,30 +58,44 @@ button:disabled{opacity:.6;cursor:default}
 .hp{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden}
 footer{color:var(--muted-soft);font-size:13px;margin-top:40px}
 </style>
+<script>document.documentElement.className+=' js';</script>
 </head>
 <body>
 <main>
-<div class="eyebrow">Practitioner review &middot; about five minutes</div>
-<h1>One fictional record, one question</h1>
-<p>Below is a short decision record with the documents behind it. Everything here is invented: the people, the company and the documents. There is no sign-up and nothing to download. You answer once and you are done.</p>
+<div class="eyebrow">Practitioner review &middot; 3 questions &middot; about 3 minutes</div>
+<h1>Would you rely on this record?</h1>
+<p>A short, invented approval record and the three documents behind it. Read it, then answer three quick questions. No sign-up.</p>
 
-<h2>The record</h2>
 <div class="record">On 2026-03-02, Ana Petrov, IT service manager, granted Brightledger Consulting administrator access to the payroll system. The access is subject to multi-factor authentication. The access runs until 2026-04-30. The vendor risk assessment found the risk acceptable. The exception was granted under the third-party access standard, section 5. The exception is therefore controlled and can remain in place.</div>
 
-<h2>The documents behind it</h2>
 <div class="doc"><b>Access request AR-REQ-82 (v1)</b><span>Brightledger Consulting requests administrator access to the payroll system for a migration. Multi-factor authentication is recommended.</span></div>
 <div class="doc"><b>Vendor risk assessment VRA-19 (v1)</b><span>The vendor risk assessment found the risk acceptable.</span></div>
 <div class="doc"><b>Exception approval EX-82 (v1)</b><span>On 2026-03-02, Ana Petrov, IT service manager, granted Brightledger Consulting administrator access to the payroll system. The access runs until 2026-04-30. The exception was granted under the third-party access standard, section 5.</span></div>
 
 <form id="f" novalidate>
-<label for="answer">What can't you rebuild from this record? List anything a later reviewer could not trace, confirm or rely on.</label>
-<p class="hint" style="margin:0 0 8px">A few lines or bullet points is plenty. There are no right or wrong answers.</p>
-<textarea id="answer" name="answer" required placeholder="A few bullet points is fine"></textarea>
+<div class="progress" aria-hidden="true"><span id="bar"></span></div>
+<p class="step-count" id="stepcount" aria-live="polite">Question 1 of 3</p>
 
-<details class="opt">
-<summary>About you, and credit <span class="hint">(all optional, skip if you like)</span></summary>
+<fieldset class="step" id="s1">
+<legend>Would you rely on this record as it stands?</legend>
+<div class="taps" role="group">
+<button type="button" class="tap" data-rely="Yes">Yes</button>
+<button type="button" class="tap" data-rely="Not without more">Not without more</button>
+<button type="button" class="tap" data-rely="No">No</button>
+</div>
+</fieldset>
 
-<label for="role">Your field <span class="hint">(optional)</span></label>
+<fieldset class="step" id="s2">
+<legend><label for="answer">What can't you confirm or rebuild from it?</label></legend>
+<p class="hint" style="margin:0 0 8px">One line is enough. Bullets are fine.</p>
+<textarea id="answer" name="answer" required placeholder="Type a line or two"></textarea>
+<button type="button" class="next" id="next2">Next</button>
+<button type="button" class="back" data-back="1">Back</button>
+</fieldset>
+
+<fieldset class="step" id="s3">
+<legend>Last one, all optional: about you</legend>
+<label for="role">Your field</label>
 <select id="role" name="role">
 <option value="">Prefer not to say</option>
 <option>AI governance</option>
@@ -81,8 +108,7 @@ footer{color:var(--muted-soft);font-size:13px;margin-top:40px}
 <option>Organizational psychology or research</option>
 <option>Other</option>
 </select>
-
-<label for="years">Years in this kind of work <span class="hint">(optional)</span></label>
+<label for="years">Years in this kind of work</label>
 <select id="years" name="years">
 <option value="">Prefer not to say</option>
 <option>Under 2</option>
@@ -90,20 +116,21 @@ footer{color:var(--muted-soft);font-size:13px;margin-top:40px}
 <option>6 to 10</option>
 <option>Over 10</option>
 </select>
-
-<label for="name">Name <span class="hint">(optional)</span></label>
+<details class="opt">
+<summary>Credit, results or quotes <span class="hint">(optional)</span></summary>
+<label for="name">Name</label>
 <input type="text" id="name" name="name" autocomplete="name">
-<label for="email">Email <span class="hint">(optional, only needed for the boxes below)</span></label>
+<label for="email">Email <span class="hint">(only needed for the boxes below)</span></label>
 <input type="email" id="email" name="email" autocomplete="email">
-
 <div class="check"><input type="checkbox" id="c_results"><label for="c_results" style="margin:0">Send me how my answer compared with the tool.</label></div>
 <div class="check"><input type="checkbox" id="c_credit"><label for="c_credit" style="margin:0">You may credit me as a practitioner who gave feedback. I will see the exact wording first, and it is never an endorsement.</label></div>
 <div class="check"><input type="checkbox" id="c_quote"><label for="c_quote" style="margin:0">You may quote my answer in an article or report, without my name.</label></div>
 </details>
-
 <div class="hp" aria-hidden="true"><label for="website">Leave this empty</label><input type="text" id="website" tabindex="-1" autocomplete="off"></div>
 <p class="hint" style="margin-top:18px">By submitting, you agree that your answer may be used, without payment, to evaluate and improve Decision Spellcheck. Nothing is published under your name without your separate consent.</p>
 <button type="submit" id="go">Submit my answer</button>
+<button type="button" class="back" data-back="2">Back</button>
+</fieldset>
 <div id="msg" role="status" aria-live="polite"></div>
 </form>
 <div id="thanks" class="done" hidden>Thank you. Your answer is in, and there is nothing more to do.</div>
@@ -134,23 +161,59 @@ function jrsSanitizeCheck(text){
 function val(id){ var el=document.getElementById(id); return el ? String(el.value||'').trim() : ''; }
 function validEmail(e){ return e.indexOf('@')>0 && e.indexOf('.')>=0; }
 var REJECT={
-  answer_too_short:'Please write a little more about what you could not rebuild.',
+  answer_too_short:'Please add a line about what you could not confirm.',
   valid_email_required:'Please check your email address.',
   unknown_role:'Please choose your field again from the list.',
-  unknown_years:'Please choose your years of experience again from the list.'
+  unknown_years:'Please choose your years of experience again from the list.',
+  unknown_rely:'Please choose Yes, Not without more or No for question 1.'
 };
 function chk(id){ var el=document.getElementById(id); return !!(el && el.checked); }
+/* THREE-STEP FLOW (2026-11-21). One question per screen with a progress bar.
+   Question 1 is a single tap and gives a reliance judgment comparable with the
+   tool's READY or HOLD. Question 2 stays free text on purpose: listing the gaps
+   as options would show reviewers what the tool looks for and break the blind
+   comparison. Without JavaScript all three steps simply show at once. */
+var RELY='';
+function showStep(n){
+  for(var i=1;i<=3;i++){ var st=document.getElementById('s'+i); if(st){ if(i===n) st.classList.add('on'); else st.classList.remove('on'); } }
+  var c=document.getElementById('stepcount'); if(c) c.textContent='Question '+n+' of 3';
+  var bar=document.getElementById('bar'); if(bar) bar.style.width=Math.round(n/3*100)+'%';
+  var m=document.getElementById('msg'); if(m) m.textContent='';
+}
+showStep(1);
+(function(){
+  var taps=document.querySelectorAll('button.tap');
+  for(var i=0;i<taps.length;i++){
+    taps[i].addEventListener('click', function(){
+      RELY=this.getAttribute('data-rely')||'';
+      for(var j=0;j<taps.length;j++) taps[j].classList.remove('sel');
+      this.classList.add('sel');
+      if(typeof jrsReviewBeacon==='function') jrsReviewBeacon('review-start','jrs-review-start');
+      showStep(2);
+      var a=document.getElementById('answer'); if(a){ try{ a.focus(); }catch(e){} }
+    });
+  }
+  var n2=document.getElementById('next2');
+  if(n2) n2.addEventListener('click', function(){
+    if(val('answer').length < 8){ var m=document.getElementById('msg'); if(m) m.textContent='Please add a line about what you could not confirm.'; return; }
+    showStep(3);
+  });
+  var backs=document.querySelectorAll('button.back');
+  for(var k=0;k<backs.length;k++){
+    backs[k].addEventListener('click', function(){ showStep(parseInt(this.getAttribute('data-back'),10)||1); });
+  }
+})();
 var form=document.getElementById('f');
 if(form){ form.addEventListener('submit', function(e){
   e.preventDefault();
   var msg=document.getElementById('msg'), btn=document.getElementById('go');
   var answer=val('answer'), email=val('email');
-  if(answer.length < 20){ if(msg) msg.textContent='Please write a little more about what you could not rebuild.'; return; }
+  if(answer.length < 8){ showStep(2); if(msg) msg.textContent='Please add a line about what you could not confirm.'; return; }
   var wantsContact=chk('c_results')||chk('c_credit');
   if(wantsContact && !validEmail(email)){ if(msg) msg.textContent='Please add your email so we can reach you about the boxes you ticked.'; return; }
   if(email && !validEmail(email)){ if(msg) msg.textContent='Please check your email address, or leave it blank.'; return; }
   if(!jrsSanitizeCheck(answer)) return;
-  var body={ record_id:RECORD_ID, answer:answer, role:val('role'), years:val('years'), consent_quote:chk('c_quote'), name:val('name'), email:email,
+  var body={ record_id:RECORD_ID, rely:RELY, answer:answer, role:val('role'), years:val('years'), consent_quote:chk('c_quote'), name:val('name'), email:email,
     want_results:chk('c_results'), consent_credit:chk('c_credit'), pilot_interest:false, website:val('website') };
   if(btn) btn.disabled=true; if(msg) msg.textContent='Sending...';
   fetch('/api/practitioner-review', { method:'POST', headers:{'Content-Type':'application/json'}, body:JSON.stringify(body) })
