@@ -25,14 +25,15 @@ h1{font-family:'Bodoni Moda',serif;font-weight:400;font-size:28px;line-height:1.
 h2{font-family:'Bodoni Moda',serif;font-weight:400;font-size:20px;margin:28px 0 10px}
 p{color:var(--muted);margin-bottom:12px}
 .record{background:var(--surface);border-left:3px solid var(--accent);padding:16px 18px;margin:12px 0;color:var(--text)}
-.doc{background:var(--surface2);border:1px solid var(--rule);padding:12px 14px;margin:10px 0}
+.doc{background:none;border:0;border-left:1px solid var(--rule);padding:4px 0 4px 14px;margin:12px 0}
 .doc b{display:block;font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--accent);font-weight:400;margin-bottom:4px}
-.doc span{color:var(--text)}
+.doc span{color:var(--muted);font-size:15px}
+.docs-label{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted-soft);margin:18px 0 4px}
 label{display:block;color:var(--text);margin:18px 0 6px}
 .hint{color:var(--muted-soft);font-size:14px}
 textarea,input[type=text],input[type=email],select{width:100%;background:var(--surface);color:var(--text);border:1px solid var(--rule);padding:12px;font:inherit;border-radius:2px}
 textarea{min-height:130px}
-.progress{height:4px;background:var(--rule);margin:26px 0 8px}
+.progress{height:6px;background:var(--surface2);border:1px solid var(--rule);border-radius:3px;margin:26px 0 8px;overflow:hidden}
 .progress span{display:block;height:4px;width:33%;background:var(--accent);transition:width .2s}
 .step-count{font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.08em;color:var(--muted-soft);margin:0 0 10px}
 fieldset.step{border:0;padding:0;margin:0}
@@ -41,8 +42,11 @@ fieldset.step legend label{margin:0;font-size:19px}
 .js fieldset.step{display:none}
 .js fieldset.step.on{display:block}
 .taps{display:flex;flex-direction:column;gap:10px}
-button.tap{margin:0;background:var(--surface);color:var(--text);border:1px solid var(--accent-dim);text-align:left;padding:16px 18px;font-size:17px;min-height:56px}
-button.tap.sel,button.tap:hover{border-color:var(--accent);background:var(--surface2)}
+button.tap{margin:0;background:var(--surface);color:var(--text);border:2px solid var(--accent);border-radius:6px;text-align:left;padding:16px 18px;font-size:17px;font-weight:500;min-height:58px;display:flex;justify-content:space-between;align-items:center}
+button.tap::after{content:'\203A';color:var(--accent);font-size:24px;line-height:1}
+button.tap.sel,button.tap:hover,button.tap:focus-visible{background:var(--accent);color:var(--bg)}
+button.tap.sel::after,button.tap:hover::after{color:var(--bg)}
+textarea::placeholder,input::placeholder{color:var(--muted-soft);opacity:1}
 button.back{background:none;color:var(--muted);border:0;margin-top:10px;padding:10px 0;width:auto;min-height:44px;font-size:15px}
 button.next{margin-top:16px}
 details.opt{margin-top:22px;border-top:1px solid var(--rule);padding-top:12px}
@@ -68,6 +72,7 @@ footer{color:var(--muted-soft);font-size:13px;margin-top:40px}
 
 <div class="record">On 2026-03-02, Ana Petrov, IT service manager, granted Brightledger Consulting administrator access to the payroll system. The access is subject to multi-factor authentication. The access runs until 2026-04-30. The vendor risk assessment found the risk acceptable. The exception was granted under the third-party access standard, section 5. The exception is therefore controlled and can remain in place.</div>
 
+<p class="docs-label">The documents behind it</p>
 <div class="doc"><b>Access request AR-REQ-82 (v1)</b><span>Brightledger Consulting requests administrator access to the payroll system for a migration. Multi-factor authentication is recommended.</span></div>
 <div class="doc"><b>Vendor risk assessment VRA-19 (v1)</b><span>The vendor risk assessment found the risk acceptable.</span></div>
 <div class="doc"><b>Exception approval EX-82 (v1)</b><span>On 2026-03-02, Ana Petrov, IT service manager, granted Brightledger Consulting administrator access to the payroll system. The access runs until 2026-04-30. The exception was granted under the third-party access standard, section 5.</span></div>
