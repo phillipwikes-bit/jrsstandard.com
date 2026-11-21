@@ -3085,3 +3085,19 @@ Only four line groups differ between v7 and v8.
 - 2026-11-19: Owner asked for an approximate completion time. Reading load is about 126 words (record 57, documents 69): about 1 minute to read, 2 to 4 minutes to write a few lines, under 1 minute for optional fields. Advised "about 5 minutes" in invitations; the page label says "about ten minutes" and could be changed to match before the post-reset redeploy.
 - 2026-11-19: Drafted short "about 5 minutes" selling lines for the recruitment message.
 - 2026-11-21: Owner asked what type of tool Decision Spellcheck is. Answered: a rule-based (deterministic, no AI model) decision-record quality checker that reviews a record before it is finalised; sold as an embeddable review engine. Advised against "compliance tool" and "AI tool" labels.
+- 2026-11-21: **STUDY PARTICIPATION: STARTED VERSUS COMPLETED** (read-only count queries on the live study database via the Supabase connector; the same aggregate views `research/check_completion.py` reads, which could not run here because the proxy blocks the host. Counts only; no names or answers copied).
+
+  | Study | Codes issued | Started (1+ read) | Completed | Completion bar |
+  |---|---|---|---|---|
+  | JRS reviewer study, Arm A | 27 | 16 | 16 | 24 reads |
+  | JRS reviewer study, Arm B | 21 | 21 | 20 | 24 reads |
+  | Real-case domain pilots | 2 | 2 | 2 | 20 cases |
+  | **Total** | **50** | **39** | **38** | |
+
+  | Other sign-ups (pilot_contacts) | Rows | Distinct emails |
+  |---|---|---|
+  | Contributor confirmations | 37 | 28 |
+  | Training enrolments / completions | 8 / 4 | 8 / 4 |
+  | Decision Spellcheck practitioner review (AR-82), 20 to 21 Nov | 4 answers | 0 (none ticked a contact box; 1 gave a name) |
+
+  Notes. "Logged in" is read as "was issued or entered a reviewer code": the study records no separate login event, and page-view events carry no participant identity, so unique visitors who never entered a code cannot be counted. 11 Arm A codes were issued but never used. Of the 39 who started, 38 finished (one Arm B reviewer short of 24). Decision Spellcheck page: it records nothing until someone submits, so visits without an answer are NOT ESTABLISHED. Three of the four answers on 20 Nov are short (82 to 109 characters) and anonymous; whether any are the owner's own test submissions is UNVERIFIED. All four arrived through the older page version. No completion recognition issued from these figures; per-code recognition still requires `check_completion.py`.
