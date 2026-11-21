@@ -78,12 +78,15 @@ try{
   assert.equal(body.people[1000].source_position,1000);
   assert.equal(body.people[1000].name,'Last fixture');
   assert.equal(calls,2);
-  assert.equal(funnelCalls.length,2);
+  assert.equal(funnelCalls.length,4);
+  assert.equal(funnelCalls.filter(c=>/country=eq\.US/.test(c.url)).length,2);
   assert.ok(funnelCalls.every(c=>c.method==='HEAD'&&/source=eq\.page-view/.test(c.url)));
   assert.ok(funnelCalls.some(c=>/event=eq\.review-view/.test(c.url)));
   assert.ok(funnelCalls.some(c=>/event=eq\.review-start/.test(c.url)));
   assert.equal(body.survey_funnel.opened,null);
   assert.equal(body.survey_funnel.started,null);
+  assert.equal(body.survey_funnel.opened_us,null);
+  assert.equal(body.survey_funnel.started_us,null);
   console.log('PASS complete 1001-row source retains flagged historical tests and genuine contacts without suppression');
 }finally{
   globalThis.fetch=originalFetch;
