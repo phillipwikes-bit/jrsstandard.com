@@ -54,22 +54,40 @@ button.tap:hover{transform:translateY(-2px)}
 textarea::placeholder,input::placeholder{color:var(--muted-soft);opacity:1}
 button.back{background:none;color:var(--muted);border:0;margin-top:10px;padding:10px 0;width:auto;min-height:44px;font-size:15px}
 button.next{margin-top:16px}
-/* PHONE PASS (2026-11-21): bring question 1 closer to the top and keep a way to reach it in view. */
+/* TYPE SIZES (2026-11-21), checked against published criteria: Apple HIG body text
+   17pt and 44pt tap targets; Material body 16sp; WCAG 2.2 contrast 4.5:1 and
+   targets at least 24px. Reading text 17px, supporting text 16px, small labels 13px. */
+body{font-size:17px}
+main>p:first-of-type{font-size:17px}
+.record{font-size:17px;line-height:1.55}
+.doc span{font-size:16px;line-height:1.55}
+.doc b{font-size:13px}
+.docs-label{font-size:13px}
+.eyebrow{font-size:13px;letter-spacing:.1em}
+.step-count{font-size:14px}
+.hint,span.hint,p.hint{font-size:16px}
+fieldset.step legend,fieldset.step legend label{font-size:21px}
+button.tap{font-size:18px}
+button.chip{font-size:17px;min-height:48px}
+button.back{font-size:17px;min-width:96px;min-height:48px;padding:12px 0}
+details.opt summary{font-size:17px;padding:12px 0;min-height:48px}
+.check{font-size:16px}
+.check input{width:24px;height:24px;margin-top:2px}
+footer{font-size:15px}
+footer a{display:inline-block;padding:10px 0}
 @media (max-width:600px){
-  .topbar{padding:10px 16px}.topbar span{font-size:17px}
+  .topbar{padding:10px 16px}.topbar span{font-size:19px}
   main{padding:18px 16px 96px}
-  .eyebrow{font-size:10px;letter-spacing:.12em;margin-bottom:6px}
-  h1{font-size:24px;margin-bottom:6px}
-  main>p:first-of-type{font-size:15px;margin-bottom:10px}
-  .record{padding:12px 14px;margin:8px 0;font-size:15.5px;line-height:1.5}
-  .docs-label{margin:12px 0 2px}
-  .doc{margin:8px 0;padding:2px 0 2px 12px}
-  .doc b{font-size:11px;margin-bottom:2px}
-  .doc span{font-size:14.5px;line-height:1.5}
+  h1{font-size:26px;margin-bottom:6px}
+  main>p:first-of-type{margin-bottom:10px}
+  .record{padding:14px 16px;margin:8px 0}
+  .docs-label{margin:14px 0 2px}
+  .doc{margin:10px 0;padding:2px 0 2px 12px}
+  .doc b{margin-bottom:2px}
   .progress{margin:18px 0 6px}
 }
 .jump{position:fixed;left:0;right:0;bottom:0;z-index:5;padding:10px 16px calc(10px + env(safe-area-inset-bottom));background:var(--header);border-top:1px solid var(--accent-dim);display:none}
-.jump button{margin:0;min-height:50px;border-radius:6px;font-size:16px}
+.jump button{margin:0;min-height:52px;border-radius:6px;font-size:18px}
 .jump.on{display:block}
 .chips{display:flex;flex-wrap:wrap;gap:8px}
 button.chip{margin:0;width:auto;min-height:46px;padding:10px 16px;background:var(--surface);color:var(--text);border:1px solid var(--accent-dim);border-radius:23px;font-size:15px}
@@ -80,7 +98,7 @@ details.opt summary .hint{margin-left:6px}
 textarea:focus,input:focus,select:focus{outline:2px solid var(--focus);outline-offset:1px}
 .check{display:flex;gap:10px;align-items:flex-start;margin:12px 0;color:var(--text)}
 .check input{margin-top:5px;width:18px;height:18px;accent-color:var(--accent);flex:none}
-button{margin-top:24px;background:var(--accent);color:var(--bg);border:0;padding:14px 22px;font:500 16px 'Inter',sans-serif;cursor:pointer;min-height:48px;width:100%}
+button{margin-top:24px;background:var(--accent);color:var(--bg);border:0;padding:14px 22px;font:500 17px 'Inter',sans-serif;cursor:pointer;min-height:48px;width:100%}
 button{transition:background .18s ease,transform .18s ease}
 button#go:hover,button.next:hover{background:var(--accent-hover)}
 button:disabled{opacity:.6;cursor:default}
@@ -88,6 +106,13 @@ button:disabled{opacity:.6;cursor:default}
 .done{background:var(--surface);border:1px solid var(--ready-text);padding:18px;margin-top:20px;color:var(--text)}
 .hp{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden}
 footer{color:var(--muted-soft);font-size:13px;margin-top:40px}
+/* Size floor, placed last so no earlier rule can shrink it (2026-11-21). */
+button.chip{font-size:17px;min-height:48px}
+details.opt summary{font-size:17px;padding:12px 0;min-height:48px}
+details.opt summary .hint{font-size:16px}
+.check input{width:24px;height:24px;margin-top:2px}
+footer{font-size:15px}
+footer a{display:inline-block;padding:12px 0}
 </style>
 <script>document.documentElement.className+=' js';</script>
 </head>
