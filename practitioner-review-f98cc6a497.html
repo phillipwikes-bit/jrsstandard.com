@@ -54,6 +54,26 @@ button.tap:hover{transform:translateY(-2px)}
 textarea::placeholder,input::placeholder{color:var(--muted-soft);opacity:1}
 button.back{background:none;color:var(--muted);border:0;margin-top:10px;padding:10px 0;width:auto;min-height:44px;font-size:15px}
 button.next{margin-top:16px}
+/* PHONE PASS (2026-11-21): bring question 1 closer to the top and keep a way to reach it in view. */
+@media (max-width:600px){
+  .topbar{padding:10px 16px}.topbar span{font-size:17px}
+  main{padding:18px 16px 96px}
+  .eyebrow{font-size:10px;letter-spacing:.12em;margin-bottom:6px}
+  h1{font-size:24px;margin-bottom:6px}
+  main>p:first-of-type{font-size:15px;margin-bottom:10px}
+  .record{padding:12px 14px;margin:8px 0;font-size:15.5px;line-height:1.5}
+  .docs-label{margin:12px 0 2px}
+  .doc{margin:8px 0;padding:2px 0 2px 12px}
+  .doc b{font-size:11px;margin-bottom:2px}
+  .doc span{font-size:14.5px;line-height:1.5}
+  .progress{margin:18px 0 6px}
+}
+.jump{position:fixed;left:0;right:0;bottom:0;z-index:5;padding:10px 16px calc(10px + env(safe-area-inset-bottom));background:var(--header);border-top:1px solid var(--accent-dim);display:none}
+.jump button{margin:0;min-height:50px;border-radius:6px;font-size:16px}
+.jump.on{display:block}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+button.chip{margin:0;width:auto;min-height:46px;padding:10px 16px;background:var(--surface);color:var(--text);border:1px solid var(--accent-dim);border-radius:23px;font-size:15px}
+button.chip.sel{background:var(--accent);color:var(--bg);border-color:var(--accent)}
 details.opt{margin-top:22px;border-top:1px solid var(--rule);padding-top:12px}
 details.opt summary{cursor:pointer;color:var(--accent);font-size:15px;padding:6px 0}
 details.opt summary .hint{margin-left:6px}
@@ -74,9 +94,9 @@ footer{color:var(--muted-soft);font-size:13px;margin-top:40px}
 <body>
 <div class="topbar"><span>Decision Spellcheck</span></div>
 <main>
-<div class="eyebrow">Practitioner review &middot; 3 questions &middot; about 3 minutes</div>
+<div class="eyebrow">3 quick questions &middot; about 3 minutes</div>
 <h1>Would you rely on this record?</h1>
-<p>A short, invented approval record and the three documents behind it. Read it, then answer three quick questions. No sign-up.</p>
+<p>Read this short, invented record, then tap your answer. No sign-up.</p>
 
 <div class="record">On 2026-03-02, Ana Petrov, IT service manager, granted Brightledger Consulting administrator access to the payroll system. The access is subject to multi-factor authentication. The access runs until 2026-04-30. The vendor risk assessment found the risk acceptable. The exception was granted under the third-party access standard, section 5. The exception is therefore controlled and can remain in place.</div>
 
@@ -101,13 +121,13 @@ footer{color:var(--muted-soft);font-size:13px;margin-top:40px}
 <fieldset class="step" id="s2">
 <legend><label for="answer">What can't you confirm or rebuild from it?</label></legend>
 <p class="hint" style="margin:0 0 8px">One line is enough. Bullets are fine.</p>
-<textarea id="answer" name="answer" required placeholder="Type a line or two"></textarea>
+<textarea id="answer" name="answer" required placeholder="Type a line or two" autocapitalize="sentences"></textarea>
 <button type="button" class="next" id="next2">Next</button>
 <button type="button" class="back" data-back="1">Back</button>
 </fieldset>
 
 <fieldset class="step" id="s3">
-<legend>Last one, all optional: about you</legend>
+<legend>Last step: two optional taps, then submit</legend>
 <label for="role">Your field</label>
 <select id="role" name="role">
 <option value="">Prefer not to say</option>
@@ -121,14 +141,14 @@ footer{color:var(--muted-soft);font-size:13px;margin-top:40px}
 <option>Organizational psychology or research</option>
 <option>Other</option>
 </select>
-<label for="years">Years in this kind of work</label>
-<select id="years" name="years">
-<option value="">Prefer not to say</option>
-<option>Under 2</option>
-<option>2 to 5</option>
-<option>6 to 10</option>
-<option>Over 10</option>
-</select>
+<p class="hint" id="years-label" style="margin:18px 0 8px;color:var(--text);font-size:16px">Years in this kind of work</p>
+<div class="chips" role="group" aria-labelledby="years-label">
+<button type="button" class="chip" data-years="Under 2">Under 2</button>
+<button type="button" class="chip" data-years="2 to 5">2 to 5</button>
+<button type="button" class="chip" data-years="6 to 10">6 to 10</button>
+<button type="button" class="chip" data-years="Over 10">Over 10</button>
+</div>
+<input type="hidden" id="years" name="years" value="">
 <details class="opt">
 <summary>Credit, results or quotes <span class="hint">(optional)</span></summary>
 <label for="name">Name</label>
@@ -156,6 +176,7 @@ footer{color:var(--muted-soft);font-size:13px;margin-top:40px}
 <div id="pmsg" role="status" aria-live="polite"></div>
 </form>
 </div>
+<div class="jump" id="jump"><button type="button" id="jumpbtn">Answer 3 quick questions &darr;</button></div>
 <footer>Decision Spellcheck &middot; &copy; 2026 Phillip Wikes &middot; <a href="mailto:info@jrsstandard.com" style="color:var(--accent)">info@jrsstandard.com</a></footer>
 </main>
 <script>
@@ -195,6 +216,8 @@ function showStep(n){
   var c=document.getElementById('stepcount'); if(c) c.textContent=(n===1?'Record read \u00B7 ':'')+'Question '+n+' of 3';
   var bar=document.getElementById('bar'); if(bar) bar.style.width=(n===1?'50%':(n===2?'75%':'92%'));
   var m=document.getElementById('msg'); if(m) m.textContent='';
+  // On a phone, bring the new step to the top of the screen so its button is in reach.
+  if(n>1){ var pg=document.querySelector('.progress'); if(pg){ try{ pg.scrollIntoView({behavior:'smooth',block:'start'}); }catch(e){ pg.scrollIntoView(); } } }
 }
 showStep(1);
 (function(){
@@ -217,6 +240,30 @@ showStep(1);
   var backs=document.querySelectorAll('button.back');
   for(var k=0;k<backs.length;k++){
     backs[k].addEventListener('click', function(){ showStep(parseInt(this.getAttribute('data-back'),10)||1); });
+  }
+})();
+/* Phone helpers: a pinned button that jumps to question 1 until it is on screen,
+   and tap chips for years of experience. */
+(function(){
+  var jump=document.getElementById('jump'), jb=document.getElementById('jumpbtn'), form=document.getElementById('f');
+  if(jump&&jb&&form){
+    jb.addEventListener('click',function(){ try{ form.scrollIntoView({behavior:'smooth',block:'start'}); }catch(e){ form.scrollIntoView(); } });
+    if('IntersectionObserver' in window){
+      var seen=false;
+      var io=new IntersectionObserver(function(es){
+        es.forEach(function(en){ if(en.isIntersecting) seen=true; });
+        if(seen){ jump.classList.remove('on'); io.disconnect(); } else jump.classList.add('on');
+      },{threshold:0.3});
+      var taps=document.querySelector('.taps'); if(taps) io.observe(taps);
+    }
+  }
+  var chips=document.querySelectorAll('button.chip'), yrs=document.getElementById('years');
+  for(var i=0;i<chips.length;i++){
+    chips[i].addEventListener('click',function(){
+      var on=this.classList.contains('sel');
+      for(var j=0;j<chips.length;j++) chips[j].classList.remove('sel');
+      if(!on){ this.classList.add('sel'); if(yrs) yrs.value=this.getAttribute('data-years')||''; } else if(yrs) yrs.value='';
+    });
   }
 })();
 var form=document.getElementById('f');
