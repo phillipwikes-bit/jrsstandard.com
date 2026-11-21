@@ -296,9 +296,11 @@ export default async function handler(req){
   // how many began typing, from the anonymous page-view events the page sends
   // through /api/telemetry. Counts only. A failed count is null, never zero, so
   // the dashboard can say "not available" instead of showing a false 0.
-  async function countView(evt){
+  // usOnly adds a country filter (US from the edge header) so the dashboard can split
+  // US and international without any identity on the row.
+  async function countView(evt, usOnly){
     try{
-      const r=await fetch(SB+'/rest/v1/interaction_events?select=id&source=eq.page-view&payload->>event=eq.'+evt,
+      const r=await fetch(SB+'/rest/v1/interaction_events?select=id&source=eq.page-view&payload->>event=eq.'+evt+(usOnly?'&payload->>country=eq.US':''),
         {method:'HEAD',headers:{apikey:SERVICE,Authorization:'Bearer '+SERVICE,Prefer:'count=exact'}});
       if(!r.ok) return null;
       const n=parseInt(String(r.headers.get('content-range')||'').split('/')[1],10);
@@ -306,6 +308,7 @@ export default async function handler(req){
     }catch(e){ return null; }
   }
   const surveyFunnel={ opened: await countView('review-view'), started: await countView('review-start'),
+    opened_us: await countView('review-view', true), started_us: await countView('review-start', true),
     counting_since: '2026-11-21' };
 
   return json({

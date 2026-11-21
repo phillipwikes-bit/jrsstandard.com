@@ -2129,6 +2129,19 @@ function drawSurvey(rows,funnel){
   sum.textContent=fun+real.length+(real.length===1?' completed survey':' completed surveys')
     +' · '+pilots.length+(pilots.length===1?' pilot request':' pilot requests')
     +(tests?' · '+tests+(tests===1?' test entry':' test entries')+' not counted':'');
+  // WHERE REVIEWERS ARE (2026-11-21): US versus international, from the country the
+  // connection reports. Approximate: a VPN or travel changes it. Counts only.
+  var geo=document.getElementById('sv-geo');
+  if(!geo){ geo=document.createElement('p'); geo.id='sv-geo'; geo.style.cssText='margin:6px 0 0;color:var(--muted)'; sum.parentNode.insertBefore(geo,sum.nextSibling); }
+  var cUS=0,cIntl=0,cUnk=0,byC={};
+  real.forEach(function(p){ var c=String(p.country||''); if(!c)cUnk++; else if(c==='US')cUS++; else { cIntl++; byC[c]=(byC[c]||0)+1; } });
+  var ctry=Object.keys(byC).sort().map(function(k){return k+' '+byC[k];}).join(', ');
+  var g='Completed: US '+cUS+' · international '+cIntl+(ctry?' ('+ctry+')':'')+(cUnk?' · location unknown '+cUnk:'');
+  if(funnel&&Number.isInteger(funnel.opened)&&Number.isInteger(funnel.opened_us)&&Number.isInteger(funnel.started)&&Number.isInteger(funnel.started_us)){
+    g='Opened: US '+funnel.opened_us+' · international or unknown '+(funnel.opened-funnel.opened_us)
+     +'. Started: US '+funnel.started_us+' · international or unknown '+(funnel.started-funnel.started_us)+'. '+g+'.';
+  }
+  geo.textContent=g;
   while(list.firstChild)list.removeChild(list.firstChild);
   if(!real.length){
     var none=document.createElement('p'); none.style.cssText='margin:6px 0 0;color:var(--muted)';
