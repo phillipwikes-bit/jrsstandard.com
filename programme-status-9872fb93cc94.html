@@ -179,6 +179,17 @@ th{font-size:10px;letter-spacing:.055em}
   <h1>JRS Owner Dashboard</h1>
   <p class="sub">Private acquisition-readiness intelligence and source-bounded programme reporting. Historical research and distribution evidence is not verified commercial demand. Live source panels refresh where available; unavailable owner-only data must not be treated as zero.</p>
 
+  <!-- Practitioner survey responses, first on the page so the owner does not
+       have to search the full record. Reads the same authenticated people
+       endpoint as "Everyone on the record"; rows flagged as tests are counted
+       separately and never shown as responses. -->
+  <section id="survey-responses" aria-labelledby="sv-heading" style="border:1px solid var(--accent);background:var(--surface);padding:18px 20px;margin:18px 0 26px">
+    <h2 id="sv-heading" style="margin:0 0 6px;font-size:20px">Survey responses</h2>
+    <p id="sv-summary" style="margin:0 0 4px;color:var(--text);font-size:16px">Loading survey responses...</p>
+    <p style="margin:0 0 10px;color:var(--muted-soft);font-size:12.5px">Practitioner review of record AR-82 (practitioner-review-f98cc6a497.html). Newest first. Test entries are excluded from the count.</p>
+    <div id="sv-list"></div>
+  </section>
+
   <!-- Private owner acquisition dashboard. Dated evidence, no PII, no new API calls. -->
   <section id="ip-sale-intelligence" class="ipx" aria-labelledby="ipx-heading">
     <div class="ipx-intro">
@@ -2069,6 +2080,8 @@ function pplCsv(){
 // An unavailable source is never represented by an empty/zero count.
 function clearUnavailablePeople(tiles){
   PPL=[];
+  var svs=document.getElementById('sv-summary');
+  if(svs)svs.textContent='Survey responses could not be loaded just now. Reload the page; if it persists, ask Claude for the count.';
   tiles.textContent='Historical private source unavailable or incomplete. No partial record population shown.';
   var table=document.getElementById('ppl-tbl');if(table)table.textContent='';
   var count=document.getElementById('ppl-cnt');if(count)count.textContent='Source totals unavailable, not zero.';
@@ -2080,6 +2093,93 @@ function clearUnavailablePeople(tiles){
   ['sd-people','sd-people-countries'].forEach(function(id){
     var el=document.getElementById(id);if(el)el.textContent='Unavailable';
   });
+}
+// Respondents may type **bold** headings and blank-line paragraphs. Render
+// those two forms only, through text nodes, so nothing a respondent types can
+// become live HTML.
+function renderAnswer(el,text){
+  String(text).split(/\n{2,}/).forEach(function(par){
+    var pEl=document.createElement('p');
+    pEl.style.cssText='margin:0 0 8px;white-space:pre-wrap;color:var(--text)';
+    var parts=par.split(/\*\*([^*\n]+)\*\*/);
+    for(var i=0;i<parts.length;i++){
+      if(!parts[i])continue;
+      if(i%2===1){var b=document.createElement('b');b.textContent=parts[i];pEl.appendChild(b);}
+      else pEl.appendChild(document.createTextNode(parts[i]));
+    }
+    el.appendChild(pEl);
+  });
+}
+function drawSurvey(rows){
+  var sum=document.getElementById('sv-summary'), list=document.getElementById('sv-list');
+  if(!sum||!list)return;
+  var real=[], tests=0, pilots=[];
+  (rows||[]).forEach(function(p){
+    if(p.source==='practitioner-review'){ if(p.possible_test_marker===true)tests++; else real.push(p); }
+    else if(p.source==='practitioner-pilot-interest' && p.possible_test_marker!==true) pilots.push(p);
+  });
+  real.sort(function(a,b){return String(b.date).localeCompare(String(a.date));});
+  sum.textContent=real.length+(real.length===1?' completed survey':' completed surveys')
+    +' · '+pilots.length+(pilots.length===1?' pilot request':' pilot requests')
+    +(tests?' · '+tests+(tests===1?' test entry':' test entries')+' not counted':'');
+  while(list.firstChild)list.removeChild(list.firstChild);
+  if(!real.length){
+    var none=document.createElement('p'); none.style.cssText='margin:6px 0 0;color:var(--muted)';
+    none.textContent='No one has completed the survey yet. New answers appear here automatically when you reload this page.';
+    list.appendChild(none);
+  }
+  real.forEach(function(p){
+    var box=document.createElement('div');
+    box.style.cssText='border-top:1px solid var(--rule);padding:12px 0';
+    var head=document.createElement('div');
+    head.style.cssText='font-size:12.5px;color:var(--accent);margin-bottom:6px';
+    var who=(p.name||'Anonymous')+(p.email?' · '+p.email:'');
+    var bits=[String(p.date||'').slice(0,16).replace('T',' ')+' UTC', who,
+      p.survey_role||'Field not given', p.survey_years?p.survey_years+' years':'Years not given', p.country||''];
+    head.textContent=bits.filter(function(x){return x;}).join(' · ');
+    var text=String(p.survey_answer||'');
+    var words=text.trim()?text.trim().split(/\s+/).length:0;
+    head.textContent+=' · '+words+(words===1?' word':' words');
+    var ans=document.createElement('div');
+    ans.style.cssText='color:var(--text);font-size:14.5px;line-height:1.55;overflow:hidden';
+    renderAnswer(ans,text||'(no answer text)');
+    var flags=document.createElement('div');
+    flags.style.cssText='font-size:12px;color:var(--muted-soft);margin-top:6px';
+    flags.textContent='Quote without name: '+(p.survey_quote_ok?'yes':'no')
+      +(p.survey_quote_ok&&p.name?' (quote without attaching "'+p.name+'")':'')
+      +' · Wants results: '+(p.survey_wants_results?'yes':'no')
+      +' · May credit: '+(p.survey_credit_ok?'yes':'no');
+    box.appendChild(head); box.appendChild(ans);
+    // Long answers start folded to a short preview so several responses stay
+    // scannable; one tap shows the whole answer.
+    if(text.length>600){
+      ans.style.maxHeight='9.5em';
+      var more=document.createElement('button');
+      more.type='button';
+      more.style.cssText='margin-top:8px;background:none;border:1px solid var(--accent-dim);color:var(--accent);padding:8px 12px;min-height:40px;cursor:pointer;font:inherit;font-size:13px';
+      more.textContent='Show full answer';
+      more.setAttribute('aria-expanded','false');
+      more.addEventListener('click',function(){
+        var open=more.getAttribute('aria-expanded')==='true';
+        ans.style.maxHeight=open?'9.5em':'none';
+        more.textContent=open?'Show full answer':'Show less';
+        more.setAttribute('aria-expanded',open?'false':'true');
+      });
+      box.appendChild(more);
+    }
+    box.appendChild(flags);
+    list.appendChild(box);
+  });
+  if(pilots.length){
+    var ph=document.createElement('p'); ph.style.cssText='margin:14px 0 4px;color:var(--text);font-weight:500';
+    ph.textContent='Pilot or licence requests (asked after the survey, not linked to an answer)';
+    list.appendChild(ph);
+    pilots.forEach(function(p){
+      var l=document.createElement('div'); l.style.cssText='font-size:13px;color:var(--muted);padding:2px 0';
+      l.textContent=String(p.date||'').slice(0,16).replace('T',' ')+' UTC · '+(p.name||'No name')+' · '+(p.email||'');
+      list.appendChild(l);
+    });
+  }
 }
 function loadPeople(){
   var tiles=document.getElementById('ppl-tiles'); if(!tiles) return;
@@ -2096,6 +2196,7 @@ function loadPeople(){
         return;
       }
       PPL=d.people;
+      drawSurvey(PPL);
       var done={}, ctry={};
       PPL.forEach(function(p){
         var k=String(p.email||p.name||'').trim().toLowerCase();
