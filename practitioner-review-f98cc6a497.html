@@ -106,6 +106,20 @@ button:disabled{opacity:.6;cursor:default}
 .done{background:var(--surface);border:1px solid var(--ready-text);padding:18px;margin-top:20px;color:var(--text)}
 .hp{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden}
 footer{color:var(--muted-soft);font-size:13px;margin-top:40px}
+/* LAPTOP AND DESKTOP LAYOUT (2026-11-22). 60% of visitors open the survey on a
+   computer, where question 1 sat below the bottom of a 768px screen behind a full-width
+   bar. From 960px wide: the record and documents on the left, the questions in a panel
+   on the right that stays in view, so question 1 is visible on arrival. */
+@media (min-width:960px){
+  .topbar span{max-width:1120px}
+  main{max-width:1120px;display:grid;grid-template-columns:minmax(0,1fr) 400px;column-gap:40px;align-items:start;padding:32px 24px 64px}
+  main>.eyebrow,main>h1,main>p:first-of-type,main>footer{grid-column:1/-1}
+  .record,.docs-label,.doc{grid-column:1}
+  #f,#thanks,#pilot{grid-column:2;grid-row:4/span 6;align-self:start;position:sticky;top:24px}
+  #f{background:var(--surface);border:1px solid var(--rule);border-radius:8px;padding:20px 22px}
+  #f .progress{margin-top:0}
+  .jump,.jump.on{display:none}
+}
 /* Size floor, placed last so no earlier rule can shrink it (2026-11-21). */
 button.chip{font-size:17px;min-height:48px}
 details.opt summary{font-size:17px;padding:12px 0;min-height:48px}
@@ -140,7 +154,7 @@ button.tap{font-weight:600}
 <main>
 <div class="eyebrow">3 quick questions &middot; about 3 minutes</div>
 <h1>Would you rely on this record?</h1>
-<p>Read this short, invented record, then tap your answer. No sign-up.</p>
+<p>Read this short, invented record, then tap your answer. No sign-up. If you like, we will send you how your answer compared with the tool.</p>
 
 <div class="record">On 2026-03-02, Ana Petrov, IT service manager, granted Brightledger Consulting administrator access to the payroll system. The access is subject to multi-factor authentication. The access runs until 2026-04-30. The vendor risk assessment found the risk acceptable. The exception was granted under the third-party access standard, section 5. The exception is therefore controlled and can remain in place.</div>
 
