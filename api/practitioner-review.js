@@ -60,12 +60,14 @@ export default async function handler(req) {
   const name = clean(b.name, 200);
   const email = clean(b.email, 200);
   const wantsResults = b.want_results === true, credit = b.consent_credit === true, pilot = b.pilot_interest === true;
-  if ((wantsResults || credit || pilot) && !validEmail(email)) return json({ error: 'valid_email_required' }, 400);
+  // Free copy of the prototype when the study closes (owner decision 2026-11-22).
+  const wantsCopy = b.want_copy === true;
+  if ((wantsResults || credit || pilot || wantsCopy) && !validEmail(email)) return json({ error: 'valid_email_required' }, 400);
   if (email && !validEmail(email)) return json({ error: 'valid_email_required' }, 400);
 
   const payload = {
     kind: 'practitioner-review', record_id: record, rid: cleanRid(b.rid), src: cleanSrc(b.src), rely: rely, answer: answer, role: role, years: years, consent_quote: b.consent_quote === true,
-    want_results: wantsResults, consent_credit: credit, pilot_interest: pilot,
+    want_copy: wantsCopy, want_results: wantsResults, consent_credit: credit, pilot_interest: pilot,
     country: String(req.headers.get('x-vercel-ip-country') || '').toUpperCase().replace(/[^A-Z]/g, '').slice(0, 2) || '',
     ts: new Date().toISOString()
   };
