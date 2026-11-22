@@ -44,6 +44,7 @@ const LABEL = {
   'pilot':               'Pilot contact',
   'practitioner-review': 'Practitioner review (fictional record)',
   'practitioner-pilot-interest': 'Pilot or licence interest (after review)',
+  'practitioner-review-tap': 'Practitioner review, question 1 tap',
   // These three historical streams require separate owner follow-up.
   // They remain visible only inside the authenticated private directory.
   'reviewer-eval-incentive': 'Asked for a LinkedIn recommendation',
@@ -254,7 +255,8 @@ export default async function handler(req){
       survey_answer: src === 'practitioner-review' ? String(p.answer || '') : '',
       survey_record: (src === 'practitioner-review' || src === 'practitioner-pilot-interest') ? String(p.record_id || '') : '',
       survey_role: src === 'practitioner-review' ? String(p.role || '') : '',
-      survey_rely: src === 'practitioner-review' ? String(p.rely || '') : '',
+      survey_rely: (src === 'practitioner-review' || src === 'practitioner-review-tap') ? String(p.rely || '') : '',
+      survey_rid: (src === 'practitioner-review' || src === 'practitioner-review-tap') ? String(p.rid || '') : '',
       survey_years: src === 'practitioner-review' ? String(p.years || '') : '',
       survey_quote_ok: src === 'practitioner-review' && p.consent_quote === true,
       survey_wants_results: src === 'practitioner-review' && p.want_results === true,

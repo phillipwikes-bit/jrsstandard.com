@@ -2113,10 +2113,11 @@ function renderAnswer(el,text){
 function drawSurvey(rows,funnel){
   var sum=document.getElementById('sv-summary'), list=document.getElementById('sv-list');
   if(!sum||!list)return;
-  var real=[], tests=0, pilots=[];
+  var real=[], tests=0, pilots=[], taps=[];
   (rows||[]).forEach(function(p){
     if(p.source==='practitioner-review'){ if(p.possible_test_marker===true)tests++; else real.push(p); }
     else if(p.source==='practitioner-pilot-interest' && p.possible_test_marker!==true) pilots.push(p);
+    else if(p.source==='practitioner-review-tap' && p.possible_test_marker!==true) taps.push(p);
   });
   real.sort(function(a,b){return String(b.date).localeCompare(String(a.date));});
   var fun='';
@@ -2129,6 +2130,15 @@ function drawSurvey(rows,funnel){
   sum.textContent=fun+real.length+(real.length===1?' completed survey':' completed surveys')
     +' · '+pilots.length+(pilots.length===1?' pilot request':' pilot requests')
     +(tests?' · '+tests+(tests===1?' test entry':' test entries')+' not counted':'');
+  // Question-1-only answers: people who tapped but did not finish. Latest tap per
+  // visit id, dropped when the same visit later completed.
+  var doneRid={}; real.forEach(function(p){ if(p.survey_rid) doneRid[p.survey_rid]=1; });
+  var lastTap={}; taps.forEach(function(p){ var k=p.survey_rid||('x'+p.date); if(doneRid[k])return; if(!lastTap[k]||String(p.date)>String(lastTap[k].date)) lastTap[k]=p; });
+  var only=Object.keys(lastTap).map(function(k){return lastTap[k];});
+  if(only.length){
+    var byR={}; only.forEach(function(p){ var r=p.survey_rely||'?'; byR[r]=(byR[r]||0)+1; });
+    sum.textContent+=' · '+only.length+' answered question 1 only ('+Object.keys(byR).map(function(r){return r+' '+byR[r];}).join(', ')+')';
+  }
   // WHERE REVIEWERS ARE (2026-11-21): US versus international, from the country the
   // connection reports. Approximate: a VPN or travel changes it. Counts only.
   var geo=document.getElementById('sv-geo');
