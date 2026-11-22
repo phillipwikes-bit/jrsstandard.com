@@ -260,6 +260,7 @@ export default async function handler(req){
       survey_years: src === 'practitioner-review' ? String(p.years || '') : '',
       survey_quote_ok: src === 'practitioner-review' && p.consent_quote === true,
       survey_wants_results: src === 'practitioner-review' && p.want_results === true,
+      survey_wants_copy: src === 'practitioner-review' && p.want_copy === true,
       survey_credit_ok: src === 'practitioner-review' && p.consent_credit === true
     });
   }

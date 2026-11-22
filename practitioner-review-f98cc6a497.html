@@ -120,6 +120,9 @@ footer{color:var(--muted-soft);font-size:13px;margin-top:40px}
   #f .progress{margin-top:0}
   .jump,.jump.on{display:none}
 }
+.offer{background:var(--surface2);border:1px solid var(--accent);border-radius:8px;padding:14px 16px;margin:0 0 18px}
+.offer-title{color:var(--accent);font-weight:600;font-size:17px;margin:0 0 4px}
+.offer-text{color:var(--text);font-size:16px;margin:0}
 /* Size floor, placed last so no earlier rule can shrink it (2026-11-21). */
 button.chip{font-size:17px;min-height:48px}
 details.opt summary{font-size:17px;padding:12px 0;min-height:48px}
@@ -152,9 +155,9 @@ button.tap{font-weight:600}
 <body>
 <div class="topbar"><span>Decision Spellcheck</span></div>
 <main>
-<div class="eyebrow">3 quick questions &middot; about 3 minutes</div>
+<div class="eyebrow">3 quick questions &middot; under 5 minutes &middot; free copy of the prototype</div>
 <h1>Would you rely on this record?</h1>
-<p>Read this short, invented record, then tap your answer. No sign-up. If you like, we will send you how your answer compared with the tool.</p>
+<p>Read this short, invented record, then tap your answer. No sign-up. Finish and you can get a free copy of the Decision Spellcheck prototype when the study closes.</p>
 
 <div class="record">On 2026-03-02, Ana Petrov, IT service manager, granted Brightledger Consulting administrator access to the payroll system. The access is subject to multi-factor authentication. The access runs until 2026-04-30. The vendor risk assessment found the risk acceptable. The exception was granted under the third-party access standard, section 5. The exception is therefore controlled and can remain in place.</div>
 
@@ -186,7 +189,13 @@ button.tap{font-weight:600}
 </fieldset>
 
 <fieldset class="step" id="s3">
-<legend>Last step: two optional taps, then submit</legend>
+<legend>Last step: claim your free copy, then submit</legend>
+<div class="offer">
+<p class="offer-title">Free copy of the prototype</p>
+<p class="offer-text">Leave your email and we will send you a free copy of the Decision Spellcheck prototype when the study closes. Your email is used for that and for nothing you have not ticked below.</p>
+<label for="email" style="margin-top:10px">Email <span class="hint">(optional)</span></label>
+<input type="email" id="email" name="email" autocomplete="email" placeholder="you@example.com">
+</div>
 <label for="role">Your field</label>
 <select id="role" name="role">
 <option value="">Prefer not to say</option>
@@ -209,11 +218,9 @@ button.tap{font-weight:600}
 </div>
 <input type="hidden" id="years" name="years" value="">
 <details class="opt">
-<summary>Credit, results or quotes <span class="hint">(optional)</span></summary>
+<summary>Name, credit, results or quotes <span class="hint">(optional)</span></summary>
 <label for="name">Name</label>
 <input type="text" id="name" name="name" autocomplete="name">
-<label for="email">Email <span class="hint">(only needed for the boxes below)</span></label>
-<input type="email" id="email" name="email" autocomplete="email">
 <div class="check"><input type="checkbox" id="c_results"><label for="c_results" style="margin:0">Send me how my answer compared with the tool.</label></div>
 <div class="check"><input type="checkbox" id="c_credit"><label for="c_credit" style="margin:0">You may credit me as a practitioner who gave feedback. I will see the exact wording first, and it is never an endorsement.</label></div>
 <div class="check"><input type="checkbox" id="c_quote"><label for="c_quote" style="margin:0">You may quote my answer in an article or report, without my name.</label></div>
@@ -347,7 +354,7 @@ if(form){ form.addEventListener('submit', function(e){
   if(email && !validEmail(email)){ if(msg) msg.textContent='Please check your email address, or leave it blank.'; return; }
   if(!jrsSanitizeCheck(answer)) return;
   var body={ record_id:RECORD_ID, rid:RID, src:SRC, rely:RELY, answer:answer, role:val('role'), years:val('years'), consent_quote:chk('c_quote'), name:val('name'), email:email,
-    want_results:chk('c_results'), consent_credit:chk('c_credit'), pilot_interest:false, website:val('website') };
+    want_copy:!!email, want_results:chk('c_results'), consent_credit:chk('c_credit'), pilot_interest:false, website:val('website') };
   if(btn) btn.disabled=true; if(msg) msg.textContent='Sending...';
   fetch('/api/practitioner-review', { method:'POST', headers:{'Content-Type':'application/json'}, body:JSON.stringify(body) })
     .then(function(r){
