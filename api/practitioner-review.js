@@ -44,6 +44,10 @@ export default async function handler(req) {
   // the thank-you screen, and stored as its own row so the research answer is
   // never collected alongside a commercial question.
   if (b.kind === 'pilot-interest') return pilotInterest(req, b, record);
+  // Question 1 alone (2026-11-21): the one-tap reliance answer is saved the moment
+  // it is tapped, so a person who stops after one tap still counts. Stored as its own
+  // source and joined to any later full answer by a random per-visit id (rid).
+  if (b.kind === 'tap') return tapAnswer(req, b, record);
   const answer = clean(b.answer, 8000);
   // One line is enough (2026-11-21): the page now asks for a short answer.
   if (answer.length < 8) return json({ error: 'answer_too_short' }, 400);
@@ -60,7 +64,7 @@ export default async function handler(req) {
   if (email && !validEmail(email)) return json({ error: 'valid_email_required' }, 400);
 
   const payload = {
-    kind: 'practitioner-review', record_id: record, rely: rely, answer: answer, role: role, years: years, consent_quote: b.consent_quote === true,
+    kind: 'practitioner-review', record_id: record, rid: cleanRid(b.rid), src: cleanSrc(b.src), rely: rely, answer: answer, role: role, years: years, consent_quote: b.consent_quote === true,
     want_results: wantsResults, consent_credit: credit, pilot_interest: pilot,
     country: String(req.headers.get('x-vercel-ip-country') || '').toUpperCase().replace(/[^A-Z]/g, '').slice(0, 2) || '',
     ts: new Date().toISOString()
@@ -84,6 +88,22 @@ async function insertRow(row) {
   const res = await fetch(SB + '/rest/v1/pilot_contacts', { method: 'POST', headers: H, body: JSON.stringify(row) });
   if (!res.ok) return json({ error: 'db_insert_failed', status: res.status }, 502);
   return json({ ok: true });
+}
+
+function cleanRid(v) { const s = clean(v, 40); return /^[a-z0-9]{8,40}$/.test(s) ? s : ''; }
+function cleanSrc(v) { return clean(v, 40).toLowerCase().replace(/[^a-z0-9_.-]/g, ''); }
+
+async function tapAnswer(req, b, record) {
+  const rely = clean(b.rely, 30);
+  if (!rely || RELY.indexOf(rely) === -1) return json({ error: 'unknown_rely' }, 400);
+  const rid = cleanRid(b.rid);
+  if (!rid) return json({ error: 'unknown_rid' }, 400);
+  const payload = {
+    kind: 'practitioner-review-tap', record_id: record, rid: rid, rely: rely, src: cleanSrc(b.src),
+    country: String(req.headers.get('x-vercel-ip-country') || '').toUpperCase().replace(/[^A-Z]/g, '').slice(0, 2) || '',
+    ts: new Date().toISOString()
+  };
+  return insertRow({ name: '', email: '', organization: '', message: JSON.stringify(payload), source: 'practitioner-review-tap' });
 }
 
 async function pilotInterest(req, b, record) {

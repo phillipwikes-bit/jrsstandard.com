@@ -160,6 +160,7 @@ button.tap{font-weight:600}
 <button type="button" class="tap" data-rely="Not without more">Not without more</button>
 <button type="button" class="tap" data-rely="No">No</button>
 </div>
+<p class="hint" style="margin-top:12px">Your answers are used only to evaluate Decision Spellcheck. Nothing is published under your name.</p>
 </fieldset>
 
 <fieldset class="step" id="s2">
@@ -252,6 +253,16 @@ function chk(id){ var el=document.getElementById(id); return !!(el && el.checked
    as options would show reviewers what the tool looks for and break the blind
    comparison. Without JavaScript all three steps simply show at once. */
 var RELY='';
+/* A random id for this visit, so a saved question-1 tap can be matched to a later
+   full answer. Not stored in the browser and not linked to any person. */
+var RID=(function(){ try{ var a=new Uint8Array(12); crypto.getRandomValues(a); return Array.prototype.map.call(a,function(x){return ('0'+x.toString(16)).slice(-2);}).join(''); }catch(e){ return ('r'+Date.now().toString(36)+Math.random().toString(36).slice(2)).replace(/[^a-z0-9]/g,'').slice(0,24); } })();
+/* ?src=test on the link marks the owner's own checks so they are not counted. */
+var SRC=''; try{ SRC=(new URLSearchParams(window.location.search).get('src')||'').slice(0,40); }catch(e){ SRC=''; }
+function saveTap(rely){
+  if(typeof fetch!=='function') return;
+  fetch('/api/practitioner-review',{ method:'POST', headers:{'Content-Type':'application/json'}, keepalive:true,
+    body:JSON.stringify({ kind:'tap', record_id:RECORD_ID, rid:RID, rely:rely, src:SRC }) }).catch(function(){ /* the full answer is still sent at the end */ });
+}
 function showStep(n){
   for(var i=1;i<=3;i++){ var st=document.getElementById('s'+i); if(st){ if(i===n) st.classList.add('on'); else st.classList.remove('on'); } }
   // Reading the record is most of the work, so the bar credits it: it starts at
@@ -272,6 +283,7 @@ showStep(1);
       for(var j=0;j<taps.length;j++) taps[j].classList.remove('sel');
       this.classList.add('sel');
       if(typeof jrsReviewBeacon==='function') jrsReviewBeacon('review-start','jrs-review-start');
+      saveTap(RELY);
       showStep(2);
       var a=document.getElementById('answer'); if(a){ try{ a.focus(); }catch(e){} }
     });
@@ -320,7 +332,7 @@ if(form){ form.addEventListener('submit', function(e){
   if(wantsContact && !validEmail(email)){ if(msg) msg.textContent='Please add your email so we can reach you about the boxes you ticked.'; return; }
   if(email && !validEmail(email)){ if(msg) msg.textContent='Please check your email address, or leave it blank.'; return; }
   if(!jrsSanitizeCheck(answer)) return;
-  var body={ record_id:RECORD_ID, rely:RELY, answer:answer, role:val('role'), years:val('years'), consent_quote:chk('c_quote'), name:val('name'), email:email,
+  var body={ record_id:RECORD_ID, rid:RID, src:SRC, rely:RELY, answer:answer, role:val('role'), years:val('years'), consent_quote:chk('c_quote'), name:val('name'), email:email,
     want_results:chk('c_results'), consent_credit:chk('c_credit'), pilot_interest:false, website:val('website') };
   if(btn) btn.disabled=true; if(msg) msg.textContent='Sending...';
   fetch('/api/practitioner-review', { method:'POST', headers:{'Content-Type':'application/json'}, body:JSON.stringify(body) })
