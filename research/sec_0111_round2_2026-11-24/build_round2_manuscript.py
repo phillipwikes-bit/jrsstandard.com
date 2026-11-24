@@ -256,7 +256,7 @@ NAMES = ["Andres Lage Freire", "Andrey Ekhmenin", "Andrzej Skulski", "Dr. Gabrie
          "Rahul Potdar", "Saurabh Nanda", "Sidharth Borah", "Stacyann Young", "SungSoo In"]
 CMP_NAMES = ['Adesh Sharma', 'Boris Khazin', 'Candid Opris', 'Donavine Smith', 'Dr. Eric J. W. Orlowski', 'Dr. Sharon Licqurish', 'Greg Searle', 'Jean-Luc Adade', 'Joseph Mungai', 'MacKenzie McCowan', 'Mostafa Mahmoudi', 'Muhammad Dauda', 'Nicholas Evans', 'Priyam Dhamankar', 'Sagarika Banerjee', 'Wendy Ann Martel']
 set_text(P[118], [("The authors are deeply grateful to everyone who gave their time and expertise to review records for this study, or for a related comparison study that used the same 24 records, and who agreed to be acknowledged by name: "
-                    + "; ".join(sorted(NAMES + CMP_NAMES)) + ". They gave this work freely and with great care, and the study would not exist without them. "
+                    + "; ".join(sorted(NAMES + CMP_NAMES)) + ". They gave this work freely and with great care, and this research would not exist without them. "
                     "This study’s 24 participant codes belong to 21 people, because three invited raters also served on the detection panel. The other participants are not named. Open-enrolment raters took part anonymously. "
                     "The comparison study is not reported in this paper, and its participants’ responses are not included in any analysis reported here. "
                     "Stacyann Young, first author of a separate public-records study, took part as an invited rater in the five-condition reliability exercise and did not take part in the detection panel. "
