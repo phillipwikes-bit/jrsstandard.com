@@ -1,0 +1,4 @@
+Title: Supplier security assessment SSA-40
+Version: v2
+
+Supplier security assessment SSA-40. Harbourline Data completed the supplier security assessment on 2026-07-09, with two medium findings open. The assessment was submitted for approval on 2026-07-10.

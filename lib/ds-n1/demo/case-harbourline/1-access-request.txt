@@ -1,0 +1,4 @@
+Title: Access request AR-731
+Version: v1
+
+Access request AR-731. On 2026-07-02, Harbourline Data requested read access to the customer analytics warehouse for a reporting project. Session logging is recommended for supplier connections.

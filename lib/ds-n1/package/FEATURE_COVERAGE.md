@@ -98,3 +98,11 @@ Generates a buyer and licensee report from live runs: what the engine is, templa
 ## 8. Practitioner trial kit (`practitioner-trial.mjs`)
 
 Records DS-N1's output on a constructed record before an independent practitioner sees it, then scores the practitioner's coded points against it: MATCH, PARTIAL or MISS per issue category, the categories only DS-N1 reported, and totals with a Wilson interval. Protocol: `tests/ds-n1/practitioner/PROTOCOL.md`. `build-review-packet.mjs` produces what the practitioner receives (printable page and plain text) with no DS-N1 output. Records and answers are kept out of this repository. Results so far: NOT ESTABLISHED as an accuracy measure; two single-practitioner reviews exist, both on records the developer constructed.
+
+## 10. Document extraction (`extract.mjs`, added 2026-11-24)
+
+Plain-text decision records and source documents become a record package without hand-building claims or citations. Deterministic and offline, like the engine. Every claim quote is exact record text and every citation is an exact source passage; citations chosen by similarity are marked "inferred" in an extraction report, which lists every field a reviewer should confirm. A document named in a claim (by identifier or title) is the only one searched.
+
+Measured on 26 developer fixtures given only their plain text (`tests/ds-n1/eval-extract.mjs`, results in `tests/ds-n1/EXTRACT_EVAL.json`): 127 of 128 hand-identified claims found; event dates 59 of 63; citation source 94 of 100; same review outcome 19 of 26, with every difference explained and none turning a sound record to HOLD. Developer fixtures only, so this shows the extractor works on the tool's own test material, not that it works on real-world documents. Tests: `tests/ds-n1/extract.test.mjs` (12), `tests/ds-n1/demo.test.mjs` (1). Demo: `lib/ds-n1/demo/`.
+
+Not yet done: PDF and Word input; sentences that carry two separate assertions become one claim; checking what a record leaves out of its sources.
