@@ -1,0 +1,8 @@
+supported records with numerical tokens: 11 of 12
+unsupported records with numerical tokens: 0 of 12
+rule 'contains a number = supported': 23/24 (95.8%)
+best word-count rule (>= 50 words = supported): 21/24 (87.5%)
+supported: item agreement 80.7%; rho(words, agreement) = 0.02; rho(numbers, agreement) = 0.17
+unsupported: item agreement 87.0%; rho(words, agreement) = 0.26; rho(numbers, agreement) = nan
+supported record without numbers: R10, matched by 12 of 16 reviewers
+order: rho(position, agreement) = -0.04; R01-R12 83.9%, R13-R24 83.9%

@@ -1,0 +1,20 @@
+Hi Ubayet,
+
+Good news: SocioEconomic Challenges has kept our paper in review as SEC-0111-2026 and sent a second round of comments. The editor has asked about your role, so I want your own words on the record. Could you help with four things?
+
+1. Your highest academic degree, as you would like it written (for example MSc, MBA or PhD). The journal says a postgraduate diploma (PGDM) is not an academic degree.
+
+2. Your contribution, in your own words. Here is what our records show, from the dated documents of 6 July and your messages of 14 July:
+   - you designed the study's validation and reliability component: the reference-panel design, the choice of Gwet's AC1 as the primary coefficient with Fleiss' kappa and Krippendorff's alpha alongside, and the handling of the kappa paradox;
+   - you set the decision thresholds and analysis plan for the reliability test (AC1 of at least 0.61, lower bound of at least 0.41), recorded before any analysis was run;
+   - you reviewed the methodology and how the manuscript described it, and approved submission on 26 October.
+   Please confirm this, correct anything wrong and add anything I have missed. Please don't add anything you did not do; the editor is checking against the COPE and ICMJE rules.
+
+3. Would you review the revised reliability section and Table 3? One reviewer asked how records rated by only one person were handled. I can send you the paragraph; if you would prefer to rewrite it yourself, even better, as it is your part of the study.
+
+4. Conflicts of interest: do you have any financial or professional interest in the review framework or the results? If not, "none" is enough.
+
+When you reply, please also add one line saying you have read and approve the revised manuscript and agree to be accountable for your part of it. I'll send the revised file as soon as it's ready.
+
+Thank you, Ubayet.
+Phillip
