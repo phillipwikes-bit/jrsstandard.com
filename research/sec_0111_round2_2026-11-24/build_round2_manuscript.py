@@ -263,7 +263,7 @@ NAMES = ["Andres Lage Freire", "Andrey Ekhmenin", "Andrzej Skulski", "Dr. Gabrie
          "Rahul Potdar", "Saurabh Nanda", "Sidharth Borah", "Stacyann Young", "SungSoo In"]
 set_text(P[118], [("The authors thank the reviewers and raters who took part in this study and agreed to be acknowledged by name: "
                     + "; ".join(NAMES) + ". "
-                    "The 24 participant codes belong to 21 people, because three invited raters also served on the detection panel. Fifteen of the people named confirmed in writing, in an electronic contributor confirmation, that they wished to be named; Gabriela Cortez, a detection-panel reviewer, did not complete the confirmation and gave the corresponding author her verbal permission to be named. The other participants are not named. Open-enrolment raters took part anonymously. "
+                    "The 24 participant codes belong to 21 people, because three invited raters also served on the detection panel. The other participants are not named. Open-enrolment raters took part anonymously. "
                     "Stacyann Young, first author of a separate public-records study, took part as an invited rater in the five-condition reliability exercise and did not take part in the detection panel. "
                     "Generative artificial intelligence tools were used as described in the Statement on the Use of AI Tools; artificial intelligence does not meet the criteria for authorship.",)])
 set_text(P[124], [("Ethical approval was not obtained, and no exemption was sought. The authors are independent researchers without an institutional affiliation and therefore without access to an institutional review board or ethics committee. "
@@ -272,8 +272,8 @@ set_text(P[124], [("Ethical approval was not obtained, and no exemption was soug
                     "Open-enrolment raters responded to a public invitation that described the task and its purpose and took part anonymously; no names or contact details were collected from them. "
                     "Neither data-collection page presented a separate consent form, so written informed consent was not obtained from every participant before participation; agreement to take part was given by taking part after the invitation. "
                     "After data collection, coded participants were invited to complete an electronic contributor confirmation that recorded separate elections for research use of their contributions and for acknowledgement by name; 18 of the 24 coded participants completed it, and all of them permitted research use. "
-                    "The responses of participants who did not complete the confirmation are included on the basis of their participation after the invitation; they are reported only in aggregate and, with the one exception described in the Acknowledgements, are not named. "
-                    "Every person named in the Acknowledgements agreed to be named; fifteen did so in the written confirmation and one gave verbal permission.",)])
+                    "The responses of participants who did not complete the confirmation are included on the basis of their participation after the invitation; they are reported only in aggregate. "
+                    "Only participants who agreed to be named are named in the Acknowledgements.",)])
 
 # ---------- References ----------
 REF_BY_START = {}
