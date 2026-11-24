@@ -1,0 +1,14 @@
+{
+  "set": "omission-eval-1",
+  "rule_version": "ds-n1.omissions/0.1.0-dev",
+  "truth": {
+    "N1": { "omits": false, "note": "the condition is repeated in the record" },
+    "N2": { "omits": true, "note": "failed penetration test on two hosts not mentioned" },
+    "N3": { "omits": false, "note": "nothing adverse in the sources" },
+    "N4": { "omits": true, "note": "below-threshold Spanish accuracy and English-only recommendation not mentioned" },
+    "N5": { "omits": false, "note": "the witness's lack of recall is reported" },
+    "N6": { "omits": true, "note": "CCTV footage not reviewed is not mentioned" },
+    "N7": { "omits": true, "note": "three excluded custodians not mentioned; phrased without a listed cue" },
+    "N8": { "omits": false, "note": "the thirty-day limit is reported in different words" }
+  }
+}
