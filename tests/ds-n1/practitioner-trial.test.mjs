@@ -80,3 +80,14 @@ test('the review packet shows the record and documents, and nothing of DS-N1 out
   const real = join(dir, 'real.json'); w(real, JSON.stringify({ ...rec, data_classification: 'real' }));
   assert.throws(() => execFileSync(process.execPath, [script, real, join(dir, 'x')], { stdio: 'pipe' }), 'refuses real records');
 });
+
+// Coder agreement (2026-11-24): textbook check of Cohen's kappa.
+test('coder agreement: Cohen kappa matches a worked example', async () => {
+  const { kappa, agreement } = await import('./practitioner/agreement.mjs');
+  // 10 answers: both yes 4, both no 4, A-only 1, B-only 1 -> po .8, pe .5, kappa .6
+  const a = [1, 1, 1, 1, 0, 0, 0, 0, 1, 0].map(Boolean), b = [1, 1, 1, 1, 0, 0, 0, 0, 0, 1].map(Boolean);
+  assert.deepEqual(kappa(a, b), { n: 10, agreement: 0.8, kappa: 0.6 });
+  const r = agreement({ R01: ['sequence'], R02: [] }, { R01: ['sequence'], R02: [] });
+  assert.equal(r.per_category.sequence.agreement, 1);
+  assert.throws(() => agreement({ R01: ['nonsense'] }, { R01: [] }), /unknown category/);
+});
