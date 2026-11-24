@@ -25,7 +25,7 @@ Decision records (access exceptions, AI action authorizations, investigation sum
 
 ## Evidence to date
 
-- **Engineering:** 169 automated tests pass; reports reproduce byte for byte.
+- **Engineering:** 170 automated tests pass; reports reproduce byte for byte.
 - **Document reading:** on 26 developer test records, given only their plain text, it found 127 of 128 hand-identified claims and reached the same review outcome as the hand-built version on 19; all 7 differences are explained (most were defects planted only in hand-made citation data), and no sound record was wrongly held (`tests/ds-n1/EXTRACT_EVAL.json`).
 - **Practitioner study (in progress):** 18 independent practitioners in 16 countries completed a blind review of a fictional record (24 November 2026). 14 of the 17 asked would not rely on it as written (95% interval 59 to 94%); the prototype's locked answer passed it. The checks added since target the gaps practitioners raised most and are being tested on fresh records. This is reported as a finding, not hidden.
 
