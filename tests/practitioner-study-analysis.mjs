@@ -11,6 +11,7 @@ const rows = [
   T('05', 'bbbbbbbb', 'No'), T('06', 'bbbbbbbb', 'Yes'),  // question 1 only; last tap counts
   T('07', 'cccccccc', 'Not without more', { country: 'US' }),
   R('08', '', 'Not without more', { commercial_contact: true, channel: 'email', country: 'DE' }),
+  { id: '10', created_at: '10', source: 'practitioner-review', is_test: true, meta: { record_id: 'AR-82', rid: '', rely: 'Yes', country: 'US' } },
   { id: '09', created_at: '09', source: 'practitioner-review', meta: { record_id: 'AR-81', rid: 'dddddddd', rely: 'Yes', country: 'GB' } },
 ];
 const checks = [
@@ -18,6 +19,10 @@ const checks = [
   ['people are counted once per visit; completions and question-1-only separated', () => {
     const a = analyze(rows, { record: 'AR-82' });
     assert.equal(a.people, 5); assert.equal(a.completed, 3); assert.equal(a.question_1_only, 2);
+  }],
+  ['developer test rows are excluded and counted', () => {
+    const a = analyze(rows, { record: 'AR-82' });
+    assert.equal(a.excluded_test_rows, 1); assert.equal(a.completed, 3);
   }],
   ['a changed tap counts once, with the last answer', () => {
     const a = analyze(rows, { record: 'AR-82' });

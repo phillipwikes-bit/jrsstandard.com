@@ -5,7 +5,8 @@
 //
 // Input: a JSON array of rows exported without names or emails:
 //   select id, created_at, source, (email <> '') as has_email,
-//          message::jsonb - 'answer' as meta, length(message::jsonb->>'answer') as answer_len
+//          message::jsonb - 'answer' as meta, length(message::jsonb->>'answer') as answer_len,
+//          coalesce(message::jsonb->>'answer', '') like 'CLAUDE-LIVE-TEST%' as is_test
 //   from pilot_contacts where source in ('practitioner-review','practitioner-review-tap')
 //   order by created_at;
 // Optional second file: coded reliance for early answers given before the page
@@ -25,7 +26,10 @@ const RELY = ['Yes', 'Not without more', 'No'];
 
 export function analyze(rows, { coded = {}, record = null } = {}) {
   const meta = (r) => (typeof r.meta === 'string' ? JSON.parse(r.meta) : r.meta) || {};
-  const mine = rows.filter((r) => !record || meta(r).record_id === record);
+  // Developer end-to-end checks of the live page are never participants.
+  const isTest = (r) => r.is_test === true || meta(r).test === true;
+  const excluded_tests = rows.filter(isTest).length;
+  const mine = rows.filter((r) => !isTest(r) && (!record || meta(r).record_id === record));
   const completes = mine.filter((r) => r.source === 'practitioner-review');
   const taps = mine.filter((r) => r.source === 'practitioner-review-tap');
   const completedRids = new Set(completes.map((r) => meta(r).rid).filter(Boolean));
@@ -67,6 +71,7 @@ export function analyze(rows, { coded = {}, record = null } = {}) {
   const tally = (ps, f) => Object.fromEntries([...new Set(ps.map(f))].sort().map((v) => [v || '(not given)', ps.filter((p) => f(p) === v).length]));
   return {
     record: record || 'all',
+    excluded_test_rows: excluded_tests,
     people: people.length,
     completed: completed.length,
     question_1_only: people.length - completed.length,
