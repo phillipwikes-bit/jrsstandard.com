@@ -52,6 +52,15 @@ try {
       assert.equal(got.record_digest, expected.record.record_digest);
     });
 
+    await check(`${label}: a Word file fills the record text exactly; a PDF is refused`, async () => {
+      await page.fill('#rec-text', '');
+      await page.setInputFiles('#rec-file', fileURLToPath(new URL('./fixtures-docx/harbourline-record.libreoffice.docx', import.meta.url)));
+      await page.waitForFunction(() => document.querySelector('#rec-text').value.length > 0);
+      assert.equal(await page.inputValue('#rec-text'), expected.record.text);
+      await page.setInputFiles('#doc-file-1', { name: 'scan.pdf', mimeType: 'application/pdf', buffer: Buffer.from('%PDF-1.7') });
+      await page.waitForFunction(() => /PDF files cannot be read/.test(document.querySelector('#msg').textContent));
+    });
+
     await check(`${label}: a real-looking email is refused, not checked`, async () => {
       await page.fill('#rec-text', 'Contact ines.calloway@example.org approved access on 2026-07-14.');
       await page.click('#run');

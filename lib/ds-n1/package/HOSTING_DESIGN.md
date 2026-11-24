@@ -33,7 +33,7 @@ Only after: written terms for handling real records, an independent security rev
 | Accept real records (currently refused by design) | Licensee decision under its terms | Customer decision | Owner decision plus terms |
 | Single sign-on | Licensee's | Added at the proxy | Added at the proxy |
 | Extraction from documents | Included (`extract.mjs`) | Included | Included |
-| File formats beyond plain text (PDF, Word) | Licensee converts | A converter step to add | A converter step to add |
+| PDF (Word .docx is read directly) | Licensee converts | A converter step to add | A converter step to add |
 
 ## Not decided
 

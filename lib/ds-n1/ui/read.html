@@ -43,7 +43,7 @@ ul{padding-left:18px;margin:6px 0}
 <body>
 <header>
   <h1>Check a record from its documents</h1>
-  <div class="banner">Paste the decision record and the documents it relies on. Decision Spellcheck finds the claims, dates and supporting passages itself, then checks each claim. Everything runs in this browser: nothing is stored or sent anywhere. Fictional records only.</div>
+  <div class="banner">Paste the decision record and the documents it relies on. Decision Spellcheck finds the claims, dates and supporting passages itself, then checks each claim. Everything runs in this browser: nothing is stored or sent anywhere. Word (.docx) and text files can be opened; PDF needs converting to text first. Fictional records only.</div>
   <a href="/" style="color:var(--accent);font-size:.9rem">Open the reviewer</a>
 </header>
 <p id="msg" class="err" role="alert" style="padding:0 16px;margin:8px 0 0"></p>
@@ -60,6 +60,7 @@ ul{padding-left:18px;margin:6px 0}
         <option value="ai_drafted_legal_memo">AI-drafted legal memo</option>
       </select>
       <label for="rec-text">Record text</label><textarea id="rec-text" rows="7"></textarea>
+      <label for="rec-file">Or open a Word (.docx) or text file</label><input type="file" id="rec-file" accept=".docx,.txt,text/plain">
     </section>
     <section aria-labelledby="h-docs"><h2 id="h-docs">2. The documents it relies on</h2>
       <div id="docs"></div>

@@ -24,14 +24,14 @@ Decision records (access exceptions, AI action authorizations, investigation sum
 
 ## Evidence to date
 
-- **Engineering:** 155 automated tests pass; reports reproduce byte for byte.
+- **Engineering:** 160 automated tests pass; reports reproduce byte for byte.
 - **Document reading:** on 26 developer test records, given only their plain text, it found 127 of 128 hand-identified claims and reached the same review outcome as the hand-built version on 19; all 7 differences are explained (most were defects planted only in hand-made citation data), and no sound record was wrongly held (`tests/ds-n1/EXTRACT_EVAL.json`).
 - **Practitioner study (in progress):** independent practitioners in 12 countries reviewed a fictional record blind. Most would not rely on it as written; the prototype's locked answer passed it. The checks added since target the gaps practitioners raised most and are being tested on fresh records. This is reported as a finding, not hidden.
 
 ## Limits, stated plainly
 
 - Fictional records only today; real-record use is a licensing decision.
-- Plain text input; PDF and Word need a conversion step.
+- Reads plain text and Word (.docx) body text; PDF needs a conversion step, and Word headers, footers, footnotes and comments are not read.
 - It checks what a record says against its sources. It does not yet check what a record leaves out of a source.
 - Word-pattern checks can miss gaps phrased in unexpected ways.
 
