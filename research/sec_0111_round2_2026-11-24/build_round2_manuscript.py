@@ -148,21 +148,14 @@ for rid, rel in list(d.part.rels.items()):
     if "comments" in rel.reltype.lower():
         d.part.drop_rel(rid)
 
-# ---------- front matter: degree placeholder ----------
+# ---------- front matter: U.H. degrees (from his LinkedIn education entries, supplied by the owner 2026-11-24) ----------
 t0 = d.tables[0]
 done = False
 for row in t0.rows:
     for c in row.cells:
         for p in c.paragraphs:
             if not done and "PGDM" in p.text:
-                full = "".join(rtext(r) for r in runs_of(p))
-                replace(p, "PGDM", "[ACADEMIC DEGREE]")
-                for r in runs_of(p):
-                    if "[ACADEMIC DEGREE]" in rtext(r):
-                        rp = r.find(qn("w:rPr"))
-                        h = d.element.makeelement(qn("w:highlight"), {})
-                        h.set(qn("w:val"), "yellow")
-                        rp.append(h)
+                replace(p, "PGDM", "B.Tech., PGDM")
                 done = True
 assert done
 
