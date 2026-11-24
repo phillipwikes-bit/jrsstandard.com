@@ -2,7 +2,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
-import { extractRecord, EXTRACTOR_VERSION } from '../../lib/ds-n1/extract.mjs';
+import { extractRecord, EXTRACTOR_VERSION, splitClauses } from '../../lib/ds-n1/extract.mjs';
 import { openReview, deriveState } from '../../lib/ds-n1/index.mjs';
 import { canonical } from '../../lib/ds-n1/text.mjs';
 import { runDetectionTemplates } from '../../lib/ds-n1/detection-templates.mjs';
@@ -115,4 +115,45 @@ test('the fixture evaluation has no unexplained disagreement and no clean record
   const ev = JSON.parse(readFileSync(new URL('./EXTRACT_EVAL.json', import.meta.url), 'utf8'));
   assert.deepEqual(ev.unexplained_disagreements, []);
   assert.equal(ev.status_agreement.hand_ready_extracted_hold, 0);
+});
+
+// Compound sentences (2026-11-24). Records written for this test only; never
+// study records. Each half of a two-clause sentence is checked on its own.
+const SPLIT_SRC = [
+  { title: 'Access request AR-900', version: 'v1', text: 'On 2026-03-02, Quillon Freight requested read access to the route planning database. Session logging is required for supplier connections.' },
+  { title: 'Approval EA-900', version: 'v1', text: 'On 2026-03-09, Odile Marchetti approved read access for Quillon Freight. The access ends on 2026-05-09.' },
+];
+const splitRun = (text) => {
+  const { record, report } = extractRecord({ record_id: 'EA-900', title: 'Access exception EA-900 (fictional)', record_class: 'supplier_access_exception', text, sources: SPLIT_SRC });
+  return { record, report, state: deriveState(openReview(record, { at: '2026-11-24T00:00:00Z' })) };
+};
+
+test('compound sentence: an unsupported second half is held on that half alone', () => {
+  const { record, report, state } = splitRun('On 2026-03-09, Odile Marchetti approved read access for Quillon Freight, and the supplier passed a penetration test last month.');
+  assert.deepEqual(record.claims.map((c) => c.quote), ['On 2026-03-09, Odile Marchetti approved read access for Quillon Freight', 'the supplier passed a penetration test last month.']);
+  assert.equal(state.status, 'HOLD');
+  assert.deepEqual(state.findings.map((f) => `${f.code}@${f.claim_id}`), ['UNSUPPORTED_CLAIM@C2']);
+  assert.ok(report.claims.every((c) => c.needs_confirmation.includes('sentence split')));
+});
+
+test('compound sentence: a wrong date in the second half is a date mismatch on that half', () => {
+  const { state } = splitRun('Quillon Freight requested read access to the route planning database on 2026-03-02; the access ends on 2026-06-09.');
+  assert.deepEqual(state.findings.map((f) => `${f.code}@${f.claim_id}`), ['DATE_MISMATCH@C2']);
+});
+
+test('compound sentence: two halves supported by different documents are not held', () => {
+  const { record, state } = splitRun('Quillon Freight requested read access to the route planning database on 2026-03-02; the access ends on 2026-05-09.');
+  assert.equal(record.claims.length, 2);
+  assert.equal(state.status, 'READY_FOR_HUMAN_FINALIZATION');
+});
+
+test('not split: lists, reasoning sentences, and halves backed by one source sentence', () => {
+  assert.deepEqual(splitClauses('Logging, monitoring, and quarterly review were required for the database.'), ['Logging, monitoring, and quarterly review were required for the database.']);
+  assert.equal(splitClauses('Because the assessment was completed, and the scope is limited, the exception can proceed.').length, 1);
+  assert.equal(splitClauses('Ines approved the request and logged it in the register.').length, 1);
+  const { record, report } = extractRecord({ record_id: 'AX-1', title: 'AX-1 (fictional)', record_class: 'supplier_access_exception',
+    text: 'Sending is limited to overdue invoices for the pilot, and each batch requires human sign-off before release.',
+    sources: [{ title: 'Policy P-1', version: 'v1', text: 'Sending is limited to overdue invoices for the pilot, and each batch requires human sign-off before release.' }] });
+  assert.equal(record.claims.length, 1);
+  assert.equal(report.split_sentences[0].kept_whole, 'all parts supported by one source sentence');
 });

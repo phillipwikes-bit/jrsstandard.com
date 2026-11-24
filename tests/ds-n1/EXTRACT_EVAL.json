@@ -1,5 +1,5 @@
 {
-  "extractor": "ds-n1.extract/0.1.0-dev",
+  "extractor": "ds-n1.extract/0.2.0-dev",
   "records": 26,
   "claim_segmentation": {
     "matched": 127,
