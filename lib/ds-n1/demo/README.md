@@ -22,7 +22,8 @@ The case is fictional. What the demo shows (status HOLD):
   supporting document at all.
 - **Flagged as advisory:** the request says session logging is "recommended";
   the record says it is "required".
-- **Not caught (a stated limitation):** the assessment had two medium findings
-  open, and the record leaves them out. Decision Spellcheck checks what the
-  record says against its sources; it does not yet check what the record
-  leaves out of a source.
+- **Flagged as advisory (added 24 November 2026):** the assessment had two
+  medium findings open, and the record leaves them out. The omission check
+  (`omissions.mjs`) asks whether this was considered. It is advisory: it does
+  not change the status, and it works from warning words ("open", "failed",
+  "subject to", "not reviewed"), so a gap phrased without one is missed.

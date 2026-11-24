@@ -13,7 +13,8 @@ Decision records (access exceptions, AI action authorizations, investigation sum
 1. **Reads plain documents.** Give it the decision record and the documents it relies on; it identifies each claim, its dates, who acted and which passage supports it. Nothing has to be prepared by hand.
 2. **Checks every claim against its source.** Support, contradiction, missing sources, wrong dates, the wrong event, dropped conditions, unsupported conclusions.
 3. **Flags known risk patterns.** 37 checks, including approvals with no stated authority, a "recommended" control stated as "required", conclusions with no reasoning, and AI actions with no way to pause them.
-4. **Holds the record until gaps are resolved.** Each finding comes with one plain question for the reviewer; the record stays on HOLD until each is fixed or overridden with a written reason, and every step is logged.
+4. **Asks about what was left out.** If a document the record relies on mentions an open finding, a failed test, a condition or a step not done, and the record never mentions it, the reviewer is asked whether it was considered (advisory).
+5. **Holds the record until gaps are resolved.** Each finding comes with one plain question for the reviewer; the record stays on HOLD until each is fixed or overridden with a written reason, and every step is logged.
 
 ## Why it is different
 
@@ -24,7 +25,7 @@ Decision records (access exceptions, AI action authorizations, investigation sum
 
 ## Evidence to date
 
-- **Engineering:** 164 automated tests pass; reports reproduce byte for byte.
+- **Engineering:** 168 automated tests pass; reports reproduce byte for byte.
 - **Document reading:** on 26 developer test records, given only their plain text, it found 127 of 128 hand-identified claims and reached the same review outcome as the hand-built version on 19; all 7 differences are explained (most were defects planted only in hand-made citation data), and no sound record was wrongly held (`tests/ds-n1/EXTRACT_EVAL.json`).
 - **Practitioner study (in progress):** independent practitioners in 12 countries reviewed a fictional record blind. Most would not rely on it as written; the prototype's locked answer passed it. The checks added since target the gaps practitioners raised most and are being tested on fresh records. This is reported as a finding, not hidden.
 
@@ -32,7 +33,7 @@ Decision records (access exceptions, AI action authorizations, investigation sum
 
 - Fictional records only today; real-record use is a licensing decision.
 - Reads plain text and Word (.docx) body text; PDF needs a conversion step, and Word headers, footers, footnotes and comments are not read.
-- It checks what a record says against its sources. It does not yet check what a record leaves out of a source.
+- The check for what a record leaves out of its sources is advisory and new: on 8 fresh developer-written records it caught 3 of 4 omissions and wrongly flagged 0 of 4 sound records (`tests/ds-n1/OMISSION_EVAL.json`); far too few records to state a rate, and it misses omissions phrased without a warning word.
 - Word-pattern checks can miss gaps phrased in unexpected ways.
 
 ## Ways to use it

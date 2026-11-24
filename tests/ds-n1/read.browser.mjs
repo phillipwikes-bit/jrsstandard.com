@@ -44,6 +44,8 @@ try {
       const status = (await page.textContent('#out .status')).replace(/ /g, '_');
       assert.equal(status, expected.state.status);
       assert.equal(await page.locator('#out .claim').count(), expected.extraction.claims.length);
+      assert.equal(await page.locator('#omissions li').count(), expected.omissions.length);
+      assert.match(await page.textContent('#omissions'), /two medium findings open/);
     });
 
     await check(`${label}: downloaded package is identical to the demo's record`, async () => {

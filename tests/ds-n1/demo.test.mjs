@@ -9,4 +9,5 @@ test('the demo turns plain documents into a review that catches the planted gaps
   assert.ok(out.state.findings.some((f) => f.code === 'UNSUPPORTED_CLAIM' && /certification/.test(f.explanation)));
   assert.ok(out.advisories.some((h) => h.template === 'hedged_source_stated_firmly'));
   assert.equal(out.extraction.claims.length, 6);
+  assert.deepEqual(out.omissions.map((o) => o.source_sentence), ['Harbourline Data completed the supplier security assessment on 2026-07-09, with two medium findings open.']);
 });
