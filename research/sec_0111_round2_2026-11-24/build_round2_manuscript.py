@@ -254,10 +254,11 @@ replace(P[116], "are described in the Participants subsection.",
 NAMES = ["Andres Lage Freire", "Andrey Ekhmenin", "Andrzej Skulski", "Dr. Gabriela Bar", "Dr. Nitin Deshpande",
          "Franciscus C. Schouten", "Gabriela Cortez", "Hekim Colpan", "Jake McDonough", "Nigel Hee", "Olabanji Lawal",
          "Rahul Potdar", "Saurabh Nanda", "Sidharth Borah", "Stacyann Young", "SungSoo In"]
-set_text(P[118], [("The authors thank the reviewers and raters who took part in this study and agreed to be acknowledged by name: "
-                    + "; ".join(NAMES) + ". "
-                    "The 24 participant codes belong to 21 people, because three invited raters also served on the detection panel. The other participants are not named. Open-enrolment raters took part anonymously. "
-                    "The authors also thank the participants in a separate randomised comparison study, which used the same 24 records and is not reported in this paper, who agreed to be acknowledged by name: Adesh Sharma; Boris Khazin; Candid Opris; Donavine Smith; Dr. Eric J. W. Orlowski; Dr. Sharon Licqurish; Greg Searle; Jean-Luc Adade; Joseph Mungai; MacKenzie McCowan; Mostafa Mahmoudi; Muhammad Dauda; Nicholas Evans; Priyam Dhamankar; Sagarika Banerjee; Wendy Ann Martel. Their responses are not included in any analysis reported here. "
+CMP_NAMES = ['Adesh Sharma', 'Boris Khazin', 'Candid Opris', 'Donavine Smith', 'Dr. Eric J. W. Orlowski', 'Dr. Sharon Licqurish', 'Greg Searle', 'Jean-Luc Adade', 'Joseph Mungai', 'MacKenzie McCowan', 'Mostafa Mahmoudi', 'Muhammad Dauda', 'Nicholas Evans', 'Priyam Dhamankar', 'Sagarika Banerjee', 'Wendy Ann Martel']
+set_text(P[118], [("The authors thank everyone who reviewed records for this study, or for a related comparison study that used the same 24 records, and agreed to be acknowledged by name: "
+                    + "; ".join(sorted(NAMES + CMP_NAMES)) + ". "
+                    "This study’s 24 participant codes belong to 21 people, because three invited raters also served on the detection panel. The other participants are not named. Open-enrolment raters took part anonymously. "
+                    "The comparison study is not reported in this paper, and its participants’ responses are not included in any analysis reported here. "
                     "Stacyann Young, first author of a separate public-records study, took part as an invited rater in the five-condition reliability exercise and did not take part in the detection panel. "
                     "Generative artificial intelligence tools were used as described in the Statement on the Use of AI Tools; artificial intelligence does not meet the criteria for authorship.",)])
 set_text(P[124], [("Ethical approval was not obtained, and no exemption was sought. The authors are independent researchers without an institutional affiliation and therefore without access to an institutional review board or ethics committee. "
