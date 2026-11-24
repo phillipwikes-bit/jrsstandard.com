@@ -160,10 +160,9 @@ for row in t0.rows:
 assert done
 
 # ---------- Reviewer 1: Introduction ----------
-A1 = ("When a decision record does not show the basis for its conclusion, the cost of finding it out does not disappear; it moves. "
+A1 = ("When a decision record does not show the basis for its conclusion, the cost of establishing that basis falls on someone else. "
       "An employee who is dismissed, a claimant who is refused a benefit or a person named in an investigation must first establish what the decision rested on before any challenge can be made. "
-      "Research on administrative burden describes these learning, compliance and psychological costs of dealing with the state and shows that they are distributed unevenly (Moynihan et al., 2015). "
-      "Herd and Moynihan (2018) argue that such burdens are often the product of administrative choices rather than unavoidable features of a programme, and Christensen et al. (2020) find that they weigh most on people with fewer cognitive resources to meet them. "
+      "Research on administrative burden shows that such costs are distributed unevenly and are often the product of administrative choices rather than unavoidable features of a programme (Herd & Moynihan, 2018; Moynihan et al., 2015). "
       "An unsupported record is one such choice: it shifts the work of reconstruction from the institution that made the decision to the person affected by it, and to the appeal bodies, auditors and courts that must later rebuild it. "
       "Whether human review catches these records before they are finalised is therefore a question about who bears these costs.")
 insert_after(P[6]._p, P[6], [A1])
@@ -209,8 +208,10 @@ for idx in (87, 54):
     P[idx]._p.getparent().remove(P[idx]._p)
 replace(P[120], ", to perform the automated reference checks and to run the repeated automated evaluations,",
         " and to perform the automated reference checks,")
-replace(P[120], "final revisions on 10 November 2026 were drafted with Claude Fable 5.2.",
-        "final revisions on 10 November 2026 were drafted with Claude Fable 5.2, and the revisions of 24 November 2026 were drafted with Anthropic Claude (Claude Opus 5.5).")
+# The AI-tool sentence names model versions, which are kept out of the repository.
+# Supply them at build time: SEC_AI_OLD (sentence as in the editor's file) and SEC_AI_NEW.
+import os
+replace(P[120], os.environ["SEC_AI_OLD"], os.environ["SEC_AI_NEW"])
 
 # ---------- Reviewer 2: single-rated records ----------
 replace(P[57], "Those responses cover 15 records, although only 10 were rated by more than one person.",
@@ -320,6 +321,19 @@ for key in ("Bender, E. M.", "Cobbe, J.", "Mitchell, M.", "Raji, I. D."):
 for rid, rel in d.part.rels.items():
     if rel.reltype == RT.HYPERLINK and "yalebooks.yale.edu/9780300034035" in rel.target_ref:
         rel._target = "https://yalebooks.yale.edu/book/9780300034035/bureaucratic-justice/"
+
+# ---------- 24 Nov review pass: surgical fixes ----------
+def fix(old, new):
+    hits = [p for p in d.paragraphs if old in p.text]
+    assert len(hits) == 1, (old[:60], len(hits))
+    replace(hits[0], old, new)
+
+fix("agree with a reference set before scoring?", "agree with a reference classification fixed before scoring?")
+fix("The present study confirms that the reviewer is a principal source of variation:",
+    "The present results are consistent with the reviewer being a principal source of variation:")
+fix("whether experienced reviewers can recognise", "whether reviewers with relevant professional backgrounds can recognise")
+fix("Python 3.13.18", "Python 3.13")
+fix("bootstrap 0.285 to 0.894)", "bootstrap 0.285 to 0.894, or 0.300 to 0.886 when restricted to the 10 multiply rated records)")
 
 d.save(OUT)
 print("saved", OUT)
