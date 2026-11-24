@@ -158,6 +158,13 @@ for row in t0.rows:
                 replace(p, "PGDM", "B.Tech., PGDM")
                 done = True
 assert done
+# corresponding-author address: the project's public contact, at the owner's choice (2026-11-24)
+t0_hits = [p for row in t0.rows for c in row.cells for p in c.paragraphs if "corresponding author, " in p.text]
+import re as _re
+for p in {id(x): x for x in t0_hits}.values():
+    m = _re.search(r"corresponding author, ([^)\s]+@[^)\s]+)\)", p.text)
+    if m and m.group(1) != "info@jrsstandard.com":
+        replace(p, m.group(1), "info@jrsstandard.com")
 
 # ---------- Reviewer 1: Introduction ----------
 A1 = ("When a decision record does not show the basis for its conclusion, the cost of establishing that basis falls on someone else. "
