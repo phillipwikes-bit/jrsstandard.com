@@ -56,17 +56,19 @@ if (ans.E) {
   }
   out.E = { unchanged_records_passed: rate(ip, ni), of_which_figure_written_another_way_passed: rate(rp, nr), altered_records_flagged: rate(ac, na), wrong_figure_named: rate(named, na), altered_with_a_figure_from_elsewhere_in_the_decision_flagged: rate(ec, ne) };
 }
-if (ans.F) {
-  const K = key('f'); let gc = 0, ng = 0, cf = 0, nc = 0, pair = 0, np = 0; const byKind = {};
+function scoreF(K, A) { let gc = 0, ng = 0, cf = 0, nc = 0, pair = 0, np = 0; const byKind = {};
   const norm = (x) => String(x).toLowerCase().replace(/[^a-z0-9]+/g, ' ').trim();
   const hits = (list, s) => { const t = norm(s); return (list || []).some((q) => { const u = norm(q); return u.length >= 20 && (t.includes(u) || u.includes(t)); }); };
   const good = {};
-  for (const [id, t] of Object.entries(K)) if (!t.altered) { ng++; const ok = !(ans.F[id] || {}).serious; if (ok) gc++; good[id.replace(/-good$/, '')] = ok; }
+  for (const [id, t] of Object.entries(K)) if (!t.altered) { ng++; const ok = !(A[id] || {}).serious; if (ok) gc++; good[id.replace(/-good$/, '')] = ok; }
   for (const [id, t] of Object.entries(K)) if (t.altered) {
-    nc++; const a = ans.F[id] || {}; const ok = !!a.serious && hits(a.flagged_sentences, t.changed_sentence); if (ok) cf++;
+    nc++; const a = A[id] || {}; const ok = !!a.serious && hits(a.flagged_sentences, t.changed_sentence); if (ok) cf++;
     byKind[t.kind] = byKind[t.kind] || [0, 0]; byKind[t.kind][1]++; if (ok) byKind[t.kind][0]++;
     np++; if (ok && good[id.replace(/-changed$/, '')]) pair++;
   }
-  out.F = { good_drafts_without_serious_flag: rate(gc, ng), changed_sentence_flagged_as_serious: rate(cf, nc), both_in_the_same_pair: rate(pair, np), changed_sentence_flagged_by_kind: Object.fromEntries(Object.entries(byKind).map(([k, [a, b]]) => [k, rate(a, b)])) };
+  return { good_drafts_without_serious_flag: rate(gc, ng), changed_sentence_flagged_as_serious: rate(cf, nc), both_in_the_same_pair: rate(pair, np), changed_sentence_flagged_by_kind: Object.fromEntries(Object.entries(byKind).map(([k, [a, b]]) => [k, rate(a, b)])) };
 }
+if (ans.F) out.F = scoreF(key('f'), ans.F);
+// The sealed hold-out of good AI drafts (data/track-f-holdout.json; see FH_PROTOCOL.md).
+if (ans.FH) out.FH = scoreF(key('f-holdout'), ans.FH);
 console.log(JSON.stringify(out, null, 2));
