@@ -1,5 +1,7 @@
 # Decision Spellcheck for the EU AI Act
 
+*An edition of Decision Spellcheck. Everything in the general edition (`PRODUCT_SHEET_GENERAL.md`) is included; this edition adds the EU AI Act checks.*
+
 **Before an AI system is switched on, check that the authorisation record shows what the EU AI Act expects you to be able to show, and that a document backs up each point.**
 
 Date: 25 November 2026. Status: working prototype, under independent evaluation. No accuracy rate is claimed. It is a documentation check, not a legal assessment: it does not show that anyone complies with the AI Act.
