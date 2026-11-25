@@ -15,3 +15,5 @@ Written 2026-11-25 on owner instruction: "Continue fixing until it works for rea
 3. Speakers-removed records are held or flagged with a finding that names a dropped speaker, in at least 24 of 30 (80%).
 
 The detector may not key on the strings "an individual" or on a missing-placeholder pattern; it must compare the record with its source. The result is reported as measured, including failure.
+
+**Amendment, same day, before any text was read.** The study 014 query yields only 59 eligible decisions, all already used, so the hold-out draws instead from the query `"report of investigation"` (same site, same ordering, same eligibility rule, same cut-off of 2026-10-02), excluding every decision in study 014's study and reserved sets. Nothing else changes.
