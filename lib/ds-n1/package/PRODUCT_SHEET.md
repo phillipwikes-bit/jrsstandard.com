@@ -6,7 +6,7 @@ Date: 25 November 2026. Status: working prototype, under independent evaluation.
 
 ## The problem
 
-Organisations using high-risk AI systems in the EU must be able to show human oversight by trained people, a way to override or stop the system, use in line with the provider's instructions, monitoring, logs kept for at least six months, and that workers and affected people were told (Regulation (EU) 2024/1689, Articles 4, 14 and 26). The obligations for Annex III systems apply from 2 December 2027 (Article 113(c), as amended by the Digital Omnibus; European Commission consolidated text as at 27 July 2026). The record that authorises the system is where a regulator, auditor or court will look first, and authorisation records routinely state that a safeguard exists without any document behind it, or leave it out altogether.
+Organisations using high-risk AI systems in the EU must be able to show human oversight by trained people, a way to override or stop the system, use in line with the provider's instructions, monitoring, logs kept for at least six months, and that workers and affected people were told (Regulation (EU) 2024/1689, Articles 4, 14 and 26). The obligations for Annex III systems apply from 2 December 2027 (Article 113(c), as amended by the Digital Omnibus, Regulation (EU) 2026/1744). Every legal passage the checks rely on is stored word for word and has been checked against the Official Journal. The record that authorises the system is where a regulator, auditor or court will look first, and authorisation records routinely state that a safeguard exists without any document behind it, or leave it out altogether.
 
 ## What it does
 
@@ -35,7 +35,6 @@ Organisations using high-risk AI systems in the EU must be able to show human ov
 - Fictional records only today; real-record use is a licensing decision.
 - Covers AI authorizations in every Annex III area, including recruitment, education, credit, insurance, housing, health, public benefits and justice (documentation quality only).
 - Word-pattern checks can miss a point phrased in unexpected words (for example "checked by the safety officer" is not yet read as oversight).
-- Article wording was checked against the European Commission's consolidated text (as at 27 July 2026) and stored word for word; the Official Journal PDF itself was not read.
 - Reads plain text and Word (.docx) body text; PDF needs converting first.
 
 ## Ways to use it

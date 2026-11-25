@@ -20,5 +20,25 @@
   "Article 26(11)": "11. Without prejudice to Article 50 of this Regulation, deployers of high-risk AI systems referred to in Annex III that make decisions or assist in making decisions related to natural persons shall inform the natural persons that they are subject to the use of the high-risk AI system. For high-risk AI systems used for law enforcement purposes Article 13 of Directive (EU) 2016/680 shall apply.",
   "Article 113(c)": "(c) Chapter III, Sections 1, 2, and 3, with the exception of Article 6(5), shall apply from: (i) 2 December 2027 as regards AI systems classified as high-risk pursuant to Article 6(2) and Annex III; and (ii) 2 August 2028 as regards AI systems classified as high-risk pursuant to Article 6(1) and Annex I;"
  },
- "note": "Markers \"AMENDED\"/\"NEW\" on the source page show Digital Omnibus changes; in the articles used here, only Article 4 and Article 113 carry them."
+ "note": "Markers \"AMENDED\"/\"NEW\" on the source page show Digital Omnibus changes; in the articles used here, only Article 4 and Article 113 carry them.",
+ "official_journal_verification": {
+  "checked_on": "2026-11-25",
+  "method": "Each stored paragraph compared word for word (whitespace and quote marks normalised) with the Official Journal text obtained from the EU Publications Office machine access (publications.europa.eu/resource/celex/...).",
+  "Regulation (EU) 2024/1689 (OJ L, 12.7.2024), CELEX 32024R1689": [
+   "Article 14(4) lead-in",
+   "Article 14(4)(d)",
+   "Article 14(4)(e)",
+   "Article 26(1)",
+   "Article 26(2)",
+   "Article 26(5) first sentence",
+   "Article 26(6) first subparagraph",
+   "Article 26(7)",
+   "Article 26(11)"
+  ],
+  "Regulation (EU) 2026/1744, Digital Omnibus on AI (OJ L series 2026/1744, 24.7.2026; in force on the third day after publication), CELEX 32026R1744": [
+   "Article 4(1)",
+   "Article 113(c)"
+  ],
+  "result": "All 11 paragraphs identical to the Official Journal text. Article 4(1) and Article 113(c) differ from the 2024 text because the Digital Omnibus replaced them; they are identical to the Omnibus text."
+ }
 }
