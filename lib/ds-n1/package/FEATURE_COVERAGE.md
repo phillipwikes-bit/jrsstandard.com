@@ -130,3 +130,7 @@ AI authorization records may concern employment, credit, insurance, housing, hea
 | EU AI Act lens | Yes | Yes (summary) | Yes | Results download only |
 
 The engine report and evidence pack (`report.mjs`, `verify.mjs`) are unchanged and byte-reproducible; the newer read-only checks are carried in the reading page's "Download all results" file.
+
+## 15. Practitioner-gap checks (owner decision, 25 November 2026)
+
+Four new review findings, chosen by an objective rule (a gap raised by at least one in four of the 23 practitioners who gave points in the blind study): `CONCLUSORY_ASSESSMENT` (14 of 23), `RECOMMENDATION_STATED_AS_REQUIREMENT` (10), `AUTHORITY_TEXT_NOT_SUPPLIED` (8) and `CONCLUSION_ON_UNRESOLVED_BASIS` (7, recomputed after reviewer actions so it clears once the statements it relies on are resolved). Approver entitlement (4 of 23) is the advisory template `approver_entitlement_not_shown`. Sealed set of ten new records (`tests/ds-n1/PRACTITIONER_GAPS_EVAL.json`, key sealed in commit 90b5ed3f): 50 of 50 gap points agree; hold decision 9 of 10. All 24 developer fixtures keep their expected status. Limitation shown by the same set: 4 of 5 sound records were held by older checks on the plain-text path.

@@ -88,3 +88,21 @@ test('other record classes still refuse those domains', () => {
   const { validation } = extractRecord({ record_id: 'T-8', title: 'T-8 (fictional)', record_class: 'supplier_access_exception', text: 'On 2026-03-01, Ana Duarte approved read access for Vexa Ltd to the loan application archive and mortgage files.', sources: [{ title: 'Doc D-1', version: 'v1', text: 'On 2026-03-01, Ana Duarte approved read access for Vexa Ltd to the archive.' }] });
   assert.equal(validation.status, 'REFUSED_SCOPE');
 });
+
+test('practitioner gaps: a cited policy counts as supplied only when a document titled with it is supplied', async () => {
+  const m = await import('../../lib/ds-n1/index.mjs');
+  const r = { schema: 'ds-n1.record/1.0', record_id: 'X-1', record_version: '1', record_class: 'supplier_access_exception', data_classification: 'constructed_fictional', title: 'X-1 (fictional)',
+    text: 'The exception was granted under section 4 of the access policy.', entities: [],
+    sources: [{ source_id: 'S1', title: 'Approval AP-1', version: 'v1', text: 'The exception was granted under section 4 of the access policy.' }],
+    claims: [{ claim_id: 'C1', kind: 'authority', quote: 'The exception was granted under section 4 of the access policy.', citations: [{ source_id: 'S1', quote: 'The exception was granted under section 4 of the access policy.' }] }] };
+  const codes = () => m.deriveState(m.openReview(r, { at: '2026-11-25T00:00:00Z' })).findings.map((f) => f.code);
+  assert.deepEqual(codes(), ['AUTHORITY_TEXT_NOT_SUPPLIED']);
+  r.sources.push({ source_id: 'S2', title: 'Access policy, section 4', version: 'v1', text: 'Section 4. The head of IT may approve exceptions.' });
+  assert.deepEqual(codes(), []);
+});
+
+test('practitioner-gap sealed set reproduces its committed result', () => {
+  const script = fileURLToPath(new URL('./eval-practitioner-gaps.mjs', import.meta.url));
+  const now = JSON.parse(execFileSync(process.execPath, [script], { encoding: 'utf8' }));
+  assert.deepEqual(now, JSON.parse(readFileSync(new URL('./PRACTITIONER_GAPS_EVAL.json', import.meta.url), 'utf8')));
+});

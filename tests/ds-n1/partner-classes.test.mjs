@@ -23,8 +23,12 @@ test('the class is allowed, scoped and named in the report', () => {
   assert.match(rep.parts['1_record_identification'].scope, /^Constructed fictional AI action authorization records only.*Documentation quality only/);
 });
 
-test('a fully supported authorization record raises nothing', () => {
-  const st = deriveState(open('AUTH-P01'));
+test('an authorization citing a policy it does not supply is held for review; supplied, it raises nothing', () => {
+  const held = deriveState(open('AUTH-P01'));
+  assert.equal(held.status, 'REVIEW_REQUIRED');
+  assert.deepEqual(held.findings.map((f) => f.code), ['AUTHORITY_TEXT_NOT_SUPPLIED']);
+  const rec = fx('AUTH-P01'); rec.sources.push({ source_id: 'S9', title: 'Finance automation policy, section 4', version: 'v3', text: 'Section 4. The finance director may authorize an AI assistant to send routine customer messages, with human sign-off of each batch.' });
+  const st = deriveState(openReview(rec, { at: T0 }));
   assert.equal(st.status, STATUS.READY);
   assert.deepEqual(st.findings, []);
   assert.deepEqual(buildCognitiveObservations(st), []);

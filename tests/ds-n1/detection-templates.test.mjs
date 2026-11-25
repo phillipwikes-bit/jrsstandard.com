@@ -12,11 +12,11 @@ const st = (r) => deriveState(openReview(r, { at: T0 }));
 const hits = (r) => runDetectionTemplates(st(r));
 const names = (r) => new Set(hits(r).map((h) => h.template));
 
-test('all 37 templates are registered in the five groups', () => {
+test('all 38 templates are registered in the five groups', () => {
   const groups = {};
   for (const t of Object.values(TEMPLATES)) groups[t.group] = (groups[t.group] || 0) + 1;
-  assert.equal(Object.keys(TEMPLATES).length, 37);
-  assert.deepEqual(groups, { authority_governance: 13, conclusion_reasoning: 5, chronology: 11, evidence_quotation: 7, certainty: 1 });
+  assert.equal(Object.keys(TEMPLATES).length, 38);
+  assert.deepEqual(groups, { authority_governance: 14, conclusion_reasoning: 5, chronology: 11, evidence_quotation: 7, certainty: 1 });
 });
 
 test('finding-based templates name the finding they rest on', () => {
@@ -29,9 +29,14 @@ test('finding-based templates name the finding they rest on', () => {
 });
 
 test('advisory templates never change a status and never fire on the supported partner records', () => {
-  for (const id of ['AUTH-P01', 'INV-P01', 'DISC-P01', 'MEMO-P01']) {
+  for (const id of ['INV-P01', 'DISC-P01', 'MEMO-P01']) {
     assert.deepEqual(hits(fx('fixtures-partner', id)), [], id);
   }
+  // 2026-11-25: AUTH-P01 cites a policy it does not supply and no source shows the
+  // approver's entitlement; supplying the policy clears both.
+  assert.deepEqual(hits(fx('fixtures-partner', 'AUTH-P01')).map((h) => h.template), ['approver_entitlement_not_shown']);
+  const withPolicy = fx('fixtures-partner', 'AUTH-P01'); withPolicy.sources.push({ source_id: 'S9', title: 'Finance automation policy, section 4', version: 'v3', text: 'Section 4. The finance director may authorize an AI assistant to send routine customer messages, with human sign-off of each batch.' });
+  assert.deepEqual(hits(withPolicy), []);
   for (const h of hits(fx('fixtures', 'P03'))) {
     assert.equal(h.mode, 'advisory');
     assert.equal(h.changes_review_status, false);
@@ -146,7 +151,11 @@ test('the three added templates fire on a record missing role, scope and a stop 
   }
   assert.equal(h.find((y) => y.template === 'approver_role_not_stated').claim_id, 'C1');
   assert.equal(h.find((y) => y.template === 'conclusory_evidence_summary').claim_id, 'C2');
-  assert.equal(st(ar61()).status, 'READY_FOR_HUMAN_FINALIZATION', 'advisory hits leave the status unchanged');
+  // 2026-11-25 (owner decision from the practitioner study): a bare result with no
+  // stated basis ("no material issues were identified") is now also a review finding.
+  const s61 = st(ar61());
+  assert.equal(s61.status, 'REVIEW_REQUIRED');
+  assert.deepEqual(s61.findings.filter((f) => f.status === 'OPEN').map((f) => f.code), ['CONCLUSORY_ASSESSMENT', 'CONCLUSION_ON_UNRESOLVED_BASIS']);
 });
 
 test('a stated approver role clears approver_role_not_stated; a role for someone else does not', () => {

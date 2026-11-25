@@ -5,6 +5,9 @@ import { readFileSync } from 'node:fs';
 import { createWorkspace, verifyAuditLog, WorkspaceError } from '../../lib/ds-n1/enterprise/workspace.mjs';
 
 const fx = (id) => JSON.parse(readFileSync(new URL(`./fixtures-partner/${id}.json`, import.meta.url), 'utf8'));
+// 2026-11-25: AUTH-P01 cites a policy it does not supply; tests that need a record able to reach READY supply it.
+const POLICY = { source_id: 'S9', title: 'Finance automation policy, section 4', version: 'v3', text: 'Section 4. The finance director may authorize an AI assistant to send routine customer messages, with human sign-off of each batch.' };
+const ready = (id) => { const r = fx(id); r.sources.push(POLICY); return r; };
 let clock = Date.parse('2026-11-19T09:00:00Z');
 const now = () => new Date(clock).toISOString();
 const code = (fn) => { try { fn(); } catch (e) { return e instanceof WorkspaceError ? e.code : e.code || e.message; } return 'NO_ERROR'; };
@@ -23,7 +26,7 @@ function setup() {
 
 test('roles are enforced: reviewers open reviews, only approvers finalise, auditors only read', () => {
   const { ws, a, rev, appr, aud, matter } = setup();
-  const { review_id, status } = ws.openReview(rev.token, { matter_id: matter.matter_id, record: fx('AUTH-P01') });
+  const { review_id, status } = ws.openReview(rev.token, { matter_id: matter.matter_id, record: ready('AUTH-P01') });
   assert.equal(status, 'READY_FOR_HUMAN_FINALIZATION');
   assert.equal(code(() => ws.act(rev.token, review_id, { type: 'final_disposition', disposition: 'accepted_for_finalization', note: 'Looks complete.' })), 'FORBIDDEN');
   assert.equal(code(() => ws.openReview(aud.token, { matter_id: matter.matter_id, record: fx('AUTH-P01') })), 'FORBIDDEN');
