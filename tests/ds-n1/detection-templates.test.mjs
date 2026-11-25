@@ -12,11 +12,11 @@ const st = (r) => deriveState(openReview(r, { at: T0 }));
 const hits = (r) => runDetectionTemplates(st(r));
 const names = (r) => new Set(hits(r).map((h) => h.template));
 
-test('all 38 templates are registered in the five groups', () => {
+test('all 43 templates are registered in the five groups', () => {
   const groups = {};
   for (const t of Object.values(TEMPLATES)) groups[t.group] = (groups[t.group] || 0) + 1;
-  assert.equal(Object.keys(TEMPLATES).length, 38);
-  assert.deepEqual(groups, { authority_governance: 14, conclusion_reasoning: 5, chronology: 11, evidence_quotation: 7, certainty: 1 });
+  assert.equal(Object.keys(TEMPLATES).length, 43);
+  assert.deepEqual(groups, { authority_governance: 16, conclusion_reasoning: 6, chronology: 11, evidence_quotation: 9, certainty: 1 });
 });
 
 test('finding-based templates name the finding they rest on', () => {
@@ -34,7 +34,7 @@ test('advisory templates never change a status and never fire on the supported p
   }
   // 2026-11-25: AUTH-P01 cites a policy it does not supply and no source shows the
   // approver's entitlement; supplying the policy clears both.
-  assert.deepEqual(hits(fx('fixtures-partner', 'AUTH-P01')).map((h) => h.template), ['approver_entitlement_not_shown']);
+  assert.deepEqual(hits(fx('fixtures-partner', 'AUTH-P01')).map((h) => h.template), ['cited_authority_not_supplied', 'approver_entitlement_not_shown']);
   const withPolicy = fx('fixtures-partner', 'AUTH-P01'); withPolicy.sources.push({ source_id: 'S9', title: 'Finance automation policy, section 4', version: 'v3', text: 'Section 4. The finance director may authorize an AI assistant to send routine customer messages, with human sign-off of each batch.' });
   assert.deepEqual(hits(withPolicy), []);
   for (const h of hits(fx('fixtures', 'P03'))) {

@@ -18,14 +18,11 @@
   "rows": [
     {
       "id": "G1",
-      "status": "HOLD",
+      "status": "READY_FOR_HUMAN_FINALIZATION",
       "truth_ready": true,
       "ready_on_these_checks": true,
       "ready_agree": true,
-      "other_findings": [
-        "RELEVANCE_NOT_ESTABLISHED",
-        "UNTRACEABLE_AUTHORITY"
-      ],
+      "other_findings": [],
       "per": [
         {
           "gap": "recommendation_stated_as_requirement",
@@ -233,14 +230,11 @@
     },
     {
       "id": "G7",
-      "status": "HOLD",
+      "status": "READY_FOR_HUMAN_FINALIZATION",
       "truth_ready": true,
       "ready_on_these_checks": true,
       "ready_agree": true,
-      "other_findings": [
-        "RELEVANCE_NOT_ESTABLISHED",
-        "UNTRACEABLE_AUTHORITY"
-      ],
+      "other_findings": [],
       "per": [
         {
           "gap": "recommendation_stated_as_requirement",
@@ -306,15 +300,11 @@
     },
     {
       "id": "G9",
-      "status": "HOLD",
+      "status": "READY_FOR_HUMAN_FINALIZATION",
       "truth_ready": true,
       "ready_on_these_checks": true,
       "ready_agree": true,
-      "other_findings": [
-        "ACTOR_NOT_ESTABLISHED",
-        "DATE_NOT_ESTABLISHED",
-        "UNTRACEABLE_AUTHORITY"
-      ],
+      "other_findings": [],
       "per": [
         {
           "gap": "recommendation_stated_as_requirement",
@@ -345,15 +335,11 @@
     },
     {
       "id": "G10",
-      "status": "HOLD",
+      "status": "READY_FOR_HUMAN_FINALIZATION",
       "truth_ready": true,
       "ready_on_these_checks": true,
       "ready_agree": true,
-      "other_findings": [
-        "ACTOR_NOT_ESTABLISHED",
-        "DATE_NOT_ESTABLISHED",
-        "UNTRACEABLE_AUTHORITY"
-      ],
+      "other_findings": [],
       "per": [
         {
           "gap": "recommendation_stated_as_requirement",
@@ -382,5 +368,6 @@
         }
       ]
     }
-  ]
+  ],
+  "status_of_this_file": "Re-run after fixes made using this set; the sealed first run is PRACTITIONER_GAPS_EVAL.first-run.json and is the evidence."
 }

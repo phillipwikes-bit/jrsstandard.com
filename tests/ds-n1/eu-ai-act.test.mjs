@@ -106,3 +106,11 @@ test('practitioner-gap sealed set reproduces its committed result', () => {
   const now = JSON.parse(execFileSync(process.execPath, [script], { encoding: 'utf8' }));
   assert.deepEqual(now, JSON.parse(readFileSync(new URL('./PRACTITIONER_GAPS_EVAL.json', import.meta.url), 'utf8')));
 });
+
+test('practitioner-gap set 2 reproduces its committed result; set 1 first run is kept unchanged', () => {
+  const script = fileURLToPath(new URL('./eval-practitioner-gaps.mjs', import.meta.url));
+  const now = JSON.parse(execFileSync(process.execPath, [script, '--set=practitioner-gaps-eval-2'], { encoding: 'utf8' }));
+  assert.deepEqual(now, JSON.parse(readFileSync(new URL('./PRACTITIONER_GAPS_EVAL_2.json', import.meta.url), 'utf8')));
+  const first = JSON.parse(readFileSync(new URL('./PRACTITIONER_GAPS_EVAL.first-run.json', import.meta.url), 'utf8'));
+  assert.deepEqual(first.gap_point_agreement, { k: 50, n: 50 });
+});

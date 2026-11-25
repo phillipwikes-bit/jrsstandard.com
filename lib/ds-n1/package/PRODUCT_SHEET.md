@@ -12,11 +12,11 @@ Decision records (AI authorizations, access exceptions, investigation summaries,
 
 1. **Reads plain documents.** The record and its documents as plain text or Word files; nothing has to be prepared by hand.
 2. **Checks every claim against its source:** support, contradiction, missing sources, wrong dates, dropped conditions, unsupported conclusions.
-3. **Flags known risk patterns:** 38 checks, such as a "recommended" step stated as "required", an assessment with no stated basis, or an approval with no stated authority.
+3. **Flags known risk patterns:** 43 checks, such as a "recommended" step stated as "required", an assessment with no stated basis, or an approval with no stated authority.
 4. **Checks the reasoning (cognitive controls):** fourteen reasoning lenses, such as unsupported certainty, closing the matter before the evidence is in, selective evidence and over-reliance on an AI system's output, each with one neutral question; eight safeguards say what the reviewer should do and when to refer the matter.
 5. **Asks about what was left out:** an open finding, a failed test or a condition in a source that the record never mentions.
 6. **EU AI Act checks for AI authorizations:** ten points (risk classification, instructions for use, named oversight, overseers' training, override and stop, monitoring, logs kept at least six months, informing workers, informing affected people, AI literacy), each reported as shown and backed by a document, stated with no document, or not shown. Covers every Annex III area: recruitment, education, credit, insurance, housing, health, public benefits and justice. Every legal passage relied on is stored word for word and checked against the Official Journal.
-7. **Stops the record on the gaps practitioners raised most.** A bare assessment with no stated basis, a recommendation written up as a requirement, a cited policy that is not supplied, and a conclusion resting on unresolved points each hold the record for review (rule: raised by at least one in four practitioners in the study).
+7. **Stops the record on the gaps practitioners raised most.** A bare assessment with no stated basis, a recommendation written up as a requirement, a cited policy that is not supplied, broad access granted with no stated reason, and a conclusion resting on unresolved points each hold the record for review (rule: raised by at least one in four practitioners in the study).
 8. **Holds the record until gaps are resolved** or overridden with a written reason.
 
 ## Why it is different
@@ -28,16 +28,15 @@ Decision records (AI authorizations, access exceptions, investigation summaries,
 
 ## Evidence to date
 
-- **Practitioner study:** 29 practitioners from an international panel (27 countries counting everyone who answered the first question) completed a blind review of a fictional access-exception record; 20 of the 28 asked would not rely on it as written (95% interval 53 to 85%). The prototype's answer, locked on 19 November before anyone saw the record, passed it and matched 2 of the 74 points the practitioners raised. Since then, the gaps practitioners raised most now hold a record for review. On ten new fictional records sealed before the code was written, those checks agreed with the key on all 50 points (no gap missed, none wrongly raised), and the hold decision agreed on 9 of 10 (the miss was approver authority, deliberately kept as a note). Run afterwards on the study record, the current version no longer passes it. Practitioners' points were coded by the developer, not an independent coder.
+- **Practitioner study:** 30 practitioners from an international panel completed a blind review of a fictional access-exception record (47 people from 28 countries answered at least the first question); 21 of the 29 asked would not rely on it as written (95% interval 54 to 85%). The prototype's answer, locked on 19 November before anyone saw the record, passed it and matched 2 of the 75 points the practitioners raised (developer-coded). The gaps they raised most now hold a record. On two sets of new fictional records sealed before the code was changed, the new checks agreed with the key on all 50 gap points (first set) and on all 8 records (second set), where all 6 sound records reached READY. Run afterwards on the study record, the current version raises 52 of the 75 points and holds it; that figure is not evidence, because the changes were made knowing that record.
 - **EU AI Act checks:** on two sets of fictional AI authorizations whose answer keys were sealed before the code ran, 78 of 80 and 38 of 40 points agreed with the key; written by the developer, so not independent.
 - **Document reading:** 127 of 128 hand-identified claims found in 26 developer records.
-- **Engineering:** 182 automated tests pass; reports reproduce byte for byte.
+- **Engineering:** 183 automated tests pass; reports reproduce byte for byte.
 
 ## Limits, stated plainly
 
 - Fictional records only today; real-record use is a licensing decision.
 - Word-pattern checks can miss a point phrased in unexpected words.
-- Reading plain text, the tool often cannot trace a cited policy to the right document, so sound records can be held for review (4 of 5 sound records in the latest sealed set); a reviewer clears these by attaching the right passage.
 - PDF needs converting to text first.
 
 ## Ways to use it

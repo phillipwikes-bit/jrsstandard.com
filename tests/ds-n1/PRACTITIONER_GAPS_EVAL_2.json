@@ -1,0 +1,110 @@
+{
+  "set": "practitioner-gaps-eval-2",
+  "note": "Developer-written fictional records, written and sealed before the access-scope check and the sound-record fixes were coded. Not independent. AR-82 is never used.",
+  "ready_agreement": {
+    "k": 8,
+    "n": 8
+  },
+  "sound_records_reaching_ready": {
+    "k": 6,
+    "n": 6
+  },
+  "scope_agreement": {
+    "k": 8,
+    "n": 8
+  },
+  "rows": [
+    {
+      "id": "H1",
+      "status": "READY_FOR_HUMAN_FINALIZATION",
+      "open": [],
+      "truth": {
+        "ready": true,
+        "scope_gap": false
+      },
+      "ready_agree": true,
+      "scope_agree": true
+    },
+    {
+      "id": "H2",
+      "status": "REVIEW_REQUIRED",
+      "open": [
+        "BROAD_ACCESS_NOT_JUSTIFIED"
+      ],
+      "truth": {
+        "ready": false,
+        "scope_gap": true
+      },
+      "ready_agree": true,
+      "scope_agree": true
+    },
+    {
+      "id": "H3",
+      "status": "READY_FOR_HUMAN_FINALIZATION",
+      "open": [],
+      "truth": {
+        "ready": true,
+        "scope_gap": false
+      },
+      "ready_agree": true,
+      "scope_agree": true
+    },
+    {
+      "id": "H4",
+      "status": "READY_FOR_HUMAN_FINALIZATION",
+      "open": [],
+      "truth": {
+        "ready": true,
+        "scope_gap": false
+      },
+      "ready_agree": true,
+      "scope_agree": true
+    },
+    {
+      "id": "H5",
+      "status": "READY_FOR_HUMAN_FINALIZATION",
+      "open": [],
+      "truth": {
+        "ready": true,
+        "scope_gap": false
+      },
+      "ready_agree": true,
+      "scope_agree": true
+    },
+    {
+      "id": "H6",
+      "status": "READY_FOR_HUMAN_FINALIZATION",
+      "open": [],
+      "truth": {
+        "ready": true,
+        "scope_gap": false
+      },
+      "ready_agree": true,
+      "scope_agree": true
+    },
+    {
+      "id": "H7",
+      "status": "READY_FOR_HUMAN_FINALIZATION",
+      "open": [],
+      "truth": {
+        "ready": true,
+        "scope_gap": false
+      },
+      "ready_agree": true,
+      "scope_agree": true
+    },
+    {
+      "id": "H8",
+      "status": "REVIEW_REQUIRED",
+      "open": [
+        "BROAD_ACCESS_NOT_JUSTIFIED"
+      ],
+      "truth": {
+        "ready": false,
+        "scope_gap": true
+      },
+      "ready_agree": true,
+      "scope_agree": true
+    }
+  ]
+}
