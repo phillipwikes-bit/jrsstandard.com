@@ -1,0 +1,293 @@
+{
+  "set": "real-record-holdout-1",
+  "n": 28,
+  "sealed": "2026-11-25, before any fix and before any engine run on these texts",
+  "thresholds_for_n": {
+    "intact_ready_min": 26,
+    "dates_flagged_min": 23,
+    "speakers_flagged_min": 23
+  },
+  "note": "28 eligible decisions were available (search capped at 79 result pages); thresholds keep the protocol percentages (90%, 80%, 80%) rounded up.",
+  "decisions": [
+    {
+      "id": "H-01",
+      "url": "https://www.eeoc.gov/sites/default/files/decisions/2024_12_09/2022003960.pdf",
+      "posted": "2024_12_09",
+      "intact_sha256": "4ec84b3d106ae6acc8db524596fa0b75e9c5fe56fa497010a37b658d1d3651b1",
+      "dates_removed_sha256": "98eade21c7e38229172ea6478647aebb1df1bc75ad3159f639d9be09d0d996ff",
+      "speakers_removed_sha256": "84063f2ad824d328825b41dec2f4c97b96c529ccec1539d05ac446c0db144a85",
+      "dates_changed": true,
+      "speakers_changed": true
+    },
+    {
+      "id": "H-02",
+      "url": "https://www.eeoc.gov/sites/default/files/decisions/2024_05_22/2022004140.pdf",
+      "posted": "2024_05_22",
+      "intact_sha256": "9140a2a5ca1cd6318acc9519f516b77af5c6b169056fbcccbefa93eb86e850d2",
+      "dates_removed_sha256": "8262815dd2454ad78e1a6002002f78e936f91cdac0377ce57dbb203a6c0265ec",
+      "speakers_removed_sha256": "0e15173c063482138f05402689bca4839d138499589bfa5069401655d1738384",
+      "dates_changed": true,
+      "speakers_changed": true
+    },
+    {
+      "id": "H-03",
+      "url": "https://www.eeoc.gov/sites/default/files/decisions/2023_09_07/2022003616.pdf",
+      "posted": "2023_09_07",
+      "intact_sha256": "fcf8a10ef009f69d995d3e68afcbc4778fc23d391f68af2b59f78c88d0ab5659",
+      "dates_removed_sha256": "2ace912972137e48e278d000a95600d5779b2278495b4e648f69fbd14a647c67",
+      "speakers_removed_sha256": "15b17fdc8ee365fc0e8eeaaaf81f8d83fd73eea88d7c649287c3d6217b113579",
+      "dates_changed": true,
+      "speakers_changed": true
+    },
+    {
+      "id": "H-04",
+      "url": "https://www.eeoc.gov/sites/default/files/decisions/2023_09_07/2022002668.pdf",
+      "posted": "2023_09_07",
+      "intact_sha256": "98929a1bfdc8fbd80871410340a7f1c51c042d74f7e7ec8c98e3988329657eca",
+      "dates_removed_sha256": "12f99a650c61232f80e66c10c03b84195140a2dbb42807711544aef7a8ba6613",
+      "speakers_removed_sha256": "fb6f8bc74eb1170e9e619fc39873868c85d2d21ba87d8667dcf27c7e40e3e9d3",
+      "dates_changed": true,
+      "speakers_changed": true
+    },
+    {
+      "id": "H-05",
+      "url": "https://www.eeoc.gov/sites/default/files/decisions/2023_09_07/2022002538.pdf",
+      "posted": "2023_09_07",
+      "intact_sha256": "1c9f071ac62e9b5078e324a82c88f72b0dc2b4c2a28aa9a2e25266b96bab7dc8",
+      "dates_removed_sha256": "4a09a681250612c81791afe00ebc5e9e447c99d4a0984dd458731a3c901a3fad",
+      "speakers_removed_sha256": "b0ec9d315b0ca7dbea325f1970d341c0fd47e18e992d09ef6e4af07a02ae529c",
+      "dates_changed": true,
+      "speakers_changed": true
+    },
+    {
+      "id": "H-06",
+      "url": "https://www.eeoc.gov/sites/default/files/decisions/2023_09_07/2022002312.pdf",
+      "posted": "2023_09_07",
+      "intact_sha256": "da9f7491639a986ce594c1ac7e27e6edb7bd6e09456f57a92b111a1fc15e44b5",
+      "dates_removed_sha256": "6d65704db8f60483fa9e30a1e421270691390483b06bbe76cd18417481a1365f",
+      "speakers_removed_sha256": "4f2bd7a22aa574abe76f6c678aff3d7b19a60e87312a7a3f1d128cca15444318",
+      "dates_changed": true,
+      "speakers_changed": true
+    },
+    {
+      "id": "H-07",
+      "url": "https://www.eeoc.gov/sites/default/files/decisions/2023_09_07/2021005048.pdf",
+      "posted": "2023_09_07",
+      "intact_sha256": "f4a3a1e00397f2f54468bccf8e2564ed04274867dcb46a7a6be015c97974cc01",
+      "dates_removed_sha256": "c1d244fe54486ea7e856e76975aa296d27769f5c626f9a4d7caa9838b4f8090e",
+      "speakers_removed_sha256": "e73487e7099d7706f3f445137d9e9d15326048dc8b2f9c897067348504853eff",
+      "dates_changed": true,
+      "speakers_changed": true
+    },
+    {
+      "id": "H-08",
+      "url": "https://www.eeoc.gov/sites/default/files/decisions/2023_09_07/2021004058.pdf",
+      "posted": "2023_09_07",
+      "intact_sha256": "2d99fbff8670457a9b298b20372ebf6d1b5bd9cdcb927bcd945e9a26b773041d",
+      "dates_removed_sha256": "6344ff2e6684e8c42be4f3e485a4e5153a5c628cad4fafd94e1941d2c8878a57",
+      "speakers_removed_sha256": "eb9010ffd8ae1d15d40716e59a6a293305b0a939fdce753681a7976c42d5a830",
+      "dates_changed": true,
+      "speakers_changed": true
+    },
+    {
+      "id": "H-09",
+      "url": "https://www.eeoc.gov/sites/default/files/decisions/2023_04_21/2022002752.pdf",
+      "posted": "2023_04_21",
+      "intact_sha256": "c8790d5f70d964722fa5c47eab819de7273a0af87a7ca131da2ed85c6f53540d",
+      "dates_removed_sha256": "af415128609e0a73fde7113a391b5e0897e6888ecc9c67720ae1b9f6da79a054",
+      "speakers_removed_sha256": "0aa9c4d09ed4c4bbc5dfa0033cc43315781ab19de973f42dbcd0e893e546f4a4",
+      "dates_changed": true,
+      "speakers_changed": true
+    },
+    {
+      "id": "H-10",
+      "url": "https://www.eeoc.gov/sites/default/files/decisions/2023_04_21/2022000261.pdf",
+      "posted": "2023_04_21",
+      "intact_sha256": "38e4ded8253205e0a61989af2035b8b9c6bfd1ce8a44f5c9cfc9041295d6d09c",
+      "dates_removed_sha256": "7c0dafc207f42c23c0eea3ec28994495f8eb3798cb4ab4b06cdd9746de1d1cba",
+      "speakers_removed_sha256": "50e5c7038359f62c73d5d979011a8c5bddb26d3b9c987c047b7079e00e6ac264",
+      "dates_changed": true,
+      "speakers_changed": true
+    },
+    {
+      "id": "H-11",
+      "url": "https://www.eeoc.gov/sites/default/files/decisions/2023_04_21/2021005077.pdf",
+      "posted": "2023_04_21",
+      "intact_sha256": "fe1ee0e69f31bf697bfbb0e66f9f11b28ffd854adf0c7117626f35e720b36bae",
+      "dates_removed_sha256": "50356b3317e82dfac69480541ef8caba312d1cc6ac49bda923a4b7e7aff50bba",
+      "speakers_removed_sha256": "5fc9849e35610ef1c4e06c98739cb4911b0a1c17fac3a79b7909afd25f1c8c0a",
+      "dates_changed": true,
+      "speakers_changed": true
+    },
+    {
+      "id": "H-12",
+      "url": "https://www.eeoc.gov/sites/default/files/decisions/2022_03_02/2020004405.pdf",
+      "posted": "2022_03_02",
+      "intact_sha256": "103c748df37055fab36eecf662bcb48d0f85d669d1b16e85df8b3c4fc9592cf1",
+      "dates_removed_sha256": "98faf07e927201c60135d523b4c3cbc45ccd97d364e7838479816d69027c7370",
+      "speakers_removed_sha256": "341d3b218c364b04dd1dba86eb8b5aa19b6886a2a335f6190c02bb2d417be302",
+      "dates_changed": true,
+      "speakers_changed": true
+    },
+    {
+      "id": "H-13",
+      "url": "https://www.eeoc.gov/sites/default/files/decisions/2022_03_02/2020004405%20%281%29.pdf",
+      "posted": "2022_03_02",
+      "intact_sha256": "103c748df37055fab36eecf662bcb48d0f85d669d1b16e85df8b3c4fc9592cf1",
+      "dates_removed_sha256": "98faf07e927201c60135d523b4c3cbc45ccd97d364e7838479816d69027c7370",
+      "speakers_removed_sha256": "341d3b218c364b04dd1dba86eb8b5aa19b6886a2a335f6190c02bb2d417be302",
+      "dates_changed": true,
+      "speakers_changed": true
+    },
+    {
+      "id": "H-14",
+      "url": "https://www.eeoc.gov/sites/default/files/decisions/2022_03_02/2020004357.pdf",
+      "posted": "2022_03_02",
+      "intact_sha256": "b33bc6fd859dba1012efe974ccf814f16064504ef8aaf008e2bfdd30d8b25a78",
+      "dates_removed_sha256": "4e2c7dffa45b440909fb1afbb823970c8760ebb49205151ff2b9145d5bb7d3bc",
+      "speakers_removed_sha256": "3fdfa0244c7efdc3c3c4ce027f0fedcc71743a0b414b9db40442ff064cdf9c5a",
+      "dates_changed": true,
+      "speakers_changed": true
+    },
+    {
+      "id": "H-15",
+      "url": "https://www.eeoc.gov/sites/default/files/decisions/2022_03_02/2020004250.pdf",
+      "posted": "2022_03_02",
+      "intact_sha256": "fffafd24ce847a8bf317cf94fe69696f6e71f2598040b56cdb0d66f2cda2b218",
+      "dates_removed_sha256": "c9649ba15ab74249c6ee716ed7ba658b4678b3a296a7f3c3f3c879e309b6f903",
+      "speakers_removed_sha256": "766c0d9163115cf8637652d7c397e68979a550a6f9737e1a937dae71a2a8cedb",
+      "dates_changed": true,
+      "speakers_changed": true
+    },
+    {
+      "id": "H-16",
+      "url": "https://www.eeoc.gov/sites/default/files/decisions/2022_01_12/2020004405.pdf",
+      "posted": "2022_01_12",
+      "intact_sha256": "103c748df37055fab36eecf662bcb48d0f85d669d1b16e85df8b3c4fc9592cf1",
+      "dates_removed_sha256": "98faf07e927201c60135d523b4c3cbc45ccd97d364e7838479816d69027c7370",
+      "speakers_removed_sha256": "341d3b218c364b04dd1dba86eb8b5aa19b6886a2a335f6190c02bb2d417be302",
+      "dates_changed": true,
+      "speakers_changed": true
+    },
+    {
+      "id": "H-17",
+      "url": "https://www.eeoc.gov/sites/default/files/decisions/2022_01_12/2020004405%20%281%29.pdf",
+      "posted": "2022_01_12",
+      "intact_sha256": "103c748df37055fab36eecf662bcb48d0f85d669d1b16e85df8b3c4fc9592cf1",
+      "dates_removed_sha256": "98faf07e927201c60135d523b4c3cbc45ccd97d364e7838479816d69027c7370",
+      "speakers_removed_sha256": "341d3b218c364b04dd1dba86eb8b5aa19b6886a2a335f6190c02bb2d417be302",
+      "dates_changed": true,
+      "speakers_changed": true
+    },
+    {
+      "id": "H-18",
+      "url": "https://www.eeoc.gov/sites/default/files/decisions/2022_01_12/2020004357.pdf",
+      "posted": "2022_01_12",
+      "intact_sha256": "b33bc6fd859dba1012efe974ccf814f16064504ef8aaf008e2bfdd30d8b25a78",
+      "dates_removed_sha256": "4e2c7dffa45b440909fb1afbb823970c8760ebb49205151ff2b9145d5bb7d3bc",
+      "speakers_removed_sha256": "3fdfa0244c7efdc3c3c4ce027f0fedcc71743a0b414b9db40442ff064cdf9c5a",
+      "dates_changed": true,
+      "speakers_changed": true
+    },
+    {
+      "id": "H-19",
+      "url": "https://www.eeoc.gov/sites/default/files/decisions/2022_01_12/2020004250.pdf",
+      "posted": "2022_01_12",
+      "intact_sha256": "fffafd24ce847a8bf317cf94fe69696f6e71f2598040b56cdb0d66f2cda2b218",
+      "dates_removed_sha256": "c9649ba15ab74249c6ee716ed7ba658b4678b3a296a7f3c3f3c879e309b6f903",
+      "speakers_removed_sha256": "766c0d9163115cf8637652d7c397e68979a550a6f9737e1a937dae71a2a8cedb",
+      "dates_changed": true,
+      "speakers_changed": true
+    },
+    {
+      "id": "H-20",
+      "url": "https://www.eeoc.gov/sites/default/files/decisions/2021_11_01/2020005312.pdf",
+      "posted": "2021_11_01",
+      "intact_sha256": "c0f3a9d8b2085fe0993b94b066e6f395161e2fcb0a0846b9be65b15a86cf8f91",
+      "dates_removed_sha256": "cc9f6588de1f22e0517a67c03f41d79e48a726d54b7b5849a79337d17ab80677",
+      "speakers_removed_sha256": "0bfef590f8fe3bc6e50d1a3db94288f28145a633e1a8a40966f615b386848633",
+      "dates_changed": true,
+      "speakers_changed": true
+    },
+    {
+      "id": "H-21",
+      "url": "https://www.eeoc.gov/sites/default/files/decisions/2021_08_31/2020001670.pdf",
+      "posted": "2021_08_31",
+      "intact_sha256": "2f0884b30662833452eb428641d8c78af628773b4e0a37449952a3848f84fdab",
+      "dates_removed_sha256": "0bcdd4294d39f62cef11e338c37a80077475d8fe77fc3599d3b862e3f14262e2",
+      "speakers_removed_sha256": "ea2c329db8b19b44576961cb4684a5ba2f8d4fe2b84bf0d85eed19ced6901632",
+      "dates_changed": true,
+      "speakers_changed": true
+    },
+    {
+      "id": "H-22",
+      "url": "https://www.eeoc.gov/sites/default/files/decisions/2021_08_31/2020000193.pdf",
+      "posted": "2021_08_31",
+      "intact_sha256": "149ca69715a743bb85bac4618c060df2155cf7070de69ead388b8f0e0c7a1456",
+      "dates_removed_sha256": "91f53030e821f4a9750bc92cfad4645485d21df4673f96ad97c3885f74b273b3",
+      "speakers_removed_sha256": "1e06e4b0a3e5e0c70afd55f1f32f92d56ad7fd855217b1cba36ae4f93d5313bf",
+      "dates_changed": true,
+      "speakers_changed": true
+    },
+    {
+      "id": "H-23",
+      "url": "https://www.eeoc.gov/sites/default/files/decisions/2021_01_19/2020003551.pdf",
+      "posted": "2021_01_19",
+      "intact_sha256": "d1688e601f1a3517356d4b931aa8b28a5b9802a15e38c13474a103f2d471ecc5",
+      "dates_removed_sha256": "933684b1d56ad5e11cd807187334e5de0add12ba2af3a724c5af80ec94a2eee4",
+      "speakers_removed_sha256": "c7132c8a08a646942803feb7ff8556c711f7fddda3f17ea4ba4328232be271ba",
+      "dates_changed": true,
+      "speakers_changed": true
+    },
+    {
+      "id": "H-24",
+      "url": "https://www.eeoc.gov/sites/default/files/decisions/2021_01_19/2020000776.pdf",
+      "posted": "2021_01_19",
+      "intact_sha256": "7b1b2ff4901937572fae540457814f06c8e55f1930280e73a54f023575b3cf26",
+      "dates_removed_sha256": "5f2e9addf9b750f8929c8d2e5c607e5286ef3aec60b71d8db71711c5e9a0adc3",
+      "speakers_removed_sha256": "90d91aa55d9f5e438a1d46fc6884c805dc0905e8a7a94535709d3990ed5b3811",
+      "dates_changed": true,
+      "speakers_changed": true
+    },
+    {
+      "id": "H-25",
+      "url": "https://www.eeoc.gov/sites/default/files/decisions/2020_12_07/2020003551.pdf",
+      "posted": "2020_12_07",
+      "intact_sha256": "d1688e601f1a3517356d4b931aa8b28a5b9802a15e38c13474a103f2d471ecc5",
+      "dates_removed_sha256": "933684b1d56ad5e11cd807187334e5de0add12ba2af3a724c5af80ec94a2eee4",
+      "speakers_removed_sha256": "c7132c8a08a646942803feb7ff8556c711f7fddda3f17ea4ba4328232be271ba",
+      "dates_changed": true,
+      "speakers_changed": true
+    },
+    {
+      "id": "H-26",
+      "url": "https://www.eeoc.gov/sites/default/files/decisions/2020_12_07/2020000776.pdf",
+      "posted": "2020_12_07",
+      "intact_sha256": "7b1b2ff4901937572fae540457814f06c8e55f1930280e73a54f023575b3cf26",
+      "dates_removed_sha256": "5f2e9addf9b750f8929c8d2e5c607e5286ef3aec60b71d8db71711c5e9a0adc3",
+      "speakers_removed_sha256": "90d91aa55d9f5e438a1d46fc6884c805dc0905e8a7a94535709d3990ed5b3811",
+      "dates_changed": true,
+      "speakers_changed": true
+    },
+    {
+      "id": "H-27",
+      "url": "https://www.eeoc.gov/sites/default/files/decisions/2020_12_07/2019005288.pdf",
+      "posted": "2020_12_07",
+      "intact_sha256": "34d501350c1ebd97ef607787eb9e236a8bc44bc106253202ad87149f18e362ee",
+      "dates_removed_sha256": "b1d5c04861447cf6523f944e06651f19c31f63534721abdab15d488940723047",
+      "speakers_removed_sha256": "e2072cec9d16ce8d3f6bd046dfea979bc3ca58a38b43502d8d5b6cbe7f829c46",
+      "dates_changed": true,
+      "speakers_changed": true
+    },
+    {
+      "id": "H-28",
+      "url": "https://www.eeoc.gov/sites/default/files/decisions/2020_08_10/2019003136.pdf",
+      "posted": "2020_08_10",
+      "intact_sha256": "7989738da51ae062fa4989df34d3b458f3ae6a53069fbb1a4a32d5f74960b47c",
+      "dates_removed_sha256": "5f9e6bc857978af0641ed2a9a4d36ef90ceba813a7ba69a862a5f34dec03f223",
+      "speakers_removed_sha256": "3f8ea0b68e42a07c6bc0c8f902075f48a6bf25b62cc9d5bfe3d98e31cedc911e",
+      "dates_changed": true,
+      "speakers_changed": true
+    }
+  ]
+}
