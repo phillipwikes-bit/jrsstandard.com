@@ -8,6 +8,7 @@ import { readFileSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
 import { start } from '../../lib/ds-n1/serve.mjs';
 import { runDemo } from '../../lib/ds-n1/demo/run-demo.mjs';
+import { simplePdf } from './fixtures-pdf/make-pdf.mjs';
 
 const require = createRequire(import.meta.url);
 const { chromium, devices } = require('playwright');
@@ -61,13 +62,17 @@ try {
       assert.ok(all.reasoning_checks.lenses.length > 0);
     });
 
-    await check(`${label}: a Word file fills the record text exactly; a PDF is refused`, async () => {
+    await check(`${label}: a Word file fills the record text exactly; a PDF is read; a PDF with no text is refused`, async () => {
       await page.fill('#rec-text', '');
       await page.setInputFiles('#rec-file', fileURLToPath(new URL('./fixtures-docx/harbourline-record.libreoffice.docx', import.meta.url)));
       await page.waitForFunction(() => document.querySelector('#rec-text').value.length > 0);
       assert.equal(await page.inputValue('#rec-text'), expected.record.text);
-      await page.setInputFiles('#doc-file-1', { name: 'scan.pdf', mimeType: 'application/pdf', buffer: Buffer.from('%PDF-1.7') });
-      await page.waitForFunction(() => /PDF files cannot be read/.test(document.querySelector('#msg').textContent));
+      await page.fill('#doc-text-1', '');
+      await page.setInputFiles('#doc-file-1', { name: 'note.pdf', mimeType: 'application/pdf', buffer: simplePdf() });
+      await page.waitForFunction(() => document.querySelector('#doc-text-1').value.length > 0);
+      assert.equal(await page.inputValue('#doc-text-1'), 'Harbourline approved the exception.\nIt was granted on 2026-03-02.');
+      await page.setInputFiles('#doc-file-1', { name: 'scan.pdf', mimeType: 'application/pdf', buffer: Buffer.from('%PDF-1.7\n1 0 obj\n<< /Type /Catalog >>\nendobj\n') });
+      await page.waitForFunction(() => /No text layer/.test(document.querySelector('#msg').textContent));
     });
 
     await check(`${label}: an AI authorization record shows the EU AI Act section, with no compliance claim`, async () => {
