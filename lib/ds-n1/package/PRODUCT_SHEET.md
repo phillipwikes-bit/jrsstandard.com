@@ -15,8 +15,9 @@ Organisations using high-risk AI systems in the EU must be able to show human ov
 1. **Reads the authorisation record and its documents** as plain text or Word files; nothing has to be prepared by hand.
 2. **Checks ten points the AI Act expects a deployer to show** (risk classification, instructions for use, named oversight, overseers' training, override and stop, monitoring, log retention, informing workers, informing affected people, AI literacy). Each is reported as shown and backed by a document, stated with no document behind it, or not shown, with the exact sentences relied on and one plain question for each gap.
 3. **Flags concrete shortfalls**, such as logs kept for less than six months.
-4. **Checks every other claim in the record against its source** (wrong dates, a "recommended" step stated as "required", unsupported conclusions, approvals with no stated authority) and asks about points a source raises that the record leaves out.
-5. **Holds the record until gaps are resolved or overridden with a written reason**, and logs every step in a tamper-evident review log.
+4. **Checks the reasoning (cognitive controls):** fourteen reasoning lenses, including over-reliance on the AI system's output, unsupported certainty and premature closure, each with one neutral question and a safeguard saying what the reviewer should do.
+5. **Checks every other claim in the record against its source** (wrong dates, a "recommended" step stated as "required", unsupported conclusions, approvals with no stated authority) and asks about points a source raises that the record leaves out.
+6. **Holds the record until gaps are resolved or overridden with a written reason**, and logs every step in a tamper-evident review log.
 
 ## Why it is different
 

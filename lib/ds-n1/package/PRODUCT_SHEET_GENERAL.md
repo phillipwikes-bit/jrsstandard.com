@@ -13,8 +13,9 @@ Decision records (access exceptions, AI action authorizations, investigation sum
 1. **Reads plain documents.** Give it the decision record and the documents it relies on; it identifies each claim, its dates, who acted and which passage supports it. Nothing has to be prepared by hand.
 2. **Checks every claim against its source.** Support, contradiction, missing sources, wrong dates, the wrong event, dropped conditions, unsupported conclusions.
 3. **Flags known risk patterns.** 37 checks, including approvals with no stated authority, a "recommended" control stated as "required", conclusions with no reasoning, and AI actions with no way to pause them.
-4. **Asks about what was left out.** If a document the record relies on mentions an open finding, a failed test, a condition or a step not done, and the record never mentions it, the reviewer is asked whether it was considered (advisory).
-5. **Holds the record until gaps are resolved.** Each finding comes with one plain question for the reviewer; the record stays on HOLD until each is fixed or overridden with a written reason, and every step is logged.
+4. **Checks the reasoning, not just the facts (cognitive controls).** Fourteen reasoning lenses point the reviewer at risks the record shows, such as certainty the evidence does not support, closing the matter before the evidence is in, choosing one reading where another fits, selective evidence and over-reliance on an AI system's output. Each asks one neutral question; eight safeguards say what the reviewer should do and when to refer the matter to an authorised reviewer. They never change the result and say nothing about any person.
+5. **Asks about what was left out.** If a document the record relies on mentions an open finding, a failed test, a condition or a step not done, and the record never mentions it, the reviewer is asked whether it was considered (advisory).
+6. **Holds the record until gaps are resolved.** Each finding comes with one plain question for the reviewer; the record stays on HOLD until each is fixed or overridden with a written reason, and every step is logged.
 
 ## Why it is different
 

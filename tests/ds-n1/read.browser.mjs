@@ -46,6 +46,8 @@ try {
       assert.equal(await page.locator('#out .claim').count(), expected.extraction.claims.length);
       assert.equal(await page.locator('#omissions li').count(), expected.omissions.length);
       assert.match(await page.textContent('#omissions'), /two medium findings open/);
+      assert.ok(await page.locator('#cognitive li').count() >= 3, 'reasoning checks shown');
+      assert.match(await page.textContent('#cognitive'), /Alternative explanations|Missing evidence/);
     });
 
     await check(`${label}: downloaded package is identical to the demo's record`, async () => {
