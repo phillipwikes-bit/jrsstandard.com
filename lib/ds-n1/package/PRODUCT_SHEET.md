@@ -22,9 +22,10 @@ Decision records (AI authorizations, access exceptions, investigation summaries,
 ## Why it is different
 
 - **Built for audit.** Every reviewer action goes into a tamper-evident log; an exported evidence pack can be re-checked independently of the tool; a reference workspace adds roles (admin, reviewer, approver, auditor), encrypted storage, a signed audit log and retention rules.
-- **Same input, same answer, every time.** No AI model calls, so a result can be reproduced exactly.
-- **Nothing leaves the building.** No network calls.
-- **Shows its working.** Every result names the record sentence and the document sentence it relied on.
+- **Same input, same answer, every time.** No AI model calls, so a result can be reproduced exactly. Proven by a script anyone can run: two runs give byte-identical output.
+- **Nothing leaves the building.** No network calls; the proof script runs the whole benchmark with every network route blocked.
+- **Shows its working.** Every result names the record sentence and the document sentence it relied on (1,542 of 1,542 findings on the benchmark).
+- **Tested in the open.** The Record Check Benchmark (benchmarks/record-check-v1) lets anyone run their own tool on the same public decisions and fictional EU AI Act records, with the scorer, keys and our results, including where we fail.
 
 ## Evidence to date
 
