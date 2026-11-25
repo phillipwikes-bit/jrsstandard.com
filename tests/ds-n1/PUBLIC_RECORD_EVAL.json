@@ -1,0 +1,244 @@
+{
+  "set": "public-record-eval-1",
+  "sealed_hash": "7824e75ffc07377e45268f2af6180c1ff2e5436efdc2a1030f0c8c6a316c4648",
+  "run_at": "2026-11-25T15:03:22.746Z",
+  "note": "Public documents, test classification. Documentation check only; not a judgement on any person or case.",
+  "primary": {
+    "n": 11,
+    "flagged_adverse": 6,
+    "flagged_not_adverse": 5,
+    "clear_adverse": 0,
+    "clear_not_adverse": 0,
+    "correct": 6
+  },
+  "secondary": {
+    "n": 11,
+    "flagged_adverse": 5,
+    "flagged_not_adverse": 2,
+    "clear_adverse": 1,
+    "clear_not_adverse": 3,
+    "correct": 8
+  },
+  "rows": [
+    {
+      "id": "PR-06",
+      "outcome": "Contested, no recorded disposition",
+      "adverse": false,
+      "engine": "ERROR",
+      "errors": [
+        "TOO_LARGE"
+      ]
+    },
+    {
+      "id": "PR-07",
+      "outcome": "Did not survive review",
+      "adverse": true,
+      "engine": "HOLD",
+      "findings": 124,
+      "gap_codes": [
+        "CONCLUSION_ON_UNRESOLVED_BASIS"
+      ],
+      "all_codes": [
+        "UNSUPPORTED_CLAIM",
+        "UNTRACEABLE_AUTHORITY",
+        "CLAIM_LOCATION_AMBIGUOUS",
+        "REASONING_NOT_TRACED",
+        "UNMAPPED_ASSERTION",
+        "CONCLUSION_ON_UNRESOLVED_BASIS"
+      ],
+      "primary_predicts_adverse": true,
+      "secondary_predicts_adverse": true
+    },
+    {
+      "id": "PR-08",
+      "outcome": "Contested, no recorded disposition",
+      "adverse": false,
+      "engine": "HOLD",
+      "findings": 20,
+      "gap_codes": [],
+      "all_codes": [
+        "UNSUPPORTED_CLAIM",
+        "CLAIM_LOCATION_AMBIGUOUS",
+        "UNTRACEABLE_AUTHORITY"
+      ],
+      "primary_predicts_adverse": true,
+      "secondary_predicts_adverse": false
+    },
+    {
+      "id": "PR-09",
+      "outcome": "Contested, no recorded disposition",
+      "adverse": false,
+      "engine": "HOLD",
+      "findings": 26,
+      "gap_codes": [],
+      "all_codes": [
+        "UNSUPPORTED_CLAIM",
+        "CLAIM_LOCATION_AMBIGUOUS",
+        "UNTRACEABLE_AUTHORITY"
+      ],
+      "primary_predicts_adverse": true,
+      "secondary_predicts_adverse": false
+    },
+    {
+      "id": "PR-10",
+      "outcome": "Sustained",
+      "adverse": false,
+      "engine": "HOLD",
+      "findings": 51,
+      "gap_codes": [],
+      "all_codes": [
+        "UNSUPPORTED_CLAIM",
+        "CLAIM_LOCATION_AMBIGUOUS",
+        "UNTRACEABLE_AUTHORITY"
+      ],
+      "primary_predicts_adverse": true,
+      "secondary_predicts_adverse": false
+    },
+    {
+      "id": "PR-11",
+      "outcome": "Contested, no recorded disposition",
+      "adverse": false,
+      "engine": "HOLD",
+      "findings": 60,
+      "gap_codes": [
+        "CONCLUSION_ON_UNRESOLVED_BASIS"
+      ],
+      "all_codes": [
+        "UNSUPPORTED_CLAIM",
+        "CLAIM_LOCATION_AMBIGUOUS",
+        "UNTRACEABLE_AUTHORITY",
+        "REASONING_NOT_TRACED",
+        "CONCLUSION_ON_UNRESOLVED_BASIS"
+      ],
+      "primary_predicts_adverse": true,
+      "secondary_predicts_adverse": true
+    },
+    {
+      "id": "PR-12",
+      "outcome": "Did not survive review",
+      "adverse": true,
+      "engine": "HOLD",
+      "findings": 59,
+      "gap_codes": [
+        "CONCLUSION_ON_UNRESOLVED_BASIS"
+      ],
+      "all_codes": [
+        "UNSUPPORTED_CLAIM",
+        "CLAIM_LOCATION_AMBIGUOUS",
+        "UNTRACEABLE_AUTHORITY",
+        "REASONING_NOT_TRACED",
+        "CONCLUSION_ON_UNRESOLVED_BASIS"
+      ],
+      "primary_predicts_adverse": true,
+      "secondary_predicts_adverse": true
+    },
+    {
+      "id": "PR-13",
+      "outcome": "Did not survive review",
+      "adverse": true,
+      "engine": "HOLD",
+      "findings": 45,
+      "gap_codes": [
+        "CONCLUSION_ON_UNRESOLVED_BASIS"
+      ],
+      "all_codes": [
+        "UNSUPPORTED_CLAIM",
+        "CLAIM_LOCATION_AMBIGUOUS",
+        "UNTRACEABLE_AUTHORITY",
+        "REASONING_NOT_TRACED",
+        "CONCLUSION_ON_UNRESOLVED_BASIS"
+      ],
+      "primary_predicts_adverse": true,
+      "secondary_predicts_adverse": true
+    },
+    {
+      "id": "PR-14",
+      "outcome": "Sustained",
+      "adverse": false,
+      "engine": "HOLD",
+      "findings": 26,
+      "gap_codes": [
+        "CONCLUSION_ON_UNRESOLVED_BASIS"
+      ],
+      "all_codes": [
+        "UNSUPPORTED_CLAIM",
+        "UNTRACEABLE_AUTHORITY",
+        "REASONING_NOT_TRACED",
+        "CONCLUSION_ON_UNRESOLVED_BASIS"
+      ],
+      "primary_predicts_adverse": true,
+      "secondary_predicts_adverse": true
+    },
+    {
+      "id": "PR-28",
+      "outcome": "Adverse audit or compliance finding",
+      "adverse": true,
+      "engine": "HOLD",
+      "findings": 38,
+      "gap_codes": [
+        "CONCLUSION_ON_UNRESOLVED_BASIS"
+      ],
+      "all_codes": [
+        "UNSUPPORTED_CLAIM",
+        "CLAIM_LOCATION_AMBIGUOUS",
+        "UNTRACEABLE_AUTHORITY",
+        "REASONING_NOT_TRACED",
+        "CONCLUSION_ON_UNRESOLVED_BASIS"
+      ],
+      "primary_predicts_adverse": true,
+      "secondary_predicts_adverse": true
+    },
+    {
+      "id": "PR-29",
+      "outcome": "Adverse audit or compliance finding",
+      "adverse": true,
+      "engine": "HOLD",
+      "findings": 33,
+      "gap_codes": [],
+      "all_codes": [
+        "UNSUPPORTED_CLAIM",
+        "CLAIM_LOCATION_AMBIGUOUS",
+        "UNTRACEABLE_AUTHORITY"
+      ],
+      "primary_predicts_adverse": true,
+      "secondary_predicts_adverse": false
+    },
+    {
+      "id": "PR-30",
+      "outcome": "Adverse audit or compliance finding",
+      "adverse": true,
+      "engine": "HOLD",
+      "findings": 162,
+      "gap_codes": [
+        "CONCLUSION_ON_UNRESOLVED_BASIS"
+      ],
+      "all_codes": [
+        "UNSUPPORTED_CLAIM",
+        "UNTRACEABLE_AUTHORITY",
+        "CLAIM_LOCATION_AMBIGUOUS",
+        "REASONING_NOT_TRACED",
+        "CONCLUSION_ON_UNRESOLVED_BASIS"
+      ],
+      "primary_predicts_adverse": true,
+      "secondary_predicts_adverse": true
+    },
+    {
+      "id": "PR-31",
+      "outcome": "Adverse audit or compliance finding",
+      "adverse": true,
+      "engine": "ERROR",
+      "errors": [
+        "TOO_LARGE"
+      ]
+    },
+    {
+      "id": "PR-32",
+      "outcome": "Adverse audit or compliance finding",
+      "adverse": true,
+      "engine": "ERROR",
+      "errors": [
+        "TOO_LARGE"
+      ]
+    }
+  ]
+}
