@@ -28,12 +28,12 @@ Organisations using high-risk AI systems in the EU must be able to show human ov
 - **EU AI Act lens:** on two sets of fictional AI authorisation records whose answer keys were sealed before the code was run, the lens agreed with the key on 78 of 80 points (first set) and 38 of 40 (second set, after two fixes; 95% interval 84 to 99%), and in the second set credited no point that the record did not back up. Both sets were written by the developer, so these show the lens works as designed, not how it performs on others' records (`tests/ds-n1/EU_AI_ACT_EVAL.json`, `EU_AI_ACT_EVAL_2.json`).
 - **Practitioner study (in progress):** 29 practitioners from an international panel completed a blind review of a fictional decision record; 20 of the 28 asked would not rely on it as written (95% interval 53 to 85%), while the prototype's locked answer passed it. This is reported as a finding.
 - **Document reading:** on 26 developer test records it found 127 of 128 hand-identified claims (`tests/ds-n1/EXTRACT_EVAL.json`).
-- **Engineering:** 178 automated tests pass; reports reproduce byte for byte.
+- **Engineering:** 180 automated tests pass; reports reproduce byte for byte.
 
 ## Limits, stated plainly
 
 - Fictional records only today; real-record use is a licensing decision.
-- Records reading as housing, lending, insurance, medical or legal-outcome material are refused, which today excludes some Annex III areas (for example creditworthiness); recruitment, education, workplace and public-service records are covered.
+- Covers AI authorizations in every Annex III area, including recruitment, education, credit, insurance, housing, health, public benefits and justice (documentation quality only).
 - Word-pattern checks can miss a point phrased in unexpected words (for example "checked by the safety officer" is not yet read as oversight).
 - Article wording was checked against the European Commission's consolidated text (as at 27 July 2026) and stored word for word; the Official Journal PDF itself was not read.
 - Reads plain text and Word (.docx) body text; PDF needs converting first.

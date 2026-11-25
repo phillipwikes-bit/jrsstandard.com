@@ -20,9 +20,7 @@
     "n": 13,
     "cases": []
   },
-  "refused_by_scope_gate_in_normal_use": [
-    "F2: EXCLUDED_DOMAIN_CONTENT"
-  ],
+  "refused_by_scope_gate_in_normal_use": [],
   "disagreements": [
     "F4.human_oversight: truth U, lens N",
     "F4.monitoring: truth U, lens N"

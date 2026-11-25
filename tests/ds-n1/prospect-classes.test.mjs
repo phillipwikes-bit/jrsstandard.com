@@ -43,14 +43,17 @@ for (const [p, cls, want] of CASES) {
   });
 }
 
-test('employment wording is permitted only in investigation reports', () => {
-  assert.deepEqual(Object.keys(DOMAIN_PERMITTED_BY_CLASS), ['workplace_investigation_report']);
+test('employment wording is permitted in investigation reports and AI authorizations only (owner decision 2026-11-25)', () => {
+  assert.deepEqual(Object.keys(DOMAIN_PERMITTED_BY_CLASS), ['workplace_investigation_report', 'ai_action_authorization']);
   const inv = fx('INV-P01');
   inv.sources[0].text += ' A grievance hearing was scheduled.';
   assert.equal(validateRecord(inv).status, null);
   const auth = fx('AUTH-P01');
   auth.sources[0].text += ' A grievance hearing was scheduled.';
-  assert.equal(validateRecord(auth).errors[0].code, 'EXCLUDED_DOMAIN_CONTENT');
+  assert.equal(validateRecord(auth).status, null);
+  const disc = fx('DISC-P01');
+  disc.sources[0].text += ' A grievance hearing was scheduled.';
+  assert.equal(validateRecord(disc).errors[0].code, 'EXCLUDED_DOMAIN_CONTENT');
 });
 
 test('every other excluded domain is still refused in the new classes', () => {

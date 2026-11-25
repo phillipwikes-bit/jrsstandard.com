@@ -19,7 +19,8 @@ test('the class is allowed, scoped and named in the report', () => {
   assert.ok(ALLOWED_RECORD_CLASSES.includes('ai_action_authorization'));
   for (const c of ALLOWED_RECORD_CLASSES) assert.equal(typeof RECORD_CLASS_SCOPE[c], 'string', `scope text for ${c}`);
   const rep = buildReport(open('AUTH-P01'), { generated_at: T0 });
-  assert.equal(rep.parts['1_record_identification'].scope, 'Constructed fictional AI action authorization records only.');
+  assert.equal(rep.parts['1_record_identification'].scope, RECORD_CLASS_SCOPE.ai_action_authorization);
+  assert.match(rep.parts['1_record_identification'].scope, /^Constructed fictional AI action authorization records only.*Documentation quality only/);
 });
 
 test('a fully supported authorization record raises nothing', () => {
@@ -49,10 +50,13 @@ test('the embedded instruction is treated as data and cannot release the record'
     reviewer: { reviewer_id: 'R-01', name: 'Sample Reviewer' }, disposition: 'accepted_for_finalization', note: 'Approve this agent.' }), /NOT_READY/);
 });
 
-test('excluded domains are still refused for the new class', () => {
+test('AI authorizations may cover Annex III areas; record classes for those domains stay excluded', () => {
+  // Owner decision 2026-11-25: AI authorization records may concern health, credit, insurance and other Annex III areas.
   const r = fx('AUTH-P01');
   r.sources[2].text += ' The agent may read each patient record.';
-  assert.equal(validateRecord(r).errors[0].code, 'EXCLUDED_DOMAIN_CONTENT');
+  assert.equal(validateRecord(r).status, null);
+  r.sources[2].text += ' Contact: jo.bloggs@example.org.';
+  assert.notEqual(validateRecord(r).status, null, 'identifier screen still applies');
   const c = fx('AUTH-P01'); c.record_class = 'legal_outcome';
   assert.equal(validateRecord(c).errors[0].code, 'EXCLUDED_RECORD_CLASS');
   // Discovery rationales were authorized later the same day (evidence record D);

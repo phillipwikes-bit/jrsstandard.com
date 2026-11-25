@@ -38,6 +38,6 @@ Each point is reported as **shown and backed by a document**, **stated without a
 
 Both sets were written by the developer who wrote the lens, so agreement is expected to be high; it shows the lens behaves as designed, not how it performs on other people's records. An outside author's set is the next test (`RECORD_AUTHOR_BRIEF.md`).
 
-## A scope decision for the owner
+## Scope: Annex III areas covered (owner decision, 25 November 2026)
 
-Decision Spellcheck refuses any record whose text reads as housing, lending, insurance, medical or legal-outcome material, even when fictional (`record.mjs`). Several Annex III high-risk areas sit in exactly those domains (for example creditworthiness and insurance pricing), so today the lens runs on recruitment, education, workplace, public-benefit and other records, but a fictional tenancy-screening record (set 2, F2) is refused before the lens is reached. Opening those domains for AI authorization records, documentation quality only, is a scope change that needs the owner's explicit decision.
+AI authorization records may now concern any Annex III area, including employment, credit, insurance, housing, health and justice. Before this decision such records were refused as excluded domains, which meant, for example, a fictional tenancy-screening record (set 2, F2) never reached the lens. The check remains documentation quality only, on constructed fictional records; the identifier screen still applies; and every other record class still refuses those domains. Tests cover a credit-scoring, an insurance-pricing and a tenancy-screening authorization end to end (`tests/ds-n1/eu-ai-act.test.mjs`). Opening the areas changed no sealed result except that F2 is no longer refused.

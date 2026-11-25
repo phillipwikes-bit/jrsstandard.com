@@ -65,3 +65,23 @@ test('every article the lens cites is stored verbatim from the official consolid
   const lit = EU_CHECKS.find((c) => c.id === 'ai_literacy');
   assert.match(lit.requirement, /support the development of AI literacy/);
 });
+
+test('Annex III areas now run end to end: credit, insurance and tenancy AI authorizations (owner decision 2026-11-25)', () => {
+  const cases = [
+    'On 2026-03-01, Ana Duarte authorized the scoring assistant to assess creditworthiness for loan applications. It is high-risk under Annex III. A credit officer reviews each score and can override it.',
+    'On 2026-03-01, Ana Duarte authorized the pricing assistant to set life insurance premiums for policyholder renewals. It is high-risk under Annex III. An underwriter reviews each price and can override it.',
+    'On 2026-03-01, Ana Duarte authorized the screening assistant to score tenancy applications from each tenant. It is high-risk under Annex III. A lettings officer reviews each score and can override it.',
+  ];
+  for (const text of cases) {
+    const { record, validation } = extractRecord({ record_id: 'T-9', title: 'T-9 (fictional)', record_class: 'ai_action_authorization', text, sources: [{ title: 'Doc D-1', version: 'v1', text }] });
+    assert.equal(validation.status, null, text.slice(30, 80));
+    const l = euAiActLens(record);
+    assert.equal(l.high_risk, true);
+    assert.equal(byId(l).affected_persons_informed.status, 'NOT_SHOWN');
+  }
+});
+
+test('other record classes still refuse those domains', () => {
+  const { validation } = extractRecord({ record_id: 'T-8', title: 'T-8 (fictional)', record_class: 'supplier_access_exception', text: 'On 2026-03-01, Ana Duarte approved read access for Vexa Ltd to the loan application archive and mortgage files.', sources: [{ title: 'Doc D-1', version: 'v1', text: 'On 2026-03-01, Ana Duarte approved read access for Vexa Ltd to the archive.' }] });
+  assert.equal(validation.status, 'REFUSED_SCOPE');
+});
