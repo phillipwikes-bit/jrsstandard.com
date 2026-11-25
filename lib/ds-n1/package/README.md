@@ -11,7 +11,11 @@ Decision Spellchecker reads a written decision record, such as an authorization,
 | Engine | `lib/ds-n1/*.mjs`: record validation, deterministic checks, review session and hash-chained event log, report, export and export verifier |
 | Cognitive lenses and safeguards | `cognitive-controls.mjs`, `cognitive-observations.mjs`, `cognitive-safeguards.mjs`, `reflective-guidance.mjs`, `cognitive-source-trace.mjs` |
 | Detection templates | `detection-templates.mjs` (37 named templates) |
-| Reviewer and author pages | `lib/ds-n1/ui/` (local only, served by `serve.mjs`) |
+| Document reading | `extract.mjs` (plain text), `docx.mjs` (Word) |
+| EU AI Act lens | `eu-ai-act.mjs`; legal text and crosswalk in `package/` |
+| Omission check | `omissions.mjs` |
+| Reviewer, author and reading pages | `lib/ds-n1/ui/` (local only, served by `serve.mjs`; the reading page is at `/read`) |
+| Starter edition | `package/build-starter.mjs` builds one offline HTML file |
 | Tests and fictional fixtures | `tests/ds-n1/*.test.mjs`, `tests/ds-n1/fixtures/`, `tests/ds-n1/fixtures-partner/` |
 | Integration contract and coverage | `INTEGRATION_CONTRACT.md`, `FEATURE_COVERAGE.md` |
 | Packaging | `build-bundle.mjs`, `verify-bundle.mjs`, `ASSET_MANIFEST.json` (generated) |
@@ -28,4 +32,4 @@ node lib/ds-n1/serve.mjs 4317                # local reviewer page at http://127
 
 ## Record types
 
-`supplier_access_exception`, `ai_action_authorization`, `workplace_investigation_report`, `discovery_production_rationale`, `ai_drafted_legal_memo`. Every type checks documentation quality only. Employment, housing, lending, insurance, medical and legal-outcome content is refused, except that investigation reports may contain employment wording.
+`supplier_access_exception`, `ai_action_authorization`, `workplace_investigation_report`, `discovery_production_rationale`, `ai_drafted_legal_memo`. Every type checks documentation quality only. Employment, housing, lending, insurance, medical and legal-outcome content is refused, except that investigation reports may contain employment wording and AI authorization records may concern any of these areas (EU AI Act Annex III; documentation quality only).

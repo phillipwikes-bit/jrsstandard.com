@@ -106,3 +106,27 @@ Plain-text decision records and source documents become a record package without
 Measured on 26 developer fixtures given only their plain text (`tests/ds-n1/eval-extract.mjs`, results in `tests/ds-n1/EXTRACT_EVAL.json`): 127 of 128 hand-identified claims found; event dates 59 of 63; citation source 94 of 100; same review outcome 19 of 26, with every difference explained and none turning a sound record to HOLD. Developer fixtures only, so this shows the extractor works on the tool's own test material, not that it works on real-world documents. Tests: `tests/ds-n1/extract.test.mjs` (12), `tests/ds-n1/demo.test.mjs` (1). Demo: `lib/ds-n1/demo/`.
 
 Word (.docx) input added 24 November 2026 (`docx.mjs`, no third-party packages; body text only; tested on files from LibreOffice, pandoc and python-docx). Compound sentences added 24 November 2026: two complete statements joined by "; " or ", and " become two claims, each checked against its own passage, unless one source sentence supports both (four tests on new records; the 26-record evaluation is unchanged). Not yet done: PDF input; other compound forms ("and" without a comma, "but"); an omission check that changes the review status (today's omission check, added 24 November 2026 in `omissions.mjs`, is advisory only; sealed set of 8 developer-written records: 3/4 omissions caught, 0/4 false flags, `tests/ds-n1/OMISSION_EVAL.json`).
+
+## 11. EU AI Act lens (added 25 November 2026)
+
+For AI authorization records, `eu-ai-act.mjs` reports ten deployer-side points (Articles 4, 6 and Annex III, 14(4), 26(1), (2), (5), (6), (7) and (11)) as shown and backed by a document, stated without a document, not shown, or not applicable, with the sentences relied on and a question for each gap; log retention under six months is flagged. Read-only; never a compliance statement. Legal passages stored verbatim and checked against the Official Journal (`package/eu-ai-act-official-text.json`). Sealed developer sets: 78 of 80 and 38 of 40 points agree with their keys (`tests/ds-n1/EU_AI_ACT_EVAL.json`, `EU_AI_ACT_EVAL_2.json`). Shown on the reading page, the reviewer page summary and the starter edition. Details: `EU_AI_ACT_CROSSWALK.md`.
+
+## 12. Annex III scope (owner decision, 25 November 2026)
+
+AI authorization records may concern employment, credit, insurance, housing, health and justice. Documentation quality only, fictional only, identifier screen unchanged; other record types still refuse those domains.
+
+## 13. Omission check
+
+`omissions.mjs` asks about adverse or limiting points in a relied-on source (open findings, failed tests, conditions, steps not done) that the record never mentions. Advisory only. Sealed developer set: 3 of 4 omissions caught, 0 of 4 sound records flagged (`tests/ds-n1/OMISSION_EVAL.json`).
+
+## 14. Where each feature is shown
+
+| Feature | Reading page (`/read`) | Reviewer page (`/`) | Starter edition | Report or export |
+|---|---|---|---|---|
+| Findings and status | Yes | Yes | Yes | Report and evidence pack |
+| Reasoning checks (cognitive lenses, safeguards) | Yes | Yes | Yes | Not in the engine report; in the reading page's results download |
+| Advisory templates | Yes | Yes | Yes | Not in the engine report; in the results download |
+| Left-out points | Yes | Yes (summary) | Yes | Results download only |
+| EU AI Act lens | Yes | Yes (summary) | Yes | Results download only |
+
+The engine report and evidence pack (`report.mjs`, `verify.mjs`) are unchanged and byte-reproducible; the newer read-only checks are carried in the reading page's "Download all results" file.

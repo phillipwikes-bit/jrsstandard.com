@@ -21,6 +21,8 @@ Organisations using high-risk AI systems in the EU must be able to show human ov
 
 ## Why it is different
 
+- **Built for audit.** Every reviewer action goes into a tamper-evident log; an exported evidence pack can be re-checked independently of the tool; a reference workspace adds roles (admin, reviewer, approver, auditor), encrypted storage, a signed audit log and retention rules.
+
 - **Same input, same answer, every time.** No AI model calls, so a result can be reproduced exactly for an auditor or a dispute.
 - **Nothing leaves the building.** No network calls; records stay on the organisation's own systems, which matters for confidential AI governance material.
 - **Shows its working.** Every result names the record sentence and the document sentence it relied on.

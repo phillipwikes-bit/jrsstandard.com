@@ -19,6 +19,8 @@ Decision records (access exceptions, AI action authorizations, investigation sum
 
 ## Why it is different
 
+- **Built for audit.** Every reviewer action goes into a tamper-evident log; an exported evidence pack can be re-checked independently of the tool; a reference workspace adds roles (admin, reviewer, approver, auditor), encrypted storage, a signed audit log and retention rules.
+
 - **Same input, same answer, every time.** It makes no AI model calls, so results can be reproduced exactly for audit or dispute.
 - **Nothing leaves the building.** No network calls; records stay on the organisation's own systems.
 - **Shows its working.** Every finding points to the exact passage and document version.

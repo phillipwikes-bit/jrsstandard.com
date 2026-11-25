@@ -8,14 +8,17 @@ Date: 24 November 2026. Scope: the DS-N1 engine, the document extractor, the rev
 |---|---|---|
 | Plain-text documents to a record package (`extract.mjs`) | Local process | Nothing |
 | Review, findings, report (`assess.mjs`, `session.mjs`, `report.mjs`) | Local process or browser | Nothing |
-| Reviewer and author pages (`ui/`) | Browser, served from local files | Nothing; no analytics, fonts or scripts from other hosts |
+| Word files to text (`docx.mjs`) | Local process or browser | Nothing; reads only `word/document.xml`, refuses files over 20 MB or a document body over 10 MB, and checks the unpacked size against the archive's own record |
+| Reviewer, author and reading pages (`ui/`) | Browser, served from local files | Nothing; no analytics, fonts or scripts from other hosts |
+| Starter edition (one HTML file, `build-starter.mjs`) | Browser, opened from disk | Nothing; all code is embedded in the file, and a browser test confirms it makes no network request |
+| EU AI Act lens and omission check (`eu-ai-act.mjs`, `omissions.mjs`) | Local process or browser | Nothing; read-only, never change a status |
 | Enterprise reference workspace (`enterprise/server.mjs`) | Local HTTP server bound to 127.0.0.1 | Nothing; it refuses connections from other machines |
 
 There are no network calls and no AI model calls anywhere in the engine or the extractor. A test asserts this for the extractor (`tests/ds-n1/extract.test.mjs`). Records therefore never reach a third-party AI provider.
 
 ## 2. Input controls
 
-- **Scope gate before analysis** (`record.mjs`): unsupported record types, excluded domains (employment outcomes, housing, lending, insurance, medical, legal outcomes) and any record not marked fictional are refused before any processing.
+- **Scope gate before analysis** (`record.mjs`): unsupported record types, excluded domains (employment outcomes, housing, lending, insurance, medical, legal outcomes) and any record not marked fictional are refused before any processing. Exceptions, each an owner decision: investigation reports may contain employment wording, and AI authorization records may concern any of these domains (EU AI Act Annex III areas), documentation quality only.
 - **Identifier screen** (`record.mjs`): email addresses, national identifiers, phone and account numbers cause a refusal; the matched value is never echoed in errors or logs.
 - **Size limits** (`record.mjs`): record text 200,000 characters; source text 500,000; 50 sources; 200 claims.
 - **Instruction-like content** (`assess.mjs`): sentences addressed to a model or tool ("Instruction: ignore …") are flagged for review, never followed.

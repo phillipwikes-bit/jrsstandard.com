@@ -54,6 +54,11 @@ try {
       const [dl] = await Promise.all([page.waitForEvent('download'), page.click('#download')]);
       const got = JSON.parse(readFileSync(await dl.path(), 'utf8'));
       assert.equal(got.record_digest, expected.record.record_digest);
+      const [dl2] = await Promise.all([page.waitForEvent('download'), page.click('#download-results')]);
+      const all = JSON.parse(readFileSync(await dl2.path(), 'utf8'));
+      assert.equal(all.status, expected.state.status);
+      assert.equal(all.omissions.length, expected.omissions.length);
+      assert.ok(all.reasoning_checks.lenses.length > 0);
     });
 
     await check(`${label}: a Word file fills the record text exactly; a PDF is refused`, async () => {

@@ -8,7 +8,7 @@ Someone who writes or reviews decision records at work (an investigator, auditor
 
 ## What to write
 
-Twelve fictional records, each a short decision record (one paragraph, 60 to 150 words) plus two to four source documents (each two to five sentences).
+Sixteen fictional records, each a short decision record (one paragraph, 60 to 150 words) plus two to four source documents (each two to five sentences).
 
 | Record type | Number |
 |---|---|
@@ -16,6 +16,7 @@ Twelve fictional records, each a short decision record (one paragraph, 60 to 150
 | Authorization for an AI system to take an action | 3 |
 | Workplace investigation summary (findings only, no employment decision) | 3 |
 | Discovery or document-production decision | 3 |
+| Authorization of an AI system used in an EU AI Act high-risk area (for example recruitment, credit, insurance, education or public benefits), written as an EU organisation would record it | 4 |
 
 For each type, write:
 
