@@ -1,0 +1,450 @@
+560 Decisions of the Federal Labor Relations Authority 73 FLRA No. 106
+
+73 FLRA No. 106
+
+AMERICAN FEDERATION
+OF GOVERNMENT EMPLOYEES
+LOCAL 4012
+(Union)
+
+and
+
+SOCIAL SECURITY ADMINISTRATION
+DENVER, COLORADO
+(Agency)
+
+0-AR-5848
+
+_____
+
+DECISION
+
+May 26, 2023
+
+_____
+
+Before the Authority: Susan Tsui Grundmann,
+Chairman, and Colleen Duffy Kiko, Member
+(Chairman Grundmann concurring)
+
+I. Statement of the Case
+
+After the Agency suspended an employee
+(the grievant) for fourteen days, the Union grieved the
+suspension.  Arbitrator Michelle Miller-Kotula issued an
+award (the merits award) sustaining the charges against the
+grievant but reducing the suspension to seven days.  The
+Union then filed a motion for attorney fees, which the
+Arbitrator denied in a separate award (the fee award) on
+the basis that fees were not warranted in the interest of
+justice.
+
+The Union filed exceptions to the fee award,
+arguing that:  (1) that award is contrary to the Back Pay
+Act,
+1 Authority precedent, and public policy; and (2) the
+Authority’s existing interest-of-justice precedent conflicts
+with public policy.  Because the Arbitrator’s denial of
+attorney fees is consistent with the Back Pay Act and
+Authority precedent, we deny the contrary-to-law
+exceptions.  Under §§ 2425.4(c) and 2429.5 of the
+Authority’s Regulations,
+2 we dismiss the exception
+arguing that public policy required the Arbitrator to award
+attorney fees, because the Union could have presented this
+argument to the Arbitrator but did not.  Finally, we deny
+the remaining public-policy exception because the Union
+
+1 5 U.S.C. § 5596.
+2 5 C.F.R. §§ 2425.4(c), 2429.5.
+3 5 M.S.P.R. 280, 305-06 (1981).
+4 Merits Award at 77; id. (“The grievant is now aware of what
+she did wrong.  It is also my opinion [that] the grievant realizes
+fails to identify how the Authority’s precedent governing
+its review of attorney-fee awards violates public policy.
+
+II. Background and Arbitrator’s Award
+
+ The Agency investigated the grievant following
+reports that she displayed profane material in her cubicle.
+Following the investigation, the Agency suspended the
+grievant for fourteen days for conduct unbecoming of a
+federal employee and for lack of candor during the
+investigation.  The Union grieved the suspension, claiming
+the Agency did not have cause to discipline the grievant.
+The Union also argued that the Agency misapplied the
+factors set forth by the Merit Systems Protection Board
+(MSPB) in Douglas v. Veterans Administration
+3
+(the Douglas factors) when selecting the appropriate
+penalty.  The grievance proceeded to arbitration.
+
+ In the merits award, the Arbitrator found that the
+Agency had just cause to discipline the grievant.
+However, the Arbitrator determined that the grievant
+understood the seriousness of her actions and “ha[d] the
+potential to learn from what occurred.”
+4  Based on this
+determination, the Arbitrator reapplied the Douglas factors
+and reduced the grievant’s suspension from fourteen days
+to seven.
+
+ Later, the Union filed a motion for attorney fees
+with the Arbitrator, claiming that attorney fees were
+warranted in the interest of justice under the five factors
+the MSPB articulated in Allen v. U.S. Postal Service
+(Allen).
+5  Specifically, the Union argued that the fifth Allen
+factor—whether the agency knew or should have known
+that it would not prevail on the merits of the disciplinary
+action
+6—supported awarding attorney fees because the
+Agency should have known that the Arbitrator would
+mitigate the grievant’s suspension.  The Union also noted
+that the Allen factors are not an exhaustive list, and, thus,
+the Arbitrator could address other considerations.
+
+ In the fee award, the Arbitrator found the
+fifth Allen factor did not support awarding fees for two
+reasons.  First, the Arbitrator determined that “the Agency
+prevailed on the merits” when the Arbitrator upheld the
+suspension in the merits award.
+7  Second, the Arbitrator
+stated that she mitigated the discipline based on the
+grievant’s post-discipline conduct, which was
+the importance of being candid in Weingarten interviews based
+on what occurred with this grievance.”).
+5 2 M.S.P.R. 420, 434-35 (1980).
+6 Id. at 435.
+7 Fee Award at 13.
+
+73 FLRA No. 106 Decisions of the Federal Labor Relations Authority 561
+
+“information that the Agency would not have known [and]
+should [not] have known” before it imposed discipline.
+8
+
+The Arbitrator acknowledged that the Authority
+has held attorney fees may be warranted in the interest of
+justice even when none of the Allen factors are satisfied.
+9
+However, she found nothing “else in the record to support
+[a conclusion that] an award of [attorney] fees [was]
+warranted in the interest of justice.”
+10  Consequently, the
+Arbitrator denied the Union’s attorney-fee request.
+
+The Union filed exceptions to the fee award on
+November 28, 2022, and the Agency filed an opposition
+on December 28, 2022.
+
+III.  Preliminary Matter:  Sections 2425.4(c) and
+2429.5 of the Authority’s Regulations bar one
+of the Union’s exceptions.
+
+ The Union argues that the fee award violates
+public policy because the Arbitrator denied attorney fees,
+despite her finding that the Agency imposed excessive
+discipline.
+11  According to the Union, this violates the
+“purpose of the [B]ack [P]ay [A]ct.”
+12
+
+ Under §§ 2425.4(c) and 2429.5 of the Authority’s
+Regulations, the Authority will not consider any evidence
+or arguments that could have been, but were not, presented
+to the arbitrator.
+13  Nothing in the record indicates that the
+Union argued at arbitration that any public policy required
+the Arbitrator to award attorney fees.  Because the Union
+could have raised this argument to the Arbitrator but did
+not, we dismiss this exception under §§ 2425.4(c) and
+2429.5.
+14
+
+ The Union also argues that the Authority’s
+reliance on the Allen factors to determine whether
+attorney fees are warranted in the interest of justice is
+contrary to public policy.
+15  The Union did not raise this
+argument before the Arbitrator.
+16  However, the Authority
+has held that requests to reconsider Authority precedent
+
+8 Id. at 15.
+9 Id. (noting that the Allen factors are illustrative, not exhaustive
+(citing NAIL, Loc. 5, 69 FLRA 573, 577 (2016) (NAIL))).
+10 Id.
+11 Exceptions at 5.
+12 Id.
+13 5 C.F.R. §§ 2425.4(c), 2429.5.
+14 See AFGE, Loc. 1938, 66 FLRA 741, 742-43 (2012)
+(dismissing public-policy exception that could have been, but
+was not, raised before the arbitrator); U.S. DHS, CBP, 66 FLRA
+495, 497 (2012) (same).
+15 Exceptions at 5.
+16 Opp’n at 3 (arguing that “the Union’s failure to raise this
+argument below prevents the Authority from considering it
+here”).
+17 U.S. DOJ, Fed. BOP, Fed. Corr. Inst., Mia., Fla., 71 FLRA
+1247, 1249 n.30 (2020) (Member DuBester dissenting on other
+are not within an arbitrator’s authority and, thus, has
+considered such requests despite an excepting party’s
+failure to raise them at arbitration.
+17  Therefore, we
+consider this argument below.
+
+IV. Analysis and Conclusions
+
+A. The fee award is not contrary to the
+Back Pay Act or Authority precedent.
+
+ The Union argues that the fee award is contrary
+to the Back Pay Act and Authority precedent because the
+Arbitrator treated the Allen factors as a strict litmus test of
+whether attorney fees were warranted.
+18  In resolving an
+exception claiming that an award is contrary to law, the
+Authority reviews any question of law raised by an
+exception and the award de novo.
+19  In applying a de novo
+standard of review, the Authority assesses whether the
+arbitrator’s legal conclusions are consistent with the
+applicable standard of law.
+20  In making that assessment,
+the Authority defers to the arbitrator’s underlying factual
+findings, unless the excepting party establishes that they
+are nonfacts.
+21
+
+ Under the Back Pay Act, an attorney-fee award
+must be in accordance with the standards established under
+5 U.S.C. § 7701(g),
+22 which requires, as relevant here, that
+fees be warranted in the interest of justice.
+23  The Authority
+has recognized the five Allen factors as a non-exhaustive
+list that illustrate when attorney fees are warranted in the
+interest of justice.
+24  The Union contends that the
+Arbitrator’s “mechanical reliance” on the Allen factors
+conflicts with this precedent,
+25 and that the Arbitrator was
+obliged to explain her assertion that nothing “else in the
+record” supported awarding attorney fees.
+26
+
+In its motion for attorney fees, the Union argued
+only that the fifth Allen factor supported its request for
+fees,
+27 and the Arbitrator considered and rejected that
+argument.
+28  The Arbitrator proceeded to acknowledge that
+she could rely on additional considerations to award fees
+grounds) (citing U.S. Dep’t of Energy v. FLRA, 880 F.2d 1163,
+1166 (10th Cir. 1989)).
+18 Exceptions at 4 (citing NAIL, 69 FLRA at 577).
+19 U.S. Dep’t of the Interior, Nat’l Park Serv., 73 FLRA 418, 419
+(2023) (citing AFGE, Loc. 3254, 73 FLRA 325, 326 (2022)).
+20 Id.
+21 Id.
+22 5 U.S.C. § 5596(b)(1)(A)(ii) (incorporating the “standards
+established under [§] 7701(g) of this title”).
+23 AFGE, Loc. 1923, 66 FLRA 22, 23 (2011) (Member Beck
+dissenting) (citing 5 U.S.C. § 7701(g)).
+24 NAIL, 69 FLRA at 577.
+25 Exceptions at 4.
+26 Id. (internal quotation marks omitted).
+27 Mot. for Att’y Fees at 7-8.
+28 Fee Award at 13-15.
+
+562 Decisions of the Federal Labor Relations Authority 73 FLRA No. 106
+
+but found, based on the parties’ “evidence and arguments,”
+that nothing “else in the record” supported such an
+award.
+29  Although the Union noted in its motion the
+general principle that arbitrators may look beyond the
+Allen factors,
+30 it did not raise to the Arbitrator, and does
+not raise now, any additional interest-of-justice
+considerations.
+31  As the Union does not argue that the
+Allen factors, or any other considerations, support granting
+attorney fees, the Union does not establish that the award
+conflicts with the Back Pay Act.
+32
+
+Consequently, we deny this exception.
+33
+
+B. The Union does not establish that the
+Authority’s use of the Allen factors is
+contrary to public policy.
+
+The Union argues that the Authority’s reliance on
+the Allen factors is contrary to public policy because the
+factors set high and “unrealistic” burdens to establish that
+attorney fees are warranted in the interest of justice.
+34  The
+Authority construes public-policy exceptions extremely
+narrowly.
+35  For an award to be found deficient on
+public-policy grounds, the asserted public policy must be
+explicit, well-defined, and dominant, and a violation of the
+policy must be clearly shown.
+36  In addition, the appealing
+party must identify the policy by reference to the laws and
+legal precedents and not from general considerations of the
+supposed public interests.
+37
+
+The Union’s argument that the Authority should
+“reconsider” its reliance on the Allen factors and
+“provide new guidance”
+38 does not challenge the award’s
+validity.  While the Union advocates for a standard that
+
+29 Id. at 15; see also AFGE, Loc. 1482, 70 FLRA 214, 215 (2017)
+(denying exception to arbitrator’s denial of attorney fees where
+the award, “read together” with the record, sufficiently explained
+each pertinent statutory requirement for attorney fees); AFGE,
+Loc. 342, 69 FLRA 278, 279 (2016) (Member DuBester
+concurring) (upholding denial of attorney fees where the record
+supported the arbitrator’s finding on each pertinent statutory
+requirement).
+30 Mot. for Att’y Fees at 7.
+31 See id. at 8 (arguing only that the fifth Allen factor supported
+awarding attorney fees).
+32 See, e.g., U.S. DHS, U.S. CBP, 70 FLRA 73, 74-76 (2016)
+(finding that the union failed to establish that the arbitrator
+improperly applied any of the Allen factors); NAIL, 69 FLRA
+at 576-77 (finding that none of the Allen factors relied on by the
+union supported awarding fees).
+33 See AFGE, Loc. 446, 71 FLRA 1020, 1021 (2020)
+(Member DuBester concurring) (denying exception to fee award
+where union failed to demonstrate how the “[a]rbitrator’s fully
+articulated and well-reasoned denial of attorney fees” was
+contrary to law); NATCA, 64 FLRA 799, 801 (2010) (upholding
+arbitrator’s denial of attorney fees where the union failed to
+demonstrate that attorney fees were warranted in the interest of
+justice).
+would require employees to be “reimbursed for their
+expenses when[ever] they prevail” in appealing a
+personnel action,
+39 the Union does not identify any
+explicit, well-defined, and dominant public policy that
+supports such a standard.
+40  In fact, the U.S. Court of
+Appeals for the Federal Circuit (Federal Circuit) has held
+that prevailing at arbitration is “only a threshold test of
+eligibility” and that the interest-of-justice requirement
+operates to limit when attorney fees are appropriate.
+41
+Additionally, to the extent the Union argues that
+attorney fees are warranted here because the Arbitrator
+mitigated the grievant’s discipline,
+42 the Federal Circuit
+has noted that even “[a] presumption of fees upon
+mitigation of a penalty runs counter to the statutory
+requirement that the employee show that the interests of
+justice warrant an award.”
+43
+
+34 Exceptions at 5.
+35 AFGE, Loc. 1441, 73 FLRA 36, 38 (2022).
+36 AFGE, Loc. 2338, 72 FLRA 216, 217 n.17 (2021)
+(Chairman DuBester concurring) (citing U.S. Dep’t of the Air
+Force, Pope Air Force Base, N.C., 71 FLRA 338, 341-42 (2019)
+(Pope AFB) (Member DuBester concurring); NTEU,
+Chapter 299, 68 FLRA 835, 840 (2015)).
+37 Id. (citing Pope AFB, 71 FLRA at 342); U.S. Dep’t of the Army,
+White Sands Missile Range, White Sands Missile Range, N.M.,
+67 FLRA 619, 622 (2014) (citing NLRB, Region 9,
+Cincinnati, Ohio, 66 FLRA 456, 459 (2012)).
+38 Exceptions at 5.
+39 Id.
+40 Id.
+41 Sterner v. Dep’t of the Army, 711 F.2d 1563, 1567
+(Fed.  Cir. 1983) (“[T]he more difficult question of entitlement is
+reserved for the second prerequisite, ‘warranted in the interest of
+justice.’  Eligibility is broad[,] but the entitlement standard
+operates to limit it.” (internal citations omitted)).
+42 Exceptions at 5 (arguing that the fee award is contrary to public
+policy because “the [grievant] received an enforceable judgment
+against the agency . . . [but] gets zero recovery in fees”).
+43 Dunn v. Dep’t of VA, 98 F.3d 1308, 1313 (Fed. Cir. 1996)
+(citing S. Rep. No. 95-969, at 61 (1978), reprinted in 1978
+U.S.C.C.A.N. 2723, 2783).
+
+73 FLRA No. 106 Decisions of the Federal Labor Relations Authority 563
+
+Based on the above, we find this exception does
+not provide a basis for setting aside the award or for
+altering Authority interest-of-justice precedent.
+44
+
+V. Decision
+
+We partially dismiss and partially deny the
+Union’s exceptions.
+
+44 See U.S. DHS, U.S. CBP, U.S. Border Patrol, El Paso Sector,
+El Paso, Tex., 72 FLRA 253, 258 (2021) (Member Abbott
+dissenting in part on other grounds) (denying a public-policy
+exception where the excepting party “fail[ed] to identify any
+public policy – let alone a public policy that is explicit and
+well-defined”); Def. Sec. Assistance Dev. Ctr., 60 FLRA 292,
+294 (2004) (denying public-policy exception that was “based on
+‘general considerations of supposed public interest[,]’ which fail
+to establish the necessary explicit, well-defined, and dominant
+public policy” (quoting AFGE, Loc. 2172, 57 FLRA 625, 629
+(2001))).
+
+564 Decisions of the Federal Labor Relations Authority 73 FLRA No. 106
+
+Chairman Grundmann, concurring:
+
+ The Arbitrator assessed whether attorney fees
+were warranted in the interest of justice under the
+fifth factor originally set forth by the Merit Systems
+Protection Board (MSPB) in Allen v. U.S. Postal Service
+(Allen).
+1  That factor is whether the Agency knew or
+should have known it would not prevail on the merits when
+it brought the proceeding.
+2
+
+ In assessing that issue, the Arbitrator applied the
+standards that a majority of the Authority established in
+AFGE, Local 2076 (Local 2076).
+3  In Local 2076, the
+Authority majority held that, in cases involving “minor”
+disciplinary actions, the Authority would no longer follow
+MSPB precedent applying the fifth Allen factor.
+4
+
+ I was not a Member when the Authority issued
+Local 2076 and, thus, did not participate in that case.  I am
+open to revisiting Local 2076 in a future, appropriate case.
+
+ However, the Union’s arguments on exception
+are very limited here.  The Union does not argue that the
+Arbitrator should have applied the MSPB’s
+Allen standards; in fact, it effectively argues the opposite
+by challenging the Arbitrator’s “strict reliance” on Allen.
+5
+Although I am open to considering legally sound
+alternatives to Allen and Local 2076 in this context, the
+Union does not propose one here.  As such, I agree that the
+exceptions are properly dismissed and denied for the
+reasons discussed in the decision.
+
+ Therefore, I concur.
+
+1 2 M.S.P.R. 420 (1980).
+2 Id. at 435.
+3 71 FLRA 221 (2019) (Member DuBester concurring in part and
+dissenting in part).  See Fee Award at 13-15.
+4 71 FLRA at 223.
+5 Exceptions at 4; id. at 5.

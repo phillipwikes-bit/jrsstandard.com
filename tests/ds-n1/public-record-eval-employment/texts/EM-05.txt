@@ -1,0 +1,749 @@
+Case nos: 3311640/2023
+10.2  Judgment – rule 61  February 2018
+
+1
+
+EMPLOYMENT TRIBUNALS
+
+Claimant:  Ms M Jones
+
+Respondent: Vale Curtains and Blinds
+
+Heard at: Reading      On: 6 June 2024
+
+Before: Employment Judge Reindorf KC
+
+Representation:
+
+Claimant: in person
+Respondent: Mr J McKeown (counsel)
+
+RESERVED JUDGMENT
+(1) The Claimant was unfairly dismissed by the Respondent.
+(2) The Respondent is ordered to pay to the Claimant forthwith the sum of
+£5,484.74 calculated as follows:
+a. a basic award of £521.54; and
+b. a compensatory award of £4,963.20.
+
+Case nos: 3311640/2023
+10.2  Judgment – rule 61  February 2018
+
+2
+REASONS
+INTRODUCTION ..................................................................................................... 2
+FINDINGS ON CREDIBILITY .................................................................................. 3
+FINDINGS OF FACT ............................................................................................... 3
+THE LAW ................................................................................................................ 9
+Liability for unfair dismissal ................................................................................. 9
+Remedy for unfair dismissal ............................................................................... 11
+CONCLUSIONS ON LIABILITY ............................................................................ 13
+The reason for the dismissal .............................................................................. 13
+Fairness in the circumstances............................................................................ 14
+CONCLUSIONS ON REMEDY .............................................................................. 16
+Polkey ................................................................................................................... 16
+Contributory fault ................................................................................................. 16
+Basic award .......................................................................................................... 17
+Compensatory award .......................................................................................... 17
+
+INTRODUCTION
+1. After a period of ACAS Early Conciliation from 17 August 2023 until 28
+September 2023, the Claimant presented her ET1 on 13 October 2023. She
+complained of unfair dismissal.
+2. The Respondent denied the claims in its ET3 of 2 February 2024.
+THE EVIDENCE AND HEARING
+3. The case came before me for final hearing. I had an agreed bundle of 173
+pages. Mr McKeown produced a skeleton argument containing a suggested
+List of Issues. I did not consider this to be necessary in a relatively
+straightforward unfair dismissal case, and in any event the draft List contained
+substantially more by way of summary of the Respondent’s case than was
+appropriate.
+4. The Claimant gave evidence on her own behalf and the Respondent called
+Mrs Jacqueline Smith (formerly Operations Manager) and Mr Karl Gibbons
+(Installations Manager). All witnesses produced written witness statements
+and were cross-examined.
+5. At the outset of the hearing the Mr McKeown pursued an application to amend
+the Respondent’s ET3. The application had originally been made on 14 May
+
+Case nos: 3311640/2023
+10.2  Judgment – rule 61  February 2018
+
+3
+2024 but the Tribunal had not dealt with it. The proposed amendment added
+factual assertions and did not change the substance of the ET3 in any material
+way. The application was not opposed by the Claimant and I did not perceive
+any prejudice to her in permitting the amended ET3 to be relied upon.
+Accordingly I allowed the application.
+FINDINGS ON CREDIBILITY
+6. I found the Claimant to be a truthful and credible witness. In her evidence there
+was one issue on which I am satisfied that she was mistaken rather than
+dishonest: it was her recollection that the incident in respect of which she was
+dismissed occurred on Monday 12 June 2023 and not on the Wednesday of
+the same week, as contended by the Respondent. The Claimant was certain
+that the incident had taken place on the Monday, and had cause to remember
+that date because it was the birthday of her daughter who had passed away
+some years previously. However the email which precipitated the dismissal
+was clearly dated 14 June 2023. I am satisfied that the incident took place on
+14 June and that the Claimant mentally conflated the two significant and
+proximate dates.
+7. By contrast I found the Respondent witnesses to be unsatisfactory in their
+evidence. By way of example, both Mrs Smith and Mr Gibbons asserted that
+Mr Gibbons had conducted an investigation into the allegation of misconduct
+against the Claimant. This was patently untrue. The bulk of Mrs Smith’s
+evidence was similarly misleading, as she attempted to paint a picture of a
+proper disciplinary process, which had simply not taken place. Furthermore
+she did not mention until re-examination by the Respondent’s counsel that she
+had had a discussion with Mr Johnson during a break in the disciplinary
+hearing. This was a highly relevant and significant fact, and it reflects poorly
+on the credibility of the Respondent’s evidence as a whole that it was not
+admitted to previously.
+FINDINGS OF FACT
+8. The Claimant was employed by the Respondent as a part-time Administrator
+from 6 May 2021 until her dismissal on 19 June 2023. The reason given for
+her dismissal was gross misconduct. At the time of her dismissal her wages
+were £1,079 net per month (£1,130 gross).
+9. The Respondent was a small family company with around eight employees. it
+had a staff handbook which contained examples of gross misconduct.
+Amongst these was “incompetence or failure to apply sound professional
+judgement”.
+10. The Claimant’s supervisor was Mrs Smith, who was also responsible for HR
+matters such as disciplinary and grievance processes. The owner and
+Managing Director of the company was Mr Dave Rist. The previous owner and
+
+Case nos: 3311640/2023
+10.2  Judgment – rule 61  February 2018
+
+4
+Managing Director was Mr Phil Johnson, who was still working in the business
+during his handover to Mr Rist. The Claimant worked in an office alongside Mr
+Gibbons, although he was not always present because he did fitting jobs. The
+Claimant was on friendly terms with Mrs Smith and was good personal friends
+with Mr Gibbons.
+11. The Claimant had a clean disciplinary record prior to her dismissal. Mrs Smith
+said in her witness statement that “notes” had been placed on the Claimant’s
+file about alleged incidents, but she gave no detail of these and no notes were
+produced in the bundle. I find that these alleged incidents did not take place
+and notes were not placed on the Claimant’s file.
+12. The Claimant arrived at work just after 8am on Wednesday 14 June 2023. Mr
+Gibbons was in the office. At 8:24am the Claimant received an email from a
+customer who had made repeated complaints about his order and had tried to
+get a full refund of the cost of his curtains. The Claimant felt that the customer
+had previously been rude to her on the phone. The email said that the
+customer wanted to change the time of his upcoming appointment. The
+Claimant intended to forward the email to Mr Gibbons with a comment, which
+said “Hi Karl – Can you change this… he’s a twat so it doesn’t matter if you
+can’t”. By mistake, instead of clicking “forward” she had clicked “reply”, so the
+email was sent to the customer instead of Mr Gibbons.
+13. Shortly afterwards the phone rang and the Claimant answered it. A woman –
+who was the wife of the customer to whom the Claimant had sent the email by
+mistake – asked who was speaking, and the Claimant stated her name. The
+customer’s wife said “Is there any reason why you called my husband a twat?”.
+The Claimant was shocked and upset to realise her mistake. She signalled to
+Mr Gibbons to come over to the phone, and put the call on speakerphone. She
+said to the customer’s wife that the line was not clear and asked her to repeat
+what she had said, which she did.
+14. The Claimant apologised profusely to the customer’s wife. The customer’s wife
+asked to speak to the manager. The Claimant told her that Mrs Smith would
+be in the office at 10am and would call her back immediately. The customer’s
+wife accepted this and the call was ended.
+15. The Claimant phoned Mrs Smith straight away and told her what had
+happened. Mrs Smith said that it was all right and that she would deal with it
+when she arrived.
+16. Mrs Smith arrived at 10am. In the presence of the Claimant and Mr Gibbons
+she phoned the customer’s wife and apologised for what the Claimant had
+done. She said that the Claimant would be reprimanded. The customer’s wife
+asked how she was going to be compensated, and Mrs Smith said “Oh so now
+we’re back on to you getting your curtains for free? I’m sorry I can’t do that”.
+The customer’s wife threatened to go to the press and social media. Mrs Smith
+said that she would investigate the matter and get back to her.
+
+Case nos: 3311640/2023
+10.2  Judgment – rule 61  February 2018
+
+5
+17. After the call the Claimant said to Mrs Smith that she would offer to pay the
+customer £500 out of her own pocket as a gesture of goodwill. Mrs Smith said
+that she would suggest that option to the customer.
+18. Nothing further was said about the incident for the rest of the day. The Claimant
+was on annual leave on Thursday 15 June 2023.
+19. In her witness statement and oral evidence Mrs Smith stated that an
+“investigation” took place on an unspecified date, consisting of Mr Gibbons
+looking at the email that the Claimant had sent the customer and deciding that
+based on the seriousness of the behaviour and the risk of a serious detriment
+to the company a disciplinary hearing had to take place. Mr Gibbons gave a
+similar account in his witness statement. Neither the Claimant nor the
+customer was interviewed. No notes were produced by Mrs Smith and no
+written account of the decision was made. Mrs Smith also said in her evidence
+that she then told Mr Rist and Mr Johnson of this decision.
+20. I am satisfied that what in fact happened was that the customer contacted Mr
+Rist directly and made further threats about publicising the incident, in
+particular by and leaving a poor review on Trustpilot. When Mr Johnson learnt
+of this he told Mrs Smith that she should “get rid of” the Claimant. I find that
+this constituted the decision to dismiss the Claimant. The reason for the
+decision was that the customer had threatened to publicise the incident and to
+leave a poor review on Trustpilot.
+21. On the morning of Friday 16 June 2023 the Claimant arrived at work at 8am.
+She noticed that Mrs Smith was crying. She asked her what the matter was
+and gave her a hug. Mrs Smith handed the Claimant an envelope containing
+a letter inviting her to a disciplinary hearing on Monday 19 June. Contrary to
+her evidence, Mrs Smith did not give the Claimant a copy of the Respondent’s
+disciplinary procedure with the letter.
+22. The Claimant asked Mrs Smith how the matter had escalated to such an
+extent. Mrs Smith told her “Because Phil said to just get rid of you when I told
+him what happened and the customer personally contacted Dave”.
+23. The Claimant was very upset and angry but continued to work. Mrs Smith
+asked her whether she would be prepared to write a letter of apology. She said
+words to the effect of “Fuck that, what’s the point in writing an apology letter
+when it feels as though I’ve lost my job already judging by you crying and Phil
+saying to just get rid of me”.
+24. Shortly afterwards the Claimant sent two text messages to her partner. The
+first said: “Think they’re sacking me because of the email. I’ve got a disciplinary
+on Monday. Customer wants to know what action has been taken and judging
+from Jacqui (her getting emotional) I know what the outcome will be”. The
+second text message said: “I’ve been given a written letter today. Phil said to
+Jacqui “just get rid of her” but they can’t they have to give me a letter first then
+Monday I’m being told to leave [six sad face emojis]”.
+
+Case nos: 3311640/2023
+10.2  Judgment – rule 61  February 2018
+
+6
+25. During the morning the Claimant asked Mr Gibbons if he would accompany
+her to the disciplinary hearing. He and the Claimant consulted his diary and
+saw that he could not because he had an appointment on the Monday morning.
+26. The Claimant’s disciplinary hearing took place at 10am on Monday 19 June
+2023. The hearing manager was Mrs Smith, who also took handwritten notes.
+The Claimant said that she would have liked to be accompanied but Mr
+Gibbons had not been available and she did not have time to find anybody
+else. Mrs Smith did not ask the Claimant if she was happy to proceed without
+a companion. Mr Gibbons was in fact on the premises throughout the meeting.
+27. In the hearing the Claimant stated that the incident had taken place on the
+birthday of her daughter who had passed away several years previously, and
+that as a result her mind was not properly on the job. Mrs Smith asked her to
+describe what had happened, which she did in some detail. She said that the
+email was not meant for the customer but for Mr Gibbons. She said that she
+completely accepted that what she had done was wrong, but that she did not
+think it should have gone this far. Mrs Smith asked if she understood the
+detriment that the incident could cause to the company if the customer decided
+to follow through on the threats made. The Claimant accepted this point, but
+said that her mental health should be taken into account and that she felt that
+the decision was predetermined because of what Mr Johnson had said to Mrs
+Smith and because of Mrs Smith’s emotions on the previous Friday.
+28. Mrs Smith gave evidence, which I accept, that she herself had not consulted
+the staff handbook at any time prior to the hearing. I also find that she did not,
+as stated in her witness statement, hand the Claimant the staff handbook at
+the outset of the hearing. During the hearing the Claimant asked for a copy of
+the “code of conduct” so that she could see what rule she had breached, and
+Mrs Smith said that the company did not have one. Mrs Smith may have said
+this because she was confused about the difference between the staff
+handbook and a code of conduct. However the relevance of the issue is that
+the Claimant would not have asked to see a code of conduct if she had already
+been shown the staff handbook.
+29. At 10:41am the meeting was adjourned. The Claimant went outside for a
+cigarette and spoke to Mr Gibbons. He told her that he did not think that Mrs
+Smith would dismiss her.
+30. During the adjournment Mrs Smith also left the room and went outside, where
+she had a conversation with Mr Rist in which they discussed the disciplinary
+hearing, the allegation against the Claimant and the Claimant’s imminent
+dismissal.
+31. At 10:48am Mrs Smith called the Claimant back into the meeting and informed
+her that she was dismissed with immediate effect. She did not tell the Claimant
+that she had a right to appeal. The Claimant left the premises.
+
+Case nos: 3311640/2023
+10.2  Judgment – rule 61  February 2018
+
+7
+32. At 2:23pm that afternoon the Claimant emailed Mrs Smith asking how long the
+appeal window was, how to appeal and which sections of the code of conduct
+she was said to have breached. She received a reply from Mrs Smith shortly
+thereafter stating that the appeal window was five working days and her case
+fell into the gross misconduct category of “incompetence or failure to apply
+sound professional judgement”. She attached the relevant section of the staff
+handbook to the email. The Claimant emailed back pointing out that the staff
+handbook gave a ten day window for appeals. Mrs Smith accepted this, saying
+that she had replied before looking at the staff handbook.
+33. On 20 June 2023 Mrs Smith emailed the customer’s wife and informed her that
+the Claimant had been dismissed “following the disgraceful email that was sent
+to your husband in error”. She did this in order to try to persuade the customer
+not to publicise the incident further.
+34. The Claimant appealed against her dismissal by email on 23 June 2023 to Mr
+Rist. She set out fourteen grounds of appeal, as follows:
+34.1. She had not been given a copy of the company policy before the
+disciplinary hearing.
+34.2. She had not been told what part of the policy she had breached until
+after hearing.
+34.3. The sanction was unduly harsh.
+34.4. Her request for representation had been denied.
+34.5. There had been no preliminary hearing.
+34.6. The investigator (who the Claimant believed to have been Mrs Smith)
+had also conducted the disciplinary hearing and taken the notes.
+34.7. She had not been given any information about the investigation.
+34.8. She had not been invited to an investigation hearing.
+34.9. The findings of the investigation had not been presented to her and no
+decision had been made to proceed to a disciplinary hearing.
+34.10. She had not been sent a letter informing her that the matter was
+proceeding to a disciplinary hearing.
+34.11. No facts had been presented.
+34.12. Customer complaints and call-back were matters of minor misconduct
+according to the staff handbook.
+34.13. She had been given incorrect information about the timescale for
+appealing.
+
+Case nos: 3311640/2023
+10.2  Judgment – rule 61  February 2018
+
+8
+35. The Claimant also stated in her appeal letter that, in breach of the staff
+handbook, the possibility of counselling had not been considered and she had
+not been suspended.
+36. Also on 23 June 2023 Mrs Smith emailed the Claimant asking her to return her
+keys.
+37. Mr Rist forwarded the Claimant’s appeal letter to Mrs Smith, without comment,
+on 26 June 2023. Fifteen minutes later Mrs Smith replied to Mr Rist saying:
+Wow, just wow, she is clutching at straws and does not have all of her facts
+straight at all, not sure who is mis informing her.
+You don't suspend unless a risk to the company
+Offer of £500 was said in jest by Meliesha and she point blank refused to write
+an email of apology.
+Request for representation was not denied, she never asked me or mentioned
+she had asked Karl. Karl told her he would not represent her because of his
+position. (found out after)
+Investigation hearing not necessary and it was Karl who done that not me (I
+wasn't here) Took my own notes but that is allowed.
+No 10 and 11 not true, no 12, not relevant as called customer a "twat"
+In my 30 years of staff management, never offered counselling.
+Please tell me she will not get anywhere.
+38. An hour later Mrs Smith sent Mr Rist an email setting out detailed responses
+to each of the Claimant’s fourteen grounds of appeal under an introductory
+paragraph stating “Please see below points to go back to Meliesha on and
+refuse appeal”. The response to point 1 was “No solid reason for an appeal,
+appeal denied”.
+39. On 27 June 2023 the Claimant replied to Mrs Smith’s email of 23 June saying
+that she still had not received a letter of dismissal and stating that somebody
+could collect the keys from her on Thursday 29 June. Mrs Smith forwarded this
+email to Mr Rist, asking him if he intended to go to see the Claimant. Mr Rist
+responded to Mrs Smith that he would go to see the Claimant “to find out what
+her next move is”. In response Mrs Smith suggested to Mr Rist that he should
+reply to the appeal and then “sort it out”.
+40. On 28 June 2023 Mrs Smith sent the Claimant her final payslip and her P45.
+The Claimant responded asking for her letter of dismissal.
+41. On 29 June 2023 Mrs Smith emailed the Claimant asking if she was still
+available for Mr Rist to collect the keys. The Claimant responded the following
+
+Case nos: 3311640/2023
+10.2  Judgment – rule 61  February 2018
+
+9
+day explaining that she had not had access to her email the previous day and
+that she did not realise that anybody was coming to collect the keys. She said
+that she had understood that Mr Rist would take the keys when he “reached
+out” to her about her appeal.
+42. Later that morning Mrs Smith emailed the Claimant saying, in full:
+I have had a discussion with Dave and he feels there is no grounds for an
+appeal and subsequently the right to appeal has been denied.
+I will do you an official letter shortly outlining your dismissal.
+We would appreciate an opportunity again please to either collect the office
+keys or if you could get them dropped off during working hours, that would be
+appreciated.
+43. On 4 July Mrs Smith emailed the Claimant attaching a letter of dismissal. In
+the email she had cut and pasted the fourteen points of response to the appeal
+that she had sent to Mr Rist on 26 June. The letter stated that the reason for
+the Claimant’s dismissal was “Formal company email to a customer using
+derogatory terminology”. It further stated: “This is a particularly serious issue
+for our business because we are a small company and largely rely on word of
+mouth for repeat business. Bad publicity could ruin the company if the
+customer decides to take the matter further”.
+44. On 13 November 2023 the Claimant started a new job working for the Co-op.
+She worked there until 21 January 2024, when she resigned because she did
+not feel that retail was for her, it had taken a toll on her mental health and she
+was not happy in the job. Her net earnings at the Co-op were £2,586.68 in
+total, which equate to £258.67 per week or £1,120.90 per month.
+THE LAW
+Liability for unfair dismissal
+45. By section 94 of the Employment Rights Act 1996 (“ERA”) an employee has
+the right not to be unfairly dismissed.
+46. In a claim for unfair dismissal, the employer must show the reason (or, if more
+than one, the principal reason) for the dismissal, and that it is a potentially fair
+reason (s.98(1) ERA). Potentially fair reasons include:
+46.1. reasons relating to the conduct of the employee (s.98(2)(b) ERA); and
+46.2. some other substantial reason (“SOSR”) of a kind such as to justify the
+dismissal of an employee holding the position which the employee held
+(s.98(1)(b) ERA).
+
+Case nos: 3311640/2023
+10.2  Judgment – rule 61  February 2018
+
+10
+47. If the employer has shown (or the Tribunal finds) that the dismissal was for a
+potentially fair reason, the Tribunal must determine whether the employer
+acted reasonably or unreasonably in treating that reason as sufficient reason
+to dismiss the employee. In determining this question the Tribunal must have
+regard to the circumstances of the case, including the size and administrative
+resources of the employer’s undertaking and equity and the substantial merits
+of the case (s.98(4) ERA).
+48. In a misconduct dismissal the Tribunal should consider
+48.1. whether the respondent carried out an investigation into the matter that
+was reasonable in the circumstances of the case; and
+48.2. whether the respondent believed that that employee was guilty of the
+misconduct complained of; and
+48.3. whether the employer had reasonable grounds for that belief.
+(British Home Stores Ltd v Burchell [1980] ICR 303; Graham v
+Secretary of State for Work and Pensions (Jobcentre Plus) [2012] IRLR
+759 CA at §§35-36).
+49. The Tribunal should then decide on the reasonableness of the employer’s
+response. In conducting this enquiry the Tribunal should keep in mind that the
+“range of reasonable responses” test applies to all aspects of the dismissal
+(Burchell; Graham v Secretary of State for Work and Pensions (Jobcentre
+Plus) [2012] IRLR 759 CA). The Tribunal should not substitute its own view of
+what is an adequate procedure for that which could be expected of a
+reasonable employer. The question is not whether there was something else
+which the employer ought to have done, but whether what it did was
+reasonable (Sainsbury’s Supermarkets v Hitt [2003] IRLR 23 CA).
+50. A reasonable investigation is an essential safeguard, as has been restated in
+a multitude of cases. See for example Weddel & Co Ltd v Tepper [1980] IRLR
+96 at 101:
+... [employers] do not have regard to equity or the substantial merits of the case
+if they jump to conclusions which it would have been reasonable to postpone
+in all the circumstances until they had, in the words of the [employment]
+tribunal in this case, “gathered further evidence” or, in the words of Arnold J in
+the Burchell case, “carried out as much investigation into the matter as was
+reasonable in all the circumstances of the case”. That means that they must
+act reasonably in all the circumstances, and must make reasonable inquiries
+appropriate to the circumstances. If they form their belief hastily and act hastily
+upon it, without making the appropriate inquiries or giving the employee a fair
+opportunity to explain himself, their belief is not based on reasonable grounds
+and they are certainly not acting reasonably.
+
+Case nos: 3311640/2023
+10.2  Judgment – rule 61  February 2018
+
+11
+51. The investigation must take place before the decision to dismiss is taken:
+Robert Whiting Designs Ltd v Lamb [1978] ICR 89 EAT.
+52. If it is decided that there is a disciplinary case to answer, the employee should
+be notified of this in writing. This notification should contain sufficient
+information about the alleged misconduct and its possible consequences to
+enable the employee to prepare to answer the case at a disciplinary meeting.
+It is normally appropriate to provide copies of any written evidence, which may
+include any witness statements, with the notification (ACAS Code §9).
+53. At the disciplinary hearing the employer should explain the complaint against
+the employee and go through the evidence that has been gathered. The
+employee should be allowed to set out their case and answer any allegations
+that have been made. The employee should also be given a reasonable
+opportunity to ask questions, present evidence and call relevant witnesses.
+They should also be given an opportunity to raise points about any information
+provided by witnesses. Where an employer or employee intends to call
+relevant witnesses they should give advance notice that they intend to do this
+(ACAS Code §12).
+54. The employer’s HR function should not interfere with the disciplinary officer’s
+decision making, and should limit its involvement to advising on matters of law
+and procedure: Ramphal v Department of Transport UKEAT/0352/14 (4
+September 2015, unreported) EAT at 55.
+55. Appeals should be dealt with impartially (ACAS Code §27). Procedural defects
+in a disciplinary hearing may be remedied on appeal provided that in all the
+circumstances the later stages of a procedure are sufficient to cure any earlier
+unfairness: Taylor v OCS Group Ltd [2006] IRLR 613 CA.
+56. In considering whether the employer acted fairly in dismissing the employee
+rather than applying some lesser sanction such as demotion, the Tribunal must
+be particularly astute to observe the range of reasonable responses test.
+Remedy for unfair dismissal
+57. By s.119 of the Employment Rights Act 1996 (“ERA”) the basic award for unfair
+dismissal is calculated as follows:
+57.1. half a week’s gross pay (subject to the statutory cap) for each year of
+continuous employment when the employee was below the age of 22;
+57.2. one week’s gross pay (subject to the statutory cap) for each year of
+continuous employment when the employee was below the age of 41
+but not below the age of 22; and
+57.3. one and half weeks’ gross pay  (subject to the statutory cap) for each
+year of continuous employment when the employee was not below the
+age of 41.
+
+Case nos: 3311640/2023
+10.2  Judgment – rule 61  February 2018
+
+12
+58. Where the effective date of termination of the employment took place between
+6 April 2023 and 5 April 2024 the statutory weekly cap was £643.
+59. The basic award may not be increased or reduced for failure to comply with
+the ACAS Code of Practice on Disciplinary and Grievance Procedures.
+60. In addition to the basic award, by s.123(1) ERA the Tribunal must make a
+compensatory award in such amount as it considers just and equitable in all
+the circumstances having regard to the loss sustained by the Claimant in
+consequence of the dismissal in so far as that loss is attributable to action
+taken by the employer.
+61. The Tribunal should first determine the amount of the loss actually suffered by
+the Claimant in consequence of the dismissal which is attributable to action
+taken by the Respondent. The Tribunal should determine what the Claimant
+would have earned had the employment continued and how long it would have
+continued for. A sum for loss of statutory rights may be included. Credit should
+be given for:
+61.1. sums paid to the Claimant by the Respondent as compensation for the
+dismissal, including any pay in lieu of notice (Heggie v Uniroyal Ltd
+[1999] IRLR 802);
+61.2. sums earned by way of mitigation of loss; and
+61.3. deductions to be made for any failure to mitigate the loss.
+62. Next, a reduction may be made on the basis that the employee would have
+been dismissed even if a fair procedure had been followed (Polkey v A E
+Dayton Services Ltd [1988] ICR 142 HL, Hill v Governing Body of Great Tey
+Primary School [2013] IRLR 274 EAT). This reduction may be made on a
+percentage basis to reflect the chance that the Claimant would have been
+dismissed in any event. The question is whether if there had been a fair
+procedure the result would still have been a dismissal (Whitehead v The
+Robertson Partnership UKEAT/0378/03, [2004] All ER (D) 97 (Aug) (17 August
+2004, unreported). The assessment must made by reference to how the
+particular employer in question would have acted and not by the standards of
+a hypothetical reasonable employer. The burden is on the Respondent to show
+that the employment would have ended in any event (Britool Ltd v Roberts
+[1993] IRLR 481).
+63. The next adjustment which may be made is an increase or reduction in
+compensation for failure to comply with the ACAS Code of Practice on
+Disciplinary and Grievance Procedures (s.207A of the Trade Union and Labour
+Relations Act 1992).
+64. The Tribunal may make a reduction to the compensatory award for
+contributory fault in such amount as it considers just and equitable if it finds
+that the claimant has, by any action, caused or contributed to her dismissal
+
+Case nos: 3311640/2023
+10.2  Judgment – rule 61  February 2018
+
+13
+(s.123 ERA). This reduction should be made only if the Claimant was “guilty of
+improper conduct which gave rise to a situation in which he was dismissed and
+that conduct was blameworthy” (Gibson v British Transport Docks Board
+[1982] IRLR 228). The Tribunal should take “a broad, commonsense view of
+the situation” in deciding both whether to make a reduction and if so in what
+amount (Maris v Rotherham Corpn [1974] IRLR 147 NIRC).
+65. If the total award exceeds £30,000 it will need to be grossed up for tax
+purposes.
+66. Finally, the statutory cap for compensation for unfair dismissal should be
+applied.
+CONCLUSIONS ON LIABILITY
+The reason for the dismissal
+67. I am satisfied that the decision to dismiss the Claimant was taken by Mr
+Johnson and communicated to Mrs Smith at some time between Wednesday
+14 June and Friday 16 June 2023. Mrs Smith merely put the decision into
+effect. She did not exercise any decision-making powers herself.
+68. The Respondent did not call Mr Johnson to give evidence. I conclude from the
+evidence before me that the principal reason for his decision was that the
+customer and his wife had made threats to publicise the Claimant’s email in
+the press, social media and/or Trustpilot. I reach this conclusion for the
+following reasons:
+68.1. The disciplinary action was only launched after the customer made the
+threats directly to Mr Rist.
+68.2. It was as a direct result of the threats that Mr Johnson told Mrs Smith
+to “just get rid” of the Claimant.
+68.3. The threats and their potential impact on the business were mentioned
+by Mrs Smith both during the disciplinary hearing and in the dismissal
+letter.
+68.4. The day after the disciplinary hearing the Respondent emailed the
+customer’s wife to tell her that the Claimant had been dismissed, in an
+attempt to head off the bad publicity that had been threatened.
+69. I therefore conclude that the principal reason for the Claimant’s dismissal was
+not a reason related to conduct. However, it was a reason which was capable
+of amounting to some other substantial reason such as to justify the dismissal
+of a person in the Claimant’s job (an “SOSR reason”). As such, it was a
+potentially fair reason within s.98 ERA.
+
+Case nos: 3311640/2023
+10.2  Judgment – rule 61  February 2018
+
+14
+Fairness in the circumstances
+70. Whether the true principal reason for the Claimant’s dismissal was a reason
+related to conduct or some other substantial reason, the Respondent did not
+act fairly in the circumstances of the case in treating it as sufficient reason to
+dismiss her. Its actions fell well outside the range of responses open to a
+reasonable employer, even one of the small size and limited administrative
+resources of the Respondent. The disciplinary process and the dismissal were
+a sham designed to placate the customer. This is clear from the fact that Mrs
+Smith immediately informed the customer that the Claimant had been
+dismissed (notably, without any apparent regard for the Claimant’s data
+protection rights). The Respondent decided to sacrifice the Claimant’s
+employment for the sake of appeasing the customer and heading off bad
+reviews, and wholly unreasonably failed to consider other more proportionate
+ways of achieving the same outcome. In particular:
+70.1. The Respondent did not carry out an adequate investigation into the
+allegation against the Claimant:
+a. To the extent that any investigation was carried out, it was done
+not by Mr Gibbons but by Mrs Smith, who then went on to hear
+the disciplinary. The evidence given by the Respondent’s
+witnesses that Mr Gibbons had conducted the investigation was
+not true, and they knew it not to be true when giving that evidence.
+It was concocted for the purposes of this Tribunal because the
+Respondent recognised that it was not fair or reasonable that Mrs
+Smith was both the investigator and the disciplinary officer.
+b. Mrs Smith’s investigation amounted to nothing more than asking
+Mr Gibbons what had happened on the morning of 14 June 2023
+because he had been a witness to the incident.
+c. Mrs Smith did not obtain an account from the Claimant, the
+customer or his wife. She did not examine the background to the
+incident, the context within which it occurred or any mitigation. She
+did not reach any preliminary view as to whether the Claimant’s
+action was a genuine mistake or not.
+d. Mrs Smith did not consult the disciplinary policy or consider how
+or why the incident might amount to misconduct. She did not keep
+any notes or make a written record of the investigation. She did
+not inform the Claimant that an investigation had been carried out
+nor what its conclusions were.
+e. The reason why the Respondent did not carry out an adequate or
+indeed any investigation is that a summary decision had already
+been taken to “just get rid” of the Claimant. This decision was
+outside the range of reasonable responses, especially in
+circumstances where no other options for resolving the matter with
+
+Case nos: 3311640/2023
+10.2  Judgment – rule 61  February 2018
+
+15
+the customer were explored despite the fact that the Claimant had
+herself made a serious offer to make financial recompense to the
+customer.
+70.2. The Respondent did not follow a fair procedure in dismissing the
+Claimant:
+a. Mrs Smith acted as investigator, disciplinary officer and appeal
+decision maker.
+b. The Claimant was not given adequate notice of the disciplinary
+hearing, during which time she would have had a chance to look
+for a companion to accompany her. Again at the outset of the
+hearing the Claimant was not given a proper opportunity to be
+accompanied or to postpone the hearing until she had had time to
+find a companion.
+c. During the adjournment in the disciplinary hearing, and
+immediately before dismissing the Claimant, Mrs Smith discussed
+the case in detail with Mr Rist despite the fact that he would hear
+any appeal.
+d. The Claimant was not shown the disciplinary procedure at any
+time before her dismissal. She was not told which part of it she
+had breached, so she did not have a proper opportunity to explain
+why she did not consider herself to have contravened it.
+e. The Claimant was not given any detail as to the reasons for the
+dismissal until after time had expired for her to lodge her appeal
+and she had done so. This meant that it was difficult for her to
+know how to frame her appeal.
+f. The Claimant was denied a right of appeal. Her grounds of appeal
+were dismissed preremptorily by Mrs Smith. Mrs Smith’s decision
+not to allow the Claimant to appeal was then dressed up as though
+it had been taken by Mr Rist and communicated to the Claimant
+on that false basis.
+70.3. The Respondent did not have reasonable grounds to believe that the
+Claimant was guilty of misconduct. No consideration was given to the
+extent of her culpability. The decision was a foregone conclusion based
+entirely on the threats made by the customer.
+70.4. For the same reasons no thought was given to the extent of the
+Claimant’s contrition, mitigation or the possibility of a lesser sanction.
+71. In all the circumstances, including equity and the substantial merits of the case,
+I find that the Respondent acted unreasonably. The Claimant’s dismissal was
+unfair.
+
+Case nos: 3311640/2023
+10.2  Judgment – rule 61  February 2018
+
+16
+CONCLUSIONS ON REMEDY
+Polkey
+72. I am satisfied that if a fair procedure had been followed, there is no chance
+that the Claimant would have been dismissed.
+73. It is clear that on the day of the incident Mrs Smith thought that the Claimant’s
+mistake was regrettable but not a disciplinary matter. Had she considered it a
+potential disciplinary matter, she would have taken steps that day to
+commence a proper investigation and she would have at least considered
+suspending the Claimant. Instead, no action of any kind was taken until the
+customer and his wife repeated their threats to the Managing Director. Mrs
+Smith was well aware that the customer had been angling for a reason to get
+a full or partial refund and had been persistently complaining. That is why she
+responded as she did to the customer’s wife on the telephone, saying “Oh so
+now we’re back on to you getting your curtains for free? I’m sorry I can’t do
+that”.
+74. I am satisfied that Mrs Smith recognised that the Claimant’s language was
+inappropriate but that she had made a genuine mistake in replying to the
+customer’s email rather than forwarding it to Mr Gibbons. Whilst it would be
+within the range of actions open to a reasonable employer to commence a
+disciplinary investigation and potentially to impose a disciplinary sanction on
+an employee in similar circumstances, this particular employer did not take the
+view that disciplinary action was warranted in the context and would not have
+pursued it if it were not for the customer’s persistence.
+Contributory fault
+75. I consider that by sending the offensive email to the customer on 14 June 2023
+the Claimant contributed to her dismissal by 10%. I find that the sending of the
+email was improper and blameworthy to the extent that the Claimant should
+not have used the language that she did in the circumstances and it was
+careless of her to reply rather than forwarding the message. However I am
+satisfied that the language used was not out of the ordinary in the particular
+workplace, and that that fact mitigates the extent to which the Claimant’s use
+of it on this occasion can be described as culpable conduct. The mistaken
+addressee was a genuine error, and one which is often made.
+76. I do not consider that the Claimant’s comment refusing to apologise to the
+customer on Friday 16 June 2023 amounts to contributory fault. Although the
+Claimant used bad language, this was not out of place in the workplace.
+Furthermore the Claimant was entitled to feel angry that the decision had been
+made to dismiss her and that the Respondent was going through a sham
+disciplinary process, given that Mrs Smith had already reported to her Mr
+Johnson’s order to “get rid” of her. Against that background I do not consider
+
+Case nos: 3311640/2023
+10.2  Judgment – rule 61  February 2018
+
+17
+the Claimant’s response to have amounted to improper, blameworthy or
+culpable conduct.
+Basic award
+77. At the time of her dismissal on 19 June 2023 the Claimant was 29 years old.
+(her date of birth being 24 August 1993). Her gross pay with the Respondent
+was £260.77 per week. She had two years’ continuous service. Her basic
+award is therefore two weeks’ gross pay, which amounts to £521.54.
+Compensatory award
+78. The Respondent neither argued nor sought to prove that the Claimant failed to
+take reasonable steps to mitigate her loss between her dismissal on 19 June
+2023 and her obtaining employment at the Co-op on 13 November 2023.
+Therefore the Respondent has not discharged the burden of proving a failure
+to mitigate. I conclude that the Claimant is entitled to her loss of earnings for
+that period, which amounts to £5,214.67.
+79. The Claimant’s weekly earnings whilst working at the Co-op were almost
+exactly equivalent to her weekly earnings whilst employed by the Respondent.
+Accordingly I make no award in respect of that period.
+80. I make no award for loss of earnings for the period following the Claimant’s
+resignation from the Co-op. I am satisfied that her decision to resign from that
+job amounted to a failure to take reasonable steps to mitigate her loss. The
+principal reason for which she resigned from the Co-op was that she did not
+feel that retail was for her. This was not an adequate reason on the basis of
+which the Respondent should be required to continue to compensate her.
+Although she argued that another reason for her resignation from the Co-op
+was that she was suffering from ongoing mental ill health due to the
+Respondent’s treatment of her, I did not see sufficient medical or other
+evidence to substantiate this, or to distinguish the Claimant’s health problems
+at that time from pre-existing difficulties.
+81. I award the Claimant £300 for the loss of her statutory rights, in light of the
+short length of her employment. This brings the total of the compensatory
+award before reductions, deductions and uplifts to £5,514.67.
+82. I make no reduction to the compensatory award on the Polkey basis, for the
+reasons stated above.
+83. I order no uplift to the compensatory award in respect of a failure to comply
+with the ACAS Code of Practice on Disciplinary and Grievance Procedures.
+Although the Respondent clearly failed to comply with the Code, I have found
+that the reason for the dismissal was an SOSR reason, which does not fall
+within the Code.
+
+Case nos: 3311640/2023
+10.2  Judgment – rule 61  February 2018
+
+18
+84. I make a 10% reduction to the compensatory award for contributory fault, for
+the reasons given above. This brings the total compensatory award to
+£4,963.20. The total figure of the basic and compensatory awards combined
+is £5,484.74.
+
+Employment Judge Reindorf KC
+Date 3 September 2024
+
+Sent to the parties on:
+
+4 September 2024
+……………..………………………….
+For the Tribunal:
+
+……………..………………………….
+
+Public access to employment tribunal decisions
+Judgments and reasons for the judgments are published, in full, online at
+www.gov.uk/employment-tribunal-decisions shortly after a copy has been sent to the
+claimant(s) and respondent(s) in a case.
