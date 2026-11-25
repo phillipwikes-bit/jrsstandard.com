@@ -1,40 +1,40 @@
 {
   "drafter": "claude-sonnet-5-5",
-  "criterion1_median_P4_findings_per_10": 2.79,
+  "criterion1_median_P4_findings_per_10": 2.8,
   "criterion1_pass": true,
-  "criterion2_P1_more_dropped": 24,
-  "criterion2_pass": true,
-  "criterion3_P4_ok": 0,
+  "criterion2_P1_more_dropped": 23,
+  "criterion2_pass": false,
+  "criterion3_P4_ok": 1,
   "criterion3_pass": false,
   "pass": false,
   "P4_codes": [
     [
       "UNSUPPORTED_CLAIM",
-      142
+      118
     ],
     [
       "SPEAKER_OMITTED",
-      62
+      64
     ],
     [
       "RELEVANCE_NOT_ESTABLISHED",
-      59
+      42
     ],
     [
       "NEGATION_CONFLICT",
-      44
-    ],
-    [
-      "DATE_OMITTED",
       41
     ],
     [
+      "DATE_OMITTED",
+      40
+    ],
+    [
       "UNMAPPED_ASSERTION",
-      18
+      21
     ],
     [
       "CONTRARY_CLAUSE_OMITTED",
-      17
+      18
     ],
     [
       "DATE_NOT_ESTABLISHED",
@@ -42,26 +42,26 @@
     ],
     [
       "QUALIFICATION_OMITTED",
-      12
+      13
     ],
     [
       "CONCLUSION_ON_UNRESOLVED_BASIS",
       12
     ],
     [
+      "ACTOR_NOT_ESTABLISHED",
+      9
+    ],
+    [
+      "SUBJECT_MISMATCH",
+      9
+    ],
+    [
       "REASONING_NOT_TRACED",
       8
     ],
     [
-      "ACTOR_NOT_ESTABLISHED",
-      7
-    ],
-    [
       "UNTRACEABLE_AUTHORITY",
-      2
-    ],
-    [
-      "SUBJECT_MISMATCH",
       1
     ]
   ]

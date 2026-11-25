@@ -1,0 +1,68 @@
+{
+  "drafter": "claude-haiku-4-5-20251001",
+  "criterion1_median_P4_findings_per_10": 2.56,
+  "criterion1_pass": true,
+  "criterion2_P1_more_dropped": 26,
+  "criterion2_pass": true,
+  "criterion3_P4_ok": 5,
+  "criterion3_pass": false,
+  "pass": false,
+  "P4_codes": [
+    [
+      "DATE_OMITTED",
+      94
+    ],
+    [
+      "UNSUPPORTED_CLAIM",
+      55
+    ],
+    [
+      "SPEAKER_OMITTED",
+      41
+    ],
+    [
+      "UNMAPPED_ASSERTION",
+      27
+    ],
+    [
+      "RELEVANCE_NOT_ESTABLISHED",
+      24
+    ],
+    [
+      "NEGATION_CONFLICT",
+      22
+    ],
+    [
+      "CONCLUSION_ON_UNRESOLVED_BASIS",
+      19
+    ],
+    [
+      "ACTOR_NOT_ESTABLISHED",
+      17
+    ],
+    [
+      "DATE_NOT_ESTABLISHED",
+      11
+    ],
+    [
+      "CONTRARY_CLAUSE_OMITTED",
+      10
+    ],
+    [
+      "SUBJECT_MISMATCH",
+      9
+    ],
+    [
+      "QUALIFICATION_OMITTED",
+      8
+    ],
+    [
+      "UNTRACEABLE_AUTHORITY",
+      3
+    ],
+    [
+      "REASONING_NOT_TRACED",
+      2
+    ]
+  ]
+}
