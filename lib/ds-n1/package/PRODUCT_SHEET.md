@@ -1,47 +1,49 @@
-# Decision Spellcheck
+# Decision Spellcheck for the EU AI Act
 
-**A pre-finalisation check for decision records: it reads the record and the documents behind it, and flags anything a later reviewer could not trace, confirm or rely on, before the record is signed off.**
+**Before an AI system is switched on, check that the authorisation record shows what the EU AI Act expects you to be able to show, and that a document backs up each point.**
 
-Date: 24 November 2026. Status: working prototype, under independent evaluation. No accuracy rate is claimed.
+Date: 25 November 2026. Status: working prototype, under independent evaluation. No accuracy rate is claimed. It is a documentation check, not a legal assessment: it does not show that anyone complies with the AI Act.
 
 ## The problem
 
-Decision records (access exceptions, AI action authorizations, investigation summaries, document-production decisions) are often reviewed months later by someone who was not there. Records that read as complete regularly turn out to rest on a recommendation restated as a requirement, an assessment with no stated basis, or an approval with no cited authority. By then the people and the context are gone.
+Organisations using high-risk AI systems in the EU must be able to show human oversight by trained people, a way to override or stop the system, use in line with the provider's instructions, monitoring, logs kept for at least six months, and that workers and affected people were told (Regulation (EU) 2024/1689, Articles 4, 14 and 26). The obligations for Annex III systems are reported to apply from 2 December 2027. The record that authorises the system is where a regulator, auditor or court will look first, and authorisation records routinely state that a safeguard exists without any document behind it, or leave it out altogether.
 
 ## What it does
 
-1. **Reads plain documents.** Give it the decision record and the documents it relies on; it identifies each claim, its dates, who acted and which passage supports it. Nothing has to be prepared by hand.
-2. **Checks every claim against its source.** Support, contradiction, missing sources, wrong dates, the wrong event, dropped conditions, unsupported conclusions.
-3. **Flags known risk patterns.** 37 checks, including approvals with no stated authority, a "recommended" control stated as "required", conclusions with no reasoning, and AI actions with no way to pause them.
-4. **Asks about what was left out.** If a document the record relies on mentions an open finding, a failed test, a condition or a step not done, and the record never mentions it, the reviewer is asked whether it was considered (advisory).
-5. **Holds the record until gaps are resolved.** Each finding comes with one plain question for the reviewer; the record stays on HOLD until each is fixed or overridden with a written reason, and every step is logged.
+1. **Reads the authorisation record and its documents** as plain text or Word files; nothing has to be prepared by hand.
+2. **Checks ten points the AI Act expects a deployer to show** (risk classification, instructions for use, named oversight, overseers' training, override and stop, monitoring, log retention, informing workers, informing affected people, AI literacy). Each is reported as shown and backed by a document, stated with no document behind it, or not shown, with the exact sentences relied on and one plain question for each gap.
+3. **Flags concrete shortfalls**, such as logs kept for less than six months.
+4. **Checks every other claim in the record against its source** (wrong dates, a "recommended" step stated as "required", unsupported conclusions, approvals with no stated authority) and asks about points a source raises that the record leaves out.
+5. **Holds the record until gaps are resolved or overridden with a written reason**, and logs every step in a tamper-evident review log.
 
 ## Why it is different
 
-- **Same input, same answer, every time.** It makes no AI model calls, so results can be reproduced exactly for audit or dispute.
-- **Nothing leaves the building.** No network calls; records stay on the organisation's own systems.
-- **Shows its working.** Every finding points to the exact passage and document version.
-- **Tested in the open.** Its answer for a study record was recorded and fingerprinted before any practitioner saw that record.
+- **Same input, same answer, every time.** No AI model calls, so a result can be reproduced exactly for an auditor or a dispute.
+- **Nothing leaves the building.** No network calls; records stay on the organisation's own systems, which matters for confidential AI governance material.
+- **Shows its working.** Every result names the record sentence and the document sentence it relied on.
+- **Never claims compliance.** It reports what a record shows; the legal judgment stays with the organisation and its advisers.
 
 ## Evidence to date
 
-- **Engineering:** 170 automated tests pass; reports reproduce byte for byte.
-- **Document reading:** on 26 developer test records, given only their plain text, it found 127 of 128 hand-identified claims and reached the same review outcome as the hand-built version on 19; all 7 differences are explained (most were defects planted only in hand-made citation data), and no sound record was wrongly held (`tests/ds-n1/EXTRACT_EVAL.json`).
-- **Practitioner study (in progress):** 18 independent practitioners in 16 countries completed a blind review of a fictional record (24 November 2026). 14 of the 17 asked would not rely on it as written (95% interval 59 to 94%); the prototype's locked answer passed it. The checks added since target the gaps practitioners raised most and are being tested on fresh records. This is reported as a finding, not hidden.
+- **EU AI Act lens:** on two sets of fictional AI authorisation records whose answer keys were sealed before the code was run, the lens agreed with the key on 78 of 80 points (first set) and 38 of 40 (second set, after two fixes; 95% interval 84 to 99%), and in the second set credited no point that the record did not back up. Both sets were written by the developer, so these show the lens works as designed, not how it performs on others' records (`tests/ds-n1/EU_AI_ACT_EVAL.json`, `EU_AI_ACT_EVAL_2.json`).
+- **Practitioner study (in progress):** 29 practitioners from an international panel completed a blind review of a fictional decision record; 20 of the 28 asked would not rely on it as written (95% interval 53 to 85%), while the prototype's locked answer passed it. This is reported as a finding.
+- **Document reading:** on 26 developer test records it found 127 of 128 hand-identified claims (`tests/ds-n1/EXTRACT_EVAL.json`).
+- **Engineering:** 177 automated tests pass; reports reproduce byte for byte.
 
 ## Limits, stated plainly
 
 - Fictional records only today; real-record use is a licensing decision.
-- Reads plain text and Word (.docx) body text; PDF needs a conversion step, and Word headers, footers, footnotes and comments are not read.
-- The check for what a record leaves out of its sources is advisory and new: on 8 fresh developer-written records it caught 3 of 4 omissions and wrongly flagged 0 of 4 sound records (`tests/ds-n1/OMISSION_EVAL.json`); far too few records to state a rate, and it misses omissions phrased without a warning word.
-- Word-pattern checks can miss gaps phrased in unexpected ways.
+- Records reading as housing, lending, insurance, medical or legal-outcome material are refused, which today excludes some Annex III areas (for example creditworthiness); recruitment, education, workplace and public-service records are covered.
+- Word-pattern checks can miss a point phrased in unexpected words (for example "checked by the safety officer" is not yet read as oversight).
+- Article wording was checked against reproduced excerpts of the official text, not EUR-Lex directly; dates follow reported Digital Omnibus changes.
+- Reads plain text and Word (.docx) body text; PDF needs converting first.
 
 ## Ways to use it
 
 | Option | For |
 |---|---|
-| Licence to embed in your product | Compliance, HR case-management, eDiscovery and AI governance software vendors |
-| Single-organisation installation | Investigation, audit and compliance teams |
+| Licence to embed in your product | AI governance, GRC and compliance software vendors serving EU customers |
+| Single-organisation installation | AI governance, compliance and internal audit teams preparing for the high-risk obligations |
 | Evaluation licence on fictional records | Anyone deciding whether it fits |
 
-Contact: info@jrsstandard.com
+Contact: info@jrsstandard.com (to be replaced by a Decision Spellcheck address)

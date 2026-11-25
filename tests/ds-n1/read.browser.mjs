@@ -63,6 +63,26 @@ try {
       await page.waitForFunction(() => /PDF files cannot be read/.test(document.querySelector('#msg').textContent));
     });
 
+    await check(`${label}: an AI authorization record shows the EU AI Act section, with no compliance claim`, async () => {
+      await page.selectOption('#rec-class', 'ai_action_authorization');
+      await page.fill('#rec-title', 'AI authorization EU-900 (fictional)');
+      await page.fill('#rec-text', 'On 2026-09-02, Marta Lindqvist authorized the triage assistant to sort warranty claims. It is not high-risk under the AI Act. Logs are kept for three months.');
+      await page.fill('#doc-text-1', 'On 2026-09-02, Marta Lindqvist authorized the triage assistant to sort warranty claims. It is not high-risk under the AI Act.');
+      await page.click('#run');
+      await page.waitForSelector('#eu-ai-act');
+      assert.equal(await page.locator('#eu-ai-act [data-eu]').count(), 10);
+      assert.match(await page.textContent('#eu-ai-act [data-eu="log_retention"]'), /under six months/);
+      assert.match(await page.textContent('#eu-ai-act'), /does not show that anyone complies/);
+    });
+
+    await check(`${label}: the EU AI Act example runs and shows its gaps`, async () => {
+      await page.click('#example-eu'); await page.click('#run');
+      await page.waitForSelector('#eu-ai-act');
+      assert.match(await page.textContent('#eu-ai-act [data-eu="log_retention"]'), /under six months/);
+      assert.match(await page.textContent('#eu-ai-act [data-eu="ai_literacy"]'), /Not shown/);
+      assert.match(await page.textContent('#eu-ai-act [data-eu="affected_persons_informed"]'), /no document backs it/);
+    });
+
     await check(`${label}: a real-looking email is refused, not checked`, async () => {
       await page.fill('#rec-text', 'Contact ines.calloway@example.org approved access on 2026-07-14.');
       await page.click('#run');
