@@ -1,0 +1,21 @@
+{
+  "set": "practitioner-gaps-eval-1",
+  "expect": "ready = the record should be allowed to reach READY on these five checks; gaps = which of the five should be raised",
+  "gaps_vocabulary": ["recommendation_stated_as_requirement", "conclusory_assessment", "authority_text_not_supplied", "approver_authority_not_shown", "conclusion_on_unresolved_basis"],
+  "truth": {
+    "G1": { "ready": true, "gaps": [] },
+    "G2": { "ready": false, "gaps": ["recommendation_stated_as_requirement", "approver_authority_not_shown"] },
+    "G3": { "ready": false, "gaps": ["conclusory_assessment", "approver_authority_not_shown"] },
+    "G4": { "ready": false, "gaps": ["authority_text_not_supplied", "approver_authority_not_shown"] },
+    "G5": { "ready": false, "gaps": ["approver_authority_not_shown"] },
+    "G6": { "ready": false, "gaps": ["recommendation_stated_as_requirement", "approver_authority_not_shown", "conclusion_on_unresolved_basis"] },
+    "G7": { "ready": true, "gaps": [] },
+    "G8": { "ready": true, "gaps": [] },
+    "G9": { "ready": true, "gaps": [] },
+    "G10": { "ready": true, "gaps": [] }
+  },
+  "notes": {
+    "scope": "Only the five new checks are scored here. A record coded ready may still be held by existing checks for other reasons; that is reported separately, not counted as an error of these checks.",
+    "G2,G3,G5,G6": "No source shows the approver's authority, so approver_authority_not_shown is expected as well."
+  }
+}
