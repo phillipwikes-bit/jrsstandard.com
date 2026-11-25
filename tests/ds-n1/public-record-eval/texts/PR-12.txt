@@ -1,0 +1,110 @@
+Welcome to the Committee on Open Government 
+
+ Your browser does not support iFrames
+
+ State of New York
+
+ Department of State
+
+ Committee on Open Government
+
+ One Commerce Plaza
+
+99 Washington Ave.
+
+Albany, New York 12231
+
+(518) 474-2518
+
+Fax (518) 474-1927
+
+ https://www.dos.ny.gov/coog/ 
+
+ Committee Members 
+
+ Tedra L. Cobb
+
+ Ruth Noemí Colón
+
+ John C.Egan
+
+ Robert L. Megna
+
+ Garry Pierre-Pierre
+
+ Richard Ravitch
+
+ Clifford Richner
+
+ David A. Schulz
+
+ Robert T. Simmelkjaer II
+
+ Executive Director:
+
+ Robert J. Freeman
+
+-->
+
+ FOIL-AO-19516
+ December 5, 2016
+
+ The staff of the Committee on Open Government is authorized to issue advisory opinions.  The ensuing staff advisory opinion is based solely upon the information presented in your correspondence, except as otherwise indicated. 
+
+ Dear:
+
+ We are in receipt of your request for an advisory opinion relating to the manner in which the New York State Public Service Commission responded to your Freedom of Information Law (FOIL) request for a copy of a consumer complaint.  
+
+ In your e-mail, you express concern that the agency failed to comply with certain statutory and/or regulatory requirements when responding to your FOIL request.  
+
+ First, you note that the original denial dated November 15, 2016 did not include information about your right to an administrative appeal.  The records access officer advised you that it could not locate, after a diligent search, any public records that were responsive to your request.  If the records access officer intended that the term “public” mean available to the public and withheld a record falling within the scope of your request, the response, in my view, would have constituted a denial.  If the records access officer had advised you that it did not possess any records responsive to your request, I do not believe the agency would have been obligated to advise you of your right to appeal a denial of access, as the agency would not have denied access to records that it possessed.  However, the records access officer intimated that there are existing records, stating that the records that are responsive to your request do not become public until the parties appeal or until the matter is before the Public Service Commission.  If the records access officer made a determination to deny access to records that it possesses, it was required to advise you of your right to appeal.  
+
+ Regulations promulgated by the Committee on Open Government, which have the force and effect of law, require that:
+
+ “Denial of access shall be in writing stating the reason therefor and advising the person denied access of his or her right to appeal to the person or body designated to determine appeals, and that person or body shall be identified by name, title, business address and business telephone number. The records access officer shall not be the appeals officer.” (21 NYCRR 1401.7(b))
+
+ Second, you express concern that the agency did not issue an appeal determination within 10 business days.  Section 89(4)(b) of FOIL states that a failure to determine an appeal within 10 business days of the receipt of an appeal constitutes a denial of the appeal. In that circumstance, the appellant has exhausted his or her administrative remedies and may initiate a challenge to a constructive denial of access under Article 78 of the Civil Practice Law and Rules.  However, as you subsequently received an appeal determination from the agency, that affirmative denial of access constitutes the final agency determination.  
+
+ As you are aware, FOIL is based upon a presumption of access. Stated differently, all records of an agency are available, except to the extent that records or portions thereof fall within one or more grounds for denial appearing in §87(2)(a) through (l) of the Law.  We emphasize that the introductory language of §87(2) refers to the authority to withhold "records or portions thereof" that fall within the scope of the exceptions that follow.  In our view, the phrase quoted in the preceding sentence evidences a recognition on the part of the Legislature that a single record or report, for example, might include portions that are available under the statute, as well as portions that might justifiably be withheld. That being so, we believe that it also imposes an obligation on an agency to review records sought, in their entirety, to determine which portions, if any, might properly be withheld or deleted prior to disclosing the remainder.  The agency has asserted several grounds for denial, none of which, in our opinion, justify denial of access to the complaint file in its entirety.  
+
+ In this regard, first, the agency has asserted that the Public Service Commission’s regulations at 16 NYCRR §12.2(b) exempt the requested records from disclosure.  Section 87(2)(a) of FOIL states that an agency may deny access to a record or portion thereof when such records “are specifically exempted from disclosure by state or federal statute.”  As you correctly point out, the Commission’s regulations do not constitute a statute, and an agency cannot rely on §87(2)(a) when the claim of confidentiality arises from a regulation.  Further, the language of 16 NYCRR §12.2(b) does not exempt any particular record from FOIL disclosure.  The regulation establishes the rights of “customers, utilities or their representatives” to inspect and copy their case files, but it does not prohibit disclosure to other parties.  
+
+ Second, the agency’s FOIL appeal officer stated that “POL §§87(2)(b) and 89(2) prohibit the disclosure of records if such disclosure would constitute an unwarranted invasion of personal privacy.” (emphasis is mine)  A state agency may be required to withhold personally identifiable information to comply with the Personal Privacy Protection Law (PPPL).  Section 89(2-a) of FOIL states that “Nothing in this article [FOIL] shall permit disclosure which constitutes an unwarranted invasion of personal privacy as defined in subdivision two of this section if such disclosure is prohibited under section ninety-six of this chapter.”  Section 96 is a part of the PPPL.  Therefore, if a state agency cannot disclosure records pursuant to §96 of the PPPL, it is precluded from disclosing them under FOIL.  
+
+ The PPPL deals in part with the disclosure of records or personal information by state agencies concerning data subjects.  A “data subject” is “any natural person about whom personal information has been collected by an agency.”  (PPPL §92(3))  “Personal information” is defined to mean “any information concerning data subject which, because of name, number, symbol, mark or other identifier, can be used to identify that data subject.” (§92(7))  For purposes of the PPPL, the term “record” is defined to mean “any item, collection or grouping of personal information about a data subject which is maintained and is retrievable by use of the name or other identifier of the data subject.” (§92(9))  However, that provision also states that the term “record” “shall not include personal information which is not used to make any determination about the data subject if it is … correspondence files.”   (See enclosed PPPL Advisory Opinion 129 for additional details)
+
+ Based on the information supplied, it does not appear that either §89(2-a) of FOIL or §96 of the PPPL would have applied to prohibit disclosure, and I point out that, unless language exists that specifically prohibits disclosure, FOIL is permissive.  Although an agency may withhold records in accordance with the grounds for denial appearing in §87(2), the Court of Appeals has held that the agency is not obliged to do so and may choose to disclose.  As stated in that unanimous decision: 
+
+ "...while an agency is permitted to restrict access to those records falling within the statutory exemptions, the language of the exemption provision contains permissive rather than mandatory language, and it is within the agency's discretion to disclose such records, with or without identifying details, if it so chooses."  ( Capital Newspapers v. Burns , 67 NY2d 562, 567 (1986))
+
+ In our view, it would be permissible for the agency to redact the names and addresses of residential customers from the complaint file, particularly if the requestor planned to use the information for solicitation or fundraising purposes, as disclosure would constitute an unwarranted invasion of personal privacy (§§87(2)(b) and 89(2)(b) of FOIL).  If, however, the list of names and addresses involves vendors or persons acting in a business or professional capacity, there is nothing “personal” about it, and it must be disclosed, irrespective of its intended use, unless another ground for denial can be asserted.  Only if a list consists of the names of individuals and their home addresses that is sought for solicitation or fund-raising purposes would a denial of access under §§87(2)(b) and 89(2)(b) be proper.  Section 65(7) of the Public Service Law prohibits the sale of lists of customer names and addresses by gas or electric corporations.  It does not, in our view, exempt such lists that are in the possession of the PSC from disclosure.  
+
+ As you also correctly point out, §43(2) of the Public Service Law pertains to the handling of residential customer complaints.  It is my understanding that the customer complaint at issue came from Suffolk County, and if that is so, it would not be subject to the requirements of §43(2). 
+
+ Finally, the agency raises the possibility that the file may contain records or portions of records that “are trade secrets or are submitted to an agency by a commercial enterprise or derived from information obtained from a commercial enterprise and which if disclosed would cause substantial injury to the competitive position of the subject enterprise.”  (§87(2)(d) of FOIL)  However, the agency stated that “given that the information you seek is otherwise protected, there is no need to reach out to the parties to identify any further bases for confidentiality.”  In my opinion, the agency was required to follow the procedure set forth in §89(5) of FOIL in order to comply with law.  
+
+ I hope I have been of assistance.  
+
+ Sincerely,
+
+ Kristin O’Neill
+
+ Assistant Director
+
+ Enclosure:  PPPL AO 129
+
+ cc:     Kathleen Burgess
+
+ Donna Giliberto
+
+ DOS Home 
+  |  A to Z Index 
+  |  Applications 
+  |  Accessibility 
+  |  Privacy Policy 
+  |  Disclaimer 
+  |  Contact Us 
+  |  
+--> 
+
+ Your browser does not support iFrames

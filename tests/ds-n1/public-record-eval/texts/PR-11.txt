@@ -1,0 +1,99 @@
+Welcome to the Committee on Open Government 
+
+ Your browser does not support iFrames
+
+ State of New York
+
+ Department of State
+
+ Committee on Open Government
+
+ One Commerce Plaza
+
+99 Washington Ave.
+
+Albany, New York 12231
+
+(518) 474-2518
+
+Fax (518) 474-1927
+
+ https://www.dos.ny.gov/coog/ 
+
+ Committee Members 
+
+ Tedra L. Cobb
+
+ Ruth Noemí Colón
+
+ John C.Egan
+
+ Robert L. Megna
+
+ Garry Pierre-Pierre
+
+ Richard Ravitch
+
+ Clifford Richner
+
+ David A. Schulz
+
+ Robert T. Simmelkjaer II
+
+ Executive Director:
+
+ Robert J. Freeman
+
+-->
+
+ FOIL AO 19646 
+
+ From:                      Robert Freeman, Executive Director
+
+ Sent:                        February 16, 2018
+
+ To: 
+
+ Cc:                           Sergeant Jordan S. Mazur
+
+                                 Gideon Orion Oliver ( Gideon@GideonLaw.com )
+
+ Subject:                   RE: FOIL Advisory Opinion
+
+ The staff of the Committee on Open Government is authorized to issue advisory opinions.  The ensuing staff advisory opinion is based solely upon the information presented in your correspondence, except as otherwise indicated. 
+
+ I have received your correspondence, and you have sought an advisory opinion concerning a response to an appeal made pursuant to the Freedom of Information Law (FOIL) relating to a request for records of the New York City Police Department.
+
+ The request was made late in the day on May 16, and its receipt was acknowledged by the Department’s records access officer on May 23. You referred to “the NYPD’s boilerplate response” in which it was stated that: “Before a determination can be rendered, further review is necessary to assess the potential applicability of exemptions set forth in FOIL, and whether the records can be located.” At that time, you were given “an approximate date when a determination would be made”, which would have been September 29.  Having received no further response, you contacted the records access officer on November 7, and he referred to “certain elements” of the records sought that could be extracted from the Department’s website.  Nevertheless, you were supplied with a “non-working link.”  You wrote that you assumed that the intent was to direct you to the “NYC OpenData” portal, which contains but few among the categories of data that you requested.    You added that you are aware of the existence of additional data in the Department’s databases and referred specifically to the Department’s “Omniform System and Enterprise Case Management System”, both of which contain records regarding homicides and non-fatal shootings.  Significantly, the records access officer appears to have considered his response to be final, for he indicated that “You may appeal this decision or any portion thereof” within 30 days.
+
+ Consequently, you appealed within 30 days, but Sgt. Jordan S. Mazur, the records access appeals officer, wrote that “Unfortunately, the time required to complete your request has surpassed the original estimate”.  Due to the failure to respond within the time indicated, you considered the failure to do so to constitute a constructive denial of access.  In a response to your appeal, Sgt. Mazur wrote that “your appeal is premature”, for it “lacked the predicate denial of access.”  He added that “Because the RAO has yet to make a final determination, the undersigned is unable to issue an appeal determination,” and that “your request is still being processed and it is estimated that the RAO will issue a determination within the next several weeks.”
+
+ In my view, the Department cannot have it both ways.  In short, it is inconsistent for the records access officer to indicate that you have the right to appeal, and then to receive a response from the records access appeals officer asserting that your appeal was “premature.”
+
+ You offered several contentions in your appeal with which I agree, and you also indicated in your appeal that you would agree to have certain columns or fields of data to be redacted in their entirety to be accommodating.  As I understand the situation, as yet, none of the records/data sought have been disclosed.
+
+ From my perspective, you had the right to appeal, and doing so could not be considered to be premature.  Notwithstanding responses that have become too typical, FOIL precludes an agency from engaging in multiple delays. Section 89(3)(a) provides the requirements regarding the time within which an agency must respond.  First, when an agency receives a request, it has five business days to respond in some manner. Within that time, it may choose to disclose the records sought or deny access in writing.  In any instance in which there is a denial, the applicant has the right to appeal to the head of the agency or that person’s designee.  If more than five business days will be needed, the agency must acknowledge the receipt of the request in writing within that time and offer an approximate date, not to exceed twenty additional business days, indicating when it believes that it will grant the request in whole or in part. If toward the expiration of twenty business days, more time is needed to respond fully, the law requires that the reason for the delay be explained in writing and that the agency indicate a “date certain”, a self‐imposed deadline, regarding its response to grant the request in whole or in part. Note that the law specifies that any delay beyond five business days must be reasonable based on attendant facts and circumstances.  There is no provision that permits repeated delays.
+
+ If an agency fails to respond within five business days, within the twenty-business day extension or by the date certain, the law states that the applicant may consider the request to have been denied and has the right to appeal. Section 89(4)(a) states in part that “Failure by an agency to conform to the provisions of subdivision three of this section shall constitute a denial.” The same section requires that an appeal be determined within ten business days of its receipt, and the determination must “fully explain in writing to the person requesting the record the reasons for further denial, or provide access to the record sought.”
+
+ In addition to the language of the statute, the regulations promulgated by the Committee on Open Government (21 NYCRR Part 1401), which have the force and effect of law, provide additional guidance concerning time and nature of responses to requests.  Both §89(3)(a) of the statute and §1401.5(c)(3) of the Committee’s regulations require that if more than twenty business days following the acknowledgement of the receipt of a request will be needed, the agency must provide “a date certain” indicating when it will grant access to the records sought in whole or part. Even if an extension is warranted, stating that a response by the RAO will be given “within the next several weeks” clearly does not reflect a date certain. 
+
+ With respect to the nature of the data sought, it is your belief that they exist in one or more databases or datasets maintained by the Department, and you specified that the Department could choose to redact certain items, largely those that reflect personally identifiable information. Assuming that the items requested do not fall within the exception of rights of access appearing in §87(2)., in the words of §89(3)(a) of FOIL, “[w]hen an agency has the ability to retrieve or extract a record or data maintained in a computer storage system with reasonable effort, it shall be required to do so.”  
+
+ Lastly, as you may be aware, FOIL was recently amended concerning the award of attorney’s fees.  Section 89(4)(c) states that if a lawsuit is initiated and the court finds that the person denied access “substantially prevails”, the court may award attorney’s fees if the agency failed to respond within the proper time. If the court finds that the agency had no reasonable basis for denying access, it must award attorney’s fees payable by the agency.
+
+ In an effort to enhance compliance with law, copies of this opinion will be sent to the Department.
+
+I hope that I have been of assistance.
+
+ DOS Home 
+  |  A to Z Index 
+  |  Applications 
+  |  Accessibility 
+  |  Privacy Policy 
+  |  Disclaimer 
+  |  Contact Us 
+  |  
+--> 
+
+ Your browser does not support iFrames

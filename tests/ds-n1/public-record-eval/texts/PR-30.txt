@@ -1,0 +1,447 @@
+Capital District Transportation
+Authority
+Compliance With Freedom of
+Information Law Requirements
+
+
+
+
+  Report 2019-S-70 October 2020
+
+
+
+
+OFFICE OF THE NEW YORK STATE COMPTROLLER
+Thomas P. DiNapoli, State Comptroller
+Division of State Government Accountability
+Audit Highlights
+
+Objectives
+To determine if the Capital District Transportation Authority (CDTA) and its subsidiaries have policies,
+procedures, and processes in place to fulfill CDTA’s responsibilities under the Freedom of Information
+Law (FOIL), and to determine if CDTA is in compliance with its responsibilities under FOIL. The audit
+covered the period from January 1, 2017 through January 23, 2020.
+
+About the Program
+CDTA was created in 1970 by the New York State Legislature. Today, CDTA is the premier mobility
+provider in the Capital Region, providing regular route bus service, shuttle systems, and paratransit
+services. Article 6 of the New York State Public Officers Law provides for public access to government
+records. The statute, generally referred to as FOIL, applies to any State agency, public authority, and
+local government entity, with the exception of the judiciary and the State Legislature. Under FOIL,
+agencies, including public authorities, are required to make all eligible records available for public
+inspection or copying. Agencies are further required to promulgate rules and regulations pertaining
+to the availability of records and procedures to be followed, including the fees for copies of records.
+Within five days of receiving the FOIL request, FOIL requires agencies to make the requested records
+available, deny the request in writing, or furnish a written acknowledgment of the request that states the
+approximate date when such request will be granted or denied.
+
+Key Findings
+   CDTA’s policy is consistent with the provisions set forth in the FOIL statute. However, we found
+     CDTA does not have formal internal procedures for processing FOIL requests, which has resulted
+     in inconsistent practices regarding the timeliness of CDTA’s responses to FOIL requests.
+
+   CDTA did not respond within the statutory time frame for 26 of the 111 FOIL requests it received
+     during the audit period, and completely missed responding to two. We found one request that was
+     not acknowledged by CDTA for 100 business days. Further, due to incomplete information, we
+     could not determine the timeliness for ten FOIL requests.
+
+   CDTA does not have a formal method for tracking FOIL requests. Officials indicated there have
+     been instances of FOIL requests being initially overlooked, resulting in a late response from
+     CDTA.
+
+Key Recommendations
+   Develop and implement internal procedures to ensure FOIL requests and appeals are processed
+     consistently.
+
+   Provide formal training for employees involved in processing FOIL requests and appeals.
+
+   Acknowledge and respond to FOIL requests within the time frames required by law. Grant or deny
+     access to FOIL requests within five business days, or if more time is needed, acknowledge the
+     receipt of the request in writing, indicating both the reason for the inability to grant the request
+     within 20 business days and the approximate date when the request will be granted or denied.
+
+   Maintain a log of all FOIL requests and related communications with requestors, and monitor this
+     activity to ensure compliance with required time frames.
+
+
+Report 2019-S-70                                                                                           1
+Office of the New York State Comptroller
+Division of State Government Accountability
+
+October 16, 2020
+
+Mr. Jayme Lahut
+Chairman
+Capital District Transportation Authority
+110 Watervliet Avenue
+Albany, NY 12206
+
+Dear Chairman Lahut:
+
+The Office of the State Comptroller is committed to helping State agencies, public authorities, and
+local government agencies manage their resources efficiently and effectively. By so doing, it provides
+accountability for the tax dollars spent to support government operations. The Comptroller oversees
+the fiscal affairs of State agencies, public authorities, and local government agencies, as well as their
+compliance with relevant statutes and their observance of good business practices. This fiscal oversight
+is accomplished, in part, through our audits, which identify opportunities for improving operations.
+Audits can also identify strategies for reducing costs and strengthening controls that are intended to
+safeguard assets.
+
+Following is a report of our audit titled Compliance With Freedom of Information Law Requirements.
+This audit was performed pursuant to the State Comptroller’s authority under Article X, Section 5 of the
+State Constitution and Section 2803 of the Public Authorities Law.
+
+This audit’s results and recommendations are resources for you to use in effectively managing your
+operations and in meeting the expectations of taxpayers. If you have any questions about this report,
+please feel free to contact us.
+
+Respectfully submitted,
+
+
+
+Division of State Government Accountability
+
+
+
+
+Report 2019-S-70                                                                                        2
+Contents
+Glossary of Terms                               4
+Background                                      5
+Audit Findings and Recommendations              6
+  Internal Policies and Procedures              6
+  Compliance With FOIL-Specified Time Frames    7
+  Denial of FOIL Requests                       8
+  Recommendations                               8
+Audit Scope, Objectives, and Methodology       10
+Statutory Requirements                         11
+  Authority                                    11
+  Reporting Requirements                       11
+Agency Comments                                12
+Contributors to Report                         13
+
+
+
+
+Report 2019-S-70                                    3
+Glossary of Terms
+
+       Term                                Description                            Identifier
+     Agency        Any state or municipal department, board, bureau,            Key Term
+                   division, commission, committee, public authority, public
+                   corporation, council, office, or other governmental entity
+                   performing a governmental or proprietary function for the
+                   State or any one or more municipalities thereof
+     CDTA          Capital District Transportation Authority                    Auditee
+     COOG          Committee on Open Government                                 Key Term
+     FOIL          Freedom of Information Law                                   Law
+     Policy        CDTA FOIL policy                                             Key Term
+     Record        Includes, but is not limited to, agency reports,             Key Term
+                   statements, opinions, folders, files, microfilms, and
+                   computer tapes or discs
+     SARA          New York State Archives and Records Administration           Key Term
+
+
+
+
+Report 2019-S-70                                                                               4
+Background
+The Capital District Transportation Authority (CDTA) was created in 1970 by the
+New York State Legislature, as a public benefit corporation, to provide regional
+transportation services by rail, bus, water, and air. Today’s CDTA is the premier
+mobility provider in the Capital Region, providing regular route bus service,
+shuttle systems, and paratransit services. CDTA subsidiaries own and operate
+the Rensselaer Rail and Saratoga Springs Train Stations. CDTA also operates
+the Northway Xpress commuter service between Saratoga County and downtown
+Albany. As of February 3, 2020, 640 people work at CDTA to deliver a transit system
+that serves more than 800,000 people who live and work in the region, transporting
+more than 55,000 customers each weekday.
+
+Article 6 of the New York State Public Officers Law provides for public access to
+government records. The statute, generally referred to as the Freedom of Information
+Law (FOIL), applies to any State agency, public authority, and local government
+entity, with the exception of the judiciary and the State Legislature. Under FOIL, each
+agency, including public authorities, is required to make all eligible records available
+for public inspection or copying. Such records include, but are not limited to, reports,
+statements, opinions, folders, files, microfilms, and computer tapes or discs.
+
+CDTA reported receiving 111 FOIL requests during our audit period, January 1,
+2017 through January 23, 2020. FOIL specifies time frames for granting or denying
+access to requested records. Specifically, FOIL requires agencies to grant access to
+records, deny access in writing, or acknowledge the receipt of a request within five
+business days. When an acknowledgment is given, it must include an approximate
+date that is reasonable under the circumstances and not more than 20 business
+days after the date of acknowledgment, indicating when a determination on the
+request to access records will be made. Additionally, agencies may develop their
+own more stringent internal policies and procedures for processing FOIL requests. If
+a denied request is appealed, FOIL requires the agency to send copies of the appeal
+and subsequent determination to the Committee on Open Government (COOG).
+Among its duties, COOG issues advisory opinions and makes recommendations to
+the Legislature on matters relating to FOIL. Within ten business days of receipt of
+an appeal, the agency must grant access to the records sought or fully explain the
+reasons for further denial in writing. Attorneys’ fees and other litigation costs may
+be assessed against the agency for any failure to respond to a request or appeal
+within the statutory time frame. In addition, the New York State Archives and Records
+Administration (SARA) specifies requirements for FOIL record retention. Generally,
+all correspondence documenting an agency’s FOIL requests is to be maintained for
+six months after resolution of the request.
+
+
+
+
+Report 2019-S-70                                                                           5
+Audit Findings and Recommendations
+In general, CDTA has an internal policy in place to govern its processing of FOIL
+requests, and this policy also governs FOIL requests for CDTA’s subsidiaries.
+However, we found CDTA needs to improve its management and monitoring of FOIL
+requests. Moreover, our review of reported FOIL requests received for the audit
+scope period found CDTA did not comply with FOIL requirements for all requests it
+processed.
+
+Internal Policies and Procedures
+Under FOIL, agencies are required to make all eligible records available for public
+inspection or copying and to promulgate rules and regulations regarding the times
+and places such records are available; the persons from whom such records
+may be obtained; and the fees for copies of records, which generally may not
+exceed 25 cents per page. CDTA is responsible for processing FOIL requests for
+its subsidiaries, Rensselaer Rail and Saratoga Springs Train Stations. We found
+CDTA has a policy governing FOIL requests, which is consistent with the provisions
+set forth in the FOIL statute. However, we determined CDTA does not always
+follow consistent practices when charging fees for records. Our review of CDTA’s
+FOIL requests found 37 requests were fulfilled by CDTA using either hard-copy
+documentation or CDs; however, CDTA only charged requestors in 13 of these
+instances. The Records Access Officer stated fees are not charged if records are
+provided via email; however, in cases where hard-copy documentation or CDs are
+required, the officer uses judgment about when to charge requestors. For example,
+if a requestor consistently submits FOIL requests, CDTA will charge for the records.
+CDTA uses its discretion when determining whether or not to charge a requestor;
+however, the Records Access Officer acknowledged that she did not receive training
+prior to assuming these FOIL request responsibilities.
+
+In addition, FOIL requires agencies to maintain a reasonably detailed current subject
+matter list of all records in the agency’s possession, whether or not they are available
+under FOIL. This list is to be provided to the public upon request, and the list is
+required to contain the date of its most recent update. We found CDTA maintains
+a subject matter list, which is available for the public on CDTA’s website. However,
+we determined that the date of the most recent update for the subject matter list
+is not conspicuously indicated on the list, as required under FOIL. When asked
+why the date of the most recent update was not included on the subject matter list,
+officials stated they were unsure. Officials further attributed the missing information
+to employee turnover. This lack of information means the public who seek to utilize
+FOIL cannot be reasonably assured that they have the most up-to-date information
+regarding CDTA’s records. Additionally, FOIL requires certain agencies that maintain
+websites to ensure that they provide for the online submission of FOIL requests.
+At the onset of our audit, we found CDTA’s website did not allow for the online
+submission of FOIL requests. The CDTA website indicated requests could be sent via
+mail or fax. When the lack of a means for online submission of requests was brought
+to CDTA’s attention, officials stated there used to be an email address specifically
+for FOIL requests, and this address was located on the CDTA website; however,
+officials were unsure why the email address was no longer listed. Officials indicated
+
+
+Report 2019-S-70                                                                           6
+employee turnover was most likely the reason the email address was inadvertently
+removed from the website. The lack of an option to submit FOIL requests online may
+hinder the public’s ability to request records. Since this was brought to the attention
+of CDTA, the website has been updated to include an option for the public to submit
+FOIL requests via email.
+
+Compliance With FOIL-Specified Time Frames
+FOIL specifies time frames for processing requests received by agencies.
+Compliance is important because delays in responding to FOIL requests equate to
+denials of the requests and could result in unnecessary FOIL appeal proceedings
+and an assessment of attorneys’ fees against the agency. When CDTA receives a
+written request for records from the public under FOIL, it has five business days to
+grant or deny access, or if more time is needed, to acknowledge the receipt of the
+request in writing. CDTA’s internal policy also requires that an acknowledgment letter
+be provided within five business days of receipt of a FOIL request. We found that
+CDTA did not acknowledge two FOIL requests. Additionally, CDTA did not initially
+acknowledge all FOIL requests within the required time frame of five business days.
+We were able to determine the timeliness of 101 of the 111 FOIL requests reportedly
+received by CDTA during the audit period; documentation was partially missing for
+ten of the FOIL requests we reviewed. Of these 101 FOIL requests, we found it
+took CDTA more than five business days to initially respond to 26 (26 percent), with
+one acknowledgment occurring as late as 100 days after CDTA received the initial
+request.
+
+Additionally, FOIL specifies that if a request is initially acknowledged and not
+immediately fulfilled, the acknowledgment letter must indicate the approximate date
+when the request will be granted or denied, which must be reasonable under the
+circumstances of the request. Where an agency is unable to provide the requested
+records within 20 business days from the date of the acknowledgment letter, the
+agency must provide a written explanation and a date certain when the request
+will be granted in whole or in part. Moreover, SARA specifies that documentation
+supporting the disposition of each FOIL request be maintained on file for at least
+six months after the request is resolved. We found CDTA generally provided the
+requested information or denied the request at the same time as it first acted on a
+request. This was the case for 91 FOIL requests we reviewed. Further, our review
+found 16 requests were initially acknowledged by CDTA, and the acknowledgment
+included the requisite date when records would be provided or indicated that the
+requestor needed to provide additional information in order for CDTA to adequately
+fulfill the request. Lastly, there were two requests CDTA never acknowledged. One
+request was transferred to CDTA’s legal department because it involved ongoing
+litigation with the authority, and, due to missing information, we were unable to
+determine CDTA’s compliance with the other request. However, this request was
+received by CDTA in 2017, and according to SARA, CDTA was not required to keep
+the supporting documentation.
+
+CDTA does not have a tracking system to monitor the status of its responses to
+
+
+Report 2019-S-70                                                                          7
+FOIL requests. As a result, officials were unaware that CDTA had not acknowledged
+two FOIL requests. Additionally, the lack of a formal tracking system hindered
+our ability to determine the entire population of FOIL requests CDTA received
+for the audit scope period. Although we reviewed documentation for all 111 FOIL
+requests reported by CDTA, we could not be reasonably assured that the provided
+documentation accounted for all FOIL requests CDTA received during the audit
+period.
+
+Denial of FOIL Requests
+FOIL permits an agency to deny public access to records that fall under various
+statutory exemptions. For example, FOIL exempts from disclosure records that,
+if disclosed, would impair present or imminent contract awards. Similarly, records
+that, if disclosed, would constitute an unwarranted invasion of personal privacy are
+exempt from FOIL. Any person denied access to records may appeal in writing within
+30 days. Within ten business days of the receipt of the appeal, CDTA must explain in
+writing the reason for further denial or provide access to the records sought. CDTA
+must also send copies of all appeals and subsequent determinations to COOG. We
+found that CDTA denied or partially denied 27 requests during the audit period. For
+all denied requests, CDTA’s response letter to the requestor included the reason for
+denial. During the audit period, CDTA received at least four appeals of denied FOIL
+requests. For one of the appeals, CDTA responded within ten days of its receipt and
+immediately notified COOG of the appeal. However, for the three additional reported
+appeals, CDTA did not inform COOG, nor did CDTA respond within ten days, as
+required. We spoke with CDTA’s FOIL Appeals Officer, who was not aware that
+CDTA was required to notify COOG of the appeals they receive. The official further
+acknowledged that CDTA needs to better manage its appeals process to ensure
+compliance with FOIL. Going forward, the FOIL Appeals Officer indicated he would
+inform COOG of any appeals received.
+
+Recommendations
+  1.   Develop and implement procedures to ensure FOIL requests and appeals are
+       processed consistently.
+
+  2.   Provide formal training for employees involved in processing FOIL requests
+       and appeals.
+
+  3.   Update the subject matter list to meet the requirements of FOIL.
+
+  4.   Update CDTA’s website to include online submission of FOIL requests.
+
+  5.   Acknowledge and respond to FOIL requests within the time frames required
+       by law. Grant or deny access to FOIL requests within five business days,
+       or if more time is needed, acknowledge the receipt of the request in writing,
+       indicating both the reason for the inability to grant the request within 20
+       business days and the approximate date when the request will be granted or
+       denied.
+
+
+Report 2019-S-70                                                                       8
+  6.   Maintain a log of all FOIL requests and related communications with
+       requestors, and monitor this activity to ensure compliance with required time
+       frames.
+
+
+
+
+Report 2019-S-70                                                                       9
+Audit Scope, Objectives, and Methodology
+The objectives of our audit were to determine if CDTA and its subsidiaries have
+policies, procedures, and processes in place to fulfill CDTA’s responsibilities under
+FOIL, and to determine if CDTA is in compliance with its responsibilities under FOIL.
+The audit covered the period January 1, 2017 through January 23, 2020.
+
+To accomplish our objectives, we reviewed relevant laws, regulations, and CDTA
+procedures pertinent to FOIL to assess compliance with the law. In addition, we met
+with CDTA officials to confirm and enhance our understanding of the organization’s
+FOIL request process. We became familiar with, and assessed the adequacy of,
+CDTA’s internal controls as they relate to its performance and our audit objectives.
+We also reviewed all 111 FOIL requests CDTA reportedly received during our audit
+period, reviewed the steps CDTA took to process these requests, and evaluated
+their timeliness. In addition, we extensively reviewed each selected FOIL request,
+including the subject matter of the request and the dates when each was prepared,
+received, acknowledged, and resolved. We also reviewed the four FOIL appeals
+CDTA received during the scope period to ensure the authority properly reported
+appeal activity consistent with FOIL.
+
+
+
+
+Report 2019-S-70                                                                        10
+Statutory Requirements
+
+Authority
+The audit was performed pursuant to the State Comptroller’s authority as set forth
+in Article X, Section 5 of the State Constitution and Section 2803 of the Public
+Authorities Law.
+
+We conducted our performance audit in accordance with generally accepted
+government auditing standards. Those standards require that we plan and perform
+the audit to obtain sufficient, appropriate evidence to provide a reasonable basis
+for our findings and conclusions based on our audit objectives. We believe that the
+evidence obtained provides a reasonable basis for our findings and conclusions
+based on our audit objectives.
+
+In addition to being the State Auditor, the Comptroller performs certain other
+constitutionally and statutorily mandated duties as the chief fiscal officer of New York
+State. These include operating the State’s accounting system; preparing the State’s
+financial statements; and approving State contracts, refunds, and other payments.
+In addition, the Comptroller appoints members to certain boards, commissions, and
+public authorities, some of whom have minority voting rights. These duties may
+be considered management functions for purposes of evaluating organizational
+independence under generally accepted government auditing standards. In our
+opinion, these functions do not affect our ability to conduct independent audits of
+program performance.
+
+Reporting Requirements
+A draft copy of this report was provided to CDTA officials for their review and formal
+comment. Their comments were considered in preparing this final report and are
+attached in their entirety at the end of it.
+
+Within 180 days after final release of this report, as required by Section 170 of
+the Executive Law, the Chairman of the Capital District Transportation Authority
+shall report to the Governor, the State Comptroller, and the leaders of the
+Legislature and fiscal committees, advising what steps were taken to implement
+the recommendations contained herein, and where recommendations were not
+implemented, the reasons why.
+
+
+
+
+Report 2019-S-70                                                                           11
+Agency Comments
+
+
+
+
+Report 2019-S-70   12
+              Contributors to Report
+
+                           Executive Team
+                    Tina Kim - Deputy Comptroller
+                  Ken Shulman - Assistant Comptroller
+
+                               Audit Team
+                  Carmen Maldonado - Audit Director
+                   Robert Mehrhoff - Audit Manager
+                  Daniel Raczynski - Audit Supervisor
+                  Marisa Sutliff - Examiner-in-Charge
+
+
+
+
+                            Contact Information
+                                (518) 474-3271
+                StateGovernmentAccountability@osc.ny.gov
+                    Office of the New York State Comptroller
+                  Division of State Government Accountability
+                           110 State Street, 11th Floor
+                                 Albany, NY 12236
+
+
+
+             Like us on Facebook at facebook.com/nyscomptroller
+                      Follow us on Twitter @nyscomptroller
+For more audits or information, please visit: www.osc.state.ny.us/audits/index.htm
+
