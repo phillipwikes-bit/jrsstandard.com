@@ -10,7 +10,7 @@ Decision records (AI authorizations, access exceptions, investigation summaries,
 
 ## What it does
 
-1. **Reads plain documents.** The record and its documents as plain text or Word files; nothing has to be prepared by hand.
+1. **Reads plain documents.** The record and its documents as plain text, Word or PDF files (PDF read with no third-party code; scanned PDFs refused); nothing has to be prepared by hand.
 2. **Checks every claim against its source:** support, contradiction, missing sources, wrong dates, dropped conditions, unsupported conclusions.
 3. **Flags known risk patterns:** 43 checks, such as a "recommended" step stated as "required", an assessment with no stated basis, or an approval with no stated authority.
 4. **Checks the reasoning (cognitive controls):** fourteen reasoning lenses, such as unsupported certainty, closing the matter before the evidence is in, selective evidence and over-reliance on an AI system's output, each with one neutral question; eight safeguards say what the reviewer should do and when to refer the matter.
@@ -30,14 +30,16 @@ Decision records (AI authorizations, access exceptions, investigation summaries,
 
 - **Practitioner study:** 30 practitioners from an international panel completed a blind review of a fictional access-exception record (47 people from 28 countries answered at least the first question); 21 of the 29 asked would not rely on it as written (95% interval 54 to 85%). The prototype's answer, locked on 19 November before anyone saw the record, passed it and matched 2 of the 75 points the practitioners raised (developer-coded). The gaps they raised most now hold a record. On two sets of new fictional records sealed before the code was changed, the new checks agreed with the key on all 50 gap points (first set) and on all 8 records (second set), where all 6 sound records reached READY. Run afterwards on the study record, the current version raises 52 of the 75 points and holds it; that figure is not evidence, because the changes were made knowing that record.
 - **EU AI Act checks:** on two sets of fictional AI authorizations whose answer keys were sealed before the code ran, 78 of 80 and 38 of 40 points agreed with the key; written by the developer, so not independent.
-- **Document reading:** 127 of 128 hand-identified claims found in 26 developer records.
+- **Published public decisions (real records).** On 28 EEOC appeal decisions sealed before any fix, an unchanged decision passed in 28 of 28, a version with its dates removed was caught in 28 of 28, and one with its speakers removed in 28 of 28. On AI-written summaries of 30 public decisions, the tool told a lossy summary from a full one in 29 of 30 and kept flags on good drafts to under 3 per 10 statements. **Not achieved:** clearing a long reworded draft without any serious flag (1 to 5 of 30 against a target of 15), and telling decisions that later failed from those that held up when a decision is read without its underlying documents (3 of 7 and 8 of 11). The keys were written by the developer; the earlier failed runs are kept in the evidence index.
+- **Document reading:** 127 of 128 hand-identified claims found in 26 developer records; PDF text matches a standard PDF tool on 99.1% of words across 623 public decision PDFs.
 - **Engineering:** 184 automated tests pass; reports reproduce byte for byte.
 
 ## Limits, stated plainly
 
-- Fictional records only today; real-record use is a licensing decision.
+- Tested on fictional records and published public decisions only; use on an organisation's own records is a licensing decision.
 - Word-pattern checks can miss a point phrased in unexpected words.
-- PDF needs converting to text first.
+- A long reworded record still gets some flags a reviewer must clear; the tool points to sentences to check, it does not clear a whole draft.
+- Scanned PDFs (no text layer) need converting first.
 
 ## Ways to use it
 
