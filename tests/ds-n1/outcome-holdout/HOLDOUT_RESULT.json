@@ -1,0 +1,48 @@
+{
+ "n": 183,
+ "not_affirmed": 27,
+ "primary_no_summary_judgment": {
+  "flagged": 107,
+  "not_affirmed_if_flagged": [
+   24,
+   107,
+   [
+    0.156,
+    0.312
+   ]
+  ],
+  "not_affirmed_if_not_flagged": [
+   3,
+   76,
+   [
+    0.014,
+    0.11
+   ]
+  ],
+  "fisher_p": 0.0005,
+  "flag_share": 0.585,
+  "pass": true
+ },
+ "secondary_gap_and_no_summary_judgment": {
+  "flagged": 36,
+  "not_affirmed_if_flagged": [
+   9,
+   36,
+   [
+    0.138,
+    0.411
+   ]
+  ],
+  "not_affirmed_if_not_flagged": [
+   18,
+   147,
+   [
+    0.079,
+    0.185
+   ]
+  ],
+  "fisher_p": 0.0667,
+  "flag_share": 0.197,
+  "pass": false
+ }
+}
