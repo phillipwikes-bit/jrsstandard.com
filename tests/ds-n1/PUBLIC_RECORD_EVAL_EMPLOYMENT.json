@@ -1,0 +1,156 @@
+{
+  "set": "public-record-eval-employment",
+  "sealed_hash": "4f8b268261ff2d117710205c82e04d172631893ce66d8f1beaea72b3a42df570",
+  "run_at": "2026-11-25T20:28:26.620Z",
+  "note": "Public documents, test classification. Documentation check only; not a judgement on any person or case.",
+  "primary": {
+    "n": 7,
+    "flagged_adverse": 3,
+    "flagged_not_adverse": 4,
+    "clear_adverse": 0,
+    "clear_not_adverse": 0,
+    "correct": 3
+  },
+  "secondary": {
+    "n": 7,
+    "flagged_adverse": 3,
+    "flagged_not_adverse": 4,
+    "clear_adverse": 0,
+    "clear_not_adverse": 0,
+    "correct": 3
+  },
+  "rows": [
+    {
+      "id": "EM-05",
+      "outcome": "Contested, no recorded disposition",
+      "adverse": false,
+      "engine": "HOLD",
+      "findings": 675,
+      "gap_codes": [
+        "CONCLUSION_ON_UNRESOLVED_BASIS"
+      ],
+      "all_codes": [
+        "UNSUPPORTED_CLAIM",
+        "REASONING_NOT_TRACED",
+        "CONCLUSION_ON_UNRESOLVED_BASIS"
+      ],
+      "primary_predicts_adverse": true,
+      "secondary_predicts_adverse": true
+    },
+    {
+      "id": "EM-08",
+      "outcome": "Did not survive review",
+      "adverse": true,
+      "engine": "HOLD",
+      "findings": 162,
+      "gap_codes": [
+        "CONCLUSION_ON_UNRESOLVED_BASIS"
+      ],
+      "all_codes": [
+        "UNSUPPORTED_CLAIM",
+        "UNTRACEABLE_AUTHORITY",
+        "REASONING_NOT_TRACED",
+        "UNMAPPED_ASSERTION",
+        "CONCLUSION_ON_UNRESOLVED_BASIS"
+      ],
+      "primary_predicts_adverse": true,
+      "secondary_predicts_adverse": true
+    },
+    {
+      "id": "EM-11",
+      "outcome": "Sustained",
+      "adverse": false,
+      "engine": "HOLD",
+      "findings": 237,
+      "gap_codes": [
+        "CONCLUSION_ON_UNRESOLVED_BASIS"
+      ],
+      "all_codes": [
+        "UNSUPPORTED_CLAIM",
+        "UNTRACEABLE_AUTHORITY",
+        "REASONING_NOT_TRACED",
+        "UNMAPPED_ASSERTION",
+        "CONCLUSION_ON_UNRESOLVED_BASIS"
+      ],
+      "primary_predicts_adverse": true,
+      "secondary_predicts_adverse": true
+    },
+    {
+      "id": "EM-12",
+      "outcome": "Contested, no recorded disposition",
+      "adverse": false,
+      "engine": "HOLD",
+      "findings": 133,
+      "gap_codes": [
+        "CONCLUSION_ON_UNRESOLVED_BASIS"
+      ],
+      "all_codes": [
+        "UNSUPPORTED_CLAIM",
+        "UNTRACEABLE_AUTHORITY",
+        "REASONING_NOT_TRACED",
+        "UNMAPPED_ASSERTION",
+        "CONCLUSION_ON_UNRESOLVED_BASIS"
+      ],
+      "primary_predicts_adverse": true,
+      "secondary_predicts_adverse": true
+    },
+    {
+      "id": "EM-13",
+      "outcome": "Contested, no recorded disposition",
+      "adverse": false,
+      "engine": "HOLD",
+      "findings": 173,
+      "gap_codes": [
+        "CONCLUSION_ON_UNRESOLVED_BASIS"
+      ],
+      "all_codes": [
+        "UNSUPPORTED_CLAIM",
+        "REASONING_NOT_TRACED",
+        "UNMAPPED_ASSERTION",
+        "CONCLUSION_ON_UNRESOLVED_BASIS"
+      ],
+      "primary_predicts_adverse": true,
+      "secondary_predicts_adverse": true
+    },
+    {
+      "id": "EM-14",
+      "outcome": "Adverse audit or compliance finding",
+      "adverse": true,
+      "engine": "HOLD",
+      "findings": 179,
+      "gap_codes": [
+        "AUTHORITY_TEXT_NOT_SUPPLIED",
+        "CONCLUSION_ON_UNRESOLVED_BASIS"
+      ],
+      "all_codes": [
+        "UNSUPPORTED_CLAIM",
+        "UNTRACEABLE_AUTHORITY",
+        "REASONING_NOT_TRACED",
+        "UNMAPPED_ASSERTION",
+        "AUTHORITY_TEXT_NOT_SUPPLIED",
+        "CONCLUSION_ON_UNRESOLVED_BASIS"
+      ],
+      "primary_predicts_adverse": true,
+      "secondary_predicts_adverse": true
+    },
+    {
+      "id": "EM-17",
+      "outcome": "Did not survive review",
+      "adverse": true,
+      "engine": "HOLD",
+      "findings": 121,
+      "gap_codes": [
+        "CONCLUSION_ON_UNRESOLVED_BASIS"
+      ],
+      "all_codes": [
+        "UNSUPPORTED_CLAIM",
+        "UNTRACEABLE_AUTHORITY",
+        "REASONING_NOT_TRACED",
+        "UNMAPPED_ASSERTION",
+        "CONCLUSION_ON_UNRESOLVED_BASIS"
+      ],
+      "primary_predicts_adverse": true,
+      "secondary_predicts_adverse": true
+    }
+  ]
+}
