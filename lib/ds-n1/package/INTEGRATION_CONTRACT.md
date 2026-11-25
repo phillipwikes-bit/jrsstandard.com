@@ -46,7 +46,7 @@ All functions are pure and deterministic for the same inputs. A session is the r
 
 **Status:** `READY_FOR_HUMAN_FINALIZATION` (no unresolved finding under these rules; not sufficiency or approval), `REVIEW_REQUIRED`, `HOLD`, `INCOMPLETE`, `REFUSED_SCOPE`, `ERROR`.
 
-**Findings** carry `finding_id`, `claim_id`, `code`, `severity` (`critical`, `review` or `blocking`), `condition`, `explanation`, `question`, source location and `status`. Codes: `UNSUPPORTED_CLAIM`, `UNTRACEABLE_AUTHORITY`, `REASONING_NOT_TRACED`, `UNMAPPED_ASSERTION`, `RELEVANCE_NOT_ESTABLISHED`, `SOURCE_MISSING`, `QUOTE_NOT_FOUND`, `NEGATION_CONFLICT`, `SUBJECT_MISMATCH`, `INSTRUCTION_LIKE_CONTENT`, `QUALIFICATION_OMITTED`, `CONTRARY_CLAUSE_OMITTED`, `CLAIM_NOT_IN_RECORD`, `CLAIM_LOCATION_AMBIGUOUS`, `ACTOR_NOT_ESTABLISHED`, `EVENT_ROLE_CONFUSION`, `DATE_MISMATCH`, `DATE_NOT_ESTABLISHED`, `DATE_ROLE_UNVERIFIED`.
+**Findings** carry `finding_id`, `claim_id`, `code`, `severity` (`critical`, `review` or `blocking`), `condition`, `explanation`, `question`, source location and `status`. Codes: `UNSUPPORTED_CLAIM`, `UNTRACEABLE_AUTHORITY`, `REASONING_NOT_TRACED`, `UNMAPPED_ASSERTION`, `RELEVANCE_NOT_ESTABLISHED`, `SOURCE_MISSING`, `QUOTE_NOT_FOUND`, `NEGATION_CONFLICT`, `SUBJECT_MISMATCH`, `INSTRUCTION_LIKE_CONTENT`, `QUALIFICATION_OMITTED`, `CONTRARY_CLAUSE_OMITTED`, `CLAIM_NOT_IN_RECORD`, `CLAIM_LOCATION_AMBIGUOUS`, `ACTOR_NOT_ESTABLISHED`, `EVENT_ROLE_CONFUSION`, `DATE_MISMATCH`, `DATE_NOT_ESTABLISHED`, `DATE_ROLE_UNVERIFIED`; and, from 25 November 2026, the practitioner-gap findings `RECOMMENDATION_STATED_AS_REQUIREMENT`, `CONCLUSORY_ASSESSMENT`, `AUTHORITY_TEXT_NOT_SUPPLIED`, `CONCLUSION_ON_UNRESOLVED_BASIS` and `BROAD_ACCESS_NOT_JUSTIFIED` (all `review` severity).
 
 **Cognitive lenses** (read-only, never change a finding or status): observation versus inference, evidence, alternatives and state questions per finding; plus `unsupported_certainty`, `premature_closure` and `alternative_interpretation` observations.
 
@@ -56,7 +56,7 @@ All functions are pure and deterministic for the same inputs. A session is the r
 
 **EU AI Act lens** (read-only): `euAiActLens(record)` returns `{ applicable, high_risk, checks: [{ id, article, requirement, status, record_sentence, source, question, flag? }], summary, notice }`; `status` is `SHOWN_SUPPORTED`, `STATED_UNSUPPORTED`, `NOT_SHOWN` or `NOT_APPLICABLE`. Not applicable to record types other than AI authorizations.
 
-**Safeguards and templates** (read-only): `buildSafeguards(state)` from `cognitive-safeguards.mjs` returns `{ lenses, controls }`: 14 lenses and the eight CC-* controls, each with a trigger, a question, recommended reviewer actions and, for CC-ESCALATE, a route. `runDetectionTemplates(state)` from `detection-templates.mjs` returns hits for the 37 named templates, each marked `finding`, `observation` or `advisory`; advisory hits never change status. Coverage: `FEATURE_COVERAGE.md`.
+**Safeguards and templates** (read-only): `buildSafeguards(state)` from `cognitive-safeguards.mjs` returns `{ lenses, controls }`: 14 lenses and the eight CC-* controls, each with a trigger, a question, recommended reviewer actions and, for CC-ESCALATE, a route. `runDetectionTemplates(state)` from `detection-templates.mjs` returns hits for the 43 named templates, each marked `finding`, `observation` or `advisory`; advisory hits never change status. Coverage: `FEATURE_COVERAGE.md`.
 
 ## 4. Reviewer actions
 

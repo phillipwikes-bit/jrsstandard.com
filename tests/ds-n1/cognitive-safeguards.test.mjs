@@ -21,7 +21,12 @@ test('fourteen lenses and eight controls are defined, each with a question or pu
 
 test('supported records raise no lens and no control', () => {
   for (const id of ['P01', 'P02', 'P03', 'P04', 'P05']) assert.deepEqual(buildSafeguards(st(fx('fixtures', id))), { lenses: [], controls: [] }, id);
-  for (const id of ['AUTH-P01', 'INV-P01', 'DISC-P01', 'MEMO-P01']) assert.deepEqual(buildSafeguards(st(fx('fixtures-partner', id))), { lenses: [], controls: [] }, id);
+  for (const id of ['INV-P01', 'DISC-P01', 'MEMO-P01']) assert.deepEqual(buildSafeguards(st(fx('fixtures-partner', id))), { lenses: [], controls: [] }, id);
+  // 2026-11-25: AUTH-P01 cites a policy it does not supply (now a finding); with the policy supplied it raises nothing.
+  const auth = fx('fixtures-partner', 'AUTH-P01');
+  auth.sources.push({ source_id: 'S9', title: 'Finance automation policy, section 4', version: 'v3', text: 'Section 4. The finance director may authorize an AI assistant to send routine customer messages, with human sign-off of each batch.' });
+  assert.deepEqual(buildSafeguards(st(auth)), { lenses: [], controls: [] }, 'AUTH-P01 with its policy');
+  assert.ok(buildSafeguards(st(fx('fixtures-partner', 'AUTH-P01'))).controls.some((c) => c.trigger === 'AUTHORITY_TEXT_NOT_SUPPLIED'));
 });
 
 test('finding-based controls: negation, dates, missing, basis, and the request facet of CC-INTENT', () => {
@@ -56,9 +61,10 @@ test('CC-WORDS: a recommendation restated as a requirement', () => {
   r.sources.push({ source_id: 'S4', title: 'Policy note PN-2', version: 'v1', text: 'Policy note PN-2. Human sign-off on each reminder batch is recommended.', events: [] });
   addClaim(r, { claim_id: 'C9', kind: 'fact', quote: 'Human sign-off on each reminder batch is required.',
     citations: [{ source_id: 'S4', quote: 'Human sign-off on each reminder batch is' }] });
-  const c = controls(st(r), 'CC-WORDS').find((x) => x.claim_id === 'C9');
-  assert.ok(c, 'expected the word-strength control');
-  assert.match(c.trigger, /recommended->required/);
+  const ws = controls(st(r), 'CC-WORDS').filter((x) => x.claim_id === 'C9');
+  assert.ok(ws.some((c) => /recommended->required/.test(c.trigger)), 'expected the word-strength control');
+  // 2026-11-25: the same pattern is now also a review finding, with its own safeguard.
+  assert.ok(ws.some((c) => c.trigger === 'RECOMMENDATION_STATED_AS_REQUIREMENT'));
 });
 
 test('causation lens: a causal claim the sources state only as sequence', () => {

@@ -114,3 +114,28 @@ test('practitioner-gap set 2 reproduces its committed result; set 1 first run is
   const first = JSON.parse(readFileSync(new URL('./PRACTITIONER_GAPS_EVAL.first-run.json', import.meta.url), 'utf8'));
   assert.deepEqual(first.gap_point_agreement, { k: 50, n: 50 });
 });
+
+test('every review finding code has a reasoning lens, a safeguard and a reviewer prompt', async () => {
+  const { RULES } = await import('../../lib/ds-n1/assess.mjs');
+  const m = await import('../../lib/ds-n1/index.mjs');
+  const { buildSafeguards } = await import('../../lib/ds-n1/cognitive-safeguards.mjs');
+  const { buildCognitiveControls } = await import('../../lib/ds-n1/cognitive-controls.mjs');
+  const r = JSON.parse(readFileSync(new URL('./practitioner-gaps-eval/records.json', import.meta.url), 'utf8'));
+  const { extractRecord: ex } = await import('../../lib/ds-n1/extract.mjs');
+  const NEW = ['RECOMMENDATION_STATED_AS_REQUIREMENT', 'CONCLUSORY_ASSESSMENT', 'AUTHORITY_TEXT_NOT_SUPPLIED', 'CONCLUSION_ON_UNRESOLVED_BASIS', 'BROAD_ACCESS_NOT_JUSTIFIED'];
+  for (const c of NEW) assert.ok(RULES[c], c);
+  const seen = new Set();
+  for (const rec of r.records) {
+    const { record, validation } = ex({ record_id: rec.id, title: rec.title, record_class: rec.class, text: rec.text, sources: rec.sources.map((s) => ({ ...s, version: 'v1' })) });
+    if (validation.status) continue;
+    const st = m.deriveState(m.openReview(record, { at: '2026-11-25T00:00:00Z' }));
+    const sg = buildSafeguards(st), cc = buildCognitiveControls(st);
+    for (const f of st.findings.filter((x) => NEW.includes(x.code))) {
+      seen.add(f.code);
+      assert.ok(sg.lenses.some((l) => l.trigger === f.code), `lens for ${f.code}`);
+      assert.ok(sg.controls.some((l) => l.trigger === f.code), `safeguard for ${f.code}`);
+      assert.ok(cc.some((p) => p.finding_id === f.finding_id), `prompt for ${f.code}`);
+    }
+  }
+  assert.ok(seen.size >= 4);
+});

@@ -10,7 +10,7 @@ Decision Spellchecker reads a written decision record, such as an authorization,
 |---|---|
 | Engine | `lib/ds-n1/*.mjs`: record validation, deterministic checks, review session and hash-chained event log, report, export and export verifier |
 | Cognitive lenses and safeguards | `cognitive-controls.mjs`, `cognitive-observations.mjs`, `cognitive-safeguards.mjs`, `reflective-guidance.mjs`, `cognitive-source-trace.mjs` |
-| Detection templates | `detection-templates.mjs` (37 named templates) |
+| Detection templates | `detection-templates.mjs` (43 named templates) |
 | Document reading | `extract.mjs` (plain text), `docx.mjs` (Word) |
 | EU AI Act lens | `eu-ai-act.mjs`; legal text and crosswalk in `package/` |
 | Omission check | `omissions.mjs` |

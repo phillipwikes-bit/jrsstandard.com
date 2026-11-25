@@ -31,7 +31,7 @@ Decision records (AI authorizations, access exceptions, investigation summaries,
 - **Practitioner study:** 30 practitioners from an international panel completed a blind review of a fictional access-exception record (47 people from 28 countries answered at least the first question); 21 of the 29 asked would not rely on it as written (95% interval 54 to 85%). The prototype's answer, locked on 19 November before anyone saw the record, passed it and matched 2 of the 75 points the practitioners raised (developer-coded). The gaps they raised most now hold a record. On two sets of new fictional records sealed before the code was changed, the new checks agreed with the key on all 50 gap points (first set) and on all 8 records (second set), where all 6 sound records reached READY. Run afterwards on the study record, the current version raises 52 of the 75 points and holds it; that figure is not evidence, because the changes were made knowing that record.
 - **EU AI Act checks:** on two sets of fictional AI authorizations whose answer keys were sealed before the code ran, 78 of 80 and 38 of 40 points agreed with the key; written by the developer, so not independent.
 - **Document reading:** 127 of 128 hand-identified claims found in 26 developer records.
-- **Engineering:** 183 automated tests pass; reports reproduce byte for byte.
+- **Engineering:** 184 automated tests pass; reports reproduce byte for byte.
 
 ## Limits, stated plainly
 
