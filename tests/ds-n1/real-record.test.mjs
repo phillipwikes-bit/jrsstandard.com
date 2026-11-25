@@ -90,3 +90,11 @@ test('paraphrase: items listed under "Not stated in the record:" are writer note
   const { record } = run(notes);
   assert.deepEqual(record.claims.map((c) => c.quote), ['On March 3, 2021, Complainant filed a formal EEO complaint.']);
 });
+test('calibration: a related but unconfirmed passage is SUPPORT_NOT_CONFIRMED (review); no related passage stays UNSUPPORTED_CLAIM (critical)', () => {
+  const src = 'On May 4, 2021, the station manager reviewed the overtime roster and the leave records for the route.';
+  const near = run('The station manager checked the overtime roster for the route in May 2021, according to the leave clerk.', src);
+  const cn = codes(near.st);
+  assert.ok(!cn.includes('UNSUPPORTED_CLAIM'), cn.join(' '));
+  const far = run('The cafeteria menu changed to vegetarian meals every Thursday afternoon.', src);
+  assert.ok(codes(far.st).includes('UNSUPPORTED_CLAIM'));
+});
