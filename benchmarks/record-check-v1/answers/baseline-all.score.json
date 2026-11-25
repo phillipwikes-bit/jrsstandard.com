@@ -1,0 +1,83 @@
+{
+  "tool": "Baseline: flag everything",
+  "A": {
+    "unchanged_records_passed": {
+      "k": 0,
+      "n": 28,
+      "rate": 0,
+      "wilson95": [
+        0,
+        0.121
+      ]
+    },
+    "altered_records_flagged": {
+      "k": 56,
+      "n": 56,
+      "rate": 1,
+      "wilson95": [
+        0.936,
+        1
+      ]
+    },
+    "dropped_dates_named": {
+      "k": 0,
+      "n": 265,
+      "rate": 0,
+      "wilson95": [
+        0,
+        0.014
+      ]
+    },
+    "dropped_speakers_named": {
+      "k": 0,
+      "n": 88,
+      "rate": 0,
+      "wilson95": [
+        0,
+        0.042
+      ]
+    }
+  },
+  "B": {
+    "lossier_draft_identified": {
+      "k": 26,
+      "n": 60,
+      "rate": 0.433,
+      "wilson95": [
+        0.316,
+        0.559
+      ]
+    }
+  },
+  "C": {
+    "points_agreeing_with_key": {
+      "k": 46,
+      "n": 120,
+      "rate": 0.383,
+      "wilson95": [
+        0.301,
+        0.473
+      ]
+    },
+    "points_wrongly_credited_as_backed": 0
+  },
+  "D": {
+    "not_affirmed_if_flagged": {
+      "k": 27,
+      "n": 183,
+      "rate": 0.148,
+      "wilson95": [
+        0.103,
+        0.206
+      ]
+    },
+    "not_affirmed_if_not_flagged": {
+      "k": 0,
+      "n": 0,
+      "rate": null,
+      "wilson95": null
+    },
+    "flagged_share": 1,
+    "fisher_p": 1
+  }
+}

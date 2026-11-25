@@ -1,0 +1,10 @@
+{
+  "run_1_sha256": "5f0db08d4c51b51f84a65d3ad2a59d2bc680e2988638154c8f14d9afd20e4052",
+  "run_2_sha256": "5f0db08d4c51b51f84a65d3ad2a59d2bc680e2988638154c8f14d9afd20e4052",
+  "identical": true,
+  "network_blocked_during_runs": true,
+  "completed_without_network": true,
+  "runtime_files_checked": 21,
+  "runtime_files_naming_a_network_api": [],
+  "note": "serve.mjs (the optional local web server for the pages) is excluded: it listens on localhost and is not used by the checks."
+}

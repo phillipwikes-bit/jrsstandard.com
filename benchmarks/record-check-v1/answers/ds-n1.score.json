@@ -1,0 +1,86 @@
+{
+  "tool": "Decision Spellcheck 0.7.0-dev",
+  "A": {
+    "unchanged_records_passed": {
+      "k": 28,
+      "n": 28,
+      "rate": 1,
+      "wilson95": [
+        0.879,
+        1
+      ]
+    },
+    "altered_records_flagged": {
+      "k": 56,
+      "n": 56,
+      "rate": 1,
+      "wilson95": [
+        0.936,
+        1
+      ]
+    },
+    "dropped_dates_named": {
+      "k": 238,
+      "n": 265,
+      "rate": 0.898,
+      "wilson95": [
+        0.856,
+        0.929
+      ]
+    },
+    "dropped_speakers_named": {
+      "k": 61,
+      "n": 88,
+      "rate": 0.693,
+      "wilson95": [
+        0.59,
+        0.78
+      ]
+    }
+  },
+  "B": {
+    "lossier_draft_identified": {
+      "k": 56,
+      "n": 60,
+      "rate": 0.933,
+      "wilson95": [
+        0.841,
+        0.974
+      ]
+    }
+  },
+  "C": {
+    "points_agreeing_with_key": {
+      "k": 118,
+      "n": 120,
+      "rate": 0.983,
+      "wilson95": [
+        0.941,
+        0.995
+      ]
+    },
+    "points_wrongly_credited_as_backed": 0
+  },
+  "D": {
+    "not_affirmed_if_flagged": {
+      "k": 24,
+      "n": 107,
+      "rate": 0.224,
+      "wilson95": [
+        0.156,
+        0.312
+      ]
+    },
+    "not_affirmed_if_not_flagged": {
+      "k": 3,
+      "n": 76,
+      "rate": 0.039,
+      "wilson95": [
+        0.014,
+        0.11
+      ]
+    },
+    "flagged_share": 0.585,
+    "fisher_p": 0.000503
+  }
+}
