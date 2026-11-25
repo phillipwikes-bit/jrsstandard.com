@@ -54,3 +54,14 @@ test('the lens makes no network calls and imports nothing outside DS-N1', () => 
   const src = readFileSync(new URL('../../lib/ds-n1/eu-ai-act.mjs', import.meta.url), 'utf8');
   assert.doesNotMatch(src, /\bfetch\(|XMLHttpRequest|from 'node:/);
 });
+
+test('every article the lens cites is stored verbatim from the official consolidated text', () => {
+  const off = JSON.parse(readFileSync(new URL('../../lib/ds-n1/package/eu-ai-act-official-text.json', import.meta.url), 'utf8'));
+  assert.match(off.source, /as at 27 July 2026/);
+  assert.match(off.text['Article 4(1)'], /support the development of AI literacy/);
+  assert.match(off.text['Article 26(6) first subparagraph'], /at least six months/);
+  assert.match(off.text['Article 14(4)(e)'], /stop/);
+  assert.match(off.text['Article 113(c)'], /2 December 2027/);
+  const lit = EU_CHECKS.find((c) => c.id === 'ai_literacy');
+  assert.match(lit.requirement, /support the development of AI literacy/);
+});

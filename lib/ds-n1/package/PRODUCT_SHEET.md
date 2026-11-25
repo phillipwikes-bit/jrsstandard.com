@@ -6,7 +6,7 @@ Date: 25 November 2026. Status: working prototype, under independent evaluation.
 
 ## The problem
 
-Organisations using high-risk AI systems in the EU must be able to show human oversight by trained people, a way to override or stop the system, use in line with the provider's instructions, monitoring, logs kept for at least six months, and that workers and affected people were told (Regulation (EU) 2024/1689, Articles 4, 14 and 26). The obligations for Annex III systems are reported to apply from 2 December 2027. The record that authorises the system is where a regulator, auditor or court will look first, and authorisation records routinely state that a safeguard exists without any document behind it, or leave it out altogether.
+Organisations using high-risk AI systems in the EU must be able to show human oversight by trained people, a way to override or stop the system, use in line with the provider's instructions, monitoring, logs kept for at least six months, and that workers and affected people were told (Regulation (EU) 2024/1689, Articles 4, 14 and 26). The obligations for Annex III systems apply from 2 December 2027 (Article 113(c), as amended by the Digital Omnibus; European Commission consolidated text as at 27 July 2026). The record that authorises the system is where a regulator, auditor or court will look first, and authorisation records routinely state that a safeguard exists without any document behind it, or leave it out altogether.
 
 ## What it does
 
@@ -28,14 +28,14 @@ Organisations using high-risk AI systems in the EU must be able to show human ov
 - **EU AI Act lens:** on two sets of fictional AI authorisation records whose answer keys were sealed before the code was run, the lens agreed with the key on 78 of 80 points (first set) and 38 of 40 (second set, after two fixes; 95% interval 84 to 99%), and in the second set credited no point that the record did not back up. Both sets were written by the developer, so these show the lens works as designed, not how it performs on others' records (`tests/ds-n1/EU_AI_ACT_EVAL.json`, `EU_AI_ACT_EVAL_2.json`).
 - **Practitioner study (in progress):** 29 practitioners from an international panel completed a blind review of a fictional decision record; 20 of the 28 asked would not rely on it as written (95% interval 53 to 85%), while the prototype's locked answer passed it. This is reported as a finding.
 - **Document reading:** on 26 developer test records it found 127 of 128 hand-identified claims (`tests/ds-n1/EXTRACT_EVAL.json`).
-- **Engineering:** 177 automated tests pass; reports reproduce byte for byte.
+- **Engineering:** 178 automated tests pass; reports reproduce byte for byte.
 
 ## Limits, stated plainly
 
 - Fictional records only today; real-record use is a licensing decision.
 - Records reading as housing, lending, insurance, medical or legal-outcome material are refused, which today excludes some Annex III areas (for example creditworthiness); recruitment, education, workplace and public-service records are covered.
 - Word-pattern checks can miss a point phrased in unexpected words (for example "checked by the safety officer" is not yet read as oversight).
-- Article wording was checked against reproduced excerpts of the official text, not EUR-Lex directly; dates follow reported Digital Omnibus changes.
+- Article wording was checked against the European Commission's consolidated text (as at 27 July 2026) and stored word for word; the Official Journal PDF itself was not read.
 - Reads plain text and Word (.docx) body text; PDF needs converting first.
 
 ## Ways to use it
