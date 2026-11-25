@@ -85,3 +85,8 @@ test('dropped anchors: dates and speakers the source gives but the record never 
   assert.ok(got.includes('date:2021-03-03') && got.includes('speaker:s1'), got.join(' '));
   assert.deepEqual(findDroppedAnchors(run(SRC).record), []);
 });
+test('paraphrase: items listed under "Not stated in the record:" are writer notes; items under other lead-ins are claims', () => {
+  const notes = '# Summary\n\nNot stated in the record:\n- Any ROI page numbers\n- The date of the final order\n\nOn the merits:\n- On March 3, 2021, Complainant filed a formal EEO complaint.';
+  const { record } = run(notes);
+  assert.deepEqual(record.claims.map((c) => c.quote), ['On March 3, 2021, Complainant filed a formal EEO complaint.']);
+});
