@@ -59,3 +59,29 @@ test('policy check: reliance on an unsupplied policy is still raised; a report t
   const notDone = run(SRC + ' Complainant alleged that the review was not conducted in accordance with Agency policy.');
   assert.ok(!codes(notDone.st).includes('AUTHORITY_TEXT_NOT_SUPPLIED'));
 });
+
+import { findDroppedAnchors } from '../../lib/ds-n1/omissions.mjs';
+test('paraphrase: a writer note about the record is listed, not checked as a claim', () => {
+  const { record } = run(SRC + ' The record gives no date for the final order.');
+  assert.ok(!record.claims.some((c) => /gives no date/.test(c.quote)));
+});
+test('paraphrase: structured notes are read bullet by bullet; headings are skipped', () => {
+  const notes = '# Summary\n\n- On March 3, 2021, Complainant filed a formal EEO complaint.\n- **S1:** S1 stated that she assigned the route on April 9, 2021, because of staffing.';
+  const { record } = run(notes);
+  assert.deepEqual(record.claims.map((c) => c.quote), ['On March 3, 2021, Complainant filed a formal EEO complaint.', 'S1 stated that she assigned the route on April 9, 2021, because of staffing.']);
+});
+test('paraphrase: "denial of" matches "was denied"; a negation on extra words is not a conflict', () => {
+  const src = 'Complainant alleged that she was denied paid leave on August 3, 2021. S1 demanded that Complainant work twelve-hour shifts.';
+  const a = run('Denial of paid leave on August 3, 2021.', src);
+  assert.ok(!codes(a.st).includes('NEGATION_CONFLICT'));
+  const b = run('S1 demanded that Complainant work twelve-hour shifts, which she refused.', src);
+  assert.ok(!codes(b.st).includes('NEGATION_CONFLICT'));
+  const c = run('S1 did not demand that Complainant work twelve-hour shifts.', src);
+  assert.ok(codes(c.st).includes('NEGATION_CONFLICT'));
+});
+test('dropped anchors: dates and speakers the source gives but the record never mentions', () => {
+  const { record } = run('Complainant filed a formal EEO complaint.');
+  const got = findDroppedAnchors(record).map((x) => `${x.kind}:${x.value}`);
+  assert.ok(got.includes('date:2021-03-03') && got.includes('speaker:s1'), got.join(' '));
+  assert.deepEqual(findDroppedAnchors(run(SRC).record), []);
+});

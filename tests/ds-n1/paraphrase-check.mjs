@@ -4,7 +4,7 @@
 import { readFileSync } from 'node:fs';
 import { extractRecord } from '../../lib/ds-n1/extract.mjs';
 import { openReview, deriveState } from '../../lib/ds-n1/index.mjs';
-import { findOmissions } from '../../lib/ds-n1/omissions.mjs';
+import { findOmissions, findDroppedAnchors } from '../../lib/ds-n1/omissions.mjs';
 const [base, drafter] = process.argv.slice(2);
 const DROP = new Set(['DATE_OMITTED', 'SPEAKER_OMITTED']);
 function run(text, src) {
@@ -12,7 +12,7 @@ function run(text, src) {
   if (validation.status) return null;
   const st = deriveState(openReview(record, { at: '2026-11-25T00:00:00Z' }));
   const open = st.findings.filter((f) => f.status === 'OPEN');
-  let om = []; try { om = findOmissions(record) || []; } catch { om = []; }
+  let om = []; try { om = [...(findOmissions(record) || []), ...(findDroppedAnchors(record) || [])]; } catch { om = []; }
   return { status: st.status, claims: record.claims.length, open: open.length, critical: open.filter((f) => f.severity === 'critical').length, dropped: open.filter((f) => DROP.has(f.code)).length + om.length, codes: open.map((f) => f.code) };
 }
 const rows = [];
