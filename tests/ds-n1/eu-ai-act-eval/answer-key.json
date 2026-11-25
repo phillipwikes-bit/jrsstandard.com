@@ -1,0 +1,21 @@
+{
+  "set": "eu-ai-act-eval-1",
+  "codes": "S = stated in the record and supported by a source; U = stated in the record but no source supports it; N = not stated in the record; NA = not applicable to this record",
+  "checks": ["risk_classification", "instructions_for_use", "human_oversight", "oversight_competence", "stop_or_override", "monitoring", "log_retention", "workers_informed", "affected_persons_informed", "ai_literacy"],
+  "truth": {
+    "E1": { "risk_classification": "S", "instructions_for_use": "S", "human_oversight": "S", "oversight_competence": "S", "stop_or_override": "S", "monitoring": "S", "log_retention": "S", "workers_informed": "NA", "affected_persons_informed": "NA", "ai_literacy": "S" },
+    "E2": { "risk_classification": "S", "instructions_for_use": "N", "human_oversight": "U", "oversight_competence": "N", "stop_or_override": "N", "monitoring": "U", "log_retention": "U-SHORT", "workers_informed": "NA", "affected_persons_informed": "N", "ai_literacy": "N" },
+    "E3": { "risk_classification": "S", "instructions_for_use": "N", "human_oversight": "N", "oversight_competence": "N", "stop_or_override": "U", "monitoring": "N", "log_retention": "N", "workers_informed": "NA", "affected_persons_informed": "NA", "ai_literacy": "U" },
+    "E4": { "risk_classification": "S", "instructions_for_use": "N", "human_oversight": "S", "oversight_competence": "N", "stop_or_override": "S", "monitoring": "S", "log_retention": "S", "workers_informed": "S", "affected_persons_informed": "NA", "ai_literacy": "N" },
+    "E5": { "risk_classification": "N", "instructions_for_use": "N", "human_oversight": "S", "oversight_competence": "N", "stop_or_override": "N", "monitoring": "N", "log_retention": "N", "workers_informed": "NA", "affected_persons_informed": "NA", "ai_literacy": "N" },
+    "E6": { "risk_classification": "S", "instructions_for_use": "S", "human_oversight": "S", "oversight_competence": "S", "stop_or_override": "S", "monitoring": "S", "log_retention": "S", "workers_informed": "NA", "affected_persons_informed": "S", "ai_literacy": "S" },
+    "E7": { "risk_classification": "U", "instructions_for_use": "N", "human_oversight": "N", "oversight_competence": "N", "stop_or_override": "S", "monitoring": "N", "log_retention": "N", "workers_informed": "NA", "affected_persons_informed": "NA", "ai_literacy": "N" },
+    "E8": { "risk_classification": "U", "instructions_for_use": "N", "human_oversight": "S", "oversight_competence": "N", "stop_or_override": "N", "monitoring": "S", "log_retention": "U", "workers_informed": "NA", "affected_persons_informed": "S", "ai_literacy": "N" }
+  },
+  "notes": {
+    "U-SHORT": "Log retention stated (three months) but shorter than the six-month minimum and unsupported; the expected output is a flag that the stated period is under six months.",
+    "monitoring": "Coded S where a person reviews or oversees outputs as part of normal operation and a source says so.",
+    "E1 ai_literacy": "Coded S because the oversight staff are stated as trained on the assistant; a stricter coder may code N.",
+    "E4 workers_informed": "Applicable because the system plans work for staff."
+  }
+}
