@@ -1,0 +1,50 @@
+{
+  "tool": "Baseline: number diff",
+  "E": {
+    "unchanged_records_passed": {
+      "k": 80,
+      "n": 80,
+      "rate": 1,
+      "wilson95": [
+        0.954,
+        1
+      ]
+    },
+    "of_which_figure_written_another_way_passed": {
+      "k": 40,
+      "n": 40,
+      "rate": 1,
+      "wilson95": [
+        0.912,
+        1
+      ]
+    },
+    "altered_records_flagged": {
+      "k": 16,
+      "n": 40,
+      "rate": 0.4,
+      "wilson95": [
+        0.263,
+        0.554
+      ]
+    },
+    "wrong_figure_named": {
+      "k": 16,
+      "n": 40,
+      "rate": 0.4,
+      "wilson95": [
+        0.263,
+        0.554
+      ]
+    },
+    "altered_with_a_figure_from_elsewhere_in_the_decision_flagged": {
+      "k": 2,
+      "n": 16,
+      "rate": 0.125,
+      "wilson95": [
+        0.035,
+        0.36
+      ]
+    }
+  }
+}

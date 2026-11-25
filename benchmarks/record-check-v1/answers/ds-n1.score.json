@@ -20,21 +20,21 @@
       ]
     },
     "dropped_dates_named": {
-      "k": 238,
+      "k": 244,
       "n": 265,
-      "rate": 0.898,
+      "rate": 0.921,
       "wilson95": [
-        0.856,
-        0.929
+        0.882,
+        0.948
       ]
     },
     "dropped_speakers_named": {
-      "k": 61,
+      "k": 80,
       "n": 88,
-      "rate": 0.693,
+      "rate": 0.909,
       "wilson95": [
-        0.59,
-        0.78
+        0.831,
+        0.953
       ]
     }
   },
@@ -82,5 +82,110 @@
     },
     "flagged_share": 0.585,
     "fisher_p": 0.000503
+  },
+  "E": {
+    "unchanged_records_passed": {
+      "k": 80,
+      "n": 80,
+      "rate": 1,
+      "wilson95": [
+        0.954,
+        1
+      ]
+    },
+    "of_which_figure_written_another_way_passed": {
+      "k": 40,
+      "n": 40,
+      "rate": 1,
+      "wilson95": [
+        0.912,
+        1
+      ]
+    },
+    "altered_records_flagged": {
+      "k": 39,
+      "n": 40,
+      "rate": 0.975,
+      "wilson95": [
+        0.871,
+        0.996
+      ]
+    },
+    "wrong_figure_named": {
+      "k": 39,
+      "n": 40,
+      "rate": 0.975,
+      "wilson95": [
+        0.871,
+        0.996
+      ]
+    },
+    "altered_with_a_figure_from_elsewhere_in_the_decision_flagged": {
+      "k": 15,
+      "n": 16,
+      "rate": 0.938,
+      "wilson95": [
+        0.717,
+        0.989
+      ]
+    }
+  },
+  "F": {
+    "good_drafts_without_serious_flag": {
+      "k": 16,
+      "n": 60,
+      "rate": 0.267,
+      "wilson95": [
+        0.171,
+        0.39
+      ]
+    },
+    "changed_sentence_flagged_as_serious": {
+      "k": 42,
+      "n": 60,
+      "rate": 0.7,
+      "wilson95": [
+        0.575,
+        0.801
+      ]
+    },
+    "both_in_the_same_pair": {
+      "k": 11,
+      "n": 60,
+      "rate": 0.183,
+      "wilson95": [
+        0.106,
+        0.299
+      ]
+    },
+    "changed_sentence_flagged_by_kind": {
+      "date": {
+        "k": 24,
+        "n": 34,
+        "rate": 0.706,
+        "wilson95": [
+          0.538,
+          0.832
+        ]
+      },
+      "negation": {
+        "k": 12,
+        "n": 20,
+        "rate": 0.6,
+        "wilson95": [
+          0.387,
+          0.781
+        ]
+      },
+      "figure": {
+        "k": 6,
+        "n": 6,
+        "rate": 1,
+        "wilson95": [
+          0.61,
+          1
+        ]
+      }
+    }
   }
 }

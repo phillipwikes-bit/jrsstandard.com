@@ -13,7 +13,7 @@ const review = (text, sources, cls = 'workplace_investigation_report') => {
   if (validation.status) return { record: null, state: null };
   return { record, state: deriveState(openReview(record, { at: '2026-11-25T00:00:00Z' })) };
 };
-const out = { tool: `Decision Spellcheck ${CANDIDATE.version || ''}`.trim(), A: {}, B: {}, C: {}, D: {} };
+const out = { tool: `Decision Spellcheck ${CANDIDATE.version || ''}`.trim(), A: {}, B: {}, C: {}, D: {}, E: {}, F: {} };
 for (const it of data('a').items) {
   const { record, state } = review(it.record, [{ text: it.source }]);
   const open = state ? state.findings.filter((f) => f.status === 'OPEN') : [];
@@ -35,4 +35,17 @@ for (const it of data('c').items) {
 }
 // Track D: the rule fixed on the development split before the test split was scored (tests/ds-n1/outcome-holdout/RULES.md, primary rule).
 for (const it of data('d').test) out.D[it.id] = { flag: !/without a hearing|summary judgment/.test(it.background.toLowerCase()) };
+// Track E: figures (added 2026-11-25).
+for (const it of data('e').items) {
+  const { state } = review(it.record, [{ text: it.source }]);
+  const figs = state ? state.findings.filter((f) => f.status === 'OPEN' && (f.code === 'NUMBER_MISMATCH' || f.code === 'NUMBER_NOT_ESTABLISHED')) : [];
+  out.E[it.id] = { flagged: figs.length > 0, wrong_figures: [...new Set(figs.map((f) => f.evidence.claim_figure.text))] };
+}
+// Track F: good AI drafts and the same drafts with one error (added 2026-11-25).
+for (const it of data('f').items) {
+  const { record, state } = review(it.record, [{ text: it.source }]);
+  const crit = state ? state.findings.filter((f) => f.status === 'OPEN' && f.severity === 'critical') : [];
+  const quotes = new Set(); for (const f of crit) { const c = record && record.claims.find((x) => x.claim_id === f.claim_id); if (c) quotes.add(c.quote); }
+  out.F[it.id] = { serious: crit.length > 0, flagged_sentences: [...quotes] };
+}
 console.log(JSON.stringify(out));

@@ -1,0 +1,108 @@
+{
+ "note": "Decision Spellcheck scores on tracks E and F before any change was made for them (25 November 2026). Later numbers in README.md are on seen material.",
+ "E": {
+  "unchanged_records_passed": {
+   "k": 80,
+   "n": 80,
+   "rate": 1,
+   "wilson95": [
+    0.954,
+    1
+   ]
+  },
+  "of_which_figure_written_another_way_passed": {
+   "k": 40,
+   "n": 40,
+   "rate": 1,
+   "wilson95": [
+    0.912,
+    1
+   ]
+  },
+  "altered_records_flagged": {
+   "k": 33,
+   "n": 40,
+   "rate": 0.825,
+   "wilson95": [
+    0.68,
+    0.913
+   ]
+  },
+  "wrong_figure_named": {
+   "k": 33,
+   "n": 40,
+   "rate": 0.825,
+   "wilson95": [
+    0.68,
+    0.913
+   ]
+  },
+  "altered_with_a_figure_from_elsewhere_in_the_decision_flagged": {
+   "k": 10,
+   "n": 16,
+   "rate": 0.625,
+   "wilson95": [
+    0.386,
+    0.815
+   ]
+  }
+ },
+ "F": {
+  "good_drafts_without_serious_flag": {
+   "k": 11,
+   "n": 60,
+   "rate": 0.183,
+   "wilson95": [
+    0.106,
+    0.299
+   ]
+  },
+  "changed_sentence_flagged_as_serious": {
+   "k": 21,
+   "n": 60,
+   "rate": 0.35,
+   "wilson95": [
+    0.242,
+    0.476
+   ]
+  },
+  "both_in_the_same_pair": {
+   "k": 3,
+   "n": 60,
+   "rate": 0.05,
+   "wilson95": [
+    0.017,
+    0.137
+   ]
+  },
+  "changed_sentence_flagged_by_kind": {
+   "date": {
+    "k": 2,
+    "n": 34,
+    "rate": 0.059,
+    "wilson95": [
+     0.016,
+     0.191
+    ]
+   },
+   "negation": {
+    "k": 13,
+    "n": 20,
+    "rate": 0.65,
+    "wilson95": [
+     0.433,
+     0.819
+    ]
+   },
+   "figure": {
+    "k": 6,
+    "n": 6,
+    "rate": 1,
+    "wilson95": [
+     0.61,
+     1
+    ]
+   }
+  }
+ }
+}

@@ -79,5 +79,110 @@
     },
     "flagged_share": 1,
     "fisher_p": 1
+  },
+  "E": {
+    "unchanged_records_passed": {
+      "k": 0,
+      "n": 80,
+      "rate": 0,
+      "wilson95": [
+        0,
+        0.046
+      ]
+    },
+    "of_which_figure_written_another_way_passed": {
+      "k": 0,
+      "n": 40,
+      "rate": 0,
+      "wilson95": [
+        0,
+        0.088
+      ]
+    },
+    "altered_records_flagged": {
+      "k": 40,
+      "n": 40,
+      "rate": 1,
+      "wilson95": [
+        0.912,
+        1
+      ]
+    },
+    "wrong_figure_named": {
+      "k": 0,
+      "n": 40,
+      "rate": 0,
+      "wilson95": [
+        0,
+        0.088
+      ]
+    },
+    "altered_with_a_figure_from_elsewhere_in_the_decision_flagged": {
+      "k": 16,
+      "n": 16,
+      "rate": 1,
+      "wilson95": [
+        0.806,
+        1
+      ]
+    }
+  },
+  "F": {
+    "good_drafts_without_serious_flag": {
+      "k": 0,
+      "n": 60,
+      "rate": 0,
+      "wilson95": [
+        0,
+        0.06
+      ]
+    },
+    "changed_sentence_flagged_as_serious": {
+      "k": 60,
+      "n": 60,
+      "rate": 1,
+      "wilson95": [
+        0.94,
+        1
+      ]
+    },
+    "both_in_the_same_pair": {
+      "k": 0,
+      "n": 60,
+      "rate": 0,
+      "wilson95": [
+        0,
+        0.06
+      ]
+    },
+    "changed_sentence_flagged_by_kind": {
+      "date": {
+        "k": 34,
+        "n": 34,
+        "rate": 1,
+        "wilson95": [
+          0.898,
+          1
+        ]
+      },
+      "negation": {
+        "k": 20,
+        "n": 20,
+        "rate": 1,
+        "wilson95": [
+          0.839,
+          1
+        ]
+      },
+      "figure": {
+        "k": 6,
+        "n": 6,
+        "rate": 1,
+        "wilson95": [
+          0.61,
+          1
+        ]
+      }
+    }
   }
 }
