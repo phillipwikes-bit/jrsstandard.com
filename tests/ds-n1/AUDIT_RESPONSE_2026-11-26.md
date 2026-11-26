@@ -16,3 +16,11 @@ The audit was run against commit c73a55d4. Each finding was checked against the 
 | **P2** Claims wider than the evidence | Confirmed for "checks every claim", "nothing leaves the building", "every result names ... the document sentence", "where a regulator will look first", "90 decisions never used before" | Product sheet narrowed to what was tested | Fixed. A single claims register tied to each commit: in progress (this file and `tests/ds-n1/EVIDENCE_INDEX.md`) |
 | **P2** Rights, ownership, commercial validation | Not something code can settle | Unchanged | **Needs the owner and counsel** |
 | Browser and iPhone could not be run by the auditor | Here Chromium runs: all page checks pass on six emulated screens | No change | A real-phone test still **needs a person** |
+
+## Follow-up, 26 November: no legal adviser available
+
+The owner has no legal adviser. What was done instead:
+
+- **Contributor deletion path (B-019):** a read-only count of the production database found no row matching any deletion rule (37 confirmations, 300 link opens, 1 reviewer evaluation, 1,145 pilot reads, none targeted). The deletion code was removed from `api/contributor.js` and the same pattern from `api/register.js`, with a guard against its return. Prepared as draft pull request #242 on the site repository; merging it deploys it, which is the owner's step.
+- **Public participant files (B-018):** making the repository private is reversible and needs no adviser; it is a setting only the owner can change (GitHub: Settings, General, Danger Zone, Change visibility). Nothing is deleted and no history rewritten, so the record of what was exposed is kept.
+- **EU AI Act wording:** without a legal review, the lens says only what the record shows and what the quoted official text says. It never states that anyone complies, every legal passage is stored word for word from the Commission's consolidated text, and unsettled cases are marked for review. The European Commission's AI Act Service Desk answers questions on the Act free of charge and is the place to check any wording before external use.
