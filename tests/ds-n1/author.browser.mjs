@@ -22,7 +22,7 @@ const RECORD = 'Bluefin Metrics requested SFTP access to the billing export on 2
 const SOURCE = 'Ticket T-551. Bluefin Metrics requested SFTP access to the billing export on 2026-08-04.';
 
 try {
-  for (const [label, opts] of [['desktop', { viewport: { width: 1366, height: 900 }, acceptDownloads: true }], ['iphone-emulated', { ...devices['iPhone 13'], acceptDownloads: true }]]) {
+  for (const [label, opts] of [['desktop', { viewport: { width: 1366, height: 900 }, acceptDownloads: true }], ['iphone-emulated', { ...devices['iPhone 13'], acceptDownloads: true }], ['android-small-emulated', { ...devices['Moto G4'], acceptDownloads: true }], ['android-narrow-emulated', { ...devices['Galaxy S9+'], acceptDownloads: true }], ['iphone-se-emulated', { ...devices['iPhone SE'], acceptDownloads: true }], ['tablet-emulated', { ...devices['iPad Mini'], acceptDownloads: true }]]) {
     const ctx = await browser.newContext(opts);
     const page = await ctx.newPage();
     const errors = [], external = [];

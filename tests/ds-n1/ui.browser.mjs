@@ -18,7 +18,7 @@ const results = [];
 const check = (name, fn) => fn().then(() => results.push(['ok', name]), (e) => results.push(['FAIL', name, e.message]));
 
 try {
-  for (const [label, ctxOpts] of [['desktop', { viewport: { width: 1366, height: 900 } }], ['iphone-emulated', devices['iPhone 13']]]) {
+  for (const [label, ctxOpts] of [['desktop', { viewport: { width: 1366, height: 900 } }], ['iphone-emulated', devices['iPhone 13']], ['android-small-emulated', devices['Moto G4']], ['android-narrow-emulated', devices['Galaxy S9+']], ['iphone-se-emulated', devices['iPhone SE']], ['tablet-emulated', devices['iPad Mini']]]) {
     const ctx = await browser.newContext(ctxOpts);
     const page = await ctx.newPage();
     const errors = [];

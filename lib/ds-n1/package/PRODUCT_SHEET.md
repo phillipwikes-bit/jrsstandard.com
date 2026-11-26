@@ -36,7 +36,8 @@ Decision records (AI authorizations, access exceptions, investigation summaries,
 - **Changed figures (benchmark track E, 40 passages from 32 public decisions not used before):** first run, before any change for this track, all 80 unchanged passages passed (including 40 with the figure written another way, such as "thirty" for "30") and 33 of 40 changed figures were caught and named; after fixes made from those misses, 39 of 40 (seen material). A simple number-comparison baseline caught 16 of 40.
 - **Fresh public decisions (benchmark tracks G and G2, sealed, each run once):** on 90 EEOC decisions never used before, passages copied from the decision raised no serious flag in 90 of 90, and a single inserted or removed "not", or a date moved by a day, was caught in 86 of 90. Copying with one change, not rewording.
 - **Good AI drafts (benchmark tracks F, FH and FH2):** the weak point. On the development drafts, after tuning, 29 of 60 pass without a serious flag (first run 11). **Two sealed hold-outs of fresh drafts both failed: 0 of 30 and 7 of 30 passed clean (before: 0 and 4); inserted errors caught 18 and 19 of 30, with nearly every wrong date caught and most inserted negations missed.** On the second hold-out about one statement in ten carries a serious flag; in a developer-read sample of 20, 7 were real catches of analysis the draft added and the decision does not support, 11 were false alarms.
-- **Engineering:** 229 automated tests pass; reports reproduce byte for byte.
+- **Phones:** the pages are tested in Chromium emulating six screens, from 320-pixel phones (iPhone SE, small Android) to a tablet; the code avoids features missing on iPhones before iOS 13.4. Not yet opened on a real phone or in Safari's own engine.
+- **Engineering:** 242 automated tests pass; reports reproduce byte for byte.
 
 ## Limits, stated plainly
 

@@ -50,6 +50,14 @@ Started 25 November 2026; second round 25 to 26 November with a sealed hold-out 
 | **Fresh test G2** (30 decisions, one "not" removed) | | **Passed: 30/30 clean, 29/30 caught** | |
 | Correction | The earlier "50 of 180 AI drafts free of serious flags" came from a diagnostic script hit by the one-letter-title bug fixed in round 3; with the benchmark's setup the figure is 44, before and after round 5 | | |
 
+## Phones (26 November)
+
+| Blind spot | What was done | Measured | Left |
+|---|---|---|---|
+| The pages used regular-expression lookbehind (8 places), `Object.hasOwn` and `||=`; on iPhones older than iOS 16.4 (lookbehind), 15.4 and 14 the pages could fail to load at all | Rewritten with older equivalents giving the same results; a test (`older-phones.test.mjs`, shown to fail on the old code) keeps them out. Baseline: iOS 13.4, Chrome 80 | Every benchmark result unchanged | Not run on a real older iPhone |
+| Phone tests used one screen size (iPhone 13) | Added a small Android (Moto G4, 360 px), a narrow Android (Galaxy S9+, 320 px), an iPhone SE (320 px) and a tablet (iPad Mini) to every page test | Found on 320 px screens: the reading page laid out 434 px wide so the document boxes covered the Run button (13 of 48 checks failed); the starter page the same (2 of 18); a long finding code overflowed its panel on the review screen (3 of 84). Fixed: the single column may shrink to the screen; long codes wrap. Now 60/60, 48/48, 3/3, 18/18, 84/84 | Emulated in Chromium only |
+| iPhones run Safari's engine (WebKit); every test here runs Chromium | Not possible in this environment (only Chromium is installed) | | A person opening the pages on a real iPhone and a real Android phone, about 15 minutes |
+
 ## Measured openly, not solved
 
 | Blind spot | Measure | Result |

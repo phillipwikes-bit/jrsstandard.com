@@ -21,7 +21,7 @@ const results = [];
 const check = (name, fn) => fn().then(() => results.push(['ok', name]), (e) => results.push(['FAIL', name, e.message.split('\n')[0]]));
 
 try {
-  for (const [label, opts] of [['desktop', { viewport: { width: 1366, height: 900 }, acceptDownloads: true }], ['iphone-emulated', { ...devices['iPhone 13'], acceptDownloads: true }]]) {
+  for (const [label, opts] of [['desktop', { viewport: { width: 1366, height: 900 }, acceptDownloads: true }], ['iphone-emulated', { ...devices['iPhone 13'], acceptDownloads: true }], ['android-small-emulated', { ...devices['Moto G4'], acceptDownloads: true }], ['android-narrow-emulated', { ...devices['Galaxy S9+'], acceptDownloads: true }], ['iphone-se-emulated', { ...devices['iPhone SE'], acceptDownloads: true }], ['tablet-emulated', { ...devices['iPad Mini'], acceptDownloads: true }]]) {
     const ctx = await browser.newContext(opts);
     const page = await ctx.newPage();
     const errors = [], external = [];
