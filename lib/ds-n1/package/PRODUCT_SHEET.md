@@ -11,7 +11,7 @@ Decision records (AI authorizations, access exceptions, investigation summaries,
 ## What it does
 
 1. **Reads plain documents.** The record and its documents as plain text, Word or PDF files (PDF read with no third-party code; scanned PDFs refused); nothing has to be prepared by hand.
-2. **Checks every claim against its source:** support, contradiction, missing sources, wrong dates, changed amounts, percentages and periods, dropped dates and speakers, dropped conditions, unsupported conclusions. Reads dates written the American, British, European and ISO ways, and asks about an all-number date that readers in different countries would read differently (03/04/2024). Reports a record or document not written in English instead of passing it.
+2. **Checks every claim against its source:** support, contradiction, missing sources, wrong dates, changed amounts, percentages and periods, dropped dates and speakers, dropped conditions, unsupported conclusions. Reads dates written the American, British, European and ISO ways, asks about an all-number date that readers in different countries would read differently (03/04/2024), and catches impossible dates (May 32) and dates a day or two off from the source. Reports a record or document not written in English instead of passing it.
 3. **Flags known risk patterns:** 43 checks, such as a "recommended" step stated as "required", an assessment with no stated basis, or an approval with no stated authority.
 4. **Checks the reasoning (cognitive controls):** fourteen reasoning lenses, such as unsupported certainty, closing the matter before the evidence is in, selective evidence and over-reliance on an AI system's output, each with one neutral question; eight safeguards say what the reviewer should do and when to refer the matter.
 5. **Asks about what was left out:** an open finding, a failed test or a condition in a source that the record never mentions.
@@ -24,7 +24,7 @@ Decision records (AI authorizations, access exceptions, investigation summaries,
 - **Built for audit.** Every reviewer action goes into a tamper-evident log; an exported evidence pack can be re-checked independently of the tool; a reference workspace adds roles (admin, reviewer, approver, auditor), encrypted storage, a signed audit log and retention rules.
 - **Same input, same answer, every time.** No AI model calls, so a result can be reproduced exactly. Proven by a script anyone can run: two runs give byte-identical output.
 - **Nothing leaves the building.** No network calls; the proof script runs the whole benchmark with every network route blocked.
-- **Shows its working.** Every result names the record sentence and the document sentence it relied on (1,594 of 1,594 findings on the benchmark).
+- **Shows its working.** Every result names the record sentence and the document sentence it relied on (1,475 of 1,475 findings on the benchmark).
 - **Tested in the open.** The Record Check Benchmark (benchmarks/record-check-v1) lets anyone run their own tool on the same public decisions and fictional EU AI Act records, with the scorer, keys and our results, including where we fail. Six tracks: dropped dates and speakers, lossy AI summaries, EU AI Act points, outcome risk, changed figures, and good AI drafts.
 
 ## Evidence to date
@@ -34,14 +34,14 @@ Decision records (AI authorizations, access exceptions, investigation summaries,
 - **Published public decisions (real records).** On 28 EEOC appeal decisions sealed before any fix, an unchanged decision passed in 28 of 28, a version with its dates removed was caught in 28 of 28, and one with its speakers removed in 28 of 28. On AI-written summaries of 30 public decisions, the tool told a lossy summary from a full one in 29 of 30 and kept flags on good drafts to under 3 per 10 statements. **Not achieved:** clearing a long reworded draft without any serious flag (1 to 5 of 30 against a target of 15), and telling decisions that later failed from those that held up when a decision is read without its underlying documents (3 of 7 and 8 of 11). The keys were written by the developer; the earlier failed runs are kept in the evidence index.
 - **Document reading:** 127 of 128 hand-identified claims found in 26 developer records; PDF text matches a standard PDF tool on 99.1% of words across 623 public decision PDFs.
 - **Changed figures (benchmark track E, 40 public decisions not used before):** first run, before any change for this track, all 80 unchanged passages passed (including 40 with the figure written another way, such as "thirty" for "30") and 33 of 40 changed figures were caught and named; after fixes made from those misses, 39 of 40 (seen material). A simple number-comparison baseline caught 16 of 40.
-- **Good AI drafts (benchmark track F):** the weak point, now measured. 16 of 60 good drafts pass without a serious flag (first run 11); in copies with one error put in, the changed sentence is flagged in 42 of 60 (first run 21), and both happen in the same pair in 11 of 60.
-- **Engineering:** 216 automated tests pass; reports reproduce byte for byte.
+- **Good AI drafts (benchmark tracks F and FH):** the weak point. On the development drafts, after tuning, 24 of 60 pass without a serious flag (first run 11) and the sentence with an error put in is flagged in 48 of 60 (first run 21). **On a sealed hold-out of 30 fresh, more formally reworded drafts, the result failed: 0 of 30 passed clean, and 18 of 30 errors were caught (every wrong date; none of the 10 inserted negations).**
+- **Engineering:** 224 automated tests pass; reports reproduce byte for byte.
 
 ## Limits, stated plainly
 
 - Tested on fictional records and published public decisions only; use on an organisation's own records is a licensing decision.
 - Word-pattern checks can miss a point phrased in unexpected words.
-- A long reworded record still gets serious flags a reviewer must clear (only 16 of 60 good AI drafts pass clean); the tool points to sentences to check, it does not clear a whole draft.
+- A long reworded record still gets serious flags a reviewer must clear (24 of 60 good AI drafts pass clean on the development set, 0 of 30 on a fresh hold-out); the tool points to sentences to check, it does not clear a whole draft.
 - English only: text in another language is reported, not checked. Dates without a year, relative dates and worked-out totals are not checked.
 - Scanned PDFs (no text layer) need converting first.
 

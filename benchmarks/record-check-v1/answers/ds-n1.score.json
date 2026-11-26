@@ -132,49 +132,49 @@
   },
   "F": {
     "good_drafts_without_serious_flag": {
-      "k": 16,
+      "k": 24,
       "n": 60,
-      "rate": 0.267,
+      "rate": 0.4,
       "wilson95": [
-        0.171,
-        0.39
+        0.286,
+        0.526
       ]
     },
     "changed_sentence_flagged_as_serious": {
-      "k": 42,
+      "k": 48,
       "n": 60,
-      "rate": 0.7,
+      "rate": 0.8,
       "wilson95": [
-        0.575,
-        0.801
+        0.682,
+        0.882
       ]
     },
     "both_in_the_same_pair": {
-      "k": 11,
+      "k": 18,
       "n": 60,
-      "rate": 0.183,
+      "rate": 0.3,
       "wilson95": [
-        0.106,
-        0.299
+        0.199,
+        0.425
       ]
     },
     "changed_sentence_flagged_by_kind": {
       "date": {
-        "k": 24,
+        "k": 29,
         "n": 34,
-        "rate": 0.706,
+        "rate": 0.853,
         "wilson95": [
-          0.538,
-          0.832
+          0.699,
+          0.936
         ]
       },
       "negation": {
-        "k": 12,
+        "k": 13,
         "n": 20,
-        "rate": 0.6,
+        "rate": 0.65,
         "wilson95": [
-          0.387,
-          0.781
+          0.433,
+          0.819
         ]
       },
       "figure": {
@@ -184,6 +184,64 @@
         "wilson95": [
           0.61,
           1
+        ]
+      }
+    }
+  },
+  "FH": {
+    "good_drafts_without_serious_flag": {
+      "k": 0,
+      "n": 30,
+      "rate": 0,
+      "wilson95": [
+        0,
+        0.114
+      ]
+    },
+    "changed_sentence_flagged_as_serious": {
+      "k": 18,
+      "n": 30,
+      "rate": 0.6,
+      "wilson95": [
+        0.423,
+        0.754
+      ]
+    },
+    "both_in_the_same_pair": {
+      "k": 0,
+      "n": 30,
+      "rate": 0,
+      "wilson95": [
+        0,
+        0.114
+      ]
+    },
+    "changed_sentence_flagged_by_kind": {
+      "date": {
+        "k": 18,
+        "n": 18,
+        "rate": 1,
+        "wilson95": [
+          0.824,
+          1
+        ]
+      },
+      "negation": {
+        "k": 0,
+        "n": 10,
+        "rate": 0,
+        "wilson95": [
+          0,
+          0.278
+        ]
+      },
+      "figure": {
+        "k": 0,
+        "n": 2,
+        "rate": 0,
+        "wilson95": [
+          0,
+          0.658
         ]
       }
     }

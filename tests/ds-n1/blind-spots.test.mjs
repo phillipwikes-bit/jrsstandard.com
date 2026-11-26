@@ -68,3 +68,46 @@ test('a record mostly in another language is reported, terse English notes are n
   assert.ok(codes(st).includes('LANGUAGE_NOT_SUPPORTED'));
   assert.notEqual(st.status, 'READY_FOR_HUMAN_FINALIZATION');
 });
+
+// Second round (2026-11-25): wrong dates in labels, impossible and near-miss
+// dates, reversed roles, readings that are not denials, writer's notes, splits.
+import { impossibleDates, nearShift, yearlessDates, polarityText } from '../../lib/ds-n1/assess.mjs';
+import { sentences } from '../../lib/ds-n1/text.mjs';
+const SRC2 = 'On June 19, 2021, the Manager reassigned the complex cases of a retired coworker to Complainant. Complainant’s first level supervisor was the Nurse Manager for the surgical unit. Complainant stated that she was harassed by a coworker in the break room. The Agency dismissed the claim pursuant to 29 C.F.R. § 1614.107(a)(1) for failure to state a claim.';
+const run2 = (t) => run(t, SRC2);
+test('a wrong date in a bold label is a date mismatch; the right one is not', () => {
+  assert.ok(codes(run2('1. **June 20, 2021**: The Manager reassigned the complex cases of a retired coworker to Complainant.')).includes('DATE_MISMATCH'));
+  assert.ok(!codes(run2('1. **June 19, 2021**: The Manager reassigned the complex cases of a retired coworker to Complainant.')).includes('DATE_MISMATCH'));
+});
+test('a date that cannot exist is serious', () => {
+  assert.deepEqual(impossibleDates('on May 32, 2018 and February 30, 2021 but not March 3, 2021'), ['may 32, 2018', 'february 30, 2021']);
+  assert.ok(codes(run2('On May 32, 2021, the Manager reassigned the complex cases of a retired coworker to Complainant.')).includes('DATE_IMPOSSIBLE'));
+});
+test('a date a day off from the cited sentence is a mismatch, with or without a year', () => {
+  assert.equal(nearShift('2021-06-20', ['2021-06-19']), '2021-06-19');
+  assert.equal(nearShift('2021-06-29', ['2021-06-19']), null);
+  assert.deepEqual(yearlessDates('On June 22, the AJ dismissed it; on 3 March 2021 it closed'), ['--06-22']);
+  assert.ok(codes(run2('On June 20, 2021, the Manager reassigned the complex cases of a retired coworker to Complainant.')).includes('DATE_MISMATCH'));
+  assert.ok(codes(run2('On June 21, the Manager reassigned the complex cases of a retired coworker to Complainant.')).includes('DATE_MISMATCH'));
+});
+test('"was not the" role the source says she was is a contradiction', () => {
+  assert.ok(codes(run2('Complainant’s first level supervisor was not the Nurse Manager for the surgical unit.')).some((c) => c === 'NEGATION_CONFLICT'));
+  assert.ok(!codes(run2('Complainant’s first level supervisor was the Nurse Manager for the surgical unit.')).includes('NEGATION_CONFLICT'));
+});
+test('wording that reads negative but is not a denial', () => {
+  assert.equal(polarityText('she did not request an audit until August 5'), 'she request an audit on august 5');
+  assert.equal(polarityText('S1 said no and left'), 's1 said and left');
+  assert.ok(!/fail|not/.test(polarityText('dismissed for failure to state a claim')));
+  assert.ok(/not sure/.test(polarityText('she was unsure')) && /not disputed/.test(polarityText('these facts were undisputed')));
+  assert.ok(!codes(run2('The Agency dismissed the claim pursuant to 29 C.F.R. § 1614.107(a)(1).')).includes('NEGATION_CONFLICT'));
+});
+test('"29 C.F.R. § 1614.107" does not end a sentence', () => {
+  assert.equal(sentences('It was dismissed under 29 C.F.R. § 1614.107(a)(1). It closed.').length, 2);
+});
+test('a heading phrased as a question cannot contradict the source', () => {
+  assert.ok(!codes(run2('Whether Complainant’s first level supervisor was the Nurse Manager for the surgical unit.')).includes('NEGATION_CONFLICT'));
+});
+test('notes about the summary itself and citation lines are not claims', () => {
+  const st = run2('This summary uses only what the record contains. Source: Affidavit A, at 3, Bates No. 92. The Manager reassigned the complex cases of a retired coworker to Complainant on June 19, 2021.');
+  assert.ok(!codes(st).includes('UNSUPPORTED_CLAIM'), codes(st).join(','));
+});
