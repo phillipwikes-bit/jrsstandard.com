@@ -34,14 +34,14 @@ Decision records (AI authorizations, access exceptions, investigation summaries,
 - **Published public decisions (real records).** On 28 EEOC appeal decisions sealed before any fix, an unchanged decision passed in 28 of 28, a version with its dates removed was caught in 28 of 28, and one with its speakers removed in 28 of 28. On AI-written summaries of 30 public decisions, the tool told a lossy summary from a full one in 29 of 30 and kept flags on good drafts to under 3 per 10 statements. **Not achieved:** clearing a long reworded draft without any serious flag (1 to 5 of 30 against a target of 15), and telling decisions that later failed from those that held up when a decision is read without its underlying documents (3 of 7 and 8 of 11). The keys were written by the developer; the earlier failed runs are kept in the evidence index.
 - **Document reading:** 127 of 128 hand-identified claims found in 26 developer records; PDF text matches a standard PDF tool on 99.1% of words across 623 public decision PDFs.
 - **Changed figures (benchmark track E, 40 public decisions not used before):** first run, before any change for this track, all 80 unchanged passages passed (including 40 with the figure written another way, such as "thirty" for "30") and 33 of 40 changed figures were caught and named; after fixes made from those misses, 39 of 40 (seen material). A simple number-comparison baseline caught 16 of 40.
-- **Good AI drafts (benchmark tracks F and FH):** the weak point. On the development drafts, after tuning, 24 of 60 pass without a serious flag (first run 11) and the sentence with an error put in is flagged in 48 of 60 (first run 21). **On a sealed hold-out of 30 fresh, more formally reworded drafts, the result failed: 0 of 30 passed clean, and 18 of 30 errors were caught (every wrong date; none of the 10 inserted negations).**
-- **Engineering:** 224 automated tests pass; reports reproduce byte for byte.
+- **Good AI drafts (benchmark tracks F, FH and FH2):** the weak point. On the development drafts, after tuning, 29 of 60 pass without a serious flag (first run 11). **Two sealed hold-outs of fresh drafts both failed: 0 of 30 and 7 of 30 passed clean (before: 0 and 4); inserted errors caught 18 and 19 of 30, with nearly every wrong date caught and most inserted negations missed.** On the second hold-out about one statement in ten carries a serious flag; in a developer-read sample of 20, 7 were real catches of analysis the draft added and the decision does not support, 11 were false alarms.
+- **Engineering:** 229 automated tests pass; reports reproduce byte for byte.
 
 ## Limits, stated plainly
 
 - Tested on fictional records and published public decisions only; use on an organisation's own records is a licensing decision.
 - Word-pattern checks can miss a point phrased in unexpected words.
-- A long reworded record still gets serious flags a reviewer must clear (24 of 60 good AI drafts pass clean on the development set, 0 of 30 on a fresh hold-out); the tool points to sentences to check, it does not clear a whole draft.
+- A long reworded record still gets serious flags a reviewer must clear (on fresh AI drafts, 0 to 7 of 30 pass clean); the tool points to sentences to check, it does not clear a whole draft.
 - English only: text in another language is reported, not checked. Dates without a year, relative dates and worked-out totals are not checked.
 - Scanned PDFs (no text layer) need converting first.
 

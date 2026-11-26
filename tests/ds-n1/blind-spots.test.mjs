@@ -111,3 +111,29 @@ test('notes about the summary itself and citation lines are not claims', () => {
   const st = run2('This summary uses only what the record contains. Source: Affidavit A, at 3, Bates No. 92. The Manager reassigned the complex cases of a retired coworker to Complainant on June 19, 2021.');
   assert.ok(!codes(st).includes('UNSUPPORTED_CLAIM'), codes(st).join(','));
 });
+
+// Third round (2026-11-26).
+test('figures written out in words, including hundreds, are read as one number', () => {
+  assert.deepEqual(extractFigures('four hundred eighty hours and four hundred twenty-one hours').map((f) => f.value), [480, 421]);
+});
+test('a one-letter source title does not make every sentence name that source', () => {
+  const mk = (title) => extractRecord({ record_id: 'T', title: 'T', record_class: 'workplace_investigation_report', data_classification: 'public_record_test', text: 'Complainant said the station was busy that week.', sources: [{ source_id: 'S1', title, text: 'The station manager reported a staffing shortfall in March.', version: 'v1' }] }).report.claims[0].citation;
+  const strip = (c) => c && { basis: c.basis, score: c.score };
+  assert.deepEqual(strip(mk('S')), strip(mk('Source 1')));
+  assert.equal(mk('S').basis, 'inferred');
+});
+test('"was not employed as" the role the source says she worked in is a contradiction', () => {
+  const src = 'At the time of events, Complainant worked as a Rural Carrier at the Agency’s Acton Station in Granbury, Texas.';
+  const r = (t) => run(t, src);
+  assert.ok(codes(r('The complainant was not employed as a Rural Carrier at the Agency’s Acton Station in Granbury, Texas.')).includes('NEGATION_CONFLICT'));
+  assert.ok(!codes(r('The complainant was employed as a Rural Carrier at the Agency’s Acton Station in Granbury, Texas.')).includes('NEGATION_CONFLICT'));
+});
+test('a near word-for-word copy made mostly of names and roles is supported', () => {
+  const src = 'At the time of events, Complainant worked as a City Carrier Technician, A-02/Q, at the Agency’s Village Station in New York, New York.';
+  const st = run('Complainant worked as a City Carrier Technician, A-02/Q, at the Agency’s Village Station in New York, New York.', src);
+  assert.ok(!codes(st).includes('UNSUPPORTED_CLAIM') && !codes(st).includes('RELEVANCE_NOT_ESTABLISHED'), codes(st).join(','));
+});
+test('a long list lead-in is not a claim', () => {
+  const st = run('The complaint encompasses four primary allegations spanning a three-month period from November through December 2020:', SRC);
+  assert.ok(!codes(st).includes('UNSUPPORTED_CLAIM'));
+});

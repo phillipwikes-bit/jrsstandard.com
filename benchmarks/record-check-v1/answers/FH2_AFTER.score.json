@@ -1,0 +1,61 @@
+{
+ "code": "final (this commit)",
+ "FH2": {
+  "good_drafts_without_serious_flag": {
+   "k": 7,
+   "n": 30,
+   "rate": 0.233,
+   "wilson95": [
+    0.118,
+    0.409
+   ]
+  },
+  "changed_sentence_flagged_as_serious": {
+   "k": 19,
+   "n": 30,
+   "rate": 0.633,
+   "wilson95": [
+    0.455,
+    0.781
+   ]
+  },
+  "both_in_the_same_pair": {
+   "k": 5,
+   "n": 30,
+   "rate": 0.167,
+   "wilson95": [
+    0.073,
+    0.336
+   ]
+  },
+  "changed_sentence_flagged_by_kind": {
+   "date": {
+    "k": 15,
+    "n": 16,
+    "rate": 0.938,
+    "wilson95": [
+     0.717,
+     0.989
+    ]
+   },
+   "negation": {
+    "k": 2,
+    "n": 10,
+    "rate": 0.2,
+    "wilson95": [
+     0.057,
+     0.51
+    ]
+   },
+   "figure": {
+    "k": 2,
+    "n": 4,
+    "rate": 0.5,
+    "wilson95": [
+     0.15,
+     0.85
+    ]
+   }
+  }
+ }
+}

@@ -1,6 +1,6 @@
 # Decision Spellcheck: blind-spot register
 
-Started 25 November 2026; second round 25 to 26 November with a sealed hold-out (benchmark `FH_PROTOCOL.md`, `FH_RESULT.md`). One line per gap a competitor, buyer or reviewer could point to: what it was, what was done, how it was measured, and what is left. "Seen" means the number was taken after changes made by looking at the same items, so it is not a clean test.
+Started 25 November 2026; second round 25 to 26 November with a sealed hold-out (benchmark `FH_PROTOCOL.md`, `FH_RESULT.md`); third round 26 November with a second sealed hold-out (`FH2_PROTOCOL.md`, `FH2_RESULT.md`) and a review of what the serious flags are (`FLAG_REVIEW.md`). One line per gap a competitor, buyer or reviewer could point to: what it was, what was done, how it was measured, and what is left. "Seen" means the number was taken after changes made by looking at the same items, so it is not a clean test.
 
 ## Closed or narrowed in the tool
 
@@ -18,11 +18,20 @@ Started 25 November 2026; second round 25 to 26 November with a sealed hold-out 
 | "The Agency stated" and "the Chief stated" were not recognised as attributed speakers | Added to the speaker list used by study 014's anchor definition | Track A dropped speakers named 61 to 80 of 88; review questions on 180 AI drafts 36 to 58, no change in which drafts reach READY | 8 of 88 still missed |
 | Headings, laws, documents and the adjudicator ("Procedural Background", "Rehabilitation Act", "Report", "the AJ") were treated as people, so a statement could be "about a different person" | The wrong-person check compares only people and organisations | Wrong-person flags on good drafts in track F: 13 to 6 drafts | Entity extraction itself is unchanged |
 
+## Round 3 (26 November)
+
+| Blind spot | What was done | Measured | Left |
+|---|---|---|---|
+| A word-for-word copy of a sentence made mostly of names and roles ("Complainant worked as a City Carrier Technician ... at the Village Station") scored no overlap and was "unsupported" | Names are compared too when they leave fewer than three words | Found in the flag review; part of the gains below | |
+| A one-letter source title matched almost every sentence | Titles must appear as whole words and be at least four characters | Diagnostic setup only; benchmark numbers unchanged | |
+| "was not employed as a Rural Carrier" against "worked as a Rural Carrier" was cleared | "employed" reads as "worked"; a negation that reaches a shared name or role is not cleared | FH inserted negations caught 0 to 6 of 10 (seen); FH2 2 of 10 (fresh) | Most inserted negations in reworded drafts still missed |
+| Approvals told as events, "Accordingly," openers, judges granting motions or leave, lead-ins to lists, notes about the excerpt, spelled-out hundreds, two dates in one statement, ages given as bare numbers, "prevent", long "did not ... until" | Read as events, notes or the right figure | Track F clean 24 to 29 of 60 (seen); FH2 clean 4 to 7 of 30 (fresh, failed its criterion of 9) | |
+
 ## Measured openly, not solved
 
 | Blind spot | Measure | Result |
 |---|---|---|
-| Clearing a good, long, reworded AI draft without a serious flag | Benchmark tracks F and FH | Track F 24 of 60 pass after two rounds of tuning (first run 11). **Sealed hold-out FH: 0 of 30, before and after; failed.** On FH the serious flags come mostly from approvals narrated as events read as authority claims (24), "Accordingly," openers read as the writer's conclusions (10), and padded sentences the cited passage does not confirm (37); these were read after the run and nothing was changed for them. Earlier on F: Remaining causes: a fair rewording that could not be linked to one passage ("no source found", 25 drafts) and a possible contradiction on a paraphrase (28 drafts). Making an unlinked reworded sentence a review question was tried and reverted: no gain, and it broke 4 tests that encode the rule that an unsourced statement is serious |
+| Clearing a good, long, reworded AI draft without a serious flag | Benchmark tracks F, FH and FH2. **FH2 (fresh): 7 of 30 pass; about one statement in ten flagged; of 20 serious flags read, 7 were real catches of added analysis** | Track F 24 of 60 pass after two rounds of tuning (first run 11). **Sealed hold-out FH: 0 of 30, before and after; failed.** On FH the serious flags come mostly from approvals narrated as events read as authority claims (24), "Accordingly," openers read as the writer's conclusions (10), and padded sentences the cited passage does not confirm (37); these were read after the run and nothing was changed for them. Earlier on F: Remaining causes: a fair rewording that could not be linked to one passage ("no source found", 25 drafts) and a possible contradiction on a paraphrase (28 drafts). Making an unlinked reworded sentence a review question was tried and reverted: no gain, and it broke 4 tests that encode the rule that an unsourced statement is serious |
 | Telling decisions that later failed from those that held up, from the decision text alone | Track D and the employment test | Only a procedural signal (p 0.0005); the record-quality signal did not reach significance (p 0.067); employment test 3 of 7 |
 
 ## Needs a person or money, not code

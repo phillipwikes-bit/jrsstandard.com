@@ -132,12 +132,12 @@
   },
   "F": {
     "good_drafts_without_serious_flag": {
-      "k": 24,
+      "k": 29,
       "n": 60,
-      "rate": 0.4,
+      "rate": 0.483,
       "wilson95": [
-        0.286,
-        0.526
+        0.362,
+        0.607
       ]
     },
     "changed_sentence_flagged_as_serious": {
@@ -150,12 +150,12 @@
       ]
     },
     "both_in_the_same_pair": {
-      "k": 18,
+      "k": 21,
       "n": 60,
-      "rate": 0.3,
+      "rate": 0.35,
       "wilson95": [
-        0.199,
-        0.425
+        0.242,
+        0.476
       ]
     },
     "changed_sentence_flagged_by_kind": {
@@ -190,30 +190,30 @@
   },
   "FH": {
     "good_drafts_without_serious_flag": {
-      "k": 0,
+      "k": 3,
       "n": 30,
-      "rate": 0,
+      "rate": 0.1,
       "wilson95": [
-        0,
-        0.114
+        0.035,
+        0.256
       ]
     },
     "changed_sentence_flagged_as_serious": {
-      "k": 18,
+      "k": 25,
       "n": 30,
-      "rate": 0.6,
+      "rate": 0.833,
       "wilson95": [
-        0.423,
-        0.754
+        0.664,
+        0.927
       ]
     },
     "both_in_the_same_pair": {
-      "k": 0,
+      "k": 3,
       "n": 30,
-      "rate": 0,
+      "rate": 0.1,
       "wilson95": [
-        0,
-        0.114
+        0.035,
+        0.256
       ]
     },
     "changed_sentence_flagged_by_kind": {
@@ -227,21 +227,79 @@
         ]
       },
       "negation": {
-        "k": 0,
+        "k": 6,
         "n": 10,
-        "rate": 0,
+        "rate": 0.6,
         "wilson95": [
-          0,
-          0.278
+          0.313,
+          0.832
         ]
       },
       "figure": {
-        "k": 0,
+        "k": 1,
         "n": 2,
-        "rate": 0,
+        "rate": 0.5,
         "wilson95": [
-          0,
-          0.658
+          0.095,
+          0.905
+        ]
+      }
+    }
+  },
+  "FH2": {
+    "good_drafts_without_serious_flag": {
+      "k": 7,
+      "n": 30,
+      "rate": 0.233,
+      "wilson95": [
+        0.118,
+        0.409
+      ]
+    },
+    "changed_sentence_flagged_as_serious": {
+      "k": 19,
+      "n": 30,
+      "rate": 0.633,
+      "wilson95": [
+        0.455,
+        0.781
+      ]
+    },
+    "both_in_the_same_pair": {
+      "k": 5,
+      "n": 30,
+      "rate": 0.167,
+      "wilson95": [
+        0.073,
+        0.336
+      ]
+    },
+    "changed_sentence_flagged_by_kind": {
+      "date": {
+        "k": 15,
+        "n": 16,
+        "rate": 0.938,
+        "wilson95": [
+          0.717,
+          0.989
+        ]
+      },
+      "negation": {
+        "k": 2,
+        "n": 10,
+        "rate": 0.2,
+        "wilson95": [
+          0.057,
+          0.51
+        ]
+      },
+      "figure": {
+        "k": 2,
+        "n": 4,
+        "rate": 0.5,
+        "wilson95": [
+          0.15,
+          0.85
         ]
       }
     }
