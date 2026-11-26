@@ -62,9 +62,9 @@ Decision Spellcheck answers come from `adapters/ds-n1.mjs`; the baselines from `
 
 | Claim | Proof | Result |
 |---|---|---|
-| Same input, same answer | `proofs/determinism-and-offline.mjs`: two fresh runs, byte comparison | Identical (SHA-256 `7a5b765b...` on the code of 26 November, round 4; earlier versions differ as the code changed) |
+| Same input, same answer | `proofs/determinism-and-offline.mjs`: two fresh runs, byte comparison | Identical (SHA-256 `b8387d3f...` on the round 5 code; earlier versions differ as the code changed) |
 | Nothing leaves the computer | Same script, with every network route in Node blocked during both runs; static check of 21 runtime files | Completed with the network blocked; no runtime file names a network API |
-| Every finding shows its working | `proofs/traceability.mjs` on tracks A and B | 1,408 of 1,408 open findings name the record sentence; 958 of 958 findings about a source name the source sentence (rerun 26 November, round 4) |
+| Every finding shows its working | `proofs/traceability.mjs` on tracks A and B | 1,479 of 1,479 open findings name the record sentence; 1,028 of 1,028 findings about a source name the source sentence (rerun on the round 5 code) |
 
 ## Read this before comparing numbers
 
