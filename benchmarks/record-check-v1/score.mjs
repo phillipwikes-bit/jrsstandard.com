@@ -73,4 +73,6 @@ if (ans.F) out.F = scoreF(key('f'), ans.F);
 if (ans.FH) out.FH = scoreF(key('f-holdout'), ans.FH);
 // Second sealed hold-out (data/track-f-holdout-2.json; see FH2_PROTOCOL.md).
 if (ans.FH2) out.FH2 = scoreF(key('f-holdout-2'), ans.FH2);
+// Track G: fresh decisions, one changed sentence (see G_PROTOCOL.md).
+if (ans.G) out.G = scoreF(key('g'), ans.G);
 console.log(JSON.stringify(out, null, 2));
