@@ -5,6 +5,9 @@
 import { readFileSync, readdirSync } from 'node:fs';
 import { extractRecord } from '../../lib/ds-n1/extract.mjs';
 import { openReview, deriveState } from '../../lib/ds-n1/index.mjs';
+// Research harness for published public decisions (see lib/ds-n1/research.mjs).
+import { enablePublicRecordResearch } from '../../lib/ds-n1/research.mjs';
+enablePublicRecordResearch();
 const dir = process.argv[2];
 const ids = [...new Set(readdirSync(dir).filter((f) => f.endsWith('_intact.txt')).map((f) => f.replace('_intact.txt', '')))].sort();
 export function run(text, src) {

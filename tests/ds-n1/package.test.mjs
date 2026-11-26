@@ -28,8 +28,18 @@ test('a built package verifies, states its status, and runs its own tests', () =
   assert.ok(m.record_classes.includes('ai_drafted_legal_memo'));
   assert.deepEqual(verifyBundle(out), { ok: true, files: m.files.length, problems: [] });
   const tests = m.files.map((f) => f.path).filter((p) => p.endsWith('.test.mjs') && !p.endsWith('package.test.mjs'));
-  const r = spawnSync(process.execPath, ['--test', ...tests], { cwd: out, encoding: 'utf8' });
-  assert.equal(r.status, 0, r.stdout.slice(-2000) + r.stderr.slice(-2000));
+  // Run as an independent process. Newer Node versions skip a test run started
+  // inside another one (NODE_TEST_CONTEXT is inherited) and still exit 0, so the
+  // variable is removed and the run must report tests actually passing
+  // (2026-11-26 audit).
+  const env = { ...process.env }; delete env.NODE_TEST_CONTEXT;
+  const r = spawnSync(process.execPath, ['--test', '--test-reporter=tap', ...tests], { cwd: out, encoding: 'utf8', env });
+  const all = r.stdout + r.stderr;
+  assert.equal(r.status, 0, all.slice(-2000));
+  assert.doesNotMatch(all, /skipp?ing running files|recursive/i, 'the bundle test run was skipped');
+  const pass = Number((all.match(/^# pass (\d+)/m) || [])[1] || 0), fail = Number((all.match(/^# fail (\d+)/m) || [])[1] || -1);
+  assert.ok(pass >= 200, `bundle tests that passed: ${pass}`);
+  assert.equal(fail, 0, all.slice(-2000));
 });
 
 test('an edited, removed or added file is detected', () => {

@@ -61,6 +61,9 @@ test('policy check: reliance on an unsupplied policy is still raised; a report t
 });
 
 import { findDroppedAnchors } from '../../lib/ds-n1/omissions.mjs';
+// Research harness for published public decisions (see lib/ds-n1/research.mjs).
+import { enablePublicRecordResearch } from '../../lib/ds-n1/research.mjs';
+enablePublicRecordResearch();
 test('paraphrase: a writer note about the record is listed, not checked as a claim', () => {
   const { record } = run(SRC + ' The record gives no date for the final order.');
   assert.ok(!record.claims.some((c) => /gives no date/.test(c.quote)));

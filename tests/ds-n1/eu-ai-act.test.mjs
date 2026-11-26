@@ -47,7 +47,27 @@ test('"training" in a job title is not evidence that staff were trained', () => 
 test('sealed evaluation set 2 reproduces its committed result', () => {
   const script = fileURLToPath(new URL('./eval-eu-ai-act.mjs', import.meta.url));
   const now = JSON.parse(execFileSync(process.execPath, [script, '--set=eu-ai-act-eval-2'], { encoding: 'utf8' }));
-  assert.deepEqual(now, JSON.parse(readFileSync(new URL('./EU_AI_ACT_EVAL_2.json', import.meta.url), 'utf8')));
+  // The sealed file is kept as committed. Every result must still match; only
+  // the lens version label may differ (0.2.0 sealed, 0.3.0 after the
+  // 2026-11-26 audit fixes, which changed no result in this set).
+  const sealed = JSON.parse(readFileSync(new URL('./EU_AI_ACT_EVAL_2.json', import.meta.url), 'utf8'));
+  assert.deepEqual({ ...now, lens: null }, { ...sealed, lens: null });
+});
+
+test('a source that says the opposite is never credited as backing the record (2026-11-26 audit)', () => {
+  const l = byId(euAiActLens({ record_class: 'ai_action_authorization', text: 'The AI system is high-risk. Workers have been informed.', sources: [{ source_id: 'SYN', title: 'Fictional source', text: 'The AI system is high-risk. Workers have not been informed.' }] }));
+  assert.equal(l.workers_informed.status, 'CONTRADICTED');
+  assert.equal(l.workers_informed.source.contradicts, true);
+});
+
+test('an undecided risk class is never read as high-risk or as not applicable (2026-11-26 audit)', () => {
+  const u = euAiActLens({ record_class: 'ai_action_authorization', text: 'The AI system evaluates workers and applicants. No risk status has been decided.', sources: [] });
+  assert.equal(u.high_risk, null);
+  assert.equal(byId(u).workers_informed.status, 'NEEDS_REVIEW');
+  assert.equal(byId(u).affected_persons_informed.status, 'NEEDS_REVIEW');
+  const p = euAiActLens({ record_class: 'ai_action_authorization', text: 'Risk classification is pending. The system screens job applicants.', sources: [] });
+  assert.equal(p.high_risk, null);
+  assert.equal(byId(p).risk_classification.flag, 'classification_pending');
 });
 
 test('the lens makes no network calls and imports nothing outside DS-N1', () => {

@@ -155,6 +155,9 @@ test('a figure changed in the neighbouring sentence the statement restates is a 
 
 // Fifth round (2026-11-26).
 import { monthDates } from '../../lib/ds-n1/assess.mjs';
+// Research harness for published public decisions (see lib/ds-n1/research.mjs).
+import { enablePublicRecordResearch } from '../../lib/ds-n1/research.mjs';
+enablePublicRecordResearch();
 test('"... and the request was not granted" against "... and the request was granted" is a contradiction', () => {
   const src = 'On March 26, 2019, Complainant requested light duty, and the request was granted. She returned to work the next week.';
   assert.ok(codes(run('On March 26, 2019, Complainant requested light duty, and the request was not granted.', src)).includes('NEGATION_CONFLICT'));

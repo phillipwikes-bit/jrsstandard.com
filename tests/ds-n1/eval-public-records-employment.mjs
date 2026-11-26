@@ -7,6 +7,9 @@ import { readFileSync, writeFileSync } from 'node:fs';
 import { createHash } from 'node:crypto';
 import { extractRecord } from '../../lib/ds-n1/extract.mjs';
 import { openReview, deriveState } from '../../lib/ds-n1/index.mjs';
+// Research harness for published public decisions (see lib/ds-n1/research.mjs).
+import { enablePublicRecordResearch } from '../../lib/ds-n1/research.mjs';
+enablePublicRecordResearch();
 const dir = new URL('./public-record-eval-employment/', import.meta.url);
 const raw = readFileSync(new URL('key.json', dir));
 const sealed = readFileSync(new URL('SEALED.sha256', dir), 'utf8').split(/\s+/)[0];

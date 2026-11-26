@@ -5,7 +5,7 @@
 | A | Dropped dates named | 265 of 265 (100%) | 0 of 265 (0%) | 0 of 265 (0%) |
 | A | Dropped speakers named | 86 of 88 (98%) | 0 of 88 (0%) | 0 of 88 (0%) |
 | B | Lossier AI draft identified | 56 of 60 (93%) | 26 of 60 (43%) | 26 of 60 (43%) |
-| C | EU AI Act points agreeing with key | 118 of 120 (98%) | 46 of 120 (38%) | 43 of 120 (36%) |
+| C | EU AI Act points agreeing with key | 117 of 120 (98%; 118 before the 26 November audit fix, see below) | 46 of 120 (38%) | 43 of 120 (36%) |
 | C | Points wrongly credited as backed (lower is better) | 0 | 0 | 77 |
 | D | Not affirmed when flagged | 24 of 107 (22%) | 27 of 183 (15%) | - |
 | D | Not affirmed when not flagged | 3 of 76 (4%) | - | 27 of 183 (15%) |

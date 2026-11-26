@@ -5,6 +5,9 @@ import { createHash } from 'node:crypto';
 import { extractRecord } from '../../lib/ds-n1/extract.mjs';
 import { openReview, deriveState } from '../../lib/ds-n1/index.mjs';
 import { findOmissions } from '../../lib/ds-n1/omissions.mjs';
+// Research harness for published public decisions (see lib/ds-n1/research.mjs).
+import { enablePublicRecordResearch } from '../../lib/ds-n1/research.mjs';
+enablePublicRecordResearch();
 const dir = new URL('./public-record-eval-3/', import.meta.url);
 const raw = readFileSync(new URL('key.json', dir));
 if (createHash('sha256').update(raw).digest('hex') !== readFileSync(new URL('SEALED.sha256', dir), 'utf8').split(/\s+/)[0]) throw new Error('key.json does not match its sealed hash');

@@ -4,6 +4,9 @@
 import { readFileSync } from 'node:fs';
 import { extractRecord } from '../../../lib/ds-n1/extract.mjs';
 import { openReview, deriveState } from '../../../lib/ds-n1/index.mjs';
+// Research harness for published public decisions (see lib/ds-n1/research.mjs).
+import { enablePublicRecordResearch } from '../../../lib/ds-n1/research.mjs';
+enablePublicRecordResearch();
 const base = process.argv[2]; const rows = [];
 for (let i = 1; i <= 30; i++) {
   const id = `S014-${String(i).padStart(2, '0')}`;

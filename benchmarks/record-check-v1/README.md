@@ -32,7 +32,7 @@ Whether a tool can tell, from the documents alone, what a later reviewer, audito
 | A | Dropped dates named | 265 of 265 (100%) | 0 of 265 (0%) | 0 of 265 (0%) |
 | A | Dropped speakers named | 86 of 88 (98%) | 0 of 88 (0%) | 0 of 88 (0%) |
 | B | Lossier AI draft identified | 56 of 60 (93%) | 26 of 60 (43%) | 26 of 60 (43%) |
-| C | EU AI Act points agreeing with key | 118 of 120 (98%) | 46 of 120 (38%) | 43 of 120 (36%) |
+| C | EU AI Act points agreeing with key | 117 of 120 (98%; 118 before the 26 November audit fix, see below) | 46 of 120 (38%) | 43 of 120 (36%) |
 | C | Points wrongly credited as backed (lower is better) | 0 | 0 | 77 |
 | D | Not affirmed when flagged | 24 of 107 (22%) | 27 of 183 (15%) | - |
 | D | Not affirmed when not flagged | 3 of 76 (4%) | - | 27 of 183 (15%) |
@@ -65,6 +65,13 @@ Decision Spellcheck answers come from `adapters/ds-n1.mjs`; the baselines from `
 | Same input, same answer | `proofs/determinism-and-offline.mjs`: two fresh runs, byte comparison | Identical (SHA-256 `b8387d3f...` on the round 5 code; earlier versions differ as the code changed) |
 | Nothing leaves the computer | Same script, with every network route in Node blocked during both runs; static check of 21 runtime files | Completed with the network blocked; no runtime file names a network API |
 | Every finding shows its working | `proofs/traceability.mjs` on tracks A and B | 1,479 of 1,479 open findings name the record sentence; 1,028 of 1,028 findings about a source name the source sentence (rerun on the round 5 code) |
+
+## Corrections after the external audit of 26 November 2026
+
+- **The scorer now validates answers** (`score.mjs`, tested by `score.test.mjs`): a missing, empty or malformed answer never counts in a tool's favour, dates must match exactly, and every result reports coverage. Re-scoring every stored answer file gave identical numbers with full coverage.
+- **Repeated and shared sources** (`inventory.mjs`, `INVENTORY.json`): track A's 28 files are 21 distinct decisions (some are posted twice); G has 53 distinct texts in 60 items, G2 29 in 30; track D's splits share 20 texts and 22 case numbers; F, FH and FH2 use the same 30 study decisions (their drafts differ); 43 of G and G2's decisions also appear in D's test split. Counted by distinct text: A 21 of 21 on each count; sealed G 53 of 53 clean and 50 of 53 caught; sealed G2 29 of 29 and 28 of 29. G and G2 were described as "never used before"; that was wrong for the decisions shared with D's test split, which was read once, for a different question.
+- **Track C 117 of 120:** the EU lens no longer marks a point "not applicable" when the risk class is unsettled. One record (E5) now reads "needs review" where the developer's sealed key says "not applicable". The key is left as sealed; no point is wrongly credited as backed.
+- Full response: `tests/ds-n1/AUDIT_RESPONSE_2026-11-26.md`.
 
 ## Read this before comparing numbers
 

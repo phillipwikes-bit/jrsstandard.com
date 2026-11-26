@@ -5,6 +5,9 @@
 import { readFileSync } from 'node:fs';
 import { extractRecord } from '../../../lib/ds-n1/extract.mjs';
 import { openReview, deriveState } from '../../../lib/ds-n1/index.mjs';
+// Research harness for published public decisions (see lib/ds-n1/research.mjs).
+import { enablePublicRecordResearch } from '../../../lib/ds-n1/research.mjs';
+enablePublicRecordResearch();
 const data = (t) => JSON.parse(readFileSync(new URL(`../data/track-${t}.json`, import.meta.url), 'utf8'));
 const RECORD_LEVEL = new Set(['UNMAPPED_ASSERTION', 'INSTRUCTION_LIKE_CONTENT', 'BROAD_ACCESS_NOT_JUSTIFIED', 'CONCLUSION_ON_UNRESOLVED_BASIS']);
 let n = 0, withRecordSpan = 0, sourceTied = 0, sourceTiedWithSentence = 0; const missing = {};

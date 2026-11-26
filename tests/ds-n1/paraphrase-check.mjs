@@ -5,6 +5,9 @@ import { readFileSync } from 'node:fs';
 import { extractRecord } from '../../lib/ds-n1/extract.mjs';
 import { openReview, deriveState } from '../../lib/ds-n1/index.mjs';
 import { findOmissions, findDroppedAnchors } from '../../lib/ds-n1/omissions.mjs';
+// Research harness for published public decisions (see lib/ds-n1/research.mjs).
+import { enablePublicRecordResearch } from '../../lib/ds-n1/research.mjs';
+enablePublicRecordResearch();
 const [base, drafter] = process.argv.slice(2);
 const DROP = new Set(['DATE_OMITTED', 'SPEAKER_OMITTED']);
 function run(text, src) {

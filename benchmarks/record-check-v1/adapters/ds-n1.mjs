@@ -7,6 +7,9 @@ import { openReview, deriveState } from '../../../lib/ds-n1/index.mjs';
 import { findOmissions, findDroppedAnchors } from '../../../lib/ds-n1/omissions.mjs';
 import { euAiActLens } from '../../../lib/ds-n1/eu-ai-act.mjs';
 import { CANDIDATE } from '../../../lib/ds-n1/identity.mjs';
+// Research harness for published public decisions (see lib/ds-n1/research.mjs).
+import { enablePublicRecordResearch } from '../../../lib/ds-n1/research.mjs';
+enablePublicRecordResearch();
 const data = (t) => JSON.parse(readFileSync(new URL(`../data/track-${t}.json`, import.meta.url), 'utf8'));
 const review = (text, sources, cls = 'workplace_investigation_report') => {
   const { record, validation } = extractRecord({ record_id: 'BM', title: 'BM', record_class: cls, data_classification: 'public_record_test', text, sources: sources.map((s, i) => ({ source_id: s.source_id || `S${i + 1}`, title: s.title || `Source ${i + 1}`, text: s.text, version: 'v1' })) });
@@ -27,7 +30,9 @@ for (const it of data('b').items) {
   const x = signal(it.draft_x), y = signal(it.draft_y);
   out.B[it.id] = { lossier: x >= y ? 'x' : 'y' };
 }
-const CODE = { SHOWN_SUPPORTED: 'S', STATED_UNSUPPORTED: 'U', NOT_SHOWN: 'N', NOT_APPLICABLE: 'NA' };
+// CONTRADICTED is stated but not backed (U); NEEDS_REVIEW is not credited as
+// backed or as not applicable, so it is reported as not shown (N).
+const CODE = { SHOWN_SUPPORTED: 'S', STATED_UNSUPPORTED: 'U', CONTRADICTED: 'U', NOT_SHOWN: 'N', NEEDS_REVIEW: 'N', NOT_APPLICABLE: 'NA' };
 for (const it of data('c').items) {
   const { record } = extractRecord({ record_id: it.id, title: it.title, record_class: 'ai_action_authorization', text: it.record, sources: it.sources.map((s) => ({ ...s, version: 'v1' })) });
   const lens = euAiActLens(record); out.C[it.id] = {};

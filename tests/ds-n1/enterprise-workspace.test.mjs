@@ -140,3 +140,44 @@ test('a restored workspace refuses a snapshot whose audit log was edited', () =>
   snap.audit[1].detail = { roles: ['admin', 'approver'] };
   assert.equal(code(() => createWorkspace({ restore: snap })), 'TAMPERED');
 });
+
+// 2026-11-26 external audit: completeness of the signed log.
+test('a full log with a missing middle entry fails, and a restore with a gap is refused', () => {
+  const { ws } = setup();
+  const log = ws._fullAuditForVerification();
+  assert.ok(log.length >= 3);
+  assert.equal(verifyAuditLog(log, ws.publicKeyPem, { full: true }).ok, true);
+  assert.equal(verifyAuditLog(log.filter((_, i) => i !== 1), ws.publicKeyPem, { full: true }).ok, false);
+  const snap = ws.snapshot();
+  assert.throws(() => createWorkspace({ restore: { ...snap, audit: snap.audit.filter((_, i) => i !== 1) } }), /TAMPERED/);
+});
+test('a missing final entry is caught when the head is kept separately, and only then', () => {
+  const { ws } = setup();
+  const head = ws.auditHead();
+  const snap = ws.snapshot();
+  const cut = { ...snap, audit: snap.audit.slice(0, -1) };
+  assert.throws(() => createWorkspace({ restore: cut, expectHead: head }), /TAMPERED/);
+  assert.doesNotThrow(() => createWorkspace({ restore: cut }), 'without a separately kept head a truncated log cannot be detected; documented');
+  assert.doesNotThrow(() => createWorkspace({ restore: snap, expectHead: head }));
+});
+test('a logged read over HTTP is saved before the reply, so it survives a reload', async () => {
+  const { startServer } = await import('../../lib/ds-n1/enterprise/server.mjs');
+  const { saveWorkspace, loadWorkspace } = await import('../../lib/ds-n1/enterprise/store.mjs');
+  const { mkdtempSync } = await import('node:fs');
+  const { tmpdir } = await import('node:os');
+  const { join } = await import('node:path');
+  const ws = createWorkspace({ now });
+  const a = ws.createOrganisation({ name: 'Org A (fictional)', admin_name: 'Admin A' });
+  const path = join(mkdtempSync(join(tmpdir(), 'ws-')), 'store.json');
+  const pass = 'correct horse battery staple';
+  saveWorkspace(ws, path, pass);
+  const { server, port } = await startServer(ws, { onChange: () => saveWorkspace(ws, path, pass) });
+  try {
+    const before = ws._fullAuditForVerification().length;
+    const r = await fetch(`http://127.0.0.1:${port}/audit`, { headers: { authorization: `Bearer ${a.admin_token}` } });
+    assert.equal(r.status, 200);
+    const back = loadWorkspace(path, pass, { now });
+    assert.equal(back._fullAuditForVerification().length, before + 1, 'the read_audit entry was saved');
+    assert.equal(back._fullAuditForVerification().at(-1).action, 'read_audit');
+  } finally { server.close(); }
+});

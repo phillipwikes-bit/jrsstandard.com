@@ -1,5 +1,57 @@
 {
   "tool": "Decision Spellcheck 0.7.0-dev",
+  "coverage": {
+    "A": {
+      "expected": 84,
+      "valid_answers": 84,
+      "missing_or_invalid": 0
+    },
+    "B": {
+      "expected": 60,
+      "valid_answers": 60,
+      "missing_or_invalid": 0
+    },
+    "C": {
+      "expected": 12,
+      "valid_answers": 12,
+      "missing_or_invalid": 0
+    },
+    "D": {
+      "expected": 183,
+      "valid_answers": 183,
+      "missing_or_invalid": 0
+    },
+    "E": {
+      "expected": 120,
+      "valid_answers": 120,
+      "missing_or_invalid": 0
+    },
+    "F": {
+      "expected": 120,
+      "valid_answers": 120,
+      "missing_or_invalid": 0
+    },
+    "FH": {
+      "expected": 60,
+      "valid_answers": 60,
+      "missing_or_invalid": 0
+    },
+    "FH2": {
+      "expected": 60,
+      "valid_answers": 60,
+      "missing_or_invalid": 0
+    },
+    "G": {
+      "expected": 120,
+      "valid_answers": 120,
+      "missing_or_invalid": 0
+    },
+    "G2": {
+      "expected": 60,
+      "valid_answers": 60,
+      "missing_or_invalid": 0
+    }
+  },
   "A": {
     "unchanged_records_passed": {
       "k": 28,
@@ -51,12 +103,12 @@
   },
   "C": {
     "points_agreeing_with_key": {
-      "k": 118,
+      "k": 117,
       "n": 120,
-      "rate": 0.983,
+      "rate": 0.975,
       "wilson95": [
-        0.941,
-        0.995
+        0.929,
+        0.991
       ]
     },
     "points_wrongly_credited_as_backed": 0
