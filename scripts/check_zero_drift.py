@@ -3664,6 +3664,30 @@ def check_style_tags_balanced(offline):
           else "%d pages, every <style> opened and closed once" % len(_html_files()))
 
 
+
+def check_no_endpoint_deletes_rows_as_a_side_effect(offline):
+    """No API endpoint may issue a DELETE request to the database.
+
+    Until 2026-11-26 the contributor confirmation endpoint deleted rows on every
+    participant submission, on assumptions (every link open before a cutoff date,
+    reviewer evaluations tagged 'owner' or 'test'), and the registration endpoint
+    deleted rows for a list of diagnostic codes. An external audit found the first
+    (blocker B-019). A read-only count found no row matching either rule, so both
+    were removed. Cleanup of test data is an owner-run, row-by-row operation, never
+    a side effect of a request. The owner sign-out endpoint answers an HTTP DELETE
+    from the browser; it deletes no row, so a request METHOD check is allowed and
+    only a DELETE sent to the database (fetch(..., { method: 'DELETE' })) fails.
+    """
+    bad = []
+    for f in sorted(glob.glob(os.path.join(ROOT, "api", "*.js"))):
+        src = open(f, encoding="utf-8").read()
+        for i, line in enumerate(src.splitlines(), 1):
+            if re.search(r"method\s*:\s*['\"]DELETE['\"]", line):
+                bad.append(f"{os.path.relpath(f, ROOT)}:{i}")
+    check("no endpoint deletes rows as a side effect", not bad,
+          ("an endpoint sends DELETE to the database: " + ", ".join(bad)) if bad
+          else "no fetch(..., { method: 'DELETE' }) in api/*.js")
+
 def check_training_is_ungated(offline):
     """The training must open to a cold visitor with nothing in front of it.
 
@@ -9609,6 +9633,7 @@ def main():
                check_pii_gate_is_identical_everywhere,
                check_homepage_is_a_landing_page,
                check_training_is_ungated,
+               check_no_endpoint_deletes_rows_as_a_side_effect,
                check_training_modules_are_findable,
                check_public_downloads_are_not_blocked_by_a_redirect,
                check_disclosed_retention_matches_the_policy,

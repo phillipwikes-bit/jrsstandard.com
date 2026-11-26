@@ -105,134 +105,13 @@ function keyOf(v){ return String(v || '').toLowerCase().replace(/[^a-z0-9]/g, ''
 const TEST_KEY = 'selftest00';
 const TEST_PERSON = { code:'TEST-00', kind:'panel', first:'Test', name:'Test Contributor', title:'Deploy check', org:'', named_on_file:true };
 
-async function purgeTestRows(H){
-  // pilot_contacts.message is TEXT holding serialized JSON, not jsonb, so a
-  // message->>field filter matches nothing. Match the serialized text instead.
-  const pat = '*' + encodeURIComponent('"code":"TEST-00"') + '*';
-  try {
-    await fetch(SB + '/rest/v1/pilot_contacts?source=eq.contributor-confirm&message=like.' + pat,
-      { method: 'DELETE', headers: H });
-  } catch (e) { /* best-effort */ }
-  // Link-open rows written by a deploy check or a curl smoke test. Two rules,
-  // because neither alone is sufficient.
-  //
-  // A bare curl sends no src, so a tag filter would miss it: matched on the
-  // user-agent instead.
-  //
-  // A smoke test that SPOOFS a browser user-agent defeats both, so every
-  // link-open row written before the guard shipped is also cleared. That cutoff
-  // is safe and exact: link-open logging began on 2026-08-09, no contributor
-  // link has been sent, and the only honor link distributed was accepted before
-  // this logging existed. Every row before the cutoff is therefore synthetic by
-  // construction. Remove this second rule once real opens are being recorded.
-  // Everything before this stamp is an owner preview by construction: only one
-  // honor link had been distributed at that point, and it was accepted before
-  // link logging existed. Advance this stamp only when it is again true that
-  // nothing real sits behind it.
-  const LOG_CUTOFF = '2026-08-09T18:00:00Z';
-  try {
-    for (const src of ['contributor-link', 'honor-link', 'recheck-link', 'honor-cert']) {
-      await fetch(SB + '/rest/v1/interaction_events?source=eq.' + src + '&payload-%3E%3Euser_agent=like.*curl*',
-        { method: 'DELETE', headers: H });
-      await fetch(SB + '/rest/v1/interaction_events?source=eq.' + src + '&created_at=lt.' + encodeURIComponent(LOG_CUTOFF),
-        { method: 'DELETE', headers: H });
-    }
-  } catch (e) { /* best-effort */ }
-  // Reviewer-evaluation rows carrying a deploy-check tag. The guard in
-  // /api/reviewer-eval stops new ones, but a row written before that guard
-  // deployed would otherwise sit permanently in the research baseline, which is
-  // the one table in the programme that must hold only real answers.
-  try {
-    for (const tag of ['selftest', 'test', 'verify', 'owner']) {
-      await fetch(SB + '/rest/v1/interaction_events?source=eq.reviewer-eval&payload-%3E%3Esrc=eq.' + tag,
-        { method: 'DELETE', headers: H });
-    }
-  } catch (e) { /* best-effort */ }
-  // Endorsement rows written by an end-to-end check of /api/support. The write
-  // there is suppressed for the standard test tags, but proving the write path
-  // works at all requires a tag that is NOT suppressed, so e2echeck writes a
-  // real row on purpose and this removes it afterwards. Without this the only
-  // way to verify the endorsement counter is to permanently inflate it by one.
-  try {
-    for (const tag of ['e2echeck', 'selftest', 'test', 'verify', 'owner']) {
-      await fetch(SB + '/rest/v1/interaction_events?source=eq.support&payload-%3E%3Esrc=eq.' + tag,
-        { method: 'DELETE', headers: H });
-    }
-  } catch (e) { /* best-effort */ }
-  // The twelve endorsement rows written on 2026-08-11 while verifying that the
-  // /api/support redirect chain worked for both campaigns across six referral
-  // tags. They carry genuine src tags, so no tag filter can reach them. They are
-  // bracketed by timestamp instead, and the bracket is exact: the previous real
-  // endorsement is dated 2026-08-04T09:03Z, nothing was recorded in between
-  // because the write was broken, and the twelve landed inside a six second
-  // window. Nothing genuine can fall inside these bounds.
-  const E2E_FROM = '2026-08-11T08:36:45Z';
-  const E2E_TO   = '2026-08-11T08:37:00Z';
-  // Second bracket: three rows written at 20:18Z while confirming the endorsement
-  // redirect was not being served from edge cache. Same six-second signature, and
-  // the last one is the reason /api/support now refuses to record a non-browser
-  // agent at all, so this list should not need extending again.
-  const E2E2_FROM = '2026-08-11T20:18:35Z';
-  const E2E2_TO   = '2026-08-11T20:18:45Z';
-  // Third bracket: one row at 20:20:46Z, the demonstration that a real browser
-  // user agent DOES record while curl does not. It proved the fix and it is not
-  // a supporter, so it comes out like the others.
-  const E2E3_FROM = '2026-08-11T20:20:40Z';
-  const E2E3_TO   = '2026-08-11T20:20:52Z';
-  try {
-    for (const w of [[E2E_FROM, E2E_TO], [E2E2_FROM, E2E2_TO], [E2E3_FROM, E2E3_TO]]) {
-      await fetch(SB + '/rest/v1/interaction_events?source=eq.support'
-        + '&created_at=gte.' + encodeURIComponent(w[0])
-        + '&created_at=lte.' + encodeURIComponent(w[1]),
-        { method: 'DELETE', headers: H });
-    }
-  } catch (e) { /* best-effort */ }
-  // The five guide-download rows written on 2026-08-11 while verifying that
-  // every shape of ?e= link had stopped redirecting to the consent form. They
-  // carry genuine src tags (email, site, signature, footer, guides) because
-  // those tags were the thing under test, so no tag filter can reach them.
-  // Bracketed by timestamp: five downloads landed one second apart inside a
-  // five second window, one per link shape, in the order the check ran.
-  const DL_FROM = '2026-08-11T04:16:07Z';
-  const DL_TO   = '2026-08-11T04:16:13Z';
-  try {
-    await fetch(SB + '/rest/v1/interaction_events?source=eq.guide-dl'
-      + '&created_at=gte.' + encodeURIComponent(DL_FROM)
-      + '&created_at=lte.' + encodeURIComponent(DL_TO),
-      { method: 'DELETE', headers: H });
-  } catch (e) { /* best-effort */ }
-  // eval-view rows from an end-to-end check of the evaluation open counter.
-  // Same reason as the endorsement check: proving the counter writes at all
-  // needs a tag the write guard does not suppress, so e2echeck writes a real
-  // row on purpose and this removes it. Without it, confirming that a zero is
-  // a true zero would permanently add one to the funnel denominator.
-  try {
-    for (const tag of ['e2echeck', 'selftest', 'test', 'verify', 'owner']) {
-      await fetch(SB + '/rest/v1/interaction_events?source=eq.eval-view&payload-%3E%3Esrc=eq.' + tag,
-        { method: 'DELETE', headers: H });
-    }
-  } catch (e) { /* best-effort */ }
-  // Arrival rows from an end-to-end check of the two counters added on
-  // 2026-08-11. Same reason as the others: proving a counter writes requires a
-  // tag the write guard does not suppress.
-  try {
-    for (const src of ['reviewer-view', 'train-view']) {
-      for (const tag of ['e2echeck', 'selftest', 'test', 'verify', 'owner']) {
-        await fetch(SB + '/rest/v1/interaction_events?source=eq.' + src + '&payload-%3E%3Esrc=eq.' + tag,
-          { method: 'DELETE', headers: H });
-      }
-    }
-  } catch (e) { /* best-effort */ }
-  // Gate telemetry rows carrying a deploy-check tag. Same reason: a test view or
-  // field_touched row lands in the funnel denominator that the conversion report
-  // is computed from, where it reads as a real visitor who abandoned.
-  try {
-    for (const tag of ['selftest', 'test', 'verify', 'owner']) {
-      await fetch(SB + '/rest/v1/interaction_events?source=eq.gate-view&payload-%3E%3Esrc=eq.' + tag,
-        { method: 'DELETE', headers: H });
-    }
-  } catch (e) { /* best-effort */ }
-}
+// purgeTestRows was removed on 2026-11-26 (blocker B-019). It ran on every
+// participant confirmation and deleted rows by assumption (all link opens before
+// a cutoff date, reviewer evaluations tagged 'owner' or 'test'). A read-only
+// count that day found no row matching any of its rules, so nothing depended on
+// it. The deploy check above never writes a row, so no cleanup is needed here;
+// any future cleanup is an owner-run, row-by-row operation, never a side effect
+// of a participant action. scripts/check_zero_drift.py guards against its return.
 
 function publicPerson(p){
   return {
@@ -377,8 +256,6 @@ export default async function handler(req){
     message: JSON.stringify(payload),
     source: 'contributor-confirm'
   };
-
-  await purgeTestRows(H);
 
   if (!isTest) {
     // The confirmation record is the point of this endpoint. If it fails the
