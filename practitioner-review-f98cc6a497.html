@@ -192,7 +192,7 @@ button.tap{font-weight:600}
 <legend>Last step: claim your free copy, then submit</legend>
 <div class="offer">
 <p class="offer-title">Free copy of the prototype</p>
-<p class="offer-text">Leave your email and we will send you a free copy of the Decision Spellcheck prototype when the study closes. Your email is used for that and for nothing you have not ticked below.</p>
+<p class="offer-text">Leave your email and we will send you a free copy of the Decision Spellcheck prototype when the study closes. Your email is used for that and for nothing you have not ticked below. If you provide contact details, JRS sends a private request notification to its owner using Formspree and email. The notification contains your contact details and selected requests, never your research answer.</p>
 <label for="email" style="margin-top:10px">Email <span class="hint">(optional)</span></label>
 <input type="email" id="email" name="email" autocomplete="email" placeholder="you@example.com">
 </div>
@@ -234,7 +234,7 @@ button.tap{font-weight:600}
 </form>
 <div id="thanks" class="done" hidden>Thank you. Your answer is in, and there is nothing more to do.</div>
 <div id="pilot" hidden>
-<p style="margin-top:24px">Separately, and only if it is useful to you: if your organisation might want to try this on its own records, leave an email and we will be in touch about a pilot or licence. It is not linked to your answer.</p>
+<p style="margin-top:24px">Separately, and only if it is useful to you: if your organisation might want to try this on its own records, leave an email and we will be in touch about a pilot or licence. It is not linked to your answer. By requesting contact, you agree that your contact details and pilot request may be sent to the JRS owner using Formspree and email. No research answer is sent.</p>
 <form id="pf" novalidate>
 <label for="p_email">Email</label>
 <input type="email" id="p_email" name="p_email" autocomplete="email">
@@ -354,7 +354,7 @@ if(form){ form.addEventListener('submit', function(e){
   if(email && !validEmail(email)){ if(msg) msg.textContent='Please check your email address, or leave it blank.'; return; }
   if(!jrsSanitizeCheck(answer)) return;
   var body={ record_id:RECORD_ID, rid:RID, src:SRC, rely:RELY, answer:answer, role:val('role'), years:val('years'), consent_quote:chk('c_quote'), name:val('name'), email:email,
-    want_copy:!!email, want_results:chk('c_results'), consent_credit:chk('c_credit'), pilot_interest:false, website:val('website') };
+    want_copy:!!email, want_results:chk('c_results'), consent_credit:chk('c_credit'), pilot_interest:false, contact_relay_notice:true, website:val('website') };
   if(btn) btn.disabled=true; if(msg) msg.textContent='Sending...';
   fetch('/api/practitioner-review', { method:'POST', headers:{'Content-Type':'application/json'}, body:JSON.stringify(body) })
     .then(function(r){
@@ -397,7 +397,7 @@ if(pform){ pform.addEventListener('submit', function(e){
   if(!validEmail(pemail)){ if(pmsg) pmsg.textContent='Please add a valid email so we can reach you.'; return; }
   if(pbtn) pbtn.disabled=true; if(pmsg) pmsg.textContent='Sending...';
   fetch('/api/practitioner-review', { method:'POST', headers:{'Content-Type':'application/json'},
-    body:JSON.stringify({ kind:'pilot-interest', record_id:RECORD_ID, name:val('name'), email:pemail, website:val('website') }) })
+    body:JSON.stringify({ kind:'pilot-interest', record_id:RECORD_ID, name:val('name'), email:pemail, contact_relay_notice:true, website:val('website') }) })
     .then(function(r){ if(!r.ok) throw new Error('status '+r.status); return r.json(); })
     .then(function(){ pform.hidden=true; if(pmsg){ pform.parentNode.appendChild(pmsg); pmsg.textContent='Thank you. We will be in touch.'; } })
     .catch(function(){
