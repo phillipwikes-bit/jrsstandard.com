@@ -42,7 +42,7 @@ for (const it of data('e').items) {
   out.E[it.id] = { flagged: figs.length > 0, wrong_figures: [...new Set(figs.map((f) => f.evidence.claim_figure.text))] };
 }
 // Track F: good AI drafts and the same drafts with one error (added 2026-11-25).
-for (const [track, file] of [['F', 'f'], ['FH', 'f-holdout'], ['FH2', 'f-holdout-2'], ['G', 'g']]) for (const it of data(file).items) {
+for (const [track, file] of [['F', 'f'], ['FH', 'f-holdout'], ['FH2', 'f-holdout-2'], ['G', 'g'], ['G2', 'g2']]) for (const it of data(file).items) {
   const { record, state } = review(it.record, [{ text: it.source }]);
   const crit = state ? state.findings.filter((f) => f.status === 'OPEN' && f.severity === 'critical') : [];
   const quotes = new Set(); for (const f of crit) { const c = record && record.claims.find((x) => x.claim_id === f.claim_id); if (c) quotes.add(c.quote); }

@@ -75,4 +75,6 @@ if (ans.FH) out.FH = scoreF(key('f-holdout'), ans.FH);
 if (ans.FH2) out.FH2 = scoreF(key('f-holdout-2'), ans.FH2);
 // Track G: fresh decisions, one changed sentence (see G_PROTOCOL.md).
 if (ans.G) out.G = scoreF(key('g'), ans.G);
+// Track G2: fresh decisions, one "not" removed (see G2_PROTOCOL.md).
+if (ans.G2) out.G2 = scoreF(key('g2'), ans.G2);
 console.log(JSON.stringify(out, null, 2));
