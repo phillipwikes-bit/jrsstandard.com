@@ -389,3 +389,20 @@ test('round-four templates stay quiet when the record covers the point', () => {
   const ai = ar65(); ai.record_class = 'ai_action_authorization';
   assert.ok(!names(ai).has('broad_access_without_scope'), 'scoped to supplier access');
 });
+
+// 2026-11-26: a record dated in words ("On 1 June 2026") was reported as having
+// no explicit date and no dated decision, because both checks read only
+// 2026-06-01. Found by running the starter edition on a fictional record.
+test('dates written in words count as explicit dates', () => {
+  const r = fx('fixtures-partner', 'AUTH-P01');
+  const c3 = r.claims.find((c) => c.kind === 'authority');
+  const q = 'On 1 June 2026 Priya Nandakumar authorized Ledgerline Assistant to send invoice reminder emails.';
+  r.text = q; c3.quote = q; delete c3.event;
+  r.claims = [c3];
+  const n = names(r);
+  assert.ok(!n.has('no_explicit_dates'), 'written date read');
+  assert.ok(!n.has('no_dated_decision'), 'written date on the approval read');
+  c3.quote = 'Priya Nandakumar authorized Ledgerline Assistant to send invoice reminder emails.';
+  r.text = c3.quote;
+  assert.ok(names(r).has('no_explicit_dates'), 'still fires with no date');
+});
