@@ -425,6 +425,54 @@
       "note": "WHAT IS ESTABLISHED AND WHAT IS NOT. ESTABLISHED FROM REPOSITORY EVIDENCE: the promise, the grant, and the published export link all exist and contradict each other. NOT ESTABLISHED: whether any response rows exist and are actually retrievable by an anonymous caller. A direct read of the production table was attempted and correctly DENIED by the execution environment's production-read control, so the live row count is PRODUCTION VERIFICATION REQUIRED and is not inferred. The remediation does not depend on the count: a privacy promise contradicted by a grant is a defect whether or not anyone has yet typed into the box. SCOPE NOTE, so this is not over-read: interaction_events was examined in the same pass and is a WEAKER case, not this one. Its collecting pages promise 'No free text and no identifying information are collected' and 'aggregated without individual attribution', and select=* over a payload jsonb is consistent with that promise. The enforcement of 'no free text' lives in the client code that builds the payload rather than in the schema, which is a separate and lesser matter recorded as X-1 rather than folded in here.",
       "next_action_by": "OWNER",
       "next_action_basis": "The anon SELECT grant on public.finding_responses must be revoked in the production console. Nothing here can perform or verify it."
+    },
+    {
+      "blocker_id": "B-018",
+      "severity": "CRITICAL",
+      "category": "PRIVACY",
+      "description": "Owner-only research files naming study participants are readable by anyone in the public GitHub repository phillipwikes-bit/jrsstandard.com: research/PARTICIPANT_INVENTORY_BY_RUNG.md (headed 'OWNER COPY. DO NOT FORWARD', shows the study-arm split), research/REVIEWER_ROSTER_COMPLETE.md and docs/enterprise-diligence/EXHAUSTIVE_PARTICIPANT_AND_CONTRIBUTOR_RELEASE_AUDIT.md. No email addresses found in them; names and study roles are present. They are excluded from the website by .vercelignore but present on main and, per an external audit of 26 November 2026, at 196 of 205 branch heads. Repository visibility confirmed public on 2026-11-26. Presence does not establish that anyone viewed them.",
+      "evidence_refs": [
+        "git ls-tree origin/main: the three paths (checked 2026-11-26)",
+        "GitHub API: repository visibility 'public' (2026-11-26)",
+        ".vercelignore lines 21 and 31 (site exclusion)",
+        "External executive audit 26 November 2026, finding P0"
+      ],
+      "affected_assets": [
+        "JRS-RESEARCH",
+        "JRS-REPOSITORY"
+      ],
+      "required_action": "OWNER DECISION, not executable from a session: (1) whether to make the repository private now (reversible; Vercel can deploy from a private repository, confirm in Vercel settings); (2) with a privacy or legal adviser, review consent terms and whether participants must be told. Do NOT delete files or rewrite history before an evidence-preserving plan is agreed (CLAUDE.md Rule 12; removal from main would not remove them from other branches or history).",
+      "status": "OPEN",
+      "opened": "2026-11-26",
+      "opened_by": "session claude/ecstatic-planck-o6uw8n",
+      "owner": null,
+      "created": null,
+      "note": null,
+      "next_action_by": null,
+      "next_action_basis": null
+    },
+    {
+      "blocker_id": "B-019",
+      "severity": "HIGH",
+      "category": "DATA_INTEGRITY",
+      "description": "api/contributor.js on main calls purgeTestRows(H) on every contributor confirmation POST, before the confirmation is stored. With the service-role key it issues DELETE requests against pilot_contacts (rows tagged TEST-00), interaction_events link-open rows with a curl user agent, ALL link-open rows created before 2026-08-09T18:00:00Z (on the stated assumption that every such row is synthetic), and reviewer-eval rows whose src tag is selftest, test, verify or owner. If any assumption is wrong, genuine research data is deleted silently on a participant action. Not established: which revision is deployed, whether the path has run, or whether any real row was deleted.",
+      "evidence_refs": [
+        "api/contributor.js lines 108-150 (purgeTestRows) and 381 (call) on main, checked 2026-11-26",
+        "External executive audit 26 November 2026, finding P1 (cleanup on contributor path)"
+      ],
+      "affected_assets": [
+        "JRS-RESEARCH",
+        "JRS-WEBSITE"
+      ],
+      "required_action": "OWNER APPROVAL REQUIRED (production behaviour): verify the deployed revision; export the affected tables before any change; then move the cleanup out of the participant path into a separately run owner script that deletes only explicitly listed test rows, with a test that a participant submission cannot delete any row. Prepared, not applied.",
+      "status": "OPEN",
+      "opened": "2026-11-26",
+      "opened_by": "session claude/ecstatic-planck-o6uw8n",
+      "owner": null,
+      "created": null,
+      "note": null,
+      "next_action_by": null,
+      "next_action_basis": null
     }
   ],
   "_decisions_recorded_2026_09_15": {

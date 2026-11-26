@@ -39,14 +39,10 @@ export default async function handler(req){
   const H = { 'apikey':SERVICE, 'Authorization':'Bearer '+SERVICE, 'Content-Type':'application/json' };
   const HW = Object.assign({ 'Prefer':'return=minimal' }, H);
 
-  // Maintenance: purge known diagnostic/test codes from ai_pilot_reads. These codes
-  // are never real reviewers, so deleting them is always safe and self-heals test pollution.
-  const TEST_CODES = ['SMOKE-TEST','DIAG-B2','DIAG-DET','DIAG-ARMB','DIAG-MIN'];
-  let purged = 'skipped';
-  try {
-    const del = await fetch(SB + '/rest/v1/ai_pilot_reads?reviewer_code=in.(' + TEST_CODES.join(',') + ')', { method:'DELETE', headers:HW });
-    purged = del.ok ? 'ok' : ('failed_' + del.status);
-  } catch(e){ purged = 'error'; }
+  // The automatic purge of diagnostic codes from ai_pilot_reads was removed on
+  // 2026-11-26 (blocker B-019): a participant-reachable endpoint must not delete
+  // rows. A read-only count that day found none of those codes present.
+  const purged = 'removed';
 
   const results = [];
   for (let i=0; i<REVIEWERS.length; i++){
