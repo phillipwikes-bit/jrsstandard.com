@@ -72,7 +72,13 @@ export default async function handler(req) {
     ts: new Date().toISOString()
   };
   const row = { name: name, email: email, organization: '', message: JSON.stringify(payload), source: 'practitioner-review' };
-  return insertRow(row);
+  const requests = [];
+  if (wantsCopy) requests.push('Free Decision Spellcheck prototype');
+  if (wantsResults) requests.push('Research results');
+  if (credit) requests.push('Contributor credit opt-in (not endorsement)');
+  if (pilot) requests.push('Contact about a pilot or licence');
+  return insertRow(row, requests.length ? {requests, country: payload.country, record: record,
+    ts: payload.ts, contactNotice: b.contact_relay_notice === true} : null);
 }
 
 function validEmail(email) { return email.indexOf('@') > 0 && email.indexOf('.') >= 0; }
@@ -84,11 +90,67 @@ function serviceHeaders() {
   return { 'apikey': SERVICE, 'Authorization': 'Bearer ' + SERVICE, 'Content-Type': 'application/json', 'Prefer': 'return=minimal' };
 }
 
-async function insertRow(row) {
+// Owner-authorized transactional alert through the existing public-contact
+// Formspree relay. This is separate from the disabled legacy email module.
+// No research answers, review choices, participant IDs or unselected consent
+// fields leave the private research store. Older clients without the notice
+// receive a metadata-only alert. An unsuccessful relay must never lose a row
+// or cause a visitor to resubmit; the hourly owner check is the backstop.
+async function relayOwnerAlert(row, alert) {
+  const pilot = row.source === 'practitioner-pilot-interest';
+  const subject = (pilot ? 'JRS website pilot request' : 'JRS website practitioner request') + ' | ' + alert.ts;
+  const permitted = alert.contactNotice === true;
+  const message = [
+    'Request: ' + alert.requests.join('; '),
+    'Received (UTC): ' + alert.ts,
+    'Recorded country: ' + (alert.country || 'Not supplied'),
+    'Record: ' + alert.record,
+    pilot ? 'Expression of interest only; not a confirmed pilot or sale.' : 'A request or permission, not a sale.',
+    permitted ? 'Contact details below are provided for this request only.' : 'Contact details are available in the private JRS register (older form version).',
+    'No research response is included.'
+  ].join('\n');
+  const fields = new URLSearchParams({
+    name: permitted && row.name ? row.name : 'Not supplied',
+    email: permitted && row.email ? row.email : 'phillipwikes@gmail.com',
+    organization: '',
+    category: pilot ? 'organization' : 'general',
+    message,
+    source: 'jrs-owner-request-alert',
+    form_type: 'jrs-transactional-owner-alert-2026-11-26',
+    consent_to_contact: 'true', consent_to_transfer: 'false',
+    contact_details_included: permitted ? 'true' : 'false',
+    _subject: subject, _gotcha: ''
+  });
+  const controller = new AbortController();
+  const timer = setTimeout(() => controller.abort(), 5000);
+  try {
+    const response = await fetch('https://formspree.io/f/mreddwdg', {
+      method: 'POST',
+      headers: {'Accept':'application/json','Content-Type':'application/x-www-form-urlencoded;charset=UTF-8',
+        'Origin':'https://www.jrsstandard.com'},
+      body: fields.toString(), signal: controller.signal
+    });
+    if (!response.ok) {
+      console.error('jrs_owner_alert_relay_failed', row.source, alert.ts, response.status);
+      return false;
+    }
+    return true;
+  } catch (_) {
+    console.error('jrs_owner_alert_relay_failed', row.source, alert.ts, 'network_or_timeout');
+    return false;
+  } finally {
+    clearTimeout(timer);
+  }
+}
+
+async function insertRow(row, alert) {
   const H = serviceHeaders();
   if (!H) return json({ error: 'service_key_missing' }, 503);
   const res = await fetch(SB + '/rest/v1/pilot_contacts', { method: 'POST', headers: H, body: JSON.stringify(row) });
   if (!res.ok) return json({ error: 'db_insert_failed', status: res.status }, 502);
+  // Await bounded delivery attempt after durable capture; provider acceptance
+  // is not mailbox delivery. Never expose delivery status to public visitors.
+  if (alert) await relayOwnerAlert(row, alert);
   return json({ ok: true });
 }
 
@@ -117,5 +179,7 @@ async function pilotInterest(req, b, record) {
     country: String(req.headers.get('x-vercel-ip-country') || '').toUpperCase().replace(/[^A-Z]/g, '').slice(0, 2) || '',
     ts: new Date().toISOString()
   };
-  return insertRow({ name: name, email: email, organization: '', message: JSON.stringify(payload), source: 'practitioner-pilot-interest' });
+  return insertRow({ name: name, email: email, organization: '', message: JSON.stringify(payload), source: 'practitioner-pilot-interest' },
+    {requests: ['Contact about a pilot or licence'], country: payload.country, record: record,
+      ts: payload.ts, contactNotice: b.contact_relay_notice === true});
 }
