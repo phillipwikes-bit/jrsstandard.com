@@ -20,3 +20,6 @@
 | FH (sealed hold-out 1, run once) | Changed sentence flagged as serious | **18 of 30 (failed; needed 21)**; now development material: 25 of 30 | 30 of 30 | 0 of 30 |
 | FH2 (sealed hold-out 2, run once) | Good AI drafts with no serious flag | **7 of 30 (failed; before 4, needed 9)** | 0 of 30 | 30 of 30 |
 | FH2 (sealed hold-out 2, run once) | Changed sentence flagged as serious | **19 of 30 (failed; before 17, needed 21)**: dates 15 of 16, negations 2 of 10, figures 2 of 4; after later fixes made by looking at its misses (seen material): 21 of 30 | 30 of 30 | 0 of 30 |
+
+| G (sealed, run once) | Unchanged passages with no serious flag | **60 of 60 (passed; needed 54)** | 0 of 60 | 60 of 60 |
+| G (sealed, run once) | Changed sentence flagged as serious | **57 of 60 (passed; needed 48)**: negations 29 of 30, dates 28 of 30 | 60 of 60 | 0 of 60 |
