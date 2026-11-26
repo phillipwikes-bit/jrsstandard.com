@@ -449,7 +449,8 @@
       "created": null,
       "note": null,
       "next_action_by": null,
-      "next_action_basis": null
+      "next_action_basis": null,
+      "resolution_progress": "2026-11-26: no tool available to a session can change repository visibility (GitHub MCP has no such tool; gh is limited to search here). The owner's step remains: GitHub, Settings, General, Danger Zone, Change visibility, Make private. Removing the files from main was considered and not done: nine scripts and guards read or regenerate them, and history and other branches would stay public."
     },
     {
       "blocker_id": "B-019",
@@ -465,14 +466,15 @@
         "JRS-WEBSITE"
       ],
       "required_action": "OWNER APPROVAL REQUIRED (production behaviour): verify the deployed revision; export the affected tables before any change; then move the cleanup out of the participant path into a separately run owner script that deletes only explicitly listed test rows, with a test that a participant submission cannot delete any row. Prepared, not applied.",
-      "status": "OPEN",
+      "status": "CLOSED",
       "opened": "2026-11-26",
       "opened_by": "session claude/ecstatic-planck-o6uw8n",
       "owner": null,
       "created": null,
       "note": null,
       "next_action_by": null,
-      "next_action_basis": null
+      "next_action_basis": null,
+      "resolution": "2026-11-26: on the owner's instruction (no legal adviser; 'figure it all out'), a read-only production count found no row matching any deletion rule (37 contributor confirmations, 300 link opens, 1 reviewer evaluation, 1,145 pilot reads untouched). purgeTestRows removed from api/contributor.js and the diagnostic-code delete from api/register.js; guard check_no_endpoint_deletes_rows_as_a_side_effect added and shown to fail on the old file. Merged as PR #242 (78843558). Production verified by bytes: 81 direct assets identical, 14 redirects, private gate fails closed, 0 stale."
     }
   ],
   "_decisions_recorded_2026_09_15": {
