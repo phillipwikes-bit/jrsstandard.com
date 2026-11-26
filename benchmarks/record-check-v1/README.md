@@ -14,6 +14,7 @@ Whether a tool can tell, from the documents alone, what a later reviewer, audito
 | D. Outcome risk from the record account | Flag EEOC decisions whose agency decision was not affirmed, reading only the BACKGROUND section (never the analysis or order) | 206 development + 183 test decisions | Outcome read from the order by a fixed rule; checked by hand on 3 decisions |
 | E. Changed figures | Given a public decision and a passage of it, report whether the passage changes an amount, percentage or period the decision gives, and which figure | 120: 40 passages from 32 distinct EEOC decisions (not used in tracks A to D; corrected 26 November: some decisions are posted twice under two dates, and 8 were drawn twice), each passage unchanged, with the figure written another way (same value), and with the figure changed; in 16 of the 40 the new figure is another figure from the same decision | Built by rule (`build-track-e.mjs`) |
 | G. Fresh decisions, one changed sentence | Given a public decision and a passage of it, as published or with one sentence changed, report serious problems and which sentences | 120: 60 distinct EEOC decisions never used before, each passage unchanged and with one "was" made "was not" (30) or one date moved by a day (30); sealed before the run (`G_PROTOCOL.md`) | Built by rule (`build-track-g.mjs`) |
+| G2. Fresh decisions, one "not" removed | As track G, with the passage's only "not" removed ("was not selected" made "was selected") | 60: 30 further distinct EEOC decisions never used before (`G2_PROTOCOL.md`) | Built by rule (`build-track-g2.mjs`) |
 | F and FH. Good AI drafts | Given a public decision and an AI-written account of it, report whether it has a serious problem and which sentences; good drafts should pass, and in a copy with one error put in, the changed sentence should be flagged | F: 120 (the 60 study 014 drafts that kept their citations, two drafters, 30 decisions, each also with one changed date, negation or figure). FH and FH2: 60 each, sealed hold-outs of 30 further drafts (Haiku P3 rewrites; Haiku P2 "findings" write-ups) built the same way (`FH_PROTOCOL.md`, `FH2_PROTOCOL.md`) | Study 014 (good drafts); the change is made by rule (`build-track-f.mjs`) |
 
 ## How to take part
@@ -28,8 +29,8 @@ Whether a tool can tell, from the documents alone, what a later reviewer, audito
 |---|---|---|---|---|
 | A | Unchanged decisions passed | 28 of 28 (100%) | 0 of 28 (0%) | 28 of 28 (100%) |
 | A | Altered decisions flagged | 56 of 56 (100%) | 56 of 56 (100%) | 0 of 56 (0%) |
-| A | Dropped dates named | 244 of 265 (92%) | 0 of 265 (0%) | 0 of 265 (0%) |
-| A | Dropped speakers named | 80 of 88 (91%) | 0 of 88 (0%) | 0 of 88 (0%) |
+| A | Dropped dates named | 265 of 265 (100%) | 0 of 265 (0%) | 0 of 265 (0%) |
+| A | Dropped speakers named | 86 of 88 (98%) | 0 of 88 (0%) | 0 of 88 (0%) |
 | B | Lossier AI draft identified | 56 of 60 (93%) | 26 of 60 (43%) | 26 of 60 (43%) |
 | C | EU AI Act points agreeing with key | 118 of 120 (98%) | 46 of 120 (38%) | 43 of 120 (36%) |
 | C | Points wrongly credited as backed (lower is better) | 0 | 0 | 77 |
@@ -49,6 +50,9 @@ Whether a tool can tell, from the documents alone, what a later reviewer, audito
 
 | G (sealed, run once) | Unchanged passages with no serious flag | **60 of 60 (passed; needed 54)** | 0 of 60 | 60 of 60 |
 | G (sealed, run once) | Changed sentence flagged as serious | **57 of 60 (passed; needed 48)**: negations 29 of 30, dates 28 of 30 | 60 of 60 | 0 of 60 |
+
+| G2 (sealed, run once) | Unchanged passages with no serious flag | **30 of 30 (passed; needed 27)** | 0 of 30 | 30 of 30 |
+| G2 (sealed, run once) | Changed sentence flagged as serious | **29 of 30 (passed; needed 24)** | 30 of 30 | 0 of 30 |
 
 **A stronger baseline for track E.** `adapters/number-diff.mjs` flags every number in the passage that appears nowhere in the decision. It passes all 80 unchanged passages and catches 16 of 40 changed figures (2 of the 16 where the new figure comes from elsewhere in the same decision). Any vendor could build it in an afternoon; a figure check has to beat it.
 

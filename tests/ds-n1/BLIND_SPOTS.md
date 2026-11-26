@@ -37,6 +37,19 @@ Started 25 November 2026; second round 25 to 26 November with a sealed hold-out 
 | The person reporting ("S1 stated that two coworkers ...") counted as a different subject | Left out of the wrong-person check | FH2 flagged statements 106 to 105 | |
 | Tried and removed: a tie-break favouring the tighter of two equally scored passages | | Added flags on track F (61 to 64 statements) | |
 
+## Round 5 (26 November)
+
+| Blind spot | What was done | Measured | Left |
+|---|---|---|---|
+| Month-and-year dates ("in February 2020") never counted as dropped | Read for dropped-date questions only, never for wrong-date checks | Part A dates named 244 to 265 of 265 (seen) | |
+| "said", "argued", "responded", "wrote" not read as speech; a role mentioned elsewhere in a sentence covered a dropped speaker | Added; an unidentified speaker only counts roles it attributes speech to | Part A speakers 80 to 86 of 88 (seen) | 2 of 88 |
+| The "but / and" split could keep the half without the negated word ("requested light duty, and the request was not granted") | It no longer does | Track G (spent) negations 29 to 30 of 30 | |
+| A date one day off from the sentence the statement copies passed when that date appeared nearby | The copied sentence's date decides | Track G (spent) dates 28 to 29 of 30 | |
+| Figures in a bullet list under "include significant limitations:" were never checked | "limitations", "gaps", "missing" in a lead-in count as a writer's note only when about the record; short list items compare their figure | FH2 (spent) figures 3 to 4 of 4 | |
+| Tried and removed: no dropped-date question when the statement gives only a month | | Part B 56 to 55 | |
+| **Fresh test G2** (30 decisions, one "not" removed) | | **Passed: 30/30 clean, 29/30 caught** | |
+| Correction | The earlier "50 of 180 AI drafts free of serious flags" came from a diagnostic script hit by the one-letter-title bug fixed in round 3; with the benchmark's setup the figure is 44, before and after round 5 | | |
+
 ## Measured openly, not solved
 
 | Blind spot | Measure | Result |

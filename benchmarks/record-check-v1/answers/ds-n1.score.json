@@ -20,21 +20,21 @@
       ]
     },
     "dropped_dates_named": {
-      "k": 244,
+      "k": 265,
       "n": 265,
-      "rate": 0.921,
+      "rate": 1,
       "wilson95": [
-        0.882,
-        0.948
+        0.986,
+        1
       ]
     },
     "dropped_speakers_named": {
-      "k": 80,
+      "k": 86,
       "n": 88,
-      "rate": 0.909,
+      "rate": 0.977,
       "wilson95": [
-        0.831,
-        0.953
+        0.921,
+        0.994
       ]
     }
   },
@@ -257,12 +257,12 @@
       ]
     },
     "changed_sentence_flagged_as_serious": {
-      "k": 21,
+      "k": 22,
       "n": 30,
-      "rate": 0.7,
+      "rate": 0.733,
       "wilson95": [
-        0.521,
-        0.833
+        0.556,
+        0.858
       ]
     },
     "both_in_the_same_pair": {
@@ -294,12 +294,12 @@
         ]
       },
       "figure": {
-        "k": 3,
+        "k": 4,
         "n": 4,
-        "rate": 0.75,
+        "rate": 1,
         "wilson95": [
-          0.301,
-          0.954
+          0.51,
+          1
         ]
       }
     }
@@ -315,25 +315,34 @@
       ]
     },
     "changed_sentence_flagged_as_serious": {
-      "k": 57,
+      "k": 59,
       "n": 60,
-      "rate": 0.95,
+      "rate": 0.983,
       "wilson95": [
-        0.863,
-        0.983
+        0.911,
+        0.997
       ]
     },
     "both_in_the_same_pair": {
-      "k": 57,
+      "k": 59,
       "n": 60,
-      "rate": 0.95,
+      "rate": 0.983,
       "wilson95": [
-        0.863,
-        0.983
+        0.911,
+        0.997
       ]
     },
     "changed_sentence_flagged_by_kind": {
       "negation": {
+        "k": 30,
+        "n": 30,
+        "rate": 1,
+        "wilson95": [
+          0.886,
+          1
+        ]
+      },
+      "date": {
         "k": 29,
         "n": 30,
         "rate": 0.967,
@@ -341,14 +350,45 @@
           0.833,
           0.994
         ]
-      },
-      "date": {
-        "k": 28,
+      }
+    }
+  },
+  "G2": {
+    "good_drafts_without_serious_flag": {
+      "k": 30,
+      "n": 30,
+      "rate": 1,
+      "wilson95": [
+        0.886,
+        1
+      ]
+    },
+    "changed_sentence_flagged_as_serious": {
+      "k": 29,
+      "n": 30,
+      "rate": 0.967,
+      "wilson95": [
+        0.833,
+        0.994
+      ]
+    },
+    "both_in_the_same_pair": {
+      "k": 29,
+      "n": 30,
+      "rate": 0.967,
+      "wilson95": [
+        0.833,
+        0.994
+      ]
+    },
+    "changed_sentence_flagged_by_kind": {
+      "negation_removed": {
+        "k": 29,
         "n": 30,
-        "rate": 0.933,
+        "rate": 0.967,
         "wilson95": [
-          0.787,
-          0.982
+          0.833,
+          0.994
         ]
       }
     }
