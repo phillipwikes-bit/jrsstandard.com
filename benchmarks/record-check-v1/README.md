@@ -12,7 +12,7 @@ Whether a tool can tell, from the documents alone, what a later reviewer, audito
 | B. Lossy AI summaries | Given a public decision and two AI-written drafts of it, report which draft lost more of what a reviewer needs | 60 pairs: 30 EEOC decisions, two AI drafters | Study 014 (2 October 2026): concise summaries lost most citations and quotations; a reader rebuilt 77% of masked facts from them against 97% from the source |
 | C. EU AI Act deployer records | For each of ten deployer points (Regulation (EU) 2024/1689, Articles 4, 6, 14 and 26), report whether a fictional AI authorisation record shows it and a document backs it | 12 fictional records, 120 points | Answer key written and sealed before the checking code existed |
 | D. Outcome risk from the record account | Flag EEOC decisions whose agency decision was not affirmed, reading only the BACKGROUND section (never the analysis or order) | 206 development + 183 test decisions | Outcome read from the order by a fixed rule; checked by hand on 3 decisions |
-| E. Changed figures | Given a public decision and a passage of it, report whether the passage changes an amount, percentage or period the decision gives, and which figure | 120: 40 EEOC decisions (not used in tracks A to D), each passage unchanged, with the figure written another way (same value), and with the figure changed; in 16 of the 40 the new figure is another figure from the same decision | Built by rule (`build-track-e.mjs`) |
+| E. Changed figures | Given a public decision and a passage of it, report whether the passage changes an amount, percentage or period the decision gives, and which figure | 120: 40 passages from 32 distinct EEOC decisions (not used in tracks A to D; corrected 26 November: some decisions are posted twice under two dates, and 8 were drawn twice), each passage unchanged, with the figure written another way (same value), and with the figure changed; in 16 of the 40 the new figure is another figure from the same decision | Built by rule (`build-track-e.mjs`) |
 | F and FH. Good AI drafts | Given a public decision and an AI-written account of it, report whether it has a serious problem and which sentences; good drafts should pass, and in a copy with one error put in, the changed sentence should be flagged | F: 120 (the 60 study 014 drafts that kept their citations, two drafters, 30 decisions, each also with one changed date, negation or figure). FH and FH2: 60 each, sealed hold-outs of 30 further drafts (Haiku P3 rewrites; Haiku P2 "findings" write-ups) built the same way (`FH_PROTOCOL.md`, `FH2_PROTOCOL.md`) | Study 014 (good drafts); the change is made by rule (`build-track-f.mjs`) |
 
 ## How to take part
@@ -54,9 +54,9 @@ Decision Spellcheck answers come from `adapters/ds-n1.mjs`; the baselines from `
 
 | Claim | Proof | Result |
 |---|---|---|
-| Same input, same answer | `proofs/determinism-and-offline.mjs`: two fresh runs, byte comparison | Identical (SHA-256 `598976ce...` on the code of 26 November; earlier versions `8988cd3f...` and `5f0db08d...`) |
+| Same input, same answer | `proofs/determinism-and-offline.mjs`: two fresh runs, byte comparison | Identical (SHA-256 `7a5b765b...` on the code of 26 November, round 4; earlier versions differ as the code changed) |
 | Nothing leaves the computer | Same script, with every network route in Node blocked during both runs; static check of 21 runtime files | Completed with the network blocked; no runtime file names a network API |
-| Every finding shows its working | `proofs/traceability.mjs` on tracks A and B | 1,475 of 1,475 open findings name the record sentence; 987 of 987 findings about a source name the source sentence (rerun 26 November; fewer findings than before because false flags were removed) |
+| Every finding shows its working | `proofs/traceability.mjs` on tracks A and B | 1,408 of 1,408 open findings name the record sentence; 958 of 958 findings about a source name the source sentence (rerun 26 November, round 4) |
 
 ## Read this before comparing numbers
 
