@@ -1,0 +1,280 @@
+484 Decisions of the Federal Labor Relations Authority 73 FLRA No. 94
+
+73 FLRA No. 94
+
+INTERNATIONAL FEDERATION
+OF PROFESSIONAL
+AND TECHNICAL ENGINEERS
+LOCAL 4
+(Union)
+
+and
+
+UNITED STATES
+DEPARTMENT OF THE NAVY
+PORTSMOUTH NAVAL SHIPYARD
+(Agency)
+
+0-AR-5842
+
+_____
+
+DECISION
+
+March 20, 2023
+
+_____
+
+Before the Authority:  Susan Tsui Grundmann,
+Chairman, and Colleen Duffy Kiko, Member
+
+I. Statement of the Case
+
+Arbitrator Timothy J. Buckalew found a
+grievance was not procedurally arbitrable under the
+parties’ collective-bargaining agreement.  Because the
+Union’s exceptions comprise arguments that it could have
+– but did not – raise to the Arbitrator, we dismiss the
+exceptions under §§ 2425.4 and 2429.5 of the Authority’s
+Regulations.
+1
+
+II. Background and Arbitrator’s Award
+
+In October 2020, the Agency suspended the
+grievant for sending an email to several hundred
+bargaining-unit employees’ official email addresses.  The
+email contained a link to an inappropriate photograph
+posted on the then-Union president’s (the president’s)
+social media.  The Union did not grieve the suspension
+at that time.
+
+1 5 C.F.R. §§ 2425.4(c), 2429.5.
+2 Award at 5, 14.
+3 Id. at 16; see also id. at 7 (quoting Art. 7, § 5).
+4 Id. at 14.
+5 Id. at 16.
+6 Id. at 12 n.1.
+7 On November 17, 2022, the Union requested leave to file, and
+did file, a “response” to the opposition, in which the Union
+requested the Authority dismiss the opposition based on deficient
+service by the Agency to the Union.  Supplemental Submission
+On February 18, 2021, the Union notified the
+Agency that the president emailed the same inappropriate
+photograph to fourteen employees.  On July 21, 2021, the
+Union filed a grievance alleging the Agency violated the
+parties’ agreement by treating the grievant unfairly and
+inequitably – namely, that it disciplined the grievant for
+inappropriate conduct but did not discipline the president
+for similar conduct.
+2  The Agency denied the grievance as
+untimely, and the Union invoked arbitration.
+
+Addressing an Agency argument that the
+grievance was not timely filed, the Arbitrator noted that
+the parties’ agreement requires grievances to be filed
+“within ten (10) workdays after the incident out of which
+the grievance arose or within ten days of the date the
+employee or the Union became aware of the incident.”
+3
+Then, assuming “for purposes of argument” that the
+parties’ agreement prohibited “inequitable discipline or
+disparate disciplinary treatment,”
+4 the Arbitrator
+determined that “[t]he incident giving rise to the
+grievance” was either (1) the grievant’s suspension in
+October 2020 or (2) “the date the Union or grievant knew”
+the president had not been disciplined for the same conduct
+as the grievant.
+5
+
+The Arbitrator concluded the grievance was
+untimely with respect to either incident.  With respect to
+the second incident, the Arbitrator rejected the Union’s
+argument that the grievant and the Union did not know,
+until July 2021, that the president was not disciplined.
+Instead, the Arbitrator found the Union knew in
+February 2021 that the president had engaged in the same
+conduct for which the Agency had disciplined the grievant.
+The Arbitrator concluded that the Union should have filed
+the grievance within ten days but failed to do so.
+Accordingly, he found the grievance was not arbitrable.
+
+ The Arbitrator also noted that the award “exceeds
+the recommended thirty-day deadline for rendering the
+award” set forth in the parties’ agreement, but that he
+“advised the parties of the reasons for the delay and there
+were no objections.”
+6
+
+On September 9, 2022, the Union filed
+exceptions to the award, and on October 10, 2022, the
+Agency filed an opposition to the Union’s exceptions.
+7
+
+at 1-2.  We need not resolve whether the opposition is properly
+before us because, for the reasons discussed in Section III, we
+find the Authority’s Regulations bar the Union’s exceptions.
+Accordingly, we do not consider the opposition in reaching our
+decision.  See AFGE, Loc. 2328, 61 FLRA 510, 511 (2006)
+(Chairman Cabaniss concurring) (citing AFGE, Loc. 131,
+60 FLRA 999, 999 n.* (2005); AFGE, Loc. 3599, 53 FLRA 1267,
+1267 n.* (1998)) (finding it unnecessary to resolve whether
+opposition was timely where Authority did not rely on it).
+
+73 FLRA No. 94 Decisions of the Federal Labor Relations Authority 485
+
+III. Analysis and Conclusions:  Sections 2425.4(c)
+and 2429.5 of the Authority’s Regulations bar
+the Union’s exceptions.
+
+Under §§ 2425.4(c) and 2429.5 of the Authority’s
+Regulations, the Authority will not consider arguments or
+issues that could have been, but were not, presented to the
+arbitrator.
+8  The Union argues that the Arbitrator denied it
+a fair hearing and the award is based on a nonfact because
+the Arbitrator failed to consider dispositive testimony of
+the Agency’s executive director (the director).
+9  According
+to the Union, at the hearing, the director testified that the
+Agency did not discipline the president for emailing the
+photograph.
+10  To support both exceptions, the Union
+argues this testimony demonstrates the Union only learned
+that the president had not been disciplined at the
+arbitration hearing, and that the Arbitrator should have
+determined the grievance’s timeliness based on the hearing
+date.
+11
+
+Under the “Other Grounds” heading on its
+exceptions form, the Union makes an additional
+argument.
+12  The Authority’s Regulations – and thus, the
+exceptions-filing form – permit a party to allege that an
+award is deficient “on the basis of a private-sector ground”
+not otherwise listed in the Regulations.
+13  However, to
+support such an exception, the Regulations require the
+excepting party to “provide sufficient citation to legal
+authority that establishes the grounds upon which the party
+filed its exceptions.”
+14  The Union argues that the award is
+deficient on the “[o]ther [g]round[]” that the Arbitrator
+allegedly “lost his notes.”
+15  Before issuing the award, the
+Arbitrator allegedly emailed the parties to explain that the
+award would be delayed because his computer was
+broken.
+16  Citing the email, the Union alleges the
+
+8 5 C.F.R. §§ 2425.4(c), 2429.5; e.g., NTEU, 73 FLRA 315, 317
+(2022) (Chairman DuBester concurring) (citing U.S. Dep’t of the
+Army, White Sands Missile Range, 72 FLRA 435, 439 (2021)
+(Chairman DuBester concurring); U.S. DHS, U.S. CBP,
+U.S. Border Patrol, San Diego Sector, 68 FLRA 642, 642-43
+(2015)) (dismissing nonfact exception because argument was not
+raised to arbitrator); U.S. DHS, CBP, 68 FLRA 824, 825 (2015)
+(CBP) (dismissing fair-hearing arguments that were not raised to
+the arbitrator).
+9 Exceptions at 4-5.
+10 Id.
+11 Id. at 5 (alleging that, until the director’s testimony, “[i]t was
+impossible for the [U]nion to know for sure that [the president]
+was not disciplined”); id. at 4 (“The Arbitrator should have
+started the clock for any timeliness concerns the moment
+[the director] testified that [the president] was not disciplined.”).
+12 Id. at 5-6.
+13 5 C.F.R.§ 2425.6(b)(2)(v).
+14 Id. § 2425.6(c); see also U.S. Dep’t of VA, Gulf Coast Veterans
+Health Care Sys., 69 FLRA 608, 609-10 (2016) (dismissing
+exception that failed to either raise a ground recognized by the
+Authority or cite any legal authority to support a ground not
+currently recognized by the Authority).
+Arbitrator relied only on the parties’ briefs, instead of
+“actual testimony,” to render the award.
+17  Even assuming
+that this argument raises and supports a ground under the
+Authority’s Regulations, we dismiss it for the reasons
+below.
+
+The Union acknowledges that it did not raise the
+arguments upon which it bases its exceptions to the
+Arbitrator.
+18  As to its fair-hearing and nonfact arguments
+regarding the director’s testimony, the Union asserts that
+it did not know to raise them until the award issued.
+19
+However, the Arbitrator addressed the grievance’s
+timeliness as a threshold issue, and the Agency argued to
+the Arbitrator that the grievance was untimely because the
+Union knew of the alleged inequitable treatment in
+February 2021.
+20  According to the Union’s timeline, both
+parties’ post-hearing briefs were due to the Arbitrator by
+May 27, 2022.
+21  The Union submitted its brief to the
+Arbitrator on May 24, and the Agency’s brief is undated.
+The award did not issue until September 6, 2022, and there
+is no evidence that the Union attempted to raise the
+arguments it makes now to the Arbitrator.
+22
+
+Although the Union generally asserted to the
+Arbitrator that the director’s testimony established the
+president was not disciplined, the Union did not argue to
+the Arbitrator that he should determine timeliness of the
+grievance based upon the hearing date.
+23  Because the
+Union could have, but did not, raise this argument to the
+Arbitrator, it cannot do so now.  As the Union’s
+fair-hearing and nonfact exceptions are both based on this
+argument, the Authority’s Regulations bar them.
+
+Similarly, the Union knew of the issue it raises in
+its exception regarding the Arbitrator’s notes before the
+15 Exceptions at 5-6.
+16 Id. at 6.
+17 Id.
+18 Id. at 4 (fair hearing), 5 (nonfact), 6 (Arbitrator’s notes).
+19 Id. at 4, 5.
+20 Exceptions, Attach. 9, Agency Post-Hr’g Br. at 8-11.
+21 Exceptions, Attach. 4, Union Post-Hr’g Br. (Union Br.) at 2.
+22 See USDA, Farm Serv. Agency, Kan. City, Mo., 65 FLRA 483,
+484 n.4 (2011) (concluding that agency failed to present
+argument to arbitrator, even where union raised the issue in
+post-hearing brief filed after agency’s brief, because “nearly a
+month elapsed before the [a]rbitrator issued her award” after the
+union filed its brief).
+23 Union Br. at 15, 23.  As noted, the Union argued to the
+Arbitrator that it timely filed the grievance upon becoming aware
+of the alleged inequitable treatment on July 20, 2021.  Id. at 6,
+15.  In this regard, we note that where a party makes an argument
+to the Authority that is inconsistent with its position before the
+arbitrator, the Authority applies § 2429.5 to bar the argument.
+AFGE, Loc. 3294, 70 FLRA 432, 433 (2018) (Member DuBester
+concurring) (citing U.S. Dep’t of Transp., FAA, Detroit, Mich.,
+64 FLRA 325, 328 (2009)).
+
+486 Decisions of the Federal Labor Relations Authority 73 FLRA No. 94
+
+award issued.
+24  The Arbitrator stated that he notified the
+parties of the reason for the delayed award and that neither
+party objected.
+25  As the Union could have also raised this
+argument to the Arbitrator, but did not do so, we dismiss
+it.
+26
+
+IV. Decision
+
+We dismiss the Union’s exceptions.
+
+24 See Exceptions at 6 (citing an email the Arbitrator allegedly
+sent more than a month before issuing the award).
+25 Award at 12 n.1.
+26 5 C.F.R. §§ 2425.4(c), 2429.5 (the Authority will not consider
+any evidence or arguments that could have been, but were not,
+presented to the arbitrator); see CBP, 68 FLRA at 825.

@@ -1,0 +1,246 @@
+{
+  "tool": "Baseline: flag nothing",
+  "A": {
+    "unchanged_records_passed": {
+      "k": 28,
+      "n": 28,
+      "rate": 1,
+      "wilson95": [
+        0.879,
+        1
+      ]
+    },
+    "altered_records_flagged": {
+      "k": 0,
+      "n": 56,
+      "rate": 0,
+      "wilson95": [
+        0,
+        0.064
+      ]
+    },
+    "dropped_dates_named": {
+      "k": 0,
+      "n": 265,
+      "rate": 0,
+      "wilson95": [
+        0,
+        0.014
+      ]
+    },
+    "dropped_speakers_named": {
+      "k": 0,
+      "n": 88,
+      "rate": 0,
+      "wilson95": [
+        0,
+        0.042
+      ]
+    }
+  },
+  "B": {
+    "lossier_draft_identified": {
+      "k": 26,
+      "n": 60,
+      "rate": 0.433,
+      "wilson95": [
+        0.316,
+        0.559
+      ]
+    }
+  },
+  "C": {
+    "points_agreeing_with_key": {
+      "k": 43,
+      "n": 120,
+      "rate": 0.358,
+      "wilson95": [
+        0.278,
+        0.447
+      ]
+    },
+    "points_wrongly_credited_as_backed": 77
+  },
+  "D": {
+    "not_affirmed_if_flagged": {
+      "k": 0,
+      "n": 0,
+      "rate": null,
+      "wilson95": null
+    },
+    "not_affirmed_if_not_flagged": {
+      "k": 27,
+      "n": 183,
+      "rate": 0.148,
+      "wilson95": [
+        0.103,
+        0.206
+      ]
+    },
+    "flagged_share": 0,
+    "fisher_p": 1
+  },
+  "E": {
+    "unchanged_records_passed": {
+      "k": 80,
+      "n": 80,
+      "rate": 1,
+      "wilson95": [
+        0.954,
+        1
+      ]
+    },
+    "of_which_figure_written_another_way_passed": {
+      "k": 40,
+      "n": 40,
+      "rate": 1,
+      "wilson95": [
+        0.912,
+        1
+      ]
+    },
+    "altered_records_flagged": {
+      "k": 0,
+      "n": 40,
+      "rate": 0,
+      "wilson95": [
+        0,
+        0.088
+      ]
+    },
+    "wrong_figure_named": {
+      "k": 0,
+      "n": 40,
+      "rate": 0,
+      "wilson95": [
+        0,
+        0.088
+      ]
+    },
+    "altered_with_a_figure_from_elsewhere_in_the_decision_flagged": {
+      "k": 0,
+      "n": 16,
+      "rate": 0,
+      "wilson95": [
+        0,
+        0.194
+      ]
+    }
+  },
+  "F": {
+    "good_drafts_without_serious_flag": {
+      "k": 60,
+      "n": 60,
+      "rate": 1,
+      "wilson95": [
+        0.94,
+        1
+      ]
+    },
+    "changed_sentence_flagged_as_serious": {
+      "k": 0,
+      "n": 60,
+      "rate": 0,
+      "wilson95": [
+        0,
+        0.06
+      ]
+    },
+    "both_in_the_same_pair": {
+      "k": 0,
+      "n": 60,
+      "rate": 0,
+      "wilson95": [
+        0,
+        0.06
+      ]
+    },
+    "changed_sentence_flagged_by_kind": {
+      "date": {
+        "k": 0,
+        "n": 34,
+        "rate": 0,
+        "wilson95": [
+          0,
+          0.102
+        ]
+      },
+      "negation": {
+        "k": 0,
+        "n": 20,
+        "rate": 0,
+        "wilson95": [
+          0,
+          0.161
+        ]
+      },
+      "figure": {
+        "k": 0,
+        "n": 6,
+        "rate": 0,
+        "wilson95": [
+          0,
+          0.39
+        ]
+      }
+    }
+  },
+  "FH": {
+    "good_drafts_without_serious_flag": {
+      "k": 30,
+      "n": 30,
+      "rate": 1,
+      "wilson95": [
+        0.886,
+        1
+      ]
+    },
+    "changed_sentence_flagged_as_serious": {
+      "k": 0,
+      "n": 30,
+      "rate": 0,
+      "wilson95": [
+        0,
+        0.114
+      ]
+    },
+    "both_in_the_same_pair": {
+      "k": 0,
+      "n": 30,
+      "rate": 0,
+      "wilson95": [
+        0,
+        0.114
+      ]
+    },
+    "changed_sentence_flagged_by_kind": {
+      "date": {
+        "k": 0,
+        "n": 18,
+        "rate": 0,
+        "wilson95": [
+          0,
+          0.176
+        ]
+      },
+      "negation": {
+        "k": 0,
+        "n": 10,
+        "rate": 0,
+        "wilson95": [
+          0,
+          0.278
+        ]
+      },
+      "figure": {
+        "k": 0,
+        "n": 2,
+        "rate": 0,
+        "wilson95": [
+          0,
+          0.658
+        ]
+      }
+    }
+  }
+}

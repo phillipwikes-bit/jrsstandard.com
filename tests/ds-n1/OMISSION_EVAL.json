@@ -1,0 +1,95 @@
+{
+  "set": "omission-eval-1",
+  "rule": "ds-n1.omissions/0.1.0-dev",
+  "note": "Developer-written fictional records, written after the omission rule was fixed and before it was run on them. The answer key was hashed before the first run. Not independent; an outside author's set is still needed.",
+  "caught": {
+    "k": 3,
+    "n": 4,
+    "wilson95": [
+      0.301,
+      0.954
+    ]
+  },
+  "false_flags_on_sound_records": {
+    "k": 0,
+    "n": 4,
+    "wilson95": [
+      0,
+      0.49
+    ]
+  },
+  "rows": [
+    {
+      "id": "N1",
+      "omits": false,
+      "flagged": false,
+      "flags": []
+    },
+    {
+      "id": "N2",
+      "omits": true,
+      "flagged": true,
+      "flags": [
+        {
+          "source": "Penetration test PT-311",
+          "sentence": "The test failed on two internet-facing hosts.",
+          "cues": [
+            "failed"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "N3",
+      "omits": false,
+      "flagged": false,
+      "flags": []
+    },
+    {
+      "id": "N4",
+      "omits": true,
+      "flagged": true,
+      "flags": [
+        {
+          "source": "Evaluation EV-57",
+          "sentence": "Accuracy fell below the threshold on Spanish-language emails, and use is recommended for English-language emails only.",
+          "cues": [
+            "recommended"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "N5",
+      "omits": false,
+      "flagged": false,
+      "flags": []
+    },
+    {
+      "id": "N6",
+      "omits": true,
+      "flagged": true,
+      "flags": [
+        {
+          "source": "Investigation file IF-9",
+          "sentence": "The CCTV footage for 2026-03-14 was not reviewed.",
+          "cues": [
+            "was not"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "N7",
+      "omits": true,
+      "flagged": false,
+      "flags": []
+    },
+    {
+      "id": "N8",
+      "omits": false,
+      "flagged": false,
+      "flags": []
+    }
+  ]
+}

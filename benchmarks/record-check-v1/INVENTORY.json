@@ -1,0 +1,202 @@
+{
+ "generated_by": "inventory.mjs",
+ "note": "Case numbers are read from EEOC file names; study 014 items (B, F, FH, FH2) use the study decision code. Overlap between tracks that ask different questions is reported, not hidden; it does not show that a tool was tuned on a test answer.",
+ "tracks": {
+  "A (sources of the unchanged items)": {
+   "items": 28,
+   "distinct_source_texts": 21,
+   "distinct_cases": 21
+  },
+  "B": {
+   "items": 60,
+   "distinct_source_texts": 29,
+   "distinct_cases": 0
+  },
+  "E (sources of the unchanged items)": {
+   "items": 40,
+   "distinct_source_texts": 29,
+   "distinct_cases": 30
+  },
+  "F": {
+   "items": 60,
+   "distinct_source_texts": 29,
+   "distinct_cases": 30
+  },
+  "F-HOLDOUT": {
+   "items": 30,
+   "distinct_source_texts": 29,
+   "distinct_cases": 30
+  },
+  "F-HOLDOUT-2": {
+   "items": 30,
+   "distinct_source_texts": 29,
+   "distinct_cases": 30
+  },
+  "G": {
+   "items": 60,
+   "distinct_source_texts": 53,
+   "distinct_cases": 55
+  },
+  "G2": {
+   "items": 30,
+   "distinct_source_texts": 29,
+   "distinct_cases": 28
+  },
+  "D development": {
+   "items": 206,
+   "distinct_source_texts": 172,
+   "distinct_cases": 174
+  },
+  "D test": {
+   "items": 183,
+   "distinct_source_texts": 153,
+   "distinct_cases": 154
+  }
+ },
+ "shared": [
+  {
+   "between": [
+    "A (sources of the unchanged items)",
+    "D test"
+   ],
+   "shared_case_numbers": 21,
+   "shared_source_texts": 21
+  },
+  {
+   "between": [
+    "B",
+    "F"
+   ],
+   "shared_case_numbers": 0,
+   "shared_source_texts": 29
+  },
+  {
+   "between": [
+    "B",
+    "F-HOLDOUT"
+   ],
+   "shared_case_numbers": 0,
+   "shared_source_texts": 29
+  },
+  {
+   "between": [
+    "B",
+    "F-HOLDOUT-2"
+   ],
+   "shared_case_numbers": 0,
+   "shared_source_texts": 29
+  },
+  {
+   "between": [
+    "B",
+    "D development"
+   ],
+   "shared_case_numbers": 0,
+   "shared_source_texts": 29
+  },
+  {
+   "between": [
+    "E (sources of the unchanged items)",
+    "D development"
+   ],
+   "shared_case_numbers": 5,
+   "shared_source_texts": 0
+  },
+  {
+   "between": [
+    "E (sources of the unchanged items)",
+    "D test"
+   ],
+   "shared_case_numbers": 23,
+   "shared_source_texts": 0
+  },
+  {
+   "between": [
+    "F",
+    "F-HOLDOUT"
+   ],
+   "shared_case_numbers": 30,
+   "shared_source_texts": 29
+  },
+  {
+   "between": [
+    "F",
+    "F-HOLDOUT-2"
+   ],
+   "shared_case_numbers": 30,
+   "shared_source_texts": 29
+  },
+  {
+   "between": [
+    "F",
+    "D development"
+   ],
+   "shared_case_numbers": 0,
+   "shared_source_texts": 29
+  },
+  {
+   "between": [
+    "F-HOLDOUT",
+    "F-HOLDOUT-2"
+   ],
+   "shared_case_numbers": 30,
+   "shared_source_texts": 29
+  },
+  {
+   "between": [
+    "F-HOLDOUT",
+    "D development"
+   ],
+   "shared_case_numbers": 0,
+   "shared_source_texts": 29
+  },
+  {
+   "between": [
+    "F-HOLDOUT-2",
+    "D development"
+   ],
+   "shared_case_numbers": 0,
+   "shared_source_texts": 29
+  },
+  {
+   "between": [
+    "G",
+    "D development"
+   ],
+   "shared_case_numbers": 7,
+   "shared_source_texts": 0
+  },
+  {
+   "between": [
+    "G",
+    "D test"
+   ],
+   "shared_case_numbers": 29,
+   "shared_source_texts": 0
+  },
+  {
+   "between": [
+    "G2",
+    "D development"
+   ],
+   "shared_case_numbers": 4,
+   "shared_source_texts": 0
+  },
+  {
+   "between": [
+    "G2",
+    "D test"
+   ],
+   "shared_case_numbers": 14,
+   "shared_source_texts": 0
+  },
+  {
+   "between": [
+    "D development",
+    "D test"
+   ],
+   "shared_case_numbers": 22,
+   "shared_source_texts": 20
+  }
+ ]
+}

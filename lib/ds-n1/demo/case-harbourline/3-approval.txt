@@ -1,0 +1,4 @@
+Title: Exception approval EA-731
+Version: v1
+
+Exception approval EA-731. On 2026-07-14, Ines Calloway approved read access for Harbourline Data. The access is limited to the analytics warehouse for sixty days.

@@ -1,0 +1,61 @@
+{
+ "code": "6e460212",
+ "FH": {
+  "good_drafts_without_serious_flag": {
+   "k": 0,
+   "n": 30,
+   "rate": 0,
+   "wilson95": [
+    0,
+    0.114
+   ]
+  },
+  "changed_sentence_flagged_as_serious": {
+   "k": 19,
+   "n": 30,
+   "rate": 0.633,
+   "wilson95": [
+    0.455,
+    0.781
+   ]
+  },
+  "both_in_the_same_pair": {
+   "k": 0,
+   "n": 30,
+   "rate": 0,
+   "wilson95": [
+    0,
+    0.114
+   ]
+  },
+  "changed_sentence_flagged_by_kind": {
+   "date": {
+    "k": 17,
+    "n": 18,
+    "rate": 0.944,
+    "wilson95": [
+     0.742,
+     0.99
+    ]
+   },
+   "negation": {
+    "k": 2,
+    "n": 10,
+    "rate": 0.2,
+    "wilson95": [
+     0.057,
+     0.51
+    ]
+   },
+   "figure": {
+    "k": 0,
+    "n": 2,
+    "rate": 0,
+    "wilson95": [
+     0,
+     0.658
+    ]
+   }
+  }
+ }
+}

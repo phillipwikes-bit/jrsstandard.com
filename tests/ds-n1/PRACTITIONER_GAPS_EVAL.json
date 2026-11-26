@@ -1,0 +1,373 @@
+{
+  "set": "practitioner-gaps-eval-1",
+  "note": "Developer-written fictional records, written and sealed before the practitioner-gap checks were coded. Not independent. AR-82 is never used.",
+  "rule_changes_before_first_run": "Approver entitlement made advisory (not a finding) before this set was run, because only 4 of 23 practitioners raised it (below one in four); decided on developer fixtures, not on this set. It is still scored here as a gap.",
+  "ready_judgement_agreement": {
+    "k": 9,
+    "n": 10
+  },
+  "gap_point_agreement": {
+    "k": 50,
+    "n": 50
+  },
+  "gaps_missed": 0,
+  "gaps_wrongly_raised": 0,
+  "disagreements": [
+    "G5: key ready=false, checks ready=true"
+  ],
+  "rows": [
+    {
+      "id": "G1",
+      "status": "READY_FOR_HUMAN_FINALIZATION",
+      "truth_ready": true,
+      "ready_on_these_checks": true,
+      "ready_agree": true,
+      "other_findings": [],
+      "per": [
+        {
+          "gap": "recommendation_stated_as_requirement",
+          "truth": false,
+          "got": false
+        },
+        {
+          "gap": "conclusory_assessment",
+          "truth": false,
+          "got": false
+        },
+        {
+          "gap": "authority_text_not_supplied",
+          "truth": false,
+          "got": false
+        },
+        {
+          "gap": "approver_authority_not_shown",
+          "truth": false,
+          "got": false
+        },
+        {
+          "gap": "conclusion_on_unresolved_basis",
+          "truth": false,
+          "got": false
+        }
+      ]
+    },
+    {
+      "id": "G2",
+      "status": "REVIEW_REQUIRED",
+      "truth_ready": false,
+      "ready_on_these_checks": false,
+      "ready_agree": true,
+      "other_findings": [],
+      "per": [
+        {
+          "gap": "recommendation_stated_as_requirement",
+          "truth": true,
+          "got": true
+        },
+        {
+          "gap": "conclusory_assessment",
+          "truth": false,
+          "got": false
+        },
+        {
+          "gap": "authority_text_not_supplied",
+          "truth": false,
+          "got": false
+        },
+        {
+          "gap": "approver_authority_not_shown",
+          "truth": true,
+          "got": true
+        },
+        {
+          "gap": "conclusion_on_unresolved_basis",
+          "truth": false,
+          "got": false
+        }
+      ]
+    },
+    {
+      "id": "G3",
+      "status": "REVIEW_REQUIRED",
+      "truth_ready": false,
+      "ready_on_these_checks": false,
+      "ready_agree": true,
+      "other_findings": [],
+      "per": [
+        {
+          "gap": "recommendation_stated_as_requirement",
+          "truth": false,
+          "got": false
+        },
+        {
+          "gap": "conclusory_assessment",
+          "truth": true,
+          "got": true
+        },
+        {
+          "gap": "authority_text_not_supplied",
+          "truth": false,
+          "got": false
+        },
+        {
+          "gap": "approver_authority_not_shown",
+          "truth": true,
+          "got": true
+        },
+        {
+          "gap": "conclusion_on_unresolved_basis",
+          "truth": false,
+          "got": false
+        }
+      ]
+    },
+    {
+      "id": "G4",
+      "status": "REVIEW_REQUIRED",
+      "truth_ready": false,
+      "ready_on_these_checks": false,
+      "ready_agree": true,
+      "other_findings": [],
+      "per": [
+        {
+          "gap": "recommendation_stated_as_requirement",
+          "truth": false,
+          "got": false
+        },
+        {
+          "gap": "conclusory_assessment",
+          "truth": false,
+          "got": false
+        },
+        {
+          "gap": "authority_text_not_supplied",
+          "truth": true,
+          "got": true
+        },
+        {
+          "gap": "approver_authority_not_shown",
+          "truth": true,
+          "got": true
+        },
+        {
+          "gap": "conclusion_on_unresolved_basis",
+          "truth": false,
+          "got": false
+        }
+      ]
+    },
+    {
+      "id": "G5",
+      "status": "READY_FOR_HUMAN_FINALIZATION",
+      "truth_ready": false,
+      "ready_on_these_checks": true,
+      "ready_agree": false,
+      "other_findings": [],
+      "per": [
+        {
+          "gap": "recommendation_stated_as_requirement",
+          "truth": false,
+          "got": false
+        },
+        {
+          "gap": "conclusory_assessment",
+          "truth": false,
+          "got": false
+        },
+        {
+          "gap": "authority_text_not_supplied",
+          "truth": false,
+          "got": false
+        },
+        {
+          "gap": "approver_authority_not_shown",
+          "truth": true,
+          "got": true
+        },
+        {
+          "gap": "conclusion_on_unresolved_basis",
+          "truth": false,
+          "got": false
+        }
+      ]
+    },
+    {
+      "id": "G6",
+      "status": "HOLD",
+      "truth_ready": false,
+      "ready_on_these_checks": false,
+      "ready_agree": true,
+      "other_findings": [
+        "UNSUPPORTED_CLAIM"
+      ],
+      "per": [
+        {
+          "gap": "recommendation_stated_as_requirement",
+          "truth": true,
+          "got": true
+        },
+        {
+          "gap": "conclusory_assessment",
+          "truth": false,
+          "got": false
+        },
+        {
+          "gap": "authority_text_not_supplied",
+          "truth": false,
+          "got": false
+        },
+        {
+          "gap": "approver_authority_not_shown",
+          "truth": true,
+          "got": true
+        },
+        {
+          "gap": "conclusion_on_unresolved_basis",
+          "truth": true,
+          "got": true
+        }
+      ]
+    },
+    {
+      "id": "G7",
+      "status": "READY_FOR_HUMAN_FINALIZATION",
+      "truth_ready": true,
+      "ready_on_these_checks": true,
+      "ready_agree": true,
+      "other_findings": [],
+      "per": [
+        {
+          "gap": "recommendation_stated_as_requirement",
+          "truth": false,
+          "got": false
+        },
+        {
+          "gap": "conclusory_assessment",
+          "truth": false,
+          "got": false
+        },
+        {
+          "gap": "authority_text_not_supplied",
+          "truth": false,
+          "got": false
+        },
+        {
+          "gap": "approver_authority_not_shown",
+          "truth": false,
+          "got": false
+        },
+        {
+          "gap": "conclusion_on_unresolved_basis",
+          "truth": false,
+          "got": false
+        }
+      ]
+    },
+    {
+      "id": "G8",
+      "status": "READY_FOR_HUMAN_FINALIZATION",
+      "truth_ready": true,
+      "ready_on_these_checks": true,
+      "ready_agree": true,
+      "other_findings": [],
+      "per": [
+        {
+          "gap": "recommendation_stated_as_requirement",
+          "truth": false,
+          "got": false
+        },
+        {
+          "gap": "conclusory_assessment",
+          "truth": false,
+          "got": false
+        },
+        {
+          "gap": "authority_text_not_supplied",
+          "truth": false,
+          "got": false
+        },
+        {
+          "gap": "approver_authority_not_shown",
+          "truth": false,
+          "got": false
+        },
+        {
+          "gap": "conclusion_on_unresolved_basis",
+          "truth": false,
+          "got": false
+        }
+      ]
+    },
+    {
+      "id": "G9",
+      "status": "READY_FOR_HUMAN_FINALIZATION",
+      "truth_ready": true,
+      "ready_on_these_checks": true,
+      "ready_agree": true,
+      "other_findings": [],
+      "per": [
+        {
+          "gap": "recommendation_stated_as_requirement",
+          "truth": false,
+          "got": false
+        },
+        {
+          "gap": "conclusory_assessment",
+          "truth": false,
+          "got": false
+        },
+        {
+          "gap": "authority_text_not_supplied",
+          "truth": false,
+          "got": false
+        },
+        {
+          "gap": "approver_authority_not_shown",
+          "truth": false,
+          "got": false
+        },
+        {
+          "gap": "conclusion_on_unresolved_basis",
+          "truth": false,
+          "got": false
+        }
+      ]
+    },
+    {
+      "id": "G10",
+      "status": "READY_FOR_HUMAN_FINALIZATION",
+      "truth_ready": true,
+      "ready_on_these_checks": true,
+      "ready_agree": true,
+      "other_findings": [],
+      "per": [
+        {
+          "gap": "recommendation_stated_as_requirement",
+          "truth": false,
+          "got": false
+        },
+        {
+          "gap": "conclusory_assessment",
+          "truth": false,
+          "got": false
+        },
+        {
+          "gap": "authority_text_not_supplied",
+          "truth": false,
+          "got": false
+        },
+        {
+          "gap": "approver_authority_not_shown",
+          "truth": false,
+          "got": false
+        },
+        {
+          "gap": "conclusion_on_unresolved_basis",
+          "truth": false,
+          "got": false
+        }
+      ]
+    }
+  ],
+  "status_of_this_file": "Re-run after fixes made using this set; the sealed first run is PRACTITIONER_GAPS_EVAL.first-run.json and is the evidence."
+}

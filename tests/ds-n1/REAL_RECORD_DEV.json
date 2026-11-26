@@ -1,0 +1,15 @@
+{
+  "n": 59,
+  "intact_ready": 58,
+  "dates_flagged": 58,
+  "speakers_flagged": 59,
+  "thresholds": {
+    "intact_ready": 54,
+    "dates_flagged": 48,
+    "speakers_flagged": 48
+  },
+  "pass": true,
+  "codes_on_intact_not_ready": {
+    "UNMAPPED_ASSERTION": 1
+  }
+}

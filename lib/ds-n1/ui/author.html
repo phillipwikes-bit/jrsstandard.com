@@ -32,13 +32,14 @@ section{background:var(--surface);border:1px solid var(--rule);border-radius:6px
 .s-HOLD,.s-ERROR,.s-REFUSED_SCOPE{color:var(--stop-text)}
 .sev-critical{color:var(--stop-text)}.sev-review{color:var(--review-text)}
 code{word-break:break-all}
-@media (max-width:900px){main{grid-template-columns:1fr}}
-</style>
+@media (max-width:900px){main{grid-template-columns:minmax(0,1fr)}}
+button,code,.code,td,th,li,summary{overflow-wrap:anywhere}button{white-space:normal}</style>
 </head>
 <body>
 <header>
   <h1>DS-N1 Record Authoring</h1>
   <div class="banner">Write a constructed fictional record for review. Select text to mark claims and citations. Nothing is stored or sent anywhere; download the record when done. Experimental candidate; not the original Decision Spellchecker.</div>
+  <a href="/read" style="color:var(--accent);font-size:.9rem">Start from plain documents instead</a>
 </header>
 <p id="msg" class="err" role="alert" style="padding:0 16px;margin:8px 0 0"></p>
 <main>

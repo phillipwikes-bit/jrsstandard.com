@@ -1,0 +1,4 @@
+Title: Supplier access exception SAX-731 (fictional)
+Class: supplier_access_exception
+
+On 2026-07-14, Ines Calloway, information security manager, approved Harbourline Data's request for read access to the customer analytics warehouse. The access is limited to the analytics warehouse for sixty days. Harbourline Data completed the supplier security assessment SSA-40 on 2026-07-09. Session logging is required for every connection. The supplier holds a current external certification. Because the assessment was completed and the access is limited in scope and time, the exception can proceed to finalisation.

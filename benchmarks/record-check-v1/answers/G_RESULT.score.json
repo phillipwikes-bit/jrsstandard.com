@@ -1,0 +1,52 @@
+{
+ "code": "a8109aa8 lib (unchanged since d4c68775)",
+ "G": {
+  "good_drafts_without_serious_flag": {
+   "k": 60,
+   "n": 60,
+   "rate": 1,
+   "wilson95": [
+    0.94,
+    1
+   ]
+  },
+  "changed_sentence_flagged_as_serious": {
+   "k": 57,
+   "n": 60,
+   "rate": 0.95,
+   "wilson95": [
+    0.863,
+    0.983
+   ]
+  },
+  "both_in_the_same_pair": {
+   "k": 57,
+   "n": 60,
+   "rate": 0.95,
+   "wilson95": [
+    0.863,
+    0.983
+   ]
+  },
+  "changed_sentence_flagged_by_kind": {
+   "negation": {
+    "k": 29,
+    "n": 30,
+    "rate": 0.967,
+    "wilson95": [
+     0.833,
+     0.994
+    ]
+   },
+   "date": {
+    "k": 28,
+    "n": 30,
+    "rate": 0.933,
+    "wilson95": [
+     0.787,
+     0.982
+    ]
+   }
+  }
+ }
+}

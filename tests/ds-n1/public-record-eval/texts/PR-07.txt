@@ -1,0 +1,194 @@
+FIC2015-122 
+
+ webpages 
+ FIC2015-122 
+
+ -->
+
+ If you are viewing this version of CT.gov, you are using an unsupported browser or you are in Internet Explorer 9 using
+ compatibility mode. This means that the design and layout of the site is not fully supported, however the content of the
+ site is still fully accessible and functional. For the full website experience, please update your browser to one of the
+ following:
+ Google Chrome ,
+ Firefox ,
+ Safari ,
+ Internet Explorer 10 or higher.
+
+ Skip to Content 
+ Skip to Chat 
+
+ Warning! 
+
+ It seems that JavaScript is not working in your browser. It could be because it is not supported, or
+ that JavaScript is intentionally disabled. Some of the features on CT.gov will not function properly
+ with out javascript enabled.
+
+ × 
+
+ Settings Menu
+
+ Language 
+
+ High Contrast 
+
+ High Contrast Mode On or Off switch 
+ On 
+ Off 
+
+ Font Size 
+
+ regular
+ font size
+
+ large font size 
+
+ Disclaimer 
+
+ Close
+
+ Top 
+
+ Connecticut 
+ Freedom of Information Commission
+
+ FIC2015-122
+
+ Final Decision FIC2015-122 
+
+ In the Matter of a Complaint by
+
+ FINAL DECISION 
+
+ Yvetter Tyson,
+
+      Complainant
+
+      against
+
+ Docket #FIC 2015-122 
+
+ Chief Executive Officer,
+Stamford Housing Authority,
+City of Stamford; and City
+of Stamford, 
+
+      Respondents 
+
+ November 18, 2015
+
+     The above-captioned matter was heard as a contested case on July 1, 2015, at which time the complainant and the respondents appeared, stipulated to certain facts and presented testimony, exhibits and argument on the complaint.  
+
+      After consideration of the entire record, the following facts are found and conclusions of law are reached:
+
+      1.  The respondents are public agencies within the meaning of §1-200(1), G.S. 
+
+      2.  It is found that, by email dated January 21, 2015, the complainant requested that the respondents provide her with copies of the following records:
+
+ a. All versions of SHA’s [Stamford Housing Authority] transfer waiting list(s) dated January 1, 2014 through the present;
+b. All versions of the waiting lists for Fairgate apartment complex, dated February 1, 2012 to the present;
+c. All new leases executed between February 1, 2012 and the present for units at the Fairgate apartment complex;
+d. All versions of waiting lists, dated January 1, 2014 to the present, for the apartment complexes identified in the Addendum to the Pre-Determination Conciliation Agreement in CHRO Case No. 1250029, including the complexes described as Oak Park, Dale Street, Cove Road, Taylor Street, and any new developments;
+e. All new leases executed between June 1, 2014 and the present for units in the complexes identified in the Addendum to the Pre-Determination Conciliation Agreement in CHRO Case No. 1250029, including the complexes described as Oak Park, Dale Street, Cove Road, Taylor Street, and any new developments; and 
+f. All documents concerning SHA’s efforts, between February 1, 2012 and the present, to review and revise its reasonable accommodation policies pursuant to paragraph D of the Pre-Determination Conciliation Agreement in CHRO Case No. 1250029.
+
+      3.  By letter dated February 13, 2015 and filed February 17, 2015, the complainant appealed to this Commission, alleging that the respondents violated the Freedom of Information (“FOI”) Act by failing to provide her with copies of the records described in paragraph 2, above.  In connection with her allegations, the complainant requested that the Commission impose a civil penalty against the respondent housing authority.
+
+      4.  Section 1-200(5), G.S., provides: 
+
+ “Public records or files” means any recorded data or information relating to the conduct of the public’s business prepared, owned, used, received or retained by a public agency, or to which a public agency is entitled to receive a copy by law or contract under section 1-218, whether such data or information be handwritten, typed, tape-recorded, printed, photostated, photographed or recorded by any other method.
+
+      5.  Section 1-210(a), G.S., provides in relevant part that:
+
+ Except as otherwise provided by any federal law or state statute, all records maintained or kept on file by any public agency, whether or not such records are required by any law or by any rule or regulation, shall be public records and every person shall have the right to (1) inspect such records promptly during regular office or business hours, (2) copy such records in accordance with subsection (g) of section 1-212, or (3) receive a copy of such records in accordance with section 1-212.
+
+      6.  Section 1-212(a), G.S., provides in relevant part that “[a]ny person applying in writing shall receive, promptly upon request, a plain, facsimile, electronic or certified copy of any public record.”
+
+      7.  It is found that the requested records are public records within the meaning of §§1-200(5), 1-210(a), and 1-212(a), G.S.
+
+      8.  It is found that the respondents produced the records responsive to requests 2.a, 2.b, 2.d, and 2.f, above.  In addition, it is found that the respondents do not maintain any records responsive to the request described in paragraph 2.c, above.  
+
+      9.  With regard to request described in paragraph 2.e, above, it is found that the respondents provided the complainant with an undated written response in which they claimed that the responsive records were exempt from disclosure pursuant to the federal Freedom of Information Act, 5 U.S.C. §552, et seq.  
+
+      10. At the contested case hearing and in their post-hearing brief, the respondents also claimed that the records responsive to the request described in paragraph 2.e, above, were exempt from disclosure pursuant to the federal Privacy Act of 1974, 5 U.S.C. § 552a, et seq.  
+
+      11. At the contested case hearing, the complainant clarified that she was not seeking any medical information or social security numbers contained in the requested records and he conceded that any such information could be redacted from the remaining records before being disclosed to him.  In addition, the complainant moved to have the hearing officer conduct an in camera inspection of the records at issue and such motion was granted.  
+
+      12. The respondents testified that there were approximately twenty leases responsive to the request described in paragraph 2.e, above.  The respondents conceded that they had not collected all of the responsive leases, so they were not sure exactly how many they maintained.  In fact, the respondents conceded that they raised the exemptions referred to in paragraphs 9 and 10, above, without reviewing any of the leases.  In addition, the respondents could not testify as to whether any of the tenants who had executed a lease that was responsive to the request described in paragraph 2. e, above, had an objection to disclosure because they had not spoken to any of their lessees.  
+
+      13. However, the respondents contended that, to a large extent, whether they had twenty or more responsive leases was to some extent irrelevant, as each lease contained many pages with the same boilerplate provisions and that with the exception of the first page, which contained the information specific to a tenant, and the last page, which contained the tenant’s and a housing authority representative’s signatures, the leases contained the same kind of information.  The respondents further contended that they were most concerned with the information located on first page of the responsive leases.  In this regard, the respondents contend that the names, addresses, and birthdates of their lessees, and the names and birthdays of the other occupants residing in the leased units, particularly minor children, contained within the responsive leases were exempt from disclosure.  
+
+      14. Based on the respondents’ testimony with regard to the similar nature of the leases, the respondents were ordered to submit one of the responsive leases to the Commission for an in camera inspection.
+
+      15.  After the contested case hearing, the respondents submitted records to the Commission for an in camera inspection (hereinafter the “in camera records” or the “leases”).  The in camera records consist of twenty-five pages, and such records shall be identified as IC-2015-122-01 through IC-2015-122-25.  The Commission notes that IC-2015-122-01 through IC-2015-122-14 pertain to one lease that is responsive to the request described in paragraph 2.e, above, while IC-2015-122-15 through IC-2015-122-25 pertain to a separate lease, which is not responsive to the request described in paragraph 2.e, as the date of the lease does not fall within the date range specified in the request.  
+
+      16. In addition, the Commission notes that in their index to the in camera records the respondents raised §1-210(b)(2), G.S., as an additional exemption to disclosure. 1 
+
+ 1 
+ The Commission notes that the respondents identified "§1-201(b)(2), G.S." in the index as the relevant exemption. However, based on the information provided in the section of the index requiring a description of the information believed to be exempt, it is clear that the respondents meant to cite §1-210(b)(2), G.S. 
+
+      17. The respondents first claim that the leases are exempt pursuant to 5 U.S.C. §552(b)(6) of the federal FOI Act.  Section (b)(6) of the federal act exempts “personal and medical and similar files the disclosure of which would constitute a clearly unwarranted invasion of personal privacy.”  
+
+      18. It is found, however, that the federal FOI Act, by its express terms, applies only to federal agencies.  The federal act, 5 U.S.C., §551(1), defines “agency” in relevant part as follows:  “[A]gency” means each authority of the Government of the United States, whether or not it is within or subject to review by another agency. . . .”  It is found that the respondents are not authorities of the Government of the United States, within the meaning of 5 U.S.C. §551(1).
+
+      19. It is further found that a federal law provides an exception to the Connecticut FOI Act’s requirement of mandatory disclosure only where the federal law prohibits disclosure.  It is found that the federal FOI Act requires agencies to disclose certain records, but does not prohibit disclosure of any public records:  “(1) Each agency shall make available to the public information as follows. . . .”  5 U.S.C. §552(a).   It is further found that 5 U.S.C. §552(b) excuses agencies from the affirmative duty of disclosure in certain circumstances:  “By its terms, subsection (b) [of the federal FOI Act] demarcates the agency’s obligation to disclose; it does not foreclose disclosure. . . . [The [federal act] is exclusively a disclosure statute.”  See Danaher v. FOIC , No. CV-HHB-08-4016067-S, 2008 WL 4308212, at *3 (Conn. Super. Ct. Sept. 5, 2008).
+
+      20. It is concluded, therefore, that 5 U.S.C. 551(b)(6) is a part of a federal statutory scheme pertaining to federal agencies and has no bearing on whether the in camera records at issue in this case are exempt under Connecticut’s FOI Act. 
+
+      21. The respondents next claim that the leases are exempt pursuant to 5 U.S.C. § 552a (b) of the federal Privacy Act.
+
+     22. The federal Privacy Act, like the federal FOI Act, applies only to federal government agencies.  5 U.S.C. §552(a)(1) of the federal Privacy Act defines “agency” as follows:  “the term ‘agency’ means agency as defined in section 552(e) of this title.”  In turn, §552(e) refers to the definition provided in the federal FOI Act: “‘agency’ as defined in section 551(1) of this title includes any executive department, military department, Government corporation, Government controlled corporation, or other establishment in the executive branch of the Government (including the Executive Office of the President), or any independent regulatory agency.”  See Danaher , 2008 WL 4308212, at *2 ( “[T]he [federal act] and the Privacy Act apply only to ‘agencies' as that term is defined under 5 U.S.C. § 551(1) and 5 U.S.C. § 552(e). Under these definitions, ‘agency’ does not encompass state agencies or bodies.”).
+
+      23. It is concluded, therefore, that the federal Privacy Act is part of a federal statutory scheme pertaining to federal agencies and has no bearing on whether the in camera records at issue in this case are exempt under Connecticut’s FOI Act.   
+
+      24. Finally, the respondents claim that §1-210(b)(2), G.S., exempts the responsive leases from disclosure.  
+
+      25. Section 1-210(b)(2), G.S., provides in relevant part that nothing in the FOI Act shall require disclosure of “. . . personnel or medical files and similar files the disclosure of which would constitute an invasion of personal privacy . . . .” 
+
+      26. The Supreme Court set forth the test for the exemption contained in §1-210(b)(2), G.S., in Perkins v. Freedom of Information Commission , 228 Conn. 158, 175 (1993).  The claimant must first establish that the files in question are personnel, medical or similar files.  Second, the claimant must show that disclosure of the records would constitute an invasion of personal privacy.  In determining whether disclosure would constitute an invasion of personal privacy, the claimant must establish both of two elements: first, that the information sought does not pertain to legitimate matters of public concern, and second, that such information is highly offensive to a reasonable person.  
+
+      27. It is found that the respondents failed to prove that the in camera records constitute a “personnel” or “similar” file within the meaning of §1-210(b)(2), G.S. See Connecticut Alcohol and Drug Abuse Commission v. FOIC , 233 Conn. 28 (1995) (“. . . a ‘personnel’ file has as one of its principal purposes the furnishing of information for making personnel decisions regarding the individual involved.  If a document or file contains material, therefore, that under ordinary circumstances would be pertinent to traditional personnel decisions, it is ‘similar’ to a personnel file. Thus, a file containing information that would, under ordinary circumstances, be used in deciding whether an individual should, for example, be promoted, demoted, given a raise, transferred, reassigned, dismissed or subject to other such traditional personnel actions, should be considered “similar” to a personnel file for the purposes of [§1-210(b)(2), G.S.)].”  Moreover, it is clear from the in camera inspection that the requested records do not constitute medical files within the meaning of §1-210(b)(2), G.S.
+
+      28. In addition, the respondents offered no evidence at the contested case hearing to establish that the in camera records do not pertain to a legitimate matter of public concern and that the disclosure of the records would be highly offensive to a reasonable person.  At the hearing, the respondents contended that, in addition to names, address, and dates of birth, the in camera records contained social security numbers of their tenants.  After a careful in camera review of the in camera records, this Commission was unable to locate even one social security number in the in camera records.  In addition, even if the records had contained a social security number, the complainant acknowledged that these numbers could be redacted from the leases prior to disclosure.  
+
+      29. It is concluded that the in camera records are not exempt from disclosure pursuant to §1-210(b)(2), G.S.  It is therefore concluded that the respondents violated the disclosure provisions of §§1-210(a) and 1-212(a), G.S., when they declined to provide the in camera records to the complainant.  
+
+      30. With regard to the complainant’s request for monetary civil penalty, the Commission first notes that the complainant did not identify a person against whom he desired such penalty to be assessed.  In addition, the Commission does not believe that a monetary penalty is the best way to help the respondents better understand the requirements of the FOI Act.  Accordingly, while the complainant’s request for monetary civil penalties is denied, it is concluded that the respondents are in need of a FOI training session and one is so ordered. 
+
+      The following order by the Commission is hereby recommended on the basis of the record concerning the above-captioned complaint.
+
+      1.  The respondents shall forthwith provide the complainant with a copy of the in camera records.  In complying with this order, the respondents are not required to disclose social security numbers wherever located.  In addition, the Commission suggests that the complainant accept a copy of the in camera records from the respondents with the names and dates of birth of the minor residents redacted.    
+
+      2.  Forthwith, the respondents, or their designee, shall arrange for an FOI Act training session to be conducted by the staff of the FOI Commission.  The respondents, or their designee, shall forthwith contact the FOI Commission to schedule such training session.  
+
+      3.  Henceforth, the respondents shall strictly comply with the provisions of §§1-210(a) and 1-212(a), G.S.
+
+ Approved by Order of the Freedom of Information Commission at its regular meeting of November 18, 2015.
+
+_______________________
+Cynthia A. Cannata
+Acting Clerk of the Commission
+
+ PURSUANT TO SECTION 4-180(c), G.S., THE FOLLOWING ARE THE NAMES OF EACH PARTY AND THE MOST RECENT MAILING ADDRESS, PROVIDED TO THE FREEDOM OF INFORMATION COMMISSION, OF THE PARTIES OR THEIR AUTHORIZED REPRESENTATIVE.
+
+ THE PARTIES TO THIS CONTESTED CASE ARE:
+
+ Yvette Tyson
+c/o Attorney Salmun Kazerounian
+CT Fair Housing Center
+221 Main Street
+4th Floor
+Hartford, CT  06106
+
+ Chief Executive Officer, Stamford Housing Authority,
+City of Stamford; and City of Stamford,
+c/o Joseph C. Abraham, Esq. 
+Robert Chesson, Esq.
+Chesson & Schweickert LLC
+215 Broad Street
+Milford, CT  06460
+
+ ____________________________
+Cynthia A. Cannata
+Acting Clerk of the Commission
+
+FIC/2015-122/FD/cac/11/18/2015

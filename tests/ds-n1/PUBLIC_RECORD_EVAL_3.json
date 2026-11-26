@@ -1,0 +1,963 @@
+{
+  "set": "public-record-eval-3",
+  "run_at": "2026-11-25T17:34:08.054Z",
+  "primary": {
+    "comparisons": 58,
+    "removal_higher": 3,
+    "intact_higher": 4,
+    "ties": 51,
+    "share_higher": 0.052,
+    "sign_test_p": 1,
+    "success": false,
+    "dates": {
+      "higher": 0,
+      "of": 29
+    },
+    "speakers": {
+      "higher": 3,
+      "of": 29
+    }
+  },
+  "secondary": {
+    "intact_ready": 6,
+    "of": 29,
+    "success": false
+  },
+  "rows": [
+    {
+      "id": "P014-01",
+      "intact": {
+        "status": "HOLD",
+        "open_findings": 4,
+        "omissions": 0,
+        "signal": 4,
+        "codes": [
+          "CLAIM_LOCATION_AMBIGUOUS",
+          "REASONING_NOT_TRACED",
+          "UNSUPPORTED_CLAIM",
+          "CONCLUSION_ON_UNRESOLVED_BASIS"
+        ]
+      },
+      "dates_removed": {
+        "status": "HOLD",
+        "open_findings": 4,
+        "omissions": 0,
+        "signal": 4,
+        "codes": [
+          "CLAIM_LOCATION_AMBIGUOUS",
+          "REASONING_NOT_TRACED",
+          "UNSUPPORTED_CLAIM",
+          "CONCLUSION_ON_UNRESOLVED_BASIS"
+        ]
+      },
+      "speakers_removed": {
+        "status": "HOLD",
+        "open_findings": 4,
+        "omissions": 0,
+        "signal": 4,
+        "codes": [
+          "CLAIM_LOCATION_AMBIGUOUS",
+          "REASONING_NOT_TRACED",
+          "UNSUPPORTED_CLAIM",
+          "CONCLUSION_ON_UNRESOLVED_BASIS"
+        ]
+      }
+    },
+    {
+      "id": "P014-02",
+      "intact": {
+        "status": "HOLD",
+        "open_findings": 4,
+        "omissions": 0,
+        "signal": 4,
+        "codes": [
+          "REASONING_NOT_TRACED",
+          "UNSUPPORTED_CLAIM"
+        ]
+      },
+      "dates_removed": {
+        "status": "HOLD",
+        "open_findings": 4,
+        "omissions": 0,
+        "signal": 4,
+        "codes": [
+          "REASONING_NOT_TRACED",
+          "UNSUPPORTED_CLAIM"
+        ]
+      },
+      "speakers_removed": {
+        "status": "HOLD",
+        "open_findings": 4,
+        "omissions": 0,
+        "signal": 4,
+        "codes": [
+          "REASONING_NOT_TRACED",
+          "UNSUPPORTED_CLAIM"
+        ]
+      }
+    },
+    {
+      "id": "P014-03",
+      "intact": {
+        "status": "READY_FOR_HUMAN_FINALIZATION",
+        "open_findings": 0,
+        "omissions": 0,
+        "signal": 0,
+        "codes": []
+      },
+      "dates_removed": {
+        "status": "READY_FOR_HUMAN_FINALIZATION",
+        "open_findings": 0,
+        "omissions": 0,
+        "signal": 0,
+        "codes": []
+      },
+      "speakers_removed": {
+        "status": "READY_FOR_HUMAN_FINALIZATION",
+        "open_findings": 0,
+        "omissions": 0,
+        "signal": 0,
+        "codes": []
+      }
+    },
+    {
+      "id": "P014-04",
+      "intact": {
+        "status": "HOLD",
+        "open_findings": 4,
+        "omissions": 0,
+        "signal": 4,
+        "codes": [
+          "CLAIM_LOCATION_AMBIGUOUS",
+          "REASONING_NOT_TRACED",
+          "UNSUPPORTED_CLAIM",
+          "CONCLUSION_ON_UNRESOLVED_BASIS"
+        ]
+      },
+      "dates_removed": {
+        "status": "HOLD",
+        "open_findings": 4,
+        "omissions": 0,
+        "signal": 4,
+        "codes": [
+          "CLAIM_LOCATION_AMBIGUOUS",
+          "REASONING_NOT_TRACED",
+          "UNSUPPORTED_CLAIM",
+          "CONCLUSION_ON_UNRESOLVED_BASIS"
+        ]
+      },
+      "speakers_removed": {
+        "status": "HOLD",
+        "open_findings": 4,
+        "omissions": 0,
+        "signal": 4,
+        "codes": [
+          "CLAIM_LOCATION_AMBIGUOUS",
+          "REASONING_NOT_TRACED",
+          "UNSUPPORTED_CLAIM",
+          "CONCLUSION_ON_UNRESOLVED_BASIS"
+        ]
+      }
+    },
+    {
+      "id": "P014-05",
+      "intact": {
+        "status": "HOLD",
+        "open_findings": 4,
+        "omissions": 0,
+        "signal": 4,
+        "codes": [
+          "REASONING_NOT_TRACED",
+          "UNSUPPORTED_CLAIM"
+        ]
+      },
+      "dates_removed": {
+        "status": "HOLD",
+        "open_findings": 4,
+        "omissions": 0,
+        "signal": 4,
+        "codes": [
+          "REASONING_NOT_TRACED",
+          "UNSUPPORTED_CLAIM"
+        ]
+      },
+      "speakers_removed": {
+        "status": "HOLD",
+        "open_findings": 4,
+        "omissions": 0,
+        "signal": 4,
+        "codes": [
+          "REASONING_NOT_TRACED",
+          "UNSUPPORTED_CLAIM"
+        ]
+      }
+    },
+    {
+      "id": "P014-06",
+      "intact": {
+        "status": "READY_FOR_HUMAN_FINALIZATION",
+        "open_findings": 0,
+        "omissions": 0,
+        "signal": 0,
+        "codes": []
+      },
+      "dates_removed": {
+        "status": "READY_FOR_HUMAN_FINALIZATION",
+        "open_findings": 0,
+        "omissions": 0,
+        "signal": 0,
+        "codes": []
+      },
+      "speakers_removed": {
+        "status": "READY_FOR_HUMAN_FINALIZATION",
+        "open_findings": 0,
+        "omissions": 0,
+        "signal": 0,
+        "codes": []
+      }
+    },
+    {
+      "id": "P014-07",
+      "intact": {
+        "status": "HOLD",
+        "open_findings": 1,
+        "omissions": 0,
+        "signal": 1,
+        "codes": [
+          "UNSUPPORTED_CLAIM"
+        ]
+      },
+      "dates_removed": {
+        "status": "HOLD",
+        "open_findings": 1,
+        "omissions": 0,
+        "signal": 1,
+        "codes": [
+          "UNSUPPORTED_CLAIM"
+        ]
+      },
+      "speakers_removed": {
+        "status": "HOLD",
+        "open_findings": 1,
+        "omissions": 0,
+        "signal": 1,
+        "codes": [
+          "UNSUPPORTED_CLAIM"
+        ]
+      }
+    },
+    {
+      "id": "P014-08",
+      "intact": {
+        "status": "HOLD",
+        "open_findings": 1,
+        "omissions": 0,
+        "signal": 1,
+        "codes": [
+          "NEGATION_CONFLICT"
+        ]
+      },
+      "dates_removed": {
+        "status": "HOLD",
+        "open_findings": 1,
+        "omissions": 0,
+        "signal": 1,
+        "codes": [
+          "NEGATION_CONFLICT"
+        ]
+      },
+      "speakers_removed": {
+        "status": "HOLD",
+        "open_findings": 1,
+        "omissions": 0,
+        "signal": 1,
+        "codes": [
+          "NEGATION_CONFLICT"
+        ]
+      }
+    },
+    {
+      "id": "P014-09",
+      "intact": {
+        "status": "REVIEW_REQUIRED",
+        "open_findings": 2,
+        "omissions": 0,
+        "signal": 2,
+        "codes": [
+          "AUTHORITY_TEXT_NOT_SUPPLIED",
+          "CONCLUSION_ON_UNRESOLVED_BASIS"
+        ]
+      },
+      "dates_removed": {
+        "status": "REVIEW_REQUIRED",
+        "open_findings": 2,
+        "omissions": 0,
+        "signal": 2,
+        "codes": [
+          "AUTHORITY_TEXT_NOT_SUPPLIED",
+          "CONCLUSION_ON_UNRESOLVED_BASIS"
+        ]
+      },
+      "speakers_removed": {
+        "status": "REVIEW_REQUIRED",
+        "open_findings": 1,
+        "omissions": 0,
+        "signal": 1,
+        "codes": [
+          "AUTHORITY_TEXT_NOT_SUPPLIED"
+        ]
+      }
+    },
+    {
+      "id": "P014-10",
+      "intact": {
+        "status": "READY_FOR_HUMAN_FINALIZATION",
+        "open_findings": 0,
+        "omissions": 0,
+        "signal": 0,
+        "codes": []
+      },
+      "dates_removed": {
+        "status": "READY_FOR_HUMAN_FINALIZATION",
+        "open_findings": 0,
+        "omissions": 0,
+        "signal": 0,
+        "codes": []
+      },
+      "speakers_removed": {
+        "status": "HOLD",
+        "open_findings": 1,
+        "omissions": 0,
+        "signal": 1,
+        "codes": [
+          "NEGATION_CONFLICT"
+        ]
+      }
+    },
+    {
+      "id": "P014-11",
+      "intact": {
+        "status": "HOLD",
+        "open_findings": 2,
+        "omissions": 0,
+        "signal": 2,
+        "codes": [
+          "REASONING_NOT_TRACED",
+          "UNSUPPORTED_CLAIM"
+        ]
+      },
+      "dates_removed": {
+        "status": "HOLD",
+        "open_findings": 2,
+        "omissions": 0,
+        "signal": 2,
+        "codes": [
+          "REASONING_NOT_TRACED",
+          "UNSUPPORTED_CLAIM"
+        ]
+      },
+      "speakers_removed": {
+        "status": "HOLD",
+        "open_findings": 2,
+        "omissions": 0,
+        "signal": 2,
+        "codes": [
+          "REASONING_NOT_TRACED",
+          "UNSUPPORTED_CLAIM"
+        ]
+      }
+    },
+    {
+      "id": "P014-12",
+      "intact": {
+        "status": "READY_FOR_HUMAN_FINALIZATION",
+        "open_findings": 0,
+        "omissions": 0,
+        "signal": 0,
+        "codes": []
+      },
+      "dates_removed": {
+        "status": "READY_FOR_HUMAN_FINALIZATION",
+        "open_findings": 0,
+        "omissions": 0,
+        "signal": 0,
+        "codes": []
+      },
+      "speakers_removed": {
+        "status": "READY_FOR_HUMAN_FINALIZATION",
+        "open_findings": 0,
+        "omissions": 0,
+        "signal": 0,
+        "codes": []
+      }
+    },
+    {
+      "id": "P014-13",
+      "intact": {
+        "status": "HOLD",
+        "open_findings": 5,
+        "omissions": 0,
+        "signal": 5,
+        "codes": [
+          "NEGATION_CONFLICT",
+          "REASONING_NOT_TRACED",
+          "UNSUPPORTED_CLAIM",
+          "CONCLUSION_ON_UNRESOLVED_BASIS"
+        ]
+      },
+      "dates_removed": {
+        "status": "HOLD",
+        "open_findings": 5,
+        "omissions": 0,
+        "signal": 5,
+        "codes": [
+          "NEGATION_CONFLICT",
+          "REASONING_NOT_TRACED",
+          "UNSUPPORTED_CLAIM",
+          "CONCLUSION_ON_UNRESOLVED_BASIS"
+        ]
+      },
+      "speakers_removed": {
+        "status": "HOLD",
+        "open_findings": 5,
+        "omissions": 0,
+        "signal": 5,
+        "codes": [
+          "NEGATION_CONFLICT",
+          "REASONING_NOT_TRACED",
+          "UNSUPPORTED_CLAIM",
+          "CONCLUSION_ON_UNRESOLVED_BASIS"
+        ]
+      }
+    },
+    {
+      "id": "P014-14",
+      "intact": {
+        "status": "HOLD",
+        "open_findings": 7,
+        "omissions": 0,
+        "signal": 7,
+        "codes": [
+          "RELEVANCE_NOT_ESTABLISHED",
+          "UNSUPPORTED_CLAIM",
+          "REASONING_NOT_TRACED",
+          "AUTHORITY_TEXT_NOT_SUPPLIED",
+          "CONCLUSION_ON_UNRESOLVED_BASIS"
+        ]
+      },
+      "dates_removed": {
+        "status": "HOLD",
+        "open_findings": 5,
+        "omissions": 0,
+        "signal": 5,
+        "codes": [
+          "REASONING_NOT_TRACED",
+          "UNSUPPORTED_CLAIM",
+          "AUTHORITY_TEXT_NOT_SUPPLIED",
+          "CONCLUSION_ON_UNRESOLVED_BASIS"
+        ]
+      },
+      "speakers_removed": {
+        "status": "HOLD",
+        "open_findings": 7,
+        "omissions": 0,
+        "signal": 7,
+        "codes": [
+          "RELEVANCE_NOT_ESTABLISHED",
+          "UNSUPPORTED_CLAIM",
+          "REASONING_NOT_TRACED",
+          "AUTHORITY_TEXT_NOT_SUPPLIED",
+          "CONCLUSION_ON_UNRESOLVED_BASIS"
+        ]
+      }
+    },
+    {
+      "id": "P014-15",
+      "intact": {
+        "status": "HOLD",
+        "open_findings": 5,
+        "omissions": 0,
+        "signal": 5,
+        "codes": [
+          "REASONING_NOT_TRACED",
+          "UNSUPPORTED_CLAIM"
+        ]
+      },
+      "dates_removed": {
+        "status": "HOLD",
+        "open_findings": 5,
+        "omissions": 0,
+        "signal": 5,
+        "codes": [
+          "REASONING_NOT_TRACED",
+          "UNSUPPORTED_CLAIM"
+        ]
+      },
+      "speakers_removed": {
+        "status": "HOLD",
+        "open_findings": 5,
+        "omissions": 0,
+        "signal": 5,
+        "codes": [
+          "REASONING_NOT_TRACED",
+          "UNSUPPORTED_CLAIM"
+        ]
+      }
+    },
+    {
+      "id": "P014-16",
+      "intact": {
+        "status": "HOLD",
+        "open_findings": 5,
+        "omissions": 0,
+        "signal": 5,
+        "codes": [
+          "ACTOR_NOT_ESTABLISHED",
+          "UNSUPPORTED_CLAIM",
+          "REASONING_NOT_TRACED",
+          "CONCLUSION_ON_UNRESOLVED_BASIS"
+        ]
+      },
+      "dates_removed": {
+        "status": "HOLD",
+        "open_findings": 5,
+        "omissions": 0,
+        "signal": 5,
+        "codes": [
+          "ACTOR_NOT_ESTABLISHED",
+          "UNSUPPORTED_CLAIM",
+          "REASONING_NOT_TRACED",
+          "CONCLUSION_ON_UNRESOLVED_BASIS"
+        ]
+      },
+      "speakers_removed": {
+        "status": "HOLD",
+        "open_findings": 5,
+        "omissions": 0,
+        "signal": 5,
+        "codes": [
+          "ACTOR_NOT_ESTABLISHED",
+          "UNSUPPORTED_CLAIM",
+          "REASONING_NOT_TRACED",
+          "CONCLUSION_ON_UNRESOLVED_BASIS"
+        ]
+      }
+    },
+    {
+      "id": "P014-17",
+      "intact": {
+        "status": "HOLD",
+        "open_findings": 4,
+        "omissions": 0,
+        "signal": 4,
+        "codes": [
+          "REASONING_NOT_TRACED",
+          "UNSUPPORTED_CLAIM"
+        ]
+      },
+      "dates_removed": {
+        "status": "HOLD",
+        "open_findings": 4,
+        "omissions": 0,
+        "signal": 4,
+        "codes": [
+          "REASONING_NOT_TRACED",
+          "UNSUPPORTED_CLAIM"
+        ]
+      },
+      "speakers_removed": {
+        "status": "HOLD",
+        "open_findings": 4,
+        "omissions": 0,
+        "signal": 4,
+        "codes": [
+          "REASONING_NOT_TRACED",
+          "UNSUPPORTED_CLAIM"
+        ]
+      }
+    },
+    {
+      "id": "P014-18",
+      "intact": {
+        "status": "READY_FOR_HUMAN_FINALIZATION",
+        "open_findings": 0,
+        "omissions": 0,
+        "signal": 0,
+        "codes": []
+      },
+      "dates_removed": {
+        "status": "READY_FOR_HUMAN_FINALIZATION",
+        "open_findings": 0,
+        "omissions": 0,
+        "signal": 0,
+        "codes": []
+      },
+      "speakers_removed": {
+        "status": "READY_FOR_HUMAN_FINALIZATION",
+        "open_findings": 0,
+        "omissions": 0,
+        "signal": 0,
+        "codes": []
+      }
+    },
+    {
+      "id": "P014-19",
+      "intact": {
+        "status": "HOLD",
+        "open_findings": 2,
+        "omissions": 0,
+        "signal": 2,
+        "codes": [
+          "REASONING_NOT_TRACED",
+          "UNSUPPORTED_CLAIM"
+        ]
+      },
+      "dates_removed": {
+        "status": "HOLD",
+        "open_findings": 2,
+        "omissions": 0,
+        "signal": 2,
+        "codes": [
+          "REASONING_NOT_TRACED",
+          "UNSUPPORTED_CLAIM"
+        ]
+      },
+      "speakers_removed": {
+        "status": "HOLD",
+        "open_findings": 2,
+        "omissions": 0,
+        "signal": 2,
+        "codes": [
+          "REASONING_NOT_TRACED",
+          "UNSUPPORTED_CLAIM"
+        ]
+      }
+    },
+    {
+      "id": "P014-20",
+      "intact": {
+        "status": "HOLD",
+        "open_findings": 4,
+        "omissions": 0,
+        "signal": 4,
+        "codes": [
+          "REASONING_NOT_TRACED",
+          "UNSUPPORTED_CLAIM"
+        ]
+      },
+      "dates_removed": {
+        "status": "HOLD",
+        "open_findings": 4,
+        "omissions": 0,
+        "signal": 4,
+        "codes": [
+          "REASONING_NOT_TRACED",
+          "UNSUPPORTED_CLAIM"
+        ]
+      },
+      "speakers_removed": {
+        "status": "HOLD",
+        "open_findings": 4,
+        "omissions": 0,
+        "signal": 4,
+        "codes": [
+          "REASONING_NOT_TRACED",
+          "UNSUPPORTED_CLAIM"
+        ]
+      }
+    },
+    {
+      "id": "P014-21",
+      "intact": {
+        "status": "HOLD",
+        "open_findings": 2,
+        "omissions": 0,
+        "signal": 2,
+        "codes": [
+          "NEGATION_CONFLICT"
+        ]
+      },
+      "dates_removed": {
+        "status": "HOLD",
+        "open_findings": 2,
+        "omissions": 0,
+        "signal": 2,
+        "codes": [
+          "NEGATION_CONFLICT"
+        ]
+      },
+      "speakers_removed": {
+        "status": "HOLD",
+        "open_findings": 2,
+        "omissions": 0,
+        "signal": 2,
+        "codes": [
+          "NEGATION_CONFLICT"
+        ]
+      }
+    },
+    {
+      "id": "P014-22",
+      "intact": {
+        "status": "HOLD",
+        "open_findings": 4,
+        "omissions": 0,
+        "signal": 4,
+        "codes": [
+          "NEGATION_CONFLICT",
+          "REASONING_NOT_TRACED",
+          "UNSUPPORTED_CLAIM",
+          "CONCLUSION_ON_UNRESOLVED_BASIS"
+        ]
+      },
+      "dates_removed": {
+        "status": "HOLD",
+        "open_findings": 4,
+        "omissions": 0,
+        "signal": 4,
+        "codes": [
+          "NEGATION_CONFLICT",
+          "REASONING_NOT_TRACED",
+          "UNSUPPORTED_CLAIM",
+          "CONCLUSION_ON_UNRESOLVED_BASIS"
+        ]
+      },
+      "speakers_removed": {
+        "status": "HOLD",
+        "open_findings": 4,
+        "omissions": 0,
+        "signal": 4,
+        "codes": [
+          "NEGATION_CONFLICT",
+          "REASONING_NOT_TRACED",
+          "UNSUPPORTED_CLAIM",
+          "CONCLUSION_ON_UNRESOLVED_BASIS"
+        ]
+      }
+    },
+    {
+      "id": "P014-23",
+      "intact": {
+        "status": "HOLD",
+        "open_findings": 6,
+        "omissions": 0,
+        "signal": 6,
+        "codes": [
+          "REASONING_NOT_TRACED",
+          "UNSUPPORTED_CLAIM"
+        ]
+      },
+      "dates_removed": {
+        "status": "HOLD",
+        "open_findings": 6,
+        "omissions": 0,
+        "signal": 6,
+        "codes": [
+          "REASONING_NOT_TRACED",
+          "UNSUPPORTED_CLAIM"
+        ]
+      },
+      "speakers_removed": {
+        "status": "HOLD",
+        "open_findings": 10,
+        "omissions": 0,
+        "signal": 10,
+        "codes": [
+          "NEGATION_CONFLICT",
+          "REASONING_NOT_TRACED",
+          "UNSUPPORTED_CLAIM",
+          "CONCLUSION_ON_UNRESOLVED_BASIS"
+        ]
+      }
+    },
+    {
+      "id": "P014-24",
+      "intact": {
+        "status": "HOLD",
+        "open_findings": 2,
+        "omissions": 0,
+        "signal": 2,
+        "codes": [
+          "REASONING_NOT_TRACED",
+          "UNSUPPORTED_CLAIM"
+        ]
+      },
+      "dates_removed": {
+        "status": "HOLD",
+        "open_findings": 2,
+        "omissions": 0,
+        "signal": 2,
+        "codes": [
+          "REASONING_NOT_TRACED",
+          "UNSUPPORTED_CLAIM"
+        ]
+      },
+      "speakers_removed": {
+        "status": "HOLD",
+        "open_findings": 2,
+        "omissions": 0,
+        "signal": 2,
+        "codes": [
+          "REASONING_NOT_TRACED",
+          "UNSUPPORTED_CLAIM"
+        ]
+      }
+    },
+    {
+      "id": "P014-25",
+      "intact": {
+        "status": "HOLD",
+        "open_findings": 2,
+        "omissions": 0,
+        "signal": 2,
+        "codes": [
+          "REASONING_NOT_TRACED",
+          "UNSUPPORTED_CLAIM"
+        ]
+      },
+      "dates_removed": {
+        "status": "HOLD",
+        "open_findings": 2,
+        "omissions": 0,
+        "signal": 2,
+        "codes": [
+          "REASONING_NOT_TRACED",
+          "UNSUPPORTED_CLAIM"
+        ]
+      },
+      "speakers_removed": {
+        "status": "HOLD",
+        "open_findings": 2,
+        "omissions": 0,
+        "signal": 2,
+        "codes": [
+          "REASONING_NOT_TRACED",
+          "UNSUPPORTED_CLAIM"
+        ]
+      }
+    },
+    {
+      "id": "P014-26",
+      "intact": {
+        "status": "HOLD",
+        "open_findings": 9,
+        "omissions": 0,
+        "signal": 9,
+        "codes": [
+          "NEGATION_CONFLICT",
+          "DATE_NOT_ESTABLISHED",
+          "UNSUPPORTED_CLAIM",
+          "REASONING_NOT_TRACED",
+          "CONCLUSION_ON_UNRESOLVED_BASIS"
+        ]
+      },
+      "dates_removed": {
+        "status": "HOLD",
+        "open_findings": 7,
+        "omissions": 0,
+        "signal": 7,
+        "codes": [
+          "NEGATION_CONFLICT",
+          "REASONING_NOT_TRACED",
+          "UNSUPPORTED_CLAIM",
+          "CONCLUSION_ON_UNRESOLVED_BASIS"
+        ]
+      },
+      "speakers_removed": {
+        "status": "HOLD",
+        "open_findings": 9,
+        "omissions": 0,
+        "signal": 9,
+        "codes": [
+          "NEGATION_CONFLICT",
+          "DATE_NOT_ESTABLISHED",
+          "UNSUPPORTED_CLAIM",
+          "REASONING_NOT_TRACED",
+          "CONCLUSION_ON_UNRESOLVED_BASIS"
+        ]
+      }
+    },
+    {
+      "id": "P014-27",
+      "intact": {
+        "status": "HOLD",
+        "open_findings": 1,
+        "omissions": 0,
+        "signal": 1,
+        "codes": [
+          "NEGATION_CONFLICT"
+        ]
+      },
+      "dates_removed": {
+        "status": "READY_FOR_HUMAN_FINALIZATION",
+        "open_findings": 0,
+        "omissions": 0,
+        "signal": 0,
+        "codes": []
+      },
+      "speakers_removed": {
+        "status": "HOLD",
+        "open_findings": 1,
+        "omissions": 0,
+        "signal": 1,
+        "codes": [
+          "NEGATION_CONFLICT"
+        ]
+      }
+    },
+    {
+      "id": "P014-28",
+      "intact": {
+        "status": "READY_FOR_HUMAN_FINALIZATION",
+        "open_findings": 0,
+        "omissions": 0,
+        "signal": 0,
+        "codes": []
+      },
+      "dates_removed": {
+        "status": "READY_FOR_HUMAN_FINALIZATION",
+        "open_findings": 0,
+        "omissions": 0,
+        "signal": 0,
+        "codes": []
+      },
+      "speakers_removed": {
+        "status": "READY_FOR_HUMAN_FINALIZATION",
+        "open_findings": 0,
+        "omissions": 0,
+        "signal": 0,
+        "codes": []
+      }
+    },
+    {
+      "id": "P014-29",
+      "intact": {
+        "status": "HOLD",
+        "open_findings": 1,
+        "omissions": 0,
+        "signal": 1,
+        "codes": [
+          "NEGATION_CONFLICT"
+        ]
+      },
+      "dates_removed": {
+        "status": "HOLD",
+        "open_findings": 1,
+        "omissions": 0,
+        "signal": 1,
+        "codes": [
+          "NEGATION_CONFLICT"
+        ]
+      },
+      "speakers_removed": {
+        "status": "HOLD",
+        "open_findings": 2,
+        "omissions": 0,
+        "signal": 2,
+        "codes": [
+          "NEGATION_CONFLICT"
+        ]
+      }
+    }
+  ]
+}

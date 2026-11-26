@@ -1,0 +1,43 @@
+{
+ "code": "round 5 commit",
+ "G2": {
+  "good_drafts_without_serious_flag": {
+   "k": 30,
+   "n": 30,
+   "rate": 1,
+   "wilson95": [
+    0.886,
+    1
+   ]
+  },
+  "changed_sentence_flagged_as_serious": {
+   "k": 29,
+   "n": 30,
+   "rate": 0.967,
+   "wilson95": [
+    0.833,
+    0.994
+   ]
+  },
+  "both_in_the_same_pair": {
+   "k": 29,
+   "n": 30,
+   "rate": 0.967,
+   "wilson95": [
+    0.833,
+    0.994
+   ]
+  },
+  "changed_sentence_flagged_by_kind": {
+   "negation_removed": {
+    "k": 29,
+    "n": 30,
+    "rate": 0.967,
+    "wilson95": [
+     0.833,
+     0.994
+    ]
+   }
+  }
+ }
+}

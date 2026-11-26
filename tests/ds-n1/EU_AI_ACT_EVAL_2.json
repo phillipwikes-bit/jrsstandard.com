@@ -1,0 +1,28 @@
+{
+  "set": "eu-ai-act-eval-2",
+  "lens": "ds-n1.eu-ai-act/0.2.0-dev",
+  "note": "Developer-written fictional AI authorization records, written and sealed after set 1 exposed two misses and before the fix was run. Not independent.",
+  "agreement": {
+    "k": 38,
+    "n": 40,
+    "wilson95": [
+      0.835,
+      0.986
+    ]
+  },
+  "wrongly_credited_as_shown_and_supported": {
+    "k": 0,
+    "n": 27,
+    "cases": []
+  },
+  "supported_points_not_credited": {
+    "k": 0,
+    "n": 13,
+    "cases": []
+  },
+  "refused_by_scope_gate_in_normal_use": [],
+  "disagreements": [
+    "F4.human_oversight: truth U, lens N",
+    "F4.monitoring: truth U, lens N"
+  ]
+}

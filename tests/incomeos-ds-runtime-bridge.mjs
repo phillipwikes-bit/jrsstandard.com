@@ -79,6 +79,9 @@ test('synthetic review invokes existing DS-N1 engine and optional cognitive cont
   assert.match(view.cognitiveObservationVersion, /^ds-n1\.cognitive-observations\//);
   const clean = reviewerSnapshot(p, startSyntheticReview(p, fixture('P01'), T0).session);
   assert.deepEqual(clean.cognitiveObservations, [], 'a fully supported record raises no wording check');
+  assert.ok(view.safeguards.controls.some((c) => c.control === 'CC-ESCALATE'), 'closure with open critical findings is routed for escalation');
+  assert.ok(view.detectionTemplates.some((h) => h.mode === 'finding'));
+  assert.deepEqual(clean.safeguards, { lenses: [], controls: [] });
   assert.equal(view.finalDisposition, null);
   assert.deepEqual(p, before, 'review cannot alter programme acceptance or finances');
 });

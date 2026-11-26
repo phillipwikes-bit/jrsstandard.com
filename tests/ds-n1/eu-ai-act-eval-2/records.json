@@ -1,0 +1,25 @@
+{
+  "set": "eu-ai-act-eval-2",
+  "written": "2026-11-25",
+  "note": "Developer-written fictional AI authorization records, written and sealed after set 1 exposed two misses and before the fix was run. Not independent.",
+  "records": [
+    { "id": "F1", "title": "AI authorization EU-201 (fictional)",
+      "text": "On 2026-10-01, the learning and development manager authorized the course recommender to suggest training modules to employees. The recommender is not high-risk. The training manager reviews each week's suggestions.",
+      "sources": [
+        { "title": "Authorization EU-201", "text": "On 2026-10-01, the learning and development manager authorized the course recommender to suggest training modules to employees. The recommender is not high-risk." } ] },
+    { "id": "F2", "title": "AI authorization EU-202 (fictional)",
+      "text": "On 2026-09-15, the lettings manager authorized the tenancy screening assistant to score rental applications. It is high-risk under Annex III. People who apply are told in the application form that an AI system scores their application. A lettings officer trained on the tool reviews each score and can override it. Logs are kept for one year.",
+      "sources": [
+        { "title": "Authorization EU-202", "text": "On 2026-09-15, the lettings manager authorized the tenancy screening assistant to score rental applications. It is high-risk under Annex III." },
+        { "title": "Application form AF-202", "text": "People who apply are told in the application form that an AI system scores their application." },
+        { "title": "Procedure PR-202", "text": "A lettings officer trained on the tool reviews each score and can override it. Logs are kept for one year." } ] },
+    { "id": "F3", "title": "AI authorization EU-203 (fictional)",
+      "text": "On 2026-11-02, the head of admissions authorized the essay screening tool to flag incomplete university applications. The tool is high-risk under Annex III. An admissions officer checks every flag. Logs are retained for 90 days.",
+      "sources": [
+        { "title": "Authorization EU-203", "text": "On 2026-11-02, the head of admissions authorized the essay screening tool to flag incomplete university applications. The tool is high-risk under Annex III. An admissions officer checks every flag." } ] },
+    { "id": "F4", "title": "AI authorization EU-204 (fictional)",
+      "text": "On 2026-08-28, the safety training coordinator authorized the incident summariser to draft summaries of near-miss reports. It is not high-risk. Summaries are checked by the safety officer before filing.",
+      "sources": [
+        { "title": "Authorization EU-204", "text": "On 2026-08-28, the safety training coordinator authorized the incident summariser to draft summaries of near-miss reports. It is not high-risk." } ] }
+  ]
+}

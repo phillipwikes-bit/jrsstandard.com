@@ -1,0 +1,29 @@
+{
+  "set": "eu-ai-act-eval-1",
+  "lens": "ds-n1.eu-ai-act/0.1.0-dev",
+  "note": "Developer-written fictional AI authorization records, written and sealed before the EU AI Act lens code existed. Not independent; an outside author's set is still needed.",
+  "agreement": {
+    "k": 78,
+    "n": 80,
+    "wilson95": [
+      0.913,
+      0.993
+    ]
+  },
+  "wrongly_credited_as_shown_and_supported": {
+    "k": 1,
+    "n": 50,
+    "cases": [
+      "E8.ai_literacy: truth N"
+    ]
+  },
+  "supported_points_not_credited": {
+    "k": 0,
+    "n": 30,
+    "cases": []
+  },
+  "disagreements": [
+    "E2.affected_persons_informed: truth N, lens NA",
+    "E8.ai_literacy: truth N, lens S"
+  ]
+}

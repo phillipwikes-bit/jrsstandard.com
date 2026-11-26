@@ -1,0 +1,14 @@
+{
+  "set": "practitioner-gaps-eval-2",
+  "expect": "ready = the record as a whole should reach READY_FOR_HUMAN_FINALIZATION (every statement is in a supplied document, the cited standard is supplied and names who may approve); scope_gap = broad access (administrator, full, privileged) granted with no stated reason",
+  "truth": {
+    "H1": { "ready": true, "scope_gap": false },
+    "H2": { "ready": false, "scope_gap": true },
+    "H3": { "ready": true, "scope_gap": false },
+    "H4": { "ready": true, "scope_gap": false },
+    "H5": { "ready": true, "scope_gap": false },
+    "H6": { "ready": true, "scope_gap": false },
+    "H7": { "ready": true, "scope_gap": false },
+    "H8": { "ready": false, "scope_gap": true }
+  }
+}

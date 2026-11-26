@@ -1,0 +1,47 @@
+{
+  "set": "practitioner-gaps-eval-2",
+  "written": "2026-11-25",
+  "note": "Developer-written fictional records, written and sealed before the access-scope check and the sound-record fixes were coded. Not independent. AR-82 is never used.",
+  "records": [
+    { "id": "H1", "class": "supplier_access_exception", "title": "Access exception HX-601 (fictional)",
+      "text": "On 2026-06-03, Ama Boateng, head of IT operations, granted Corrow Systems administrator access to the payroll test server for the payroll migration. The access ends on 2026-07-03. The exception was granted under the supplier access standard, section 6.",
+      "sources": [
+        { "title": "Approval HX-601", "text": "On 2026-06-03, Ama Boateng, head of IT operations, granted Corrow Systems administrator access to the payroll test server for the payroll migration. The access ends on 2026-07-03. The exception was granted under the supplier access standard, section 6." },
+        { "title": "Supplier access standard, section 6", "text": "Section 6. The head of IT operations may approve administrator access for a supplier for up to 60 days, for a named project." } ] },
+    { "id": "H2", "class": "supplier_access_exception", "title": "Access exception HX-602 (fictional)",
+      "text": "On 2026-06-10, Ama Boateng, head of IT operations, granted Dunmore Ltd administrator access to the customer database. The exception was granted under the supplier access standard, section 6.",
+      "sources": [
+        { "title": "Approval HX-602", "text": "On 2026-06-10, Ama Boateng, head of IT operations, granted Dunmore Ltd administrator access to the customer database. The exception was granted under the supplier access standard, section 6." },
+        { "title": "Supplier access standard, section 6", "text": "Section 6. The head of IT operations may approve administrator access for a supplier for up to 60 days, for a named project." } ] },
+    { "id": "H3", "class": "supplier_access_exception", "title": "Access exception HX-603 (fictional)",
+      "text": "On 2026-06-17, Ama Boateng, head of IT operations, granted Pexley Ltd full access to the document archive because the archive is being moved to a new platform. The exception was granted under the supplier access standard, section 6.",
+      "sources": [
+        { "title": "Approval HX-603", "text": "On 2026-06-17, Ama Boateng, head of IT operations, granted Pexley Ltd full access to the document archive because the archive is being moved to a new platform. The exception was granted under the supplier access standard, section 6." },
+        { "title": "Supplier access standard, section 6", "text": "Section 6. The head of IT operations may approve administrator access for a supplier for up to 60 days, for a named project." } ] },
+    { "id": "H4", "class": "ai_action_authorization", "title": "AI authorization HA-604 (fictional)",
+      "text": "On 2026-07-01, Ines Moreau, head of service operations, authorized the scheduling assistant to propose appointment slots to customers. The authorization was given under the automation policy, clause 2.",
+      "sources": [
+        { "title": "Authorization HA-604", "text": "On 2026-07-01, Ines Moreau, head of service operations, authorized the scheduling assistant to propose appointment slots to customers. The authorization was given under the automation policy, clause 2." },
+        { "title": "Automation policy, clause 2", "text": "Clause 2. The head of service operations may authorize assistants that propose options to customers without deciding outcomes." } ] },
+    { "id": "H5", "class": "workplace_investigation_report", "title": "Investigation summary HI-605 (fictional)",
+      "text": "Witness B stated that the storeroom key was returned on 2026-07-08. The key log records the key's return at 17:10 on 2026-07-08.",
+      "sources": [
+        { "title": "Interview notes IN-605", "text": "Witness B stated that the storeroom key was returned on 2026-07-08." },
+        { "title": "Key log KL-605", "text": "The key log records the key's return at 17:10 on 2026-07-08." } ] },
+    { "id": "H6", "class": "supplier_access_exception", "title": "Access exception HX-606 (fictional)",
+      "text": "On 2026-07-14, Ama Boateng, head of IT operations, granted Fenwick Ltd read-only access to the shipping reports. The exception was granted under the supplier access standard, section 6.",
+      "sources": [
+        { "title": "Approval HX-606", "text": "On 2026-07-14, Ama Boateng, head of IT operations, granted Fenwick Ltd read-only access to the shipping reports. The exception was granted under the supplier access standard, section 6." },
+        { "title": "Supplier access standard, section 6", "text": "Section 6. The head of IT operations may approve administrator access for a supplier for up to 60 days, for a named project." } ] },
+    { "id": "H7", "class": "supplier_access_exception", "title": "Access exception HX-607 (fictional)",
+      "text": "On 2026-07-21, Ama Boateng, head of IT operations, granted Holloway Data read access to the stock reports for the quarterly audit. The exception was granted under the supplier access standard, section 6.",
+      "sources": [
+        { "title": "Approval HX-607", "text": "On 2026-07-21, Ama Boateng, head of IT operations, granted Holloway Data read access to the stock reports for the quarterly audit." },
+        { "title": "Supplier access standard, section 6", "text": "Section 6. The head of IT operations may approve administrator access for a supplier for up to 60 days, for a named project. The exception was granted under the supplier access standard, section 6, when approved under this section." } ] },
+    { "id": "H8", "class": "supplier_access_exception", "title": "Access exception HX-608 (fictional)",
+      "text": "On 2026-08-04, Ama Boateng, head of IT operations, granted Tarrant Ltd privileged access to the billing platform. The exception was granted under the supplier access standard, section 6.",
+      "sources": [
+        { "title": "Approval HX-608", "text": "On 2026-08-04, Ama Boateng, head of IT operations, granted Tarrant Ltd privileged access to the billing platform. The exception was granted under the supplier access standard, section 6." },
+        { "title": "Supplier access standard, section 6", "text": "Section 6. The head of IT operations may approve administrator access for a supplier for up to 60 days, for a named project." } ] }
+  ]
+}

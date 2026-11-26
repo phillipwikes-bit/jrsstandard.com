@@ -1,0 +1,44 @@
+{
+  "set": "omission-eval-1",
+  "written": "2026-11-24",
+  "note": "Developer-written fictional records, written after the omission rule was fixed and before it was run on them. The answer key was hashed before the first run. Not independent; an outside author's set is still needed.",
+  "records": [
+    { "id": "N1", "class": "supplier_access_exception", "title": "Access exception VX-210 (fictional)",
+      "text": "On 2026-04-03, Tomas Ilvane approved remote access for Pellmark Systems to the payroll test environment, subject to multi-factor authentication on every login. Pellmark Systems requested the access on 2026-03-27.",
+      "sources": [
+        { "title": "Request RQ-210", "text": "On 2026-03-27, Pellmark Systems requested remote access to the payroll test environment for a migration project." },
+        { "title": "Approval AP-210", "text": "On 2026-04-03, Tomas Ilvane approved remote access for Pellmark Systems to the payroll test environment, subject to multi-factor authentication on every login." } ] },
+    { "id": "N2", "class": "supplier_access_exception", "title": "Access exception VX-311 (fictional)",
+      "text": "Corvane Labs completed the external penetration test on 2026-05-11. On 2026-05-15, Mirela Adebayo approved network access for Corvane Labs to the staging cluster.",
+      "sources": [
+        { "title": "Penetration test PT-311", "text": "Corvane Labs completed the external penetration test on 2026-05-11. The test failed on two internet-facing hosts." },
+        { "title": "Approval AP-311", "text": "On 2026-05-15, Mirela Adebayo approved network access for Corvane Labs to the staging cluster." } ] },
+    { "id": "N3", "class": "ai_action_authorization", "title": "AI authorization AA-44 (fictional)",
+      "text": "The triage assistant evaluation was completed on 2026-06-02. On 2026-06-09, Hollis Brandt authorized the triage assistant to label incoming support tickets. A supervisor can switch the assistant off at any time.",
+      "sources": [
+        { "title": "Evaluation EV-44", "text": "The triage assistant evaluation was completed on 2026-06-02. Labelling accuracy met the agreed threshold on the test set." },
+        { "title": "Authorization AU-44", "text": "On 2026-06-09, Hollis Brandt authorized the triage assistant to label incoming support tickets. A supervisor can switch the assistant off at any time." } ] },
+    { "id": "N4", "class": "ai_action_authorization", "title": "AI authorization AA-57 (fictional)",
+      "text": "The reply drafting evaluation was completed on 2026-07-20. On 2026-07-28, Saoirse Whitlock authorized the drafting assistant to send replies to customer emails.",
+      "sources": [
+        { "title": "Evaluation EV-57", "text": "The reply drafting evaluation was completed on 2026-07-20. Accuracy fell below the threshold on Spanish-language emails, and use is recommended for English-language emails only." },
+        { "title": "Authorization AU-57", "text": "On 2026-07-28, Saoirse Whitlock authorized the drafting assistant to send replies to customer emails." } ] },
+    { "id": "N5", "class": "workplace_investigation_report", "title": "Investigation summary IR-8 (fictional)",
+      "text": "Witness A stated that the storeroom was unlocked on the evening of 2026-02-11. Witness B could not recall the date of the incident. The interview notes were completed on 2026-02-20.",
+      "sources": [
+        { "title": "Interview notes IN-8", "text": "Witness A stated that the storeroom was unlocked on the evening of 2026-02-11. Witness B could not recall the date of the incident. The interview notes were completed on 2026-02-20." } ] },
+    { "id": "N6", "class": "workplace_investigation_report", "title": "Investigation summary IR-9 (fictional)",
+      "text": "Witness C stated that the loading bay door was propped open on 2026-03-14. The investigation file was completed on 2026-03-25.",
+      "sources": [
+        { "title": "Investigation file IF-9", "text": "Witness C stated that the loading bay door was propped open on 2026-03-14. The CCTV footage for 2026-03-14 was not reviewed. The investigation file was completed on 2026-03-25." } ] },
+    { "id": "N7", "class": "discovery_production_rationale", "title": "Production rationale PR-5 (fictional)",
+      "text": "Mailboxes for the finance team custodians were collected on 2026-08-04. The production set was sent to opposing counsel on 2026-08-19.",
+      "sources": [
+        { "title": "Collection log CL-5", "text": "Mailboxes for the finance team custodians were collected on 2026-08-04. Three custodians were excluded from collection because their mailboxes had been archived." },
+        { "title": "Transmittal TR-5", "text": "The production set was sent to opposing counsel on 2026-08-19." } ] },
+    { "id": "N8", "class": "supplier_access_exception", "title": "Access exception VX-412 (fictional)",
+      "text": "On 2026-09-01, Anouk Ferreira approved read access for Stellwick Freight to the shipment tracking database. The access lasts thirty days from approval.",
+      "sources": [
+        { "title": "Approval AP-412", "text": "On 2026-09-01, Anouk Ferreira approved read access for Stellwick Freight to the shipment tracking database. The approval is subject to a thirty-day expiry." } ] }
+  ]
+}

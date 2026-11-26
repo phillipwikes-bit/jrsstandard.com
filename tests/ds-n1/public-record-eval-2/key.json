@@ -1,0 +1,433 @@
+{
+  "set": "public-record-eval-2",
+  "sealed": "2026-11-25, before any DS-N1 run on these texts",
+  "source": "Study 014 (branch claude/engine-eval-v8-2026-10-01): 30 public EEOC federal-sector appellate decisions (BACKGROUND sections, published in the repository) and the AI drafts made from them on 2026-10-02.",
+  "truth": "Study 014 measured, with a deterministic extractor and a reconstruction test fixed before its run, that P1 concise summaries lost most record citations and quotations (reconstruction 77.3% vs 96.7% from the source) while P4 JRS-guided drafts kept them (97.3%). P1 is therefore the lossy condition and P4 the retaining condition.",
+  "run_settings": "record = draft text; source = the public decision text; record_class workplace_investigation_report; data_classification public_record_test.",
+  "signal": "open findings after review plus omission questions (findOmissions).",
+  "rule_primary": "For each of the 60 source-drafter pairs, the P1 draft should receive a higher signal than the P4 draft. Success: P1 higher in a majority of non-tied pairs, two-sided sign test p < 0.05.",
+  "rule_secondary": "READY_FOR_HUMAN_FINALIZATION rate for P4 drafts should exceed that for P1 drafts.",
+  "risk_stated_in_advance": "P1 drafts are shorter, so they contain fewer sentences that can be flagged; the tool may give them fewer findings. If so the primary rule fails and that is reported.",
+  "pairs": [
+    {
+      "source": "S014-01",
+      "drafter": "claude-sonnet-5-5",
+      "source_sha256": "4aff087c42d53da4f2611b4a068c2ae4e09be119bdf0abc0c217f3c9732bf997",
+      "P1_sha256": "83b1f7d7f7fa4f39a2a31ff5cc799490c49fe403abcad9f2036bf758431abf8c",
+      "P4_sha256": "4f5240f83102af6f75a103ec1394f674cdc38b32920c5585058c5394cdac302e"
+    },
+    {
+      "source": "S014-01",
+      "drafter": "claude-haiku-4-5-20251001",
+      "source_sha256": "4aff087c42d53da4f2611b4a068c2ae4e09be119bdf0abc0c217f3c9732bf997",
+      "P1_sha256": "49680007cc2a88e4520cda84c429c3f1a37ee67a44f25a676d802068e7ef1987",
+      "P4_sha256": "33db3967a6cc2498658b70c431dfb29f2c75c4d6e6b9862c095848a72c761616"
+    },
+    {
+      "source": "S014-02",
+      "drafter": "claude-sonnet-5-5",
+      "source_sha256": "3fcab2eaa17eed17a4e5e4b95040c5dd2982ae8e48995396237b7dc35ec352e1",
+      "P1_sha256": "bf2a2577aeac1954e2d115ed08d29269f7b2686e41d9e509e103f25a6eca7f30",
+      "P4_sha256": "2a3209589501d8b1e6c32b7d8646a8ef5473f4c0c24127acae788d82345f565f"
+    },
+    {
+      "source": "S014-02",
+      "drafter": "claude-haiku-4-5-20251001",
+      "source_sha256": "3fcab2eaa17eed17a4e5e4b95040c5dd2982ae8e48995396237b7dc35ec352e1",
+      "P1_sha256": "0ee1601f6fd5c8a3a9868218e0d8b4f25f386e193a4acfbdcbb3c83b455351ac",
+      "P4_sha256": "f2cd18f03f98523ac036db2ad474c631493353d7a526b90413e8d7891be252b7"
+    },
+    {
+      "source": "S014-03",
+      "drafter": "claude-sonnet-5-5",
+      "source_sha256": "6d168f49946aedb5e038cd456279eecb4185246206ffea1ad83d372aecf2315a",
+      "P1_sha256": "7ba8d9112a5703804fa25dc5c1046cf48b16b0bdbb8fd4d358f1a4dff5003f55",
+      "P4_sha256": "e941241eb63f366b60786288fd3e8b90a4e6761ea7dec053c787d8f7f260d462"
+    },
+    {
+      "source": "S014-03",
+      "drafter": "claude-haiku-4-5-20251001",
+      "source_sha256": "6d168f49946aedb5e038cd456279eecb4185246206ffea1ad83d372aecf2315a",
+      "P1_sha256": "00d3a8f4f669f7fbfac7de3451140732d23edb1857429f622839494ca7631d7a",
+      "P4_sha256": "d3296f45b5559960ed7c9da10380a00329be599fa433cf39dc5291fd7ccf42b2"
+    },
+    {
+      "source": "S014-04",
+      "drafter": "claude-sonnet-5-5",
+      "source_sha256": "3691489499b2cd171be3083fa6179d10ff10262e248ebd0ce730d9f86a3fd6c2",
+      "P1_sha256": "9cd83bcc71d080a459cf8a6b2bdaffad9ccc24a6f3fee9ee9cb51fac89346c2d",
+      "P4_sha256": "1f9583bf98be9881f82511864dc04ab131d597487b3406d096255ddb5be1eb64"
+    },
+    {
+      "source": "S014-04",
+      "drafter": "claude-haiku-4-5-20251001",
+      "source_sha256": "3691489499b2cd171be3083fa6179d10ff10262e248ebd0ce730d9f86a3fd6c2",
+      "P1_sha256": "f3d8ce87d5742c374982c1a67d48c6521d7f6f7ff8979c3af289f9e0b54e47ba",
+      "P4_sha256": "8b170da2d35d49952c5a36440fedc6917bbffbfa1f7e3805e4db8165102942f6"
+    },
+    {
+      "source": "S014-05",
+      "drafter": "claude-sonnet-5-5",
+      "source_sha256": "4ee59740e4348837a1ee79ca65911f5cdc5546bb29a4fd0f5e8628bed191bc41",
+      "P1_sha256": "4c28ee80fa6eba0ea417c7a631c116d21c927bd91fdf452ee9be47ac3fa9de0d",
+      "P4_sha256": "da36679b2197698e1a0f0f50616bd2db9aab6226b1c48ca1d0f4a4cc3c6d5d91"
+    },
+    {
+      "source": "S014-05",
+      "drafter": "claude-haiku-4-5-20251001",
+      "source_sha256": "4ee59740e4348837a1ee79ca65911f5cdc5546bb29a4fd0f5e8628bed191bc41",
+      "P1_sha256": "76c8b6f6286470f89b58cec41dbdfb5035165576de0e555de3578853d0e41754",
+      "P4_sha256": "2a614345d7e5564901316050e0cdb6282fc03cbbcc40de62c2524b5fa964f3f4"
+    },
+    {
+      "source": "S014-06",
+      "drafter": "claude-sonnet-5-5",
+      "source_sha256": "849504e8c3682813f63deeed3d1ea9c30f68bf0efd2a441c65865c33c7014185",
+      "P1_sha256": "3631ae2a054ff4d18ea25b558b15d636c6558fe6edbb28e31f9e20c13a9ac913",
+      "P4_sha256": "7b2b001d1a521875bcff591993f4d127dc3825c219832ac1f8331ef70c70172b"
+    },
+    {
+      "source": "S014-06",
+      "drafter": "claude-haiku-4-5-20251001",
+      "source_sha256": "849504e8c3682813f63deeed3d1ea9c30f68bf0efd2a441c65865c33c7014185",
+      "P1_sha256": "53191a8abb55084fb1bd32a35fe0f2028a6b9e518d5410bb48e88619da30a9cd",
+      "P4_sha256": "8f005e5a9643cdd980321d4a9f74acc48cb92797e2906f882961576a04d36914"
+    },
+    {
+      "source": "S014-07",
+      "drafter": "claude-sonnet-5-5",
+      "source_sha256": "ba10edde1b056cedceed26c881c9546134d5a81be5a63a768c316b20be14c875",
+      "P1_sha256": "7b136fad6e83d86a88c76e0f0138c2366969bb85d99bebc6e421cf1d61582e99",
+      "P4_sha256": "48d8c88b86f14ca3c5a79ee8d952c08445d2aee0bfd26593164a62f064d5a305"
+    },
+    {
+      "source": "S014-07",
+      "drafter": "claude-haiku-4-5-20251001",
+      "source_sha256": "ba10edde1b056cedceed26c881c9546134d5a81be5a63a768c316b20be14c875",
+      "P1_sha256": "7b1f8c07b8ad9143cb4a6b0aa6db548ff2ea43449d8835d989cfec3ea9eac25c",
+      "P4_sha256": "5eb9e9587e3bc0d9a4111f78454122b6f49c2019d144c8d7b35e7191d39ef6a2"
+    },
+    {
+      "source": "S014-08",
+      "drafter": "claude-sonnet-5-5",
+      "source_sha256": "f16b45a9d1c1aa011b1412b4ec0863acdcdf6ac9d4ce9dfa94791c6021413a9c",
+      "P1_sha256": "742c53112241e007f93341db0e281d2337a62f2dd677249af956f7a50921f6da",
+      "P4_sha256": "5e42604c3126bf089a65ddc7e12eca37b9512dc217e2533ccd4fbb68b1e08f9e"
+    },
+    {
+      "source": "S014-08",
+      "drafter": "claude-haiku-4-5-20251001",
+      "source_sha256": "f16b45a9d1c1aa011b1412b4ec0863acdcdf6ac9d4ce9dfa94791c6021413a9c",
+      "P1_sha256": "9112e00cb9c63d5c964cee640f5e12b154f6609ea387c9b6a5d913d1d890beee",
+      "P4_sha256": "cad315ef7d411bdb7697678e5fdb3b5e0b1362eee7e4a7312c2bcb65bd800ef6"
+    },
+    {
+      "source": "S014-09",
+      "drafter": "claude-sonnet-5-5",
+      "source_sha256": "28ccee255c5c6f1dbea87d0d87244af46698ecc2104f106d043ac95ec0d9c33d",
+      "P1_sha256": "5918b004cb082371d5a791269cd61af81ae89ad8726b526bc2302211ef939493",
+      "P4_sha256": "af959c93b63ef2667a0b8edb2a91066c1b60da10fcc0cc24fd9ddcec775c1022"
+    },
+    {
+      "source": "S014-09",
+      "drafter": "claude-haiku-4-5-20251001",
+      "source_sha256": "28ccee255c5c6f1dbea87d0d87244af46698ecc2104f106d043ac95ec0d9c33d",
+      "P1_sha256": "5ef574f841d43a16e025cf9f40938185d5a16c9d61d651dcf120c87931e8d6c2",
+      "P4_sha256": "5b1942ce960300223aa553251adbe3de885dbdd0df8e9082750f4d9e5698285c"
+    },
+    {
+      "source": "S014-10",
+      "drafter": "claude-sonnet-5-5",
+      "source_sha256": "cb99dbeba5720ee8d455d33c48dc1da44705704000abf161c97495e7b26e6cbf",
+      "P1_sha256": "603599e7450cf1022eb930b03aeddb0325e63450a461b5720e1d5e27f42c992e",
+      "P4_sha256": "039ed59be1b0cfdefe1094f54aa58ede6589910446406bb4d77bd85d9b70562d"
+    },
+    {
+      "source": "S014-10",
+      "drafter": "claude-haiku-4-5-20251001",
+      "source_sha256": "cb99dbeba5720ee8d455d33c48dc1da44705704000abf161c97495e7b26e6cbf",
+      "P1_sha256": "483d843fd00e542582f3b0c8926c33627175fc581fef0749e99b4b476a423b44",
+      "P4_sha256": "7af570baefdc56b82a0ed8cb9271c2d838472f28a9fd82f8114b5e94875fa6d6"
+    },
+    {
+      "source": "S014-11",
+      "drafter": "claude-sonnet-5-5",
+      "source_sha256": "28ccee255c5c6f1dbea87d0d87244af46698ecc2104f106d043ac95ec0d9c33d",
+      "P1_sha256": "a14f011b3504d451444993b22b0bf424c7e41d5b9609eca12bb8a2bc91fea7b3",
+      "P4_sha256": "6184a777e6fdfe5d504e252fc38a1763839d7b7b2fc900ac89ccc772abec68ab"
+    },
+    {
+      "source": "S014-11",
+      "drafter": "claude-haiku-4-5-20251001",
+      "source_sha256": "28ccee255c5c6f1dbea87d0d87244af46698ecc2104f106d043ac95ec0d9c33d",
+      "P1_sha256": "15d3b3db7de79b782794faec92e00cdcecd776f4942450aaaa17677e9581eb32",
+      "P4_sha256": "25194591fbe2aa503108ec36581d433ab9eadcf7ffa09c6990fbd1a2322f6297"
+    },
+    {
+      "source": "S014-12",
+      "drafter": "claude-sonnet-5-5",
+      "source_sha256": "4798f791b3a4a2185f2f559e4909dabb24db99b9c32b3c786e6d250801633bed",
+      "P1_sha256": "e91b721d1735ad5d10f79390413b7840966fa4f558d991e9c1c2b08c3398b105",
+      "P4_sha256": "d1f2feebf04984db954a665599c730bb474f690d81cc8dbbcfb0e228e2451a96"
+    },
+    {
+      "source": "S014-12",
+      "drafter": "claude-haiku-4-5-20251001",
+      "source_sha256": "4798f791b3a4a2185f2f559e4909dabb24db99b9c32b3c786e6d250801633bed",
+      "P1_sha256": "96935a2fdc834ce59180d3319b7198adf9bf67aa9f71fbfd730f62751794b0a8",
+      "P4_sha256": "ec6d605b5e642d7f3b23c1574c2cbbcd5797eb84d70e1dce5d2d5402beda0200"
+    },
+    {
+      "source": "S014-13",
+      "drafter": "claude-sonnet-5-5",
+      "source_sha256": "7c7e88d7f52065e910299c8b3c5de15aa96f3f6f640fd3047660394c51747100",
+      "P1_sha256": "0b0cffa3d6f2e3c23c47093c284e2c6eab76ae7406accf3fdc97646227a14649",
+      "P4_sha256": "f2b59006f7ebba743fff01c9582d23b57487653a0de690eddaf2e8b31faed0b9"
+    },
+    {
+      "source": "S014-13",
+      "drafter": "claude-haiku-4-5-20251001",
+      "source_sha256": "7c7e88d7f52065e910299c8b3c5de15aa96f3f6f640fd3047660394c51747100",
+      "P1_sha256": "1a3c2c49f581e2406972c79e4c5c3a7a166fea1daa853732ff5f5876228871c6",
+      "P4_sha256": "76e879b4dc63c900482b8d66015a7ac0fef437b643b3e5426c5f0a512647a98b"
+    },
+    {
+      "source": "S014-14",
+      "drafter": "claude-sonnet-5-5",
+      "source_sha256": "4dadcc03dda0af7fa52a666ea97d3ebe51159c93b0f33e6ce545301e2b4290ea",
+      "P1_sha256": "664691e09150a1c4287422dc8e0715109589ba929d164520bed873bbe28fa7a9",
+      "P4_sha256": "caef9f91854cacf93ec4d4510a286e3bacc287dcfc3b58817dab5459a37e834f"
+    },
+    {
+      "source": "S014-14",
+      "drafter": "claude-haiku-4-5-20251001",
+      "source_sha256": "4dadcc03dda0af7fa52a666ea97d3ebe51159c93b0f33e6ce545301e2b4290ea",
+      "P1_sha256": "6c7c02bfc09952bfc2ca541fa003f836e6aa514f4c76518b8a368dd4a6f2cc31",
+      "P4_sha256": "4d69541c8876cfee90daba63a925c8c9bf9ad3723a73fd442badb5aed0587f76"
+    },
+    {
+      "source": "S014-15",
+      "drafter": "claude-sonnet-5-5",
+      "source_sha256": "d8668b2a1100a1d8029770c502d36c24ab21d9fed7ca42e3b4ba97252acd57a3",
+      "P1_sha256": "6a6f90b7bc821132ab9ec2166ea03cdf32a60a22ef3656cba3405c75da3000ee",
+      "P4_sha256": "6b336d792a31118412414ad0b9b5ea494457f0879cfe49d82311bb7db0b12493"
+    },
+    {
+      "source": "S014-15",
+      "drafter": "claude-haiku-4-5-20251001",
+      "source_sha256": "d8668b2a1100a1d8029770c502d36c24ab21d9fed7ca42e3b4ba97252acd57a3",
+      "P1_sha256": "bf3d8075830873abdded2b4841c0ec29d3772093daf88096f58df9f83f624a65",
+      "P4_sha256": "c68b9a6c306ff2e79fad8f891c27b8ea316befdf345ffdf38e62f216ab5b1deb"
+    },
+    {
+      "source": "S014-16",
+      "drafter": "claude-sonnet-5-5",
+      "source_sha256": "c4d22172a78f657371be4dd78eb840666a6d942358b4392a4a47c6033ab7f031",
+      "P1_sha256": "a559d88125f2411327d8852719f8b38acc73f09fda1f97f5459de4d16aa04188",
+      "P4_sha256": "eaf3aae1035ab020a4081905147f3152b5823023b9b990c865098a83a2bc3be2"
+    },
+    {
+      "source": "S014-16",
+      "drafter": "claude-haiku-4-5-20251001",
+      "source_sha256": "c4d22172a78f657371be4dd78eb840666a6d942358b4392a4a47c6033ab7f031",
+      "P1_sha256": "51702c42b38f2c206da289adb239b447a567f7c0289bb29ddfadeae88d87d8b9",
+      "P4_sha256": "319c3d8e2f19d21b99eeeb001958f4bd31402108033f65c555e4482dd68b8be0"
+    },
+    {
+      "source": "S014-17",
+      "drafter": "claude-sonnet-5-5",
+      "source_sha256": "f151592aa496a069556d3515a4c5e691b31764478ca9e5c3267dc926fa13810c",
+      "P1_sha256": "8952cb692be339f219dba1bf8bb6deaa1edd3cef9035364ceb1f023922d4d5ff",
+      "P4_sha256": "8702e4125befeca5b8316518cf07e5ebfcceaa7c5b1c5f89bb103a7b97adb605"
+    },
+    {
+      "source": "S014-17",
+      "drafter": "claude-haiku-4-5-20251001",
+      "source_sha256": "f151592aa496a069556d3515a4c5e691b31764478ca9e5c3267dc926fa13810c",
+      "P1_sha256": "db543e2f05033f2a1bdc60caa3922b54cf1e9bf9671c8e1c0685034527c32cab",
+      "P4_sha256": "9b81d41ff67eebeaceaad0cd7b53c3e9a572b38c06f7ae25e696e6ed1279d4ea"
+    },
+    {
+      "source": "S014-18",
+      "drafter": "claude-sonnet-5-5",
+      "source_sha256": "d5e081b59fd6d2721310522ad9ea891d446a1e4a7a37262dcf484ee4b0494701",
+      "P1_sha256": "2201a2ada4ab73b68c60667775bf88fc37ab4daab5bb03c76de40c3b199d01dc",
+      "P4_sha256": "f7fd0fab751eac38af0d0f524f5a8a163376c6b85e5c3fe4364e9876aacdbf6c"
+    },
+    {
+      "source": "S014-18",
+      "drafter": "claude-haiku-4-5-20251001",
+      "source_sha256": "d5e081b59fd6d2721310522ad9ea891d446a1e4a7a37262dcf484ee4b0494701",
+      "P1_sha256": "490bc8c802427d905f36158a277b33f476ac44833e37ede5f1cc75ec5229b1dd",
+      "P4_sha256": "e0bcddd13810e66ac2bd48549bc07411a2a68bb1c95885d30938ce6f7ec9ee74"
+    },
+    {
+      "source": "S014-19",
+      "drafter": "claude-sonnet-5-5",
+      "source_sha256": "6e055d19def7c05b7b8247ced244b8db9aa58bcf39055032f82f33c6f89efec8",
+      "P1_sha256": "cc26012f80ab19f69f847572390ac4c43c8c9e2939ea4b1804a5581e96315aee",
+      "P4_sha256": "a52eda123f4d29a50f5ed8e5c2cb53d8a05c21b0a4429669be28de33a856a4ad"
+    },
+    {
+      "source": "S014-19",
+      "drafter": "claude-haiku-4-5-20251001",
+      "source_sha256": "6e055d19def7c05b7b8247ced244b8db9aa58bcf39055032f82f33c6f89efec8",
+      "P1_sha256": "82a63a65d3750c011f7a82b26d8fbcacaaf4c7ea37dd8c00c07f1b3211409139",
+      "P4_sha256": "c73e8c9eb44690f1b329bad13fa2d0ea9b19e8699da9baf0cc661403f9bfbac4"
+    },
+    {
+      "source": "S014-20",
+      "drafter": "claude-sonnet-5-5",
+      "source_sha256": "87b6be4244a99a72727ea6538f7f90a08dab560de881d3b2891a1ece56e564c1",
+      "P1_sha256": "02147a95fae970626e018613d76dd50658dc39e41c780fa412888665e5275350",
+      "P4_sha256": "a099edd0ec00070ef98cb16a8fbdefd750fddc4e4245af10f810bb8f95cdb07f"
+    },
+    {
+      "source": "S014-20",
+      "drafter": "claude-haiku-4-5-20251001",
+      "source_sha256": "87b6be4244a99a72727ea6538f7f90a08dab560de881d3b2891a1ece56e564c1",
+      "P1_sha256": "b5454c2c628a8bea509b84dde239ad2d532cb1922e8ec25082cfabc50d2fc2dc",
+      "P4_sha256": "ac57fc716cafe6921833af30df132a50012c9f87608b99d82c2f28745273a638"
+    },
+    {
+      "source": "S014-21",
+      "drafter": "claude-sonnet-5-5",
+      "source_sha256": "2d6343c3dd04b05a1e5e5fb3be994e551ef053e453939906eecfd93d3fc09722",
+      "P1_sha256": "9cfdecfa6b7b7d28bfce730e1649f2f45fc31b8ee47dd7eee87cfe6571d31c82",
+      "P4_sha256": "2344aa1b9cc1c0e29aed25ce28373226af3aacdbb7834d3bb59d2eec7e64e0e1"
+    },
+    {
+      "source": "S014-21",
+      "drafter": "claude-haiku-4-5-20251001",
+      "source_sha256": "2d6343c3dd04b05a1e5e5fb3be994e551ef053e453939906eecfd93d3fc09722",
+      "P1_sha256": "2d0a19fd8a8c3dc49dbb403657d485ddd00ba37bf69ec2f8ce1e8974ebbbe5c4",
+      "P4_sha256": "04466debd4c4f3c6047eab371e22d73a1bfb2c3921a8d5ab37aadb7d827060c1"
+    },
+    {
+      "source": "S014-22",
+      "drafter": "claude-sonnet-5-5",
+      "source_sha256": "afbe835d5f57c9c8ee3aec36a88dd2f3fe8d255591a985de7691dea8c2df8026",
+      "P1_sha256": "949a79e5f4de2fa21ab7817fdbf340633621f53caeeaddc8272272a4a6e6b93f",
+      "P4_sha256": "93b2fb7dbd91776449abdd843adf496ca935b27ae7d608aa2d753ad75011b260"
+    },
+    {
+      "source": "S014-22",
+      "drafter": "claude-haiku-4-5-20251001",
+      "source_sha256": "afbe835d5f57c9c8ee3aec36a88dd2f3fe8d255591a985de7691dea8c2df8026",
+      "P1_sha256": "d2562962321defa171f9b4d750b48665d393cfdb5772464655ef036930935c52",
+      "P4_sha256": "72b992824e310182589808d8e21c27822eef080320d0534e19da4b7287eec8bb"
+    },
+    {
+      "source": "S014-23",
+      "drafter": "claude-sonnet-5-5",
+      "source_sha256": "e4169823a726ac520db4b8c4d90b5e72152aa4838cc909b2060346fcd75f853e",
+      "P1_sha256": "d1c8583ffd513b8ec704e23558336c7228731245355b3ca0797d2f0713c0a1ce",
+      "P4_sha256": "4efbca56de0664c0e8cd084cb114c42da6aaba73096e894f5150f854a3f1c41d"
+    },
+    {
+      "source": "S014-23",
+      "drafter": "claude-haiku-4-5-20251001",
+      "source_sha256": "e4169823a726ac520db4b8c4d90b5e72152aa4838cc909b2060346fcd75f853e",
+      "P1_sha256": "68039632ad7fce7c6822f6be9cc90e07a4cddcc14e4e5fc31b515ad7c40d263e",
+      "P4_sha256": "d653db9534dc31f6d898bf760ec54b0926b3999ec233aa337f4f509ee1438a97"
+    },
+    {
+      "source": "S014-24",
+      "drafter": "claude-sonnet-5-5",
+      "source_sha256": "c49beeae70bdaab1d68d810db860ebd9c1f57bcc5705078f28f1028f1e6bc6d4",
+      "P1_sha256": "049927bc26e92d8137eeb072f5a546da4c5ded3158433e83b498565f778d155e",
+      "P4_sha256": "20897eabcbda7957d89b65dcad300288b8170c8155673f5e8b21c084170cb469"
+    },
+    {
+      "source": "S014-24",
+      "drafter": "claude-haiku-4-5-20251001",
+      "source_sha256": "c49beeae70bdaab1d68d810db860ebd9c1f57bcc5705078f28f1028f1e6bc6d4",
+      "P1_sha256": "43450b4190a897a8b9b49689ca53a4ef923d59249d91701602a4bb7e14a35718",
+      "P4_sha256": "158176cda501866ca8b0c75ace9825a6db087e7f5bf2ce07b3fadbfddfe3855e"
+    },
+    {
+      "source": "S014-25",
+      "drafter": "claude-sonnet-5-5",
+      "source_sha256": "3fa7148b602f036ef26474ce3563a90f8f23251dff1147af80d4f8564c2ea5c7",
+      "P1_sha256": "f84a461a9491b65f2b7d773bba8c95f0c0a49eb98e277ecd5509e4b658c4e7b6",
+      "P4_sha256": "cf2ca8061f160531242b3c4e655863c26961da5ba8cfbbaae80da76f555b290d"
+    },
+    {
+      "source": "S014-25",
+      "drafter": "claude-haiku-4-5-20251001",
+      "source_sha256": "3fa7148b602f036ef26474ce3563a90f8f23251dff1147af80d4f8564c2ea5c7",
+      "P1_sha256": "95ae1110c3c8659fec5d483ffe08cdabc0dbba60d16e1649e37517075dc3b809",
+      "P4_sha256": "c6ae8fd8f1bdc596027e80df3a30f5eb04b29eeeb63819d76a00847deb9c0895"
+    },
+    {
+      "source": "S014-26",
+      "drafter": "claude-sonnet-5-5",
+      "source_sha256": "644cf8176d28ddc78bbc9aea33ac90c23ea6f28a324157d1f1cdd3670e977cd8",
+      "P1_sha256": "27eb8c5157b23c80bdfb36d78c2242b4b23114df27b01af9bc5bd3f79ba10ca4",
+      "P4_sha256": "fc20b1fb88bf25229321bec67aa717099e7ae8dc895dcc29d0bffbaab910bfc2"
+    },
+    {
+      "source": "S014-26",
+      "drafter": "claude-haiku-4-5-20251001",
+      "source_sha256": "644cf8176d28ddc78bbc9aea33ac90c23ea6f28a324157d1f1cdd3670e977cd8",
+      "P1_sha256": "c829b3afc163c5951524674465b503517c37b9011dbce46df89b8dd678969490",
+      "P4_sha256": "fc1b7d5bf513e2e7456d83139a2b02dbfe35f3a835b3d34703e8183be55e3f26"
+    },
+    {
+      "source": "S014-27",
+      "drafter": "claude-sonnet-5-5",
+      "source_sha256": "be60ca2c73bbf4ea8596a8695914ecf14c6ce8fdc395545920e9bbeec6473d5d",
+      "P1_sha256": "d0751393ff2975de0c02231658871f79abc44383dfce0e3c78d046631886ed93",
+      "P4_sha256": "6bc9f52ff2e1258d2e798ccb36da3fd597c52ea80f3cc3fa0e334dd5c0afda88"
+    },
+    {
+      "source": "S014-27",
+      "drafter": "claude-haiku-4-5-20251001",
+      "source_sha256": "be60ca2c73bbf4ea8596a8695914ecf14c6ce8fdc395545920e9bbeec6473d5d",
+      "P1_sha256": "622c52fa2f604c310655f5bfa6dd6925695d7719281c08a76467fbdd2fabd125",
+      "P4_sha256": "a1c73f2bf7465eaa7640c904baed52a55836b5c5e6328570f97487cdb88aa09d"
+    },
+    {
+      "source": "S014-28",
+      "drafter": "claude-sonnet-5-5",
+      "source_sha256": "e5045098dd63445f5438e1cf02f98303e4e817516a7a28fc60d510b11541e10a",
+      "P1_sha256": "b4e0ba4ef8f47c62d34edc67e4e859bc14704e1ac181093dab73a359182651de",
+      "P4_sha256": "9ef2db9312795ce422f4323bd4157b82a6bd0b9f052695b5dd6187450f25866e"
+    },
+    {
+      "source": "S014-28",
+      "drafter": "claude-haiku-4-5-20251001",
+      "source_sha256": "e5045098dd63445f5438e1cf02f98303e4e817516a7a28fc60d510b11541e10a",
+      "P1_sha256": "c03c52a0698184962d6ab8f2680f14405b99aa945ffb3b8510aa67bb6bac20de",
+      "P4_sha256": "e518156320062d5fd09756d135d04c8111d38feaaf15569f14dc610c7aa20c42"
+    },
+    {
+      "source": "S014-29",
+      "drafter": "claude-sonnet-5-5",
+      "source_sha256": "724e81c411bba8271e63f33aa6f66813d37b4f92b42393e5be63694ddfe0ffcd",
+      "P1_sha256": "0eb6cea122dd30c3e6bf940a1fa4b9bd18c1a7bd48920105289124fe42348163",
+      "P4_sha256": "dec4819f37db22016283e9343149067933318d79d79c56b6f9c2769a2d571009"
+    },
+    {
+      "source": "S014-29",
+      "drafter": "claude-haiku-4-5-20251001",
+      "source_sha256": "724e81c411bba8271e63f33aa6f66813d37b4f92b42393e5be63694ddfe0ffcd",
+      "P1_sha256": "1aa30e45a5a2f6feb0b96fd756fef6d10f38f16550b26c02de7d4c384ae318dc",
+      "P4_sha256": "997241ec3659fbb930271e4a75afc08b13df35a0ff5d39ccc08725b9c938d404"
+    },
+    {
+      "source": "S014-30",
+      "drafter": "claude-sonnet-5-5",
+      "source_sha256": "0aff14a189ac45abf634dcf73d6655dc570673793fce618f3cd7e12ecc678e90",
+      "P1_sha256": "50b96ed66f679bcec9b8dfbe4c62088f4a61fb4150d91d595df2ae105374eec0",
+      "P4_sha256": "aef40d09d7b1a57a5f84293608a0b30739da95a8274f545b7e4dda1a19477669"
+    },
+    {
+      "source": "S014-30",
+      "drafter": "claude-haiku-4-5-20251001",
+      "source_sha256": "0aff14a189ac45abf634dcf73d6655dc570673793fce618f3cd7e12ecc678e90",
+      "P1_sha256": "d1945a99f11a808385539e162cc28f1e75c5ae3486375eff88da36bce558c0b2",
+      "P4_sha256": "c843aeb4a533e09e34e812bc7b3dfeaf234a30524f3642808a534bd0471f53d8"
+    }
+  ]
+}

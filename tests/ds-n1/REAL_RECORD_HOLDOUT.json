@@ -1,0 +1,445 @@
+{
+  "n": 28,
+  "intact_ready": 28,
+  "dates_flagged": 28,
+  "speakers_flagged": 28,
+  "thresholds": {
+    "intact_ready": 26,
+    "dates_flagged": 23,
+    "speakers_flagged": 23
+  },
+  "pass": true,
+  "codes_on_intact_not_ready": {},
+  "rows": [
+    {
+      "id": "H-01",
+      "intact_ready": true,
+      "intact_codes": [],
+      "dates_flagged": true,
+      "speakers_flagged": true,
+      "D": [
+        "DATE_OMITTED"
+      ],
+      "S": [
+        "SPEAKER_OMITTED"
+      ]
+    },
+    {
+      "id": "H-02",
+      "intact_ready": true,
+      "intact_codes": [],
+      "dates_flagged": true,
+      "speakers_flagged": true,
+      "D": [
+        "DATE_OMITTED",
+        "NEGATION_CONFLICT"
+      ],
+      "S": [
+        "SPEAKER_OMITTED"
+      ]
+    },
+    {
+      "id": "H-03",
+      "intact_ready": true,
+      "intact_codes": [],
+      "dates_flagged": true,
+      "speakers_flagged": true,
+      "D": [
+        "RELEVANCE_NOT_ESTABLISHED",
+        "UNSUPPORTED_CLAIM",
+        "ACTOR_NOT_ESTABLISHED",
+        "DATE_OMITTED"
+      ],
+      "S": [
+        "SPEAKER_OMITTED"
+      ]
+    },
+    {
+      "id": "H-04",
+      "intact_ready": true,
+      "intact_codes": [],
+      "dates_flagged": true,
+      "speakers_flagged": true,
+      "D": [
+        "DATE_OMITTED",
+        "NEGATION_CONFLICT",
+        "QUALIFICATION_OMITTED",
+        "CONCLUSION_ON_UNRESOLVED_BASIS"
+      ],
+      "S": [
+        "SPEAKER_OMITTED",
+        "CONCLUSION_ON_UNRESOLVED_BASIS"
+      ]
+    },
+    {
+      "id": "H-05",
+      "intact_ready": true,
+      "intact_codes": [],
+      "dates_flagged": true,
+      "speakers_flagged": true,
+      "D": [
+        "DATE_OMITTED"
+      ],
+      "S": [
+        "SPEAKER_OMITTED"
+      ]
+    },
+    {
+      "id": "H-06",
+      "intact_ready": true,
+      "intact_codes": [],
+      "dates_flagged": true,
+      "speakers_flagged": true,
+      "D": [
+        "DATE_OMITTED",
+        "NEGATION_CONFLICT",
+        "QUALIFICATION_OMITTED",
+        "CONCLUSION_ON_UNRESOLVED_BASIS"
+      ],
+      "S": [
+        "SPEAKER_OMITTED",
+        "CONCLUSION_ON_UNRESOLVED_BASIS"
+      ]
+    },
+    {
+      "id": "H-07",
+      "intact_ready": true,
+      "intact_codes": [],
+      "dates_flagged": true,
+      "speakers_flagged": true,
+      "D": [
+        "DATE_OMITTED"
+      ],
+      "S": [
+        "SPEAKER_OMITTED"
+      ]
+    },
+    {
+      "id": "H-08",
+      "intact_ready": true,
+      "intact_codes": [],
+      "dates_flagged": true,
+      "speakers_flagged": true,
+      "D": [
+        "DATE_OMITTED",
+        "ACTOR_NOT_ESTABLISHED",
+        "UNSUPPORTED_CLAIM",
+        "CONCLUSION_ON_UNRESOLVED_BASIS"
+      ],
+      "S": [
+        "SPEAKER_OMITTED",
+        "CONCLUSION_ON_UNRESOLVED_BASIS"
+      ]
+    },
+    {
+      "id": "H-09",
+      "intact_ready": true,
+      "intact_codes": [],
+      "dates_flagged": true,
+      "speakers_flagged": true,
+      "D": [
+        "DATE_OMITTED"
+      ],
+      "S": [
+        "SPEAKER_OMITTED"
+      ]
+    },
+    {
+      "id": "H-10",
+      "intact_ready": true,
+      "intact_codes": [],
+      "dates_flagged": true,
+      "speakers_flagged": true,
+      "D": [
+        "DATE_OMITTED",
+        "ACTOR_NOT_ESTABLISHED",
+        "UNSUPPORTED_CLAIM",
+        "QUALIFICATION_OMITTED",
+        "CONCLUSION_ON_UNRESOLVED_BASIS"
+      ],
+      "S": [
+        "SPEAKER_OMITTED",
+        "CONCLUSION_ON_UNRESOLVED_BASIS"
+      ]
+    },
+    {
+      "id": "H-11",
+      "intact_ready": true,
+      "intact_codes": [],
+      "dates_flagged": true,
+      "speakers_flagged": true,
+      "D": [
+        "DATE_OMITTED",
+        "RELEVANCE_NOT_ESTABLISHED",
+        "UNSUPPORTED_CLAIM",
+        "CONCLUSION_ON_UNRESOLVED_BASIS"
+      ],
+      "S": [
+        "SPEAKER_OMITTED",
+        "CONCLUSION_ON_UNRESOLVED_BASIS"
+      ]
+    },
+    {
+      "id": "H-12",
+      "intact_ready": true,
+      "intact_codes": [],
+      "dates_flagged": true,
+      "speakers_flagged": true,
+      "D": [
+        "DATE_OMITTED",
+        "CONCLUSION_ON_UNRESOLVED_BASIS"
+      ],
+      "S": [
+        "SPEAKER_OMITTED",
+        "CONCLUSION_ON_UNRESOLVED_BASIS"
+      ]
+    },
+    {
+      "id": "H-13",
+      "intact_ready": true,
+      "intact_codes": [],
+      "dates_flagged": true,
+      "speakers_flagged": true,
+      "D": [
+        "DATE_OMITTED",
+        "CONCLUSION_ON_UNRESOLVED_BASIS"
+      ],
+      "S": [
+        "SPEAKER_OMITTED",
+        "CONCLUSION_ON_UNRESOLVED_BASIS"
+      ]
+    },
+    {
+      "id": "H-14",
+      "intact_ready": true,
+      "intact_codes": [],
+      "dates_flagged": true,
+      "speakers_flagged": true,
+      "D": [
+        "ACTOR_NOT_ESTABLISHED",
+        "DATE_OMITTED",
+        "UNSUPPORTED_CLAIM"
+      ],
+      "S": [
+        "SPEAKER_OMITTED"
+      ]
+    },
+    {
+      "id": "H-15",
+      "intact_ready": true,
+      "intact_codes": [],
+      "dates_flagged": true,
+      "speakers_flagged": true,
+      "D": [
+        "DATE_OMITTED",
+        "CONCLUSION_ON_UNRESOLVED_BASIS"
+      ],
+      "S": [
+        "SPEAKER_OMITTED",
+        "CONCLUSION_ON_UNRESOLVED_BASIS"
+      ]
+    },
+    {
+      "id": "H-16",
+      "intact_ready": true,
+      "intact_codes": [],
+      "dates_flagged": true,
+      "speakers_flagged": true,
+      "D": [
+        "DATE_OMITTED",
+        "CONCLUSION_ON_UNRESOLVED_BASIS"
+      ],
+      "S": [
+        "SPEAKER_OMITTED",
+        "CONCLUSION_ON_UNRESOLVED_BASIS"
+      ]
+    },
+    {
+      "id": "H-17",
+      "intact_ready": true,
+      "intact_codes": [],
+      "dates_flagged": true,
+      "speakers_flagged": true,
+      "D": [
+        "DATE_OMITTED",
+        "CONCLUSION_ON_UNRESOLVED_BASIS"
+      ],
+      "S": [
+        "SPEAKER_OMITTED",
+        "CONCLUSION_ON_UNRESOLVED_BASIS"
+      ]
+    },
+    {
+      "id": "H-18",
+      "intact_ready": true,
+      "intact_codes": [],
+      "dates_flagged": true,
+      "speakers_flagged": true,
+      "D": [
+        "ACTOR_NOT_ESTABLISHED",
+        "DATE_OMITTED",
+        "UNSUPPORTED_CLAIM"
+      ],
+      "S": [
+        "SPEAKER_OMITTED"
+      ]
+    },
+    {
+      "id": "H-19",
+      "intact_ready": true,
+      "intact_codes": [],
+      "dates_flagged": true,
+      "speakers_flagged": true,
+      "D": [
+        "DATE_OMITTED",
+        "CONCLUSION_ON_UNRESOLVED_BASIS"
+      ],
+      "S": [
+        "SPEAKER_OMITTED",
+        "CONCLUSION_ON_UNRESOLVED_BASIS"
+      ]
+    },
+    {
+      "id": "H-20",
+      "intact_ready": true,
+      "intact_codes": [],
+      "dates_flagged": true,
+      "speakers_flagged": true,
+      "D": [
+        "DATE_OMITTED",
+        "ACTOR_NOT_ESTABLISHED",
+        "UNSUPPORTED_CLAIM",
+        "CONCLUSION_ON_UNRESOLVED_BASIS"
+      ],
+      "S": [
+        "SPEAKER_OMITTED",
+        "CONCLUSION_ON_UNRESOLVED_BASIS"
+      ]
+    },
+    {
+      "id": "H-21",
+      "intact_ready": true,
+      "intact_codes": [],
+      "dates_flagged": true,
+      "speakers_flagged": true,
+      "D": [
+        "DATE_OMITTED",
+        "UNSUPPORTED_CLAIM",
+        "CONCLUSION_ON_UNRESOLVED_BASIS"
+      ],
+      "S": [
+        "SPEAKER_OMITTED",
+        "CONCLUSION_ON_UNRESOLVED_BASIS"
+      ]
+    },
+    {
+      "id": "H-22",
+      "intact_ready": true,
+      "intact_codes": [],
+      "dates_flagged": true,
+      "speakers_flagged": true,
+      "D": [
+        "DATE_OMITTED",
+        "RELEVANCE_NOT_ESTABLISHED",
+        "UNSUPPORTED_CLAIM"
+      ],
+      "S": [
+        "SPEAKER_OMITTED"
+      ]
+    },
+    {
+      "id": "H-23",
+      "intact_ready": true,
+      "intact_codes": [],
+      "dates_flagged": true,
+      "speakers_flagged": true,
+      "D": [
+        "DATE_OMITTED"
+      ],
+      "S": [
+        "SPEAKER_OMITTED"
+      ]
+    },
+    {
+      "id": "H-24",
+      "intact_ready": true,
+      "intact_codes": [],
+      "dates_flagged": true,
+      "speakers_flagged": true,
+      "D": [
+        "DATE_OMITTED",
+        "NEGATION_CONFLICT",
+        "RELEVANCE_NOT_ESTABLISHED",
+        "CONCLUSION_ON_UNRESOLVED_BASIS"
+      ],
+      "S": [
+        "SPEAKER_OMITTED",
+        "REASONING_NOT_TRACED",
+        "UNSUPPORTED_CLAIM",
+        "CONCLUSION_ON_UNRESOLVED_BASIS"
+      ]
+    },
+    {
+      "id": "H-25",
+      "intact_ready": true,
+      "intact_codes": [],
+      "dates_flagged": true,
+      "speakers_flagged": true,
+      "D": [
+        "DATE_OMITTED"
+      ],
+      "S": [
+        "SPEAKER_OMITTED"
+      ]
+    },
+    {
+      "id": "H-26",
+      "intact_ready": true,
+      "intact_codes": [],
+      "dates_flagged": true,
+      "speakers_flagged": true,
+      "D": [
+        "DATE_OMITTED",
+        "NEGATION_CONFLICT",
+        "RELEVANCE_NOT_ESTABLISHED",
+        "CONCLUSION_ON_UNRESOLVED_BASIS"
+      ],
+      "S": [
+        "SPEAKER_OMITTED",
+        "REASONING_NOT_TRACED",
+        "UNSUPPORTED_CLAIM",
+        "CONCLUSION_ON_UNRESOLVED_BASIS"
+      ]
+    },
+    {
+      "id": "H-27",
+      "intact_ready": true,
+      "intact_codes": [],
+      "dates_flagged": true,
+      "speakers_flagged": true,
+      "D": [
+        "DATE_OMITTED",
+        "CONCLUSION_ON_UNRESOLVED_BASIS"
+      ],
+      "S": [
+        "SPEAKER_OMITTED"
+      ]
+    },
+    {
+      "id": "H-28",
+      "intact_ready": true,
+      "intact_codes": [],
+      "dates_flagged": true,
+      "speakers_flagged": true,
+      "D": [
+        "DATE_OMITTED",
+        "NEGATION_CONFLICT",
+        "CONCLUSION_ON_UNRESOLVED_BASIS"
+      ],
+      "S": [
+        "SPEAKER_OMITTED",
+        "CONCLUSION_ON_UNRESOLVED_BASIS"
+      ]
+    }
+  ]
+}

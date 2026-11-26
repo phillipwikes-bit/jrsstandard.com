@@ -1,0 +1,78 @@
+{
+  "set": "public-record-eval-employment",
+  "sealed": "2026-11-25, before any engine run on these documents",
+  "source": "Employment decisions from the public-records study companion set (JCI_Companion_Employment_Corpus_Verification.csv) that could be fetched: EEOC, FLRA and a UK Employment Tribunal judgment. Text read with lib/ds-n1/pdf.mjs. Not fetched: 2 US Supreme Court (bot check), 4 NY appellate courts (bot check), 4 NY UI Appeal Board (host not reachable), EM-06 (FLRA address not found), EM-19 (not found on EEOC search). EM-03 left out: the case number in the study belongs to Gallon v British Telecommunications plc on GOV.UK, not Gallon v Sigma Aldrich Ltd as cited.",
+  "key_used": "Documented public outcome only (Outcome Category).",
+  "adverse_outcomes": [
+    "Adverse audit or compliance finding",
+    "Did not survive review"
+  ],
+  "rule_primary": "Same as public-record eval 1: engine predicts adverse when the document does not reach READY.",
+  "rule_secondary": "Same as public-record eval 1: engine predicts adverse when any of the five practitioner-gap findings is raised.",
+  "run_settings": "record_class workplace_investigation_report; data_classification public_record_test; no sources supplied.",
+  "cases": [
+    {
+      "id": "EM-05",
+      "citation": "Jones v Vale Curtains and Blinds Ltd (Employment Tribunal, Reading, 2024).",
+      "url": "https://assets.publishing.service.gov.uk/media/66e7ed75718edd81771317ed/Ms_M_Jones_v_Vale_Curtains_and_Blinds-3311640-2023-FMH_Reserved_Judgment.pdf",
+      "outcome_category": "Contested, no recorded disposition",
+      "pdf_sha256": "6dd4805e9541f1cd5e115cf9ab04a8b6658e2c1952393ea69b5993eb3d8af302",
+      "text_sha256": "24d51505e5fe5741175d8afc869da37c71259f965dfa4b71e191b320513af6bd",
+      "words": 7294
+    },
+    {
+      "id": "EM-08",
+      "citation": "Valentine S. v. U.S. Postal Service, EEOC Appeal No. 2022004565 (Dec. 22, 2022)",
+      "url": "https://www.eeoc.gov/sites/default/files/decisions/2023_02_03/2022004565.pdf",
+      "outcome_category": "Did not survive review",
+      "pdf_sha256": "36ae10ec752c96afe941742cc7e26c1a4b7b4d6fb3e87623c91fb32303835d30",
+      "text_sha256": "9f1df1e6fa316a68245d914d76a055b63592348fdd577e8dd198f96660fdd4bf",
+      "words": 2145
+    },
+    {
+      "id": "EM-11",
+      "citation": "United States Department of Housing and Urban Development and AFGE Local 3320, 73 FLRA No. 67 (Nov. 14, 2022)",
+      "url": "https://www.flra.gov/system/files/decisions/v73_67.pdf",
+      "outcome_category": "Sustained",
+      "pdf_sha256": "3a7962b773fc2974f6b036b6f0b775d90c2c15d9d5fa1f18cfb945164cc68227",
+      "text_sha256": "e8ce2db28f1b8c549a21a5cf1350b6db87c9a029d5a4ebf8b0df6bd4acd97840",
+      "words": 5639
+    },
+    {
+      "id": "EM-12",
+      "citation": "AFGE Local 4012 and Social Security Administration, Denver, Colorado, 73 FLRA No. 106 (May 26, 2023)",
+      "url": "https://www.flra.gov/system/files/decisions/v73_106.pdf",
+      "outcome_category": "Contested, no recorded disposition",
+      "pdf_sha256": "9cf51eba9d9cc1a0f927a99d0d5f7350ac165fc982afa26a6a7e0ed60190d783",
+      "text_sha256": "a1f47f682d11a5ae412bfbd79a8c3ba54845b7c014eeb8c22397ec6a0e80e18d",
+      "words": 2720
+    },
+    {
+      "id": "EM-13",
+      "citation": "International Federation of Professional and Technical Engineers, Local 4 and U.S. Department of the Navy, Portsmouth Naval Shipyard, 73 FLRA No. 94 (2023)",
+      "url": "https://www.flra.gov/system/files/decisions/v73_94.pdf",
+      "outcome_category": "Contested, no recorded disposition",
+      "pdf_sha256": "40c076a56da94d2bd3b13d54b6a4738f0128d7a096c6b596f8a4708fc3bfb5c4",
+      "text_sha256": "7b8a6aba2e8ae2e2d4f21ef6bfa8bfe45e4db3b1d53b6772b742490fe939b74c",
+      "words": 1756
+    },
+    {
+      "id": "EM-14",
+      "citation": "Fraternal Order of Police, DC Lodge 1 and U.S. Department of Defense, Pentagon Force Protection Agency, 73 FLRA No. 77 (2023)",
+      "url": "https://www.flra.gov/system/files/decisions/v73_77.pdf",
+      "outcome_category": "Adverse audit or compliance finding",
+      "pdf_sha256": "0f9cfb5da73c5d8e70b3e55fc1cc9dfc2906ac7729d9d1e951bca050e19b6b5d",
+      "text_sha256": "fc6a9c40705d45c51aacbda119e53def518604f1e28919135f840ed6b9066180",
+      "words": 3665
+    },
+    {
+      "id": "EM-17",
+      "citation": "United States Small Business Administration and American Federation of Government Employees, Local 228, 71 FLRA No. 124 (2020)",
+      "url": "https://www.flra.gov/system/files/decisions/v71_124.pdf",
+      "outcome_category": "Did not survive review",
+      "pdf_sha256": "0abc0d1abe7ab403bcffee00430252968b89d4047dc8d1815197df2ff4977492",
+      "text_sha256": "efafe166cd909f96d4016c3c64a0ddec7361605bf80de38550eb2d9633caaf18",
+      "words": 2775
+    }
+  ]
+}

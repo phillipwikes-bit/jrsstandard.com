@@ -1,0 +1,128 @@
+{
+  "set": "public-record-eval-1",
+  "sealed": "2026-11-25, before any engine run on these documents",
+  "source": "Public documents linked from the public-records study dataset (JCI_JRS_32_Case_Master_Dataset.csv). 14 of 32 downloaded; the other 18 (nycourts.gov) refused automated download with a bot challenge.",
+  "key_used": "Documented public outcome only (Outcome Category). The study co-author reads and notes are NOT used.",
+  "adverse_outcomes": [
+    "Adverse audit or compliance finding",
+    "Did not survive review"
+  ],
+  "rule_primary": "Engine predicts an adverse outcome when the document does not reach READY_FOR_HUMAN_FINALIZATION.",
+  "rule_secondary": "Engine predicts an adverse outcome when any of the five practitioner-gap findings is raised (RECOMMENDATION_STATED_AS_REQUIREMENT, CONCLUSORY_ASSESSMENT, AUTHORITY_TEXT_NOT_SUPPLIED, CONCLUSION_ON_UNRESOLVED_BASIS, BROAD_ACCESS_NOT_JUSTIFIED).",
+  "run_settings": "record_class discovery_production_rationale; data_classification public_record_test; no source documents supplied (the public decision is read on its own, as the human readers did).",
+  "expectation_stated_in_advance": "With no sources supplied, the primary rule may mark nearly every document not READY; if so it cannot separate outcomes and that will be reported as a failure, not adjusted.",
+  "cases": [
+    {
+      "id": "PR-06",
+      "document_class": "Case-level source",
+      "jurisdiction": "Connecticut",
+      "url": "https://portal.ct.gov/FOI/Decisions/FinalDecisions2013/FIC2012-276",
+      "text_sha256": "b1ff316835245fc36a12e228249f46659240eae4c8079054df08c94ff6c4cfe5",
+      "outcome_category": "Contested, no recorded disposition"
+    },
+    {
+      "id": "PR-07",
+      "document_class": "Case-level source",
+      "jurisdiction": "Connecticut",
+      "url": "https://portal.ct.gov/FOI/Decisions/Final-Decisions-2015/FIC2015-122",
+      "text_sha256": "8453a8186a60682b7b88939dc4455d44c0b3a15cdf5b27eb51f131968658d02d",
+      "outcome_category": "Did not survive review"
+    },
+    {
+      "id": "PR-08",
+      "document_class": "Case-level source",
+      "jurisdiction": "New York",
+      "url": "https://docsopengovernment.dos.ny.gov/coog/ftext/f19639.htm?",
+      "text_sha256": "babecd6390a05be3ff601932f0284603a29fffb2fdc7023c286e4b4861937fa5",
+      "outcome_category": "Contested, no recorded disposition"
+    },
+    {
+      "id": "PR-09",
+      "document_class": "Case-level source",
+      "jurisdiction": "New York",
+      "url": "https://docsopengovernment.dos.ny.gov/coog/ftext/f19780.html?",
+      "text_sha256": "10e14c5ab2b921a199d6bd68b1a65308a6b2fbaaeda047c2dff1d2eb93438944",
+      "outcome_category": "Contested, no recorded disposition"
+    },
+    {
+      "id": "PR-10",
+      "document_class": "Case-level source",
+      "jurisdiction": "New York",
+      "url": "https://docsopengovernment.dos.ny.gov/coog/ftext/f19746.htm?",
+      "text_sha256": "dc6393857cd128a453f16bac92f8cc7bbeb6d26dcba68f66b645a9820332fd9a",
+      "outcome_category": "Sustained"
+    },
+    {
+      "id": "PR-11",
+      "document_class": "Case-level source",
+      "jurisdiction": "New York",
+      "url": "https://docsopengovernment.dos.ny.gov/coog/ftext/f19646.htm?",
+      "text_sha256": "c7330d20f79cc852410092732007e1fcb8c593aed4fc9ecba9232aba5e647e9f",
+      "outcome_category": "Contested, no recorded disposition"
+    },
+    {
+      "id": "PR-12",
+      "document_class": "Case-level source",
+      "jurisdiction": "New York",
+      "url": "https://docsopengovernment.dos.ny.gov/coog/ftext/f19516.htm?",
+      "text_sha256": "e8f8fd40b5aacc2c38031456ceee6fc675d3fd3e5aaa9b2025baab6793fc8f89",
+      "outcome_category": "Did not survive review"
+    },
+    {
+      "id": "PR-13",
+      "document_class": "Case-level source",
+      "jurisdiction": "New York",
+      "url": "https://docsopengovernment.dos.ny.gov/coog/ftext/f19721.htm?",
+      "text_sha256": "26ecd54f4e1fc31d43357130aef9da340c869315d0244171bca8acf3c23fae78",
+      "outcome_category": "Did not survive review"
+    },
+    {
+      "id": "PR-14",
+      "document_class": "Case-level source",
+      "jurisdiction": "New York",
+      "url": "https://docsopengovernment.dos.ny.gov/coog/ftext/F19854.pdf",
+      "text_sha256": "ab0324710862237ee0ea923f34c378e13526e4778591bc704342c57f88771d85",
+      "outcome_category": "Sustained"
+    },
+    {
+      "id": "PR-28",
+      "document_class": "Programme-level audit",
+      "jurisdiction": "New York",
+      "url": "https://www.osc.ny.gov/state-agencies/audits/2023/09/29/compliance-freedom-information-law-requirements",
+      "text_sha256": "3547020f90591138a45e7c133b3ab9a2c74355a6d19a6222dd04d6753a6e73fd",
+      "outcome_category": "Adverse audit or compliance finding"
+    },
+    {
+      "id": "PR-29",
+      "document_class": "Programme-level audit",
+      "jurisdiction": "New York",
+      "url": "https://www.osc.ny.gov/state-agencies/audits/2020/10/16/compliance-freedom-information-law-requirements",
+      "text_sha256": "60eec6173d37e70cbe145c47732c84a7bf648774a7237c209465bb68ef920211",
+      "outcome_category": "Adverse audit or compliance finding"
+    },
+    {
+      "id": "PR-30",
+      "document_class": "Programme-level audit",
+      "jurisdiction": "New York",
+      "url": "https://www.osc.ny.gov/files/state-agencies/audits/pdf/sga-2021-19s70.pdf",
+      "text_sha256": "79f53a70a99beade790dc431bc97654d539912003e0b37541574cc78800c1178",
+      "outcome_category": "Adverse audit or compliance finding"
+    },
+    {
+      "id": "PR-31",
+      "document_class": "Programme-level audit",
+      "jurisdiction": "New York",
+      "url": "https://www.osc.ny.gov/files/state-agencies/audits/pdf/sga-2023-20s12.pdf",
+      "text_sha256": "4fa7ed25744591e421cd51ffc57ec817f8bbb4dff6a969e3f18f9de172dc5917",
+      "outcome_category": "Adverse audit or compliance finding"
+    },
+    {
+      "id": "PR-32",
+      "document_class": "Programme-level audit",
+      "jurisdiction": "New York",
+      "url": "https://comptroller.nyc.gov/reports/review-of-the-new-york-city-police-departments-body-worn-camera-program",
+      "text_sha256": "a3f5baac3ad40952352cdd9a72d83e2d763d8d3cbcb5ffada56d9fef9c733879",
+      "outcome_category": "Adverse audit or compliance finding"
+    }
+  ]
+}

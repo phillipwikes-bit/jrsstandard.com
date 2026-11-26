@@ -1,0 +1,464 @@
+{
+  "set": "paraphrase-holdout-2",
+  "run_at": "2026-11-25T20:29:14.304Z",
+  "criterion1_median_findings_per_10": 1.63,
+  "criterion1_pass": true,
+  "criterion2_clean_drafts": 1,
+  "criterion2_pass": false,
+  "pass": false,
+  "rows": [
+    {
+      "id": "S014-01",
+      "status": "HOLD",
+      "claims": 90,
+      "open": 10,
+      "critical": 2,
+      "per10": 1.11,
+      "codes": [
+        "QUALIFICATION_OMITTED",
+        "SPEAKER_OMITTED",
+        "DATE_OMITTED",
+        "NEGATION_CONFLICT",
+        "UNMAPPED_ASSERTION"
+      ]
+    },
+    {
+      "id": "S014-02",
+      "status": "HOLD",
+      "claims": 27,
+      "open": 3,
+      "critical": 2,
+      "per10": 1.11,
+      "codes": [
+        "RELEVANCE_NOT_ESTABLISHED",
+        "UNSUPPORTED_CLAIM"
+      ]
+    },
+    {
+      "id": "S014-03",
+      "status": "HOLD",
+      "claims": 38,
+      "open": 11,
+      "critical": 5,
+      "per10": 2.89,
+      "codes": [
+        "NEGATION_CONFLICT",
+        "ACTOR_NOT_ESTABLISHED",
+        "UNSUPPORTED_CLAIM",
+        "RELEVANCE_NOT_ESTABLISHED",
+        "DATE_OMITTED",
+        "UNMAPPED_ASSERTION"
+      ]
+    },
+    {
+      "id": "S014-04",
+      "status": "HOLD",
+      "claims": 108,
+      "open": 10,
+      "critical": 5,
+      "per10": 0.93,
+      "codes": [
+        "RELEVANCE_NOT_ESTABLISHED",
+        "UNSUPPORTED_CLAIM",
+        "NEGATION_CONFLICT",
+        "SPEAKER_OMITTED",
+        "REASONING_NOT_TRACED",
+        "UNMAPPED_ASSERTION",
+        "CONCLUSION_ON_UNRESOLVED_BASIS"
+      ]
+    },
+    {
+      "id": "S014-05",
+      "status": "HOLD",
+      "claims": 28,
+      "open": 2,
+      "critical": 1,
+      "per10": 0.71,
+      "codes": [
+        "NEGATION_CONFLICT",
+        "DATE_OMITTED"
+      ]
+    },
+    {
+      "id": "S014-06",
+      "status": "HOLD",
+      "claims": 50,
+      "open": 11,
+      "critical": 6,
+      "per10": 2.2,
+      "codes": [
+        "QUALIFICATION_OMITTED",
+        "NEGATION_CONFLICT",
+        "UNSUPPORTED_CLAIM",
+        "UNMAPPED_ASSERTION",
+        "CONCLUSION_ON_UNRESOLVED_BASIS"
+      ]
+    },
+    {
+      "id": "S014-07",
+      "status": "HOLD",
+      "claims": 28,
+      "open": 6,
+      "critical": 2,
+      "per10": 2.14,
+      "codes": [
+        "RELEVANCE_NOT_ESTABLISHED",
+        "UNSUPPORTED_CLAIM",
+        "REASONING_NOT_TRACED",
+        "UNMAPPED_ASSERTION",
+        "CONCLUSION_ON_UNRESOLVED_BASIS"
+      ]
+    },
+    {
+      "id": "S014-08",
+      "status": "HOLD",
+      "claims": 110,
+      "open": 33,
+      "critical": 16,
+      "per10": 3,
+      "codes": [
+        "NEGATION_CONFLICT",
+        "CONTRARY_CLAUSE_OMITTED",
+        "DATE_OMITTED",
+        "QUALIFICATION_OMITTED",
+        "RELEVANCE_NOT_ESTABLISHED",
+        "UNSUPPORTED_CLAIM",
+        "CONCLUSION_ON_UNRESOLVED_BASIS"
+      ]
+    },
+    {
+      "id": "S014-09",
+      "status": "HOLD",
+      "claims": 50,
+      "open": 8,
+      "critical": 4,
+      "per10": 1.6,
+      "codes": [
+        "UNSUPPORTED_CLAIM",
+        "RELEVANCE_NOT_ESTABLISHED",
+        "CONTRARY_CLAUSE_OMITTED"
+      ]
+    },
+    {
+      "id": "S014-10",
+      "status": "HOLD",
+      "claims": 104,
+      "open": 17,
+      "critical": 8,
+      "per10": 1.63,
+      "codes": [
+        "RELEVANCE_NOT_ESTABLISHED",
+        "UNSUPPORTED_CLAIM",
+        "SUBJECT_MISMATCH",
+        "NEGATION_CONFLICT",
+        "REASONING_NOT_TRACED",
+        "UNMAPPED_ASSERTION",
+        "CONCLUSION_ON_UNRESOLVED_BASIS"
+      ]
+    },
+    {
+      "id": "S014-11",
+      "status": "HOLD",
+      "claims": 45,
+      "open": 5,
+      "critical": 3,
+      "per10": 1.11,
+      "codes": [
+        "UNSUPPORTED_CLAIM",
+        "RELEVANCE_NOT_ESTABLISHED",
+        "CONTRARY_CLAUSE_OMITTED",
+        "NEGATION_CONFLICT"
+      ]
+    },
+    {
+      "id": "S014-12",
+      "status": "HOLD",
+      "claims": 38,
+      "open": 10,
+      "critical": 5,
+      "per10": 2.63,
+      "codes": [
+        "RELEVANCE_NOT_ESTABLISHED",
+        "UNSUPPORTED_CLAIM",
+        "NEGATION_CONFLICT",
+        "REASONING_NOT_TRACED",
+        "CONCLUSION_ON_UNRESOLVED_BASIS"
+      ]
+    },
+    {
+      "id": "S014-13",
+      "status": "HOLD",
+      "claims": 41,
+      "open": 14,
+      "critical": 6,
+      "per10": 3.41,
+      "codes": [
+        "UNSUPPORTED_CLAIM",
+        "RELEVANCE_NOT_ESTABLISHED",
+        "DATE_OMITTED",
+        "NEGATION_CONFLICT",
+        "QUALIFICATION_OMITTED",
+        "REASONING_NOT_TRACED",
+        "UNMAPPED_ASSERTION",
+        "CONCLUSION_ON_UNRESOLVED_BASIS"
+      ]
+    },
+    {
+      "id": "S014-14",
+      "status": "HOLD",
+      "claims": 40,
+      "open": 6,
+      "critical": 4,
+      "per10": 1.5,
+      "codes": [
+        "UNSUPPORTED_CLAIM",
+        "NEGATION_CONFLICT",
+        "QUALIFICATION_OMITTED",
+        "UNMAPPED_ASSERTION"
+      ]
+    },
+    {
+      "id": "S014-15",
+      "status": "HOLD",
+      "claims": 76,
+      "open": 8,
+      "critical": 3,
+      "per10": 1.05,
+      "codes": [
+        "QUALIFICATION_OMITTED",
+        "NEGATION_CONFLICT",
+        "REASONING_NOT_TRACED",
+        "UNSUPPORTED_CLAIM",
+        "UNMAPPED_ASSERTION",
+        "CONCLUSION_ON_UNRESOLVED_BASIS"
+      ]
+    },
+    {
+      "id": "S014-16",
+      "status": "HOLD",
+      "claims": 74,
+      "open": 27,
+      "critical": 14,
+      "per10": 3.65,
+      "codes": [
+        "UNSUPPORTED_CLAIM",
+        "RELEVANCE_NOT_ESTABLISHED",
+        "SPEAKER_OMITTED",
+        "UNMAPPED_ASSERTION",
+        "AUTHORITY_TEXT_NOT_SUPPLIED"
+      ]
+    },
+    {
+      "id": "S014-17",
+      "status": "HOLD",
+      "claims": 61,
+      "open": 32,
+      "critical": 19,
+      "per10": 5.25,
+      "codes": [
+        "UNSUPPORTED_CLAIM",
+        "NEGATION_CONFLICT",
+        "UNTRACEABLE_AUTHORITY",
+        "RELEVANCE_NOT_ESTABLISHED",
+        "REASONING_NOT_TRACED",
+        "UNMAPPED_ASSERTION",
+        "CONCLUSION_ON_UNRESOLVED_BASIS"
+      ]
+    },
+    {
+      "id": "S014-18",
+      "status": "HOLD",
+      "claims": 28,
+      "open": 4,
+      "critical": 1,
+      "per10": 1.43,
+      "codes": [
+        "DATE_OMITTED",
+        "RELEVANCE_NOT_ESTABLISHED",
+        "UNSUPPORTED_CLAIM",
+        "UNMAPPED_ASSERTION"
+      ]
+    },
+    {
+      "id": "S014-19",
+      "status": "HOLD",
+      "claims": 42,
+      "open": 6,
+      "critical": 3,
+      "per10": 1.43,
+      "codes": [
+        "UNSUPPORTED_CLAIM",
+        "RELEVANCE_NOT_ESTABLISHED",
+        "UNMAPPED_ASSERTION"
+      ]
+    },
+    {
+      "id": "S014-20",
+      "status": "READY_FOR_HUMAN_FINALIZATION",
+      "claims": 22,
+      "open": 0,
+      "critical": 0,
+      "per10": 0,
+      "codes": []
+    },
+    {
+      "id": "S014-21",
+      "status": "HOLD",
+      "claims": 111,
+      "open": 33,
+      "critical": 15,
+      "per10": 2.97,
+      "codes": [
+        "RELEVANCE_NOT_ESTABLISHED",
+        "UNSUPPORTED_CLAIM",
+        "NEGATION_CONFLICT",
+        "QUALIFICATION_OMITTED",
+        "CONTRARY_CLAUSE_OMITTED",
+        "DATE_OMITTED",
+        "SUBJECT_MISMATCH",
+        "SPEAKER_OMITTED",
+        "UNTRACEABLE_AUTHORITY",
+        "ACTOR_NOT_ESTABLISHED",
+        "REASONING_NOT_TRACED",
+        "UNMAPPED_ASSERTION",
+        "CONCLUSION_ON_UNRESOLVED_BASIS"
+      ]
+    },
+    {
+      "id": "S014-22",
+      "status": "HOLD",
+      "claims": 72,
+      "open": 20,
+      "critical": 10,
+      "per10": 2.78,
+      "codes": [
+        "QUALIFICATION_OMITTED",
+        "DATE_OMITTED",
+        "NEGATION_CONFLICT",
+        "RELEVANCE_NOT_ESTABLISHED",
+        "UNSUPPORTED_CLAIM",
+        "REASONING_NOT_TRACED",
+        "CONCLUSION_ON_UNRESOLVED_BASIS"
+      ]
+    },
+    {
+      "id": "S014-23",
+      "status": "HOLD",
+      "claims": 33,
+      "open": 3,
+      "critical": 1,
+      "per10": 0.91,
+      "codes": [
+        "NEGATION_CONFLICT",
+        "CONCLUSION_ON_UNRESOLVED_BASIS"
+      ]
+    },
+    {
+      "id": "S014-24",
+      "status": "HOLD",
+      "claims": 116,
+      "open": 30,
+      "critical": 15,
+      "per10": 2.59,
+      "codes": [
+        "CONTRARY_CLAUSE_OMITTED",
+        "NEGATION_CONFLICT",
+        "RELEVANCE_NOT_ESTABLISHED",
+        "UNSUPPORTED_CLAIM",
+        "SPEAKER_OMITTED",
+        "DATE_NOT_ESTABLISHED",
+        "UNMAPPED_ASSERTION",
+        "CONCLUSION_ON_UNRESOLVED_BASIS"
+      ]
+    },
+    {
+      "id": "S014-25",
+      "status": "HOLD",
+      "claims": 51,
+      "open": 8,
+      "critical": 4,
+      "per10": 1.57,
+      "codes": [
+        "NEGATION_CONFLICT",
+        "REASONING_NOT_TRACED",
+        "UNSUPPORTED_CLAIM",
+        "UNMAPPED_ASSERTION",
+        "CONCLUSION_ON_UNRESOLVED_BASIS"
+      ]
+    },
+    {
+      "id": "S014-26",
+      "status": "HOLD",
+      "claims": 49,
+      "open": 8,
+      "critical": 3,
+      "per10": 1.63,
+      "codes": [
+        "RELEVANCE_NOT_ESTABLISHED",
+        "UNSUPPORTED_CLAIM",
+        "QUALIFICATION_OMITTED",
+        "DATE_OMITTED",
+        "SPEAKER_OMITTED"
+      ]
+    },
+    {
+      "id": "S014-27",
+      "status": "HOLD",
+      "claims": 33,
+      "open": 9,
+      "critical": 5,
+      "per10": 2.73,
+      "codes": [
+        "NEGATION_CONFLICT",
+        "UNSUPPORTED_CLAIM",
+        "RELEVANCE_NOT_ESTABLISHED",
+        "CONTRARY_CLAUSE_OMITTED",
+        "UNMAPPED_ASSERTION"
+      ]
+    },
+    {
+      "id": "S014-28",
+      "status": "HOLD",
+      "claims": 100,
+      "open": 24,
+      "critical": 15,
+      "per10": 2.4,
+      "codes": [
+        "RELEVANCE_NOT_ESTABLISHED",
+        "UNSUPPORTED_CLAIM",
+        "NEGATION_CONFLICT",
+        "CONTRARY_CLAUSE_OMITTED",
+        "REASONING_NOT_TRACED",
+        "CONCLUSION_ON_UNRESOLVED_BASIS"
+      ]
+    },
+    {
+      "id": "S014-29",
+      "status": "HOLD",
+      "claims": 32,
+      "open": 13,
+      "critical": 7,
+      "per10": 4.06,
+      "codes": [
+        "UNSUPPORTED_CLAIM",
+        "RELEVANCE_NOT_ESTABLISHED",
+        "SUBJECT_MISMATCH",
+        "DATE_OMITTED",
+        "DATE_NOT_ESTABLISHED",
+        "UNMAPPED_ASSERTION"
+      ]
+    },
+    {
+      "id": "S014-30",
+      "status": "HOLD",
+      "claims": 41,
+      "open": 2,
+      "critical": 2,
+      "per10": 0.49,
+      "codes": [
+        "UNSUPPORTED_CLAIM",
+        "NEGATION_CONFLICT"
+      ]
+    }
+  ]
+}

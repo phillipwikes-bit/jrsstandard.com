@@ -1,0 +1,904 @@
+Department of Transportation
+Compliance With Freedom of
+Information Law Requirements
+
+
+
+
+  Report 2020-S-12 September 2023
+
+
+
+
+OFFICE OF THE NEW YORK STATE COMPTROLLER
+Thomas P. DiNapoli, State Comptroller
+Division of State Government Accountability
+Audit Highlights
+
+Objectives
+To determine if the Department of Transportation (DOT) has policies, procedures, and processes
+in place to fulfill its responsibilities under the Freedom of Information Law (FOIL), and if DOT is in
+compliance with its responsibilities under FOIL. The audit covered FOIL requests received by DOT for
+the period January 2018 through July 2021 and FOIL appeals received by DOT for the period January
+2018 through September 2021.
+
+About the Program
+DOT’s mission is to ensure its customers – those who live, work, and travel in New York – have a safe,
+efficient, balanced, and environmentally sound transportation system. It has a main office located in
+Albany and 11 regional offices throughout the State. Article 6 of the New York State Public Officers
+Law provides for public access to government records. The statute, generally referred to as FOIL,
+applies to any State agency, public authority, and local government entity, with the exception of the
+Judiciary and State Legislature. Under FOIL, DOT is required to make all eligible records available for
+public inspection or copying. Within 5 business days of receiving a FOIL request, DOT must make the
+requested records available, deny the request in writing, or furnish a written acknowledgment of the
+request that states the approximate date when such request will be granted or denied. Additionally,
+within 10 business days of receipt of an appeal, DOT must grant access to the records sought or fully
+explain the reasons for further denial in writing.
+
+Key Findings
+    DOT did not respond within the statutory time frame for 34 of the 194 sampled FOIL requests.
+     This included 19 FOIL requests where DOT did not grant, deny, or acknowledge receipt of the
+     request within 5 business days. For another FOIL request, DOT could not show it provided the
+     requested information.
+
+    DOT was not in compliance with the statutory requirement to provide an appeal to Committee
+     on Open Government (COOG) upon receipt for any of the 49 appeals we sampled. DOT officials
+     stated that it is their practice to send the appeal to COOG when the determination is made.
+
+    DOT’s regional offices did not always follow the FOIL procedures for handling FOIL requests.
+     We found three regional offices typically did not use the DOT acknowledgment template letter.
+     Instead, they used informal emails which did not provide the requestor with a reference number.
+
+Furthermore, the audit was obstructed by, among other things, requiring that all meetings be
+attended by legal and non-legal supervisory staff from the main office and not providing all requested
+information.1 For example, while one DOT regional office on its own provided its FOIL procedures
+manual, three other regions would not. The main office did not provide the listing of FOIL request topics
+deemed sensitive that the regional offices were required to forward to the main office for review, as they
+claimed they were protected by attorney–client privilege. We therefore cannot state with reasonable
+certainty that all information necessary to meet our audit objectives was provided.
+
+
+1 Auditors are required by generally accepted government auditing standards to disclose in their report any circumstances
+that impact the reliability of the evidence they are relying on, whether the obstruction is deliberate by an auditee or due to other
+circumstances.
+
+
+
+Report 2020-S-12                                                                                                                  1
+Key Recommendations
+   Acknowledge and respond to FOIL requests and appeals within the time frames required by
+    law. Grant or deny access to FOIL requests within 5 business days, or if more time is needed,
+    acknowledge receipt of the request in writing, indicating both the reason for the inability to grant
+    the request within 20 business days and the approximate date when the request will be granted or
+    denied.
+
+   Forward all appeals to COOG upon receipt, as required by FOIL.
+
+   Provide formal training for main office and regional office employees involved in processing FOIL
+    requests.
+
+
+
+
+Report 2020-S-12                                                                                        2
+Office of the New York State Comptroller
+Division of State Government Accountability
+
+September 29, 2023
+
+Marie Therese Dominguez, Esq.
+Commissioner
+Department of Transportation
+50 Wolf Road
+Albany, NY 12232
+
+Dear Commissioner Dominguez:
+
+The Office of the State Comptroller is committed to helping State agencies, public authorities, and
+local government agencies manage their resources efficiently and effectively. By so doing, it provides
+accountability for the tax dollars spent to support government operations. The Comptroller oversees
+the fiscal affairs of State agencies, public authorities, and local government agencies, as well as their
+compliance with relevant statutes and their observance of good business practices. This fiscal oversight
+is accomplished, in part, through our audits, which identify opportunities for improving operations.
+Audits can also identify strategies for reducing costs and strengthening controls that are intended to
+safeguard assets.
+
+Following is a report of our audit entitled Compliance With Freedom of Information Law Requirements.
+This audit was performed pursuant to the State Comptroller’s authority under Article V, Section 1 of the
+State Constitution and Article II, Section 8 of the State Finance Law.
+
+This audit’s results and recommendations are resources for you to use in effectively managing your
+operations and in meeting the expectations of taxpayers. If you have any questions about this report,
+please feel free to contact us.
+
+Respectfully submitted,
+
+
+Division of State Government Accountability
+
+
+
+
+Report 2020-S-12                                                                                        3
+Contents
+Glossary of Terms                                   5
+Background                                          6
+Audit Findings and Recommendations                  8
+  Compliance With FOIL Requirements                 8
+  Monitoring and Oversight of FOIL Program          9
+  Appeals Process                                  11
+  Recommendations                                  13
+Audit Scope, Objectives, and Methodology           14
+Statutory Requirements                             15
+  Authority                                        15
+  Reporting Requirements                           15
+Agency Comments and State Comptroller’s Comments   16
+Contributors to Report                             21
+
+
+
+
+Report 2020-S-12                                        4
+Glossary of Terms
+
+           Term                     Description                           Identifier
+     DOT            Department of Transportation                      Auditee
+
+     CCM            Common Correspondence Management                  Database
+                    Enterprise
+     COOG           Committee on Open Government                      Key Term
+     Date certain   A legally binding date on or by which a certain   Key Term
+                    action must occur
+     FOIL           Freedom of Information Law                        Law
+     ITS            Office of Information Technology Services         Agency
+     NYCRR          New York Codes, Rules and Regulations             Key Term
+     RAO            Records Access Officer                            Key Term
+
+
+
+
+Report 2020-S-12                                                                       5
+Background
+The Department of Transportation’s (DOT) mission is to ensure its customers –
+those who live, work, and travel in New York – have a safe, efficient, balanced, and
+environmentally sound transportation system. DOT is responsible for coordinating
+and developing a comprehensive transportation policy for the State; coordinating
+and assisting in the development and operation of transportation facilities and
+services for highways, railroads, mass transit systems, ports, waterways, and
+aviation facilities; and formulating and keeping current a long-range, comprehensive
+statewide master plan for the balanced development of public and private commuter
+and general transportation facilities. DOT’s main office is located in Albany, and it has
+11 regional offices throughout the State.
+
+Article 6 of the New York State Public Officers Law provides for public access to
+government records. The statute, generally referred to as the Freedom of Information
+Law (FOIL), applies to any State agency, public authority, and local government
+entity, with the exception of the Judiciary and State Legislature. Under FOIL, each
+agency, including public authorities, is required to make all eligible records available
+for public inspection or copying. Such records include, but are not limited to, reports,
+statements, opinions, folders, files, microfilms, and computer tapes or disks.
+
+FOIL requires agencies to grant access to records, deny access in writing,
+or acknowledge the receipt of a request within 5 business days. When an
+acknowledgment is given, it must include an approximate date that is reasonable
+under the circumstances, indicating when a determination on the request to access
+records will be made. If an agency determines to grant a request but cannot fulfill
+the request within 20 business days from the date of the acknowledgment letter, the
+requestor must be provided with a written explanation and a date certain, within a
+reasonable period, when the request will be granted in whole or in part. Additionally,
+agencies may develop their own more stringent internal procedures for processing
+FOIL requests.
+
+DOT accepts FOIL requests via email, mail, or fax or online through a portal located
+on the Open FOIL NY website. According to regulations issued by DOT, FOIL
+requests can also be submitted in person at the DOT main office and regional offices.
+DOT reported receiving 15,738 FOIL requests between January 1, 2018 and July
+22, 2021. FOIL requests – the majority of which DOT receives online – are reviewed
+by DOT’s main office FOIL Officer, and routine requests are forwarded to the
+appropriate regional office. Each regional office has at least one regional Records
+Access Officer (RAO), who is the designated official responsible for coordinating
+responses to FOIL requests. If the main office FOIL Officer receives a FOIL request
+that is determined to be significant (e.g., related to open litigation), the request is
+handled at DOT’s main office. All correspondence and information related to FOIL
+requests must be filed in DOT’s Common Correspondence Management Enterprise
+system (CCM), which is supported by the Office of Information Technology Services
+(ITS).
+
+If a FOIL request is denied, a requestor has the right to appeal. There are two types
+of appeals: an appeal from a constructive denial, which occurs when a requestor
+believes an agency has taken more than a reasonable time to respond to a request,
+
+
+Report 2020-S-12                                                                            6
+or an express denial, when an agency responds to a requestor that a requested
+record will be withheld in part or in full. Within 10 business days of receipt of an
+appeal, the agency must grant access to the records sought or fully explain the
+reasons for further denial in writing. In general, the court may assess attorneys’ fees
+and other litigation costs against the agency for any failure to respond to a request
+or appeal within the statutory time frame. DOT reported receiving 110 FOIL appeals
+between January 1, 2018 and September 24, 2021.
+
+If a denied request is appealed, FOIL requires the agency to send copies of the
+appeal and subsequent determination to the Committee on Open Government
+(COOG). Among its duties, COOG issues advisory opinions and makes
+recommendations to the Legislature on matters relating to FOIL.
+
+
+
+
+Report 2020-S-12                                                                          7
+Audit Findings and Recommendations
+DOT deviated from the FOIL requirements for all requests it processed. It did not
+send any appeals to COOG upon receipt, as required. DOT has internal procedures
+in place to govern the processing of FOIL requests and appeals of denied requests;
+however, we found weaknesses in DOT’s monitoring over the FOIL process and a
+lack of adherence to its internal procedures at three of its regional offices.
+
+Compliance With FOIL Requirements
+When DOT receives a request for records under FOIL, it has 5 business days to
+grant or deny access, or if more time is needed, to acknowledge receipt of the
+request in writing. Compliance is important because delays in responding to FOIL
+requests could equate to denials of the requests and can result in unnecessary
+FOIL appeals proceedings and an assessment of attorneys’ fees against the
+agency. When an acknowledgment is given, it must include an approximate date
+that is reasonable under the circumstances, indicating when a determination on
+the request to access records will be made. If the agency determines to grant a
+request but cannot fulfill the request within 20 business days from the date of the
+acknowledgment letter, the main office FOIL Officer or regional RAO must provide a
+written explanation and a date certain, within a reasonable period, when the request
+will be granted in whole or in part.
+
+We selected a statistical sample of 194 FOIL requests from the 15,738 FOIL
+requests DOT received from January 1, 2018 to July 22, 2021 to evaluate DOT’s
+compliance under FOIL. Our statistical sample included FOIL requests received
+by the main office and 10 different regional offices. We found that DOT deviated
+from the law and/or its own internal procedures for 34 FOIL requests. Among the
+instances of deviation were the following:
+
+   19 FOIL requests for which DOT did not grant, deny, or acknowledge the
+    request within 5 business days.
+
+   13 FOIL requests for which DOT did not provide an extension letter when it did
+    not respond by the date provided in the acknowledgment letter.
+
+   1 FOIL request for which DOT was unable to provide documentation to show
+    whether it ever provided the requested information.
+
+   1 FOIL request for which DOT did not provide the requested information by the
+    deadline specified in the extension letter.
+
+Based on the results of our statistical sample, we are 95% confident that DOT
+deviated from the law or its own procedures for at least 1,965 of the 15,738 FOIL
+requests received during the audit period.
+
+The deviations from FOIL and/or DOT’s FOIL policies were partially due to DOT’s
+main office not adequately monitoring FOIL requests assigned to the regional offices;
+nor does the main office regularly use CCM to monitor the regional offices’ handling
+of FOIL requests. ITS officials stated that DOT main office officials only requested
+one CCM report from ITS related to FOIL during the audit scope period. Further,
+
+
+Report 2020-S-12                                                                        8
+DOT’s procedures do not provide guidance about the handling of certain situations,
+such as estimating the date certain in cases when additional time is required.
+Additionally, lack of effective communication over the FOIL program has caused
+regional offices to use their own methods of operations, resulting in inconsistencies
+in the handling of FOIL requests. Moreover, when program areas, rather than an
+RAO, fulfill a request, there is risk that exempt information may be released to the
+public (e.g., confidential information).
+
+Monitoring and Oversight of FOIL Program
+Internal Procedures
+Under FOIL, agencies are required to make all eligible records available for public
+inspection or copying and to promulgate rules and regulations regarding the times
+and places such records are available; the persons from whom such records may
+be obtained; and the fees for copies of records. DOT procedures name the main
+office FOIL Officer as the employee designated for ensuring compliance with FOIL,
+and RAOs are the designated officials who have the duty of coordinating responses
+to FOIL requests at DOT’s 11 regional offices. According to DOT procedures, all
+correspondence with FOIL requestors and all information pertaining to the request
+are to be entered into CCM by the main office FOIL Officer or regional RAO handling
+the request. The main office FOIL Officer or regional RAO prepares and sends a
+written acknowledgment and then forwards the request to the relevant program area,
+and program staff then gather all documents available and send those documents
+back to the main office FOIL Officer or regional RAO for review and determination
+about which records can be released according to the law, with guidance from DOT’s
+Division of Legal Affairs, if needed. Moreover, DOT procedures state that staff in the
+program areas are not to respond directly to a requestor.
+
+We visited DOT’s 11 regional offices to interview the RAOs and gain an
+understanding of the FOIL processes and procedures utilized at each regional
+office. This audit was obstructed by, among other things, requiring that all meetings
+be attended by legal and non-legal supervisory staff from the main office and
+not providing all requested information. For example, one DOT regional office
+provided auditors access to its written procedures during a site visit until the main
+office supervisory staff abruptly instructed the regional office staff to remove the
+procedures. Further, three additional regional offices were asked to provide written
+procedures to the audit team but would not do so under direction from DOT’s main
+office, which stated the procedures were covered by attorney–client privilege. The
+main office would not provide the listing of FOIL requests deemed sensitive that
+the regional offices were required to forward to the main office for review, as they
+claimed they were also covered by attorney–client privilege. Regardless of the
+circumstances, these obstructions impacted the reliability of audit evidence and thus
+are being disclosed. We found that three regional offices typically do not use DOT’s
+acknowledgment letter template. Instead, they respond via informal emails, in which
+case the requestor does not receive a reference number that can be used for
+follow-up questions or appeals. These same regional offices also did not routinely
+
+
+Report 2020-S-12                                                                         9
+use CCM to record FOIL request information, as required. Instead, they only update
+CCM after a response is completed, meaning the requestor does not receive a
+reference number, and the main office FOIL Officer cannot monitor these requests.
+Moreover, only one regional office routinely uses CCM to generate reports to monitor
+upcoming due dates for open FOIL requests. Main office officials also stated they
+do not use CCM to run reports to monitor open FOIL requests. Further, the amount
+of training the RAOs received varied among the regional offices. Some RAOs did
+not receive any training, others received only CCM software training, while others
+received varied levels of on-the-job training from their predecessor. RAOs also stated
+that if an item was on a list of FOIL requests deemed sensitive, the regional offices
+were required to forward it to the main office for review. DOT declined to provide this
+list to auditors.
+
+At the onset of the COVID-19 pandemic in March 2020, DOT temporarily altered
+its FOIL procedures by changing the standard time frame in its acknowledgment
+letters from 20 business days to 45 calendar days, citing delays due to the pandemic
+and the shift to remote working. However, during our visits, we found three regional
+offices did not extend the time frames in the acknowledgment letters, and one
+regional office used 25 business days in its response, which deviated from DOT’s
+internal guidance. In July 2021, DOT issued further guidance to the regional offices
+stating all language regarding the COVID-19 pandemic should be removed from
+FOIL correspondence; however, the extended time frame for acknowledgment letters
+should not change. Once again, we found that regional offices treated this guidance
+differently: of the eight regions that used the pandemic language, five stopped using
+the extended time frame, and three continued to use the extended time frame in
+correspondence with requestors, with one using a variety of different time frames in
+its correspondences.
+
+FOIL requires that agencies maintain a reasonably detailed list by subject matter of
+all records in its possession. Each agency is to post the current list on its website,
+including a link to the COOG website, and update the list annually. Moreover, DOT is
+authorized by New York State Transportation Law to set forth rules and regulations
+in relation to the discharge of the Commissioner’s functions, powers, and duties
+as well as those of DOT. Changing rules and regulations is covered by the State
+Administrative Procedures Act and is the responsibility of each agency. Although
+DOT internal procedures outline responsibilities for maintaining the subject matter
+list, our review of the DOT website found that DOT has not updated its subject matter
+list since February 2016. New York Codes, Rules and Regulations (NYCRR) requires
+each agency to designate locations where records are available for public inspection
+and copying. However, DOT’s regulations have not been updated to reflect the
+current locations where FOIL requests can be made for the main office and four of
+the regional offices. By not making these updates, DOT may not be giving the public
+access to all records in its possession. Additionally, requestors using the locations
+DOT provided for the main office and four regional offices to complete FOIL requests
+might experience delays if they attempt to deliver their requests to addresses that
+have not been updated.
+
+
+
+Report 2020-S-12                                                                          10
+Controls Over FOIL Data
+Each FOIL request is given a unique sequential reference number in CCM, which
+provides assurance that all recorded events are in the data set. We analyzed the
+reference numbers for the 15,738 FOIL requests received by DOT during the audit
+period and found 164 missing sequential reference numbers. During our regional
+office visits, we requested the RAOs search CCM for the missing reference numbers
+pertaining to their region; in all 164 cases, there was no information recorded in
+CCM. We consulted DOT and ITS officials, who acknowledged that gaps in reference
+numbers exist and explained that, if an authorized user is incorrectly using CCM
+(e.g., they do not fill in all the mandatory fields), the system may assign a reference
+number, but no information is saved and the user is prompted to input the data
+again, creating a new reference number. DOT officials stated that since the system
+gives an error message to the user, the user knows to reenter the FOIL request
+and, therefore, DOT asserts that the data set is complete. However, DOT and ITS
+officials could not provide an audit log for CCM explaining the gaps in the sequential
+reference numbers. Therefore, the exact cause for the gaps cannot be determined,
+and it is possible DOT’s FOIL data is incomplete. In addition, DOT and ITS officials
+were unaware of potential control issues with missing reference numbers in CCM.
+
+Moreover, ITS’ Standard for Security Logging requires that logs record data so that
+systems and networks can be properly monitored to maintain use for authorized
+purposes and an awareness of the operating environment, including detecting
+indications of security problems. This standard applies to all information technology
+equipment owned and/or operated by, or on behalf of, New York State. The standard
+applies to audit logs that track user authentication attempts and user actions, and
+specifies that events, such as those indicating success or failure of an event, as
+well as the date and time of an event must be logged for all systems. While the
+CCM system may have reported an error to the user in certain instances, there is no
+record of the error within the system, as required by the ITS standard. The missing
+reference numbers within CCM and the absence of an audit log or similar report
+create a lack of assurance that DOT has responded to all FOIL requests.
+
+Appeals Process
+Compliance With FOIL
+According to the law, a denied FOIL request may be appealed within 30 days of
+receipt of the written notice of denial. An agency’s failure to respond within the time
+frames for FOIL requests may be viewed as a constructive denial, which may also
+be appealed. Within 10 business days of receipt of an appeal, DOT must grant
+access to the records sought or fully explain the reasons for further denial in writing.
+FOIL requires DOT to transmit copies of all appeals to COOG upon receipt and the
+determination shall also be shared with COOG.
+
+DOT reported receiving 110 appeals from January 1, 2018 through September 24,
+2021. We reviewed a judgmental sample of 49 appeals to determine if they were
+
+
+Report 2020-S-12                                                                           11
+handled in accordance with FOIL. We found that DOT took more than 10 business
+days to respond to the appellant for four of the 49 appeals sampled and did not
+comply with the statutory requirement by not sending any of the 49 appeals to
+COOG upon receipt. DOT officials informed us that they only send appeals to COOG
+once the determination for the appeal has been made.
+
+In addition, we found 15 appeals where DOT responded to the appellant stating they
+were not able to appeal because DOT had yet to respond to the initial FOIL request.
+Our review of the 15 appeals found DOT responded to the initial FOIL requests
+with multiple extension letters. In each case, the requestor stated, in writing, that
+multiple extensions met the definition of a constructive denial. DOT disagreed and
+cited various case law as examples where courts have upheld the use of multiple
+extensions for FOIL requests.
+
+Off these 15 appeals, DOT responded to five of the FOIL requests prior to sending
+the appeal determination. However, for nine of the appeals, DOT did not provide a
+response to the initial FOIL request until after the appeal determination was sent
+– taking an additional 11 to 829 calendar days to provide a response to the FOIL
+request, with a median response time of 232 calendar days. For the remaining
+appeal, DOT did not provide sufficient documentation to determine when the FOIL
+response was sent to the requestor.
+
+Compliance with FOIL-specified time frames is important because a delay in
+responding to a FOIL appeal may be viewed as a denial of the appeal, and an
+appellant who is further denied may bring a proceeding for review of such denial
+pursuant to Article 78 of the Civil Practice Law and Rules. An Article 78 proceeding
+is handled in court and will take the time of the appellant, DOT, and the Attorney
+General’s office. In addition to the time spent preparing for and in court, the court
+may, in general, assess attorneys’ fees and other litigation costs reasonably incurred
+by a person whose case has prevailed and the court finds that the agency had no
+reasonable basis for denying access.
+
+Segregation of Duties
+The appeals officer, chief executive officer, or governing body or designated
+representative shall review records and determine appeals under FOIL. The FOIL
+Appeals Officer, as the designated representative of the governing body, cannot
+be the same as the RAO. During one of our initial audit meetings, DOT officials
+stated that an assistant counsel oversees the FOIL program. During the FOIL
+request process, we were informed that the assistant counsel may review records
+for proper exemptions and redactions prior to their release to a FOIL requestor, and
+DOT’s procedures state that the FOIL Officer consults with the Division of Legal
+Affairs regarding interpretation of the law and application of DOT’s FOIL policy, as
+necessary. However, we found the same assistant counsel is also the FOIL Appeals
+Officer. The FOIL Appeals Officer’s involvement early in the FOIL request process
+creates a potential conflict of interest and a lack of segregation of duties as there is a
+risk that the FOIL Appeals Officer is reviewing his/her own decisions.
+
+
+
+Report 2020-S-12                                                                             12
+Recommendations
+  1.   Acknowledge and respond to FOIL requests and appeals within the time
+       frames required by law. Grant or deny access to FOIL requests within 5
+       business days, or if more time is needed, acknowledge receipt of the request
+       in writing, indicating both the reason for the inability to grant the request
+       within 20 business days and the approximate date when the request will be
+       granted or denied.
+
+  2.   Monitor the processing of FOIL requests to ensure it is consistent throughout
+       the agency and develop guidance how to calculate or estimate the date
+       certain accurately when additional time is required.
+
+  3.   Provide formal training for main office and regional office employees involved
+       in processing FOIL requests.
+
+  4.   Update the subject matter list to meet the requirements of FOIL and update
+       NYCRR to reflect current addresses for DOT’s main and regional offices.
+
+  5.   Work with ITS to develop audit logs for CCM to account for all FOIL requests
+       received.
+
+  6.   Forward all appeals to COOG upon receipt, as required by FOIL.
+
+  7.   Segregate duties related to processing FOIL requests and reviewing and
+       responding to FOIL appeals.
+
+
+
+
+Report 2020-S-12                                                                        13
+Audit Scope, Objectives, and Methodology
+The objectives of our audit were to determine if DOT has policies, procedures,
+and processes in place to fulfill its responsibilities under FOIL, and if DOT is in
+compliance with its responsibilities under FOIL. The audit covered FOIL requests
+received by DOT for the period January 2018 through July 2021 and FOIL appeals
+received by DOT for the period January 2018 through September 2021.
+
+To accomplish our objectives, we obtained information about DOT’s processes for
+handling FOIL requests and assessed the adequacy of internal controls related to
+our audit objectives. We interviewed DOT officials at the main office and at each
+regional office. We also contacted ITS officials who provide support for CCM to
+discuss the 164 missing reference numbers. We reviewed relevant laws, regulations,
+DOT procedures pertinent to FOIL, and relevant COOG opinions. In addition, DOT
+provided case law regarding appeals.
+
+We selected a statistical sample of 194 FOIL requests from the population of 15,738
+FOIL requests DOT received between January 1, 2018 through July 22, 2021 to
+evaluate compliance under FOIL. To select our sample, we determined our precision
+to be ± 7% with a 95% confidence level and a 50% rate of error. Our statistical
+sample was designed to project to the population.
+
+In addition to the sample of FOIL requests, based on the number of days it took DOT
+to respond to the appeal and additional factors such as the number of appeals made,
+we selected a judgmental sample of 49 of the 110 appeals provided by DOT for
+the period January 1, 2018 to September 24, 2021. We reviewed the documents to
+determine if the appeals were handled in compliance with FOIL. This sample was not
+designed to be projected to the population.
+
+The audit was obstructed by, among other things, DOT not providing all requested
+information (e.g., DOT’s regional FOIL procedures manual and the listing of FOIL
+requests deemed sensitive that the regional offices were required to forward to
+the main office for review) and requiring that all meetings be attended by legal and
+non-legal supervisory staff from the main office. We therefore cannot state with
+reasonable certainty that all information necessary to meet our audit objectives was
+provided.
+
+
+
+
+Report 2020-S-12                                                                       14
+Statutory Requirements
+
+Authority
+The audit was performed pursuant to the State Comptroller’s authority as set forth
+in Article V, Section 1 of the State Constitution and Article II, Section 8 of the State
+Finance Law.
+
+We conducted our performance audit in accordance with generally accepted
+government auditing standards. Those standards require that we plan and perform
+the audit to obtain sufficient, appropriate evidence to provide a reasonable basis
+for our findings and conclusions based on our audit objectives. We believe that the
+evidence obtained provides a reasonable basis for our findings and conclusions
+based on our audit objectives.
+
+In addition to being the State Auditor, the Comptroller performs certain other
+constitutionally and statutorily mandated duties as the chief fiscal officer of New
+York State. These include operating the State’s accounting system; preparing the
+State’s financial statements; and approving State contracts, refunds, and other
+payments. These duties could be considered management functions for purposes
+of evaluating organizational independence under generally accepted government
+auditing standards. In our professional judgment, these duties do not affect our ability
+to conduct this independent audit of DOT’s compliance with FOIL requirements.
+
+Reporting Requirements
+We provided a draft copy of this report to DOT officials for their review and formal
+comment. Their comments were considered in preparing this final report and are
+attached in their entirety at the end of it. DOT officials did not agree with our findings
+and conclusions. They replied that FOIL is a legal process and claimed that, as
+such, it is covered by client-attorney privilege. As a result, it was appropriate for them
+to deny access to records and limited access to staff. However, DOT’s position is
+contrary to the intent of FOIL which is to make information available and not limit it by
+invoking privileges that do not help attain that objective. Moreover, we note that DOT
+manages to downplay its failure to follow requirements such as updating the subject
+matter list to meet FOIL requirements as well as not forwarding appeals to COOG
+upon receipt. DOT couches its response when agreeing with the recommendations
+with words such as “agrees, in part” or “acknowledges this recommendation,” which
+allows DOT to avoid having to take any action to improve its FOIL process. We
+urge DOT to revisit its position by implementing the recommendations designed to
+improve the FOIL process and responses to requesters. Our State Comptroller’s
+Comments addressing certain DOT remarks are embedded within DOT’s response.
+
+Within 180 days after final release of this report, as required by Section 170 of the
+Executive Law, the Commissioner of the Department of Transportation shall report
+to the Governor, the State Comptroller, and the leaders of the Legislature and fiscal
+committees, advising what steps were taken to implement the recommendations
+contained herein, and where recommendations were not implemented, the reasons
+why.
+
+
+Report 2020-S-12                                                                             15
+Agency Comments and State Comptroller’s Comments
+
+
+
+
+                                                                     July 29, 2022
+
+        Carmen Maldonado, Audit Director
+        Office of the State Comptroller
+        Division of State Government Accountability
+        110 State Street – 11th Floor
+        Albany, NY 12236-0001
+
+        Re: Audit Draft Report – 2020-S-12, Issued 06/29/2022
+
+        Dear Ms. Maldonado:
+
+        The New York State Department of Transportation (NYSDOT) has reviewed the Office of State
+        Comptroller (OSC) draft report 2010-S-12 titled Compliance With Freedom of Information Law
+        Requirements (the “Report”). NYSDOT was pleased to learn that with nearly 16,000 Freedom of
+        Information Law (FOIL) requests reviewed as part of its audit, encompassing a time period of over
+        two and a half years covering January 1, 2018 through July 22, 2021 – including the many months
+        impacted by COVID – OSC did not identify a single instance where a FOIL request failed to
+        receive a response from NYSDOT.1
+
+        State Comptroller’s Comment – The audit concluded that an email with no other information is
+        insufficient to support the requester was provided a full response. DOT officials were advised of
+        this fact in our preliminary findings issued February 8, 2022. Instead of providing the documents
+        it claims were sent to the requester, they repeated the same answer. DOT’s position does not
+        override the auditors’ conclusion. Moreover, OSC was unable to conclude that the FOIL data
+        provided was complete.
+
+        During that time, NYSDOT responded to FOIL requests covering issues from daily work reports
+        and certified payrolls on our contracts to school bus registration records, road condition data to
+        toxicology reports, and airport leases to records relating to musicians playing in the New York
+        City subway. Requests come from journalists, unions, contractors, attorneys, and all varieties of
+        New Yorkers interested in what NYSDOT does. In many cases, NYSDOT proactively provides
+        frequently requested information on its website, whether it is information about planned or on-
+        going projects, construction record plans and appropriation maps, or numerous reports covering
+        bridge and road conditions. Pursuant to the Governor’s 2021 transparency initiative, NYSDOT
+        has expanded these efforts and made extensive amounts of information available online. The
+
+        1
+         The Report asserts that for one 2020 FOIL request NYSDOT “was unable to provide documentation to show
+        whether it ever provided the requested information.” However, NYSDOT provided OSC auditors with an email
+        showing the documents that were transmitted to the requestor. Moreover, there is no requirement that an
+        agency retain FOIL responses. That NYSDOT does so exceeds FOIL requirements.
+
+
+
+
+                                         50 Wolf Road, Albany, NY 12232 │ www.dot.ny.gov
+
+
+
+
+Report 2020-S-12                                                                                                   16
+        initiative includes NYSDOT transitioning to a new FOIL management system known as GovQA,
+        which will further enhance NYSDOT’s ability to manage and respond to FOIL requests.
+        Additionally, whenever possible, records are provided electronically, either via email or other
+        transfer method, at no cost. In the vast majority of FOIL responses provided, there is no charge
+        to the requester. Other requests may require specialized searches and reviews of records, in
+        some instances requiring an employee to devote more than a month exclusively to a single
+        request. In sum, NYSDOT provides a broad spectrum and immense quantity of records to
+        thousands and thousands of interested parties every year. NYSDOT will use the information
+        provided in the Report to continue to improve the FOIL process.
+
+        State Comptroller’s Comment – To meet transparency, DOT needs to do more than place
+        basic documents online. For example, the practice of sending multiple vague responses to
+        requesters may not be viewed as transparent.
+
+        While pleased that the audit confirmed that NYSDOT responded to every FOIL request, NYSDOT
+        needs to address threshold issues with respect to the background and audit findings sections of
+        the draft report. In addition, NYSDOT disagrees with several of the audit findings.
+
+        State Comptroller’s Comment – The audit concluded that an email with no other information is
+        insufficient to support the requester was provided a full response. DOT officials were advised of
+        this fact in our preliminary findings issued February 8, 2022. Instead of providing the documents
+        it claims were sent to the requester, they repeated the same answer. DOT’s position does not
+        override the auditors’ conclusion. Moreover, OSC was unable to conclude that the FOIL data
+        provided was complete.
+
+        As an initial matter, NYSDOT fully complies with the requirement of FOIL, namely to make records
+        available to the public. Further NYSDOT disagrees with OSC’s definition of “non-compliance,”
+        noting that among other issues, OSC does not differentiate between assertions of departures
+        from NYSDOT procedures and assertions of departures from FOIL.
+
+        State Comptroller’s Comment – The report is clear in its description of the nature of DOT’s
+        lack of compliance with FOIL and its internal procedures.
+
+        Additionally, OSC reviewed NYSDOT’s FOIL process, which is a legal process directed and
+        supervised by attorneys, but did not include any lawyers on the OSC audit team. OSC asserts
+        incorrectly that NYSDOT “obstructed the audit by, among other things, requiring that all meetings
+        be attended by supervisory staff from main office and not providing all requested information.”
+        The supervisory staff at issue were NYSDOT lawyers, who’s responsibility as NYSDOT legal staff
+        was to ensure that NYSDOT’s attorney-client privilege was preserved as part of the review of this
+        legal process. Throughout the many interviews with Main Office FOIL personnel and FOIL officers
+        in all eleven NYSDOT Regional Offices, NYSDOT’s attorneys objected minimally, and only when
+        the attorney-client privilege was clearly implicated. NYSDOT indicated during the first meeting
+        that this would be the approach. Although OSC’s Report makes repeated mentions of the claimed
+        obstruction, the Report makes clear that OSC auditors received the documents discussed.
+
+
+
+
+                                                       2
+
+
+
+
+Report 2020-S-12                                                                                            17
+        Moreover, although the Report claims that NYSDOT would not provide a list of sensitive FOIL
+        topics – a list generated by NYSDOT lawyers and clearly covered by the attorney-client privilege
+        – the Report fails to mention that NYSDOT attorneys provided a non-privileged summary of that
+        list to OSC Auditors. Furthermore, OSC obtained sufficient access to that list to include NYSDOT
+        attorney-client privileged information in the Report.2
+
+        NYSDOT outlined to OSC that compliance with FOIL is a legal process requiring regular
+        consultation with NYSDOT attorneys and other staff within the Division of Legal Services.
+        Therefore, NYSDOT attorneys were legally required to participate in the audit process to monitor
+        compliance with attorney-client privilege. NYSDOT in no way “obstructed the audit.” OSC staff
+        understood that unfettered access to NYSDOT’s legal process and opinions would have been a
+        violation of NYSDOT attorney’s ethic obligations. OSC’s claim that the ordinary practice of law
+        by NYSDOT attorneys is “obstruction” is unfortunate and unfounded.
+
+        Further, the parties disagree as to whether OSC had the legal authority to conduct the audit of
+        NYSDOT’s FOIL process. While OSC has broad authority regarding supervision of the State’s
+        fiscal concerns, OSC’s authority is not without limit. The New York Court of Appeals determined
+        that OSC “cannot perform the administrative duties of another state agency; and it cannot oversee
+        activities that, while financial in nature, have no impact on the state fisc.” NYSDOT decided to
+        cooperate with OSC on the audit, welcoming the opportunity to improve its processes and better
+        serve the public.
+
+        State Comptroller’s Comment – We revised our report and removed the sentence that DOT
+        considers sensitive.
+
+        RESPONSE TO RECOMMENDATIONS:
+
+        OSC Recommendation (1): Acknowledge and respond to FOIL requests and appeals within the
+        time frames required by law. Grant or deny access to FOIL requests within 5 business days, or if
+        more time is needed, acknowledge receipt of the request in writing, indicating both the reason for
+        the inability to grant the request within 20 business days and the approximate date when the
+        request will be granted or denied.
+
+                Response: NYSDOT agrees, in part, with this recommendation. FOIL requires an agency
+                to respond to or acknowledge a FOIL request within five days, and NYSDOT will work to
+                eliminate instances where we took longer than five days to acknowledge a request.
+
+                However, there is no specific time limit set forth in FOIL to respond to a request. Courts
+                have held that “an agency must respond to a written request for records within a
+                reasonable time and ‘there is no specific time period in which the agency must grant
+                access to the records’” Matter of Save Monroe Ave. v. New York State Dep't of Transp.,
+                197 AD3d 808, 809 (3d Dept. 2021) (quoting Matter of Data Tree, LLC v Romaine, 9 NY3d
+
+        2
+          NYSDOT hereby requests that the last sentence of the first paragraph to end on page 10 of the Report be
+        redacted.
+
+
+
+
+                                                                3
+
+
+
+
+Report 2020-S-12                                                                                                    18
+               454, 465 [2007]). In addition, there is no prohibition against an agency utilizing multiple
+               extensions when necessary – even if the underlying reasoning is repeated – in order to
+               respond to a FOIL request. Matter of Save Monroe Ave., 197 AD3d at 809-10 (holding
+               that NYSDOT’s use of multiple extensions “was certainly reasonable.”) The legal
+               conclusions of OSC’s audit team that multiple extensions, when needed, are not based
+               on familiarity with New York law.
+
+               Furthermore, specifying a set time for a response, typically before the full scope of records
+               implicated can be determined, would not quicken response times. NYSDOT always
+               responds as soon as possible to a FOIL request, even if the response deadline is in the
+               future. Each FOIL request is unique, and therefore setting a date, even with the best of
+               intentions, will not enhance the ability of the agency to gather and review records and
+               provide a timely subsequent determination and response to the FOIL request.
+
+               State Comptroller’s Comment – While there is no specific time limit set forth in FOIL to
+               respond to a request, providing more detailed information to the requestor would make
+               the process more transparent.
+
+        OSC Recommendation (2): Monitor the processing of FOIL requests to ensure it is consistent
+        throughout the agency and develop guidance how to calculate or estimate the date certain
+        accurately when additional time is required
+
+               Response: NYSDOT agrees with the portion of this recommendation to monitor
+               processing of FOIL requests to ensure consistency through the agency but reiterates that
+               neither FOIL nor any court decision sets a specific time limit to respond to a FOIL request.
+
+        OSC Recommendation (3): Provide formal training for main office and regional office employees
+        involved in processing FOIL requests.
+
+               Response: NYSDOT acknowledges this recommendation. While the Main Office FOIL
+               team, including attorneys, regularly answer questions from Regional Record Access
+               Officers related to FOIL, NYSDOT recognizes that additional and regularly scheduled
+               trainings, along with additional monitoring or Regional FOIL progress, will enhance
+               NYSDOT’s FOIL procedures, and has proceeded to enhance trainings and ensure they
+               are provided to all FOIL employees on a regular and reoccurring basis.
+
+        OSC Recommendation (4): Update the subject matter list to meet the requirements of FOIL and
+        update NYCRR to reflect current addresses for DOT’s main and regional offices.
+
+               Response: NYSDOT agrees with this recommendation and is in the process of review and
+               implementation.
+
+        OSC Recommendation (5): Work with ITS to develop audit logs for CCM to account for all FOIL
+        requests received.
+               Response: NYSDOT acknowledges the recommendation that we consult with ITS (the
+
+
+
+
+                                                        4
+
+
+
+
+Report 2020-S-12                                                                                               19
+               New York State Office of Information Technology Services) on this issue. NYSDOT does
+               not maintain or program the CCM software. The CCM software is used by NYSDOT to
+               track correspondence and FOILs.
+
+               As previously noted, NYSDOT is in the process of switching to a new FOIL/records
+               management system known as GovQA. NYSDOT anticipates that the new system will
+               give NYSDOT additional FOIL response management tools and continue to improve the
+               agency’s FOIL process. As CCM will no longer be utilized for FOIL, this specific
+               recommendation will be inapplicable. NYSDOT will however take steps to utilize GovQA’s
+               reporting and logging functionality for FOIL.
+
+        OSC Recommendation (6): Forward all appeals to COOG upon receipt, as required by FOIL.
+
+               Response: NYSDOT has implemented this recommendation.
+
+        OSC Recommendation (7): Segregate duties related to processing FOIL requests and reviewing
+        and responding to FOIL appeals.
+
+               Response: NYSDOT agrees with this recommendation and has always administered its
+               FOIL program with appeal duties segregated. OSC inaccurately describes NYSDOT’s
+               management process. The assistant counsel supervising the FOIL program may
+               generally discuss the applicability of exemptions, including attorney-client privilege. The
+               assistant counsel does not, typically work on individual FOIL responses; that work is
+               handled by another NYSDOT attorney. The assistant counsel, acting as the appeal
+               officer, does not review his own legal judgments. Accordingly, NYSDOT agrees with this
+               recommendation to the extent that it underscores the importance of segregating appeal
+               review from the initial FOIL response process, but disagrees with the conclusion that there
+               was a potential conflict of interest.
+
+               State Comptroller’s Comment – DOT couches its response when agreeing with the
+               recommendations with words such as “agrees, in part” or “acknowledges this
+               recommendation” but ultimately disagrees. We urge DOT to revisit its position by
+               implementing the recommendations designed to improve the FOIL process and
+               responses to requesters.
+
+        If you have any questions, please contact Kevin Kissane, Audit Liaison at 518-457-8867.
+
+                                                            Sincerely,
+
+                                                            Gr ace E. Boss
+                                                            Grace Boss
+                                                            Assistant Commissioner
+                                                            Administrative Services Division
+
+
+
+
+                                                        5
+
+
+
+
+Report 2020-S-12                                                                                             20
+              Contributors to Report
+
+                           Executive Team
+           Andrea C. Miller - Executive Deputy Comptroller
+                  Tina Kim - Deputy Comptroller
+             Stephen C. Lynch - Assistant Comptroller
+
+                               Audit Team
+                 Carmen Maldonado - Audit Director
+                  Robert Mehrhoff - Audit Manager
+                  Marisa Sutliff - Audit Supervisor
+          Theresa Nellis-Matson, CPA - Examiner-in-Charge
+                 Heath Dunn, CFE - Senior Examiner
+               Innocentia Freeman - Senior Examiner
+                  Stephen Meyers - Staff Examiner
+
+
+
+
+                             Contact Information
+                               (518) 474-3271
+                  StateGovernmentAccountability@osc.ny.gov
+                   Office of the New York State Comptroller
+                  Division of State Government Accountability
+                          110 State Street, 11th Floor
+                                Albany, NY 12236
+
+
+
+             Like us on Facebook at facebook.com/nyscomptroller
+                      Follow us on Twitter @nyscomptroller
+For more audits or information, please visit: www.osc.state.ny.us/audits/index.htm
+

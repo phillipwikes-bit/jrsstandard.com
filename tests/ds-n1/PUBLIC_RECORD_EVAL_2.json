@@ -1,0 +1,2038 @@
+{
+  "set": "public-record-eval-2",
+  "sealed_hash": "9c971b2fef6bc22a6c5c911f3bd48756243c4b7b34321f925d5c85503013efa8",
+  "run_at": "2026-11-25T15:34:27.701Z",
+  "primary": {
+    "pairs": 60,
+    "scored": 60,
+    "P1_higher": 32,
+    "P4_higher": 27,
+    "ties": 1,
+    "sign_test_p": 0.6029,
+    "success": false
+  },
+  "secondary": {
+    "P1": {
+      "ready": 0,
+      "of": 60
+    },
+    "P4": {
+      "ready": 0,
+      "of": 60
+    }
+  },
+  "means": {
+    "P1_open": 16.53,
+    "P4_open": 22.68,
+    "P1_omissions": 5.45,
+    "P4_omissions": 0.22,
+    "P1_claims": 20.92,
+    "P4_claims": 49.87
+  },
+  "rows": [
+    {
+      "source": "S014-01",
+      "drafter": "claude-sonnet-5-5",
+      "P1": {
+        "status": "HOLD",
+        "open_findings": 25,
+        "omissions": 10,
+        "claims": 36,
+        "codes": [
+          "UNSUPPORTED_CLAIM",
+          "NEGATION_CONFLICT",
+          "RELEVANCE_NOT_ESTABLISHED",
+          "QUALIFICATION_OMITTED",
+          "DATE_NOT_ESTABLISHED",
+          "SUBJECT_MISMATCH"
+        ],
+        "signal": 35
+      },
+      "P4": {
+        "status": "HOLD",
+        "open_findings": 23,
+        "omissions": 0,
+        "claims": 85,
+        "codes": [
+          "UNSUPPORTED_CLAIM",
+          "NEGATION_CONFLICT",
+          "RELEVANCE_NOT_ESTABLISHED",
+          "QUALIFICATION_OMITTED",
+          "UNTRACEABLE_AUTHORITY",
+          "ACTOR_NOT_ESTABLISHED"
+        ],
+        "signal": 23
+      }
+    },
+    {
+      "source": "S014-01",
+      "drafter": "claude-haiku-4-5-20251001",
+      "P1": {
+        "status": "HOLD",
+        "open_findings": 25,
+        "omissions": 16,
+        "claims": 23,
+        "codes": [
+          "UNSUPPORTED_CLAIM",
+          "SUBJECT_MISMATCH",
+          "RELEVANCE_NOT_ESTABLISHED",
+          "NEGATION_CONFLICT",
+          "ACTOR_NOT_ESTABLISHED",
+          "QUALIFICATION_OMITTED",
+          "UNTRACEABLE_AUTHORITY"
+        ],
+        "signal": 41
+      },
+      "P4": {
+        "status": "HOLD",
+        "open_findings": 63,
+        "omissions": 0,
+        "claims": 61,
+        "codes": [
+          "UNSUPPORTED_CLAIM",
+          "RELEVANCE_NOT_ESTABLISHED",
+          "NEGATION_CONFLICT",
+          "DATE_NOT_ESTABLISHED",
+          "QUALIFICATION_OMITTED",
+          "UNTRACEABLE_AUTHORITY",
+          "ACTOR_NOT_ESTABLISHED",
+          "SUBJECT_MISMATCH"
+        ],
+        "signal": 63
+      }
+    },
+    {
+      "source": "S014-02",
+      "drafter": "claude-sonnet-5-5",
+      "P1": {
+        "status": "HOLD",
+        "open_findings": 8,
+        "omissions": 0,
+        "claims": 19,
+        "codes": [
+          "ACTOR_NOT_ESTABLISHED",
+          "UNSUPPORTED_CLAIM",
+          "NEGATION_CONFLICT",
+          "UNTRACEABLE_AUTHORITY",
+          "SUBJECT_MISMATCH",
+          "UNMAPPED_ASSERTION"
+        ],
+        "signal": 8
+      },
+      "P4": {
+        "status": "HOLD",
+        "open_findings": 8,
+        "omissions": 0,
+        "claims": 29,
+        "codes": [
+          "UNSUPPORTED_CLAIM",
+          "ACTOR_NOT_ESTABLISHED",
+          "NEGATION_CONFLICT",
+          "RELEVANCE_NOT_ESTABLISHED"
+        ],
+        "signal": 8
+      }
+    },
+    {
+      "source": "S014-02",
+      "drafter": "claude-haiku-4-5-20251001",
+      "P1": {
+        "status": "HOLD",
+        "open_findings": 10,
+        "omissions": 2,
+        "claims": 9,
+        "codes": [
+          "UNSUPPORTED_CLAIM",
+          "ACTOR_NOT_ESTABLISHED",
+          "RELEVANCE_NOT_ESTABLISHED",
+          "UNTRACEABLE_AUTHORITY",
+          "SUBJECT_MISMATCH"
+        ],
+        "signal": 12
+      },
+      "P4": {
+        "status": "HOLD",
+        "open_findings": 11,
+        "omissions": 0,
+        "claims": 21,
+        "codes": [
+          "UNSUPPORTED_CLAIM",
+          "ACTOR_NOT_ESTABLISHED",
+          "RELEVANCE_NOT_ESTABLISHED",
+          "UNTRACEABLE_AUTHORITY",
+          "NEGATION_CONFLICT",
+          "UNMAPPED_ASSERTION"
+        ],
+        "signal": 11
+      }
+    },
+    {
+      "source": "S014-03",
+      "drafter": "claude-sonnet-5-5",
+      "P1": {
+        "status": "HOLD",
+        "open_findings": 29,
+        "omissions": 4,
+        "claims": 35,
+        "codes": [
+          "DATE_NOT_ESTABLISHED",
+          "UNSUPPORTED_CLAIM",
+          "NEGATION_CONFLICT",
+          "ACTOR_NOT_ESTABLISHED",
+          "RELEVANCE_NOT_ESTABLISHED"
+        ],
+        "signal": 33
+      },
+      "P4": {
+        "status": "HOLD",
+        "open_findings": 17,
+        "omissions": 0,
+        "claims": 43,
+        "codes": [
+          "UNSUPPORTED_CLAIM",
+          "DATE_NOT_ESTABLISHED",
+          "NEGATION_CONFLICT",
+          "RELEVANCE_NOT_ESTABLISHED"
+        ],
+        "signal": 17
+      }
+    },
+    {
+      "source": "S014-03",
+      "drafter": "claude-haiku-4-5-20251001",
+      "P1": {
+        "status": "HOLD",
+        "open_findings": 28,
+        "omissions": 7,
+        "claims": 13,
+        "codes": [
+          "UNSUPPORTED_CLAIM",
+          "NEGATION_CONFLICT",
+          "SUBJECT_MISMATCH",
+          "RELEVANCE_NOT_ESTABLISHED",
+          "DATE_NOT_ESTABLISHED",
+          "ACTOR_NOT_ESTABLISHED"
+        ],
+        "signal": 35
+      },
+      "P4": {
+        "status": "HOLD",
+        "open_findings": 27,
+        "omissions": 0,
+        "claims": 26,
+        "codes": [
+          "UNSUPPORTED_CLAIM",
+          "SUBJECT_MISMATCH",
+          "RELEVANCE_NOT_ESTABLISHED",
+          "ACTOR_NOT_ESTABLISHED",
+          "NEGATION_CONFLICT",
+          "DATE_NOT_ESTABLISHED",
+          "UNTRACEABLE_AUTHORITY"
+        ],
+        "signal": 27
+      }
+    },
+    {
+      "source": "S014-04",
+      "drafter": "claude-sonnet-5-5",
+      "P1": {
+        "status": "HOLD",
+        "open_findings": 22,
+        "omissions": 4,
+        "claims": 38,
+        "codes": [
+          "ACTOR_NOT_ESTABLISHED",
+          "UNSUPPORTED_CLAIM",
+          "RELEVANCE_NOT_ESTABLISHED",
+          "NEGATION_CONFLICT",
+          "SUBJECT_MISMATCH"
+        ],
+        "signal": 26
+      },
+      "P4": {
+        "status": "HOLD",
+        "open_findings": 34,
+        "omissions": 2,
+        "claims": 100,
+        "codes": [
+          "UNSUPPORTED_CLAIM",
+          "RELEVANCE_NOT_ESTABLISHED",
+          "NEGATION_CONFLICT",
+          "ACTOR_NOT_ESTABLISHED",
+          "CLAIM_LOCATION_AMBIGUOUS"
+        ],
+        "signal": 36
+      }
+    },
+    {
+      "source": "S014-04",
+      "drafter": "claude-haiku-4-5-20251001",
+      "P1": {
+        "status": "HOLD",
+        "open_findings": 21,
+        "omissions": 23,
+        "claims": 12,
+        "codes": [
+          "UNSUPPORTED_CLAIM",
+          "ACTOR_NOT_ESTABLISHED",
+          "RELEVANCE_NOT_ESTABLISHED",
+          "NEGATION_CONFLICT"
+        ],
+        "signal": 44
+      },
+      "P4": {
+        "status": "HOLD",
+        "open_findings": 27,
+        "omissions": 0,
+        "claims": 96,
+        "codes": [
+          "UNSUPPORTED_CLAIM",
+          "ACTOR_NOT_ESTABLISHED",
+          "RELEVANCE_NOT_ESTABLISHED",
+          "NEGATION_CONFLICT",
+          "CLAIM_LOCATION_AMBIGUOUS"
+        ],
+        "signal": 27
+      }
+    },
+    {
+      "source": "S014-05",
+      "drafter": "claude-sonnet-5-5",
+      "P1": {
+        "status": "HOLD",
+        "open_findings": 20,
+        "omissions": 0,
+        "claims": 28,
+        "codes": [
+          "DATE_NOT_ESTABLISHED",
+          "RELEVANCE_NOT_ESTABLISHED",
+          "UNSUPPORTED_CLAIM",
+          "NEGATION_CONFLICT",
+          "ACTOR_NOT_ESTABLISHED"
+        ],
+        "signal": 20
+      },
+      "P4": {
+        "status": "HOLD",
+        "open_findings": 10,
+        "omissions": 1,
+        "claims": 35,
+        "codes": [
+          "CONTRARY_CLAUSE_OMITTED",
+          "NEGATION_CONFLICT",
+          "UNSUPPORTED_CLAIM"
+        ],
+        "signal": 11
+      }
+    },
+    {
+      "source": "S014-05",
+      "drafter": "claude-haiku-4-5-20251001",
+      "P1": {
+        "status": "HOLD",
+        "open_findings": 8,
+        "omissions": 1,
+        "claims": 10,
+        "codes": [
+          "UNSUPPORTED_CLAIM",
+          "SUBJECT_MISMATCH",
+          "RELEVANCE_NOT_ESTABLISHED",
+          "ACTOR_NOT_ESTABLISHED",
+          "NEGATION_CONFLICT"
+        ],
+        "signal": 9
+      },
+      "P4": {
+        "status": "HOLD",
+        "open_findings": 5,
+        "omissions": 0,
+        "claims": 27,
+        "codes": [
+          "UNSUPPORTED_CLAIM",
+          "NEGATION_CONFLICT"
+        ],
+        "signal": 5
+      }
+    },
+    {
+      "source": "S014-06",
+      "drafter": "claude-sonnet-5-5",
+      "P1": {
+        "status": "HOLD",
+        "open_findings": 22,
+        "omissions": 2,
+        "claims": 29,
+        "codes": [
+          "RELEVANCE_NOT_ESTABLISHED",
+          "UNSUPPORTED_CLAIM",
+          "SUBJECT_MISMATCH",
+          "NEGATION_CONFLICT",
+          "QUALIFICATION_OMITTED",
+          "DATE_NOT_ESTABLISHED",
+          "ACTOR_NOT_ESTABLISHED"
+        ],
+        "signal": 24
+      },
+      "P4": {
+        "status": "HOLD",
+        "open_findings": 16,
+        "omissions": 1,
+        "claims": 44,
+        "codes": [
+          "RELEVANCE_NOT_ESTABLISHED",
+          "UNSUPPORTED_CLAIM",
+          "DATE_NOT_ESTABLISHED",
+          "NEGATION_CONFLICT",
+          "CONTRARY_CLAUSE_OMITTED",
+          "ACTOR_NOT_ESTABLISHED",
+          "REASONING_NOT_TRACED",
+          "CONCLUSION_ON_UNRESOLVED_BASIS"
+        ],
+        "signal": 17
+      }
+    },
+    {
+      "source": "S014-06",
+      "drafter": "claude-haiku-4-5-20251001",
+      "P1": {
+        "status": "HOLD",
+        "open_findings": 15,
+        "omissions": 5,
+        "claims": 10,
+        "codes": [
+          "UNSUPPORTED_CLAIM",
+          "SUBJECT_MISMATCH",
+          "RELEVANCE_NOT_ESTABLISHED",
+          "DATE_NOT_ESTABLISHED",
+          "ACTOR_NOT_ESTABLISHED",
+          "QUALIFICATION_OMITTED",
+          "UNTRACEABLE_AUTHORITY"
+        ],
+        "signal": 20
+      },
+      "P4": {
+        "status": "HOLD",
+        "open_findings": 18,
+        "omissions": 0,
+        "claims": 34,
+        "codes": [
+          "UNSUPPORTED_CLAIM",
+          "NEGATION_CONFLICT",
+          "CLAIM_LOCATION_AMBIGUOUS",
+          "DATE_NOT_ESTABLISHED",
+          "ACTOR_NOT_ESTABLISHED",
+          "UNTRACEABLE_AUTHORITY",
+          "RELEVANCE_NOT_ESTABLISHED",
+          "REASONING_NOT_TRACED",
+          "CONCLUSION_ON_UNRESOLVED_BASIS"
+        ],
+        "signal": 18
+      }
+    },
+    {
+      "source": "S014-07",
+      "drafter": "claude-sonnet-5-5",
+      "P1": {
+        "status": "HOLD",
+        "open_findings": 15,
+        "omissions": 1,
+        "claims": 25,
+        "codes": [
+          "RELEVANCE_NOT_ESTABLISHED",
+          "UNSUPPORTED_CLAIM",
+          "NEGATION_CONFLICT",
+          "SUBJECT_MISMATCH"
+        ],
+        "signal": 16
+      },
+      "P4": {
+        "status": "HOLD",
+        "open_findings": 11,
+        "omissions": 0,
+        "claims": 34,
+        "codes": [
+          "SUBJECT_MISMATCH",
+          "RELEVANCE_NOT_ESTABLISHED",
+          "NEGATION_CONFLICT",
+          "UNSUPPORTED_CLAIM"
+        ],
+        "signal": 11
+      }
+    },
+    {
+      "source": "S014-07",
+      "drafter": "claude-haiku-4-5-20251001",
+      "P1": {
+        "status": "HOLD",
+        "open_findings": 7,
+        "omissions": 4,
+        "claims": 13,
+        "codes": [
+          "UNSUPPORTED_CLAIM",
+          "RELEVANCE_NOT_ESTABLISHED",
+          "NEGATION_CONFLICT"
+        ],
+        "signal": 11
+      },
+      "P4": {
+        "status": "HOLD",
+        "open_findings": 4,
+        "omissions": 0,
+        "claims": 23,
+        "codes": [
+          "UNSUPPORTED_CLAIM",
+          "ACTOR_NOT_ESTABLISHED",
+          "RELEVANCE_NOT_ESTABLISHED"
+        ],
+        "signal": 4
+      }
+    },
+    {
+      "source": "S014-08",
+      "drafter": "claude-sonnet-5-5",
+      "P1": {
+        "status": "HOLD",
+        "open_findings": 35,
+        "omissions": 5,
+        "claims": 37,
+        "codes": [
+          "RELEVANCE_NOT_ESTABLISHED",
+          "UNSUPPORTED_CLAIM",
+          "NEGATION_CONFLICT",
+          "CONTRARY_CLAUSE_OMITTED",
+          "ACTOR_NOT_ESTABLISHED",
+          "SUBJECT_MISMATCH",
+          "UNTRACEABLE_AUTHORITY"
+        ],
+        "signal": 40
+      },
+      "P4": {
+        "status": "HOLD",
+        "open_findings": 48,
+        "omissions": 1,
+        "claims": 80,
+        "codes": [
+          "UNSUPPORTED_CLAIM",
+          "CONTRARY_CLAUSE_OMITTED",
+          "RELEVANCE_NOT_ESTABLISHED",
+          "NEGATION_CONFLICT",
+          "QUALIFICATION_OMITTED",
+          "DATE_NOT_ESTABLISHED",
+          "UNMAPPED_ASSERTION"
+        ],
+        "signal": 49
+      }
+    },
+    {
+      "source": "S014-08",
+      "drafter": "claude-haiku-4-5-20251001",
+      "P1": {
+        "status": "HOLD",
+        "open_findings": 15,
+        "omissions": 18,
+        "claims": 9,
+        "codes": [
+          "UNSUPPORTED_CLAIM",
+          "RELEVANCE_NOT_ESTABLISHED",
+          "UNTRACEABLE_AUTHORITY",
+          "ACTOR_NOT_ESTABLISHED",
+          "NEGATION_CONFLICT",
+          "DATE_NOT_ESTABLISHED"
+        ],
+        "signal": 33
+      },
+      "P4": {
+        "status": "HOLD",
+        "open_findings": 40,
+        "omissions": 1,
+        "claims": 74,
+        "codes": [
+          "UNSUPPORTED_CLAIM",
+          "ACTOR_NOT_ESTABLISHED",
+          "SUBJECT_MISMATCH",
+          "CONTRARY_CLAUSE_OMITTED",
+          "RELEVANCE_NOT_ESTABLISHED",
+          "QUALIFICATION_OMITTED",
+          "NEGATION_CONFLICT",
+          "DATE_NOT_ESTABLISHED",
+          "REASONING_NOT_TRACED",
+          "CONCLUSION_ON_UNRESOLVED_BASIS"
+        ],
+        "signal": 41
+      }
+    },
+    {
+      "source": "S014-09",
+      "drafter": "claude-sonnet-5-5",
+      "P1": {
+        "status": "HOLD",
+        "open_findings": 14,
+        "omissions": 0,
+        "claims": 25,
+        "codes": [
+          "UNSUPPORTED_CLAIM",
+          "RELEVANCE_NOT_ESTABLISHED",
+          "NEGATION_CONFLICT"
+        ],
+        "signal": 14
+      },
+      "P4": {
+        "status": "HOLD",
+        "open_findings": 12,
+        "omissions": 0,
+        "claims": 47,
+        "codes": [
+          "NEGATION_CONFLICT",
+          "CONTRARY_CLAUSE_OMITTED",
+          "RELEVANCE_NOT_ESTABLISHED",
+          "UNSUPPORTED_CLAIM"
+        ],
+        "signal": 12
+      }
+    },
+    {
+      "source": "S014-09",
+      "drafter": "claude-haiku-4-5-20251001",
+      "P1": {
+        "status": "HOLD",
+        "open_findings": 17,
+        "omissions": 9,
+        "claims": 14,
+        "codes": [
+          "UNSUPPORTED_CLAIM",
+          "SUBJECT_MISMATCH",
+          "RELEVANCE_NOT_ESTABLISHED",
+          "NEGATION_CONFLICT",
+          "ACTOR_NOT_ESTABLISHED",
+          "CONTRARY_CLAUSE_OMITTED"
+        ],
+        "signal": 26
+      },
+      "P4": {
+        "status": "HOLD",
+        "open_findings": 16,
+        "omissions": 0,
+        "claims": 39,
+        "codes": [
+          "UNSUPPORTED_CLAIM",
+          "NEGATION_CONFLICT",
+          "ACTOR_NOT_ESTABLISHED",
+          "CONTRARY_CLAUSE_OMITTED"
+        ],
+        "signal": 16
+      }
+    },
+    {
+      "source": "S014-10",
+      "drafter": "claude-sonnet-5-5",
+      "P1": {
+        "status": "HOLD",
+        "open_findings": 26,
+        "omissions": 7,
+        "claims": 33,
+        "codes": [
+          "RELEVANCE_NOT_ESTABLISHED",
+          "UNSUPPORTED_CLAIM",
+          "NEGATION_CONFLICT",
+          "ACTOR_NOT_ESTABLISHED",
+          "CONTRARY_CLAUSE_OMITTED"
+        ],
+        "signal": 33
+      },
+      "P4": {
+        "status": "HOLD",
+        "open_findings": 31,
+        "omissions": 0,
+        "claims": 96,
+        "codes": [
+          "UNSUPPORTED_CLAIM",
+          "NEGATION_CONFLICT",
+          "RELEVANCE_NOT_ESTABLISHED",
+          "DATE_NOT_ESTABLISHED",
+          "CONTRARY_CLAUSE_OMITTED",
+          "REASONING_NOT_TRACED",
+          "CONCLUSION_ON_UNRESOLVED_BASIS"
+        ],
+        "signal": 31
+      }
+    },
+    {
+      "source": "S014-10",
+      "drafter": "claude-haiku-4-5-20251001",
+      "P1": {
+        "status": "HOLD",
+        "open_findings": 7,
+        "omissions": 7,
+        "claims": 20,
+        "codes": [
+          "UNSUPPORTED_CLAIM",
+          "RELEVANCE_NOT_ESTABLISHED"
+        ],
+        "signal": 14
+      },
+      "P4": {
+        "status": "HOLD",
+        "open_findings": 43,
+        "omissions": 0,
+        "claims": 84,
+        "codes": [
+          "UNSUPPORTED_CLAIM",
+          "NEGATION_CONFLICT",
+          "DATE_NOT_ESTABLISHED",
+          "UNTRACEABLE_AUTHORITY",
+          "ACTOR_NOT_ESTABLISHED",
+          "CLAIM_LOCATION_AMBIGUOUS",
+          "RELEVANCE_NOT_ESTABLISHED",
+          "SUBJECT_MISMATCH",
+          "REASONING_NOT_TRACED",
+          "UNMAPPED_ASSERTION",
+          "CONCLUSION_ON_UNRESOLVED_BASIS"
+        ],
+        "signal": 43
+      }
+    },
+    {
+      "source": "S014-11",
+      "drafter": "claude-sonnet-5-5",
+      "P1": {
+        "status": "HOLD",
+        "open_findings": 7,
+        "omissions": 1,
+        "claims": 25,
+        "codes": [
+          "RELEVANCE_NOT_ESTABLISHED",
+          "UNSUPPORTED_CLAIM",
+          "NEGATION_CONFLICT",
+          "SUBJECT_MISMATCH"
+        ],
+        "signal": 8
+      },
+      "P4": {
+        "status": "HOLD",
+        "open_findings": 25,
+        "omissions": 0,
+        "claims": 49,
+        "codes": [
+          "UNSUPPORTED_CLAIM",
+          "RELEVANCE_NOT_ESTABLISHED",
+          "NEGATION_CONFLICT",
+          "CONTRARY_CLAUSE_OMITTED",
+          "REASONING_NOT_TRACED",
+          "CONCLUSION_ON_UNRESOLVED_BASIS"
+        ],
+        "signal": 25
+      }
+    },
+    {
+      "source": "S014-11",
+      "drafter": "claude-haiku-4-5-20251001",
+      "P1": {
+        "status": "HOLD",
+        "open_findings": 15,
+        "omissions": 2,
+        "claims": 12,
+        "codes": [
+          "UNSUPPORTED_CLAIM",
+          "SUBJECT_MISMATCH",
+          "RELEVANCE_NOT_ESTABLISHED",
+          "ACTOR_NOT_ESTABLISHED",
+          "NEGATION_CONFLICT"
+        ],
+        "signal": 17
+      },
+      "P4": {
+        "status": "HOLD",
+        "open_findings": 21,
+        "omissions": 0,
+        "claims": 35,
+        "codes": [
+          "UNSUPPORTED_CLAIM",
+          "SUBJECT_MISMATCH",
+          "NEGATION_CONFLICT",
+          "ACTOR_NOT_ESTABLISHED"
+        ],
+        "signal": 21
+      }
+    },
+    {
+      "source": "S014-12",
+      "drafter": "claude-sonnet-5-5",
+      "P1": {
+        "status": "HOLD",
+        "open_findings": 11,
+        "omissions": 2,
+        "claims": 30,
+        "codes": [
+          "SUBJECT_MISMATCH",
+          "RELEVANCE_NOT_ESTABLISHED",
+          "UNSUPPORTED_CLAIM",
+          "NEGATION_CONFLICT",
+          "ACTOR_NOT_ESTABLISHED"
+        ],
+        "signal": 13
+      },
+      "P4": {
+        "status": "HOLD",
+        "open_findings": 6,
+        "omissions": 0,
+        "claims": 37,
+        "codes": [
+          "UNSUPPORTED_CLAIM",
+          "CONTRARY_CLAUSE_OMITTED",
+          "NEGATION_CONFLICT"
+        ],
+        "signal": 6
+      }
+    },
+    {
+      "source": "S014-12",
+      "drafter": "claude-haiku-4-5-20251001",
+      "P1": {
+        "status": "HOLD",
+        "open_findings": 19,
+        "omissions": 9,
+        "claims": 14,
+        "codes": [
+          "UNSUPPORTED_CLAIM",
+          "SUBJECT_MISMATCH",
+          "NEGATION_CONFLICT",
+          "RELEVANCE_NOT_ESTABLISHED",
+          "ACTOR_NOT_ESTABLISHED"
+        ],
+        "signal": 28
+      },
+      "P4": {
+        "status": "HOLD",
+        "open_findings": 25,
+        "omissions": 0,
+        "claims": 26,
+        "codes": [
+          "UNSUPPORTED_CLAIM",
+          "RELEVANCE_NOT_ESTABLISHED",
+          "NEGATION_CONFLICT",
+          "ACTOR_NOT_ESTABLISHED"
+        ],
+        "signal": 25
+      }
+    },
+    {
+      "source": "S014-13",
+      "drafter": "claude-sonnet-5-5",
+      "P1": {
+        "status": "HOLD",
+        "open_findings": 24,
+        "omissions": 7,
+        "claims": 21,
+        "codes": [
+          "RELEVANCE_NOT_ESTABLISHED",
+          "UNSUPPORTED_CLAIM",
+          "SUBJECT_MISMATCH",
+          "QUALIFICATION_OMITTED",
+          "NEGATION_CONFLICT",
+          "ACTOR_NOT_ESTABLISHED"
+        ],
+        "signal": 31
+      },
+      "P4": {
+        "status": "HOLD",
+        "open_findings": 17,
+        "omissions": 0,
+        "claims": 41,
+        "codes": [
+          "UNSUPPORTED_CLAIM",
+          "RELEVANCE_NOT_ESTABLISHED",
+          "DATE_NOT_ESTABLISHED",
+          "NEGATION_CONFLICT",
+          "QUALIFICATION_OMITTED",
+          "REASONING_NOT_TRACED",
+          "CONCLUSION_ON_UNRESOLVED_BASIS"
+        ],
+        "signal": 17
+      }
+    },
+    {
+      "source": "S014-13",
+      "drafter": "claude-haiku-4-5-20251001",
+      "P1": {
+        "status": "HOLD",
+        "open_findings": 20,
+        "omissions": 3,
+        "claims": 14,
+        "codes": [
+          "UNSUPPORTED_CLAIM",
+          "SUBJECT_MISMATCH",
+          "RELEVANCE_NOT_ESTABLISHED",
+          "ACTOR_NOT_ESTABLISHED",
+          "DATE_NOT_ESTABLISHED",
+          "NEGATION_CONFLICT"
+        ],
+        "signal": 23
+      },
+      "P4": {
+        "status": "HOLD",
+        "open_findings": 18,
+        "omissions": 0,
+        "claims": 33,
+        "codes": [
+          "UNSUPPORTED_CLAIM",
+          "RELEVANCE_NOT_ESTABLISHED",
+          "SUBJECT_MISMATCH",
+          "QUALIFICATION_OMITTED",
+          "NEGATION_CONFLICT",
+          "ACTOR_NOT_ESTABLISHED",
+          "UNMAPPED_ASSERTION"
+        ],
+        "signal": 18
+      }
+    },
+    {
+      "source": "S014-14",
+      "drafter": "claude-sonnet-5-5",
+      "P1": {
+        "status": "HOLD",
+        "open_findings": 16,
+        "omissions": 1,
+        "claims": 32,
+        "codes": [
+          "DATE_NOT_ESTABLISHED",
+          "UNSUPPORTED_CLAIM",
+          "NEGATION_CONFLICT",
+          "QUALIFICATION_OMITTED",
+          "ACTOR_NOT_ESTABLISHED",
+          "RELEVANCE_NOT_ESTABLISHED",
+          "CONTRARY_CLAUSE_OMITTED"
+        ],
+        "signal": 17
+      },
+      "P4": {
+        "status": "HOLD",
+        "open_findings": 18,
+        "omissions": 0,
+        "claims": 41,
+        "codes": [
+          "QUALIFICATION_OMITTED",
+          "NEGATION_CONFLICT",
+          "RELEVANCE_NOT_ESTABLISHED",
+          "UNTRACEABLE_AUTHORITY",
+          "UNSUPPORTED_CLAIM"
+        ],
+        "signal": 18
+      }
+    },
+    {
+      "source": "S014-14",
+      "drafter": "claude-haiku-4-5-20251001",
+      "P1": {
+        "status": "HOLD",
+        "open_findings": 22,
+        "omissions": 3,
+        "claims": 12,
+        "codes": [
+          "UNSUPPORTED_CLAIM",
+          "ACTOR_NOT_ESTABLISHED",
+          "RELEVANCE_NOT_ESTABLISHED",
+          "NEGATION_CONFLICT",
+          "DATE_NOT_ESTABLISHED",
+          "UNTRACEABLE_AUTHORITY"
+        ],
+        "signal": 25
+      },
+      "P4": {
+        "status": "HOLD",
+        "open_findings": 8,
+        "omissions": 0,
+        "claims": 38,
+        "codes": [
+          "UNSUPPORTED_CLAIM",
+          "RELEVANCE_NOT_ESTABLISHED",
+          "NEGATION_CONFLICT",
+          "ACTOR_NOT_ESTABLISHED",
+          "UNMAPPED_ASSERTION"
+        ],
+        "signal": 8
+      }
+    },
+    {
+      "source": "S014-15",
+      "drafter": "claude-sonnet-5-5",
+      "P1": {
+        "status": "HOLD",
+        "open_findings": 15,
+        "omissions": 7,
+        "claims": 35,
+        "codes": [
+          "RELEVANCE_NOT_ESTABLISHED",
+          "UNSUPPORTED_CLAIM",
+          "NEGATION_CONFLICT",
+          "QUALIFICATION_OMITTED"
+        ],
+        "signal": 22
+      },
+      "P4": {
+        "status": "HOLD",
+        "open_findings": 29,
+        "omissions": 0,
+        "claims": 80,
+        "codes": [
+          "NEGATION_CONFLICT",
+          "ACTOR_NOT_ESTABLISHED",
+          "RELEVANCE_NOT_ESTABLISHED",
+          "UNSUPPORTED_CLAIM",
+          "QUALIFICATION_OMITTED",
+          "CONTRARY_CLAUSE_OMITTED",
+          "SUBJECT_MISMATCH"
+        ],
+        "signal": 29
+      }
+    },
+    {
+      "source": "S014-15",
+      "drafter": "claude-haiku-4-5-20251001",
+      "P1": {
+        "status": "HOLD",
+        "open_findings": 20,
+        "omissions": 19,
+        "claims": 13,
+        "codes": [
+          "NEGATION_CONFLICT",
+          "ACTOR_NOT_ESTABLISHED",
+          "RELEVANCE_NOT_ESTABLISHED",
+          "UNSUPPORTED_CLAIM",
+          "DATE_NOT_ESTABLISHED",
+          "QUALIFICATION_OMITTED"
+        ],
+        "signal": 39
+      },
+      "P4": {
+        "status": "HOLD",
+        "open_findings": 47,
+        "omissions": 0,
+        "claims": 68,
+        "codes": [
+          "NEGATION_CONFLICT",
+          "RELEVANCE_NOT_ESTABLISHED",
+          "UNSUPPORTED_CLAIM",
+          "ACTOR_NOT_ESTABLISHED",
+          "CLAIM_LOCATION_AMBIGUOUS",
+          "SUBJECT_MISMATCH",
+          "DATE_NOT_ESTABLISHED",
+          "CONCLUSION_ON_UNRESOLVED_BASIS"
+        ],
+        "signal": 47
+      }
+    },
+    {
+      "source": "S014-16",
+      "drafter": "claude-sonnet-5-5",
+      "P1": {
+        "status": "HOLD",
+        "open_findings": 18,
+        "omissions": 1,
+        "claims": 32,
+        "codes": [
+          "SUBJECT_MISMATCH",
+          "DATE_NOT_ESTABLISHED",
+          "UNSUPPORTED_CLAIM",
+          "RELEVANCE_NOT_ESTABLISHED",
+          "NEGATION_CONFLICT"
+        ],
+        "signal": 19
+      },
+      "P4": {
+        "status": "HOLD",
+        "open_findings": 26,
+        "omissions": 1,
+        "claims": 61,
+        "codes": [
+          "UNSUPPORTED_CLAIM",
+          "ACTOR_NOT_ESTABLISHED",
+          "NEGATION_CONFLICT",
+          "RELEVANCE_NOT_ESTABLISHED",
+          "DATE_NOT_ESTABLISHED",
+          "REASONING_NOT_TRACED",
+          "CONCLUSION_ON_UNRESOLVED_BASIS"
+        ],
+        "signal": 27
+      }
+    },
+    {
+      "source": "S014-16",
+      "drafter": "claude-haiku-4-5-20251001",
+      "P1": {
+        "status": "HOLD",
+        "open_findings": 10,
+        "omissions": 6,
+        "claims": 17,
+        "codes": [
+          "UNSUPPORTED_CLAIM",
+          "RELEVANCE_NOT_ESTABLISHED",
+          "DATE_NOT_ESTABLISHED",
+          "NEGATION_CONFLICT",
+          "UNMAPPED_ASSERTION"
+        ],
+        "signal": 16
+      },
+      "P4": {
+        "status": "HOLD",
+        "open_findings": 28,
+        "omissions": 0,
+        "claims": 53,
+        "codes": [
+          "UNSUPPORTED_CLAIM",
+          "ACTOR_NOT_ESTABLISHED",
+          "CLAIM_LOCATION_AMBIGUOUS",
+          "RELEVANCE_NOT_ESTABLISHED",
+          "DATE_NOT_ESTABLISHED",
+          "UNTRACEABLE_AUTHORITY",
+          "NEGATION_CONFLICT",
+          "REASONING_NOT_TRACED",
+          "AUTHORITY_TEXT_NOT_SUPPLIED",
+          "CONCLUSION_ON_UNRESOLVED_BASIS"
+        ],
+        "signal": 28
+      }
+    },
+    {
+      "source": "S014-17",
+      "drafter": "claude-sonnet-5-5",
+      "P1": {
+        "status": "HOLD",
+        "open_findings": 27,
+        "omissions": 1,
+        "claims": 35,
+        "codes": [
+          "RELEVANCE_NOT_ESTABLISHED",
+          "UNSUPPORTED_CLAIM",
+          "NEGATION_CONFLICT",
+          "CONTRARY_CLAUSE_OMITTED",
+          "UNTRACEABLE_AUTHORITY",
+          "ACTOR_NOT_ESTABLISHED",
+          "SUBJECT_MISMATCH",
+          "UNMAPPED_ASSERTION"
+        ],
+        "signal": 28
+      },
+      "P4": {
+        "status": "HOLD",
+        "open_findings": 26,
+        "omissions": 0,
+        "claims": 58,
+        "codes": [
+          "UNSUPPORTED_CLAIM",
+          "ACTOR_NOT_ESTABLISHED",
+          "CONTRARY_CLAUSE_OMITTED",
+          "NEGATION_CONFLICT",
+          "UNTRACEABLE_AUTHORITY",
+          "RELEVANCE_NOT_ESTABLISHED"
+        ],
+        "signal": 26
+      }
+    },
+    {
+      "source": "S014-17",
+      "drafter": "claude-haiku-4-5-20251001",
+      "P1": {
+        "status": "HOLD",
+        "open_findings": 12,
+        "omissions": 2,
+        "claims": 11,
+        "codes": [
+          "UNSUPPORTED_CLAIM",
+          "NEGATION_CONFLICT",
+          "DATE_NOT_ESTABLISHED",
+          "RELEVANCE_NOT_ESTABLISHED",
+          "ACTOR_NOT_ESTABLISHED"
+        ],
+        "signal": 14
+      },
+      "P4": {
+        "status": "HOLD",
+        "open_findings": 19,
+        "omissions": 0,
+        "claims": 43,
+        "codes": [
+          "UNSUPPORTED_CLAIM",
+          "ACTOR_NOT_ESTABLISHED",
+          "DATE_NOT_ESTABLISHED",
+          "CONTRARY_CLAUSE_OMITTED",
+          "NEGATION_CONFLICT",
+          "REASONING_NOT_TRACED",
+          "CONCLUSION_ON_UNRESOLVED_BASIS"
+        ],
+        "signal": 19
+      }
+    },
+    {
+      "source": "S014-18",
+      "drafter": "claude-sonnet-5-5",
+      "P1": {
+        "status": "HOLD",
+        "open_findings": 7,
+        "omissions": 1,
+        "claims": 17,
+        "codes": [
+          "RELEVANCE_NOT_ESTABLISHED",
+          "UNSUPPORTED_CLAIM"
+        ],
+        "signal": 8
+      },
+      "P4": {
+        "status": "HOLD",
+        "open_findings": 10,
+        "omissions": 0,
+        "claims": 43,
+        "codes": [
+          "UNSUPPORTED_CLAIM"
+        ],
+        "signal": 10
+      }
+    },
+    {
+      "source": "S014-18",
+      "drafter": "claude-haiku-4-5-20251001",
+      "P1": {
+        "status": "HOLD",
+        "open_findings": 10,
+        "omissions": 8,
+        "claims": 8,
+        "codes": [
+          "UNSUPPORTED_CLAIM",
+          "ACTOR_NOT_ESTABLISHED",
+          "RELEVANCE_NOT_ESTABLISHED",
+          "NEGATION_CONFLICT"
+        ],
+        "signal": 18
+      },
+      "P4": {
+        "status": "HOLD",
+        "open_findings": 10,
+        "omissions": 0,
+        "claims": 29,
+        "codes": [
+          "UNSUPPORTED_CLAIM",
+          "ACTOR_NOT_ESTABLISHED",
+          "RELEVANCE_NOT_ESTABLISHED",
+          "UNMAPPED_ASSERTION"
+        ],
+        "signal": 10
+      }
+    },
+    {
+      "source": "S014-19",
+      "drafter": "claude-sonnet-5-5",
+      "P1": {
+        "status": "HOLD",
+        "open_findings": 21,
+        "omissions": 1,
+        "claims": 29,
+        "codes": [
+          "NEGATION_CONFLICT",
+          "DATE_NOT_ESTABLISHED",
+          "RELEVANCE_NOT_ESTABLISHED",
+          "ACTOR_NOT_ESTABLISHED",
+          "UNSUPPORTED_CLAIM",
+          "SUBJECT_MISMATCH"
+        ],
+        "signal": 22
+      },
+      "P4": {
+        "status": "HOLD",
+        "open_findings": 18,
+        "omissions": 0,
+        "claims": 58,
+        "codes": [
+          "UNSUPPORTED_CLAIM",
+          "RELEVANCE_NOT_ESTABLISHED",
+          "NEGATION_CONFLICT",
+          "DATE_NOT_ESTABLISHED",
+          "ACTOR_NOT_ESTABLISHED"
+        ],
+        "signal": 18
+      }
+    },
+    {
+      "source": "S014-19",
+      "drafter": "claude-haiku-4-5-20251001",
+      "P1": {
+        "status": "HOLD",
+        "open_findings": 16,
+        "omissions": 4,
+        "claims": 14,
+        "codes": [
+          "UNSUPPORTED_CLAIM",
+          "RELEVANCE_NOT_ESTABLISHED",
+          "DATE_NOT_ESTABLISHED",
+          "NEGATION_CONFLICT",
+          "ACTOR_NOT_ESTABLISHED"
+        ],
+        "signal": 20
+      },
+      "P4": {
+        "status": "HOLD",
+        "open_findings": 31,
+        "omissions": 0,
+        "claims": 48,
+        "codes": [
+          "UNSUPPORTED_CLAIM",
+          "RELEVANCE_NOT_ESTABLISHED",
+          "CLAIM_LOCATION_AMBIGUOUS",
+          "DATE_NOT_ESTABLISHED",
+          "NEGATION_CONFLICT",
+          "ACTOR_NOT_ESTABLISHED"
+        ],
+        "signal": 31
+      }
+    },
+    {
+      "source": "S014-20",
+      "drafter": "claude-sonnet-5-5",
+      "P1": {
+        "status": "HOLD",
+        "open_findings": 10,
+        "omissions": 0,
+        "claims": 21,
+        "codes": [
+          "NEGATION_CONFLICT",
+          "SUBJECT_MISMATCH",
+          "ACTOR_NOT_ESTABLISHED",
+          "UNSUPPORTED_CLAIM",
+          "RELEVANCE_NOT_ESTABLISHED"
+        ],
+        "signal": 10
+      },
+      "P4": {
+        "status": "HOLD",
+        "open_findings": 7,
+        "omissions": 0,
+        "claims": 24,
+        "codes": [
+          "NEGATION_CONFLICT",
+          "UNSUPPORTED_CLAIM",
+          "REASONING_NOT_TRACED",
+          "CONCLUSION_ON_UNRESOLVED_BASIS"
+        ],
+        "signal": 7
+      }
+    },
+    {
+      "source": "S014-20",
+      "drafter": "claude-haiku-4-5-20251001",
+      "P1": {
+        "status": "HOLD",
+        "open_findings": 16,
+        "omissions": 7,
+        "claims": 16,
+        "codes": [
+          "NEGATION_CONFLICT",
+          "RELEVANCE_NOT_ESTABLISHED",
+          "ACTOR_NOT_ESTABLISHED",
+          "UNSUPPORTED_CLAIM",
+          "SUBJECT_MISMATCH"
+        ],
+        "signal": 23
+      },
+      "P4": {
+        "status": "HOLD",
+        "open_findings": 10,
+        "omissions": 0,
+        "claims": 20,
+        "codes": [
+          "NEGATION_CONFLICT",
+          "ACTOR_NOT_ESTABLISHED",
+          "RELEVANCE_NOT_ESTABLISHED",
+          "UNSUPPORTED_CLAIM",
+          "REASONING_NOT_TRACED",
+          "CONCLUSION_ON_UNRESOLVED_BASIS"
+        ],
+        "signal": 10
+      }
+    },
+    {
+      "source": "S014-21",
+      "drafter": "claude-sonnet-5-5",
+      "P1": {
+        "status": "HOLD",
+        "open_findings": 24,
+        "omissions": 7,
+        "claims": 42,
+        "codes": [
+          "RELEVANCE_NOT_ESTABLISHED",
+          "UNSUPPORTED_CLAIM",
+          "NEGATION_CONFLICT",
+          "ACTOR_NOT_ESTABLISHED",
+          "QUALIFICATION_OMITTED",
+          "CONTRARY_CLAUSE_OMITTED",
+          "UNTRACEABLE_AUTHORITY"
+        ],
+        "signal": 31
+      },
+      "P4": {
+        "status": "HOLD",
+        "open_findings": 34,
+        "omissions": 1,
+        "claims": 78,
+        "codes": [
+          "UNSUPPORTED_CLAIM",
+          "ACTOR_NOT_ESTABLISHED",
+          "NEGATION_CONFLICT",
+          "QUALIFICATION_OMITTED",
+          "RELEVANCE_NOT_ESTABLISHED",
+          "DATE_NOT_ESTABLISHED",
+          "SUBJECT_MISMATCH",
+          "REASONING_NOT_TRACED",
+          "CONCLUSION_ON_UNRESOLVED_BASIS"
+        ],
+        "signal": 35
+      }
+    },
+    {
+      "source": "S014-21",
+      "drafter": "claude-haiku-4-5-20251001",
+      "P1": {
+        "status": "HOLD",
+        "open_findings": 24,
+        "omissions": 18,
+        "claims": 19,
+        "codes": [
+          "UNSUPPORTED_CLAIM",
+          "NEGATION_CONFLICT",
+          "RELEVANCE_NOT_ESTABLISHED",
+          "DATE_NOT_ESTABLISHED",
+          "ACTOR_NOT_ESTABLISHED",
+          "UNTRACEABLE_AUTHORITY",
+          "QUALIFICATION_OMITTED"
+        ],
+        "signal": 42
+      },
+      "P4": {
+        "status": "HOLD",
+        "open_findings": 29,
+        "omissions": 1,
+        "claims": 70,
+        "codes": [
+          "UNSUPPORTED_CLAIM",
+          "NEGATION_CONFLICT",
+          "DATE_NOT_ESTABLISHED",
+          "ACTOR_NOT_ESTABLISHED",
+          "RELEVANCE_NOT_ESTABLISHED",
+          "UNTRACEABLE_AUTHORITY",
+          "CONCLUSION_ON_UNRESOLVED_BASIS"
+        ],
+        "signal": 30
+      }
+    },
+    {
+      "source": "S014-22",
+      "drafter": "claude-sonnet-5-5",
+      "P1": {
+        "status": "HOLD",
+        "open_findings": 18,
+        "omissions": 7,
+        "claims": 35,
+        "codes": [
+          "QUALIFICATION_OMITTED",
+          "NEGATION_CONFLICT",
+          "UNSUPPORTED_CLAIM",
+          "ACTOR_NOT_ESTABLISHED",
+          "RELEVANCE_NOT_ESTABLISHED"
+        ],
+        "signal": 25
+      },
+      "P4": {
+        "status": "HOLD",
+        "open_findings": 17,
+        "omissions": 0,
+        "claims": 76,
+        "codes": [
+          "QUALIFICATION_OMITTED",
+          "UNSUPPORTED_CLAIM",
+          "RELEVANCE_NOT_ESTABLISHED",
+          "NEGATION_CONFLICT",
+          "ACTOR_NOT_ESTABLISHED",
+          "REASONING_NOT_TRACED",
+          "CONCLUSION_ON_UNRESOLVED_BASIS"
+        ],
+        "signal": 17
+      }
+    },
+    {
+      "source": "S014-22",
+      "drafter": "claude-haiku-4-5-20251001",
+      "P1": {
+        "status": "HOLD",
+        "open_findings": 12,
+        "omissions": 11,
+        "claims": 7,
+        "codes": [
+          "UNSUPPORTED_CLAIM",
+          "DATE_NOT_ESTABLISHED",
+          "QUALIFICATION_OMITTED",
+          "NEGATION_CONFLICT",
+          "RELEVANCE_NOT_ESTABLISHED"
+        ],
+        "signal": 23
+      },
+      "P4": {
+        "status": "HOLD",
+        "open_findings": 24,
+        "omissions": 0,
+        "claims": 63,
+        "codes": [
+          "UNSUPPORTED_CLAIM",
+          "DATE_NOT_ESTABLISHED",
+          "ACTOR_NOT_ESTABLISHED",
+          "RELEVANCE_NOT_ESTABLISHED",
+          "NEGATION_CONFLICT",
+          "REASONING_NOT_TRACED",
+          "CONCLUSION_ON_UNRESOLVED_BASIS"
+        ],
+        "signal": 24
+      }
+    },
+    {
+      "source": "S014-23",
+      "drafter": "claude-sonnet-5-5",
+      "P1": {
+        "status": "HOLD",
+        "open_findings": 14,
+        "omissions": 1,
+        "claims": 27,
+        "codes": [
+          "ACTOR_NOT_ESTABLISHED",
+          "UNSUPPORTED_CLAIM",
+          "SUBJECT_MISMATCH",
+          "NEGATION_CONFLICT"
+        ],
+        "signal": 15
+      },
+      "P4": {
+        "status": "HOLD",
+        "open_findings": 16,
+        "omissions": 0,
+        "claims": 47,
+        "codes": [
+          "RELEVANCE_NOT_ESTABLISHED",
+          "UNSUPPORTED_CLAIM",
+          "NEGATION_CONFLICT",
+          "QUALIFICATION_OMITTED",
+          "CONCLUSION_ON_UNRESOLVED_BASIS"
+        ],
+        "signal": 16
+      }
+    },
+    {
+      "source": "S014-23",
+      "drafter": "claude-haiku-4-5-20251001",
+      "P1": {
+        "status": "HOLD",
+        "open_findings": 7,
+        "omissions": 2,
+        "claims": 10,
+        "codes": [
+          "ACTOR_NOT_ESTABLISHED",
+          "RELEVANCE_NOT_ESTABLISHED",
+          "UNSUPPORTED_CLAIM"
+        ],
+        "signal": 9
+      },
+      "P4": {
+        "status": "HOLD",
+        "open_findings": 30,
+        "omissions": 0,
+        "claims": 24,
+        "codes": [
+          "UNSUPPORTED_CLAIM",
+          "RELEVANCE_NOT_ESTABLISHED",
+          "ACTOR_NOT_ESTABLISHED",
+          "NEGATION_CONFLICT",
+          "UNTRACEABLE_AUTHORITY"
+        ],
+        "signal": 30
+      }
+    },
+    {
+      "source": "S014-24",
+      "drafter": "claude-sonnet-5-5",
+      "P1": {
+        "status": "HOLD",
+        "open_findings": 26,
+        "omissions": 4,
+        "claims": 35,
+        "codes": [
+          "UNSUPPORTED_CLAIM",
+          "NEGATION_CONFLICT",
+          "RELEVANCE_NOT_ESTABLISHED",
+          "ACTOR_NOT_ESTABLISHED"
+        ],
+        "signal": 30
+      },
+      "P4": {
+        "status": "HOLD",
+        "open_findings": 42,
+        "omissions": 0,
+        "claims": 94,
+        "codes": [
+          "UNSUPPORTED_CLAIM",
+          "NEGATION_CONFLICT",
+          "CONTRARY_CLAUSE_OMITTED",
+          "RELEVANCE_NOT_ESTABLISHED",
+          "DATE_NOT_ESTABLISHED",
+          "ACTOR_NOT_ESTABLISHED"
+        ],
+        "signal": 42
+      }
+    },
+    {
+      "source": "S014-24",
+      "drafter": "claude-haiku-4-5-20251001",
+      "P1": {
+        "status": "HOLD",
+        "open_findings": 14,
+        "omissions": 5,
+        "claims": 12,
+        "codes": [
+          "UNSUPPORTED_CLAIM",
+          "SUBJECT_MISMATCH",
+          "RELEVANCE_NOT_ESTABLISHED",
+          "NEGATION_CONFLICT",
+          "ACTOR_NOT_ESTABLISHED"
+        ],
+        "signal": 19
+      },
+      "P4": {
+        "status": "HOLD",
+        "open_findings": 57,
+        "omissions": 1,
+        "claims": 80,
+        "codes": [
+          "UNSUPPORTED_CLAIM",
+          "NEGATION_CONFLICT",
+          "SUBJECT_MISMATCH",
+          "RELEVANCE_NOT_ESTABLISHED",
+          "ACTOR_NOT_ESTABLISHED",
+          "DATE_NOT_ESTABLISHED",
+          "UNTRACEABLE_AUTHORITY",
+          "REASONING_NOT_TRACED",
+          "CONCLUSION_ON_UNRESOLVED_BASIS"
+        ],
+        "signal": 58
+      }
+    },
+    {
+      "source": "S014-25",
+      "drafter": "claude-sonnet-5-5",
+      "P1": {
+        "status": "HOLD",
+        "open_findings": 10,
+        "omissions": 3,
+        "claims": 25,
+        "codes": [
+          "RELEVANCE_NOT_ESTABLISHED",
+          "UNSUPPORTED_CLAIM",
+          "NEGATION_CONFLICT",
+          "CONTRARY_CLAUSE_OMITTED",
+          "SUBJECT_MISMATCH"
+        ],
+        "signal": 13
+      },
+      "P4": {
+        "status": "HOLD",
+        "open_findings": 22,
+        "omissions": 1,
+        "claims": 43,
+        "codes": [
+          "NEGATION_CONFLICT",
+          "SUBJECT_MISMATCH",
+          "RELEVANCE_NOT_ESTABLISHED",
+          "CONTRARY_CLAUSE_OMITTED",
+          "UNSUPPORTED_CLAIM",
+          "REASONING_NOT_TRACED",
+          "CONCLUSION_ON_UNRESOLVED_BASIS"
+        ],
+        "signal": 23
+      }
+    },
+    {
+      "source": "S014-25",
+      "drafter": "claude-haiku-4-5-20251001",
+      "P1": {
+        "status": "HOLD",
+        "open_findings": 10,
+        "omissions": 3,
+        "claims": 7,
+        "codes": [
+          "NEGATION_CONFLICT",
+          "UNSUPPORTED_CLAIM",
+          "SUBJECT_MISMATCH",
+          "RELEVANCE_NOT_ESTABLISHED",
+          "UNTRACEABLE_AUTHORITY",
+          "ACTOR_NOT_ESTABLISHED"
+        ],
+        "signal": 13
+      },
+      "P4": {
+        "status": "HOLD",
+        "open_findings": 27,
+        "omissions": 0,
+        "claims": 40,
+        "codes": [
+          "NEGATION_CONFLICT",
+          "RELEVANCE_NOT_ESTABLISHED",
+          "UNSUPPORTED_CLAIM",
+          "SUBJECT_MISMATCH",
+          "CONTRARY_CLAUSE_OMITTED",
+          "ACTOR_NOT_ESTABLISHED",
+          "CONCLUSION_ON_UNRESOLVED_BASIS"
+        ],
+        "signal": 27
+      }
+    },
+    {
+      "source": "S014-26",
+      "drafter": "claude-sonnet-5-5",
+      "P1": {
+        "status": "HOLD",
+        "open_findings": 16,
+        "omissions": 6,
+        "claims": 23,
+        "codes": [
+          "SUBJECT_MISMATCH",
+          "DATE_NOT_ESTABLISHED",
+          "UNSUPPORTED_CLAIM",
+          "NEGATION_CONFLICT",
+          "RELEVANCE_NOT_ESTABLISHED",
+          "UNTRACEABLE_AUTHORITY",
+          "ACTOR_NOT_ESTABLISHED"
+        ],
+        "signal": 22
+      },
+      "P4": {
+        "status": "HOLD",
+        "open_findings": 23,
+        "omissions": 0,
+        "claims": 54,
+        "codes": [
+          "RELEVANCE_NOT_ESTABLISHED",
+          "UNSUPPORTED_CLAIM",
+          "SUBJECT_MISMATCH",
+          "NEGATION_CONFLICT",
+          "QUALIFICATION_OMITTED",
+          "CONTRARY_CLAUSE_OMITTED",
+          "DATE_NOT_ESTABLISHED"
+        ],
+        "signal": 23
+      }
+    },
+    {
+      "source": "S014-26",
+      "drafter": "claude-haiku-4-5-20251001",
+      "P1": {
+        "status": "HOLD",
+        "open_findings": 14,
+        "omissions": 23,
+        "claims": 13,
+        "codes": [
+          "NEGATION_CONFLICT",
+          "SUBJECT_MISMATCH",
+          "RELEVANCE_NOT_ESTABLISHED",
+          "UNSUPPORTED_CLAIM",
+          "UNTRACEABLE_AUTHORITY",
+          "QUALIFICATION_OMITTED",
+          "CONTRARY_CLAUSE_OMITTED",
+          "ACTOR_NOT_ESTABLISHED",
+          "RECOMMENDATION_STATED_AS_REQUIREMENT"
+        ],
+        "signal": 37
+      },
+      "P4": {
+        "status": "HOLD",
+        "open_findings": 23,
+        "omissions": 0,
+        "claims": 37,
+        "codes": [
+          "NEGATION_CONFLICT",
+          "RELEVANCE_NOT_ESTABLISHED",
+          "UNSUPPORTED_CLAIM",
+          "ACTOR_NOT_ESTABLISHED",
+          "UNTRACEABLE_AUTHORITY",
+          "QUALIFICATION_OMITTED",
+          "CONTRARY_CLAUSE_OMITTED",
+          "DATE_NOT_ESTABLISHED",
+          "SUBJECT_MISMATCH"
+        ],
+        "signal": 23
+      }
+    },
+    {
+      "source": "S014-27",
+      "drafter": "claude-sonnet-5-5",
+      "P1": {
+        "status": "HOLD",
+        "open_findings": 19,
+        "omissions": 0,
+        "claims": 32,
+        "codes": [
+          "RELEVANCE_NOT_ESTABLISHED",
+          "UNSUPPORTED_CLAIM",
+          "CLAIM_LOCATION_AMBIGUOUS",
+          "ACTOR_NOT_ESTABLISHED",
+          "NEGATION_CONFLICT",
+          "UNMAPPED_ASSERTION"
+        ],
+        "signal": 19
+      },
+      "P4": {
+        "status": "HOLD",
+        "open_findings": 15,
+        "omissions": 0,
+        "claims": 40,
+        "codes": [
+          "UNSUPPORTED_CLAIM",
+          "ACTOR_NOT_ESTABLISHED",
+          "RELEVANCE_NOT_ESTABLISHED",
+          "NEGATION_CONFLICT"
+        ],
+        "signal": 15
+      }
+    },
+    {
+      "source": "S014-27",
+      "drafter": "claude-haiku-4-5-20251001",
+      "P1": {
+        "status": "HOLD",
+        "open_findings": 18,
+        "omissions": 6,
+        "claims": 10,
+        "codes": [
+          "UNSUPPORTED_CLAIM",
+          "RELEVANCE_NOT_ESTABLISHED",
+          "ACTOR_NOT_ESTABLISHED",
+          "DATE_NOT_ESTABLISHED",
+          "NEGATION_CONFLICT"
+        ],
+        "signal": 24
+      },
+      "P4": {
+        "status": "HOLD",
+        "open_findings": 22,
+        "omissions": 0,
+        "claims": 17,
+        "codes": [
+          "ACTOR_NOT_ESTABLISHED",
+          "DATE_NOT_ESTABLISHED",
+          "UNTRACEABLE_AUTHORITY",
+          "RELEVANCE_NOT_ESTABLISHED",
+          "UNSUPPORTED_CLAIM",
+          "NEGATION_CONFLICT"
+        ],
+        "signal": 22
+      }
+    },
+    {
+      "source": "S014-28",
+      "drafter": "claude-sonnet-5-5",
+      "P1": {
+        "status": "HOLD",
+        "open_findings": 20,
+        "omissions": 2,
+        "claims": 38,
+        "codes": [
+          "SUBJECT_MISMATCH",
+          "RELEVANCE_NOT_ESTABLISHED",
+          "DATE_NOT_ESTABLISHED",
+          "UNSUPPORTED_CLAIM",
+          "NEGATION_CONFLICT",
+          "ACTOR_NOT_ESTABLISHED"
+        ],
+        "signal": 22
+      },
+      "P4": {
+        "status": "HOLD",
+        "open_findings": 23,
+        "omissions": 0,
+        "claims": 89,
+        "codes": [
+          "SUBJECT_MISMATCH",
+          "ACTOR_NOT_ESTABLISHED",
+          "UNSUPPORTED_CLAIM",
+          "NEGATION_CONFLICT",
+          "DATE_NOT_ESTABLISHED",
+          "RELEVANCE_NOT_ESTABLISHED",
+          "CONTRARY_CLAUSE_OMITTED"
+        ],
+        "signal": 23
+      }
+    },
+    {
+      "source": "S014-28",
+      "drafter": "claude-haiku-4-5-20251001",
+      "P1": {
+        "status": "HOLD",
+        "open_findings": 7,
+        "omissions": 7,
+        "claims": 7,
+        "codes": [
+          "UNSUPPORTED_CLAIM",
+          "SUBJECT_MISMATCH",
+          "RELEVANCE_NOT_ESTABLISHED",
+          "NEGATION_CONFLICT",
+          "ACTOR_NOT_ESTABLISHED"
+        ],
+        "signal": 14
+      },
+      "P4": {
+        "status": "HOLD",
+        "open_findings": 36,
+        "omissions": 0,
+        "claims": 50,
+        "codes": [
+          "UNSUPPORTED_CLAIM",
+          "NEGATION_CONFLICT",
+          "RELEVANCE_NOT_ESTABLISHED",
+          "QUALIFICATION_OMITTED",
+          "DATE_NOT_ESTABLISHED",
+          "UNTRACEABLE_AUTHORITY",
+          "ACTOR_NOT_ESTABLISHED",
+          "CONTRARY_CLAUSE_OMITTED",
+          "REASONING_NOT_TRACED",
+          "UNMAPPED_ASSERTION",
+          "CONCLUSION_ON_UNRESOLVED_BASIS"
+        ],
+        "signal": 36
+      }
+    },
+    {
+      "source": "S014-29",
+      "drafter": "claude-sonnet-5-5",
+      "P1": {
+        "status": "HOLD",
+        "open_findings": 15,
+        "omissions": 0,
+        "claims": 21,
+        "codes": [
+          "NEGATION_CONFLICT",
+          "RELEVANCE_NOT_ESTABLISHED",
+          "UNSUPPORTED_CLAIM",
+          "ACTOR_NOT_ESTABLISHED",
+          "UNTRACEABLE_AUTHORITY",
+          "DATE_NOT_ESTABLISHED"
+        ],
+        "signal": 15
+      },
+      "P4": {
+        "status": "HOLD",
+        "open_findings": 11,
+        "omissions": 0,
+        "claims": 28,
+        "codes": [
+          "UNSUPPORTED_CLAIM",
+          "NEGATION_CONFLICT",
+          "RELEVANCE_NOT_ESTABLISHED",
+          "DATE_NOT_ESTABLISHED"
+        ],
+        "signal": 11
+      }
+    },
+    {
+      "source": "S014-29",
+      "drafter": "claude-haiku-4-5-20251001",
+      "P1": {
+        "status": "HOLD",
+        "open_findings": 18,
+        "omissions": 4,
+        "claims": 13,
+        "codes": [
+          "UNSUPPORTED_CLAIM",
+          "ACTOR_NOT_ESTABLISHED",
+          "RELEVANCE_NOT_ESTABLISHED",
+          "NEGATION_CONFLICT",
+          "SUBJECT_MISMATCH"
+        ],
+        "signal": 22
+      },
+      "P4": {
+        "status": "HOLD",
+        "open_findings": 14,
+        "omissions": 0,
+        "claims": 27,
+        "codes": [
+          "UNSUPPORTED_CLAIM",
+          "RELEVANCE_NOT_ESTABLISHED",
+          "ACTOR_NOT_ESTABLISHED",
+          "DATE_NOT_ESTABLISHED",
+          "NEGATION_CONFLICT",
+          "REASONING_NOT_TRACED",
+          "CONCLUSION_ON_UNRESOLVED_BASIS"
+        ],
+        "signal": 14
+      }
+    },
+    {
+      "source": "S014-30",
+      "drafter": "claude-sonnet-5-5",
+      "P1": {
+        "status": "HOLD",
+        "open_findings": 13,
+        "omissions": 4,
+        "claims": 26,
+        "codes": [
+          "UNSUPPORTED_CLAIM",
+          "SUBJECT_MISMATCH",
+          "ACTOR_NOT_ESTABLISHED",
+          "UNTRACEABLE_AUTHORITY",
+          "RELEVANCE_NOT_ESTABLISHED",
+          "NEGATION_CONFLICT"
+        ],
+        "signal": 17
+      },
+      "P4": {
+        "status": "HOLD",
+        "open_findings": 12,
+        "omissions": 2,
+        "claims": 44,
+        "codes": [
+          "UNSUPPORTED_CLAIM",
+          "ACTOR_NOT_ESTABLISHED",
+          "NEGATION_CONFLICT",
+          "RELEVANCE_NOT_ESTABLISHED",
+          "REASONING_NOT_TRACED",
+          "CONCLUSION_ON_UNRESOLVED_BASIS"
+        ],
+        "signal": 14
+      }
+    },
+    {
+      "source": "S014-30",
+      "drafter": "claude-haiku-4-5-20251001",
+      "P1": {
+        "status": "HOLD",
+        "open_findings": 8,
+        "omissions": 4,
+        "claims": 7,
+        "codes": [
+          "UNSUPPORTED_CLAIM",
+          "SUBJECT_MISMATCH",
+          "RELEVANCE_NOT_ESTABLISHED",
+          "ACTOR_NOT_ESTABLISHED",
+          "UNTRACEABLE_AUTHORITY"
+        ],
+        "signal": 12
+      },
+      "P4": {
+        "status": "HOLD",
+        "open_findings": 21,
+        "omissions": 0,
+        "claims": 28,
+        "codes": [
+          "UNSUPPORTED_CLAIM",
+          "RELEVANCE_NOT_ESTABLISHED",
+          "NEGATION_CONFLICT",
+          "ACTOR_NOT_ESTABLISHED",
+          "REASONING_NOT_TRACED",
+          "CONCLUSION_ON_UNRESOLVED_BASIS"
+        ],
+        "signal": 21
+      }
+    }
+  ]
+}

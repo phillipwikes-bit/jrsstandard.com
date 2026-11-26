@@ -1,0 +1,574 @@
+408 Decisions of the Federal Labor Relations Authority 73 FLRA No. 77
+
+73 FLRA No. 77
+
+FRATERNAL ORDER OF POLICE
+DC LODGE 1
+(Union)
+
+and
+
+UNITED STATES
+DEPARTMENT OF DEFENSE
+PENTAGON FORCE PROTECTION AGENCY
+(Agency)
+
+0-AR-5806
+
+_____
+
+DECISION
+
+January 5, 2023
+
+_____
+
+Before the Authority:  Susan Tsui Grundmann,
+Chairman, and Colleen Duffy Kiko, Member
+
+I. Statement of the Case
+
+The Union filed a grievance alleging that the
+Agency violated the Family and Medical Leave Act
+(FMLA),
+1 the parties’ collective-bargaining agreement,
+and Agency policy by preventing a Pentagon police officer
+(the grievant) from returning to a paid, full-duty status
+after a period of FMLA leave.  Arbitrator Mollie H.
+Bowers issued an award denying the grievance based on
+the grievant’s failure to comply with the Agency’s
+fitness-for-duty program.
+
+The Union filed exceptions to the award on
+contrary-to-law, nonfact, public-policy,
+exceeded-authority, and essence grounds.  Because the
+Union’s exceptions do not establish that the award is
+deficient, we deny them.
+
+II. Background and Arbitrator’s Award
+
+The grievant suffered an injury while off duty.
+After using sick leave to cover her absence from work, the
+grievant requested, and the Agency approved, FMLA
+leave.  When the grievant was ready to return to work, the
+Agency instructed the grievant to provide information
+about her injury to the Agency’s “[r]ecruitment, [m]edical,
+
+1 5 U.S.C. § 6384(a).
+2 Award at 5.
+3 Id. at 7.
+4 Exceptions, Agency Ex. 3, Pentagon Police Medical Standards
+(Medical Standards) at 61-62.
+and [f]itness [d]ivision” (medical division),
+2 which
+administers the Agency’s fitness-for-duty program.
+
+Instead of contacting the medical division, the
+grievant provided her supervisor with a doctor’s note
+stating that she could return to full-duty status.  In
+response, the supervisor informed the grievant, via
+multiple emails, that she could not return to full
+law-enforcement duties until the medical division received
+all information pertaining to the injury and evaluated her
+“fitness for duty.”
+3  One of the emails cited an Agency
+regulation that requires police officers to “provide
+complete and accurate information to the
+[medical division] upon request” and “promptly report any
+change in their medical status to th[at division].”
+4  The
+regulation further states that an employee’s failure to
+comply – including a failure “to promptly report a change
+in medical status – may result in appropriate administrative
+or adverse action.”
+5
+
+The grievant reported to work without submitting
+the requested medical information to the medical division.
+During a meeting, the grievant’s supervisor told the
+grievant that she would be disciplined if she continued not
+to comply with the Agency’s fitness-for-duty
+requirements.  Thereafter, the grievant contacted the chief
+of the medical division and explained that her doctor had
+approved her return to work.  The grievant asked what
+information the Agency needed to approve her return from
+FMLA leave and whether there were any documents for
+her doctor to complete.  The chief advised the grievant that
+the fitness-for-duty program was unrelated to FMLA, and
+emphasized that the grievant could not return to full duty
+without undergoing a fitness-for-duty assessment.  When
+the grievant continued not to provide medical information,
+the Agency placed the grievant in a leave-without-pay
+(LWOP) status.
+
+The Union filed a grievance alleging, in pertinent
+part, that the Agency violated various sections of Title I of
+the FMLA,
+6 the parties’ agreement, and Agency policy by
+refusing to return the grievant to full duty and placing the
+grievant on unpaid leave.  The parties proceeded to
+arbitration.
+
+At arbitration, the Arbitrator adopted the Union’s
+proposed issue:  “Did the Agency violate [the grievant’s]
+rights under the [FMLA] . . . or [the Agency’s] own
+policies, procedures and past practices when [it] failed to
+allow [the grievant] to return to work, wrongfully imposed
+additional unlawful requirements for her return to duty,
+and . . . wrongfully placed her in [LWOP] status?”
+7
+5 Id. at 62.
+6 Exceptions, Union Ex. 16, Grievance at 75 (alleging violations
+of “29 U.S.C. § 2612,” “29 U.S.C. § 2612(a)(1)(D),” and
+“29 U.S.C. § 2615”).
+7 Award at 2.
+
+73 FLRA No. 77 Decisions of the Federal Labor Relations Authority 409
+
+As relevant here, the Arbitrator found that the
+grievant and the Union “relied on the wrong provisions of
+the FMLA to make [their] case” by alleging that the
+Agency violated Title I of the FMLA,
+8 which does not
+cover federal employees,
+9 instead of Title II, which does.
+10
+Because this “error was perpetuated at each and every”
+step of the grievance procedure “up to and including . . .
+arbitration,” the Arbitrator found that the Union’s claim of
+an FMLA violation could not be “rehabilitate[d].”
+11
+Therefore, she refused “to give credit to” that claim and
+asserted that she would give “no weight . . . to claims that
+any law, rule, or regulation was violated.”
+12
+
+Still, the Arbitrator analyzed the Union’s claim
+that the Agency was required to place the grievant in a
+full-duty status upon her return from FMLA leave.  As an
+initial matter, the Arbitrator found that the FMLA required
+the Agency to restore the grievant to the position she held
+prior to using FMLA leave.
+13  However, the Arbitrator
+rejected the Union’s contention that “return from
+FMLA leave is synonymous and interchangeable with
+return to a full[-]duty status.”
+14  In distinguishing
+FMLA procedures from fitness-for-duty requirements, the
+Arbitrator explained that “the medical documentation
+required . . . to grant an employee FMLA leave is separate
+and distinct from any documentation legitimately
+required” to certify that an employee is fit for duty.
+15
+Based on this distinction, the Arbitrator found that the
+doctor’s note the grievant provided to her supervisor –
+although satisfactory for FMLA purposes – was not
+“credible evidence that the [g]rievant was medically fit to
+perform all of the essential functions of her position as a
+. . . [p]olice [o]fficer.”
+16
+
+Addressing the grievant’s nonparticipation in the
+Agency’s fitness-for-duty program, the Arbitrator
+determined that the grievant was aware of the policy
+requiring police officers to notify the medical division
+about changes in medical status and to provide medical
+
+8 Id. at 26.
+9 29 U.S.C. § 2611(2)(B) (excluding from Title I “any
+Federal officer or employee” from the definition of
+“eligible employee”).
+10 5 U.S.C. § 6381(1)(B) (defining “employee” in Title II as “any
+individual who . . . has completed at least [twelve] months of
+service as an employee . . . of the Government of the
+United States”).
+11 Award at 26.
+12 Id.
+13 See id. at 20 (noting that “the FMLA affords employees taking
+leave . . . to retain their position”).
+14 Id.
+15 Id. at 24.
+16 Id. at 21 (observing that the doctor’s note was just a
+“printed . . . standardized form,” and the grievant’s doctor
+“simply checked [a] box” relating to the grievant’s ability to
+return to work).
+17 Id. at 25.
+information upon request.  On this point, the Arbitrator
+found that the Agency gave the grievant “direct orders to
+comply” with the policy, but the grievant
+“repeatedly refused.”
+17  Thus, the Arbitrator concluded
+that the Agency was “under no legal or contractual
+obligation to return [the grievant] to a full[-]duty status.”
+18
+
+Based on these findings, the Arbitrator concluded
+that the Agency did not take an
+“unjustified personnel action” against the grievant.
+19
+Consequently, the Arbitrator denied the grievance.
+
+The Union filed exceptions to the award on
+April 22, 2022, and the Agency filed an opposition to the
+exceptions on May 23, 2022.
+
+III. Analysis and Conclusions
+
+A. The Union’s misunderstanding of the
+award does not demonstrate that the
+award is contrary to law.
+
+An exception that is based on a misunderstanding
+of an arbitrator’s award does not show that the award is
+contrary to law.
+20  Here, the Union argues that it was an
+“error of law” for the Arbitrator to “hold [the grievant], a
+federal employee, to Title I of [the] FMLA”
+21 because
+Title I does not apply to federal employees.
+22  However,
+the Union – not the Arbitrator – was responsible for
+introducing Title I at arbitration.  As the Arbitrator noted,
+“at every step of the grievance procedure” and
+at arbitration, the Union alleged violations of Title I.
+23
+Even assuming that the Union may now raise an argument
+that the Arbitrator erroneously relied on Title I,
+24 that
+argument lacks merit.  The Arbitrator explicitly refused to
+“give credit” to the Union’s Title I allegations, observing
+that it was the “wrong [Title] of the FMLA” and stating
+that the Union’s repeated reliance on Title I was an “error”
+18 Id. at 27.
+19 Id.; see also id. at 28 (concluding that the Union failed to prove
+that “all or any part of . . . [the] grievance should be sustained”).
+20 SPORT Air Traffic Controllers Org., 66 FLRA 552, 554 (2012)
+(SPORT).
+21 Exceptions at 8.
+22 Compare 29 U.S.C. § 2611(2)(B) (excluding
+“any Federal officer or employee” from Title I’s definition of
+“eligible employee”), with 5 U.S.C. § 6381(1)(B) (defining
+“employee” in Title II of the FMLA as “any individual who . . .
+has completed at least [twelve] months of service as an employee
+. . . of the Government of the United States”).
+23 Award at 26.
+24 Under §§ 2425.4(c) and 2429.5 of the Authority’s Regulations,
+the Authority has stated that it will not consider arguments
+offered in support of an exception if those arguments differ from,
+or are inconsistent with, the party’s arguments to the arbitrator.
+5 C.F.R. §§ 2425.4(c), 2429.5; U.S. DOJ, Fed. BOP, Fed. Corr.
+Inst., Bastrop, Tex., 69 FLRA 176, 178 (2016).
+
+410 Decisions of the Federal Labor Relations Authority 73 FLRA No. 77
+
+that could not be “rehabilitate[d].”
+25  Thus, contrary to the
+Union’s claim, the Arbitrator did not apply any substantive
+provisions of Title I.
+
+Because the Union’s exception is premised on a
+misunderstanding of the award, it provides no basis for
+finding the award deficient.  Accordingly, we deny the
+exception.
+26
+
+B. The award is not contrary to public
+policy.
+
+ The Union argues that the award is contrary to the
+public policy “in favor of arbitrators resolving issues . . .
+on the merits rather than dismissing them for procedural
+mistakes.”
+27  For an award to be found deficient as contrary
+to public policy, the asserted public policy must be
+“explicit, well[-]defined, and dominant,” and the
+appealing party must show a clear violation of the policy.
+28
+In addition, the appealing party must identify the policy
+“by reference to the laws and legal precedents and not from
+general considerations of supposed public interest.”
+29
+
+ Citing Buffkin v. DOD (Buffkin)
+30 and § 7121(e)
+of the Federal Service Labor-Management Relations
+Statute (the Statute),
+31 the Union asserts that the Arbitrator
+violated the alleged public policy by “ignor[ing] the merits
+of” the Union’s FMLA claims and denying the grievance
+on the basis that the Union relied on Title I.
+32  Contrary to
+the Union’s assertion, the cited authorities are inapposite
+to the instant case.  In Buffkin, the court held that a
+grievance challenging an adverse action appealable to the
+
+25 Award at 26.
+26 See SPORT, 66 FLRA at 555 (denying exception alleging that
+arbitrator applied 5 U.S.C. § 7106 because, in fact, arbitrator did
+not apply § 7106); AFGE, Loc. 3911, 69 FLRA 233, 234-35
+(2016) (denying exception claiming that arbitrator applied
+Title VII of the Civil Rights Act of 1964 because arbitrator
+“did not apply Title VII”).
+27 Exceptions at 11.
+28 AFGE, Loc. 1441, 73 FLRA 36, 38 (2022).
+29 U.S. DOJ, Fed. BOP, Fed. Corr. Inst., Guaynabo, P.R.,
+72 FLRA 636, 638 (2022) (Member Abbott dissenting in part on
+other grounds).
+30 957 F.3d 1327 (Fed. Cir. 2020).
+31 5 U.S.C. § 7121(e).
+32 Exceptions at 11.
+33 Buffkin, 957 F.3d at 1332-33.
+34 Award at 26 (denying “credit to the Union’s claim that the
+FMLA was violated”), id. (allocating “no weight . . . to claims
+that any law, rule, or regulation was violated in the instant case”).
+35 Both the Federal Circuit and MSPB have found that where an
+employee was required, but failed, to provide
+medical documentation, the agency’s placement of that
+employee in an unpaid or absent without leave (AWOL) status,
+even for longer than fourteen days, was not a constructive
+suspension or other adverse action appealable to the MSPB.
+Perez v. MSBP, 931 F.2d 853, 855 (Fed. Cir. 1991) (where
+agency placed employee in AWOL status for repeatedly failing
+U.S. Court of Appeals for the Federal Circuit
+(Federal Circuit) under 5 U.S.C. § 7703 was arbitrable
+despite the agency’s allegation that it was premature.
+33
+Here, the Arbitrator denied the Union’s FMLA claim on
+the ground that Title I does not apply to federal employees
+– not because the grievance was premature or otherwise
+inarbitrable.
+34  Further, the Union’s grievance does not
+concern an adverse action reviewable by the
+Merit Systems Protection Board (MSPB) and, on appeal,
+by the Federal Circuit.
+35
+
+With respect to § 7121(e) of the Statute, the
+Union does not demonstrate how that statutory provision
+– which gives employees the choice of appealing adverse
+actions through the procedures set forth in 5 U.S.C. § 7701
+or the negotiated grievance procedure
+36 – requires
+arbitrators to consider alleged violations of inapplicable
+laws when resolving grievances under the Statute.
+Consequently, the Union fails to establish that the award
+clearly violates an explicit, well-defined, and dominant
+public policy.
+
+Accordingly, we deny the exception.
+37
+
+C. The award is not based on a nonfact.
+
+The Union argues that the award is based on a
+nonfact.
+38  To establish that an award is based on a nonfact,
+the excepting party must demonstrate that a central fact
+underlying the award is clearly erroneous, but for which
+the arbitrator would have reached a different result.
+39
+
+to provide adequate documentation, employee was
+“voluntarily absent[]” rather than constructively suspended);
+Marren v. DOJ, 49 M.S.P.R. 45, 48-51 (1991) (finding that
+grievant’s refusal to provide medical documentation and
+resulting placement in AWOL status constituted a
+voluntary absence).
+36 5 U.S.C. § 7121(e)(1) (providing, in relevant part, that
+“[m]atters covered under [5 U.S.C. §§] 4303 and 7512 . . . may
+. . . be raised either under the appellate procedures of [5 U.S.C. §]
+7701 . . . or under the negotiated grievance procedure, but not
+both”).
+37 See U.S. Dep’t of the Army, Letterkenny Army Depot,
+Chambersburg, Pa., 72 FLRA 575, 580 n.64 (2021)
+(Chairman DuBester concurring in part and dissenting in part;
+Member Abbott dissenting in part on other grounds) (holding
+that excepting party, “by merely restating its [non-meritorious]
+contrary-to-law exceptions and citing statutory language,” did
+not demonstrate that award was deficient on public-policy
+grounds); AFGE, Loc. 2172, 57 FLRA 625, 629 (2001) (where
+grievance did not concern adverse action under 5 U.S.C. § 7703,
+Federal Circuit’s legal principles for reviewing those actions did
+not establish an explicit, well-defined, and dominant
+public policy).
+38 Exceptions at 12-14.
+39 NTEU, 73 FLRA 101, 103 (2022) (citing AFGE, Loc. 17,
+72 FLRA 162, 163 (2021) (Member Abbott concurring on other
+grounds); NLRB Pro. Ass’n, 68 FLRA 552, 554 (2015)).
+
+73 FLRA No. 77 Decisions of the Federal Labor Relations Authority 411
+
+The Union claims that the Arbitrator
+misrepresented its legal argument at arbitration.
+40
+According to the Union, the “crux” of its argument was
+that “the Agency exceeded the scope of [the] FMLA by
+refusing to return [the grievant] to a duty status with pay
+and benefits before subjecting her to . . . [a]
+fitness[-]for[-]duty examination.”
+41  However, that is
+exactly how the Arbitrator summarized the Union’s
+argument:  “The heart[]beat of the Union’s case is that,
+under the FMLA, the [g]rievant should have been returned
+from [FMLA] leave to full duty and to full pay/benefit
+status in her position as a . . . [p]olice [o]fficer before any
+determination was made about her capability to perform
+the essential functions of her duty.”
+42
+
+Based on the above, even assuming that the
+Arbitrator’s characterization of the Union’s position
+concerns a factual matter, the Union has failed to establish
+that the Arbitrator clearly erred.  Accordingly, we deny the
+Union’s nonfact exception.
+43
+
+D. The Arbitrator did not exceed her
+authority by failing to resolve an issue
+submitted to arbitration.
+
+The Union asserts that the Arbitrator exceeded
+her authority by failing to resolve an issue submitted for
+arbitration.
+44  Specifically, the Union alleges that the
+Arbitrator did not address “whether the Agency violated
+the [parties’ agreement] or its own policies.”
+45  The
+Authority has held that arbitrators exceed their authority
+when they fail to resolve an issue submitted to
+arbitration.
+46  It is well settled that when parties do not
+agree on the issues, arbitrators have the discretion to frame
+them.
+47
+
+40 Exceptions at 13.
+41 Id. (emphasis added).
+42 Award at 10 (emphasis added).
+43 See AFGE, Loc. 3917, 72 FLRA 651, 653 (2022)
+(Chairman DuBester concurring) (award not deficient on nonfact
+grounds where challenged finding was not central to the award);
+U.S. Dep’t of VA, Med. Ctr., Richmond, Va., 64 FLRA 701, 706
+(2010) (denying nonfact exception where excepting party failed
+to “identify a factual finding or demonstrate that any alleged
+factual finding” was clearly erroneous).
+44 Exceptions at 15-16.
+45 Id. at 16.
+46 NTEU, Chapter 149, 73 FLRA 133, 135 (2022) (citing NTEU,
+Chapter 66, 72 FLRA 70, 71 (2021) (Chairman DuBester
+concurring on other grounds; Member Abbott dissenting on other
+grounds)).
+47 U.S. Dep’t of VA, Nashville Reg’l Off., VA Benefits Admin.,
+72 FLRA 371, 374 (2021) (Member Abbott concurring on other
+grounds) (citing U.S. Dep’t of VA, Med. Ctr., Richmond, Va.,
+70 FLRA 900, 901 (2018) (Member DuBester concurring)).
+48 Award at 2.
+49 Id. at 26.
+Here, the parties did not stipulate to the issue, and
+the Arbitrator adopted the Union’s proposed issue—which
+asked whether “the Agency violate[d] . . . the [FMLA]
+. . . or [the Agency’s] own policies, procedures and past
+practices” by placing the grievant in a LWOP status and
+not allowing her to return to full duty.
+48  In resolving this
+issue, the Arbitrator did not “give credit to the Union’s
+claim that the FMLA was violated” because “the Union
+relied on the wrong [Title] of the FMLA to make its
+case.”
+49  Further, the Arbitrator concluded that the Agency
+properly required the grievant to comply with its
+“legitimate, well known” fitness-for-duty program.
+50
+Because the grievant did not comply with the Agency’s
+fitness-for-duty requirements, the Arbitrator determined
+that “the Agency was under no legal or contractual
+obligation to return [the grievant] to a full[-]duty status.”
+51
+
+As the award is directly responsive to the issue
+before the Arbitrator, we deny the Union’s
+exceeded-authority exception.
+52
+
+E. The remaining exceptions do not
+demonstrate that the award is deficient.
+
+The Union argues that the award is contrary to the
+FMLA,
+53 contrary to an Agency instruction implementing
+FMLA requirements,
+54 and fails to draw its essence from
+the parties’ agreement.
+55  Additionally, the Union contends
+that the Arbitrator lacked the authority to issue an award
+that “permits the Agency to violate the
+[parties’ agreement] and federal law.”
+56  The underlying
+50 Id. at 25; see also id. at 21 (finding that the grievant’s doctor’s
+note was not “credible evidence that the [g]rievant was medically
+fit” to return to full duty).
+51 Id. at 27.
+52 See NAIL, Loc. 10, 71 FLRA 513, 515 (2020) (where award
+was “directly responsive” to arbitrator’s framed issue, Authority
+denied exceeded-authority exception); see also AFGE,
+Loc. 2502, Council of Prison Locs. 33, 73 FLRA 59, 61 (2022)
+(Chairman DuBester concurring) (denying exceeded-authority
+exception based on erroneous premise that arbitrator failed to
+resolve grievance’s merits).
+53 Exceptions at 4-7 (arguing that Agency violated the FMLA by
+placing grievant in unpaid status and requiring her to submit
+medical information as condition of returning to full duty).
+54 Id. at 8-9 (asserting that award is contrary to “Department of
+Defense Administrative Instruction 67,” which “outlines the
+Agency’s administration of FMLA leave”).
+55 Id. at 14-15 (arguing that award is deficient on essence grounds
+because “the Agency’s actions violated the [parties’ agreement]”
+but the Arbitrator improperly “fail[ed] to consider whether” the
+Agency violated “federal law”).
+56 Id. at 16-17.
+
+412 Decisions of the Federal Labor Relations Authority 73 FLRA No. 77
+
+premise of these exceptions is that the award conflicts with
+Title II of the FMLA.
+57
+
+The Authority has repeatedly held that when an
+arbitrator has based an award on separate and independent
+grounds, an appealing party must establish that all of the
+grounds are deficient before the Authority will set the
+award aside.
+58  Here, the Arbitrator gave “no weight” or
+“credit to the Union’s claim that the FMLA was violated”
+because the Union and grievant “relied on the wrong
+provisions of the FMLA” throughout the grievance
+process.
+59  That holding alone provides a separate and
+independent ground for the Arbitrator’s denial of the
+grievance.  Because the Union has not demonstrated that
+that holding is deficient, we need not address the Union’s
+exceptions challenging the award’s consistency with
+Title II of the FMLA.  Accordingly, we do not consider the
+remaining exceptions.
+60
+
+IV. Decision
+
+We deny the Union’s exceptions.
+
+57 5 U.S.C. § 6384(a) (entitling federal employees who return
+from FMLA leave “to the position held . . . when the leave
+commenced” or “to an equivalent position”); id. § 6384(d)
+(permitting federal agencies to implement “a uniformly applied
+practice or policy that requires . . . certification from the
+health care provider of the employee that the employee is able to
+resume work”).
+58 U.S. DHS, U.S. CBP, 71 FLRA 1155, 1157 (2020)
+(Member Abbott dissenting); U.S. DOJ, Fed. BOP, Fed. Corr.
+Inst., Englewood, Colo., 69 FLRA 474, 478 (2016).
+59 Award at 26.
+60 See U.S. Dep’t of the Treasury, IRS, 68 FLRA 145, 148 (2014)
+(where excepting party did not demonstrate that a separate and
+independent ground for award was deficient, Authority did not
+consider exception because “the award would stand regardless of
+whether the [a]rbitrator made erroneous findings” as alleged).
