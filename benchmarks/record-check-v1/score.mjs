@@ -71,4 +71,6 @@ function scoreF(K, A) { let gc = 0, ng = 0, cf = 0, nc = 0, pair = 0, np = 0; co
 if (ans.F) out.F = scoreF(key('f'), ans.F);
 // The sealed hold-out of good AI drafts (data/track-f-holdout.json; see FH_PROTOCOL.md).
 if (ans.FH) out.FH = scoreF(key('f-holdout'), ans.FH);
+// Second sealed hold-out (data/track-f-holdout-2.json; see FH2_PROTOCOL.md).
+if (ans.FH2) out.FH2 = scoreF(key('f-holdout-2'), ans.FH2);
 console.log(JSON.stringify(out, null, 2));
