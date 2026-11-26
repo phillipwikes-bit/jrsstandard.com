@@ -27,6 +27,16 @@ Started 25 November 2026; second round 25 to 26 November with a sealed hold-out 
 | "was not employed as a Rural Carrier" against "worked as a Rural Carrier" was cleared | "employed" reads as "worked"; a negation that reaches a shared name or role is not cleared | FH inserted negations caught 0 to 6 of 10 (seen); FH2 2 of 10 (fresh) | Most inserted negations in reworded drafts still missed |
 | Approvals told as events, "Accordingly," openers, judges granting motions or leave, lead-ins to lists, notes about the excerpt, spelled-out hundreds, two dates in one statement, ages given as bare numbers, "prevent", long "did not ... until" | Read as events, notes or the right figure | Track F clean 24 to 29 of 60 (seen); FH2 clean 4 to 7 of 30 (fresh, failed its criterion of 9) | |
 
+## Round 4 (26 November; no fresh test set left, so measured on seen material only)
+
+| Blind spot | What was done | Measured (all seen) | Left |
+|---|---|---|---|
+| A contradiction with a loose match was always softened to a review question, even "was not appointed" against "the Director appointed" | Stays serious when a plain "not" sits directly before a word the cited clause states without negation | FH2 inserted negations 2 to 3 of 10; FH2 changed sentences 19 to 21 of 30; one extra flagged statement on FH2 | 7 of 10 still missed on FH2 |
+| "not insufficient", "not inadequate" were not reversed | Added to the double-negative list | Unit test | |
+| A changed figure in the neighbouring sentence the statement restates ("available for download for 60 days" where the source says 30) was accepted when the new figure appeared elsewhere in the decision | Checked against the neighbouring sentence that gives the figure | FH2 figures 2 to 3 of 4 | Figures in bullet lists ("Sitting: 6 hours") are not read |
+| The person reporting ("S1 stated that two coworkers ...") counted as a different subject | Left out of the wrong-person check | FH2 flagged statements 106 to 105 | |
+| Tried and removed: a tie-break favouring the tighter of two equally scored passages | | Added flags on track F (61 to 64 statements) | |
+
 ## Measured openly, not solved
 
 | Blind spot | Measure | Result |

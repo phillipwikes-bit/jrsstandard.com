@@ -137,3 +137,18 @@ test('a long list lead-in is not a claim', () => {
   const st = run('The complaint encompasses four primary allegations spanning a three-month period from November through December 2020:', SRC);
   assert.ok(!codes(st).includes('UNSUPPORTED_CLAIM'));
 });
+
+// Fourth round (2026-11-26).
+test('"was not appointed" against "appointed" stays serious even on a loose match', () => {
+  const src = 'On January 5, 2021, the Director appointed another individual, a Transportation Security Inspector, to continue the investigation into the incident at the checkpoint.';
+  const st = run('On January 5, 2021, a Transportation Security Inspector was not appointed to continue the investigation.', src);
+  assert.ok(codes(st).includes('NEGATION_CONFLICT'), codes(st).join(','));
+});
+test('"not insufficient" reads as sufficient', () => {
+  assert.ok(!/not/.test(polarityText('the course was not insufficient for certification')));
+});
+test('a figure changed in the neighbouring sentence the statement restates is a mismatch', () => {
+  const src = 'On April 5, 2022, the Agency transmitted the report to Complainant by email. The email stated that the copy would be available for download for 30 days. Separately, Complainant had 60 days to request a hearing.';
+  const st = run('The email stated that the copy would be available for download for 60 days.', src);
+  assert.ok(codes(st).includes('NUMBER_MISMATCH'), codes(st).join(','));
+});

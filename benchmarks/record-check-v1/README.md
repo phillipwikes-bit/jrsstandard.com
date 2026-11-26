@@ -39,12 +39,12 @@ Whether a tool can tell, from the documents alone, what a later reviewer, audito
 | E | Changed figures flagged and named | 39 of 40 (98%); first run 33 of 40 | 40 flagged, 0 named | 0 of 40 |
 | E | ... where the new figure is another figure from the same decision | 15 of 16; first run 10 of 16 | 16 of 16 | 0 of 16 |
 | F | Good AI drafts with no serious flag | 29 of 60 (48%); first run 11 of 60 | 0 of 60 | 60 of 60 |
-| F | Changed sentence flagged as serious | 48 of 60 (80%); first run 21 of 60 | 60 of 60 | 0 of 60 |
+| F | Changed sentence flagged as serious | 49 of 60 (82%); first run 21 of 60 | 60 of 60 | 0 of 60 |
 | F | Both in the same pair (good draft passed and its changed copy caught) | 21 of 60 (35%); first run 3 of 60 | 0 of 60 | 0 of 60 |
 | FH (sealed hold-out 1, run once) | Good AI drafts with no serious flag | **0 of 30 (failed; needed 15)**; now development material: 3 of 30 | 0 of 30 | 30 of 30 |
 | FH (sealed hold-out 1, run once) | Changed sentence flagged as serious | **18 of 30 (failed; needed 21)**; now development material: 25 of 30 | 30 of 30 | 0 of 30 |
 | FH2 (sealed hold-out 2, run once) | Good AI drafts with no serious flag | **7 of 30 (failed; before 4, needed 9)** | 0 of 30 | 30 of 30 |
-| FH2 (sealed hold-out 2, run once) | Changed sentence flagged as serious | **19 of 30 (failed; before 17, needed 21)**: dates 15 of 16, negations 2 of 10, figures 2 of 4 | 30 of 30 | 0 of 30 |
+| FH2 (sealed hold-out 2, run once) | Changed sentence flagged as serious | **19 of 30 (failed; before 17, needed 21)**: dates 15 of 16, negations 2 of 10, figures 2 of 4; after later fixes made by looking at its misses (seen material): 21 of 30 | 30 of 30 | 0 of 30 |
 
 **A stronger baseline for track E.** `adapters/number-diff.mjs` flags every number in the passage that appears nowhere in the decision. It passes all 80 unchanged passages and catches 16 of 40 changed figures (2 of the 16 where the new figure comes from elsewhere in the same decision). Any vendor could build it in an afternoon; a figure check has to beat it.
 
