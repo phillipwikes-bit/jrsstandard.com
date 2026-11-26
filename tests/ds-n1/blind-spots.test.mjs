@@ -152,3 +152,27 @@ test('a figure changed in the neighbouring sentence the statement restates is a 
   const st = run('The email stated that the copy would be available for download for 60 days.', src);
   assert.ok(codes(st).includes('NUMBER_MISMATCH'), codes(st).join(','));
 });
+
+// Fifth round (2026-11-26).
+import { monthDates } from '../../lib/ds-n1/assess.mjs';
+test('"... and the request was not granted" against "... and the request was granted" is a contradiction', () => {
+  const src = 'On March 26, 2019, Complainant requested light duty, and the request was granted. She returned to work the next week.';
+  assert.ok(codes(run('On March 26, 2019, Complainant requested light duty, and the request was not granted.', src)).includes('NEGATION_CONFLICT'));
+});
+test('a date one day off from the sentence the statement copies is a mismatch even when that date appears nearby', () => {
+  const src = 'On August 12, 2019, PM went up to Hallway A and gave Complainant ugly stares. On August 13, 2019, PM sent an email to the team.';
+  assert.ok(codes(run('On August 13, 2019, PM went up to Hallway A and gave Complainant ugly stares.', src)).includes('DATE_MISMATCH'));
+});
+test('month-and-year dates are read for dropped-date questions only', () => {
+  assert.deepEqual(monthDates('In February 2020 she complained; on 3 March 2021 she left; by Sept. 2019 it was closed.'), ['2020-02', '2019-09']);
+});
+test('a changed figure in a short list item is a mismatch; the right figure is not', () => {
+  const src = 'The physician limited Complainant to sitting for 3 hours a day and walking for 30 minutes. She could stand for 10 minutes at a time.';
+  const rec = (n) => `Her medical restrictions include significant limitations:\n- Sitting: ${n} hours maximum\n- Walking: limited to 30 minutes\n`;
+  assert.ok(codes(run(rec(6), src)).includes('NUMBER_MISMATCH'));
+  assert.ok(!codes(run(rec(3), src)).includes('NUMBER_MISMATCH'));
+});
+test('a speaker replaced by "an individual" is dropped even when the role is mentioned elsewhere in the sentence', () => {
+  const src = 'The Agency noted that reprisal only applied to claim 2 as the Agency’s records showed no prior activity before that date.';
+  assert.ok(codes(run('An individual noted that reprisal only applied to claim 2 as the Agency’s records showed no prior activity before that date.', src)).includes('SPEAKER_OMITTED'));
+});
