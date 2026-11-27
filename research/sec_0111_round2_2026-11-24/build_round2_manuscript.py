@@ -179,7 +179,8 @@ A2a = ("Administrative burden research shifts attention from the content of a de
        "Moynihan et al. (2015) distinguish learning costs, such as finding out how a decision was reached, compliance costs and psychological costs, and show that these costs can determine whether eligible people obtain what they are entitled to. "
        "Herd and Moynihan (2018) document how such burdens are created and redistributed by administrative practice, and Christensen et al. (2020) show that they fall most heavily on people with fewer cognitive resources. "
        "Decision records are one place where these costs are set. A record that states its evidence and reasoning lowers the learning cost for everyone who later needs to understand the decision; "
-       "a record that states only a conclusion raises it, and the person with the most at stake, and often the fewest resources, is the one who must pay it.")
+       "a record that states only a conclusion raises it, and the person with the most at stake, and often the fewest resources, is the one who must pay it. "
+       "Survey evidence on procedural justice shows that people’s acceptance of decisions depends on whether they regard the process as fair, not only on the outcome (Tyler, 2006); a record that does not show its basis gives the person affected little on which to make that judgement.")
 A2b = ("Institutions face a related capacity problem. Organisations that adopt drafting tools to save staff time must still check the output, and smaller bodies may be the least able to do so. "
        "Green (2022) argues that policies requiring human oversight of government algorithms often assume a capacity for meaningful review that the overseers do not have. "
        "Studies of human–AI decision making find that people may give algorithmic advice too much weight or follow it selectively (Alon-Barkat & Busuioc, 2023; Logg et al., 2019). "
@@ -340,7 +341,13 @@ fix("The present study confirms that the reviewer is a principal source of varia
     "The present results are consistent with the reviewer being a principal source of variation:")
 fix("whether experienced reviewers can recognise", "whether reviewers with relevant professional backgrounds can recognise")
 fix("Python 3.13.18", "Python 3.13")
+fix("It extends the point to finished records,", "The study extends the point to finished records,")
+fix("Nor can they establish how classifications would change", "Nor can the aggregate results establish how classifications would change")
+fix("and the reason for running a third check was not recorded.",
+    "and neither the reason for running a third check nor the time at which it was decided was recorded.")
 fix("bootstrap 0.285 to 0.894)", "bootstrap 0.285 to 0.894, or 0.300 to 0.886 when restricted to the 10 multiply rated records)")
 
+import datetime as _dt
+d.core_properties.modified = _dt.datetime.now(_dt.timezone.utc).replace(microsecond=0)
 d.save(OUT)
 print("saved", OUT)
