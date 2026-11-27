@@ -157,6 +157,24 @@ th{font-size:10px;letter-spacing:.055em}
 @media(max-width:850px){.ipx-intro{grid-template-columns:1fr;padding:24px 22px}.ipx-body{padding:22px}.ipx-date{padding:10px 22px}.ipx-number-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.ipx-intro h2{font-size:35px}}
 @media(max-width:600px){.wrap{padding:0 14px}.hd-in{gap:12px}.ipx{margin-top:14px}.ipx-intro{padding:19px 15px;gap:17px}.ipx-intro h2{font-size:29px}.ipx-dek{font-size:13.5px}.ipx-body{padding:17px 14px 20px}.ipx-date{padding:10px 15px}.ipx-assets,.ipx-actions{grid-template-columns:1fr}.ipx-number{padding:14px 12px}.ipx-number strong{font-size:28px}.ipx-number span{font-size:11.5px}.ipx-nav a{flex:1 1 auto;justify-content:center}.ipx-decision{padding:15px}.ipx-diligence{padding:11px}.ipx-asset{padding:14px}#lead-cards{grid-template-columns:repeat(2,minmax(0,1fr)) !important}.cards>.card{min-width:0;overflow-wrap:anywhere}}
 @media(prefers-reduced-motion:reduce){.ipx *{scroll-behavior:auto}}
+/* Owner dashboard grouping, 2026-11-27: Inbox first, other groups folded. */
+.owner-jump{padding:8px 0;margin:14px 0 4px;display:flex;flex-wrap:wrap;gap:8px}
+.owner-jump .btn{min-height:40px;display:inline-flex;align-items:center}
+.owner-jump-note{margin:0 0 8px}
+.grp{border-top:1px solid var(--rule);margin:0;scroll-margin-top:12px}
+.grp>summary{cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center;gap:12px;padding:16px 0;min-height:48px}
+.grp>summary::-webkit-details-marker{display:none}
+.grp>summary::after{content:'+';font-family:'JetBrains Mono',monospace;font-size:22px;color:var(--accent);flex:0 0 auto}
+.grp[open]>summary::after{content:'\2212'}
+.grp>summary:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.grp .gh{display:flex;flex-direction:column;gap:4px;min-width:0}
+.grp .gt{margin:0;font-family:'Bodoni Moda',serif;font-size:26px;color:var(--text)}
+.grp .gs{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted-soft)}
+.grp[open]{padding-bottom:22px}
+.grp-inbox{border-top:2px solid var(--accent)}
+.owner-alerts{border-left:3px solid var(--accent);margin:0 0 18px}
+.grp [id]{scroll-margin-top:12px}
+@media(max-width:600px){.owner-jump{gap:6px}.owner-jump .btn{flex:1 1 30%;justify-content:center;padding-left:6px;padding-right:6px}.grp .gt{font-size:22px}}
 </style>
 </head>
 <body>
@@ -179,6 +197,43 @@ th{font-size:10px;letter-spacing:.055em}
   <h1>JRS Owner Dashboard</h1>
   <p class="sub">Private acquisition-readiness intelligence and source-bounded programme reporting. Historical research and distribution evidence is not verified commercial demand. Live source panels refresh where available; unavailable owner-only data must not be treated as zero.</p>
 
+  <nav class="bar owner-jump" aria-label="Owner dashboard sections">
+    <a class="btn" href="#grp-inbox">Inbox</a>
+    <a class="btn" href="#grp-research">Research</a>
+    <a class="btn" href="#grp-people">People</a>
+    <a class="btn" href="#grp-reach">Resources</a>
+    <a class="btn" href="#grp-ip">IP estate</a>
+    <a class="btn" href="#grp-controls">Controls</a>
+  </nav>
+  <p class="note owner-jump-note">Inbox is open first. Every other section is folded; tap a heading to open it. Data loads in the background whether a section is open or closed.</p>
+
+  <details class="grp grp-inbox" id="grp-inbox" open>
+    <summary><span class="gh"><h2 class="gt">Inbox</h2><span class="gs">Messages and requests that need a reply</span></span></summary>
+    <div class="note owner-alerts" id="owner-email-alerts">
+      <b style="color:var(--text)">Sent to your email (through Formspree):</b> website contact messages; pilot requests; practitioner contact requests; LinkedIn recommendation requests from the reviewer evaluation.<br>
+      <b style="color:var(--text)">Shown here only, not emailed:</b> survey answers, honor acceptances, historical database rows and pay-screen attempts. Certificate requests are closed (since 18 August 2026).<br>
+      Formspree acceptance does not prove mailbox delivery. If an expected alert is missing, check Spam and the Formspree Over Limit folder.
+    </div>
+
+  <section id="current-formspree-inquiries" aria-label="Current website contact messages, separate source" class="chart">
+    <h3 style="font-size:18px;margin:18px 0 10px">Current website inquiries | Formspree inbox</h3>
+    <p class="note">The redesigned public contact form delivers to Formspree and the designated email inbox. This is a separate source from the historical Supabase participant register. The owner may connect a Formspree read-only API key if the account supports the Forms API. This section never writes, transfers or republishes contact data.</p>
+    <p class="note" id="current-formspree-status" role="status" aria-live="polite">Current form inbox not yet checked. Unavailable is not zero.</p>
+    <div class="bar">
+      <button type="button" class="btn" id="current-formspree-refresh">Check connected inbox</button>
+      <button type="button" class="btn" id="current-formspree-export" disabled>Export connected inbox CSV</button>
+      <a class="btn" href="https://mail.google.com/mail/u/0/#search/from%3Aformspree.io+after%3A2026%2F10%2F29" target="_blank" rel="noopener noreferrer">Find recent JRS Formspree emails</a>
+    </div>
+    <p class="note">The Gmail link searches Formspree notifications since October 29, 2026, including messages whose subjects differ from the default inquiry title. It opens Gmail without transmitting any email content to this page. If direct Formspree read access is not configured, consult the existing Formspree and Gmail records. Check Formspree's Over Limit folder separately: the submission API does not return over-limit entries until they are reprocessed, and notification email may not have been sent. Do not copy names into a sales list without purpose-specific authorization.</p>
+    <div class="tablewrap" style="margin-top:12px">
+      <table id="current-formspree-table">
+        <caption style="caption-side:top;text-align:left;font-size:12px;color:var(--muted-soft);padding-bottom:8px">Authenticated owner read only. Source records remain in Formspree.</caption>
+        <thead><tr><th>Date</th><th>Purpose</th><th>Name</th><th>Email</th><th>Organization</th><th>Message</th><th>Contact permission</th><th>Form marker</th></tr></thead>
+        <tbody id="current-formspree-rows"><tr><td colspan="8">Current source not yet connected. No zero asserted.</td></tr></tbody>
+      </table>
+    </div>
+  </section>
+
   <!-- Practitioner survey responses, first on the page so the owner does not
        have to search the full record. Reads the same authenticated people
        endpoint as "Everyone on the record"; rows flagged as tests are counted
@@ -190,6 +245,415 @@ th{font-size:10px;letter-spacing:.055em}
     <div id="sv-list"></div>
   </section>
 
+  <!-- MERGED FROM THE OWNER SHEET 2026-08-12. That page duplicated this one's
+       roster and Today tiles while holding these four blocks nowhere else, so
+       the unique parts moved here and the duplicate page was deleted. One URL. -->
+  <h2 id="private-contact-detail" style="font-size:22px;margin-top:34px">Private contact requests and permissions</h2>
+  <p class="sub">The parts of the record that are not counts: who asked for a recommendation or a certificate, and the quotes honorees wrote with their publication clearance. Nothing here appears on any other page.</p>
+  <div class="chart">
+    <h3>Asked for a LinkedIn recommendation</h3>
+    <div id="ppl-rec">Loading&hellip;</div>
+  </div>
+  <div class="chart">
+    <h3>Asked for a certificate</h3>
+    <div id="ppl-cert">Loading&hellip;</div>
+  </div>
+  <div class="chart">
+    <h3>Honor acceptances, with their quote</h3>
+    <div id="ppl-honor">Loading&hellip;</div>
+  </div>
+
+
+  <!-- This is an owner-only response queue, not a commercial conversion claim.
+       URL secrecy is not an access control. The page is protected by the
+       server-side owner proxy, and private API readers require ownerAccess().
+       Site inquiries are grouped separately from historical commercial paths. -->
+  <h2 id="contacts-and-commercial" style="font-size:22px">Inquiries and historic commercial activity</h2>
+  <p class="sub">Historical database contacts and payment-screen attempts, newest first. Current public-site inquiries use the Formspree contact relay and are not automatically included in these database records. Research and training enquiries are not software sales leads. <b style="color:var(--review-text)">This is a queue, not a statistic.</b> Names and emails are shown because a lead you cannot see is a lead you cannot answer.</p>
+  <div class="cards" id="lead-cards" style="grid-template-columns:repeat(4,1fr)">
+    <div class="card"><div class="cv hot" id="ld-leads">&middot;</div><div class="ck">Legacy leads shown</div></div>
+    <div class="card"><div class="cv" id="ld-attempts">&middot;</div><div class="ck">Pay-screen attempts</div></div>
+    <div class="card"><div class="cv" id="ld-lost">&middot;</div><div class="ck">Historical clicks with no checkout link configured</div></div>
+    <div class="card"><div class="cv" id="ld-value">&middot;</div><div class="ck">Archived offer list value for unconfigured clicks, not revenue</div></div>
+  </div>
+
+  <section aria-label="Categorized website inquiry measurements">
+   <h3 style="font-size:18px;margin:18px 0 10px">Historical database inquiries, separate from commercial leads</h3>
+   <div class="cards" style="grid-template-columns:repeat(2,1fr)">
+    <div class="card"><div class="cv" id="ld-site-total">&middot;</div><div class="ck">Historical database inquiries, all time</div></div>
+    <div class="card"><div class="cv" id="ld-site-30d">&middot;</div><div class="ck">Historical database inquiries, last 30 days</div></div>
+   </div>
+   <p class="note" id="ld-site-types">Loading inquiry categories...</p>
+   <p class="note" id="ld-site-commercial">Loading separately classified commercial purposes...</p>
+   <p class="note">These counts include only historical Supabase contact rows with source=site-inquiry. The redesigned public website sends its current contact form to Formspree, not to this Supabase table. Newer messages, including names and emails, remain with that independent recipient and are NOT in these counts or the Supabase participant register unless separately imported with provenance and lawful purpose. No unavailable source may be interpreted as zero. Research, resource and general questions are not evidence of commercial demand.</p>
+  </section>
+
+
+  <p class="note" id="ld-source-coverage" role="status" aria-live="polite">Historical source coverage not yet verified.</p>
+  <div class="tablewrap">
+   <table>
+    <thead><tr><th>When</th><th>Type</th><th>Name</th><th>Email</th><th>Organisation</th><th>Detail</th><th>Country</th></tr></thead>
+    <tbody id="ld-rows"><tr><td colspan="7" style="color:var(--muted-soft)">Loading leads...</td></tr></tbody>
+   </table>
+  </div>
+  <p class="note" id="ld-note">&nbsp;</p>
+
+  <div class="tablewrap">
+   <table>
+    <thead><tr><th>When</th><th>Offer</th><th>State</th><th>Arrived from</th><th>Country</th></tr></thead>
+    <tbody id="ld-att"><tr><td colspan="5" style="color:var(--muted-soft)">Loading attempts...</td></tr></tbody>
+   </table>
+  </div>
+  <p class="note"><b>Pay-screen attempts carry no name by design.</b> The person left before giving one. They are listed separately from identified leads so a row here can never be read as a contact you could follow up.</p>
+
+<section aria-label="Owner-only contact and research records">
+   <h2 style="font-size:18px">Owner records</h2>
+   <p class="sub">These views contain names and contact details and require the signed owner session. Use the sign-out control when finished. The links do not send these records to the public website or Google Analytics.</p>
+   <p class="note">
+    <a href="/api/enroll-admin" style="color:var(--accent)">Training enrollments and completions</a>
+    &nbsp;·&nbsp;
+    <a href="/api/support-contacts" style="color:var(--accent)">Supporters and requested follow-ups</a>
+   </p>
+   <p class="note">Owner-access data can contain consent choices. A contact record is not permission to publish a name or transfer personal information.</p>
+  </section>
+  </details>
+
+  <details class="grp" id="grp-research">
+    <summary><span class="gh"><h2 class="gt">Research and reviewer activity</h2><span class="gs">Today, panel, pilots, evaluations</span></span></summary>
+  <h2 id="today-arrivals" style="font-size:22px;margin-top:34px">Today <span id="td-date" style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.12em;color:var(--muted-soft);vertical-align:middle">&middot;</span></h2>
+  <p class="sub">Every surface, counted for the current UTC day. The other Today figures on this page count a completed action: a registration, an enrolment, a confirmation. None of them counts an arrival, so a day could carry real traffic on every link and every one of them would still read zero. This block counts arrivals.</p>
+  <div class="cards" style="grid-template-columns:repeat(4,1fr)">
+    <div class="card"><div class="cv hot" id="td-campaign">&middot;</div><div class="ck">Campaign screen arrivals</div></div>
+    <div class="card"><div class="cv" id="td-reviewer">&middot;</div><div class="ck">Reviewer landing arrivals</div></div>
+    <div class="card"><div class="cv" id="td-training">&middot;</div><div class="ck">Training page arrivals</div></div>
+    <div class="card"><div class="cv" id="td-endorse">&middot;</div><div class="ck">Endorsements <b style="color:var(--muted-soft)">all sources</b></div>
+      <div id="td-endorse-all" style="font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:.06em;color:var(--muted-soft);margin-top:5px;line-height:1.5">&nbsp;</div></div>
+    <div class="card"><div class="cv" id="td-evopen">&middot;</div><div class="ck">Evaluation opens</div></div>
+    <div class="card"><div class="cv" id="td-evsub">&middot;</div><div class="ck">Evaluation submissions</div></div>
+    <div class="card"><div class="cv" id="td-dl">&middot;</div><div class="ck">Guide downloads</div></div>
+    <div class="card"><div class="cv" id="td-reads">&middot;</div><div class="ck">Records reviewed</div></div>
+  </div>
+  <div class="note" id="td-revfunnel" style="border-left-width:3px">Reconciling the reviewer funnel&hellip;</div>
+  <div class="note" id="td-recon" style="border-left-width:3px">Reconciling arrivals against endorsements&hellip;</div>
+  <div class="note" id="td-note">Loading today&hellip;</div>
+
+  <!-- THE REVIEWER PANEL. Added 2026-08-13. This page never called
+       /api/panel-stats, so the single largest asset in the programme, the
+       international reviewer bench, appeared nowhere on the owner's own
+       dashboard. Everything else on the page counts contacts, clicks or
+       downloads, which is why the country figures looked contradictory. -->
+  <h2 id="reviewer-panel" style="font-size:22px">The Reviewer Panel</h2>
+  <p class="sub">The international bench across all three studies. This is the asset. Every other figure on this page counts a click, a contact or a download; this one counts credentialed people who graded records.</p>
+  <div class="cards" id="panel-cards" style="grid-template-columns:repeat(4,1fr)">
+    <div class="card"><div class="cv hot" id="pn-completers">&middot;</div><div class="ck">Completed a full 24-record set</div></div>
+    <div class="card"><div class="cv" id="pn-countries">&middot;</div><div class="ck">Countries <b style="color:var(--review-text)">of the completers</b></div><div id="pn-scope" style="font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:.06em;color:var(--muted-soft);margin-top:5px;line-height:1.5">&nbsp;</div></div>
+    <div class="card"><div class="cv" id="pn-reviewers">&middot;</div><div class="ck">Graded at least one record</div></div>
+    <div class="card"><div class="cv" id="pn-registered">&middot;</div><div class="ck">Registered</div></div>
+  </div>
+  <div class="note" id="pn-note" style="border-left-width:3px">Loading the panel&hellip;</div>
+
+  <div class="chart">
+    <h3>Why the country numbers on this page differ</h3>
+    <div class="note" id="pn-recon" style="margin:0">Reconciling&hellip;</div>
+  </div>
+
+  <h2 id="ai-records-pilot">AI-Assisted Records Pilot &middot; Submissions</h2>
+  <p class="sub">Who has entered reads on the 24-record detection study, and when. Bookmark this page and open it anytime. It updates automatically every 60 seconds. Aggregate counts only; individual answers are never shown.</p>
+  <div class="bar"><span class="live" id="live" role="status" aria-live="polite">Loading&hellip;</span><button class="btn" type="button" onclick="refresh()">Refresh now</button></div>
+  <div class="cards">
+    <div class="card"><div class="cv hot" id="today">&middot;</div><div class="ck">New today (UTC)</div></div>
+    <div class="card"><div class="cv" id="total">&middot;</div><div class="ck">Total reads</div></div>
+    <div class="card"><div class="cv" id="started">&middot;</div><div class="ck">Reviewers started</div></div>
+    <div class="card"><div class="cv" id="finished">&middot;</div><div class="ck">Finished (24/24)</div></div>
+  </div>
+  <div class="chart" id="progwrap">
+    <h3>Panel completion</h3>
+    <div class="sbar" id="progbar"></div>
+    <div class="legend" id="proglegend"></div>
+  </div>
+  <div class="note" id="latest">&nbsp;</div>
+  <div class="tablewrap"><table>
+    <thead><tr><th>Reviewer</th><th>Code</th><th>Progress</th><th>Last activity</th></tr></thead>
+    <tbody id="rows"><tr><td colspan="4" style="color:var(--muted-soft)">Loading&hellip;</td></tr></tbody>
+  </table></div>
+  <div class="note">"New today" counts reads submitted since 00:00 UTC. "Finished" means a reviewer has covered all 24 records. This page shows participation only; for published findings, denominators and limitations, open the <a href="research.html" style="color:var(--accent)">JRS Research Record</a>.</div>
+
+  <h2 id="real-case-pilots" style="font-size:22px;margin-top:34px">Real-Case Pilots &middot; Rung 3</h2>
+  <p class="sub">Real public determinations paired with documented outcomes. Aggregate counts only; no case text is shown here.</p>
+  <div class="cards">
+    <div class="card"><div class="cv hot" id="rc-today">&middot;</div><div class="ck">New today (UTC)</div></div>
+    <div class="card"><div class="cv" id="rc-cases">&middot;</div><div class="ck">Real cases</div></div>
+    <div class="card"><div class="cv" id="rc-domains">&middot;</div><div class="ck">Domains active</div></div>
+    <div class="card"><div class="cv" id="rc-contributors">&middot;</div><div class="ck">Contributors</div></div>
+  </div>
+  <div class="tablewrap"><table>
+    <thead><tr><th>Domain</th><th>Contributor</th><th>Cases</th><th>Outcomes</th><th>JRS reads</th><th>Last activity</th></tr></thead>
+    <tbody id="rc-rows"><tr><td colspan="6" style="color:var(--muted-soft)">Loading&hellip;</td></tr></tbody>
+  </table></div>
+  <div class="note">Two domain pilots are active. A third, healthcare compliance, was withdrawn on 13 August 2026 having contributed no cases, so no figure on this page changes with it.</div>
+
+  <h2 id="comparison-arm-b" style="font-size:22px;margin-top:34px">Comparison Study &middot; Arm B</h2>
+  <p class="sub">A separate, JRS-naive batch reviewing the same 24 records. Each participant is randomly assigned by their code to the JRS arm or the no-JRS baseline. Aggregate counts only; codes, not names.</p>
+  <div class="cards">
+    <div class="card"><div class="cv hot" id="ab-today">&middot;</div><div class="ck">New today (UTC)</div></div>
+    <div class="card"><div class="cv" id="ab-total">&middot;</div><div class="ck">Total reads</div></div>
+    <div class="card"><div class="cv" id="ab-jrs">&middot;</div><div class="ck">JRS arm</div></div>
+    <div class="card"><div class="cv" id="ab-nojrs">&middot;</div><div class="ck">No-JRS arm</div></div>
+  </div>
+  <div class="tablewrap"><table>
+    <thead><tr><th>Code</th><th>Arm</th><th>Progress</th><th>Last activity</th></tr></thead>
+    <tbody id="ab-rows"><tr><td colspan="4" style="color:var(--muted-soft)">Loading&hellip;</td></tr></tbody>
+  </table></div>
+  <div class="note">Arm assignment is automatic and random from each code. This section fills as Arm B participants submit; it shows participation only, never answers.</div>
+
+  <h2 id="organization-pilots" style="font-size:22px;margin-top:34px">Organization Pilots &middot; Field Use</h2>
+  <p class="sub">Organizations that have applied the standard to their own records. Record text is never stored: each record is assessed in memory and discarded, so only the count of records run and the pattern of results is kept. Organization names appear only where the organization consented to be named.</p>
+  <div class="cards">
+    <div class="card"><div class="cv hot" id="op-today">&middot;</div><div class="ck">New today (UTC)</div></div>
+    <div class="card"><div class="cv" id="op-orgs">&middot;</div><div class="ck">Organizations</div></div>
+    <div class="card"><div class="cv" id="op-records">&middot;</div><div class="ck">Records run</div></div>
+    <div class="card"><div class="cv" id="op-flagged">&middot;</div><div class="ck">Conditions flagged</div></div>
+  </div>
+  <div class="note" id="op-note">Organization pilots will appear here once the first organization runs the standard on its own records.</div>
+  <div class="chart">
+    <h3>Sectors represented</h3>
+    <div id="opsector">Loading&hellip;</div>
+    <div class="note" style="margin-top:8px">Sector of each organization that ran a pilot, and the routing bands their records received. Aggregate only; no organization's individual results are shown.</div>
+  </div>
+
+  <h2 id="completed-evaluations" style="font-size:22px;margin-top:34px">Completed Evaluations</h2>
+  <p class="sub">How many people completed the reviewer evaluation, who they are where they chose to be named, and what the results are collected for. Nobody appears by name who did not tick that box.</p>
+  <div class="cards" style="grid-template-columns:repeat(4,1fr)">
+    <div class="card"><div class="cv hot" id="ce-submitted">&middot;</div><div class="ck">Evaluations completed</div></div>
+    <div class="card"><div class="cv" id="ce-all9">&middot;</div><div class="ck">Answered all nine</div></div>
+    <div class="card"><div class="cv" id="ce-named">&middot;</div><div class="ck">Chose to be named</div></div>
+    <div class="card"><div class="cv" id="ce-anon">&middot;</div><div class="ck">Chose to stay anonymous</div></div>
+  </div>
+  <div class="chart">
+    <h3>Who completed one</h3>
+    <div id="ce-names">Loading&hellip;</div>
+    <div class="note" style="margin-top:8px" id="ce-limit"></div>
+  </div>
+  <div class="chart">
+    <h3>What the results are collected for</h3>
+    <div id="ce-purpose" style="font-size:13px;color:var(--muted);line-height:1.65">Loading&hellip;</div>
+  </div>
+
+
+  <h2 id="evaluation-funnel" style="font-size:22px;margin-top:34px">Reviewer Evaluation Funnel</h2>
+  <p class="sub">The anonymized baseline on how records are reviewed inside working organizations. Four stages: how many opened the evaluation, how many submitted, how many answered all nine questions, and how many left contact details that can transfer with the asset. Answers and contact details are stored in different tables with no shared identifier, so these counts cannot be joined to say which respondent gave which answers.</p>
+  <div class="cards">
+    <div class="card"><div class="cv hot" id="ev-opened">&middot;</div><div class="ck">Opened the evaluation</div></div>
+    <div class="card"><div class="cv" id="ev-submitted">&middot;</div><div class="ck">Submitted</div></div>
+    <div class="card"><div class="cv" id="ev-complete">&middot;</div><div class="ck">Answered all nine</div></div>
+    <div class="card"><div class="cv" id="ev-contacts">&middot;</div><div class="ck">Contacts captured</div></div>
+    <div class="card"><div class="cv" id="ev-countries">&middot;</div><div class="ck">Countries reached</div></div>
+  </div>
+  <div class="chart">
+    <h3>Where the funnel loses people</h3>
+    <div id="evfunnel">Loading&hellip;</div>
+  </div>
+  <div class="chart">
+    <h3>Country of reviewer</h3>
+    <div id="evcountries">Loading&hellip;</div>
+  </div>
+  <div class="note" id="ev-note">Evaluation activity will appear here once the first reviewer opens the instrument.</div>
+
+
+  <h2 id="contributor-confirmations" style="font-size:22px;margin-top:34px">Contributor Confirmations</h2>
+  <p class="sub">Per-person confirmation links sent to the reviewers who completed the international detection set, the article co-authors, and the pilot facilitators. Each link captures the exact name and title to print, the naming election, and the continuing-use and transfer permissions. Aggregate counts only; the wording each contributor chose is stored privately.</p>
+  <div class="cards">
+    <div class="card"><div class="cv hot" id="cb-today">&middot;</div><div class="ck">Confirmed today (UTC)</div></div>
+    <div class="card"><div class="cv" id="cb-confirmed">&middot;</div><div class="ck">Confirmed</div></div>
+    <div class="card"><div class="cv" id="cb-outstanding">&middot;</div><div class="ck">Outstanding</div></div>
+    <div class="card"><div class="cv" id="cb-named">&middot;</div><div class="ck">Named in paper</div></div>
+  </div>
+  <div class="note" id="cb-note">Confirmations will appear here once the first contributor opens their link.</div>
+
+
+  <h2 id="suppressed-cohorts" style="font-size:22px;margin-top:34px">Suppressed &amp; Inactive Cohorts</h2>
+  <p class="sub">A zero on this page can mean three different things and you cannot tell them apart by looking: nothing happened, nothing was sent, or something is deliberately withheld. Every cohort below states which of the three it is. None of them is counted in an active total: a roster size is not an audience, an unsent link is not a non-response, and a withheld breakdown is not an absence of data.</p>
+  <div class="chart">
+    <h3>Declared exclusions</h3>
+    <div id="suppressed">Loading&hellip;</div>
+    <div class="note" style="margin-top:8px">Anti-inflation statement. Rates for the per-person link programmes are computed against links <b>sent</b>, never against links <b>issued</b>. Where a rate against issued appears elsewhere in the payload it is labelled as the conservative reading and is not the operational one.</div>
+  </div>
+
+  </details>
+
+  <details class="grp" id="grp-people">
+    <summary><span class="gh"><h2 class="gt">People and registrations</h2><span class="gs">Private contact register and consent</span></span></summary>
+  <!-- The Owner Sheet panel was removed on 2026-08-12 when supporters-b78f5ff2c08d.html
+     was deleted. Its unique content is now the Private Contact Detail section below
+     and the Email column in the roster. There is one private page, not two. -->
+
+  <!-- PRIVATE OWNER DIRECTORY. All source rows, including flagged historical
+       test candidates, must remain visible only after the server session gate.
+       Noindex or obscure filenames are not access controls. -->
+  <h2 id="everyone-on-the-record" style="font-size:22px;margin-top:34px">Everyone on the record</h2>
+  <div class="note" style="margin-bottom:10px">Every source row in the historical private contact table, including possible test records, remains available for review. A row is not a verified unique person. Country is shown where supported by the original submission or dated reviewer roster. Test labels are review flags, not grounds for exclusion or deletion.</div>
+  <div class="chart">
+    <div id="ppl-tiles" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(110px,1fr));gap:8px;margin-bottom:12px"></div>
+    <div style="display:flex;gap:10px;flex-wrap:wrap;margin-bottom:10px">
+      <input id="ppl-q" type="search" placeholder="Search name, email, organization or activity"
+             aria-label="Search private records by name, email, organization, country or activity"
+             style="flex:1 1 240px;background:#0d0d0d;border:1px solid var(--rule);color:var(--text);font-family:'Inter',sans-serif;font-size:12.5px;padding:9px 11px">
+      <select id="ppl-country" aria-label="Filter the record by country"
+              style="background:#0d0d0d;border:1px solid var(--rule);color:var(--text);font-family:'Inter',sans-serif;font-size:12.5px;padding:9px 11px"></select>
+      <select id="ppl-group" aria-label="Filter records by programme purpose"><option value="">All programme purposes</option></select>
+      <select id="ppl-contact" aria-label="Filter records by contact permission">
+        <option value="">All contact-permission states</option>
+        <option value="recorded-yes">Contact permission recorded</option>
+        <option value="recorded-no">Contact permission declined</option>
+        <option value="not-recorded">Contact permission not recorded</option>
+        <option value="conflicting">Conflicting permission flags, review required</option>
+      </select>
+    </div>
+    <div id="ppl-cnt" class="note" style="margin:0 0 6px"></div>
+    <div style="overflow-x:auto"><table id="ppl-tbl" style="min-width:940px"></table></div>
+    <div class="note" id="ppl-note" style="margin-top:10px"></div>
+    <p class="note">Names, email addresses and source activity remain in this signed-in owner view. Consent is shown at the individual source-event level. “Not recorded” is not consent. Do not merge free-resource, training or research identities into software buyer outreach. Exports are personal-data records, not marketing lists.</p>
+    <div style="margin-top:12px"><button class="btn" type="button" id="ppl-csv" disabled>Export filtered private contact register (CSV)</button></div>
+  </div>
+
+  <h2 id="consented-registrations" style="font-size:22px;margin-top:34px">Consented Registrations</h2>
+  <p class="sub">Named registrations captured at the field-guide and initiative-support gates. Every row behind these counts is a real person with an organization, an email, and explicit consent, which is what distinguishes them from an anonymous download or an anonymous click. Aggregate counts only; the named list is stored privately.</p>
+  <div class="cards">
+    <div class="card"><div class="cv hot" id="rg-today">&middot;</div><div class="ck">New today (UTC)</div></div>
+    <div class="card"><div class="cv" id="rg-total">&middot;</div><div class="ck">Registrations</div></div>
+    <div class="card"><div class="cv" id="rg-orgs">&middot;</div><div class="ck">Organizations</div></div>
+    <div class="card"><div class="cv" id="rg-transfer">&middot;</div><div class="ck">Transferable</div></div>
+  </div>
+  <div class="note" id="rg-note">Registrations will appear here once the first person registers at a gate.</div>
+  <div class="chart">
+    <h3>What they registered for</h3>
+    <div id="rgsplit">Loading&hellip;</div>
+    <div class="note" style="margin-top:8px">Investigator Guide registrations by edition and initiative support by campaign. The guide and support gates went live on Aug 2, 2026; downloads and support recorded before that date were anonymous and cannot be attributed to a person.</div>
+  </div>
+
+  <h2 id="historical-registrations" style="font-size:22px;margin-top:34px">Historical registration-era activity</h2>
+  <p class="note">This section preserves records from the August 2026 registration workflow. The redesigned public JRS materials are free and must not require registration or research enrollment. Historical named registrations do not establish a current download gate or unique completed downloads.</p>
+  <div class="note" style="border-left-color:var(--accent)"><b style="color:var(--text)">Need the actual names?</b> The counts in this section are aggregate. The named roster is further down this page: see <a href="#everyone-on-the-record" style="color:var(--accent)">Everyone on the record</a>, which lists every person with their organization, title, country, email, what they did and what they consented to. Recommendation and certificate requests and the honor quotes are under <b>Private Contact Detail</b> below that. Everything is on this one page.</div>
+  <p class="sub">Everything below counts activity from 2 August 2026 forward, the date the guides and the initiative support action moved behind a registration form. Earlier downloads and support clicks were anonymous and cannot be attributed to a person, so they are excluded here rather than blended in. Training is the exception and is shown all-time, because enrollment always required identity and consent. Aggregate counts only; the named list stays private.</p>
+  <div class="cards">
+    <div class="card"><div class="cv hot" id="gt-today">&middot;</div><div class="ck">New today (UTC)</div></div>
+    <div class="card"><div class="cv" id="gt-people">&middot;</div><div class="ck">Named people</div></div>
+    <div class="card"><div class="cv" id="gt-orgs">&middot;</div><div class="ck">Organizations</div></div>
+    <div class="card"><div class="cv" id="gt-countries">&middot;</div><div class="ck">Countries</div></div>
+  </div>
+  <div class="note" id="gt-note">Post-gate activity will appear here once the first person registers.</div>
+  <div class="chart">
+    <h3>What they registered for, and where</h3>
+    <div id="gtsplit">Loading&hellip;</div>
+  </div>
+  <div class="cards" style="margin-top:14px">
+    <div class="card"><div class="cv" id="gt-train-en">&middot;</div><div class="ck">Training enrollments (all time)</div></div>
+    <div class="card"><div class="cv" id="gt-train-cp">&middot;</div><div class="ck">Training completions</div></div>
+    <div class="card"><div class="cv" id="gt-records">&middot;</div><div class="ck">Records reviewed</div></div>
+    <div class="card"><div class="cv" id="gt-transfer">&middot;</div><div class="ck">Transferable</div></div>
+  </div>
+  <div class="note" id="gt-note2">&nbsp;</div>
+  </details>
+
+  <details class="grp" id="grp-reach">
+    <summary><span class="gh"><h2 class="gt">Resources and reach</h2><span class="gs">Training, downloads, clicks, support</span></span></summary>
+  <h2 id="training-adoption" style="font-size:22px;margin-top:34px">Training &amp; Certification Adoption</h2>
+  <p class="sub">Recorded enrollments in JRS training. Aggregate counts only; no personal data is shown here. The named list remains restricted to the private owner dashboard. Enrollment, contact permission and any successor transfer permission must be evaluated separately for each source record. No blanket transfer authority is established.</p>
+  <div class="cards">
+    <div class="card"><div class="cv hot" id="tr-today">&middot;</div><div class="ck">New today (UTC)</div></div>
+    <div class="card"><div class="cv" id="tr-enroll">&middot;</div><div class="ck">Enrollments</div></div>
+    <div class="card"><div class="cv" id="tr-orgs">&middot;</div><div class="ck">Organizations</div></div>
+    <div class="card"><div class="cv" id="tr-consent">&middot;</div><div class="ck">Contactable</div></div>
+  </div>
+  <div class="note" id="tr-note">Training adoption will appear here once enrollment is enabled.</div>
+  <div class="chart">
+    <h3>Completions by country</h3>
+    <div id="trgeo">Loading&hellip;</div>
+    <div class="note" style="margin-top:8px">Country of each training completion. Recorded automatically at completion (geo live since Jul 17, 2026); completions from before then are backfilled from reviewer records. Aggregate counts only.</div>
+  </div>
+
+
+  <h2 id="resource-downloads" style="font-size:22px;margin-top:34px">Investigator Guide Downloads</h2>
+  <p class="sub">Downloads of the three Investigator Guide editions: EEO, Fair Housing, and International. By day and by country, from one source, so the by-day total, the by-country total, and the by-asset total are the same number. Counted at the redirect endpoint, so emailed and shared links are included too. Aggregate counts only.</p>
+
+  <div class="chart">
+    <h3>Request quality by individual resource</h3>
+    <p class="sub">Historical raw requests are preserved. Other user agents have not matched the declared-crawler pattern but are NOT verified humans.</p>
+    <div class="tablewrap"><table>
+      <thead><tr><th>Resource</th><th>Raw</th><th>Declared crawler</th><th>User agent missing</th><th>Other user agents</th></tr></thead>
+      <tbody id="download-quality-rows"><tr><td colspan="5">Loading classified requests...</td></tr></tbody>
+    </table></div>
+    <p class="note" id="download-quality-note">These count tracked redirect requests, not readers, document use or buyer interest.</p>
+    <p class="note" id="download-scope-bridge">Reconciling request-source populations with the aggregate report...</p>
+  </div>
+  <div class="chart">
+    <h3>Raw tracked guide requests by day</h3>
+    <div id="dlchart" style="overflow-x:auto">Loading&hellip;</div>
+    <div class="legend" id="dllegend"></div>
+  </div>
+  <div class="chart">
+    <h3>Raw requests by item and country</h3>
+    <div id="itemsbycountry">Loading&hellip;</div>
+    <div class="note" style="margin-top:8px">Every downloadable item on its own, counted by country: the three Investigator Guide editions, the JRS Standard PDF, the Rapid Review Card, the JRS Reviewer Reference (training companion), and the combined Investigator Guide. Nothing is grouped into a shared total. Country recorded at the redirect endpoint. Aggregate counts only.</div>
+  </div>
+
+  <h2 id="link-clicks" style="font-size:22px;margin-top:34px">Link Clicks Across the Site</h2>
+  <p class="sub">Every link click beaconed by the site dispatcher, by destination, by page of origin and by country. This is not total site clicks: guide downloads and endorsements are recorded inside their own redirect, which is a stronger record than a beacon, and are counted in the two sections above instead of here. Query strings are stripped before storage, so a destination is a path only. Aggregate counts only.</p>
+  <div class="cards" style="grid-template-columns:1fr 1fr 1fr 1fr">
+    <div class="card"><div class="cv hot" id="lc-total">&middot;</div><div class="ck">Clicks recorded</div></div>
+    <div class="card"><div class="cv" id="lc-today">&middot;</div><div class="ck">Today</div></div>
+    <div class="card"><div class="cv" id="lc-targets">&middot;</div><div class="ck">Distinct destinations</div></div>
+    <div class="card"><div class="cv" id="lc-countries">&middot;</div><div class="ck">Countries</div></div>
+  </div>
+  <div class="chart">
+    <h3>Where readers go</h3>
+    <div id="lctargets">Loading&hellip;</div>
+  </div>
+  <div class="chart">
+    <h3>Which page they leave from</h3>
+    <div id="lcorigins">Loading&hellip;</div>
+  </div>
+  <div class="note" id="lc-note">Link-click activity will appear here once a reader clicks an instrumented link.</div>
+  <div class="chart" style="margin-top:14px">
+    <h3>Checkout intent</h3>
+    <div class="note" id="checkout-intent">Loading&hellip;</div>
+  </div>
+  <div class="chart" style="margin-top:14px">
+    <h3>Certificate renders</h3>
+    <div class="note" id="cert-renders">Loading&hellip;</div>
+  </div>
+
+
+  <h2 id="initiative-support" style="font-size:22px;margin-top:34px">Initiative Support</h2>
+  <p class="sub">One-click endorsements of the two public initiatives, by day, by country and by initiative. These sit outside the guide downloads above and are counted separately.</p>
+  <div class="cards" id="endorse-cards" style="grid-template-columns:1fr 1fr 1fr 1fr">
+    <div class="card"><div class="cv hot" id="en-total">&middot;</div><div class="ck">Endorsements, all sources</div>
+      <div style="font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:.06em;color:var(--muted-soft);margin-top:5px;line-height:1.5">campaign, home page<br>and footer combined</div></div>
+    <div class="card"><div class="cv" id="en-peak">&middot;</div><div class="ck">Best single day</div></div>
+    <div class="card"><div class="cv" id="en-active">&middot;</div><div class="ck">Days with activity</div></div>
+    <div class="card"><div class="cv" id="en-mean">&middot;</div><div class="ck">Mean per active day</div></div>
+  </div>
+  <div class="chart">
+    <h3>Endorsements per day</h3>
+    <div id="endorseday">Loading&hellip;</div>
+    <div class="note" style="margin-top:8px">One column per calendar day, UTC, running to today rather than to the last event. Every column carries its number, zeros included, so a quiet day reads as a measured zero rather than as a missing bar. Today is drawn on a faint track and labelled TODAY on the axis, so the slot is visible before anything fills it. The endorsement is a single click with no form behind it. Columns dated 13 August 2026 onward count one endorsement per browser per initiative; earlier columns count raw clicks, so a reader who clicked twice was counted twice and those rows cannot be deduplicated now.</div>
+  </div>
+  <div class="chart">
+    <h3>Initiative supporters by country</h3>
+    <div id="supchart">Loading&hellip;</div>
+    <div id="supcampaign" style="margin-top:12px"></div>
+    <div class="note" style="margin-top:8px">One-click endorsements of both initiatives, including explicit campaign-page buttons. Recorded through the same /api/support ledger and separated by initiative, country and source. These are browser-limited expressions of support, not verified organizational endorsements, unique people or evidence of JRS adoption. Public campaign-page visits are GA4 page views, not the historical campaign-screen arrivals shown above; do not treat the two as identical populations.</div>
+  </div>
+  <div class="chart">
+    <h3>Supporters who chose to be listed</h3>
+    <div id="supwall">Loading&hellip;</div>
+    <div class="note" style="margin-top:8px">Only people who ticked "list my name publicly" when they added their support. Name and organization only, never email. Everyone else stays a private count.</div>
+  </div>
+
+  </details>
+
+  <details class="grp" id="grp-ip">
+    <summary><span class="gh"><h2 class="gt">IP estate and assets</h2><span class="gs">Sale readiness, Tier II, dossier</span></span></summary>
   <!-- Private owner acquisition dashboard. Dated evidence, no PII, no new API calls. -->
   <section id="ip-sale-intelligence" class="ipx" aria-labelledby="ipx-heading">
     <div class="ipx-intro">
@@ -299,7 +763,6 @@ th{font-size:10px;letter-spacing:.055em}
     </div>
   </section>
 
-  
   <!-- Issue 3.6 organizational alignment. No data copied, stored or exposed here.
        The existing authenticated API sources and historic panels remain intact. -->
   <div id="programme-map" class="jrs-overview" role="region" aria-label="Private JRS programme index">
@@ -339,438 +802,6 @@ th{font-size:10px;letter-spacing:.055em}
       <strong>Measurement boundaries:</strong> Public guide clicks, tracked redirect requests, final PDF delivery, research responses, training completions and verified organizational adoption are different populations. Historical registration rows stay in their original record and do not create a current download gate. The private contact directory is for authorized owner review, not a buyer prospect list. Unknown, incomplete or unverified data must never be shown as zero.
     </div>
   </div>
-  <nav class="bar" aria-label="Private programme quick navigation">
-    <a class="btn" href="#ip-sale-intelligence">IP sale overview</a>
-    <a class="btn" href="#resource-downloads">Free resources</a>
-    <a class="btn" href="#everyone-on-the-record">Participants</a>
-    <a class="btn" href="#contacts-and-commercial">Inquiries</a>
-    <a class="btn" href="#tier-two-portfolio">Private assets</a>
-    <a class="btn" href="#owner-release-readiness">Controls</a>
-  </nav>
-<section aria-label="Owner-only release readiness" id="owner-release-readiness">
-  <h2 style="font-size:22px">Release Readiness and Access Controls</h2>
-  <p class="sub">Current server configuration is shown separately from the independent checks required before release. A configured credential does not prove its associated function works. Software status remains NO_GO_NOT_VERIFIED.</p>
-  <div class="chart">
-    <h3>Environment configuration, owner-only</h3>
-    <p class="note" id="release-readiness-note" role="status" aria-live="polite">Checking configuration presence...</p>
-    <div class="tablewrap"><table>
-      <thead><tr><th scope="col">Prerequisite</th><th scope="col">Configuration</th></tr></thead>
-      <tbody id="release-readiness-config"><tr><td colspan="2">Loading...</td></tr></tbody>
-    </table></div>
-  </div>
-  <div class="chart">
-    <h3>Required independent release checks</h3>
-    <div class="tablewrap"><table>
-      <thead><tr><th scope="col">Verification</th><th scope="col">Status</th></tr></thead>
-      <tbody id="release-readiness-verification"><tr><td colspan="2">Loading...</td></tr></tbody>
-    </table></div>
-    <p class="note">No item is considered verified by this inventory. Complete signed-owner access, database RLS inspection, email-delivery testing, privacy review, mobile acceptance and the release decision separately. Do not publish or forward this owner dashboard as the buyer package.</p>
-  </div>
-</section>
-<section aria-label="Owner-only contact and research records">
-   <h2 style="font-size:18px">Owner records</h2>
-   <p class="sub">These views contain names and contact details and require the signed owner session. Use the sign-out control when finished. The links do not send these records to the public website or Google Analytics.</p>
-   <p class="note">
-    <a href="/api/enroll-admin" style="color:var(--accent)">Training enrollments and completions</a>
-    &nbsp;·&nbsp;
-    <a href="/api/support-contacts" style="color:var(--accent)">Supporters and requested follow-ups</a>
-   </p>
-   <p class="note">Owner-access data can contain consent choices. A contact record is not permission to publish a name or transfer personal information.</p>
-  </section>
-
-  <!-- This is an owner-only response queue, not a commercial conversion claim.
-       URL secrecy is not an access control. The page is protected by the
-       server-side owner proxy, and private API readers require ownerAccess().
-       Site inquiries are grouped separately from historical commercial paths. -->
-  <h2 id="contacts-and-commercial" style="font-size:22px">Inquiries and historic commercial activity</h2>
-  <p class="sub">Historical database contacts and payment-screen attempts, newest first. Current public-site inquiries use the Formspree contact relay and are not automatically included in these database records. Research and training enquiries are not software sales leads. <b style="color:var(--review-text)">This is a queue, not a statistic.</b> Names and emails are shown because a lead you cannot see is a lead you cannot answer.</p>
-  <div class="cards" id="lead-cards" style="grid-template-columns:repeat(4,1fr)">
-    <div class="card"><div class="cv hot" id="ld-leads">&middot;</div><div class="ck">Legacy leads shown</div></div>
-    <div class="card"><div class="cv" id="ld-attempts">&middot;</div><div class="ck">Pay-screen attempts</div></div>
-    <div class="card"><div class="cv" id="ld-lost">&middot;</div><div class="ck">Historical clicks with no checkout link configured</div></div>
-    <div class="card"><div class="cv" id="ld-value">&middot;</div><div class="ck">Archived offer list value for unconfigured clicks, not revenue</div></div>
-  </div>
-
-  <section aria-label="Categorized website inquiry measurements">
-   <h3 style="font-size:18px;margin:18px 0 10px">Historical database inquiries, separate from commercial leads</h3>
-   <div class="cards" style="grid-template-columns:repeat(2,1fr)">
-    <div class="card"><div class="cv" id="ld-site-total">&middot;</div><div class="ck">Historical database inquiries, all time</div></div>
-    <div class="card"><div class="cv" id="ld-site-30d">&middot;</div><div class="ck">Historical database inquiries, last 30 days</div></div>
-   </div>
-   <p class="note" id="ld-site-types">Loading inquiry categories...</p>
-   <p class="note" id="ld-site-commercial">Loading separately classified commercial purposes...</p>
-   <p class="note">These counts include only historical Supabase contact rows with source=site-inquiry. The redesigned public website sends its current contact form to Formspree, not to this Supabase table. Newer messages, including names and emails, remain with that independent recipient and are NOT in these counts or the Supabase participant register unless separately imported with provenance and lawful purpose. No unavailable source may be interpreted as zero. Research, resource and general questions are not evidence of commercial demand.</p>
-  </section>
-  <section id="current-formspree-inquiries" aria-label="Current website contact messages, separate source" class="chart">
-    <h3 style="font-size:18px;margin:18px 0 10px">Current website inquiries | Formspree inbox</h3>
-    <p class="note">The redesigned public contact form delivers to Formspree and the designated email inbox. This is a separate source from the historical Supabase participant register. The owner may connect a Formspree read-only API key if the account supports the Forms API. This section never writes, transfers or republishes contact data.</p>
-    <p class="note" id="current-formspree-status" role="status" aria-live="polite">Current form inbox not yet checked. Unavailable is not zero.</p>
-    <div class="bar">
-      <button type="button" class="btn" id="current-formspree-refresh">Check connected inbox</button>
-      <button type="button" class="btn" id="current-formspree-export" disabled>Export connected inbox CSV</button>
-      <a class="btn" href="https://mail.google.com/mail/u/0/#search/from%3Aformspree.io+after%3A2026%2F10%2F29" target="_blank" rel="noopener noreferrer">Find recent JRS Formspree emails</a>
-    </div>
-    <p class="note">The Gmail link searches Formspree notifications since October 29, 2026, including messages whose subjects differ from the default inquiry title. It opens Gmail without transmitting any email content to this page. If direct Formspree read access is not configured, consult the existing Formspree and Gmail records. Check Formspree's Over Limit folder separately: the submission API does not return over-limit entries until they are reprocessed, and notification email may not have been sent. Do not copy names into a sales list without purpose-specific authorization.</p>
-    <div class="tablewrap" style="margin-top:12px">
-      <table id="current-formspree-table">
-        <caption style="caption-side:top;text-align:left;font-size:12px;color:var(--muted-soft);padding-bottom:8px">Authenticated owner read only. Source records remain in Formspree.</caption>
-        <thead><tr><th>Date</th><th>Purpose</th><th>Name</th><th>Email</th><th>Organization</th><th>Message</th><th>Contact permission</th><th>Form marker</th></tr></thead>
-        <tbody id="current-formspree-rows"><tr><td colspan="8">Current source not yet connected. No zero asserted.</td></tr></tbody>
-      </table>
-    </div>
-  </section>
-
-  <p class="note" id="ld-source-coverage" role="status" aria-live="polite">Historical source coverage not yet verified.</p>
-  <div class="tablewrap">
-   <table>
-    <thead><tr><th>When</th><th>Type</th><th>Name</th><th>Email</th><th>Organisation</th><th>Detail</th><th>Country</th></tr></thead>
-    <tbody id="ld-rows"><tr><td colspan="7" style="color:var(--muted-soft)">Loading leads...</td></tr></tbody>
-   </table>
-  </div>
-  <p class="note" id="ld-note">&nbsp;</p>
-
-  <div class="tablewrap">
-   <table>
-    <thead><tr><th>When</th><th>Offer</th><th>State</th><th>Arrived from</th><th>Country</th></tr></thead>
-    <tbody id="ld-att"><tr><td colspan="5" style="color:var(--muted-soft)">Loading attempts...</td></tr></tbody>
-   </table>
-  </div>
-  <p class="note"><b>Pay-screen attempts carry no name by design.</b> The person left before giving one. They are listed separately from identified leads so a row here can never be read as a contact you could follow up.</p>
-
-  <!-- THE REVIEWER PANEL. Added 2026-08-13. This page never called
-       /api/panel-stats, so the single largest asset in the programme, the
-       international reviewer bench, appeared nowhere on the owner's own
-       dashboard. Everything else on the page counts contacts, clicks or
-       downloads, which is why the country figures looked contradictory. -->
-  <h2 id="reviewer-panel" style="font-size:22px">The Reviewer Panel</h2>
-  <p class="sub">The international bench across all three studies. This is the asset. Every other figure on this page counts a click, a contact or a download; this one counts credentialed people who graded records.</p>
-  <div class="cards" id="panel-cards" style="grid-template-columns:repeat(4,1fr)">
-    <div class="card"><div class="cv hot" id="pn-completers">&middot;</div><div class="ck">Completed a full 24-record set</div></div>
-    <div class="card"><div class="cv" id="pn-countries">&middot;</div><div class="ck">Countries <b style="color:var(--review-text)">of the completers</b></div><div id="pn-scope" style="font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:.06em;color:var(--muted-soft);margin-top:5px;line-height:1.5">&nbsp;</div></div>
-    <div class="card"><div class="cv" id="pn-reviewers">&middot;</div><div class="ck">Graded at least one record</div></div>
-    <div class="card"><div class="cv" id="pn-registered">&middot;</div><div class="ck">Registered</div></div>
-  </div>
-  <div class="note" id="pn-note" style="border-left-width:3px">Loading the panel&hellip;</div>
-
-  <div class="chart">
-    <h3>Why the country numbers on this page differ</h3>
-    <div class="note" id="pn-recon" style="margin:0">Reconciling&hellip;</div>
-  </div>
-
-  <h2 style="font-size:22px;margin-top:34px">Today <span id="td-date" style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.12em;color:var(--muted-soft);vertical-align:middle">&middot;</span></h2>
-  <p class="sub">Every surface, counted for the current UTC day. The other Today figures on this page count a completed action: a registration, an enrolment, a confirmation. None of them counts an arrival, so a day could carry real traffic on every link and every one of them would still read zero. This block counts arrivals.</p>
-  <div class="cards" style="grid-template-columns:repeat(4,1fr)">
-    <div class="card"><div class="cv hot" id="td-campaign">&middot;</div><div class="ck">Campaign screen arrivals</div></div>
-    <div class="card"><div class="cv" id="td-reviewer">&middot;</div><div class="ck">Reviewer landing arrivals</div></div>
-    <div class="card"><div class="cv" id="td-training">&middot;</div><div class="ck">Training page arrivals</div></div>
-    <div class="card"><div class="cv" id="td-endorse">&middot;</div><div class="ck">Endorsements <b style="color:var(--muted-soft)">all sources</b></div>
-      <div id="td-endorse-all" style="font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:.06em;color:var(--muted-soft);margin-top:5px;line-height:1.5">&nbsp;</div></div>
-    <div class="card"><div class="cv" id="td-evopen">&middot;</div><div class="ck">Evaluation opens</div></div>
-    <div class="card"><div class="cv" id="td-evsub">&middot;</div><div class="ck">Evaluation submissions</div></div>
-    <div class="card"><div class="cv" id="td-dl">&middot;</div><div class="ck">Guide downloads</div></div>
-    <div class="card"><div class="cv" id="td-reads">&middot;</div><div class="ck">Records reviewed</div></div>
-  </div>
-  <div class="note" id="td-revfunnel" style="border-left-width:3px">Reconciling the reviewer funnel&hellip;</div>
-  <div class="note" id="td-recon" style="border-left-width:3px">Reconciling arrivals against endorsements&hellip;</div>
-  <div class="note" id="td-note">Loading today&hellip;</div>
-
-  <h2>AI-Assisted Records Pilot &middot; Submissions</h2>
-  <p class="sub">Who has entered reads on the 24-record detection study, and when. Bookmark this page and open it anytime. It updates automatically every 60 seconds. Aggregate counts only; individual answers are never shown.</p>
-  <div class="bar"><span class="live" id="live" role="status" aria-live="polite">Loading&hellip;</span><button class="btn" type="button" onclick="refresh()">Refresh now</button></div>
-  <div class="cards">
-    <div class="card"><div class="cv hot" id="today">&middot;</div><div class="ck">New today (UTC)</div></div>
-    <div class="card"><div class="cv" id="total">&middot;</div><div class="ck">Total reads</div></div>
-    <div class="card"><div class="cv" id="started">&middot;</div><div class="ck">Reviewers started</div></div>
-    <div class="card"><div class="cv" id="finished">&middot;</div><div class="ck">Finished (24/24)</div></div>
-  </div>
-  <div class="chart" id="progwrap">
-    <h3>Panel completion</h3>
-    <div class="sbar" id="progbar"></div>
-    <div class="legend" id="proglegend"></div>
-  </div>
-  <div class="note" id="latest">&nbsp;</div>
-  <div class="tablewrap"><table>
-    <thead><tr><th>Reviewer</th><th>Code</th><th>Progress</th><th>Last activity</th></tr></thead>
-    <tbody id="rows"><tr><td colspan="4" style="color:var(--muted-soft)">Loading&hellip;</td></tr></tbody>
-  </table></div>
-  <div class="note">"New today" counts reads submitted since 00:00 UTC. "Finished" means a reviewer has covered all 24 records. This page shows participation only; for published findings, denominators and limitations, open the <a href="research.html" style="color:var(--accent)">JRS Research Record</a>.</div>
-
-  <h2 style="font-size:22px;margin-top:34px">Real-Case Pilots &middot; Rung 3</h2>
-  <p class="sub">Real public determinations paired with documented outcomes. Aggregate counts only; no case text is shown here.</p>
-  <div class="cards">
-    <div class="card"><div class="cv hot" id="rc-today">&middot;</div><div class="ck">New today (UTC)</div></div>
-    <div class="card"><div class="cv" id="rc-cases">&middot;</div><div class="ck">Real cases</div></div>
-    <div class="card"><div class="cv" id="rc-domains">&middot;</div><div class="ck">Domains active</div></div>
-    <div class="card"><div class="cv" id="rc-contributors">&middot;</div><div class="ck">Contributors</div></div>
-  </div>
-  <div class="tablewrap"><table>
-    <thead><tr><th>Domain</th><th>Contributor</th><th>Cases</th><th>Outcomes</th><th>JRS reads</th><th>Last activity</th></tr></thead>
-    <tbody id="rc-rows"><tr><td colspan="6" style="color:var(--muted-soft)">Loading&hellip;</td></tr></tbody>
-  </table></div>
-  <div class="note">Two domain pilots are active. A third, healthcare compliance, was withdrawn on 13 August 2026 having contributed no cases, so no figure on this page changes with it.</div>
-
-  <h2 style="font-size:22px;margin-top:34px">Comparison Study &middot; Arm B</h2>
-  <p class="sub">A separate, JRS-naive batch reviewing the same 24 records. Each participant is randomly assigned by their code to the JRS arm or the no-JRS baseline. Aggregate counts only; codes, not names.</p>
-  <div class="cards">
-    <div class="card"><div class="cv hot" id="ab-today">&middot;</div><div class="ck">New today (UTC)</div></div>
-    <div class="card"><div class="cv" id="ab-total">&middot;</div><div class="ck">Total reads</div></div>
-    <div class="card"><div class="cv" id="ab-jrs">&middot;</div><div class="ck">JRS arm</div></div>
-    <div class="card"><div class="cv" id="ab-nojrs">&middot;</div><div class="ck">No-JRS arm</div></div>
-  </div>
-  <div class="tablewrap"><table>
-    <thead><tr><th>Code</th><th>Arm</th><th>Progress</th><th>Last activity</th></tr></thead>
-    <tbody id="ab-rows"><tr><td colspan="4" style="color:var(--muted-soft)">Loading&hellip;</td></tr></tbody>
-  </table></div>
-  <div class="note">Arm assignment is automatic and random from each code. This section fills as Arm B participants submit; it shows participation only, never answers.</div>
-
-  <h2 style="font-size:22px;margin-top:34px">Organization Pilots &middot; Field Use</h2>
-  <p class="sub">Organizations that have applied the standard to their own records. Record text is never stored: each record is assessed in memory and discarded, so only the count of records run and the pattern of results is kept. Organization names appear only where the organization consented to be named.</p>
-  <div class="cards">
-    <div class="card"><div class="cv hot" id="op-today">&middot;</div><div class="ck">New today (UTC)</div></div>
-    <div class="card"><div class="cv" id="op-orgs">&middot;</div><div class="ck">Organizations</div></div>
-    <div class="card"><div class="cv" id="op-records">&middot;</div><div class="ck">Records run</div></div>
-    <div class="card"><div class="cv" id="op-flagged">&middot;</div><div class="ck">Conditions flagged</div></div>
-  </div>
-  <div class="note" id="op-note">Organization pilots will appear here once the first organization runs the standard on its own records.</div>
-  <div class="chart">
-    <h3>Sectors represented</h3>
-    <div id="opsector">Loading&hellip;</div>
-    <div class="note" style="margin-top:8px">Sector of each organization that ran a pilot, and the routing bands their records received. Aggregate only; no organization's individual results are shown.</div>
-  </div>
-
-  <h2 style="font-size:22px;margin-top:34px">Consented Registrations</h2>
-  <p class="sub">Named registrations captured at the field-guide and initiative-support gates. Every row behind these counts is a real person with an organization, an email, and explicit consent, which is what distinguishes them from an anonymous download or an anonymous click. Aggregate counts only; the named list is stored privately.</p>
-  <div class="cards">
-    <div class="card"><div class="cv hot" id="rg-today">&middot;</div><div class="ck">New today (UTC)</div></div>
-    <div class="card"><div class="cv" id="rg-total">&middot;</div><div class="ck">Registrations</div></div>
-    <div class="card"><div class="cv" id="rg-orgs">&middot;</div><div class="ck">Organizations</div></div>
-    <div class="card"><div class="cv" id="rg-transfer">&middot;</div><div class="ck">Transferable</div></div>
-  </div>
-  <div class="note" id="rg-note">Registrations will appear here once the first person registers at a gate.</div>
-  <div class="chart">
-    <h3>What they registered for</h3>
-    <div id="rgsplit">Loading&hellip;</div>
-    <div class="note" style="margin-top:8px">Investigator Guide registrations by edition and initiative support by campaign. The guide and support gates went live on Aug 2, 2026; downloads and support recorded before that date were anonymous and cannot be attributed to a person.</div>
-  </div>
-
-  <h2 style="font-size:22px;margin-top:34px">Historical registration-era activity</h2>
-  <p class="note">This section preserves records from the August 2026 registration workflow. The redesigned public JRS materials are free and must not require registration or research enrollment. Historical named registrations do not establish a current download gate or unique completed downloads.</p>
-  <div class="note" style="border-left-color:var(--accent)"><b style="color:var(--text)">Need the actual names?</b> The counts in this section are aggregate. The named roster is further down this page: see <a href="#everyone-on-the-record" style="color:var(--accent)">Everyone on the record</a>, which lists every person with their organization, title, country, email, what they did and what they consented to. Recommendation and certificate requests and the honor quotes are under <b>Private Contact Detail</b> below that. Everything is on this one page.</div>
-  <p class="sub">Everything below counts activity from 2 August 2026 forward, the date the guides and the initiative support action moved behind a registration form. Earlier downloads and support clicks were anonymous and cannot be attributed to a person, so they are excluded here rather than blended in. Training is the exception and is shown all-time, because enrollment always required identity and consent. Aggregate counts only; the named list stays private.</p>
-  <div class="cards">
-    <div class="card"><div class="cv hot" id="gt-today">&middot;</div><div class="ck">New today (UTC)</div></div>
-    <div class="card"><div class="cv" id="gt-people">&middot;</div><div class="ck">Named people</div></div>
-    <div class="card"><div class="cv" id="gt-orgs">&middot;</div><div class="ck">Organizations</div></div>
-    <div class="card"><div class="cv" id="gt-countries">&middot;</div><div class="ck">Countries</div></div>
-  </div>
-  <div class="note" id="gt-note">Post-gate activity will appear here once the first person registers.</div>
-  <div class="chart">
-    <h3>What they registered for, and where</h3>
-    <div id="gtsplit">Loading&hellip;</div>
-  </div>
-  <div class="cards" style="margin-top:14px">
-    <div class="card"><div class="cv" id="gt-train-en">&middot;</div><div class="ck">Training enrollments (all time)</div></div>
-    <div class="card"><div class="cv" id="gt-train-cp">&middot;</div><div class="ck">Training completions</div></div>
-    <div class="card"><div class="cv" id="gt-records">&middot;</div><div class="ck">Records reviewed</div></div>
-    <div class="card"><div class="cv" id="gt-transfer">&middot;</div><div class="ck">Transferable</div></div>
-  </div>
-  <div class="note" id="gt-note2">&nbsp;</div>
-
-  <!-- The Owner Sheet panel was removed on 2026-08-12 when supporters-b78f5ff2c08d.html
-     was deleted. Its unique content is now the Private Contact Detail section below
-     and the Email column in the roster. There is one private page, not two. -->
-
-  <!-- PRIVATE OWNER DIRECTORY. All source rows, including flagged historical
-       test candidates, must remain visible only after the server session gate.
-       Noindex or obscure filenames are not access controls. -->
-  <h2 id="everyone-on-the-record" style="font-size:22px;margin-top:34px">Everyone on the record</h2>
-  <div class="note" style="margin-bottom:10px">Every source row in the historical private contact table, including possible test records, remains available for review. A row is not a verified unique person. Country is shown where supported by the original submission or dated reviewer roster. Test labels are review flags, not grounds for exclusion or deletion.</div>
-  <div class="chart">
-    <div id="ppl-tiles" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(110px,1fr));gap:8px;margin-bottom:12px"></div>
-    <div style="display:flex;gap:10px;flex-wrap:wrap;margin-bottom:10px">
-      <input id="ppl-q" type="search" placeholder="Search name, email, organization or activity"
-             aria-label="Search private records by name, email, organization, country or activity"
-             style="flex:1 1 240px;background:#0d0d0d;border:1px solid var(--rule);color:var(--text);font-family:'Inter',sans-serif;font-size:12.5px;padding:9px 11px">
-      <select id="ppl-country" aria-label="Filter the record by country"
-              style="background:#0d0d0d;border:1px solid var(--rule);color:var(--text);font-family:'Inter',sans-serif;font-size:12.5px;padding:9px 11px"></select>
-      <select id="ppl-group" aria-label="Filter records by programme purpose"><option value="">All programme purposes</option></select>
-      <select id="ppl-contact" aria-label="Filter records by contact permission">
-        <option value="">All contact-permission states</option>
-        <option value="recorded-yes">Contact permission recorded</option>
-        <option value="recorded-no">Contact permission declined</option>
-        <option value="not-recorded">Contact permission not recorded</option>
-        <option value="conflicting">Conflicting permission flags, review required</option>
-      </select>
-    </div>
-    <div id="ppl-cnt" class="note" style="margin:0 0 6px"></div>
-    <div style="overflow-x:auto"><table id="ppl-tbl" style="min-width:940px"></table></div>
-    <div class="note" id="ppl-note" style="margin-top:10px"></div>
-    <p class="note">Names, email addresses and source activity remain in this signed-in owner view. Consent is shown at the individual source-event level. “Not recorded” is not consent. Do not merge free-resource, training or research identities into software buyer outreach. Exports are personal-data records, not marketing lists.</p>
-    <div style="margin-top:12px"><button class="btn" type="button" id="ppl-csv" disabled>Export filtered private contact register (CSV)</button></div>
-  </div>
-
-  <!-- MERGED FROM THE OWNER SHEET 2026-08-12. That page duplicated this one's
-       roster and Today tiles while holding these four blocks nowhere else, so
-       the unique parts moved here and the duplicate page was deleted. One URL. -->
-  <h2 id="private-contact-detail" style="font-size:22px;margin-top:34px">Private contact requests and permissions</h2>
-  <p class="sub">The parts of the record that are not counts: who asked for a recommendation or a certificate, and the quotes honorees wrote with their publication clearance. Nothing here appears on any other page.</p>
-  <div class="chart">
-    <h3>Asked for a LinkedIn recommendation</h3>
-    <div id="ppl-rec">Loading&hellip;</div>
-  </div>
-  <div class="chart">
-    <h3>Asked for a certificate</h3>
-    <div id="ppl-cert">Loading&hellip;</div>
-  </div>
-  <div class="chart">
-    <h3>Honor acceptances, with their quote</h3>
-    <div id="ppl-honor">Loading&hellip;</div>
-  </div>
-
-  <h2 style="font-size:22px;margin-top:34px">Completed Evaluations</h2>
-  <p class="sub">How many people completed the reviewer evaluation, who they are where they chose to be named, and what the results are collected for. Nobody appears by name who did not tick that box.</p>
-  <div class="cards" style="grid-template-columns:repeat(4,1fr)">
-    <div class="card"><div class="cv hot" id="ce-submitted">&middot;</div><div class="ck">Evaluations completed</div></div>
-    <div class="card"><div class="cv" id="ce-all9">&middot;</div><div class="ck">Answered all nine</div></div>
-    <div class="card"><div class="cv" id="ce-named">&middot;</div><div class="ck">Chose to be named</div></div>
-    <div class="card"><div class="cv" id="ce-anon">&middot;</div><div class="ck">Chose to stay anonymous</div></div>
-  </div>
-  <div class="chart">
-    <h3>Who completed one</h3>
-    <div id="ce-names">Loading&hellip;</div>
-    <div class="note" style="margin-top:8px" id="ce-limit"></div>
-  </div>
-  <div class="chart">
-    <h3>What the results are collected for</h3>
-    <div id="ce-purpose" style="font-size:13px;color:var(--muted);line-height:1.65">Loading&hellip;</div>
-  </div>
-
-  <h2 style="font-size:22px;margin-top:34px">Reviewer Evaluation Funnel</h2>
-  <p class="sub">The anonymized baseline on how records are reviewed inside working organizations. Four stages: how many opened the evaluation, how many submitted, how many answered all nine questions, and how many left contact details that can transfer with the asset. Answers and contact details are stored in different tables with no shared identifier, so these counts cannot be joined to say which respondent gave which answers.</p>
-  <div class="cards">
-    <div class="card"><div class="cv hot" id="ev-opened">&middot;</div><div class="ck">Opened the evaluation</div></div>
-    <div class="card"><div class="cv" id="ev-submitted">&middot;</div><div class="ck">Submitted</div></div>
-    <div class="card"><div class="cv" id="ev-complete">&middot;</div><div class="ck">Answered all nine</div></div>
-    <div class="card"><div class="cv" id="ev-contacts">&middot;</div><div class="ck">Contacts captured</div></div>
-    <div class="card"><div class="cv" id="ev-countries">&middot;</div><div class="ck">Countries reached</div></div>
-  </div>
-  <div class="chart">
-    <h3>Where the funnel loses people</h3>
-    <div id="evfunnel">Loading&hellip;</div>
-  </div>
-  <div class="chart">
-    <h3>Country of reviewer</h3>
-    <div id="evcountries">Loading&hellip;</div>
-  </div>
-  <div class="note" id="ev-note">Evaluation activity will appear here once the first reviewer opens the instrument.</div>
-
-  <h2 style="font-size:22px;margin-top:34px">Suppressed &amp; Inactive Cohorts</h2>
-  <p class="sub">A zero on this page can mean three different things and you cannot tell them apart by looking: nothing happened, nothing was sent, or something is deliberately withheld. Every cohort below states which of the three it is. None of them is counted in an active total: a roster size is not an audience, an unsent link is not a non-response, and a withheld breakdown is not an absence of data.</p>
-  <div class="chart">
-    <h3>Declared exclusions</h3>
-    <div id="suppressed">Loading&hellip;</div>
-    <div class="note" style="margin-top:8px">Anti-inflation statement. Rates for the per-person link programmes are computed against links <b>sent</b>, never against links <b>issued</b>. Where a rate against issued appears elsewhere in the payload it is labelled as the conservative reading and is not the operational one.</div>
-  </div>
-
-  <h2 style="font-size:22px;margin-top:34px">Contributor Confirmations</h2>
-  <p class="sub">Per-person confirmation links sent to the reviewers who completed the international detection set, the article co-authors, and the pilot facilitators. Each link captures the exact name and title to print, the naming election, and the continuing-use and transfer permissions. Aggregate counts only; the wording each contributor chose is stored privately.</p>
-  <div class="cards">
-    <div class="card"><div class="cv hot" id="cb-today">&middot;</div><div class="ck">Confirmed today (UTC)</div></div>
-    <div class="card"><div class="cv" id="cb-confirmed">&middot;</div><div class="ck">Confirmed</div></div>
-    <div class="card"><div class="cv" id="cb-outstanding">&middot;</div><div class="ck">Outstanding</div></div>
-    <div class="card"><div class="cv" id="cb-named">&middot;</div><div class="ck">Named in paper</div></div>
-  </div>
-  <div class="note" id="cb-note">Confirmations will appear here once the first contributor opens their link.</div>
-
-  <h2 id="training-adoption" style="font-size:22px;margin-top:34px">Training &amp; Certification Adoption</h2>
-  <p class="sub">Recorded enrollments in JRS training. Aggregate counts only; no personal data is shown here. The named list remains restricted to the private owner dashboard. Enrollment, contact permission and any successor transfer permission must be evaluated separately for each source record. No blanket transfer authority is established.</p>
-  <div class="cards">
-    <div class="card"><div class="cv hot" id="tr-today">&middot;</div><div class="ck">New today (UTC)</div></div>
-    <div class="card"><div class="cv" id="tr-enroll">&middot;</div><div class="ck">Enrollments</div></div>
-    <div class="card"><div class="cv" id="tr-orgs">&middot;</div><div class="ck">Organizations</div></div>
-    <div class="card"><div class="cv" id="tr-consent">&middot;</div><div class="ck">Contactable</div></div>
-  </div>
-  <div class="note" id="tr-note">Training adoption will appear here once enrollment is enabled.</div>
-  <div class="chart">
-    <h3>Completions by country</h3>
-    <div id="trgeo">Loading&hellip;</div>
-    <div class="note" style="margin-top:8px">Country of each training completion. Recorded automatically at completion (geo live since Jul 17, 2026); completions from before then are backfilled from reviewer records. Aggregate counts only.</div>
-  </div>
-
-  <h2 id="resource-downloads" style="font-size:22px;margin-top:34px">Investigator Guide Downloads</h2>
-  <p class="sub">Downloads of the three Investigator Guide editions: EEO, Fair Housing, and International. By day and by country, from one source, so the by-day total, the by-country total, and the by-asset total are the same number. Counted at the redirect endpoint, so emailed and shared links are included too. Aggregate counts only.</p>
-
-  <div class="chart">
-    <h3>Request quality by individual resource</h3>
-    <p class="sub">Historical raw requests are preserved. Other user agents have not matched the declared-crawler pattern but are NOT verified humans.</p>
-    <div class="tablewrap"><table>
-      <thead><tr><th>Resource</th><th>Raw</th><th>Declared crawler</th><th>User agent missing</th><th>Other user agents</th></tr></thead>
-      <tbody id="download-quality-rows"><tr><td colspan="5">Loading classified requests...</td></tr></tbody>
-    </table></div>
-    <p class="note" id="download-quality-note">These count tracked redirect requests, not readers, document use or buyer interest.</p>
-    <p class="note" id="download-scope-bridge">Reconciling request-source populations with the aggregate report...</p>
-  </div>
-  <div class="chart">
-    <h3>Raw tracked guide requests by day</h3>
-    <div id="dlchart" style="overflow-x:auto">Loading&hellip;</div>
-    <div class="legend" id="dllegend"></div>
-  </div>
-  <div class="chart">
-    <h3>Raw requests by item and country</h3>
-    <div id="itemsbycountry">Loading&hellip;</div>
-    <div class="note" style="margin-top:8px">Every downloadable item on its own, counted by country: the three Investigator Guide editions, the JRS Standard PDF, the Rapid Review Card, the JRS Reviewer Reference (training companion), and the combined Investigator Guide. Nothing is grouped into a shared total. Country recorded at the redirect endpoint. Aggregate counts only.</div>
-  </div>
-  <h2 style="font-size:22px;margin-top:34px">Link Clicks Across the Site</h2>
-  <p class="sub">Every link click beaconed by the site dispatcher, by destination, by page of origin and by country. This is not total site clicks: guide downloads and endorsements are recorded inside their own redirect, which is a stronger record than a beacon, and are counted in the two sections above instead of here. Query strings are stripped before storage, so a destination is a path only. Aggregate counts only.</p>
-  <div class="cards" style="grid-template-columns:1fr 1fr 1fr 1fr">
-    <div class="card"><div class="cv hot" id="lc-total">&middot;</div><div class="ck">Clicks recorded</div></div>
-    <div class="card"><div class="cv" id="lc-today">&middot;</div><div class="ck">Today</div></div>
-    <div class="card"><div class="cv" id="lc-targets">&middot;</div><div class="ck">Distinct destinations</div></div>
-    <div class="card"><div class="cv" id="lc-countries">&middot;</div><div class="ck">Countries</div></div>
-  </div>
-  <div class="chart">
-    <h3>Where readers go</h3>
-    <div id="lctargets">Loading&hellip;</div>
-  </div>
-  <div class="chart">
-    <h3>Which page they leave from</h3>
-    <div id="lcorigins">Loading&hellip;</div>
-  </div>
-  <div class="note" id="lc-note">Link-click activity will appear here once a reader clicks an instrumented link.</div>
-  <div class="chart" style="margin-top:14px">
-    <h3>Checkout intent</h3>
-    <div class="note" id="checkout-intent">Loading&hellip;</div>
-  </div>
-  <div class="chart" style="margin-top:14px">
-    <h3>Certificate renders</h3>
-    <div class="note" id="cert-renders">Loading&hellip;</div>
-  </div>
-
-  <h2 style="font-size:22px;margin-top:34px">Initiative Support</h2>
-  <p class="sub">One-click endorsements of the two public initiatives, by day, by country and by initiative. These sit outside the guide downloads above and are counted separately.</p>
-  <div class="cards" id="endorse-cards" style="grid-template-columns:1fr 1fr 1fr 1fr">
-    <div class="card"><div class="cv hot" id="en-total">&middot;</div><div class="ck">Endorsements, all sources</div>
-      <div style="font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:.06em;color:var(--muted-soft);margin-top:5px;line-height:1.5">campaign, home page<br>and footer combined</div></div>
-    <div class="card"><div class="cv" id="en-peak">&middot;</div><div class="ck">Best single day</div></div>
-    <div class="card"><div class="cv" id="en-active">&middot;</div><div class="ck">Days with activity</div></div>
-    <div class="card"><div class="cv" id="en-mean">&middot;</div><div class="ck">Mean per active day</div></div>
-  </div>
-  <div class="chart">
-    <h3>Endorsements per day</h3>
-    <div id="endorseday">Loading&hellip;</div>
-    <div class="note" style="margin-top:8px">One column per calendar day, UTC, running to today rather than to the last event. Every column carries its number, zeros included, so a quiet day reads as a measured zero rather than as a missing bar. Today is drawn on a faint track and labelled TODAY on the axis, so the slot is visible before anything fills it. The endorsement is a single click with no form behind it. Columns dated 13 August 2026 onward count one endorsement per browser per initiative; earlier columns count raw clicks, so a reader who clicked twice was counted twice and those rows cannot be deduplicated now.</div>
-  </div>
-  <div class="chart">
-    <h3>Initiative supporters by country</h3>
-    <div id="supchart">Loading&hellip;</div>
-    <div id="supcampaign" style="margin-top:12px"></div>
-    <div class="note" style="margin-top:8px">One-click endorsements of both initiatives, including explicit campaign-page buttons. Recorded through the same /api/support ledger and separated by initiative, country and source. These are browser-limited expressions of support, not verified organizational endorsements, unique people or evidence of JRS adoption. Public campaign-page visits are GA4 page views, not the historical campaign-screen arrivals shown above; do not treat the two as identical populations.</div>
-  </div>
-  <div class="chart">
-    <h3>Supporters who chose to be listed</h3>
-    <div id="supwall">Loading&hellip;</div>
-    <div class="note" style="margin-top:8px">Only people who ticked "list my name publicly" when they added their support. Name and organization only, never email. Everyone else stays a private count.</div>
-  </div>
 
   <!-- Private Tier II source-document inventory, not an executed Form A/B/D/E. -->
   <h2 id="tier-two-portfolio" style="font-size:22px;margin-top:42px">Tier II | Separately governed software assets</h2>
@@ -787,6 +818,7 @@ th{font-size:10px;letter-spacing:.055em}
       </tbody></table></div>
     <p class="note">Private planning and independently authorized synthetic work may continue. External demos, real-record use, paid listings, source disclosure, licensing, transfers and buyer-directed communication require distinct exact-scope owner decisions. Forms A to F in Issue 3.6 are unsigned and do not imply authorization.</p>
   </div>
+
   <!-- Owner-only diligence orientation; not a public acquisition prospectus. -->
   <h2 id="buyer-evidence-snapshot" style="font-size:22px">Licensing and Acquisition Evidence Snapshot</h2>
   <p class="sub">Owner-only decision summary. A download request is not a person, buyer, deployment or transaction. Current evidence is separated from inferences and outstanding checks.</p>
@@ -805,6 +837,7 @@ th{font-size:10px;letter-spacing:.055em}
     </table></div>
     <div class="note">These are dated status classifications, not an automated sale-readiness certification. Use the asset register, evidence ledger, release records and actual transaction correspondence to substantiate future buyer claims. Do not share the private owner dashboard with prospects.</div>
   </div>
+
   <!-- SALE DOSSIER. Added 2026-08-13 on the owner's request for one detailed
        summary at a single link. Placed on THIS page rather than a new one,
        because CLAUDE.md records that there is one private owner page and a
@@ -909,6 +942,31 @@ th{font-size:10px;letter-spacing:.055em}
       <b style="color:var(--text)">Strongest credential:</b> <b style="color:var(--ready-text)">CEP Magazine (SCCE) accepted "When the Record Cannot Speak for Itself" on 16 July 2026 for the November issue.</b> Accepted counts. Two Dewey mentions are quotable but are explicitly <b>not</b> endorsements.
     </div>
   </div>
+  </details>
+
+  <details class="grp" id="grp-controls">
+    <summary><span class="gh"><h2 class="gt">Controls</h2><span class="gs">Release readiness and access configuration</span></span></summary>
+<section aria-label="Owner-only release readiness" id="owner-release-readiness">
+  <h2 style="font-size:22px">Release Readiness and Access Controls</h2>
+  <p class="sub">Current server configuration is shown separately from the independent checks required before release. A configured credential does not prove its associated function works. Software status remains NO_GO_NOT_VERIFIED.</p>
+  <div class="chart">
+    <h3>Environment configuration, owner-only</h3>
+    <p class="note" id="release-readiness-note" role="status" aria-live="polite">Checking configuration presence...</p>
+    <div class="tablewrap"><table>
+      <thead><tr><th scope="col">Prerequisite</th><th scope="col">Configuration</th></tr></thead>
+      <tbody id="release-readiness-config"><tr><td colspan="2">Loading...</td></tr></tbody>
+    </table></div>
+  </div>
+  <div class="chart">
+    <h3>Required independent release checks</h3>
+    <div class="tablewrap"><table>
+      <thead><tr><th scope="col">Verification</th><th scope="col">Status</th></tr></thead>
+      <tbody id="release-readiness-verification"><tr><td colspan="2">Loading...</td></tr></tbody>
+    </table></div>
+    <p class="note">No item is considered verified by this inventory. Complete signed-owner access, database RLS inspection, email-delivery testing, privacy review, mobile acceptance and the release decision separately. Do not publish or forward this owner dashboard as the buyer package.</p>
+  </div>
+</section>
+  </details>
 </div></main>
 <footer class="ft"><div class="wrap" style="padding:0">&#169; 2026 Phillip Wikes &middot; JRS&#8482; &middot; <a href="privacy.html" style="color:inherit">Privacy</a> &middot; confidential &middot; not indexed</div></footer>
 <script>
@@ -2626,6 +2684,8 @@ button,.btn,.cta-primary,input[type=submit]{min-height:44px}
     var hs = [].slice.call(main.querySelectorAll('h2'));
     hs.forEach(function(h){
       if (h.closest('details.jrs-sec')) return;
+      // 2026-11-27: group headings (Inbox, Research ...) are already folders.
+      if (h.classList.contains('gt')) return;
       var d = document.createElement('details'); d.className = 'jrs-sec';
       var sm = document.createElement('summary');
       var tag = document.createElement('span'); tag.className = 'jrs-tag';
@@ -2843,6 +2903,27 @@ button,.btn,.cta-primary,input[type=submit]{min-height:44px}
  });
  button.addEventListener('click',load);
  load();
+})();
+</script>
+<script>
+// Folded owner groups: a jump link or a deep link opens the group that holds
+// its target before the browser scrolls. Presentation only; no data, no storage.
+(function(){
+  function openFor(id){
+    if(!id)return;
+    var t=document.getElementById(id);
+    if(!t)return;
+    // Open every folded ancestor: the group and any sub-section inside it.
+    var d=t;
+    while(d){if(d.tagName==='DETAILS'&&!d.open)d.open=true;d=d.parentElement;}
+  }
+  document.addEventListener('click',function(e){
+    var a=e.target&&e.target.closest?e.target.closest('a[href^="#"]'):null;
+    if(!a)return;
+    openFor(decodeURIComponent(a.getAttribute('href').slice(1)));
+  });
+  window.addEventListener('hashchange',function(){openFor(decodeURIComponent(location.hash.slice(1)));});
+  if(location.hash){openFor(decodeURIComponent(location.hash.slice(1)));var t=document.getElementById(decodeURIComponent(location.hash.slice(1)));if(t&&t.scrollIntoView)t.scrollIntoView();}
 })();
 </script>
 </body>

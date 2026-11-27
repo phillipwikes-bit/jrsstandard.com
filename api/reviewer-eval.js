@@ -340,6 +340,10 @@ export default async function handler(req){
                     status: iRes.status, detail: String(t).slice(0, 300) }, 502);
     }
     incentive = true;
+    // Owner email alert, sent only AFTER the row is stored. Carries the
+    // contact the reviewer supplied for this request and nothing from the
+    // evaluation row, so the isolation described above still holds.
+    await relayRecommendationAlert(iName, iEmail, iLi, country, iPayload.ts);
   }
 
   return json({ ok: true, recorded: true, answered: answered,
@@ -347,4 +351,50 @@ export default async function handler(req){
                 certificate: false,
                 certificate_withdrawn: 'issued for training completion only, 2026-08-18',
                 code: '', incentive: incentive });
+}
+
+// Owner-authorized transactional alert for LinkedIn recommendation requests,
+// through the same Formspree relay used by api/practitioner-review.js
+// (owner instruction, 2026-11-27: requests needing a reply are emailed).
+// NEVER throws and never changes the visitor's response: the stored row is
+// the durable record and this email is only a notice about it. No evaluation
+// answers, sector, role, size or completion code are included.
+async function relayRecommendationAlert(name, email, linkedin, country, ts) {
+  const fields = new URLSearchParams({
+    name: name || 'Not supplied',
+    email: email || 'Not supplied',
+    organization: '',
+    category: 'research',
+    message: [
+      'Request: LinkedIn peer-reviewer recommendation',
+      'Received (UTC): ' + ts,
+      'LinkedIn: ' + (linkedin || 'Not supplied'),
+      'Recorded country: ' + (country || 'Not supplied'),
+      'Contact details were supplied by the reviewer for this request.',
+      'No evaluation answer is included.'
+    ].join('\n'),
+    source: 'jrs-owner-request-alert',
+    form_type: 'jrs-transactional-owner-alert-2026-11-27',
+    consent_to_contact: 'true', consent_to_transfer: 'false',
+    contact_details_included: 'true',
+    _subject: 'JRS recommendation request | ' + ts, _gotcha: ''
+  });
+  const controller = new AbortController();
+  const timer = setTimeout(() => controller.abort(), 5000);
+  try {
+    const response = await fetch('https://formspree.io/f/mreddwdg', {
+      method: 'POST',
+      headers: { 'Accept': 'application/json',
+                 'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8',
+                 'Origin': 'https://www.jrsstandard.com' },
+      body: fields.toString(), signal: controller.signal
+    });
+    if (!response.ok) console.error('jrs_owner_alert_relay_failed', 'reviewer-eval-incentive', ts, response.status);
+    return response.ok;
+  } catch (_) {
+    console.error('jrs_owner_alert_relay_failed', 'reviewer-eval-incentive', ts, 'network_or_timeout');
+    return false;
+  } finally {
+    clearTimeout(timer);
+  }
 }
