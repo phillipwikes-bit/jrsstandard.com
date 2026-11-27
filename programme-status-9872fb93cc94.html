@@ -157,6 +157,16 @@ th{font-size:10px;letter-spacing:.055em}
 @media(max-width:850px){.ipx-intro{grid-template-columns:1fr;padding:24px 22px}.ipx-body{padding:22px}.ipx-date{padding:10px 22px}.ipx-number-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.ipx-intro h2{font-size:35px}}
 @media(max-width:600px){.wrap{padding:0 14px}.hd-in{gap:12px}.ipx{margin-top:14px}.ipx-intro{padding:19px 15px;gap:17px}.ipx-intro h2{font-size:29px}.ipx-dek{font-size:13.5px}.ipx-body{padding:17px 14px 20px}.ipx-date{padding:10px 15px}.ipx-assets,.ipx-actions{grid-template-columns:1fr}.ipx-number{padding:14px 12px}.ipx-number strong{font-size:28px}.ipx-number span{font-size:11.5px}.ipx-nav a{flex:1 1 auto;justify-content:center}.ipx-decision{padding:15px}.ipx-diligence{padding:11px}.ipx-asset{padding:14px}#lead-cards{grid-template-columns:repeat(2,minmax(0,1fr)) !important}.cards>.card{min-width:0;overflow-wrap:anywhere}}
 @media(prefers-reduced-motion:reduce){.ipx *{scroll-behavior:auto}}
+.rq{border:1px solid var(--accent);background:var(--surface);padding:16px 16px 6px;margin:0 0 18px}
+.rq-h{margin:0 0 6px;font-family:'Bodoni Moda',serif;font-weight:400;font-size:24px;color:var(--text)}
+.rq-sum{margin:0 0 10px;font-size:16px;color:var(--text)}
+.rq-row{border-top:1px solid var(--rule);padding:10px 0;display:flex;flex-direction:column;gap:3px}
+.rq-type{font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted-soft)}
+.rq-type.pilot{color:var(--accent)}
+.rq-who{font-size:15px;color:var(--text);overflow-wrap:anywhere}
+.rq-who a{color:var(--accent)}
+.rq-meta{font-size:12.5px;color:var(--muted)}
+.rq-note{margin:6px 0 10px}
 /* Owner dashboard grouping, 2026-11-27: Inbox first, other groups folded. */
 .owner-jump{padding:8px 0;margin:14px 0 4px;display:flex;flex-wrap:wrap;gap:8px}
 .owner-jump .btn{min-height:40px;display:inline-flex;align-items:center}
@@ -209,6 +219,16 @@ th{font-size:10px;letter-spacing:.055em}
 
   <details class="grp grp-inbox" id="grp-inbox" open>
     <summary><span class="gh"><h2 class="gt">Inbox</h2><span class="gs">Messages and requests that need a reply</span></span></summary>
+    <!-- REQUESTS TO ANSWER, 2026-11-27. Owner instruction: every pilot, free
+         copy and recommendation request listed first, one line per person,
+         with a tap-to-email link. Same authenticated people data as the survey
+         panel; no new endpoint, no new data. -->
+    <section id="requests-to-answer" aria-labelledby="rq-heading" class="rq">
+      <h3 id="rq-heading" class="rq-h">Requests to answer</h3>
+      <p id="rq-summary" class="rq-sum" role="status" aria-live="polite">Loading requests...</p>
+      <div id="rq-list"></div>
+      <p class="note rq-note">Pilot, free copy and recommendation requests from the website, newest first. Tap an email address to reply. Website contact-form messages arrive in your Gmail: <a href="https://mail.google.com/mail/u/0/#search/from%3Aformspree.io" target="_blank" rel="noopener noreferrer">open Formspree emails</a>.</p>
+    </section>
     <div class="note owner-alerts" id="owner-email-alerts">
       <b style="color:var(--text)">Sent to your email (through Formspree):</b> website contact messages; pilot requests; practitioner contact requests; LinkedIn recommendation requests from the reviewer evaluation.<br>
       <b style="color:var(--text)">Shown here only, not emailed:</b> survey answers, honor acceptances, historical database rows and pay-screen attempts. Certificate requests are closed (since 18 August 2026).<br>
@@ -2139,6 +2159,8 @@ function pplCsv(){
 function clearUnavailablePeople(tiles){
   PPL=[];
   var svs=document.getElementById('sv-summary');
+  var rqs=document.getElementById('rq-summary');
+  if(rqs)rqs.textContent='Requests could not be loaded just now. Reload the page. This is not zero.';
   if(svs)svs.textContent='Survey responses could not be loaded just now. Reload the page; if it persists, ask Claude for the count.';
   tiles.textContent='Historical private source unavailable or incomplete. No partial record population shown.';
   var table=document.getElementById('ppl-tbl');if(table)table.textContent='';
@@ -2168,7 +2190,52 @@ function renderAnswer(el,text){
     el.appendChild(pEl);
   });
 }
+// REQUESTS TO ANSWER (2026-11-27). One line per request, newest first, pilot
+// requests marked. Built only with textContent and a validated mailto href.
+function drawRequests(rows){
+  var sum=document.getElementById('rq-summary'), list=document.getElementById('rq-list');
+  if(!sum||!list)return;
+  var items=[];
+  (rows||[]).forEach(function(p){
+    if(p.possible_test_marker===true)return;
+    var t='';
+    if(p.source==='practitioner-pilot-interest')t='Pilot or licence request';
+    else if(p.source==='practitioner-review'&&p.survey_wants_copy&&p.email)t='Free copy request';
+    else if(p.source==='reviewer-eval-incentive')t='LinkedIn recommendation request';
+    if(t)items.push({t:t,p:p});
+  });
+  items.sort(function(a,b){
+    var ap=a.t.indexOf('Pilot')===0?1:0, bp=b.t.indexOf('Pilot')===0?1:0;
+    if(ap!==bp)return bp-ap;
+    return String(b.p.date).localeCompare(String(a.p.date));
+  });
+  var nP=0,nC=0,nR=0;
+  items.forEach(function(x){ if(x.t.indexOf('Pilot')===0)nP++; else if(x.t.indexOf('Free')===0)nC++; else nR++; });
+  sum.textContent=nP+(nP===1?' pilot request':' pilot requests')+' · '+nC+(nC===1?' free copy request':' free copy requests')
+    +(nR?' · '+nR+(nR===1?' recommendation request':' recommendation requests'):'');
+  while(list.firstChild)list.removeChild(list.firstChild);
+  if(!items.length){
+    var none=document.createElement('p'); none.className='rq-meta';
+    none.textContent='No requests yet. New ones appear here when you reload this page.';
+    list.appendChild(none); return;
+  }
+  items.forEach(function(x){
+    var p=x.p, row=document.createElement('div'); row.className='rq-row';
+    var ty=document.createElement('div'); ty.className='rq-type'+(x.t.indexOf('Pilot')===0?' pilot':''); ty.textContent=x.t;
+    var who=document.createElement('div'); who.className='rq-who';
+    var email=String(p.email||'').trim();
+    if(p.name){ who.appendChild(document.createTextNode(p.name+' · ')); }
+    if(/^[^\s@<>"]+@[^\s@<>"]+\.[^\s@<>"]+$/.test(email)){
+      var a=document.createElement('a'); a.href='mailto:'+email; a.textContent=email; who.appendChild(a);
+    } else { who.appendChild(document.createTextNode(email||'No email given')); }
+    var meta=document.createElement('div'); meta.className='rq-meta';
+    var d=new Date(p.date), when=isNaN(d)?String(p.date||''):d.toLocaleString(undefined,{month:'short',day:'numeric',hour:'numeric',minute:'2-digit'});
+    meta.textContent=[when,p.organization||'',p.country||''].filter(function(v){return v;}).join(' · ');
+    row.appendChild(ty); row.appendChild(who); row.appendChild(meta); list.appendChild(row);
+  });
+}
 function drawSurvey(rows,funnel){
+  try{drawRequests(rows);}catch(e){}
   var sum=document.getElementById('sv-summary'), list=document.getElementById('sv-list');
   if(!sum||!list)return;
   var real=[], tests=0, pilots=[], taps=[];
